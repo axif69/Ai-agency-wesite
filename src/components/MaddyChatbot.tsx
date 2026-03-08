@@ -41,7 +41,7 @@ export default function MaddyChatbot() {
   const [messages, setMessages] = useState<Message[]>([
     { 
       role: 'model', 
-      text: "Welcome to Asif Digital! I'm Maddy, your elite AI Strategic Consultant. May I know your name, please?",
+      text: "Welcome to Asif Digital! I'm Khalid, your elite AI Strategic Consultant. May I know your name, please?",
       suggestions: ["Strategic Consultation", "Just browsing"]
     }
   ]);
@@ -93,13 +93,14 @@ export default function MaddyChatbot() {
     
     try {
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash-tts", // <-- Updated to the stable TTS model
+        model: "gemini-2.5-flash-tts", 
         contents: [{ parts: [{ text }] }],
         config: {
           responseModalities: [Modality.AUDIO],
           speechConfig: {
             voiceConfig: {
-              prebuiltVoiceConfig: { voiceName: 'Zephyr' },
+              // 'Aoede' provides a highly natural, warm, and human-like voice
+              prebuiltVoiceConfig: { voiceName: 'Aoede' }, 
             },
           },
         },
@@ -158,13 +159,17 @@ export default function MaddyChatbot() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Scroll to bottom whenever messages update
   useEffect(() => {
     scrollToBottom();
-    const lastMessage = messages[messages.length - 1];
-    if (lastMessage && lastMessage.role === 'model' && isOpen) {
-      speak(lastMessage.text);
+  }, [messages]);
+
+  // Speak the welcome message immediately when the chat opens
+  useEffect(() => {
+    if (isOpen && messages.length === 1 && messages[0].role === 'model') {
+      speak(messages[0].text);
     }
-  }, [messages, isOpen]);
+  }, [isOpen]);
 
   const parseResponse = (text: string) => {
     const suggestionMatch = text.match(/\[SUGGESTIONS: (.*?)\]/);
@@ -191,7 +196,7 @@ export default function MaddyChatbot() {
 
     try {
       const chat = ai.chats.create({
-        model: "gemini-2.5-flash", // <-- THE ULTIMATE FIX! Switched to Google's stable, fast model.
+        model: "gemini-2.5-flash", 
         config: {
           systemInstruction: SYSTEM_INSTRUCTION,
         },
@@ -204,6 +209,11 @@ export default function MaddyChatbot() {
       const result = await chat.sendMessage({ message: userMessage });
       const { cleanText, suggestions } = parseResponse(result.text || "");
       
+      // OPTIMIZATION: Fire the speech module IMMEDIATELY before React even updates the visual UI
+      if (isSpeaking && cleanText) {
+        speak(cleanText);
+      }
+
       setMessages(prev => [...prev, { 
         role: 'model', 
         text: cleanText || "I'm sorry, I couldn't process that.",
@@ -225,10 +235,10 @@ export default function MaddyChatbot() {
   const sendToWhatsApp = async () => {
     setIsSummarizing(true);
     try {
-      const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Maddy'}: ${m.text}`).join('\n');
+      const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`).join('\n');
       
       const summaryResponse = await ai.models.generateContent({
-        model: "gemini-2.5-flash", // <-- Switched this one to the stable model too!
+        model: "gemini-2.5-flash",
         contents: `Please provide a very concise, professional summary of the following customer requirements for Asif Digital. 
         Focus on: Name, Service Needed, Budget (if mentioned), and Timeline. 
         Format it as a clean list for WhatsApp.
@@ -244,7 +254,7 @@ export default function MaddyChatbot() {
     } catch (error) {
       console.error("Summary Generation Error:", error);
       const phoneNumber = "971545866094";
-      const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Maddy'}: ${m.text}`).join('\n');
+      const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`).join('\n');
       const text = encodeURIComponent(`Hi Asif, I have a new lead (Summary failed, sending history):\n\n${history}`);
       window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
     } finally {
@@ -278,7 +288,7 @@ export default function MaddyChatbot() {
                   <Bot className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-white">Maddy</h3>
+                  <h3 className="font-serif font-bold text-white">Khalid</h3>
                   <span className="text-[10px] uppercase tracking-widest text-white/40 font-semibold">AI Strategic Consultant</span>
                 </div>
               </div>
@@ -380,7 +390,7 @@ export default function MaddyChatbot() {
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder={isListening ? "Listening..." : "Ask Maddy anything..."}
+                    placeholder={isListening ? "Listening..." : "Ask Khalid anything..."}
                     className="w-full bg-black border border-white/10 rounded-full px-6 py-4 pr-14 text-sm focus:outline-none focus:border-white/30 transition-colors"
                   />
                   <button
