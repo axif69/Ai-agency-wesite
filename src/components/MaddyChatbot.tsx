@@ -6,7 +6,7 @@ import { GoogleGenAI, Modality } from "@google/genai";
 const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
 const SYSTEM_INSTRUCTION = `
-You are Maddy, the elite AI Strategic Consultant for Asif Digital.
+You are Khalid, the elite AI Strategic Consultant for Asif Digital.
 Asif Digital is the UAE's premier AI Digital Marketing & Software Development agency, led by Asif Khan.
 
 Your Mission:
@@ -56,7 +56,6 @@ export default function MaddyChatbot() {
 
   // Initialize Speech Recognition and Synthesis Voices
   useEffect(() => {
-    // Pre-load voices for SpeechSynthesis
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       window.speechSynthesis.getVoices();
       window.speechSynthesis.onvoiceschanged = () => {
@@ -94,7 +93,7 @@ export default function MaddyChatbot() {
     
     try {
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash-preview-tts",
+        model: "gemini-2.5-flash-tts", // <-- Updated to the stable TTS model
         contents: [{ parts: [{ text }] }],
         config: {
           responseModalities: [Modality.AUDIO],
@@ -118,14 +117,12 @@ export default function MaddyChatbot() {
         const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
         
         try {
-          // Try to decode as WAV/MP3 first
           const audioBuffer = await audioContext.decodeAudioData(bytes.buffer.slice(0));
           const source = audioContext.createBufferSource();
           source.buffer = audioBuffer;
           source.connect(audioContext.destination);
           source.start();
         } catch (e) {
-          // Fallback to raw 16-bit PCM at 24000Hz
           const audioBuffer = audioContext.createBuffer(1, bytes.length / 2, 24000);
           const channelData = audioBuffer.getChannelData(0);
           const dataView = new DataView(bytes.buffer);
@@ -140,7 +137,6 @@ export default function MaddyChatbot() {
       }
     } catch (error) {
       console.error("TTS Error:", error);
-      // Fallback to browser TTS if Gemini fails
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 0.95;
@@ -164,7 +160,6 @@ export default function MaddyChatbot() {
 
   useEffect(() => {
     scrollToBottom();
-    // Speak the last model message if speaking is enabled
     const lastMessage = messages[messages.length - 1];
     if (lastMessage && lastMessage.role === 'model' && isOpen) {
       speak(lastMessage.text);
@@ -196,7 +191,7 @@ export default function MaddyChatbot() {
 
     try {
       const chat = ai.chats.create({
-        model: "gemini-3-flash-preview",
+        model: "gemini-2.5-flash", // <-- THE ULTIMATE FIX! Switched to Google's stable, fast model.
         config: {
           systemInstruction: SYSTEM_INSTRUCTION,
         },
@@ -215,7 +210,6 @@ export default function MaddyChatbot() {
         suggestions: suggestions.length > 0 ? suggestions : undefined
       }]);
 
-      // Detect if we have enough info for a lead
       const lowerText = cleanText.toLowerCase();
       if (lowerText.includes("contact") || lowerText.includes("phone") || lowerText.includes("whatsapp") || lowerText.includes("reach out")) {
         setLeadData(prev => ({ ...prev, contact: userMessage }));
@@ -234,7 +228,7 @@ export default function MaddyChatbot() {
       const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Maddy'}: ${m.text}`).join('\n');
       
       const summaryResponse = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-2.5-flash", // <-- Switched this one to the stable model too!
         contents: `Please provide a very concise, professional summary of the following customer requirements for Asif Digital. 
         Focus on: Name, Service Needed, Budget (if mentioned), and Timeline. 
         Format it as a clean list for WhatsApp.
@@ -249,7 +243,6 @@ export default function MaddyChatbot() {
       window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
     } catch (error) {
       console.error("Summary Generation Error:", error);
-      // Fallback to history if summary fails
       const phoneNumber = "971545866094";
       const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Maddy'}: ${m.text}`).join('\n');
       const text = encodeURIComponent(`Hi Asif, I have a new lead (Summary failed, sending history):\n\n${history}`);
