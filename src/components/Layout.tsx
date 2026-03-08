@@ -1,0 +1,192 @@
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "motion/react";
+import PageLoader from "./PageLoader";
+import WhatsAppButton from "./WhatsAppButton";
+import MaddyChatbot from "./MaddyChatbot";
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+
+export default function Layout() {
+  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: "Case Studies", path: "/case-studies" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#050505] text-[#f5f5f5] font-sans selection:bg-white/30">
+      <PageLoader />
+      <WhatsAppButton />
+      <MaddyChatbot />
+
+      <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-6 md:px-12 mix-blend-difference">
+        <Link to="/" className="text-2xl font-serif font-bold tracking-tight">
+          Asif Khan.
+        </Link>
+        
+        <button
+          className="md:hidden z-50 p-2"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+
+        <nav className="hidden md:flex gap-8 text-[10px] font-semibold uppercase tracking-[0.2em]">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className="relative hover:text-white/60 transition-colors group"
+            >
+              {link.name}
+              <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-white transition-all duration-500 group-hover:w-full" />
+            </Link>
+          ))}
+        </nav>
+      </header>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 z-30 flex flex-col items-center justify-center bg-[#050505] md:hidden"
+          >
+            <nav className="flex flex-col gap-8 text-3xl font-serif tracking-tight text-center">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="hover:text-white/50 transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence mode="wait">
+        <motion.main
+          key={location.pathname}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+          className="pt-24 min-h-screen"
+        >
+          <Outlet />
+        </motion.main>
+      </AnimatePresence>
+
+      <footer className="py-32 px-6 md:px-12 border-t border-white/5 mt-20 bg-black relative overflow-hidden">
+        {/* Subtle Background Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32">
+            {/* Brand Section */}
+            <div className="space-y-8">
+              <Link to="/" className="text-4xl font-serif font-bold tracking-tight block">Asif Digital.</Link>
+              <p className="text-white/40 font-light text-base max-w-xs leading-relaxed">
+                Architecting the future of digital commerce through AI-driven precision and enterprise-grade software engineering.
+              </p>
+              <div className="flex gap-4 pt-4">
+                {[
+                  { name: 'LN', label: 'LinkedIn' },
+                  { name: 'TW', label: 'Twitter' },
+                  { name: 'IG', label: 'Instagram' }
+                ].map((social) => (
+                  <a key={social.name} href="#" className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 text-[10px] font-bold group">
+                    <span className="group-hover:scale-110 transition-transform">{social.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Menu Section */}
+            <div>
+              <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold mb-10">Navigation</h4>
+              <ul className="space-y-5">
+                {navLinks.map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-white/50 hover:text-white transition-all duration-300 flex items-center gap-3 group text-sm font-medium">
+                      <span className="w-0 h-[1px] bg-white transition-all duration-500 group-hover:w-6" />
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold mb-10">Direct Contact</h4>
+              <ul className="space-y-8 text-white/50 font-light">
+                <li className="flex flex-col gap-2">
+                  <span className="text-[9px] uppercase tracking-widest text-white/20 font-black">Strategic Inquiry</span>
+                  <a href="https://wa.me/971545866094" className="text-white/80 hover:text-white transition-colors text-lg font-serif italic">+971 54 586 6094</a>
+                </li>
+                <li className="flex flex-col gap-2">
+                  <span className="text-[9px] uppercase tracking-widest text-white/20 font-black">Email Correspondence</span>
+                  <a href="mailto:Aiautomationdevelopement@gmail.com" className="text-white/80 hover:text-white transition-colors text-sm break-all">Aiautomationdevelopement@gmail.com</a>
+                </li>
+                <li className="flex flex-col gap-2">
+                  <span className="text-[9px] uppercase tracking-widest text-white/20 font-black">UAE Headquarters</span>
+                  <span className="text-white/80 text-sm leading-relaxed">Muwailih Commercial,<br/>Sharjah, United Arab Emirates</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Quick Contact Form */}
+            <div>
+              <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold mb-10">Briefing</h4>
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <div className="relative group">
+                  <input 
+                    type="email" 
+                    placeholder="Corporate Email" 
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-white/30 transition-all duration-500 placeholder:text-white/20"
+                  />
+                </div>
+                <div className="relative group">
+                  <textarea 
+                    placeholder="Project Brief" 
+                    rows={4}
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-white/30 transition-all duration-500 resize-none placeholder:text-white/20"
+                  ></textarea>
+                </div>
+                <button className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-5 rounded-2xl hover:bg-white/90 transition-all duration-500 text-[10px] shadow-2xl hover:scale-[1.02] active:scale-[0.98]">
+                  Submit Brief
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="text-[10px] text-white/20 uppercase tracking-[0.3em] font-bold">
+              &copy; 2026 Asif Digital &mdash; Intelligent Systems.
+            </div>
+            <div className="flex gap-12 text-[10px] text-white/20 uppercase tracking-[0.3em] font-bold">
+              <a href="#" className="hover:text-white transition-colors">Privacy Architecture</a>
+              <a href="#" className="hover:text-white transition-colors">Legal Framework</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
