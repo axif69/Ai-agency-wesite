@@ -261,7 +261,7 @@ export default function Home() {
             <span className="micro-label block mb-4">The AI Advantage</span>
             <h2 className="text-4xl md:text-6xl font-serif tracking-tight mb-6">Why Choose Asif Digital?</h2>
             <p className="text-white/60 text-lg font-light leading-relaxed">
-              In the fast-paced markets of Dubai and Sharjah, you don't just need a website; you need a digital growth engine. I leverage Artificial Intelligence and modern software architecture to revolutionize your business, driving efficiency, personalization, and superior results.
+              In the fast-paced markets of Dubai and Sharjah, you don't just need a website; you need a digital growth engine. We leverage Artificial Intelligence and modern software architecture to revolutionize your business, driving efficiency, personalization, and superior results.
             </p>
           </motion.div>
 
@@ -534,7 +534,7 @@ export default function Home() {
                 <span className="italic text-white/40">Global Impact.</span>
               </h2>
               <p className="text-white/40 text-xl font-light leading-relaxed max-w-xl">
-                While our headquarters are in Sharjah, our digital ecosystems power businesses from Dubai to London, New York to Singapore. We bridge local cultural intelligence with global technology standards.
+                While our headquarters are in Sharjah, our digital ecosystems power businesses from Dubai to London and New York to Singapore. We bridge local cultural intelligence with global technology standards.
               </p>
               <div className="grid grid-cols-2 gap-12 pt-8">
                 <div>
