@@ -4,11 +4,11 @@ import path from 'path';
 import {defineConfig, loadEnv} from 'vite';
 
 export default defineConfig(({mode}) => {
-  // This loads local .env files if you are on your computer
-  const env = loadEnv(mode, '.', '');
+  // This loads local files if you are on your computer
+  const env = loadEnv(mode, process.cwd(), '');
   
-  // THE FIX: Tell Vite to grab the key from Netlify's dashboard FIRST!
-  const apiKey = process.env.GEMINI_API_KEY || env.GEMINI_API_KEY || '';
+  // THE ULTIMATE FIX: This checks for BOTH names
+  const apiKey = process.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY || env.VITE_GEMINI_API_KEY || env.GEMINI_API_KEY || '';
 
   return {
     plugins: [react(), tailwindcss()],
