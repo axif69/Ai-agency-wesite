@@ -7,9 +7,10 @@ import {
 } from 'lucide-react';
 
 /**
- * API CONFIGURATION
- * The execution environment provides the keys at runtime.
- * We set these to empty strings as per environment requirements.
+ * ELITE API CONFIGURATION
+ * The execution environment provides the Gemini API key at runtime.
+ * For Groq, ensure the key is provided in your Vercel/Local environment variables.
+ * Initialized as empty strings to ensure compatibility with all build targets.
  */
 const GEMINI_KEY = ""; 
 const GROQ_KEY = ""; 
@@ -111,12 +112,15 @@ export default function App() {
 
   const speak = async (text: string) => {
     if (!isSpeaking || !GEMINI_KEY) return;
+    
+    const cleanSpeechText = text.split('[SUGGESTIONS')[0].trim();
+
     try {
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${TTS_MODEL}:generateContent?key=${GEMINI_KEY}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: `Say naturally: ${text}` }] }],
+          contents: [{ parts: [{ text: `Say naturally: ${cleanSpeechText}` }] }],
           generationConfig: {
             responseModalities: ["AUDIO"],
             speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Aoede' } } }
@@ -135,8 +139,10 @@ export default function App() {
   const processResponse = (rawText: string) => {
     const suggestionMatch = rawText.match(/\[SUGGESTIONS: (.*?)\]/);
     let cleanText = suggestionMatch ? rawText.replace(suggestionMatch[0], '').trim() : rawText;
-    // Final check to strip any remaining asterisks
+    
+    // Ensure no asterisks appear in UI
     cleanText = cleanText.replace(/\*/g, '').trim();
+    
     const suggestions = suggestionMatch ? suggestionMatch[1].split(',').map(s => s.trim()) : [];
     
     setMessages(prev => [...prev, { 
@@ -159,6 +165,8 @@ export default function App() {
 
     try {
       // --- ATTEMPT 1: GEMINI ---
+      if (!GEMINI_KEY) throw new Error("GEMINI_KEY_MISSING");
+
       const geminiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${TEXT_MODEL}:generateContent?key=${GEMINI_KEY}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -174,8 +182,8 @@ export default function App() {
 
       const geminiData = await geminiResponse.json();
 
-      if (geminiData.error && (geminiData.error.code === 429 || geminiData.error.code === 403)) {
-        throw new Error("QUOTA_OR_AUTH_ERROR");
+      if (geminiData.error) {
+        throw new Error("FAILOVER_TRIGGERED");
       }
 
       const rawText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || "";
@@ -184,8 +192,6 @@ export default function App() {
     } catch (e: any) {
       // --- ATTEMPT 2: GROQ FAILOVER ---
       if (GROQ_KEY) {
-        console.log("Gemini unavailable. Switching to Groq Failover...");
-        
         try {
           const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: "POST",
@@ -212,7 +218,7 @@ export default function App() {
           processResponse(rawText);
           
         } catch (groqErr) {
-          setMessages(prev => [...prev, { role: 'model', text: "Strategic assessment paused. Please contact Asif Khan directly on WhatsApp." }]);
+          setMessages(prev => [...prev, { role: 'model', text: "Strategic assessment paused due to high demand. Please message Asif Khan on WhatsApp." }]);
         }
       } else {
         setMessages(prev => [...prev, { role: 'model', text: "Connectivity issues. Please hold while I reconnect." }]);
@@ -225,7 +231,7 @@ export default function App() {
   const forwardToWhatsApp = async () => {
     setIsSummarizing(true);
     try {
-      const prompt = `Summarize for Asif Khan: ${messages.map(m => m.text).join(' | ')}`;
+      const prompt = `Summarize requirements for Asif Khan: ${messages.map(m => m.text).join(' | ')}`;
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${TEXT_MODEL}:generateContent?key=${GEMINI_KEY}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -262,7 +268,7 @@ export default function App() {
           className="fixed bottom-8 right-8 z-50 flex items-center gap-4 bg-white p-2 pr-6 rounded-full shadow-2xl group border border-slate-100"
         >
           <div className="w-12 h-12 rounded-full bg-[#0284c7] flex items-center justify-center text-white shadow-lg group-hover:bg-[#0369a1] transition-colors">
-            <Briefcase className="w-5 h-5" />
+            <MessageSquare className="w-5 h-5" />
           </div>
           <div className="text-left">
             <div className="text-[10px] font-bold text-[#0284c7] uppercase tracking-tighter">Strategic Consult</div>
@@ -280,7 +286,7 @@ export default function App() {
             className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-[100] w-full sm:w-[410px] h-full sm:h-[660px] bg-[#050505] sm:rounded-3xl shadow-[0_30px_100px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden border border-white/5"
           >
             {/* Header */}
-            <div className="p-6 bg-[#0a0a0a] border-b border-white/5 relative">
+            <div className="p-6 bg-[#0a0a0a] border-b border-white/5 relative shrink-0">
                 <div className="absolute top-0 left-0 h-[2px] bg-[#0ea5e9] transition-all duration-1000 shadow-[0_0_15px_#0ea5e9]" style={{ width: `${Math.min((leadStage / 4) * 100, 100)}%` }} />
                 <div className="flex justify-between items-center">
                     <div className="flex items-center gap-4">
@@ -364,7 +370,7 @@ export default function App() {
             </div>
 
             {/* Input Area */}
-            <div className="p-5 bg-[#0a0a0a] border-t border-white/5">
+            <div className="p-5 bg-[#0a0a0a] border-t border-white/5 shrink-0">
               <form 
                 onSubmit={(e) => { e.preventDefault(); handleSend(); }}
                 className="flex items-center gap-2 bg-white/5 rounded-2xl p-1 border border-white/10 focus-within:border-[#0ea5e9]/50 transition-colors"
@@ -381,7 +387,7 @@ export default function App() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder={isListening ? "Listening..." : "Message Khalid..."}
-                  className="flex-1 bg-transparent border-none py-3 text-sm text-white placeholder:text-white/20 focus:outline-none"
+                  className="flex-1 bg-transparent border-none py-3 text-sm text-white placeholder:text-white/20 focus:outline-none px-2"
                 />
                 <button
                   type="submit"
