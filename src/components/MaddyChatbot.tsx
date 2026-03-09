@@ -9,13 +9,12 @@ import {
 /**
  * ELITE STRATEGIC CONFIGURATION
  * Aligned with the working Content Generator model: gemini-3-flash-preview
- * We use the REST API approach (fetch) instead of the SDK to avoid dependency resolution issues.
  */
 const getEnvKey = (key: string): string => {
   try {
-    // Indirect access to prevent build-time static analysis warnings
+    // Attempt standard Vite/Vercel prefix, then fallback to raw key
     const env = (import.meta as any).env;
-    return env[key] || "";
+    return env[key] || env[key.replace('VITE_', '')] || "";
   } catch {
     return "";
   }
@@ -43,10 +42,10 @@ Conversation Protocol:
 - Phase 4: Secure WhatsApp for Asif Khan.
 
 Interactive Suggestions:
-- Always append "[SUGGESTIONS: Option 1, Option 2]" at the end of your message.
+- Always append "[SUGGESTIONS: Option 1, Option 2]" at the end of your message to guide the user.
 
 Tone: Elite, Strategic, and Minimalist.
-NO MARKDOWN: Never use asterisks (**) or bolding. Use clean text only.
+NO MARKDOWN: Never use asterisks (**) or bolding. Use clean, high-end text only.
 `;
 
 interface Message {
@@ -96,6 +95,7 @@ export default function App() {
 
   /**
    * ELITE VOICE ENGINE (Browser Native)
+   * Using native synthesis to bypass all Google Cloud TTS issues.
    */
   const speak = (text: string) => {
     if (!isSpeaking || typeof window === 'undefined') return;
@@ -130,7 +130,7 @@ export default function App() {
   const handleSend = async (overrideInput?: string) => {
     const textToSend = overrideInput || input;
     if (!textToSend.trim() || isLoading) return;
-
+`
     const userMsg = textToSend.trim();
     if (!overrideInput) setInput('');
     
@@ -140,19 +140,26 @@ export default function App() {
 
     try {
       // --- ATTEMPT 1: GOOGLE REST API (gemini-3-flash-preview) ---
+      // We ensure strict role alternation: user -> model -> user
+      const contents = messages
+        .map(m => ({
+          role: m.role === 'user' ? 'user' : 'model',
+          parts: [{ text: m.text }]
+        }))
+        .concat({ role: "user", parts: [{ text: userMsg }] });
+
       const geminiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${TEXT_MODEL}:generateContent?key=${GEMINI_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          contents: [
-            ...messages.map(m => ({
-              role: m.role === 'user' ? 'user' : 'model',
-              parts: [{ text: m.text }]
-            })),
-            { role: "user", parts: [{ text: userMsg }] }
-          ],
-          systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
-          generationConfig: { temperature: 0.5 }
+          contents,
+          system_instruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
+          generationConfig: { 
+            temperature: 0.5,
+            topK: 40,
+            topP: 0.95,
+            maxOutputTokens: 400,
+          }
         })
       });
 
@@ -190,7 +197,7 @@ export default function App() {
           setMessages(prev => [...prev, { role: 'model', text: "Strategic lines are momentarily offline. Please message Asif Khan on WhatsApp." }]);
         }
       } else {
-        setMessages(prev => [...prev, { role: 'model', text: "Connectivity issue. Please check your API keys." }]);
+        setMessages(prev => [...prev, { role: 'model', text: "Connectivity issue. Please check your Vercel Environment Variables." }]);
       }
     } finally {
       setIsLoading(false);
