@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   MessageSquare, X, Send, Bot, User, Loader2, 
@@ -8,8 +8,8 @@ import {
 
 /**
  * ELITE GROQ CONFIGURATION
- * Using a safe access pattern to ensure compatibility.
- * Make sure VITE_GROQ_API_KEY is set in your Vercel/Netlify settings.
+ * We use an indirect access pattern to avoid build-time warnings while 
+ * ensuring the VITE_GROQ_API_KEY is pulled correctly from your Vercel secrets.
  */
 const getGroqKey = (): string => {
   try {
@@ -21,7 +21,7 @@ const getGroqKey = (): string => {
 };
 
 const GROQ_KEY = getGroqKey();
-const GROQ_MODEL = "llama-3.3-70b-versatile"; // Ultra-fast, high-intelligence model
+const GROQ_MODEL = "llama-3.3-70b-versatile"; 
 
 const SYSTEM_INSTRUCTION = `
 You are Khalid, the Elite AI Strategic Consultant for Asif Digital (UAE).
@@ -30,7 +30,7 @@ Asif Digital is the UAE's premier AI agency led by Asif Khan.
 STRICT PROTOCOL:
 1. NO MARKDOWN: NEVER use asterisks (**), hashtags (#), or bolding. Use clean, professional text only.
 2. CONCISION: Maximum two sentences per response. Time is money for our clients.
-3. TONE: Elite, sophisticated, and direct. You are a human consultant, not a robot.
+3. TONE: Elite, sophisticated, and direct. You are a high-level human consultant.
 4. MISSION: Secure Name, Strategic Objective, and WhatsApp/Phone for Asif Khan to review.
 
 SUGGESTIONS:
@@ -82,36 +82,46 @@ export default function App() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
 
-  // Elite Voice Logic using Browser API (Zero External Dependencies)
+  /**
+   * ELITE VOICE ENGINE (Native Browser API)
+   * This replaces Gemini TTS completely. It's free, unlimited, and fast.
+   */
   const speak = (text: string) => {
     if (!isSpeaking || typeof window === 'undefined') return;
     
-    // Stop any current speaking
+    // Cancel any ongoing speech
     window.speechSynthesis.cancel();
 
-    // Clean text: Remove SUGGESTIONS and Markdown
+    // Clean text for natural speech: Remove SUGGESTIONS part and all Markdown
     const cleanSpeechText = text.split('[SUGGESTIONS')[0].replace(/\*/g, '').trim();
     
     const utterance = new SpeechSynthesisUtterance(cleanSpeechText);
     
-    // Attempt to find a premium-sounding voice
+    // Select a professional-sounding voice if available
     const voices = window.speechSynthesis.getVoices();
     const preferredVoice = voices.find(v => 
-      v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Premium')
+      v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Premium') || v.lang.includes('en-GB')
     );
     
     if (preferredVoice) utterance.voice = preferredVoice;
-    utterance.rate = 0.95; // Slightly slower for authority
+    utterance.rate = 0.95; // Authoritative pace
     utterance.pitch = 1.0;
     
     window.speechSynthesis.speak(utterance);
   };
 
+  // Immediate greeting on open
+  useEffect(() => {
+    if (isOpen && messages.length === 1) {
+      speak(messages[0].text);
+    }
+  }, [isOpen]);
+
   const processResponse = (rawText: string) => {
     const suggestionMatch = rawText.match(/\[SUGGESTIONS: (.*?)\]/);
     let cleanText = suggestionMatch ? rawText.replace(suggestionMatch[0], '').trim() : rawText;
     
-    // CLEANING PROTOCOL: Strip all asterisks completely
+    // FINAL SANITIZER: Ensure zero asterisks reach the UI
     cleanText = cleanText.replace(/\*/g, '').trim();
     
     const suggestions = suggestionMatch ? suggestionMatch[1].split(',').map(s => s.trim()) : [];
@@ -135,7 +145,10 @@ export default function App() {
     setLeadStage(prev => Math.min(prev + 1, 4));
 
     try {
-      if (!GROQ_KEY) throw new Error("GROQ_KEY_MISSING");
+      if (!GROQ_KEY) {
+        // Fallback for preview environment or if key is missing
+        throw new Error("GROQ_KEY_MISSING");
+      }
 
       const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
@@ -168,10 +181,10 @@ export default function App() {
       processResponse(rawText);
 
     } catch (e: any) {
-      console.error("Groq Error:", e);
+      console.error("Strategic Engine Error:", e);
       setMessages(prev => [...prev, { 
         role: 'assistant', 
-        text: "My apologies. Our strategic line is currently under maintenance. Please contact Asif Khan directly on WhatsApp for immediate assistance." 
+        text: "Strategic lines are busy. Please message Asif Khan directly on WhatsApp for an immediate assessment." 
       }]);
     } finally {
       setIsLoading(false);
@@ -220,7 +233,7 @@ export default function App() {
             exit={{ opacity: 0, y: 100, scale: 0.95 }}
             className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-[100] w-full sm:w-[410px] h-full sm:h-[660px] bg-[#050505] sm:rounded-3xl shadow-[0_30px_100px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden border border-white/5"
           >
-            {/* Elite Header */}
+            {/* Header with Lead Tracking */}
             <div className="p-6 bg-[#0a0a0a] border-b border-white/5 relative shrink-0">
                 <div className="absolute top-0 left-0 h-[2px] bg-[#0ea5e9] transition-all duration-1000 shadow-[0_0_15px_#0ea5e9]" style={{ width: `${Math.min((leadStage / 4) * 100, 100)}%` }} />
                 <div className="flex justify-between items-center">
@@ -250,7 +263,7 @@ export default function App() {
                 </div>
             </div>
 
-            {/* Chat Content */}
+            {/* Chat Messages */}
             <div className="flex-1 overflow-y-auto p-5 space-y-6 scrollbar-hide bg-[#050505]">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
@@ -303,7 +316,7 @@ export default function App() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Elite Input Bar */}
+            {/* Input Bar */}
             <div className="p-5 bg-[#0a0a0a] border-t border-white/5 shrink-0">
               <form 
                 onSubmit={(e) => { e.preventDefault(); handleSend(); }}
