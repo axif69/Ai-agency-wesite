@@ -1,28 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, X, Send, Bot, User, Loader2, Mic, MicOff, Volume2, VolumeX } from 'lucide-react';
+import { GoogleGenAI, Modality } from "@google/genai";
 
-/**
- * KHALID ELITE STRATEGIC HUB
- * Reverting to the Gemini-heavy architecture as requested.
- * Using direct fetch to bypass '@google/genai' resolution issues in sandbox.
- */
-
-// API Key handling: set to empty string for sandbox environment key injection
-const apiKey = ""; 
-
-// Fallback for user's local/Vercel environment
-const getApiKey = () => {
-  if (apiKey) return apiKey;
-  try {
-    // String-based access to bypass "import.meta" warning in legacy targets
-    return (import.meta as any).env?.VITE_GEMINI_API_KEY || "";
-  } catch {
-    return "";
-  }
-};
-
-const GEMINI_KEY = getApiKey();
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
 const SYSTEM_INSTRUCTION = `
 You are Khalid, the elite AI Strategic Consultant for Asif Digital.
@@ -55,7 +36,7 @@ interface Message {
   suggestions?: string[];
 }
 
-export default function App() {
+export default function MaddyChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { 
@@ -70,13 +51,18 @@ export default function App() {
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(true);
   const [leadData, setLeadData] = useState<{ name?: string, service?: string, contact?: string }>({});
-  
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
-  const audioContextRef = useRef<AudioContext | null>(null);
 
-  // Initialize Speech Recognition
+  // Initialize Speech Recognition and Synthesis Voices
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.getVoices();
+      window.speechSynthesis.onvoiceschanged = () => {
+        window.speechSynthesis.getVoices();
+      };
+    }
+
     if (typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
       const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
       recognitionRef.current = new SpeechRecognition();
@@ -106,41 +92,49 @@ export default function App() {
     if (!isSpeaking || typeof window === 'undefined') return;
     
     try {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${GEMINI_KEY}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text }] }],
-          generationConfig: {
-            responseModalities: ["AUDIO"],
-            speechConfig: {
-              voiceConfig: {
-                prebuiltVoiceConfig: { voiceName: 'Aoede' }, 
-              },
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash-tts", 
+        contents: [{ parts: [{ text }] }],
+        config: {
+          responseModalities: [Modality.AUDIO],
+          speechConfig: {
+            voiceConfig: {
+              // 'Aoede' provides a highly natural, warm, and human-like voice
+              prebuiltVoiceConfig: { voiceName: 'Aoede' }, 
             },
           },
-          model: "gemini-2.5-flash-preview-tts"
-        })
+        },
       });
 
-      const data = await response.json();
-      const base64Audio = data.candidates?.[0]?.content?.parts?.find((p: any) => p.inlineData)?.inlineData?.data;
-      
+      const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
       if (base64Audio) {
         const binaryString = window.atob(base64Audio);
         const len = binaryString.length;
         const bytes = new Uint8Array(len);
-        for (let i = 0; i < len; i++) bytes[i] = binaryString.charCodeAt(i);
-        
-        if (!audioContextRef.current) {
-          audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+        for (let i = 0; i < len; i++) {
+          bytes[i] = binaryString.charCodeAt(i);
         }
         
-        const audioBuffer = await audioContextRef.current.decodeAudioData(bytes.buffer);
-        const source = audioContextRef.current.createBufferSource();
-        source.buffer = audioBuffer;
-        source.connect(audioContextRef.current.destination);
-        source.start();
+        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+        
+        try {
+          const audioBuffer = await audioContext.decodeAudioData(bytes.buffer.slice(0));
+          const source = audioContext.createBufferSource();
+          source.buffer = audioBuffer;
+          source.connect(audioContext.destination);
+          source.start();
+        } catch (e) {
+          const audioBuffer = audioContext.createBuffer(1, bytes.length / 2, 24000);
+          const channelData = audioBuffer.getChannelData(0);
+          const dataView = new DataView(bytes.buffer);
+          for (let i = 0; i < channelData.length; i++) {
+            channelData[i] = dataView.getInt16(i * 2, true) / 32768;
+          }
+          const source = audioContext.createBufferSource();
+          source.buffer = audioBuffer;
+          source.connect(audioContext.destination);
+          source.start();
+        }
       }
     } catch (error) {
       console.error("TTS Error:", error);
@@ -165,10 +159,12 @@ export default function App() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Scroll to bottom whenever messages update
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
+  // Speak the welcome message immediately when the chat opens
   useEffect(() => {
     if (isOpen && messages.length === 1 && messages[0].role === 'model') {
       speak(messages[0].text);
@@ -199,25 +195,21 @@ export default function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${GEMINI_KEY}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [
-            ...messages.map(m => ({
-              role: m.role,
-              parts: [{ text: m.text }]
-            })),
-            { role: 'user', parts: [{ text: userMessage }] }
-          ],
-          systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] }
-        })
+      const chat = ai.chats.create({
+        model: "gemini-2.5-flash", 
+        config: {
+          systemInstruction: SYSTEM_INSTRUCTION,
+        },
+        history: messages.map(m => ({
+          role: m.role,
+          parts: [{ text: m.text }]
+        }))
       });
 
-      const data = await response.json();
-      const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
-      const { cleanText, suggestions } = parseResponse(rawText);
+      const result = await chat.sendMessage({ message: userMessage });
+      const { cleanText, suggestions } = parseResponse(result.text || "");
       
+      // OPTIMIZATION: Fire the speech module IMMEDIATELY before React even updates the visual UI
       if (isSpeaking && cleanText) {
         speak(cleanText);
       }
@@ -229,7 +221,7 @@ export default function App() {
       }]);
 
       const lowerText = cleanText.toLowerCase();
-      if (lowerText.includes("contact") || lowerText.includes("phone") || lowerText.includes("whatsapp")) {
+      if (lowerText.includes("contact") || lowerText.includes("phone") || lowerText.includes("whatsapp") || lowerText.includes("reach out")) {
         setLeadData(prev => ({ ...prev, contact: userMessage }));
       }
     } catch (error) {
@@ -245,29 +237,33 @@ export default function App() {
     try {
       const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`).join('\n');
       
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${GEMINI_KEY}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: `Please provide a very concise, professional summary of the following customer requirements for Asif Digital. Focus on: Name, Service Needed, Budget, and Timeline. Chat History: ${history}` }] }]
-        })
+      const summaryResponse = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: `Please provide a very concise, professional summary of the following customer requirements for Asif Digital. 
+        Focus on: Name, Service Needed, Budget (if mentioned), and Timeline. 
+        Format it as a clean list for WhatsApp.
+        
+        Chat History:
+        ${history}`,
       });
 
-      const data = await response.json();
-      const summary = data.candidates?.[0]?.content?.parts?.[0]?.text || "No summary available.";
+      const summary = summaryResponse.text || "No summary available.";
       const phoneNumber = "971545866094";
       const text = encodeURIComponent(`*New Strategic Lead Summary*\n\n${summary}\n\n*Direct Contact:* ${leadData.contact || 'Provided in chat'}`);
       window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
     } catch (error) {
-      console.error("Summary Error:", error);
-      window.open(`https://wa.me/971545866094?text=New lead interested in services.`, '_blank');
+      console.error("Summary Generation Error:", error);
+      const phoneNumber = "971545866094";
+      const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`).join('\n');
+      const text = encodeURIComponent(`Hi Asif, I have a new lead (Summary failed, sending history):\n\n${history}`);
+      window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
     } finally {
       setIsSummarizing(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
+    <>
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
@@ -292,7 +288,7 @@ export default function App() {
                   <Bot className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-white leading-tight">Khalid</h3>
+                  <h3 className="font-serif font-bold text-white">Khalid</h3>
                   <span className="text-[10px] uppercase tracking-widest text-white/40 font-semibold">AI Strategic Consultant</span>
                 </div>
               </div>
@@ -327,6 +323,7 @@ export default function App() {
                     </div>
                   </div>
                   
+                  {/* Suggestions */}
                   {msg.suggestions && i === messages.length - 1 && (
                     <div className="flex flex-wrap gap-2 pl-11">
                       {msg.suggestions.map((suggestion, j) => (
@@ -343,12 +340,13 @@ export default function App() {
                 </div>
               ))}
               
+              {/* WhatsApp Forwarding Button (appears at end of lead capture) */}
               {messages.length > 4 && (
                 <div className="flex justify-center pt-4">
                   <button
                     onClick={sendToWhatsApp}
                     disabled={isSummarizing}
-                    className="flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white rounded-full text-xs font-bold hover:scale-105 transition-transform shadow-lg disabled:opacity-50"
+                    className="flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white rounded-full text-xs font-bold hover:scale-105 transition-transform shadow-lg disabled:opacity-50 disabled:scale-100"
                   >
                     {isSummarizing ? (
                       <>
@@ -381,7 +379,7 @@ export default function App() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input Area */}
+            {/* Input */}
             <div className="p-6 border-t border-white/10 bg-white/5">
               <form 
                 onSubmit={(e) => { e.preventDefault(); handleSend(); }}
@@ -393,12 +391,12 @@ export default function App() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder={isListening ? "Listening..." : "Ask Khalid anything..."}
-                    className="w-full bg-black border border-white/10 rounded-full px-6 py-4 pr-14 text-sm focus:outline-none focus:border-white/30 transition-colors text-white"
+                    className="w-full bg-black border border-white/10 rounded-full px-6 py-4 pr-14 text-sm focus:outline-none focus:border-white/30 transition-colors"
                   />
                   <button
                     type="button"
                     onClick={toggleListening}
-                    className={`absolute right-2 top-1/2 -translate-y-1/2 p-3 rounded-full transition-all duration-300 ${isListening ? 'bg-red-500 text-white animate-pulse' : 'text-white/40 hover:text-white'}`}
+                    className={`absolute right-2 top-1/2 -translate-y-1/2 p-3 rounded-full transition-all duration-300 ${isListening ? 'bg-red-500 text-white animate-pulse' : 'bg-white/5 text-white/40 hover:text-white'}`}
                   >
                     {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
                   </button>
@@ -406,7 +404,7 @@ export default function App() {
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="p-4 rounded-full bg-white text-black hover:scale-105 transition-transform disabled:opacity-50 flex-shrink-0"
+                  className="p-4 rounded-full bg-white text-black hover:scale-105 transition-transform disabled:opacity-50 disabled:scale-100 flex-shrink-0"
                 >
                   <Send className="w-4 h-4" />
                 </button>
@@ -415,6 +413,6 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }
