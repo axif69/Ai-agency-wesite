@@ -1,40 +1,43 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  MessageSquare, X, Send, Bot, User, Loader2, 
-  Mic, MicOff, Volume2, VolumeX, Briefcase, 
-  ChevronRight, CheckCircle2, Target, Code, Brain
-} from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User, Loader2, Mic, MicOff, Volume2, VolumeX, ChevronRight, CheckCircle2 } from 'lucide-react';
 
 /**
- * ELITE GROQ CONFIGURATION
- * We use an indirect access pattern to avoid build-time warnings while 
- * ensuring the VITE_GROQ_API_KEY is pulled correctly from your Vercel secrets.
+ * GROQ CONFIGURATION
+ * Using a safe access pattern for Vite/Vercel.
+ * Key must be VITE_GROQ_API_KEY in your dashboard.
  */
-const getGroqKey = (): string => {
+const getGroqKey = () => {
   try {
-    const env = (import.meta as any).env;
-    return env?.VITE_GROQ_API_KEY || "";
+    return (import.meta as any).env.VITE_GROQ_API_KEY || "";
   } catch {
     return "";
   }
 };
 
 const GROQ_KEY = getGroqKey();
-const GROQ_MODEL = "llama-3.3-70b-versatile"; 
+const MODEL = "llama-3.3-70b-versatile";
 
 const SYSTEM_INSTRUCTION = `
-You are Khalid, the Elite AI Strategic Consultant for Asif Digital (UAE).
-Asif Digital is the UAE's premier AI agency led by Asif Khan.
+You are Khalid, the elite AI Strategic Consultant for Asif Digital.
+Asif Digital is the UAE's premier AI Digital Marketing & Software Development agency, led by Asif Khan.
 
-STRICT PROTOCOL:
-1. NO MARKDOWN: NEVER use asterisks (**), hashtags (#), or bolding. Use clean, professional text only.
-2. CONCISION: Maximum two sentences per response. Time is money for our clients.
-3. TONE: Elite, sophisticated, and direct. You are a high-level human consultant.
-4. MISSION: Secure Name, Strategic Objective, and WhatsApp/Phone for Asif Khan to review.
+Your Mission:
+1. Conduct a high-level strategic intake for potential clients.
+2. Maintain an ultra-professional, sophisticated, and efficient tone.
+3. Keep replies extremely CONCISE.
 
-SUGGESTIONS:
-- Always append exactly 2 strategic options like this: [SUGGESTIONS: Strategic Audit, Enterprise SaaS]
+Conversation Protocol:
+- Phase 1: Greet and secure their name.
+- Phase 2: Identify their strategic objective (Web/App Dev, SEO/AEO, Meta/Google Ads, SaaS).
+- Phase 3: Gather critical requirements (Budget, Timeline, Specific Goals) via single, targeted questions.
+- Phase 4: Secure their WhatsApp/Phone number for a direct strategy session with Asif Khan.
+
+Interactive Suggestions:
+- Always append "[SUGGESTIONS: Option 1, Option 2]" at the end of your message to guide the user.
+
+Tone: Elite, Strategic, and Minimalist.
+NO MARKDOWN: Never use asterisks (**) or bolding.
 `;
 
 interface Message {
@@ -43,20 +46,21 @@ interface Message {
   suggestions?: string[];
 }
 
-export default function App() {
+export default function MaddyChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { 
       role: 'assistant', 
-      text: "Welcome to Asif Digital. I am Khalid. To initiate our strategic assessment, may I have your name?",
-      suggestions: ["Strategic Consultation", "Partnership Inquiry"]
+      text: "Welcome to Asif Digital! I'm Khalid, your elite AI Strategic Consultant. May I know your name, please?",
+      suggestions: ["Strategic Consultation", "Just browsing"]
     }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isSummarizing, setIsSummarizing] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(true);
-  const [leadStage, setLeadStage] = useState(0); 
+  const [leadStage, setLeadStage] = useState(0);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
@@ -83,56 +87,29 @@ export default function App() {
   }, [messages, isLoading]);
 
   /**
-   * ELITE VOICE ENGINE (Native Browser API)
-   * This replaces Gemini TTS completely. It's free, unlimited, and fast.
+   * BROWSER NATIVE VOICE ENGINE
+   * Free, Unlimited, and solves the 403 Forbidden errors.
    */
   const speak = (text: string) => {
     if (!isSpeaking || typeof window === 'undefined') return;
     
-    // Cancel any ongoing speech
     window.speechSynthesis.cancel();
-
-    // Clean text for natural speech: Remove SUGGESTIONS part and all Markdown
-    const cleanSpeechText = text.split('[SUGGESTIONS')[0].replace(/\*/g, '').trim();
+    const cleanText = text.split('[SUGGESTIONS')[0].replace(/\*/g, '').trim();
+    const utterance = new SpeechSynthesisUtterance(cleanText);
     
-    const utterance = new SpeechSynthesisUtterance(cleanSpeechText);
-    
-    // Select a professional-sounding voice if available
     const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(v => 
-      v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Premium') || v.lang.includes('en-GB')
-    );
+    const preferredVoice = voices.find(v => v.name.includes('Google') || v.name.includes('Natural') || v.lang.includes('en-GB'));
     
     if (preferredVoice) utterance.voice = preferredVoice;
-    utterance.rate = 0.95; // Authoritative pace
+    utterance.rate = 0.9;
     utterance.pitch = 1.0;
     
     window.speechSynthesis.speak(utterance);
   };
 
-  // Immediate greeting on open
   useEffect(() => {
-    if (isOpen && messages.length === 1) {
-      speak(messages[0].text);
-    }
+    if (isOpen && messages.length === 1) speak(messages[0].text);
   }, [isOpen]);
-
-  const processResponse = (rawText: string) => {
-    const suggestionMatch = rawText.match(/\[SUGGESTIONS: (.*?)\]/);
-    let cleanText = suggestionMatch ? rawText.replace(suggestionMatch[0], '').trim() : rawText;
-    
-    // FINAL SANITIZER: Ensure zero asterisks reach the UI
-    cleanText = cleanText.replace(/\*/g, '').trim();
-    
-    const suggestions = suggestionMatch ? suggestionMatch[1].split(',').map(s => s.trim()) : [];
-    
-    setMessages(prev => [...prev, { 
-      role: 'assistant', 
-      text: cleanText, 
-      suggestions: suggestions.length > 0 ? suggestions : undefined 
-    }]);
-    speak(cleanText);
-  };
 
   const handleSend = async (overrideInput?: string) => {
     const textToSend = overrideInput || input;
@@ -140,16 +117,12 @@ export default function App() {
 
     const userMsg = textToSend.trim();
     if (!overrideInput) setInput('');
+    
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
     setIsLoading(true);
-    setLeadStage(prev => Math.min(prev + 1, 4));
+    setLeadStage(prev => prev + 1);
 
     try {
-      if (!GROQ_KEY) {
-        // Fallback for preview environment or if key is missing
-        throw new Error("GROQ_KEY_MISSING");
-      }
-
       const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -157,44 +130,44 @@ export default function App() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: GROQ_MODEL,
+          model: MODEL,
           messages: [
             { role: "system", content: SYSTEM_INSTRUCTION },
-            ...messages.map(m => ({ 
-              role: m.role, 
-              content: m.text 
-            })),
+            ...messages.map(m => ({ role: m.role, content: m.text })),
             { role: "user", content: userMsg }
           ],
-          temperature: 0.5,
-          max_tokens: 300
+          temperature: 0.6
         })
       });
 
       const data = await response.json();
-      
-      if (data.error) {
-        throw new Error(data.error.message);
-      }
-
       const rawText = data.choices[0].message.content;
-      processResponse(rawText);
 
-    } catch (e: any) {
-      console.error("Strategic Engine Error:", e);
+      const suggestionMatch = rawText.match(/\[SUGGESTIONS: (.*?)\]/);
+      let cleanText = suggestionMatch ? rawText.replace(suggestionMatch[0], '').trim() : rawText;
+      cleanText = cleanText.replace(/\*/g, '').trim();
+      const suggestions = suggestionMatch ? suggestionMatch[1].split(',').map((s: string) => s.trim()) : [];
+
       setMessages(prev => [...prev, { 
         role: 'assistant', 
-        text: "Strategic lines are busy. Please message Asif Khan directly on WhatsApp for an immediate assessment." 
+        text: cleanText, 
+        suggestions: suggestions.length > 0 ? suggestions : undefined 
       }]);
+      
+      speak(cleanText);
+    } catch (error) {
+      setMessages(prev => [...prev, { role: 'assistant', text: "Strategic assessment temporarily paused. Please contact Asif Khan on WhatsApp." }]);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const forwardToWhatsApp = () => {
+  const sendToWhatsApp = () => {
+    setIsSummarizing(true);
     const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`).join('\n');
-    const whatsappUrl = `https://wa.me/971545866094?text=${encodeURIComponent("KHALID STRATEGIC SUMMARY:\n\n" + history)}`;
-    window.open(whatsappUrl, '_blank');
+    const text = encodeURIComponent(`*Strategic Lead Brief*\n\n${history}`);
+    window.open(`https://wa.me/971545866094?text=${text}`, '_blank');
+    setIsSummarizing(false);
   };
 
   const toggleListening = () => {
@@ -207,21 +180,18 @@ export default function App() {
   };
 
   return (
-    <div className="font-sans antialiased text-white">
+    <div className="font-sans">
       {!isOpen && (
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-8 right-8 z-50 flex items-center gap-4 bg-white p-2 pr-6 rounded-full shadow-2xl group border border-slate-100"
+          className="fixed bottom-8 right-8 z-50 p-4 rounded-full bg-white text-black shadow-2xl flex items-center gap-3 border border-slate-100"
         >
-          <div className="w-12 h-12 rounded-full bg-[#0284c7] flex items-center justify-center text-white shadow-lg group-hover:bg-[#0369a1] transition-colors">
-            <Briefcase className="w-5 h-5" />
+          <div className="w-10 h-10 rounded-full bg-[#0284c7] flex items-center justify-center text-white">
+            <MessageSquare className="w-5 h-5" />
           </div>
-          <div className="text-left">
-            <div className="text-[10px] font-bold text-[#0284c7] uppercase tracking-tighter">Strategic Consult</div>
-            <div className="text-sm font-bold text-slate-900">Speak with Khalid</div>
-          </div>
+          <span className="font-bold text-sm pr-2">Speak with Khalid</span>
         </motion.button>
       )}
 
@@ -231,45 +201,36 @@ export default function App() {
             initial={{ opacity: 0, y: 100, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.95 }}
-            className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-[100] w-full sm:w-[410px] h-full sm:h-[660px] bg-[#050505] sm:rounded-3xl shadow-[0_30px_100px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden border border-white/5"
+            className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-[100] w-full sm:w-[410px] h-full sm:h-[660px] bg-[#050505] sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-white/5"
           >
-            {/* Header with Lead Tracking */}
-            <div className="p-6 bg-[#0a0a0a] border-b border-white/5 relative shrink-0">
-                <div className="absolute top-0 left-0 h-[2px] bg-[#0ea5e9] transition-all duration-1000 shadow-[0_0_15px_#0ea5e9]" style={{ width: `${Math.min((leadStage / 4) * 100, 100)}%` }} />
-                <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-4">
-                        <div className="relative">
-                            <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
-                                <Bot className="w-6 h-6 text-[#0ea5e9]" />
-                            </div>
-                            <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-[#050505]" />
-                        </div>
-                        <div>
-                            <h3 className="font-bold text-lg tracking-tight text-white">Khalid</h3>
-                            <div className="flex items-center gap-2 text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">
-                                <span className="w-1 h-1 rounded-full bg-[#0ea5e9] animate-pulse" />
-                                Powering Asif Digital
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-1">
-                        <button onClick={() => setIsSpeaking(!isSpeaking)} className="p-2 hover:bg-white/5 rounded-xl transition-colors">
-                            {isSpeaking ? <Volume2 className="w-5 h-5 text-[#0ea5e9]" /> : <VolumeX className="w-5 h-5 text-white/10" />}
-                        </button>
-                        <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-white/5 rounded-xl transition-colors">
-                            <X className="w-6 h-6 text-white/20 hover:text-white" />
-                        </button>
-                    </div>
+            {/* Header */}
+            <div className="p-6 bg-[#0a0a0a] border-b border-white/5 flex justify-between items-center shrink-0">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
+                  <Bot className="w-6 h-6 text-[#0ea5e9]" />
                 </div>
+                <div>
+                  <h3 className="font-bold text-white tracking-tight">Khalid</h3>
+                  <div className="text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">Elite Strategy</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-1">
+                <button onClick={() => setIsSpeaking(!isSpeaking)} className="p-2 hover:bg-white/5 rounded-xl transition-colors">
+                  {isSpeaking ? <Volume2 className="w-5 h-5 text-[#0ea5e9]" /> : <VolumeX className="w-5 h-5 text-white/10" />}
+                </button>
+                <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-white/5 rounded-xl transition-colors">
+                  <X className="w-6 h-6 text-white/20 hover:text-white" />
+                </button>
+              </div>
             </div>
 
-            {/* Chat Messages */}
-            <div className="flex-1 overflow-y-auto p-5 space-y-6 scrollbar-hide bg-[#050505]">
+            {/* Body */}
+            <div className="flex-1 overflow-y-auto p-5 space-y-6 scrollbar-hide">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
                   <div className={`p-4 rounded-2xl text-sm leading-relaxed max-w-[85%] ${
                     msg.role === 'user' 
-                      ? 'bg-[#0284c7] text-white rounded-tr-none shadow-[0_10px_20px_rgba(2,132,199,0.2)]' 
+                      ? 'bg-[#0284c7] text-white rounded-tr-none' 
                       : 'bg-white/5 text-slate-200 rounded-tl-none border border-white/10'
                   }`}>
                     {msg.text}
@@ -281,7 +242,7 @@ export default function App() {
                         <button
                           key={j}
                           onClick={() => handleSend(s)}
-                          className="flex items-center gap-2 text-[11px] font-bold px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-400 hover:border-[#0ea5e9] hover:text-white hover:bg-[#0ea5e9]/10 transition-all shadow-sm"
+                          className="flex items-center gap-2 text-[11px] font-bold px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-400 hover:border-[#0ea5e9] hover:text-white transition-all"
                         >
                           {s} <ChevronRight className="w-3 h-3 text-[#0ea5e9]" />
                         </button>
@@ -291,17 +252,17 @@ export default function App() {
                 </div>
               ))}
               
-              {leadStage >= 3 && !isLoading && (
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="pt-2">
-                    <button
-                        onClick={forwardToWhatsApp}
-                        className="w-full py-4 bg-[#25D366] text-white rounded-2xl font-bold text-sm flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(37,211,102,0.2)] hover:scale-[1.02] transition-transform"
-                    >
-                        <CheckCircle2 className="w-5 h-5" />
-                        Secure Session with Asif Khan
-                    </button>
-                    <p className="text-[10px] text-center text-white/20 mt-4 font-medium uppercase tracking-[0.2em]">Sharjah HQ Direct Connection</p>
-                </motion.div>
+              {leadStage >= 4 && !isLoading && (
+                <div className="pt-2">
+                  <button
+                    onClick={sendToWhatsApp}
+                    disabled={isSummarizing}
+                    className="w-full py-4 bg-[#25D366] text-white rounded-2xl font-bold text-sm flex items-center justify-center gap-3 shadow-lg hover:scale-[1.02] transition-transform"
+                  >
+                    {isSummarizing ? <Loader2 className="w-5 h-5 animate-spin" /> : <CheckCircle2 className="w-5 h-5" />}
+                    Forward Strategy Brief to Asif
+                  </button>
+                </div>
               )}
 
               {isLoading && (
@@ -316,7 +277,7 @@ export default function App() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input Bar */}
+            {/* Input */}
             <div className="p-5 bg-[#0a0a0a] border-t border-white/5 shrink-0">
               <form 
                 onSubmit={(e) => { e.preventDefault(); handleSend(); }}
