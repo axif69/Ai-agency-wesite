@@ -8,20 +8,24 @@ import {
 
 /**
  * ELITE STRATEGIC CONFIGURATION
- * Transitioned to Groq for maximum speed and zero Gemini-related quota errors.
- * Voice engine utilizes Browser Native Speech API for high availability.
+ * Aligned with the working Content Generator model: gemini-3-flash-preview
+ * We use the REST API approach (fetch) instead of the SDK to avoid dependency resolution issues.
  */
-const getGroqKey = () => {
+const getEnvKey = (key: string): string => {
   try {
-    // Indirect access for compatibility with multiple build environments
-    return (import.meta as any).env.VITE_GROQ_API_KEY || "";
+    // Indirect access to prevent build-time static analysis warnings
+    const env = (import.meta as any).env;
+    return env[key] || "";
   } catch {
     return "";
   }
 };
 
-const GROQ_KEY = getGroqKey();
-const MODEL = "llama-3.3-70b-versatile"; 
+const GEMINI_KEY = getEnvKey('VITE_GEMINI_API_KEY');
+const GROQ_KEY = getEnvKey('VITE_GROQ_API_KEY');
+
+const TEXT_MODEL = "gemini-3-flash-preview"; 
+const GROQ_MODEL = "llama-3.3-70b-versatile"; 
 
 const SYSTEM_INSTRUCTION = `
 You are Khalid, the elite AI Strategic Consultant for Asif Digital.
@@ -35,18 +39,18 @@ Your Mission:
 Conversation Protocol:
 - Phase 1: Greet and secure their name.
 - Phase 2: Identify objective (Web/App Dev, SEO/AEO, Meta/Google Ads, SaaS).
-- Phase 3: Gather requirements (Budget, Timeline) via single questions.
+- Phase 3: Gather requirements (Budget, Timeline) via targeted questions.
 - Phase 4: Secure WhatsApp for Asif Khan.
 
 Interactive Suggestions:
 - Always append "[SUGGESTIONS: Option 1, Option 2]" at the end of your message.
 
 Tone: Elite, Strategic, and Minimalist.
-STRICT RULE: NO MARKDOWN. Never use asterisks (**) or bolding. Use clean, high-end text only.
+NO MARKDOWN: Never use asterisks (**) or bolding. Use clean text only.
 `;
 
 interface Message {
-  role: 'user' | 'assistant';
+  role: 'user' | 'model' | 'assistant';
   text: string;
   suggestions?: string[];
 }
@@ -55,7 +59,7 @@ export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { 
-      role: 'assistant', 
+      role: 'model', 
       text: "Welcome to Asif Digital. I am Khalid, your elite AI Strategic Consultant. To begin our assessment, may I have your name?",
       suggestions: ["Strategic Consultation", "Partnership Inquiry"]
     }
@@ -70,7 +74,6 @@ export default function App() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
 
-  // Initialize Native Speech Recognition
   useEffect(() => {
     if (typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
       const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -93,52 +96,34 @@ export default function App() {
 
   /**
    * ELITE VOICE ENGINE (Browser Native)
-   * Replacing Gemini TTS completely to eliminate 403 Forbidden and 429 Errors.
    */
   const speak = (text: string) => {
     if (!isSpeaking || typeof window === 'undefined') return;
-    
-    // Stop previous utterances
     window.speechSynthesis.cancel();
-    
-    // Sanitize text for natural speech (Strip SUGGESTIONS and Markdown)
     const cleanText = text.split('[SUGGESTIONS')[0].replace(/\*/g, '').trim();
     const utterance = new SpeechSynthesisUtterance(cleanText);
-    
-    // Select an authoritative, premium voice
     const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(v => 
-      v.name.includes('Google') || v.name.includes('Natural') || v.lang.includes('en-GB') || v.lang.includes('en-US')
-    );
-    
+    const preferredVoice = voices.find(v => v.name.includes('Google') || v.name.includes('Natural') || v.lang.includes('en-GB'));
     if (preferredVoice) utterance.voice = preferredVoice;
     utterance.rate = 0.95; 
-    utterance.pitch = 1.0;
-    
     window.speechSynthesis.speak(utterance);
   };
 
   useEffect(() => {
-    if (isOpen && messages.length === 1) {
-      speak(messages[0].text);
-    }
+    if (isOpen && messages.length === 1) speak(messages[0].text);
   }, [isOpen]);
 
   const processResponse = (rawText: string) => {
     const suggestionMatch = rawText.match(/\[SUGGESTIONS: (.*?)\]/);
     let cleanText = suggestionMatch ? rawText.replace(suggestionMatch[0], '').trim() : rawText;
-    
-    // FINAL PROTOCOL: Strip all asterisks before display and speech
     cleanText = cleanText.replace(/\*/g, '').trim();
-    
     const suggestions = suggestionMatch ? suggestionMatch[1].split(',').map((s: string) => s.trim()) : [];
 
     setMessages(prev => [...prev, { 
-      role: 'assistant', 
+      role: 'model', 
       text: cleanText, 
       suggestions: suggestions.length > 0 ? suggestions : undefined 
     }]);
-    
     speak(cleanText);
   };
 
@@ -154,41 +139,59 @@ export default function App() {
     setLeadStage(prev => prev + 1);
 
     try {
-      if (!GROQ_KEY) throw new Error("VITE_GROQ_API_KEY_MISSING");
-
-      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      // --- ATTEMPT 1: GOOGLE REST API (gemini-3-flash-preview) ---
+      const geminiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${TEXT_MODEL}:generateContent?key=${GEMINI_KEY}`, {
         method: "POST",
-        headers: {
-          "Authorization": `Bearer ${GROQ_KEY}`,
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: MODEL,
-          messages: [
-            { role: "system", content: SYSTEM_INSTRUCTION },
-            ...messages.map(m => ({ 
-              role: m.role, 
-              content: m.text 
+          contents: [
+            ...messages.map(m => ({
+              role: m.role === 'user' ? 'user' : 'model',
+              parts: [{ text: m.text }]
             })),
-            { role: "user", content: userMsg }
+            { role: "user", parts: [{ text: userMsg }] }
           ],
-          temperature: 0.5,
-          max_tokens: 300
+          systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
+          generationConfig: { temperature: 0.5 }
         })
       });
 
-      const data = await response.json();
-      if (data.error) throw new Error(data.error.message);
+      const geminiData = await geminiResponse.json();
 
-      const resultText = data.choices[0].message.content;
-      processResponse(resultText);
+      if (geminiData.error) {
+        throw new Error(geminiData.error.message);
+      }
 
-    } catch (error) {
-      console.error("Khalid Strategy Hub Error:", error);
-      setMessages(prev => [...prev, { 
-        role: 'assistant', 
-        text: "My strategic lines are under high load. Please message Asif Khan on WhatsApp for a direct consultation session." 
-      }]);
+      const responseText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || "";
+      processResponse(responseText);
+
+    } catch (error: any) {
+      console.warn("Primary Engine Unavailable, checking failover...", error);
+      
+      // --- ATTEMPT 2: GROQ FAILOVER ---
+      if (GROQ_KEY) {
+        try {
+          const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            method: "POST",
+            headers: { "Authorization": `Bearer ${GROQ_KEY}`, "Content-Type": "application/json" },
+            body: JSON.stringify({
+              model: GROQ_MODEL,
+              messages: [
+                { role: "system", content: SYSTEM_INSTRUCTION },
+                ...messages.map(m => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.text })),
+                { role: "user", content: userMsg }
+              ],
+              temperature: 0.5
+            })
+          });
+          const data = await response.json();
+          processResponse(data.choices[0].message.content);
+        } catch (failoverError) {
+          setMessages(prev => [...prev, { role: 'model', text: "Strategic lines are momentarily offline. Please message Asif Khan on WhatsApp." }]);
+        }
+      } else {
+        setMessages(prev => [...prev, { role: 'model', text: "Connectivity issue. Please check your API keys." }]);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -213,25 +216,23 @@ export default function App() {
 
   return (
     <div className="font-sans antialiased text-white">
-      {/* --- FLOATING TRIGGER --- */}
       {!isOpen && (
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-8 right-8 z-50 p-2 pr-6 rounded-full bg-white text-black shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center gap-4 border border-slate-100 group"
+          className="fixed bottom-8 right-8 z-50 p-2 pr-6 rounded-full bg-white text-black shadow-2xl flex items-center gap-4 border border-slate-100 group"
         >
           <div className="w-12 h-12 rounded-full bg-[#0284c7] flex items-center justify-center text-white shadow-lg group-hover:bg-[#0369a1] transition-colors">
             <Briefcase className="w-5 h-5" />
           </div>
           <div className="text-left">
             <div className="text-[10px] font-bold text-[#0284c7] uppercase tracking-tighter">Strategic Consult</div>
-            <div className="text-sm font-bold text-slate-800">Speak with Khalid</div>
+            <div className="text-sm font-bold text-slate-900">Speak with Khalid</div>
           </div>
         </motion.button>
       )}
 
-      {/* --- CHAT MODAL --- */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -240,7 +241,6 @@ export default function App() {
             exit={{ opacity: 0, y: 100, scale: 0.95 }}
             className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-[100] w-full sm:w-[410px] h-full sm:h-[660px] bg-[#050505] sm:rounded-3xl shadow-[0_30px_100px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden border border-white/5"
           >
-            {/* Header with Lead Progress Tracking */}
             <div className="p-6 bg-[#0a0a0a] border-b border-white/5 relative shrink-0">
                 <div className="absolute top-0 left-0 h-[2px] bg-[#0ea5e9] transition-all duration-1000 shadow-[0_0_15px_#0ea5e9]" style={{ width: `${Math.min((leadStage / 5) * 100, 100)}%` }} />
                 <div className="flex justify-between items-center">
@@ -252,7 +252,7 @@ export default function App() {
                             <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-[#050505]" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-lg tracking-tight text-white">Khalid</h3>
+                            <h3 className="font-bold text-lg tracking-tight text-white leading-tight">Khalid</h3>
                             <div className="flex items-center gap-2 text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">
                                 <span className="w-1 h-1 rounded-full bg-[#0ea5e9] animate-pulse" />
                                 Powering Asif Digital
@@ -270,7 +270,6 @@ export default function App() {
                 </div>
             </div>
 
-            {/* Chat Conversation Area */}
             <div className="flex-1 overflow-y-auto p-5 space-y-6 scrollbar-hide bg-[#050505]">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
@@ -298,7 +297,6 @@ export default function App() {
                 </div>
               ))}
               
-              {/* WhatsApp Conversion Step */}
               {leadStage >= 4 && !isLoading && (
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="pt-2">
                     <button
@@ -309,7 +307,6 @@ export default function App() {
                         {isSummarizing ? <Loader2 className="w-5 h-5 animate-spin" /> : <CheckCircle2 className="w-5 h-5" />}
                         Forward Brief to Asif
                     </button>
-                    <p className="text-[10px] text-center text-white/20 mt-4 font-medium uppercase tracking-[0.2em]">Sharjah HQ Direct Connection</p>
                 </motion.div>
               )}
 
@@ -325,7 +322,6 @@ export default function App() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input Bar Section */}
             <div className="p-5 bg-[#0a0a0a] border-t border-white/5 shrink-0">
               <form 
                 onSubmit={(e) => { e.preventDefault(); handleSend(); }}
