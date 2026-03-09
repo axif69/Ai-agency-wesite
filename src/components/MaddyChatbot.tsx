@@ -6,37 +6,35 @@ import {
   ChevronRight, CheckCircle2 
 } from 'lucide-react';
 
-// Configuration
-const apiKey = ""; // Provided by execution environment
+// Configuration - Environment provides the key
+const apiKey = ""; 
 const TEXT_MODEL = "gemini-2.5-flash-preview-09-2025";
 const TTS_MODEL = "gemini-2.5-flash-preview-tts";
 
 const SYSTEM_INSTRUCTION = `
 You are Khalid, the Elite AI Strategic Consultant for Asif Digital (UAE).
-Your tone is high-stakes, sophisticated, and extremely efficient. 
+Asif Digital is the UAE's premier AI agency led by Asif Khan.
 
-STRICT ARCHITECTURAL RULES:
-1. NO MARKDOWN: Never use asterisks (**), hashtags (#), or bolding. Use plain, elegant text only.
-2. CONCISION: Never exceed two sentences per response. Time is money for our clients.
-3. PERSPECTIVE: You aren't just a bot; you are a consultant helping Asif Khan vet multi-million AED projects.
-4. LANGUAGE: Use professional UAE/International English. No robotic "AI-speak."
+STRICT PROTOCOL:
+1. NO MARKDOWN: NEVER use asterisks (**), hashtags (#), or bolding. Use clean, professional text only.
+2. CONCISION: Maximum two sentences per response. 
+3. TONE: Elite, sophisticated, and direct. You are a human consultant, not a robot.
+4. ACCENT: Your voice is warm and professional.
 
-OBJECTIVE:
-- Collect: Name, Service required, Budget/Scale, and WhatsApp.
-- Once you have the WhatsApp, stop asking questions and show the 'Forward to Asif' option.
+MISSION:
+- Secure: Name, Strategic Objective, and WhatsApp/Phone.
+- Once contact info is shared, provide the WhatsApp summary button.
 
 SUGGESTIONS:
-- Always end with exactly 2 strategic suggestions in this format: [SUGGESTIONS: Strategic Audit, Enterprise SaaS]
+- Always append exactly 2 strategic options like this: [SUGGESTIONS: Strategic Audit, Enterprise SaaS]
 `;
 
 interface Message {
   role: 'user' | 'model';
   text: string;
   suggestions?: string[];
-  isNew?: boolean;
 }
 
-// Utility to convert PCM16 to WAV for browser playback
 const pcmToWav = (pcmBase64, sampleRate = 24000) => {
   const binaryString = window.atob(pcmBase64);
   const len = binaryString.length;
@@ -44,29 +42,23 @@ const pcmToWav = (pcmBase64, sampleRate = 24000) => {
   for (let i = 0; i < len; i++) {
     bytes[i] = binaryString.charCodeAt(i);
   }
-
   const wavHeader = new ArrayBuffer(44);
   const view = new DataView(wavHeader);
-
-  view.setUint32(0, 0x52494646, false); // "RIFF"
-  view.setUint32(4, 36 + len, true);    // file size
-  view.setUint32(8, 0x57415645, false); // "WAVE"
-  view.setUint32(12, 0x666d7420, false); // "fmt "
-  view.setUint32(16, 16, true);         // length of format data
-  view.setUint16(20, 1, true);          // PCM type
-  view.setUint16(22, 1, true);          // channels
-  view.setUint32(24, sampleRate, true); // sample rate
-  view.setUint32(28, sampleRate * 2, true); // byte rate
-  view.setUint16(32, 2, true);          // block align
-  view.setUint16(34, 16, true);         // bits per sample
-  view.setUint32(36, 0x64617461, false); // "data"
-  view.setUint32(40, len, true);        // chunk size
-
-  const combined = new Uint8Array(wavHeader.byteLength + bytes.byteLength);
-  combined.set(new Uint8Array(wavHeader), 0);
-  combined.set(bytes, wavHeader.byteLength);
-  
-  return URL.createObjectURL(new Blob([combined], { type: 'audio/wav' }));
+  view.setUint32(0, 0x52494646, false);
+  view.setUint32(4, 36 + len, true);
+  view.setUint32(8, 0x57415645, false);
+  view.setUint32(12, 0x666d7420, false);
+  view.setUint16(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, 1, true);
+  view.setUint32(24, sampleRate, true); 
+  view.setUint32(28, sampleRate * 2, true); 
+  view.setUint16(32, 2, true);
+  view.setUint16(34, 16, true);
+  view.setUint32(36, 0x64617461, false);
+  view.setUint32(40, len, true);
+  const blob = new Blob([wavHeader, bytes], { type: 'audio/wav' });
+  return URL.createObjectURL(blob);
 };
 
 export default function App() {
@@ -110,95 +102,66 @@ export default function App() {
   }, [messages, isLoading]);
 
   const speak = async (text: string) => {
-    if (!isSpeaking) return;
-    
+    if (!isSpeaking || !apiKey) return;
     try {
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${TTS_MODEL}:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: `Say professionally: ${text}` }] }],
+          contents: [{ parts: [{ text: `Say naturally: ${text}` }] }],
           generationConfig: {
             responseModalities: ["AUDIO"],
-            speechConfig: {
-              voiceConfig: {
-                prebuiltVoiceConfig: { voiceName: 'Aoede' }
-              }
-            }
+            speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Aoede' } } }
           }
         })
       });
-
       const data = await response.json();
-      const pcmData = data.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-      
+      const pcmData = data.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
       if (pcmData) {
         const audioUrl = pcmToWav(pcmData);
         if (audioRef.current) {
           audioRef.current.src = audioUrl;
-          audioRef.current.play();
+          audioRef.current.play().catch(e => console.error(e));
         }
       }
-    } catch (error) {
-      console.error("TTS Error:", error);
-    }
+    } catch (e) { console.error(e); }
   };
 
   const handleSend = async (overrideInput?: string) => {
     const text = overrideInput || input;
     if (!text.trim() || isLoading) return;
-
     const userMessage = text.trim();
     if (!overrideInput) setInput('');
-    
     const newMessages = [...messages, { role: 'user', text: userMessage }];
     setMessages(newMessages);
     setIsLoading(true);
     setLeadStage(prev => Math.min(prev + 1, 4));
-
     try {
-      const history = newMessages.map(msg => ({
-        role: msg.role === 'user' ? 'user' : 'model',
-        parts: [{ text: msg.text }]
-      }));
-
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${TEXT_MODEL}:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: history,
+          contents: newMessages.map(m => ({ role: m.role === 'user' ? 'user' : 'model', parts: [{ text: m.text }] })),
           systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
-          generationConfig: { temperature: 0.6, maxOutputTokens: 200 }
+          generationConfig: { temperature: 0.5 }
         })
       });
-
       const data = await response.json();
-      const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
-      
+      const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || "System latency detected. Please retry.";
       const suggestionMatch = rawText.match(/\[SUGGESTIONS: (.*?)\]/);
       let cleanText = suggestionMatch ? rawText.replace(suggestionMatch[0], '').trim() : rawText;
-      cleanText = cleanText.replace(/\*/g, '').replace(/#/g, '');
+      // FINAL OVERRIDE TO STRIP ALL ASTERISKS
+      cleanText = cleanText.replace(/\*/g, '').trim();
       const suggestions = suggestionMatch ? suggestionMatch[1].split(',').map(s => s.trim()) : [];
-
+      setMessages(prev => [...prev, { role: 'model', text: cleanText, suggestions: suggestions.length > 0 ? suggestions : undefined }]);
       speak(cleanText);
-
-      setMessages(prev => [...prev, { 
-        role: 'model', 
-        text: cleanText,
-        suggestions: suggestions.length > 0 ? suggestions : undefined,
-        isNew: true
-      }]);
-    } catch (error) {
-      setMessages(prev => [...prev, { role: 'model', text: "Connectivity issues. Please hold." }]);
-    } finally {
-      setIsLoading(false);
-    }
+    } catch (e) { setMessages(prev => [...prev, { role: 'model', text: "Connection error. Please hold." }]); } finally { setIsLoading(false); }
   };
 
   const forwardToWhatsApp = async () => {
     setIsSummarizing(true);
     try {
-      const prompt = `Summarize for Asif Khan: ${messages.map(m => m.text).join(' | ')}`;
+      const prompt = `Summary for Asif Khan (no asterisks): ${messages.map(m => m.text).join(' | ')}`;
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${TEXT_MODEL}:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -206,27 +169,12 @@ export default function App() {
       });
       const data = await response.json();
       const summary = (data.candidates?.[0]?.content?.parts?.[0]?.text || "").replace(/\*/g, '');
-      
-      const whatsappUrl = `https://wa.me/971545866094?text=${encodeURIComponent("KHALID STRATEGIC SUMMARY:\n\n" + summary)}`;
-      window.open(whatsappUrl, '_blank');
-    } catch (e) {
-      window.open("https://wa.me/971545866094?text=Strategic session request with Asif Khan.", '_blank');
-    } finally {
-      setIsSummarizing(false);
-    }
-  };
-
-  const toggleListening = () => {
-    if (isListening) {
-      recognitionRef.current?.stop();
-    } else {
-      setIsListening(true);
-      recognitionRef.current?.start();
-    }
+      window.open(`https://wa.me/971545866094?text=${encodeURIComponent("KHALID STRATEGIC SUMMARY:\n\n" + summary)}`, '_blank');
+    } catch (e) { window.open("https://wa.me/971545866094?text=Requesting strategic session.", '_blank'); } finally { setIsSummarizing(false); }
   };
 
   return (
-    <div className="font-sans antialiased text-slate-900">
+    <div className="font-sans antialiased text-white">
       <audio ref={audioRef} className="hidden" />
       
       {!isOpen && (
@@ -234,14 +182,14 @@ export default function App() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-8 right-8 z-50 flex items-center gap-3 bg-white p-2 pr-6 rounded-full shadow-2xl border border-slate-100 group"
+          className="fixed bottom-8 right-8 z-50 flex items-center gap-4 bg-white p-2 pr-6 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.3)] group border border-slate-100"
         >
-          <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-lg group-hover:bg-blue-700 transition-colors">
+          <div className="w-12 h-12 rounded-full bg-[#0284c7] flex items-center justify-center text-white shadow-lg group-hover:bg-[#0369a1] transition-colors">
             <Briefcase className="w-5 h-5" />
           </div>
           <div className="text-left">
-            <div className="text-[10px] font-bold text-blue-600 uppercase tracking-tighter">Strategic Consult</div>
-            <div className="text-sm font-bold text-slate-800">Speak with Khalid</div>
+            <div className="text-[10px] font-bold text-[#0284c7] uppercase tracking-tighter">Strategic Consult</div>
+            <div className="text-sm font-bold text-slate-900">Speak with Khalid</div>
           </div>
         </motion.button>
       )}
@@ -249,111 +197,105 @@ export default function App() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 100, scale: 0.9 }}
+            initial={{ opacity: 0, y: 100, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 100, scale: 0.9 }}
-            className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-[100] w-full sm:w-[420px] h-full sm:h-[650px] bg-white sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-slate-100"
+            exit={{ opacity: 0, y: 100, scale: 0.95 }}
+            className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-[100] w-full sm:w-[410px] h-full sm:h-[660px] bg-[#050505] sm:rounded-3xl shadow-[0_30px_100px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden border border-white/5"
           >
-            {/* Header */}
-            <div className="p-6 bg-slate-900 text-white relative overflow-hidden">
-                <div className="absolute top-0 left-0 h-1 bg-blue-500 transition-all duration-1000" style={{ width: `${(leadStage / 4) * 100}%` }} />
-                <div className="flex justify-between items-center relative z-10">
+            {/* Dark Luxury Header */}
+            <div className="p-6 bg-[#0a0a0a] border-b border-white/5 relative">
+                <div className="absolute top-0 left-0 h-[2px] bg-[#0ea5e9] transition-all duration-1000 shadow-[0_0_15px_#0ea5e9]" style={{ width: `${Math.min((leadStage / 4) * 100, 100)}%` }} />
+                <div className="flex justify-between items-center">
                     <div className="flex items-center gap-4">
                         <div className="relative">
-                            <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/10">
-                                <Bot className="w-6 h-6 text-blue-400" />
+                            <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
+                                <Bot className="w-6 h-6 text-[#0ea5e9]" />
                             </div>
-                            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-slate-900" />
+                            <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-[#050505]" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-lg tracking-tight">Khalid</h3>
-                            <div className="flex items-center gap-2 text-[10px] text-white/40 font-bold uppercase tracking-widest">
-                                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-                                Elite Strategic Engine
+                            <h3 className="font-bold text-lg tracking-tight text-white">Khalid</h3>
+                            <div className="flex items-center gap-2 text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">
+                                <span className="w-1 h-1 rounded-full bg-[#0ea5e9] animate-pulse" />
+                                Elite AI Strategy
                             </div>
                         </div>
                     </div>
                     <div className="flex items-center gap-1">
-                        <button onClick={() => setIsSpeaking(!isSpeaking)} className="p-2 hover:bg-white/10 rounded-xl transition-colors">
-                            {isSpeaking ? <Volume2 className="w-5 h-5 text-blue-400" /> : <VolumeX className="w-5 h-5 text-white/20" />}
+                        <button onClick={() => setIsSpeaking(!isSpeaking)} className="p-2 hover:bg-white/5 rounded-xl transition-colors">
+                            {isSpeaking ? <Volume2 className="w-5 h-5 text-[#0ea5e9]" /> : <VolumeX className="w-5 h-5 text-white/10" />}
                         </button>
-                        <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-white/10 rounded-xl transition-colors">
-                            <X className="w-6 h-6 text-white/40" />
+                        <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-white/5 rounded-xl transition-colors">
+                            <X className="w-6 h-6 text-white/20 hover:text-white" />
                         </button>
                     </div>
                 </div>
             </div>
 
-            {/* Chat Space */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-8 bg-slate-50/50">
+            {/* Dark Chat Body */}
+            <div className="flex-1 overflow-y-auto p-5 space-y-6 scrollbar-hide bg-[#050505]">
               {messages.map((msg, i) => (
-                <motion.div
-                  initial={msg.isNew ? { opacity: 0, x: msg.role === 'user' ? 20 : -20 } : false}
-                  animate={{ opacity: 1, x: 0 }}
-                  key={i}
-                  className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
-                >
-                  <div className={`p-4 rounded-2xl text-sm leading-relaxed shadow-sm transition-all ${
+                <div key={i} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
+                  <div className={`p-4 rounded-2xl text-sm leading-relaxed max-w-[85%] ${
                     msg.role === 'user' 
-                      ? 'bg-blue-600 text-white rounded-tr-none' 
-                      : 'bg-white text-slate-700 rounded-tl-none border border-slate-200/60'
+                      ? 'bg-[#0284c7] text-white rounded-tr-none shadow-[0_10px_20px_rgba(2,132,199,0.2)]' 
+                      : 'bg-white/5 text-slate-200 rounded-tl-none border border-white/10'
                   }`}>
                     {msg.text}
                   </div>
                   
                   {msg.suggestions && i === messages.length - 1 && (
-                    <div className="flex flex-wrap gap-2 mt-4 max-w-[90%]">
+                    <div className="flex flex-wrap gap-2 mt-4">
                       {msg.suggestions.map((s, j) => (
                         <button
                           key={j}
                           onClick={() => handleSend(s)}
-                          className="flex items-center gap-2 text-[11px] font-bold px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 transition-all shadow-sm"
+                          className="flex items-center gap-2 text-[11px] font-bold px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-400 hover:border-[#0ea5e9] hover:text-white hover:bg-[#0ea5e9]/10 transition-all"
                         >
-                          {s} <ChevronRight className="w-3 h-3" />
+                          {s} <ChevronRight className="w-3 h-3 text-[#0ea5e9]" />
                         </button>
                       ))}
                     </div>
                   )}
-                </motion.div>
+                </div>
               ))}
               
               {leadStage >= 3 && !isLoading && (
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="pt-4">
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="pt-2">
                     <button
                         onClick={forwardToWhatsApp}
                         disabled={isSummarizing}
-                        className="w-full py-4 bg-[#25D366] text-white rounded-2xl font-bold text-sm flex items-center justify-center gap-3 shadow-xl hover:scale-[1.02] transition-transform active:scale-95 disabled:opacity-50"
+                        className="w-full py-4 bg-[#25D366] text-white rounded-2xl font-bold text-sm flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(37,211,102,0.2)] hover:scale-[1.02] transition-transform"
                     >
                         {isSummarizing ? <Loader2 className="w-5 h-5 animate-spin" /> : <CheckCircle2 className="w-5 h-5" />}
-                        Forward Strategy Brief to Asif
+                        Secure Session with Asif Khan
                     </button>
-                    <p className="text-[10px] text-center text-slate-400 mt-3 font-medium uppercase tracking-wider">Secure Direct Line to Sharjah HQ</p>
+                    <p className="text-[10px] text-center text-white/20 mt-4 font-medium uppercase tracking-[0.2em]">Sharjah HQ Direct Connection</p>
                 </motion.div>
               )}
 
               {isLoading && (
-                <div className="flex gap-2 items-center text-blue-500/40">
+                <div className="flex items-center gap-3 text-[#0ea5e9]/40 pl-2">
                   <div className="flex gap-1">
                     <span className="w-1.5 h-1.5 bg-current rounded-full animate-bounce" />
                     <span className="w-1.5 h-1.5 bg-current rounded-full animate-bounce [animation-delay:0.2s]" />
                     <span className="w-1.5 h-1.5 bg-current rounded-full animate-bounce [animation-delay:0.4s]" />
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest">Consulting...</span>
                 </div>
               )}
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input */}
-            <div className="p-6 bg-white border-t border-slate-100">
+            {/* Dark Luxury Input */}
+            <div className="p-5 bg-[#0a0a0a] border-t border-white/5">
               <form 
                 onSubmit={(e) => { e.preventDefault(); handleSend(); }}
-                className="flex items-center gap-3 bg-slate-100 rounded-2xl p-1 pr-2 border border-slate-200 focus-within:border-blue-500/50 transition-colors"
+                className="flex items-center gap-2 bg-white/5 rounded-2xl p-1 border border-white/10 focus-within:border-[#0ea5e9]/50 transition-colors"
               >
                 <button
                   type="button"
                   onClick={toggleListening}
-                  className={`p-3 rounded-xl transition-all ${isListening ? 'bg-red-500 text-white animate-pulse' : 'text-slate-400 hover:text-blue-600'}`}
+                  className={`p-3 rounded-xl transition-all ${isListening ? 'bg-red-500 text-white animate-pulse' : 'text-white/20 hover:text-[#0ea5e9]'}`}
                 >
                   {isListening ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
                 </button>
@@ -362,12 +304,12 @@ export default function App() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder={isListening ? "Listening..." : "Message Khalid..."}
-                  className="flex-1 bg-transparent border-none py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none"
+                  className="flex-1 bg-transparent border-none py-3 text-sm text-white placeholder:text-white/20 focus:outline-none"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-500/20 hover:bg-blue-700 transition-colors disabled:opacity-30"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-[#0284c7] text-white shadow-lg hover:bg-[#0369a1] transition-colors disabled:opacity-10"
                 >
                   <Send className="w-4 h-4" />
                 </button>
