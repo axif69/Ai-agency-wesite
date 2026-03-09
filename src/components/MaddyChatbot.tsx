@@ -8,12 +8,21 @@ import {
 
 /**
  * ELITE API CONFIGURATION
- * The execution environment provides the Gemini API key at runtime.
- * For Groq, ensure the key is provided in your Vercel/Local environment variables.
- * Initialized as empty strings to ensure compatibility with all build targets.
+ * Linking to Vercel/Vite Environment Variables.
+ * We use a safe access pattern to prevent compilation errors in non-ESNext targets.
  */
-const GEMINI_KEY = ""; 
-const GROQ_KEY = ""; 
+const getSafeEnv = (key: string): string => {
+  try {
+    // Access via bracket notation to bypass static analysis warnings in some environments
+    const env = (import.meta as any).env;
+    return env[key] || "";
+  } catch {
+    return "";
+  }
+};
+
+const GEMINI_KEY = getSafeEnv('VITE_GEMINI_API_KEY');
+const GROQ_KEY = getSafeEnv('VITE_GROQ_API_KEY');
 
 const TEXT_MODEL = "gemini-2.5-flash-preview-09-2025";
 const TTS_MODEL = "gemini-2.5-flash-preview-tts";
@@ -66,8 +75,11 @@ const pcmToWav = (pcmBase64: string, sampleRate = 24000) => {
   view.setUint32(36, 0x64617461, false); // "data"
   view.setUint32(40, len, true);
   
-  const blob = new Blob([wavHeader, bytes], { type: 'audio/wav' });
-  return URL.createObjectURL(blob);
+  const combined = new Uint8Array(wavHeader.byteLength + bytes.byteLength);
+  combined.set(new Uint8Array(wavHeader), 0);
+  combined.set(bytes, wavHeader.byteLength);
+  
+  return URL.createObjectURL(new Blob([combined], { type: 'audio/wav' }));
 };
 
 export default function App() {
@@ -88,7 +100,7 @@ export default function App() {
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
@@ -113,6 +125,7 @@ export default function App() {
   const speak = async (text: string) => {
     if (!isSpeaking || !GEMINI_KEY) return;
     
+    // Clean text for speech: Remove the SUGGESTIONS part from audio playback
     const cleanSpeechText = text.split('[SUGGESTIONS')[0].trim();
 
     try {
@@ -120,7 +133,7 @@ export default function App() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: `Say naturally: ${cleanSpeechText}` }] }],
+          contents: [{ parts: [{ text: `Say naturally, in a professional and warm strategic consultant accent: ${cleanSpeechText}` }] }],
           generationConfig: {
             responseModalities: ["AUDIO"],
             speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Aoede' } } }
@@ -140,7 +153,7 @@ export default function App() {
     const suggestionMatch = rawText.match(/\[SUGGESTIONS: (.*?)\]/);
     let cleanText = suggestionMatch ? rawText.replace(suggestionMatch[0], '').trim() : rawText;
     
-    // Ensure no asterisks appear in UI
+    // FINAL PROTOCOL: Strip all asterisks completely
     cleanText = cleanText.replace(/\*/g, '').trim();
     
     const suggestions = suggestionMatch ? suggestionMatch[1].split(',').map(s => s.trim()) : [];
@@ -165,8 +178,6 @@ export default function App() {
 
     try {
       // --- ATTEMPT 1: GEMINI ---
-      if (!GEMINI_KEY) throw new Error("GEMINI_KEY_MISSING");
-
       const geminiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${TEXT_MODEL}:generateContent?key=${GEMINI_KEY}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -182,7 +193,9 @@ export default function App() {
 
       const geminiData = await geminiResponse.json();
 
+      // Check for Gemini Rate Limit (429) or Auth Errors
       if (geminiData.error) {
+        console.warn("Gemini Error:", geminiData.error.message, "Triggering Groq Failover...");
         throw new Error("FAILOVER_TRIGGERED");
       }
 
@@ -214,14 +227,17 @@ export default function App() {
           });
 
           const groqData = await groqResponse.json();
+          if (groqData.error) throw new Error("GROQ_ERROR");
+          
           const rawText = groqData.choices[0].message.content;
           processResponse(rawText);
           
         } catch (groqErr) {
-          setMessages(prev => [...prev, { role: 'model', text: "Strategic assessment paused due to high demand. Please message Asif Khan on WhatsApp." }]);
+          console.error("Groq Error:", groqErr);
+          setMessages(prev => [...prev, { role: 'model', text: "Strategic systems are currently under high load. Please message Asif Khan on WhatsApp for an immediate response." }]);
         }
       } else {
-        setMessages(prev => [...prev, { role: 'model', text: "Connectivity issues. Please hold while I reconnect." }]);
+        setMessages(prev => [...prev, { role: 'model', text: "Strategic assessment paused. Please verify your VITE_GEMINI_API_KEY & VITE_GROQ_API_KEY in Vercel settings." }]);
       }
     } finally {
       setIsLoading(false);
@@ -268,11 +284,11 @@ export default function App() {
           className="fixed bottom-8 right-8 z-50 flex items-center gap-4 bg-white p-2 pr-6 rounded-full shadow-2xl group border border-slate-100"
         >
           <div className="w-12 h-12 rounded-full bg-[#0284c7] flex items-center justify-center text-white shadow-lg group-hover:bg-[#0369a1] transition-colors">
-            <MessageSquare className="w-5 h-5" />
+            <Briefcase className="w-5 h-5" />
           </div>
           <div className="text-left">
             <div className="text-[10px] font-bold text-[#0284c7] uppercase tracking-tighter">Strategic Consult</div>
-            <div className="text-sm font-bold text-slate-900">Speak with Khalid</div>
+            <div className="text-sm font-bold text-slate-800">Speak with Khalid</div>
           </div>
         </motion.button>
       )}
