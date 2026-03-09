@@ -3,13 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   MessageSquare, X, Send, Bot, User, Loader2, 
   Mic, MicOff, Volume2, VolumeX, Briefcase, 
-  ChevronRight, CheckCircle2 
+  ChevronRight, CheckCircle2, Target, Code, Brain
 } from 'lucide-react';
 
 /**
  * API CONFIGURATION
- * The environment provides the Gemini API key at runtime.
- * For Groq, ensure the key is provided in your Vercel/Local environment variables.
+ * The execution environment provides the keys at runtime.
+ * We set these to empty strings as per environment requirements.
  */
 const GEMINI_KEY = ""; 
 const GROQ_KEY = ""; 
@@ -135,6 +135,7 @@ export default function App() {
   const processResponse = (rawText: string) => {
     const suggestionMatch = rawText.match(/\[SUGGESTIONS: (.*?)\]/);
     let cleanText = suggestionMatch ? rawText.replace(suggestionMatch[0], '').trim() : rawText;
+    // Final check to strip any remaining asterisks
     cleanText = cleanText.replace(/\*/g, '').trim();
     const suggestions = suggestionMatch ? suggestionMatch[1].split(',').map(s => s.trim()) : [];
     
@@ -173,16 +174,17 @@ export default function App() {
 
       const geminiData = await geminiResponse.json();
 
-      if (geminiData.error && geminiData.error.code === 429) {
-        throw new Error("QUOTA_EXCEEDED");
+      if (geminiData.error && (geminiData.error.code === 429 || geminiData.error.code === 403)) {
+        throw new Error("QUOTA_OR_AUTH_ERROR");
       }
 
       const rawText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || "";
       processResponse(rawText);
 
     } catch (e: any) {
-      if (e.message === "QUOTA_EXCEEDED" && GROQ_KEY) {
-        console.log("Switching to Groq Failover...");
+      // --- ATTEMPT 2: GROQ FAILOVER ---
+      if (GROQ_KEY) {
+        console.log("Gemini unavailable. Switching to Groq Failover...");
         
         try {
           const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
@@ -210,10 +212,10 @@ export default function App() {
           processResponse(rawText);
           
         } catch (groqErr) {
-          setMessages(prev => [...prev, { role: 'model', text: "Strategic assessment paused. Please contact Asif Khan directly." }]);
+          setMessages(prev => [...prev, { role: 'model', text: "Strategic assessment paused. Please contact Asif Khan directly on WhatsApp." }]);
         }
       } else {
-        setMessages(prev => [...prev, { role: 'model', text: "Connectivity issues. Please try again." }]);
+        setMessages(prev => [...prev, { role: 'model', text: "Connectivity issues. Please hold while I reconnect." }]);
       }
     } finally {
       setIsLoading(false);
@@ -233,7 +235,7 @@ export default function App() {
       const summary = (data.candidates?.[0]?.content?.parts?.[0]?.text || "New Lead Request").replace(/\*/g, '');
       window.open(`https://wa.me/971545866094?text=${encodeURIComponent("KHALID STRATEGIC SUMMARY:\n\n" + summary)}`, '_blank');
     } catch (e) {
-      window.open("https://wa.me/971545866094?text=Requesting strategic session.", '_blank');
+      window.open("https://wa.me/971545866094?text=Requesting strategic session with Asif Digital.", '_blank');
     } finally {
       setIsSummarizing(false);
     }
