@@ -49,11 +49,33 @@ const process = [
 ];
 
 export default function GraphicDesign() {
+  const serviceSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Service",
+    "serviceType": "Graphic Design",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Asif Digital"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "description": "Premium brand identity, UI/UX, and creative graphic design services for agencies and businesses in the UAE.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "AED"
+    }
+  };
+
   return (
     <div className="pt-20">
       <SEO 
-        title="Graphic Design Services | Asif Khan" 
-        description="Premium graphic design services in Sharjah, UAE. Specializing in brand identity, UI/UX, and marketing materials."
+        title="Premium Graphic Design & Branding Agency in Dubai & Sharjah" 
+        description="Elevate your brand with award-winning Graphic Design, UI/UX, and Social Media Creatives. Top graphic design agency in Sharjah and Dubai."
+        keywords="Graphic Design Agency Dubai, Best Graphic Designer Sharjah, UI/UX Design UAE, Branding Agency Dubai, Logo Design Sharjah"
+        schema={serviceSchema}
       />
       
       {/* Hero Section */}
@@ -72,11 +94,11 @@ export default function GraphicDesign() {
             <span className="micro-label">Creative Services</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8vw] font-serif leading-tight tracking-tight mb-8">
-            Graphic <br />
-            <span className="italic text-white/50">Design</span>
+            Dubai & Sharjah <br />
+            <span className="italic text-white/50">Graphic Design</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl leading-relaxed">
-            Elevating brands through striking visual communication. From logo design to comprehensive brand identities.
+            Elevating UAE brands through striking visual communication. From logo design to comprehensive brand identities.
           </p>
         </motion.div>
       </section>

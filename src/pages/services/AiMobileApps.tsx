@@ -4,12 +4,33 @@ import { ArrowRight, Smartphone, CheckCircle, Cpu, Layers, ShieldCheck } from "l
 import { Link } from "react-router-dom";
 
 export default function AiMobileApps() {
+  const serviceSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Service",
+    "serviceType": "Mobile App Development",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Asif Digital"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "description": "High-performance AI Mobile Apps for iOS and Android tailored for businesses in Dubai and Sharjah.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "AED"
+    }
+  };
+
   return (
     <div className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
       <SEO 
-        title="AI Mobile App Development in Sharjah, UAE" 
-        description="Intelligent, cross-platform AI Mobile App development services by Asif Khan in Sharjah. Build smarter apps for iOS and Android."
-        keywords="Mobile App Developer Sharjah, AI App Development UAE, React Native Developer Dubai, iOS Android App Developer"
+        title="Top AI Mobile App Development Agency in Dubai & Sharjah" 
+        description="Build premium, intelligent mobile applications with AI integration. Top rated iOS and Android app developers serving Sharjah, Dubai and the UAE."
+        keywords="App Development Agency Dubai, Mobile App Developer Sharjah, iOS Developer UAE, Android App Development Dubai, AI Mobile Apps"
+        schema={serviceSchema}
       />
       
       <motion.div 
@@ -21,10 +42,10 @@ export default function AiMobileApps() {
         <span className="micro-label block mb-4">Service Details</span>
         <div className="flex items-center gap-6 mb-8">
           <Smartphone className="w-12 h-12 text-white/40" />
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">AI Mobile Apps</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">Dubai & Sharjah<br/><span className="text-white/50 italic">AI Mobile Apps</span></h1>
         </div>
         <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl">
-          Intelligent, cross-platform mobile applications that leverage machine learning for personalized user experiences.
+          Intelligent, cross-platform iOS and Android applications that leverage machine learning to dominate the competitive UAE mobile market.
         </p>
       </motion.div>
 

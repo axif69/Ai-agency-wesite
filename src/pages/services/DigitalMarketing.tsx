@@ -4,12 +4,34 @@ import { ArrowRight, Megaphone, CheckCircle, Target, Users, BarChart } from "luc
 import { Link } from "react-router-dom";
 
 export default function DigitalMarketing() {
+  const serviceSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Service",
+    "serviceType": "Digital Marketing",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Asif Digital"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Ajman" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "description": "Expert Digital Marketing, Meta Ads, and Data-driven marketing services designed to maximize ROI for UAE businesses.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "AED"
+    }
+  };
+
   return (
     <div className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
       <SEO 
-        title="Digital Marketing & SEO Services in Sharjah, UAE" 
-        description="Data-driven Digital Marketing, Meta Ads, Google Ads, and SEO/AEO services by Asif Khan in Sharjah, UAE. Dominate search and social media."
-        keywords="Digital Marketing Sharjah, Meta Ads Expert UAE, Google Ads Specialist Dubai, SEO Services Sharjah, Social Media Management UAE"
+        title="Top Digital Marketing Agency in Sharjah & Dubai | Meta Ads" 
+        description="Data-driven Digital Marketing, High-Converting Meta Ads, Google Ads, and SEO services by Asif Khan in Sharjah and Dubai. Dominate local search and social media."
+        keywords="Digital Marketing Agency Sharjah, Meta Ads Expert Dubai, Google Ads Specialist UAE, Best SEO Services Sharjah, Social Media Management Dubai"
+        schema={serviceSchema}
       />
       
       <motion.div 
@@ -21,10 +43,10 @@ export default function DigitalMarketing() {
         <span className="micro-label block mb-4">Service Details</span>
         <div className="flex items-center gap-6 mb-8">
           <Megaphone className="w-12 h-12 text-white/40" />
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">Digital Marketing</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">UAE Digital<br/><span className="text-white/50 italic">Marketing</span></h1>
         </div>
         <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl">
-          Data-driven marketing strategies that maximize ROI, elevate brand visibility, and dominate the UAE digital landscape.
+          Data-driven marketing strategies that maximize ROI, elevate brand visibility, and dominate the digital landscape across Dubai and Sharjah.
         </p>
       </motion.div>
 

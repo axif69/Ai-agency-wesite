@@ -109,16 +109,30 @@ export default function Contact() {
             
             <div className="space-y-3">
               <label htmlFor="service" className="text-[10px] font-semibold text-white/40 uppercase tracking-[0.2em]">Service Interested In</label>
-              <select 
-                id="service" 
-                className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white/80 focus:outline-none focus:border-white transition-colors appearance-none font-light"
+                <select
+                id="service"
+                className="w-full bg-[#050505] border-b border-white/20 px-0 py-3 text-white/80 focus:outline-none focus:border-white transition-colors font-light"
               >
                 <option value="" className="bg-[#050505]">Select a service...</option>
-                <option value="web-dev" className="bg-[#050505]">AI Web Development</option>
-                <option value="marketing" className="bg-[#050505]">Digital Marketing</option>
-                <option value="mobile-app" className="bg-[#050505]">AI Mobile Apps</option>
-                <option value="saas" className="bg-[#050505]">SaaS Solutions</option>
-                <option value="seo" className="bg-[#050505]">SEO & AEO</option>
+                <optgroup label="— Web" className="bg-[#050505]">
+                  <option value="web-design" className="bg-[#050505]">Web Design</option>
+                  <option value="web-development" className="bg-[#050505]">Web Development</option>
+                  <option value="ecommerce" className="bg-[#050505]">Ecommerce Websites</option>
+                  <option value="web-hosting" className="bg-[#050505]">Web Hosting</option>
+                  <option value="website-support" className="bg-[#050505]">Website Support</option>
+                </optgroup>
+                <optgroup label="— Digital Marketing" className="bg-[#050505]">
+                  <option value="seo" className="bg-[#050505]">SEO</option>
+                  <option value="ppc" className="bg-[#050505]">PPC (Google & Meta Ads)</option>
+                  <option value="social-media" className="bg-[#050505]">Social Media Management</option>
+                  <option value="ai" className="bg-[#050505]">AI & Automation</option>
+                </optgroup>
+                <optgroup label="— Creative" className="bg-[#050505]">
+                  <option value="branding" className="bg-[#050505]">Branding & Identity</option>
+                  <option value="design" className="bg-[#050505]">Graphic Design</option>
+                  <option value="ui-ux" className="bg-[#050505]">UI/UX Design</option>
+                  <option value="creative-web" className="bg-[#050505]">Creative Web Design</option>
+                </optgroup>
               </select>
             </div>
             

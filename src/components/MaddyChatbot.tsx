@@ -1,33 +1,32 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, X, Send, Bot, User, Loader2, Mic, MicOff, Volume2, VolumeX } from 'lucide-react';
-import { GoogleGenAI, Modality } from "@google/genai";
+import Groq from "groq-sdk";
 
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
+const groq = new Groq({ apiKey: import.meta.env.VITE_GROQ_API_KEY, dangerouslyAllowBrowser: true });
 
 const SYSTEM_INSTRUCTION = `
-You are Khalid, the elite AI Strategic Consultant for Asif Digital.
-Asif Digital is the UAE's premier AI Digital Marketing & Software Development agency, led by Asif Khan.
+You are Khalid, a friendly and knowledgeable AI Assistant for Asif Digital.
+Asif Digital is a leading AI Digital Marketing & Software Development agency in the UAE, led by Asif Khan.
 
 Your Mission:
-1. Conduct a high-level strategic intake for potential clients.
-2. Maintain an ultra-professional, sophisticated, and efficient tone.
-3. Keep replies extremely CONCISE.
+1. Have a natural, friendly, and helpful conversation with potential clients.
+2. Sound like a real human! Avoid being overly formal or using robotic corporate jargon. Emojis are great!
+3. Keep replies concise, conversational, and easy to read. (Maximum 2-3 short sentences).
 
-Conversation Protocol:
-- Phase 1: Greet and secure their name.
-- Phase 2: Identify their strategic objective (Web/App Dev, SEO/AEO, Meta/Google Ads, SaaS).
-- Phase 3: Gather critical requirements (Budget, Timeline, Specific Goals) via single, targeted questions.
-- Phase 4: Secure their WhatsApp/Phone number for a direct strategy session with Asif Khan.
+Conversation Flow:
+- First, warmly greet them and ask for their name.
+- Gently ask how we can help them today (Web/App Dev, SEO, Marketing, SaaS, etc.).
+- Ask a couple of quick questions to understand their needs naturally.
+- Once you understand their goal, kindly ask for their WhatsApp/Phone number so Asif Khan can reach out directly.
 
 Interactive Suggestions:
-- Always append "[SUGGESTIONS: Option 1, Option 2]" at the end of your message to guide the user.
-- Use high-value suggestions like: "Strategic Consultation", "Enterprise SaaS", "AEO Dominance", "Performance Marketing".
+- Always append "[SUGGESTIONS: Option 1, Option 2]" at the very end of your message to give them clickable options. Example: [SUGGESTIONS: Need a Website, SEO Services, AI Automation]
 
-WhatsApp Confirmation:
-- Once contact info is provided, say: "I have captured your requirements. For an immediate strategic response, please click the 'Forward to Asif's WhatsApp' button below to send a summarized brief of our conversation."
+WhatsApp Integration:
+- When they give you their contact info, politely say something like: "Thanks! I've noted that down. To save time, just tap the 'Forward to Asif's WhatsApp' button below and it will send a summary of our chat directly to his phone!"
 
-Tone: Elite, Strategic, and Minimalist.
+Remember: Be warm, helpful, relatable, and human.
 `;
 
 interface Message {
@@ -92,57 +91,26 @@ export default function MaddyChatbot() {
     if (!isSpeaking || typeof window === 'undefined') return;
     
     try {
-      const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash-tts", 
-        contents: [{ parts: [{ text }] }],
-        config: {
-          responseModalities: [Modality.AUDIO],
-          speechConfig: {
-            voiceConfig: {
-              // 'Aoede' provides a highly natural, warm, and human-like voice
-              prebuiltVoiceConfig: { voiceName: 'Aoede' }, 
-            },
-          },
-        },
-      });
-
-      const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-      if (base64Audio) {
-        const binaryString = window.atob(base64Audio);
-        const len = binaryString.length;
-        const bytes = new Uint8Array(len);
-        for (let i = 0; i < len; i++) {
-          bytes[i] = binaryString.charCodeAt(i);
-        }
-        
-        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-        
-        try {
-          const audioBuffer = await audioContext.decodeAudioData(bytes.buffer.slice(0));
-          const source = audioContext.createBufferSource();
-          source.buffer = audioBuffer;
-          source.connect(audioContext.destination);
-          source.start();
-        } catch (e) {
-          const audioBuffer = audioContext.createBuffer(1, bytes.length / 2, 24000);
-          const channelData = audioBuffer.getChannelData(0);
-          const dataView = new DataView(bytes.buffer);
-          for (let i = 0; i < channelData.length; i++) {
-            channelData[i] = dataView.getInt16(i * 2, true) / 32768;
-          }
-          const source = audioContext.createBufferSource();
-          source.buffer = audioBuffer;
-          source.connect(audioContext.destination);
-          source.start();
-        }
-      }
-    } catch (error) {
-      console.error("TTS Error:", error);
+      // Fallback to browser TTS since Groq doesn't provide standard TTS like Gemini yet
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.95;
-      utterance.pitch = 1.05;
+      
+      // Try to find the most human-sounding voice available (Microsoft Natural, Google Premium, etc)
+      const voices = window.speechSynthesis.getVoices();
+      const bestVoice = 
+        voices.find(v => v.lang.startsWith('en-') && (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google'))) ||
+        voices.find(v => v.lang.startsWith('en-') && !v.name.includes('Microsoft Default'));
+        
+      if (bestVoice) {
+        utterance.voice = bestVoice;
+      }
+      
+      // Normal conversational cadence (1.0 vs altered pitch/rate makes it sound less robotic)
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
       window.speechSynthesis.speak(utterance);
+    } catch (error) {
+      console.error("TTS Error:", error);
     }
   };
 
@@ -195,19 +163,22 @@ export default function MaddyChatbot() {
     setIsLoading(true);
 
     try {
-      const chat = ai.chats.create({
-        model: "gemini-2.5-flash", 
-        config: {
-          systemInstruction: SYSTEM_INSTRUCTION,
-        },
-        history: messages.map(m => ({
-          role: m.role,
-          parts: [{ text: m.text }]
-        }))
+      const chatMessages = [
+        { role: 'system' as const, content: SYSTEM_INSTRUCTION },
+        ...messages.map(m => ({
+          role: m.role === 'model' ? 'assistant' as const : 'user' as const,
+          content: m.text
+        })),
+        { role: 'user' as const, content: userMessage }
+      ];
+
+      const chatCompletion = await groq.chat.completions.create({
+        messages: chatMessages,
+        model: "llama3-70b-8192",
       });
 
-      const result = await chat.sendMessage({ message: userMessage });
-      const { cleanText, suggestions } = parseResponse(result.text || "");
+      const resultText = chatCompletion.choices[0]?.message?.content || "";
+      const { cleanText, suggestions } = parseResponse(resultText);
       
       // OPTIMIZATION: Fire the speech module IMMEDIATELY before React even updates the visual UI
       if (isSpeaking && cleanText) {
@@ -237,17 +208,20 @@ export default function MaddyChatbot() {
     try {
       const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`).join('\n');
       
-      const summaryResponse = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
-        contents: `Please provide a very concise, professional summary of the following customer requirements for Asif Digital. 
-        Focus on: Name, Service Needed, Budget (if mentioned), and Timeline. 
-        Format it as a clean list for WhatsApp.
-        
-        Chat History:
-        ${history}`,
+      const summaryResponse = await groq.chat.completions.create({
+        model: "llama3-70b-8192",
+        messages: [{
+          role: "user",
+          content: `Please provide a very concise, professional summary of the following customer requirements for Asif Digital. 
+          Focus on: Name, Service Needed, Budget (if mentioned), and Timeline. 
+          Format it as a clean list for WhatsApp.
+          
+          Chat History:
+          ${history}`
+        }]
       });
 
-      const summary = summaryResponse.text || "No summary available.";
+      const summary = summaryResponse.choices[0]?.message?.content || "No summary available.";
       const phoneNumber = "971545866094";
       const text = encodeURIComponent(`*New Strategic Lead Summary*\n\n${summary}\n\n*Direct Contact:* ${leadData.contact || 'Provided in chat'}`);
       window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');

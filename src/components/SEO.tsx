@@ -4,9 +4,10 @@ interface SEOProps {
   title: string;
   description: string;
   keywords?: string;
+  schema?: Record<string, any>;
 }
 
-export default function SEO({ title, description, keywords }: SEOProps) {
+export default function SEO({ title, description, keywords, schema }: SEOProps) {
   return (
     <Helmet>
       <title>{title} | Asif Khan - AI Web Developer & Digital Marketer</title>
@@ -23,6 +24,11 @@ export default function SEO({ title, description, keywords }: SEOProps) {
       <meta name="geo.placename" content="Sharjah" />
       <meta name="geo.position" content="25.3463;55.4209" />
       <meta name="ICBM" content="25.3463, 55.4209" />
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
     </Helmet>
   );
 }

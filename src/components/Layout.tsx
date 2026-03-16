@@ -4,7 +4,7 @@ import PageLoader from "./PageLoader";
 import WhatsAppButton from "./WhatsAppButton";
 import MaddyChatbot from "./MaddyChatbot";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Code, Megaphone, PenTool } from "lucide-react";
 
 export default function Layout() {
   const location = useLocation();
@@ -18,6 +18,7 @@ export default function Layout() {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Services", path: "/services" },
+    { name: "Blog", path: "/blog" },
     { name: "Portfolio", path: "/portfolio" },
     { name: "Case Studies", path: "/case-studies" },
     { name: "Contact", path: "/contact" },
@@ -29,13 +30,13 @@ export default function Layout() {
       <WhatsAppButton />
       <MaddyChatbot />
 
-      <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-6 md:px-12 mix-blend-difference">
-        <Link to="/" className="text-2xl font-serif font-bold tracking-tight">
+      <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-6 md:px-12">
+        <Link to="/" className="text-2xl font-serif font-bold tracking-tight mix-blend-difference">
           Asif Khan.
         </Link>
         
         <button
-          className="md:hidden z-50 p-2"
+          className="md:hidden z-50 p-2 mix-blend-difference"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -43,14 +44,64 @@ export default function Layout() {
 
         <nav className="hidden md:flex gap-8 text-[10px] font-semibold uppercase tracking-[0.2em]">
           {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className="relative hover:text-white/60 transition-colors group"
-            >
-              {link.name}
-              <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-white transition-all duration-500 group-hover:w-full" />
-            </Link>
+            <div key={link.path} className="relative group">
+              <Link
+                to={link.path}
+                className="relative hover:text-white/60 transition-colors py-4 inline-block mix-blend-difference"
+              >
+                {link.name}
+                <span className="absolute bottom-2 left-0 w-0 h-[1px] bg-white transition-all duration-500 group-hover:w-full" />
+              </Link>
+              
+              {/* Mega Menu Dropdown - isolated from blend mode */}
+              {link.name === "Services" && (
+                <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[920px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
+                  <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex font-sans normal-case tracking-normal text-left">
+                    
+                    {/* Web Column */}
+                    <div className="w-[37%] bg-[#111111] p-10 border-r border-white/5">
+                      <h3 className="text-white/40 text-[10px] font-bold uppercase tracking-[0.25em] mb-8 flex items-center gap-2">
+                        <Code className="w-4 h-4" /> Web
+                      </h3>
+                      <ul className="space-y-5">
+                        <li><Link to="/services/web-design-dubai-sharjah" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Design</Link></li>
+                        <li><Link to="/services/web-development-dubai-uae" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Development</Link></li>
+                        <li><Link to="/services/ecommerce-website-development-dubai" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Ecommerce Websites</Link></li>
+                        <li><Link to="/services/web-hosting-uae" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Hosting</Link></li>
+                        <li><Link to="/services/website-maintenance-support-dubai" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Website Support</Link></li>
+                      </ul>
+                    </div>
+                    
+                    {/* Digital Marketing Column */}
+                    <div className="w-[33%] bg-[#0c0c0c] p-10 border-r border-white/5">
+                      <h3 className="text-white/40 text-[10px] font-bold uppercase tracking-[0.25em] mb-8 flex items-center gap-2">
+                        <Megaphone className="w-4 h-4" /> Digital Marketing
+                      </h3>
+                      <ul className="space-y-5">
+                        <li><Link to="/services/seo-agency-dubai-sharjah-uae" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">SEO</Link></li>
+                        <li><Link to="/services/ppc-google-ads-agency-dubai" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">PPC</Link></li>
+                        <li><Link to="/services/social-media-management-dubai-uae" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Social Media</Link></li>
+                        <li><Link to="/services/ai-automation-chatbot-dubai" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">AI</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* Creative Column */}
+                    <div className="w-[30%] bg-[#111111] p-10">
+                      <h3 className="text-white/40 text-[10px] font-bold uppercase tracking-[0.25em] mb-8 flex items-center gap-2">
+                        <PenTool className="w-4 h-4" /> Creative
+                      </h3>
+                      <ul className="space-y-5">
+                        <li><Link to="/services/branding-agency-dubai-sharjah" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Branding</Link></li>
+                        <li><Link to="/services/graphic-design-agency-dubai-sharjah" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Design</Link></li>
+                        <li><Link to="/services/ui-ux-design-agency-dubai" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">UI/UX</Link></li>
+                        <li><Link to="/services/creative-web-design-dubai" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Design</Link></li>
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </nav>
       </header>
@@ -140,9 +191,9 @@ export default function Layout() {
                   <span className="text-[9px] uppercase tracking-widest text-white/20 font-black">Strategic Inquiry</span>
                   <a href="https://wa.me/971545866094" className="text-white/80 hover:text-white transition-colors text-lg font-serif italic">+971 54 586 6094</a>
                 </li>
-                <li className="flex flex-col gap-2">
+                <li className="flex flex-col gap-2 overflow-hidden">
                   <span className="text-[9px] uppercase tracking-widest text-white/20 font-black">Email Correspondence</span>
-                  <a href="mailto:Aiautomationdevelopement@gmail.com" className="text-white/80 hover:text-white transition-colors text-sm break-all">Aiautomationdevelopement@gmail.com</a>
+                  <a href="mailto:Aiautomationdevelopement@gmail.com" className="text-white/80 hover:text-white transition-colors text-xs sm:text-sm max-w-full break-all">Aiautomationdevelopement@gmail.com</a>
                 </li>
                 <li className="flex flex-col gap-2">
                   <span className="text-[9px] uppercase tracking-widest text-white/20 font-black">UAE Headquarters</span>

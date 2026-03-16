@@ -4,12 +4,33 @@ import { ArrowRight, Code, CheckCircle, Layers, Zap, ShieldCheck } from "lucide-
 import { Link } from "react-router-dom";
 
 export default function WebDevelopment() {
+  const serviceSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Service",
+    "serviceType": "Web Development",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Asif Digital"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "description": "Custom AI-powered Web Development and React/Next.js applications for businesses in Dubai and Sharjah.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "AED"
+    }
+  };
+
   return (
     <div className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
       <SEO 
-        title="AI Web Development Services in Sharjah, UAE" 
-        description="Expert AI Web Development services by Asif Khan in Sharjah. Build immersive, high-performance, and AI-powered web applications tailored for your business."
-        keywords="AI Web Development Sharjah, Web Developer UAE, React Developer Dubai, Next.js Expert UAE, AI Integration Website"
+        title="Best Web Development Agency in Dubai & Sharjah | AI Websites" 
+        description="Looking for expert web developers in Dubai or Sharjah? We build immersive, high-performance, and AI-powered Next.js web applications tailored for UAE businesses."
+        keywords="Web Development Agency Dubai, Web Developer Sharjah, React Developer UAE, Custom Website Design Dubai, AI Web Integration"
+        schema={serviceSchema}
       />
       
       <motion.div 
@@ -21,10 +42,10 @@ export default function WebDevelopment() {
         <span className="micro-label block mb-4">Service Details</span>
         <div className="flex items-center gap-6 mb-8">
           <Code className="w-12 h-12 text-white/40" />
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">AI Web Dev</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">Dubai & Sharjah<br/><span className="text-white/50 italic">AI Web Dev</span></h1>
         </div>
         <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl">
-          Transform your digital presence with immersive, high-performance web applications powered by Artificial Intelligence.
+          Transform your digital presence in the UAE with immersive, high-performance web applications powered by Artificial Intelligence.
         </p>
       </motion.div>
 

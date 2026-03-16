@@ -49,11 +49,33 @@ const process = [
 ];
 
 export default function SeoAeo() {
+  const serviceSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Service",
+    "serviceType": "SEO & AEO Services",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Asif Digital"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "description": "Expert SEO and Answer Engine Optimization (AEO) services in Sharjah and Dubai. Rank higher on Google, Maps, and AI search engines.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "AED"
+    }
+  };
+
   return (
     <div className="pt-20">
       <SEO 
-        title="SEO & AEO Services | Asif Khan" 
-        description="Expert SEO and Answer Engine Optimization (AEO) services in Sharjah, UAE. Rank higher on Google and AI search engines."
+        title="Best SEO & AEO Agency in Dubai & Sharjah | Peak Search Visibility" 
+        description="Top-rated SEO and Answer Engine Optimization (AEO) services in Sharjah and Dubai. Dominate local Maps, Google Search, and AI Engines like ChatGPT."
+        keywords="SEO Agency Dubai, Best SEO Services Sharjah, Answer Engine Optimization UAE, Local SEO Dubai, Technical SEO Expert"
+        schema={serviceSchema}
       />
       
       {/* Hero Section */}
@@ -72,11 +94,11 @@ export default function SeoAeo() {
             <span className="micro-label">Search Visibility</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8vw] font-serif leading-tight tracking-tight mb-8">
-            SEO & <br />
-            <span className="italic text-white/50">AEO</span>
+            Dubai & Sharjah<br />
+            <span className="italic text-white/50">SEO & AEO</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl leading-relaxed">
-            Dominate search results. From traditional Google rankings to the new frontier of AI-driven Answer Engine Optimization.
+            Dominate UAE search results. From traditional Google Maps rankings in Sharjah to the new frontier of AI-driven Answer Engine Optimization.
           </p>
         </motion.div>
       </section>

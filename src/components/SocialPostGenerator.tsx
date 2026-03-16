@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, Send, Loader2, Copy, Check, Instagram, Twitter, Linkedin, Facebook } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
+import Groq from "groq-sdk";
 
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
+const groq = new Groq({ apiKey: import.meta.env.VITE_GROQ_API_KEY, dangerouslyAllowBrowser: true });
 
 export default function SocialPostGenerator() {
   const [topic, setTopic] = useState('');
@@ -18,14 +18,17 @@ export default function SocialPostGenerator() {
     setGeneratedPost('');
 
     try {
-      const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
-        contents: `Generate a high-converting, professional social media post for ${platform} about the following topic: "${topic}". 
-        The post should be engaging, include relevant hashtags, and have a clear call to action. 
-        Tone: Professional yet energetic agency style.`,
+      const chatCompletion = await groq.chat.completions.create({
+        messages: [{
+          role: "user",
+          content: `Generate a high-converting, professional social media post for ${platform} about the following topic: "${topic}". 
+          The post should be engaging, include relevant hashtags, and have a clear call to action. 
+          Tone: Professional yet energetic agency style.`
+        }],
+        model: "llama3-70b-8192",
       });
 
-      setGeneratedPost(response.text || "Failed to generate post. Please try again.");
+      setGeneratedPost(chatCompletion.choices[0]?.message?.content || "Failed to generate post. Please try again.");
     } catch (error) {
       console.error("Post Generation Error:", error);
       setGeneratedPost("An error occurred while generating your post. Please check your connection.");

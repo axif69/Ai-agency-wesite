@@ -4,12 +4,33 @@ import { ArrowRight, Cpu, CheckCircle, Database, Server, Lock } from "lucide-rea
 import { Link } from "react-router-dom";
 
 export default function SaaSServices() {
+  const serviceSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Service",
+    "serviceType": "Software as a Service (SaaS)",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Asif Digital"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "description": "Custom SaaS and software development services by Asif Khan in Dubai and Sharjah. Architect robust platforms for modern businesses.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "AED"
+    }
+  };
+
   return (
     <div className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
       <SEO 
-        title="SaaS & Software Development in Sharjah, UAE" 
-        description="Scalable SaaS and custom software development services by Asif Khan in Sharjah. Architect robust platforms for modern businesses."
-        keywords="SaaS Developer Sharjah, Custom Software Development UAE, Cloud Architecture Dubai, Web App Developer UAE"
+        title="Top Custom SaaS & Software Development Agency in Dubai & Sharjah" 
+        description="Scalable SaaS and custom software architecture services in Dubai and Sharjah. Build secure, high-performance web applications and cloud platforms."
+        keywords="SaaS Developer Dubai, Custom Software Development Sharjah, Cloud Architecture UAE, Web App Developer Dubai"
+        schema={serviceSchema}
       />
       
       <motion.div 
@@ -21,10 +42,10 @@ export default function SaaSServices() {
         <span className="micro-label block mb-4">Service Details</span>
         <div className="flex items-center gap-6 mb-8">
           <Cpu className="w-12 h-12 text-white/40" />
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">SaaS Solutions</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">UAE Scaleable<br/><span className="text-white/50 italic">SaaS Solutions</span></h1>
         </div>
         <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl">
-          Scalable software as a service platforms and custom software architecture for modern, forward-thinking businesses.
+          Robust, cloud-native architecture and custom software platforms designed specifically for forward-thinking enterprises across Dubai and Sharjah.
         </p>
       </motion.div>
 
