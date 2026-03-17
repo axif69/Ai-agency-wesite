@@ -1,32 +1,24 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, X, Send, Bot, User, Loader2, Mic, MicOff, Volume2, VolumeX } from 'lucide-react';
-import Groq from "groq-sdk";
-
-const groq = new Groq({ apiKey: import.meta.env.VITE_GROQ_API_KEY, dangerouslyAllowBrowser: true });
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const SYSTEM_INSTRUCTION = `
-You are Khalid, a friendly and knowledgeable AI Assistant for Asif Digital.
-Asif Digital is a leading AI Digital Marketing & Software Development agency in the UAE, led by Asif Khan.
+You are Khalid, an elite AI Strategic Consultant & Architect for Asif Digital.
+Asif Digital is a high-ticket Sovereign AI Architecture Firm in the UAE, led by Asif Khan.
 
 Your Mission:
-1. Have a natural, friendly, and helpful conversation with potential clients.
-2. Sound like a real human! Avoid being overly formal or using robotic corporate jargon. Emojis are great!
-3. Keep replies concise, conversational, and easy to read. (Maximum 2-3 short sentences).
+1. Conduct an initial "Operational Resilience Audit" for C-level executives (CEOs, CFOs, COOs, HR Directors) in the UAE.
+2. Speak with authority, precision, and high-level strategic insight. You are not a regular customer service bot; you are a peer to the executive.
+3. Keep replies concise, sharp, and focused on business continuity, cost arbitrage, and geopolitical resilience. 
 
 Conversation Flow:
-- First, warmly greet them and ask for their name.
-- Gently ask how we can help them today (Web/App Dev, SEO, Marketing, SaaS, etc.).
-- Ask a couple of quick questions to understand their needs naturally.
-- Once you understand their goal, kindly ask for their WhatsApp/Phone number so Asif Khan can reach out directly.
+- First, warmly greet them as Khalid and ask for their name and title.
+- Ask them which department they are most concerned about regarding workforce fragility or operational disruption (e.g., Finance, HR, Logistics, Sales).
+- Briefly highlight how Agentic AI can decouple that specific department from human risks (visas, salaries, evacuation), then politely ask for their WhatsApp/Phone number so Asif Khan can review their audit.
 
 Interactive Suggestions:
-- Always append "[SUGGESTIONS: Option 1, Option 2]" at the very end of your message to give them clickable options. Example: [SUGGESTIONS: Need a Website, SEO Services, AI Automation]
-
-WhatsApp Integration:
-- When they give you their contact info, politely say something like: "Thanks! I've noted that down. To save time, just tap the 'Forward to Asif's WhatsApp' button below and it will send a summary of our chat directly to his phone!"
-
-Remember: Be warm, helpful, relatable, and human.
+- Always append "[SUGGESTIONS: Option 1, Option 2]" at the very end of your message to give them clickable options. Example: [SUGGESTIONS: Auditing Finance, Auditing HR, Auditing Sales]
 `;
 
 interface Message {
@@ -35,13 +27,13 @@ interface Message {
   suggestions?: string[];
 }
 
-export default function MaddyChatbot() {
+export default function KhalidChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { 
       role: 'model', 
-      text: "Welcome to Asif Digital! I'm Khalid, your elite AI Strategic Consultant. May I know your name, please?",
-      suggestions: ["Strategic Consultation", "Just browsing"]
+      text: "I am Khalid. I am here to conduct your operational resilience audit. In light of the current workforce shifts in the UAE, which department's continuity are you most concerned about?",
+      suggestions: ["Finance", "HR", "Logistics", "Sales"]
     }
   ]);
   const [input, setInput] = useState('');
@@ -91,11 +83,9 @@ export default function MaddyChatbot() {
     if (!isSpeaking || typeof window === 'undefined') return;
     
     try {
-      // Fallback to browser TTS since Groq doesn't provide standard TTS like Gemini yet
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       
-      // Try to find the most human-sounding voice available (Microsoft Natural, Google Premium, etc)
       const voices = window.speechSynthesis.getVoices();
       const bestVoice = 
         voices.find(v => v.lang.startsWith('en-') && (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google'))) ||
@@ -105,7 +95,6 @@ export default function MaddyChatbot() {
         utterance.voice = bestVoice;
       }
       
-      // Normal conversational cadence (1.0 vs altered pitch/rate makes it sound less robotic)
       utterance.rate = 1.0;
       utterance.pitch = 1.0;
       window.speechSynthesis.speak(utterance);
@@ -127,12 +116,10 @@ export default function MaddyChatbot() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Scroll to bottom whenever messages update
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
-  // Speak the welcome message immediately when the chat opens
   useEffect(() => {
     if (isOpen && messages.length === 1 && messages[0].role === 'model') {
       speak(messages[0].text);
@@ -156,6 +143,13 @@ export default function MaddyChatbot() {
     const messageToSend = overrideInput || input;
     if (!messageToSend.trim() || isLoading) return;
 
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!apiKey) {
+       setMessages(prev => [...prev, { role: 'user', text: messageToSend.trim() }]);
+       setMessages(prev => [...prev, { role: 'model', text: "Gemini API key is missing. Please add VITE_GEMINI_API_KEY to your .env file." }]);
+       return;
+    }
+
     const userMessage = messageToSend.trim();
     if (!overrideInput) setInput('');
     
@@ -163,24 +157,32 @@ export default function MaddyChatbot() {
     setIsLoading(true);
 
     try {
-      const chatMessages = [
-        { role: 'system' as const, content: SYSTEM_INSTRUCTION },
-        ...messages.map(m => ({
-          role: m.role === 'model' ? 'assistant' as const : 'user' as const,
-          content: m.text
-        })),
-        { role: 'user' as const, content: userMessage }
-      ];
-
-      const chatCompletion = await groq.chat.completions.create({
-        messages: chatMessages,
-        model: "llama3-70b-8192",
+      console.log("Khalid Debug: Initializing with API Key prefix:", apiKey.substring(0, 7));
+      const genAI = new GoogleGenerativeAI(apiKey);
+      
+      // Attempting the most stable model identifier
+      const model = genAI.getGenerativeModel({ 
+        model: "gemini-1.5-flash",
+        systemInstruction: SYSTEM_INSTRUCTION
       });
 
-      const resultText = chatCompletion.choices[0]?.message?.content || "";
+      // Gemini history must alternate and usually start with 'user'.
+      // If our first message is 'model' (the welcome message), we should skip it for the API history.
+      const apiHistory = messages
+        .filter((m, index) => !(index === 0 && m.role === 'model'))
+        .map(m => ({
+          role: m.role === 'model' ? 'model' : 'user',
+          parts: [{ text: m.text }],
+        }));
+
+      const chat = model.startChat({
+        history: apiHistory,
+      });
+
+      const result = await chat.sendMessage(userMessage);
+      const resultText = result.response.text();
       const { cleanText, suggestions } = parseResponse(resultText);
       
-      // OPTIMIZATION: Fire the speech module IMMEDIATELY before React even updates the visual UI
       if (isSpeaking && cleanText) {
         speak(cleanText);
       }
@@ -197,7 +199,7 @@ export default function MaddyChatbot() {
       }
     } catch (error) {
       console.error("Chatbot Error:", error);
-      setMessages(prev => [...prev, { role: 'model', text: "Sorry, I'm having some trouble connecting. Please try again later!" }]);
+      setMessages(prev => [...prev, { role: 'model', text: "Sorry, I'm having some trouble connecting to Gemini. Please check your API key!" }]);
     } finally {
       setIsLoading(false);
     }
@@ -206,22 +208,22 @@ export default function MaddyChatbot() {
   const sendToWhatsApp = async () => {
     setIsSummarizing(true);
     try {
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      if (!apiKey) throw new Error("API Key missing");
+      
+      const genAI = new GoogleGenerativeAI(apiKey);
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
       const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`).join('\n');
       
-      const summaryResponse = await groq.chat.completions.create({
-        model: "llama3-70b-8192",
-        messages: [{
-          role: "user",
-          content: `Please provide a very concise, professional summary of the following customer requirements for Asif Digital. 
+      const prompt = `Please provide a very concise, professional summary of the following customer requirements for Asif Digital. 
           Focus on: Name, Service Needed, Budget (if mentioned), and Timeline. 
           Format it as a clean list for WhatsApp.
           
           Chat History:
-          ${history}`
-        }]
-      });
+          ${history}`;
 
-      const summary = summaryResponse.choices[0]?.message?.content || "No summary available.";
+      const result = await model.generateContent(prompt);
+      const summary = result.response.text() || "No summary available.";
       const phoneNumber = "971545866094";
       const text = encodeURIComponent(`*New Strategic Lead Summary*\n\n${summary}\n\n*Direct Contact:* ${leadData.contact || 'Provided in chat'}`);
       window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');

@@ -2,8 +2,8 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import PageLoader from "./PageLoader";
 import WhatsAppButton from "./WhatsAppButton";
-import MaddyChatbot from "./MaddyChatbot";
-import { useState, useEffect } from "react";
+import KhalidChatbot from "./KhalidChatbot";
+import { useState, useEffect, Suspense } from "react";
 import { Menu, X, Code, Megaphone, PenTool } from "lucide-react";
 
 export default function Layout() {
@@ -17,18 +17,18 @@ export default function Layout() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
+    { name: "Sovereign AI", path: "#" },
     { name: "Services", path: "/services" },
-    { name: "Blog", path: "/blog" },
     { name: "Portfolio", path: "/portfolio" },
     { name: "Case Studies", path: "/case-studies" },
     { name: "Contact", path: "/contact" },
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#f5f5f5] font-sans selection:bg-white/30">
+    <div className="flex flex-col min-h-screen bg-[#050505] text-white selection:bg-green-500/30 overflow-x-hidden font-sans">
       <PageLoader />
       <WhatsAppButton />
-      <MaddyChatbot />
+      <KhalidChatbot />
 
       <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-6 md:px-12">
         <Link to="/" className="text-2xl font-serif font-bold tracking-tight mix-blend-difference">
@@ -53,6 +53,19 @@ export default function Layout() {
                 <span className="absolute bottom-2 left-0 w-0 h-[1px] bg-white transition-all duration-500 group-hover:w-full" />
               </Link>
               
+              
+              {/* Sovereign AI Dropdown */}
+              {link.name === "Sovereign AI" && (
+                <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[350px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
+                  <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col font-sans normal-case tracking-normal text-left p-6 space-y-2">
+                    <Link to="/services/agentic-finance-uae" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Agentic Finance & Compliance</Link>
+                    <Link to="/services/ai-hr-emirates" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI HR & Emiratization tracking</Link>
+                    <Link to="/services/whatsapp-automation-gcc" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">B2B Autonomous Sales Swarms</Link>
+                    <Link to="/services/logistics-resilience" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-3 hover:pl-2 duration-200">Logistics & Supply Chain AI</Link>
+                  </div>
+                </div>
+              )}
+
               {/* Mega Menu Dropdown - isolated from blend mode */}
               {link.name === "Services" && (
                 <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[920px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
@@ -139,7 +152,9 @@ export default function Layout() {
           transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
           className="pt-24 min-h-screen"
         >
-          <Outlet />
+          <Suspense fallback={<PageLoader />}>
+            <Outlet />
+          </Suspense>
         </motion.main>
       </AnimatePresence>
 
@@ -196,8 +211,8 @@ export default function Layout() {
                   <a href="mailto:Aiautomationdevelopement@gmail.com" className="text-white/80 hover:text-white transition-colors text-xs sm:text-sm max-w-full break-all">Aiautomationdevelopement@gmail.com</a>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <span className="text-[9px] uppercase tracking-widest text-white/20 font-black">UAE Headquarters</span>
-                  <span className="text-white/80 text-sm leading-relaxed">Muwailih Commercial,<br/>Sharjah, United Arab Emirates</span>
+                  <span className="text-[9px] uppercase tracking-widest text-white/20 font-black">Asif Digital Architecture</span>
+                  <span className="text-white/80 text-sm leading-relaxed italic">Operating across the GCC territory.</span>
                 </li>
               </ul>
             </div>

@@ -107,7 +107,7 @@ export default function SeoAeo() {
       <section className="h-[60vh] relative overflow-hidden my-20">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=90&w=2560&auto=format&fit=crop)' }}
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format,compress&fm=webp&q=75&w=1200)' }}
         />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         <div className="absolute inset-0 flex items-center justify-center">
