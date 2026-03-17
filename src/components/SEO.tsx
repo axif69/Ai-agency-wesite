@@ -7,12 +7,30 @@ interface SEOProps {
   schema?: Record<string, any>;
   faqSchema?: { question: string; answer: string }[];
   canonical?: string;
+  ogImage?: string;
+  twitterImage?: string;
+  author?: string;
 }
 
-export default function SEO({ title, description, keywords, schema, faqSchema, canonical }: SEOProps) {
+export default function SEO({ 
+  title, 
+  description, 
+  keywords, 
+  schema, 
+  faqSchema, 
+  canonical,
+  ogImage,
+  twitterImage,
+  author = "Asif Digital Team"
+}: SEOProps) {
   const siteUrl = "https://asifdigital.agency";
   const finalCanonical = canonical || `${siteUrl}${window.location.pathname}`;
   
+  // Default Branding Image (Global Fallback)
+  const defaultOgImage = `${siteUrl}/brand/og-main.png`;
+  const finalOgImage = ogImage || defaultOgImage;
+  const finalTwitterImage = twitterImage || finalOgImage;
+
   // Default Breadcrumb Schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -49,19 +67,31 @@ export default function SEO({ title, description, keywords, schema, faqSchema, c
 
   return (
     <Helmet>
+      {/* Basic Metadata */}
       <title>{title} | Asif Digital Agency UAE</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={finalCanonical} />
       
+      {/* E-E-A-T (Excellence, Experience, Authority, Trust) */}
+      <meta name="author" content={author} />
+      <meta name="publisher" content="Asif Digital Agency" />
+      <meta name="copyright" content="© 2026 Asif Digital" />
+
+      {/* Open Graph (Social Sharing) */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={finalCanonical} />
+      <meta property="og:image" content={finalOgImage} />
+      <meta property="og:site_name" content="Asif Digital Agency" />
       
+      {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={finalTwitterImage} />
+      <meta name="twitter:site" content="@asifdigitaluae" />
 
       {/* UAE Regional Targeting */}
       <meta name="geo.region" content="AE-DU;AE-SH;AE-AZ" />

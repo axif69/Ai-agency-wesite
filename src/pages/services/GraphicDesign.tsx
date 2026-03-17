@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import SEO from "../../components/SEO";
 import { PenTool, Layers, Image as ImageIcon, MonitorSmartphone, Palette, CheckCircle2 } from "lucide-react";
 
@@ -76,31 +77,46 @@ export default function GraphicDesign() {
         description="Elevate your brand with award-winning Graphic Design, UI/UX, and Social Media Creatives. Top graphic design agency in Sharjah and Dubai."
         keywords="Graphic Design Agency Dubai, Best Graphic Designer Sharjah, UI/UX Design UAE, Branding Agency Dubai, Logo Design Sharjah"
         schema={serviceSchema}
+        faqSchema={[
+          {
+            question: "How long does a branding project typically take?",
+            answer: "A complete brand identity project, including logo design, color palette, and typography, usually takes 2 to 4 weeks for research, concepts, and refinement."
+          },
+          {
+            question: "Do you provide source files for the designs?",
+            answer: "Yes. Upon completion and final payment, we provide all source files (AI, PSD, Figma) along with high-resolution exports and a brand style guide."
+          },
+          {
+            question: "Can you create social media graphics for my UAE business?",
+            answer: "Absolutely. We design high-engagement social media creatives tailored for UAE audiences on platforms like Instagram, LinkedIn, and TikTok, ensuring your brand stays consistent and relevant."
+          },
+          {
+            question: "Do you handle print design?",
+            answer: "Yes. From business cards and brochures to large-format signage and event collateral, we provide print-ready designs that meet high professional standards."
+          }
+        ]}
       />
       
       {/* Hero Section */}
-      <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto relative">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent blur-3xl -z-10" />
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl"
-        >
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/20">
-              <Palette className="w-6 h-6 text-white" />
-            </div>
-            <span className="micro-label">Creative Services</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8vw] font-serif leading-tight tracking-tight mb-8">
-            Dubai & Sharjah <br />
-            <span className="italic text-white/50">Graphic Design</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl leading-relaxed">
-            Elevating UAE brands through striking visual communication. From logo design to comprehensive brand identities.
-          </p>
-        </motion.div>
+      <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format,compress&fm=webp&q=75&w=1200)' }}
+        />
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="micro-label mb-8 block text-white/70">Creative Visual Strategy</span>
+            <h1 className="text-5xl md:text-8xl font-serif text-white tracking-tight leading-tight">
+              Dubai & Sharjah <br />
+              <span className="italic text-white/50">Graphic Design</span>
+            </h1>
+          </motion.div>
+        </div>
       </section>
 
       {/* Image Parallax Section */}
@@ -108,6 +124,12 @@ export default function GraphicDesign() {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format,compress&fm=webp&q=75&w=1200)' }}
+        />
+        <img 
+          src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format,compress&fm=webp&q=75&w=1200" 
+          alt="Award Winning Graphic Design and Brand Identity Agency Dubai" 
+          className="sr-only"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         <div className="absolute inset-0 flex items-center justify-center">
@@ -180,6 +202,38 @@ export default function GraphicDesign() {
               )}
             </motion.div>
           ))}
+        </div>
+      </section>
+      {/* Hidden SEO Image */}
+      <img 
+        src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format,compress&fm=webp&q=75&w=1200" 
+        alt="Top Graphic Design and Branding Agency Dubai Sharjah | Award Winning Designers" 
+        className="sr-only"
+        loading="lazy"
+      />
+      {/* Strategic Synergy Grid */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="micro-label block mb-4">Strategic Synergy</span>
+              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
+            </div>
+            <Link to="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Creative Web Design", link: "/services/creative-web-design-agency-dubai", desc: "Bring your brand to life with award-winning digital experiences." },
+              { title: "UI/UX Design", link: "/services/ui-ux-design-agency-dubai", desc: "Impeccable product interfaces that bridge the gap between beauty and function." },
+              { title: "Social Media", link: "/services/social-media-management-uae", desc: "High-engagement social creatives for Dubai's most ambitious brands." }
+            ].map((s, i) => (
+              <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>

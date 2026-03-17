@@ -96,6 +96,26 @@ export default function WebDesign() {
         </motion.div>
       </section>
 
+      {/* Image Parallax Section */}
+      <section className="h-[60vh] relative overflow-hidden my-20 -mx-6 md:-mx-12">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&q=75&w=1200)' }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+          <h2 className="text-4xl md:text-7xl font-serif text-white tracking-tight">
+            Design <span className="italic">Authority</span>
+          </h2>
+        </div>
+        <img 
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&q=75&w=1200" 
+          alt="Premium Web Design and UI/UX Strategy Agency Dubai" 
+          className="sr-only"
+          loading="lazy"
+        />
+      </section>
+
       {/* Stats */}
       <section className="px-6 md:px-12 py-16 border-t border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -222,6 +242,31 @@ export default function WebDesign() {
           <Link to="/contact" aria-label="Start Your Web Design Project with Asif Digital" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
             Start Your Project <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
           </Link>
+        </div>
+      </section>
+      {/* Strategic Synergy Grid */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="micro-label block mb-4">Strategic Synergy</span>
+              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
+            </div>
+            <Link to="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "SEO Agency", link: "/services/seo-agency-dubai-sharjah-uae", desc: "Ensure your new website ranks at the top of UAE search results." },
+              { title: "UI/UX Design", link: "/services/ui-ux-design-dubai", desc: "Deeper product strategy and interactive prototyping for complex apps." },
+              { title: "Ecommerce Solutions", link: "/services/ecommerce-website-development-dubai", desc: "Build high-converting online stores tailored for the GCC market." }
+            ].map((s, i) => (
+              <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>

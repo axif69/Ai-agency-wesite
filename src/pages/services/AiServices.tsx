@@ -1,7 +1,8 @@
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import SEO from "../../components/SEO";
-import { motion } from "motion/react";
+import { Bot, Zap, Shield, Cpu, ArrowRight, BarChart3, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Bot, Cpu, Zap, BarChart3, CheckCircle } from "lucide-react";
 
 const features = [
   { icon: <Bot className="w-6 h-6" />, title: "AI Chatbots & Virtual Assistants", desc: "We deploy intelligent, context-aware chatbots on your website, WhatsApp, and social media that qualify leads, handle FAQs, and book appointments 24/7. Built on GPT-4 and Claude—these bots sound genuinely human and radically reduce your customer service overhead." },
@@ -11,58 +12,102 @@ const features = [
 ];
 
 export default function AiServices() {
-  return (
-    <div className="pt-20">
-      <SEO
-        title="AI Automation & Chatbot Development Dubai | Asif Digital"
-        description="Dubai's leading AI services company. We build intelligent chatbots, automation workflows, and custom LLM integrations that transform UAE business operations and reduce costs."
-      />
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-      <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-          <span className="text-white/40 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">AI Services — Dubai & UAE</span>
-          <h1 className="text-5xl md:text-7xl font-serif leading-tight tracking-tight mb-8">
-            The Future of Business<br /><span className="italic text-white/40">is Intelligent.</span>
-          </h1>
-          <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl mb-12">
-            AI is no longer the future—it is the present competitive advantage. Businesses that automate intelligently right now will be the ones that dominate their categories in 2026 and beyond. We make that transformation achievable, practical, and genuinely profitable for UAE enterprises of all sizes.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link to="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">
-              Book An AI Strategy Session <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </motion.div>
+  const serviceSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Service",
+    "serviceType": "Artificial Intelligence Consulting & Development",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Asif Digital"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "description": "Enterprise-grade AI solutions by Asif Khan in Dubai and Sharjah. Specialist in LLM integration, AI automation, and intelligent agents.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "AED"
+    }
+  };
+
+  const faqs = [
+    {
+      q: "How can AI benefit my business in Dubai?",
+      a: "Our AI solutions automate repetitive tasks, improve customer engagement through intelligent chatbots, and provide data-driven insights, allowing your business to scale efficiently in the competitive UAE market."
+    },
+    {
+      q: "Is my business data secure with your AI integrations?",
+      a: "Absolutely. We prioritize data security and can implement solutions that allow your data to remain on your servers (on-premise or UAE-hosted) while still leveraging powerful AI capabilities."
+    },
+    {
+      q: "What is the typical timeline for an AI implementation?",
+      a: "A pilot or MVP typically takes 4 to 8 weeks. Larger enterprise integrations are phased out over several months depending on complexity and data availability."
+    }
+  ];
+
+  return (
+    <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
+      <SEO 
+        title="Enterprise AI Solutions & Consulting Dubai | Asif Digital" 
+        description="Transform your UAE business with custom AI solutions. Specialist in LLM integration, automated agent swarms, and intelligent workflows for Dubai and Sharjah enterprises."
+        keywords="AI Consulting Dubai, Custom AI Development Sharjah, LLM Integration UAE, AI Automation UAE"
+        schema={serviceSchema}
+        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
+      />
+      
+      {/* Hero Section */}
+      <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format,compress&fm=webp&q=75&w=1200)' }}
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+          <motion.div style={{ y, opacity }} className="max-w-4xl">
+            <span className="micro-label block mb-4 text-white/60">Dubai & Sharjah Specialized</span>
+            <h1 className="text-4xl md:text-7xl font-serif text-white tracking-tight leading-tight">
+              Enterprise <br/><span className="text-white/80 italic">AI Integration</span>
+            </h1>
+          </motion.div>
+        </div>
+        {/* Hidden SEO Image */}
+        <img 
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format,compress&fm=webp&q=75&w=1200" 
+          alt="Enterprise AI Solutions and Specialist Consulting Dubai Sharjah" 
+          className="sr-only"
+          loading="lazy"
+        />
       </section>
 
-      <section className="px-6 md:px-12 py-16 border-t border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[{ n: "60%", l: "Avg Cost Reduction via Automation" }, { n: "24/7", l: "AI Chatbot Availability" }, { n: "3 weeks", l: "Avg Chatbot Deployment Time" }, { n: "GPT-4", l: "Latest Models Used" }].map((s, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
-              <div className="text-4xl font-serif mb-2">{s.n}</div>
-              <div className="text-white/40 text-xs uppercase tracking-widest">{s.l}</div>
+      <div className="px-6 md:px-12 max-w-7xl mx-auto py-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-24"
+        >
+          <p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl leading-relaxed">
+            I build intelligence into the core of your business. From autonomous Agentic swarms to custom LLM layers, my AI solutions are architected to drive measurable ROI for the UAE's most ambitious enterprises.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {features.map((f, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
+              <div className="text-white/60 mb-5">{f.icon}</div>
+              <h3 className="text-xl font-bold mb-3">{f.title}</h3>
+              <p className="text-white/50 font-light leading-relaxed text-sm">{f.desc}</p>
             </motion.div>
           ))}
         </div>
-      </section>
-
-      <section className="px-6 md:px-12 py-24 bg-white/[0.02] border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Our AI Capabilities</span>
-            <h2 className="text-4xl md:text-6xl font-serif max-w-2xl">Intelligent Solutions for Every Business Function</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {features.map((f, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
-                <div className="text-white/60 mb-5">{f.icon}</div>
-                <h3 className="text-xl font-bold mb-3">{f.title}</h3>
-                <p className="text-white/50 font-light leading-relaxed text-sm">{f.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      </div>
 
       <section className="px-6 md:px-12 py-24 border-t border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -83,6 +128,55 @@ export default function AiServices() {
             <Link to="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
               Book Free Session <ArrowRight className="w-4 h-4" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-white/[0.02] border-t border-white/5">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="micro-label block mb-4">Common Inquiries</span>
+            <h2 className="text-4xl font-serif tracking-tight">AI Deployment FAQs</h2>
+          </div>
+          <div className="space-y-6 px-6">
+            {faqs.map((faq, i) => (
+              <details key={i} className="group border-b border-white/10 pb-6">
+                <summary className="text-xl font-serif cursor-pointer list-none flex justify-between items-center hover:text-white/70 transition-colors">
+                  {faq.q}
+                  <span className="text-2xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <p className="mt-4 text-white/70 font-light leading-relaxed text-sm">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Strategic Synergy Grid */}
+      <section className="py-24 border-t border-white/5 mx-6 md:mx-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="micro-label block mb-4">Strategic Synergy</span>
+              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
+            </div>
+            <Link to="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "SaaS Development", link: "/services/saas-development-specialist-uae", desc: "Build the cloud-native backbone for your enterprise intelligence." },
+              { title: "Custom Software", link: "/services/custom-software-development-dubai", desc: "Tailored enterprise solutions built with the latest high-performance tech." },
+              { title: "Web Development", link: "/services/web-development-agency-dubai", desc: "World-class digital front-ends for your intelligent backend swarms." }
+            ].map((s, i) => (
+              <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

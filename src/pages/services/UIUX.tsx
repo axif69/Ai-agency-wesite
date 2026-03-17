@@ -25,6 +25,21 @@ export default function UIUX() {
       <SEO
         title="UI/UX Design Agency Dubai | User Experience Design | Asif Digital"
         description="Expert UI/UX design services in Dubai. Research-backed user experience design and pixel-perfect interface design that converts users into loyal customers."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "UI/UX Design Services",
+          "provider": {
+            "@type": "LocalBusiness",
+            "@id": "https://asifdigital.agency"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Dubai" },
+            { "@type": "City", "name": "Sharjah" }
+          ],
+          "description": "Professional UI/UX design services including user research, wireframing, prototyping, and visual design for web and mobile products in the UAE."
+        }}
+        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
       />
 
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
@@ -45,6 +60,26 @@ export default function UIUX() {
             </Link>
           </div>
         </motion.div>
+      </section>
+
+      {/* Image Parallax Section */}
+      <section className="h-[60vh] relative overflow-hidden my-20 -mx-6 md:-mx-12">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1586717791821-3f44a563dc4c?auto=format,compress&fm=webp&q=75&w=1200)' }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+          <h2 className="text-4xl md:text-7xl font-serif text-white tracking-tight">
+            Empathy <span className="italic">Designed</span>
+          </h2>
+        </div>
+        <img 
+          src="https://images.unsplash.com/photo-1586717791821-3f44a563dc4c?auto=format,compress&fm=webp&q=75&w=1200" 
+          alt="User Centric UI/UX Design and Product Strategy Agency Dubai" 
+          className="sr-only"
+          loading="lazy"
+        />
       </section>
 
       <section className="px-6 md:px-12 py-16 border-t border-white/5">
@@ -109,6 +144,31 @@ export default function UIUX() {
           <Link to="/contact" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
             Book A Design Consultation <ArrowRight className="w-4 h-4" />
           </Link>
+        </div>
+      </section>
+      {/* Strategic Synergy Grid */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="micro-label block mb-4">Strategic Synergy</span>
+              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
+            </div>
+            <Link to="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Web Development", link: "/services/web-development-agency-dubai", desc: "Bring your high-fidelity designs to life with unshakeable code." },
+              { title: "Branding Strategy", link: "/services/branding-agency-dubai-sharjah", desc: "Build the visual identity that powers your product's UI." },
+              { title: "Ecommerce UX", link: "/services/ecommerce-website-development-dubai", desc: "Specialized user journeys designed to eliminate checkout friction." }
+            ].map((s, i) => (
+              <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>

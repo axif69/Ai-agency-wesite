@@ -32,6 +32,24 @@ export default function DigitalMarketing() {
         description="Data-driven Digital Marketing, High-Converting Meta Ads, Google Ads, and SEO services by Asif Khan in Sharjah and Dubai. Dominate local search and social media."
         keywords="Digital Marketing Agency Sharjah, Meta Ads Expert Dubai, Google Ads Specialist UAE, Best SEO Services Sharjah, Social Media Management Dubai"
         schema={serviceSchema}
+        faqSchema={[
+          {
+            question: "What digital marketing services do you offer in Dubai and Sharjah?",
+            answer: "We offer comprehensive digital marketing solutions including Meta and Google Ads, SEO, Social Media Management, and AEO (AI Search Optimization) tailored for the UAE market."
+          },
+          {
+            question: "How long does it take to see results from digital marketing?",
+            answer: "Paid ads (Meta/Google) can show results within days, while organic SEO and AEO typically take 3 to 6 months to see significant improvements in search rankings and traffic."
+          },
+          {
+            question: "Do you provide transparent ROI tracking?",
+            answer: "Yes. We set up advanced tracking and provide detailed monthly reports showing EXACTLY how many leads and sales your digital marketing campaigns are generating."
+          },
+          {
+            question: "Which platform is best for my UAE business: Meta or Google?",
+            answer: "This depends on your business. Google is ideal for capturing high-intent searches, while Meta (Instagram/Facebook) is powerful for brand building and visual products."
+          }
+        ]}
       />
       
       <motion.div 
@@ -50,6 +68,26 @@ export default function DigitalMarketing() {
         </p>
       </motion.div>
 
+      {/* Image Parallax Section */}
+      <section className="h-[60vh] relative overflow-hidden my-20 -mx-6 md:-mx-12">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format,compress&fm=webp&q=75&w=1200)' }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+          <h2 className="text-4xl md:text-7xl font-serif text-white tracking-tight">
+            Growth <span className="italic">Unleashed</span>
+          </h2>
+        </div>
+        <img 
+          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format,compress&fm=webp&q=75&w=1200" 
+          alt="Performance Focused Digital Marketing and Growth Agency Dubai" 
+          className="sr-only"
+          loading="lazy"
+        />
+      </section>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-32">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
@@ -60,9 +98,10 @@ export default function DigitalMarketing() {
         >
           <img 
             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format,compress&fm=webp&q=75&w=1200" 
-            alt="Digital Marketing" 
+            alt="Data-driven Digital Marketing and Meta Ads Agency Dubai" 
             className="parallax-img"
             referrerPolicy="no-referrer"
+            loading="lazy"
           />
         </motion.div>
         
@@ -134,6 +173,70 @@ export default function DigitalMarketing() {
               <p className="text-white/50 font-light leading-relaxed">{step.desc}</p>
             </motion.div>
           ))}
+        </div>
+      </section>
+      {/* FAQ Section */}
+      <section className="px-6 md:px-12 py-24 bg-white/[0.02] border-t border-white/10">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="micro-label block mb-4">Common Inquiries</span>
+            <h2 className="text-4xl font-serif tracking-tight">Marketing Strategy FAQs</h2>
+          </div>
+          <div className="space-y-6">
+            {[
+              {
+                q: "What digital marketing services do you offer in Dubai and Sharjah?",
+                a: "We offer comprehensive digital marketing solutions including Meta and Google Ads, SEO, Social Media Management, and AEO (AI Search Optimization) tailored for the UAE market."
+              },
+              {
+                q: "How long does it take to see results from digital marketing?",
+                a: "Paid ads (Meta/Google) can show results within days, while organic SEO and AEO typically take 3 to 6 months to see significant improvements in search rankings and traffic."
+              },
+              {
+                q: "Do you provide transparent ROI tracking?",
+                a: "Yes. We set up advanced tracking and provide detailed monthly reports showing EXACTLY how many leads and sales your digital marketing campaigns are generating."
+              },
+              {
+                q: "Which platform is best for my UAE business: Meta or Google?",
+                a: "This depends on your business. Google is ideal for capturing high-intent searches, while Meta (Instagram/Facebook) is powerful for brand building and visual products."
+              }
+            ].map((faq, i) => (
+              <details key={i} className="group border-b border-white/10 pb-6">
+                <summary className="text-xl font-serif cursor-pointer list-none flex justify-between items-center hover:text-white/70 transition-colors">
+                  {faq.q}
+                  <span className="text-2xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <p className="mt-4 text-white/70 font-light leading-relaxed text-sm">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Strategic Synergy Grid */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="micro-label block mb-4">Strategic Synergy</span>
+              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
+            </div>
+            <Link to="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "SEO & AEO Strategy", link: "/services/seo-agency-dubai-sharjah-uae", desc: "Dominate both traditional search and AI answer engines in the UAE." },
+              { title: "PPC & Google Ads", link: "/services/ppc-google-ads-agency-dubai", desc: "Capture high-intent traffic with precision-targeted search campaigns." },
+              { title: "Social Media Strategy", link: "/services/social-media-management-dubai-uae", desc: "Build a premium digital identity that resonates across the GCC." }
+            ].map((s, i) => (
+              <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>

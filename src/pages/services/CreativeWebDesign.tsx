@@ -24,20 +24,87 @@ const faqs = [
 export default function CreativeWebDesign() {
   return (
     <div className="pt-20">
-      <SEO title="Creative Web Design Agency Dubai | Award-Winning Websites | Asif Digital" description="Bespoke creative web design for premium Dubai brands. Advanced animations, immersive scroll experiences, and visually extraordinary websites that make your brand unforgettable." />
+      <SEO 
+        title="Creative Web Design Agency Dubai | Award-Winning Websites | Asif Digital" 
+        description="Bespoke creative web design for premium Dubai brands. Advanced animations, immersive scroll experiences, and visually extraordinary websites that make your brand unforgettable."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Creative Web Design",
+          "provider": {
+            "@type": "LocalBusiness",
+            "@id": "https://asifdigital.agency"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Dubai" },
+            { "@type": "City", "name": "Sharjah" },
+            { "@type": "Country", "name": "UAE" }
+          ],
+          "description": "Bespoke creative web design for premium brands in Dubai, featuring advanced animations, immersive scroll experiences, and cinematic storytelling."
+        }}
+        faqSchema={[
+          {
+            question: "What makes creative web design different from standard web design?",
+            answer: "Standard web design prioritises usability and conversion within established templates. Creative web design pushes boundaries with advanced animations, experimental layouts, and immersive storytelling to create a work of digital art."
+          },
+          {
+            question: "Will a heavily animated website hurt my Google rankings?",
+            answer: "Not if it's built correctly. We adhere to Core Web Vitals standards and ensure all animations are performance-optimised for fast load times and strong technical SEO foundations."
+          },
+          {
+            question: "How long does a creative web design project take?",
+            answer: "Creative web design projects typically take 8-12 weeks due to the elevated level of design craft and custom development involved in creating an exceptional digital experience."
+          },
+          {
+            question: "Do you build creative websites on CMS platforms like WordPress?",
+            answer: "Yes. We build on headless CMS platforms including Sanity, Contentful, and Strapi, as well as custom WordPress implementations for easy content management."
+          }
+        ]}
+      />
 
-      <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-          <span className="text-white/40 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Creative Web Design — Dubai</span>
-          <h1 className="text-5xl md:text-7xl font-serif leading-tight tracking-tight mb-8">Beyond Design.<br /><span className="italic text-white/40">Into Experience.</span></h1>
-          <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl mb-12">
-            For premium brands that refuse to be ordinary, we create internet experiences that blur the boundary between website and art installation. Cinematic storytelling, custom animations, immersive interactions—digital experiences that make your brand genuinely unforgettable.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link to="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">Start Your Project <ArrowRight className="w-4 h-4" /></Link>
-            <Link to="/portfolio" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:border-white transition-colors">View Creative Work</Link>
-          </div>
-        </motion.div>
+      {/* Hero Section */}
+      <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&q=75&w=1200)' }}
+        />
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="micro-label mb-8 block">Creative Web Design — Dubai</span>
+            <h1 className="text-5xl md:text-8xl font-serif text-white tracking-tight leading-tight">
+              Beyond Design.<br /><span className="italic text-white/40">Into Experience.</span>
+            </h1>
+            <div className="flex flex-wrap gap-4 justify-center mt-12">
+              <Link to="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">Start Your Project <ArrowRight className="w-4 h-4" /></Link>
+              <Link to="/portfolio" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:border-white transition-colors">View Creative Work</Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Image Parallax Section */}
+      <section className="h-[60vh] relative overflow-hidden my-20">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&q=75&w=1200)' }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+          <h2 className="text-4xl md:text-7xl font-serif text-white tracking-tight">
+            Art Meets <span className="italic">Logic</span>
+          </h2>
+        </div>
+        <img 
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&q=75&w=1200" 
+          alt="Bespoke Creative Web Design and Cinematic Experiences Dubai" 
+          className="sr-only"
+          loading="lazy"
+        />
       </section>
 
       <section className="px-6 md:px-12 py-24 bg-white/[0.02] border-t border-white/5">
@@ -79,25 +146,44 @@ export default function CreativeWebDesign() {
         </div>
       </section>
 
-      <section className="px-6 md:px-12 py-24 bg-white/[0.02] border-t border-white/5">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-serif mb-12">Frequently Asked Questions</h2>
-          <div className="space-y-6">
-            {faqs.map((faq, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="border border-white/10 rounded-2xl p-8">
-                <h3 className="font-bold text-lg mb-3">{faq.q}</h3>
-                <p className="text-white/50 font-light text-sm leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Hidden SEO Image */}
+      <img 
+        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&q=75&w=1200" 
+        alt="Bespoke Creative Web Design and Cinematic Experiences Dubai | Award Winning Agency" 
+        className="sr-only"
+        loading="lazy"
+      />
 
       <section className="px-6 md:px-12 py-24 border-t border-white/5">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-serif mb-6">Ready to be unforgettable?</h2>
           <p className="text-white/50 text-lg font-light mb-10">Let's create a digital experience your industry has never seen before.</p>
           <Link to="/contact" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">Start The Conversation <ArrowRight className="w-4 h-4" /></Link>
+        </div>
+      </section>
+      {/* Strategic Synergy Grid */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="micro-label block mb-4">Strategic Synergy</span>
+              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
+            </div>
+            <Link to="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "UI/UX Design", link: "/services/ui-ux-design-agency-dubai", desc: "User-centric interaction patterns for complex digital ecosystems." },
+              { title: "Graphic Design", link: "/services/graphic-design-agency-dubai", desc: "Comprehensive brand assets and visual collateral for multi-channel impact." },
+              { title: "Web Hosting", link: "/services/premium-web-hosting-uae", desc: "Ultra-fast, secure infrastructure for your creative digital storefront." }
+            ].map((s, i) => (
+              <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>

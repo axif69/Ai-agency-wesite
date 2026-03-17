@@ -32,6 +32,13 @@ export default function Branding() {
   return (
     <div className="pt-20">
       <SEO
+        faqSchema={[
+          { question: "How long does a branding project take in Dubai?", answer: "A complete brand identity project (logo, typography, brand guidelines) typically takes 3–5 weeks. Full brand strategy overhauls may take 8–12 weeks depending on scope." },
+          { question: "Do you create bilingual Arabic/English brand identities?", answer: "Yes. We specialize in dual-language brand systems that work beautifully in both Arabic RTL and English LTR contexts, essential for UAE and GCC market success." },
+          { question: "What deliverables are included in a branding package?", answer: "Every branding project includes: logo suite (primary, secondary, icon), brand colour palette, typography system, brand guidelines document (PDF), and social media templates." },
+          { question: "Can you rebrand an existing business?", answer: "Absolutely. We handle both new brand creation and complete rebrands. Our rebranding process includes a full audit of your existing brand equity before making any strategic changes." }
+        ]}
+        schema={{ "@context": "https://schema.org", "@type": "Service", "name": "Corporate Branding & Identity Design", "provider": { "@type": "LocalBusiness", "@id": "https://asifdigital.agency" }, "areaServed": [{ "@type": "City", "name": "Dubai" }, { "@type": "City", "name": "Sharjah" }] }}
         title="Brand Identity & Strategy Agency Dubai | Asif Digital"
         description="Premium brand identity design for Dubai and UAE businesses. Logo design, brand strategy, guidelines, and complete visual identity systems. Bilingual Arabic/English specialists."
       />
@@ -55,6 +62,26 @@ export default function Branding() {
             </Link>
           </div>
         </motion.div>
+      </section>
+
+      {/* Image Parallax Section */}
+      <section className="h-[60vh] relative overflow-hidden my-20 -mx-6 md:-mx-12">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format,compress&fm=webp&q=75&w=1200)' }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+          <h2 className="text-4xl md:text-7xl font-serif text-white tracking-tight text-center px-6">
+            Legacy <span className="italic">Defined.</span>
+          </h2>
+        </div>
+        <img 
+          src="https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format,compress&fm=webp&q=75&w=1200" 
+          alt="Premium Brand Identity and Strategy Design Agency Dubai" 
+          className="sr-only"
+          loading="lazy"
+        />
       </section>
 
       {/* Stats */}
@@ -110,13 +137,21 @@ export default function Branding() {
       {/* FAQs */}
       <section className="px-6 md:px-12 py-24 bg-white/[0.02] border-t border-white/5">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-serif mb-12">Frequently Asked Questions</h2>
+          <div className="text-center mb-16">
+            <span className="micro-label block mb-4 text-white/40 font-bold tracking-[0.3em] uppercase">Common Inquiries</span>
+            <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Branding & Strategy FAQs</h2>
+          </div>
           <div className="space-y-6">
             {faqs.map((faq, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="border border-white/10 rounded-2xl p-8">
-                <h3 className="font-bold text-lg mb-3">{faq.q}</h3>
-                <p className="text-white/50 font-light text-sm leading-relaxed">{faq.a}</p>
-              </motion.div>
+              <details key={i} className="group border-b border-white/10 pb-6">
+                <summary className="text-xl font-serif cursor-pointer list-none flex justify-between items-center hover:text-white/70 transition-colors">
+                  {faq.q}
+                  <span className="text-2xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <p className="mt-4 text-white/50 font-light leading-relaxed text-sm">
+                  {faq.a}
+                </p>
+              </details>
             ))}
           </div>
         </div>
@@ -130,6 +165,32 @@ export default function Branding() {
           <Link to="/contact" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
             Book Free Consultation <ArrowRight className="w-4 h-4" />
           </Link>
+        </div>
+      </section>
+
+      {/* Strategic Synergy Grid */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="micro-label block mb-4">Strategic Synergy</span>
+              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
+            </div>
+            <Link to="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Graphic Design", link: "/services/graphic-design-agency-dubai", desc: "Extend your new brand across marketing collateral and social assets." },
+              { title: "Web Development", link: "/services/website-development-dubai-sharjah", desc: "Bring your digital identity to life with a high-performance web platform." },
+              { title: "App Design", link: "/services/mobile-app-development-agency-dubai", desc: "Create a signature mobile experience that reflects your brand's DNA." }
+            ].map((s, i) => (
+              <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>

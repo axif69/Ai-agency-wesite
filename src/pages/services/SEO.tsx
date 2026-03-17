@@ -82,6 +82,26 @@ export default function SEOPage() {
         </motion.div>
       </section>
 
+      {/* Image Parallax Section */}
+      <section className="h-[60vh] relative overflow-hidden my-20">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format,compress&fm=webp&q=75&w=1200)' }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+          <h2 className="text-4xl md:text-7xl font-serif text-white tracking-tight">
+            Visibility <span className="italic">Redefined</span>
+          </h2>
+        </div>
+        <img 
+          src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format,compress&fm=webp&q=75&w=1200" 
+          alt="Expert SEO and Search Engine Marketing Agency Dubai" 
+          className="sr-only"
+          loading="lazy"
+        />
+      </section>
+
       <section className="px-6 md:px-12 py-16 border-t border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           {[{ n: "87%", l: "of Clients Reach Page 1" }, { n: "90 days", l: "Avg. Time to First Rankings" }, { n: "320%", l: "Avg Organic Traffic Growth" }, { n: "5+", l: "Years UAE SEO Experience" }].map((s, i) => (
@@ -134,40 +154,35 @@ export default function SEOPage() {
         </div>
       </section>
 
-      <section className="px-6 md:px-12 py-24 bg-white/[0.02] border-t border-white/5">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Expert Insights</span>
-            <h2 className="text-4xl font-serif">SEO Frequently Asked Questions</h2>
+      {/* Hidden SEO Image */}
+      <img 
+        src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format,compress&fm=webp&q=75&w=1200" 
+        alt="Best SEO Agency Dubai Sharjah | Rank 1 on Google UAE" 
+        className="sr-only"
+        loading="lazy"
+      />
+
+      {/* Strategic Synergy Grid */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="micro-label block mb-4">Strategic Synergy</span>
+              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
+            </div>
+            <Link to="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
           </div>
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              {
-                q: "How long until I see results on the first page of Google?",
-                a: "SEO is a medium-to-long-term investment. Most clients see significant ranking improvements within the first 90 days, with competitive Dubai keywords typically reaching page 1 within 4-6 months."
-              },
-              {
-                q: "Do you offer 'Guaranteed' page 1 rankings?",
-                a: "While no agency can 'own' Google, our data-backed methodology has a 100% success rate for long-term clients. If we don't hit the agreed growth targets within the first 6 months, we work for free until we do."
-              },
-              {
-                q: "Will you provide backlinks as part of the service?",
-                a: "Yes. High-authority, clean link building is a core pillar of our strategy. We focus on digital PR and guest outreach on authoritative UAE and global tech/business publications."
-              },
-              {
-                q: "How is SEO different from PPC (Google Ads)?",
-                a: "PPC is immediate but costs money for every click. SEO is an asset that builds over time; once you rank, the traffic is 'free' and carries much higher trust and conversion intent than ads."
-              }
-            ].map((faq, i) => (
-              <details key={i} className="group border-b border-white/10 pb-6">
-                <summary className="text-xl font-serif cursor-pointer list-none flex justify-between items-center hover:text-white/70 transition-colors">
-                  {faq.q}
-                  <span className="text-2xl group-open:rotate-45 transition-transform">+</span>
-                </summary>
-                <p className="mt-4 text-white/70 font-light leading-relaxed text-sm">
-                  {faq.a}
-                </p>
-              </details>
+              { title: "SEO + AEO", link: "/services/seo-aeo-specialist-dubai", desc: "The future of search: optimizing for AI-driven answer engines." },
+              { title: "PPC Ads", link: "/services/ppc-google-meta-ads-agency-dubai", desc: "Instant traffic and leads while your organic authority builds." },
+              { title: "SaaS Dev", link: "/services/saas-development-specialist-uae", desc: "Build unshakeable platforms that search engines love to rank." }
+            ].map((s, i) => (
+              <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
+              </Link>
             ))}
           </div>
         </div>

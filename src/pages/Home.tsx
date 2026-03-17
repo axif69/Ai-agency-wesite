@@ -97,12 +97,13 @@ export default function Home() {
         schema={{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          "name": "Asif Digital",
+          "name": "Asif Digital Agency",
           "image": "https://asifdigital.agency/logo.png",
-          "description": "Premium AI Agency & Digital Transformation Firm specializing in Sovereign Architecture and Business Continuity in Dubai and Sharjah.",
+          "description": "Elite AI Agency & Digital Transformation Firm specializing in Sovereign Architecture, Business Continuity, and AEO in the UAE.",
           "@id": "https://asifdigital.agency",
           "url": "https://asifdigital.agency",
           "telephone": "+971545866094",
+          "priceRange": "AED 5,000 - AED 500,000",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Business Bay",
@@ -116,22 +117,31 @@ export default function Home() {
             "latitude": 25.185,
             "longitude": 55.272
           },
-          "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday",
-              "Sunday"
-            ],
-            "opens": "00:00",
-            "closes": "23:59"
-          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Saturday", "Sunday"],
+              "opens": "10:00",
+              "closes": "14:00"
+            }
+          ],
+          "areaServed": [
+            { "@type": "City", "name": "Dubai" },
+            { "@type": "City", "name": "Sharjah" },
+            { "@type": "City", "name": "Abu Dhabi" },
+            { "@type": "City", "name": "Ajman" },
+            { "@type": "Country", "name": "United Arab Emirates" }
+          ],
           "sameAs": [
-            "https://www.linkedin.com/company/asif-digital"
+            "https://www.linkedin.com/company/asif-digital",
+            "https://twitter.com/asifdigitaluae",
+            "https://www.instagram.com/asifdigital.agency"
           ]
         }}
       />

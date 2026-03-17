@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import SEO from "../../components/SEO";
 import { Search, TrendingUp, Target, BarChart, Globe, CheckCircle2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
   {
@@ -76,6 +77,24 @@ export default function SeoAeo() {
         description="Top-rated SEO and Answer Engine Optimization (AEO) services in Sharjah and Dubai. Dominate local Maps, Google Search, and AI Engines like ChatGPT."
         keywords="SEO Agency Dubai, Best SEO Services Sharjah, Answer Engine Optimization UAE, Local SEO Dubai, Technical SEO Expert"
         schema={serviceSchema}
+        faqSchema={[
+          {
+            question: "What is the difference between SEO and AEO?",
+            answer: "SEO (Search Engine Optimization) focuses on ranking your website on traditional search engines like Google. AEO (Answer Engine Optimization) focuses on structuring your content so that AI engines like ChatGPT, Gemini, and Claude provide your brand as the direct answer to user queries."
+          },
+          {
+            question: "How long does it take to see SEO results in Dubai?",
+            answer: "While technical fixes show impact in weeks, significant ranking improvements for competitive keywords in Dubai and Sharjah typically take 3 to 6 months of consistent optimization and authority building."
+          },
+          {
+            question: "Do you specialize in local UAE SEO?",
+            answer: "Yes. We specialize in dominating the 'Local Pack' (Google Maps) for businesses in Dubai, Sharjah, and Abu Dhabi, ensuring you capture high-intent local foot traffic and inquiries."
+          },
+          {
+            question: "Is AEO necessary for my business?",
+            answer: "If your customers use voice search or AI assistants to find services, AEO is critical. It ensures your business is the 'recommended' choice when users ask conversational questions to their devices."
+          }
+        ]}
       />
       
       {/* Hero Section */}
@@ -115,6 +134,12 @@ export default function SeoAeo() {
             Be the <span className="italic">Answer</span>
           </h2>
         </div>
+        <img 
+          src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format,compress&fm=webp&q=75&w=1200" 
+          alt="AEO Analytics and AI Search Strategy Dubai" 
+          className="sr-only"
+          loading="lazy"
+        />
       </section>
 
       {/* Features Section */}
@@ -180,6 +205,38 @@ export default function SeoAeo() {
               )}
             </motion.div>
           ))}
+        </div>
+      </section>
+        <img 
+          src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format,compress&fm=webp&q=75&w=1200" 
+          alt="Expert SEO and AEO Search Strategy Agency Dubai Sharjah" 
+          className="sr-only"
+          loading="lazy"
+        />
+
+      {/* Strategic Synergy Grid */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="micro-label block mb-4">Strategic Synergy</span>
+              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
+            </div>
+            <Link to="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "PPC & Google Ads", link: "/services/ppc-google-ads-agency-dubai", desc: "Instant visibility to complement your long-term organic growth." },
+              { title: "Social Media Management", link: "/services/social-media-management-dubai-uae", desc: "Building brand signals that Google uses to verify authority." },
+              { title: "Web Development", link: "/services/web-development-dubai-uae", desc: "High-performance architecture that passes all Core Web Vitals." }
+            ].map((s, i) => (
+              <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>

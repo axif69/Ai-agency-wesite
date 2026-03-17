@@ -31,23 +31,46 @@ export default function AiMobileApps() {
         description="Build premium, intelligent mobile applications with AI integration. Top rated iOS and Android app developers serving Sharjah, Dubai and the UAE."
         keywords="App Development Agency Dubai, Mobile App Developer Sharjah, iOS Developer UAE, Android App Development Dubai, AI Mobile Apps"
         schema={serviceSchema}
+        faqSchema={[
+          {
+            question: "What is the typical cost of AI mobile app development in the UAE?",
+            answer: "The cost varies depending on complexity, but a premium AI-integrated mobile app typically starts from AED 35,000 for a cross-platform (iOS & Android) MVP with basic AI functionality."
+          },
+          {
+            question: "How long does it take to build an AI mobile app?",
+            answer: "A standard AI mobile application takes between 12 to 16 weeks from discovery and UI/UX design to final App Store and Play Store launch."
+          },
+          {
+            question: "Do you handle App Store and Play Store submissions?",
+            answer: "Yes. We manage the entire submission process, ensuring your app meets all technical and design guidelines for both Apple and Google platforms."
+          },
+          {
+            question: "Can you integrate custom AI models into mobile apps?",
+            answer: "Absolutely. We specialize in integrating advanced AI features like computer vision, NLP, and predictive algorithms directly into mobile experiences for a competitive edge."
+          }
+        ]}
       />
       
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="mb-24"
-      >
-        <span className="micro-label block mb-4">Service Details</span>
-        <div className="flex items-center gap-6 mb-8">
-          <Smartphone className="w-12 h-12 text-white/90" role="img" aria-label="Smartphone Icon" />
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">Dubai & Sharjah<br/><span className="text-white/80 italic text-white/90">AI Mobile Apps</span></h1>
+      {/* Hero Section */}
+      <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format,compress&fm=webp&q=75&w=1200)' }}
+        />
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="micro-label mb-8 block">Intelligence on the Move</span>
+            <h1 className="text-4xl md:text-8xl font-serif text-white tracking-tight leading-tight">
+              Dubai & Sharjah<br/><span className="italic text-white/80">AI Mobile Apps</span>
+            </h1>
+          </motion.div>
         </div>
-        <p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl">
-          Intelligent, cross-platform iOS and Android applications that leverage machine learning to dominate the competitive UAE mobile market.
-        </p>
-      </motion.div>
+      </section>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-32">
         <motion.div 
@@ -59,9 +82,10 @@ export default function AiMobileApps() {
         >
           <img 
             src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format,compress&fm=webp&q=75&w=1200" 
-            alt="AI Mobile Apps" 
+            alt="AI Mobile App Development Agency Dubai and Sharjah" 
             className="parallax-img"
             referrerPolicy="no-referrer"
+            loading="lazy"
           />
         </motion.div>
         
@@ -133,6 +157,38 @@ export default function AiMobileApps() {
               <p className="text-white/90 font-light leading-relaxed">{step.desc}</p>
             </motion.div>
           ))}
+        </div>
+      </section>
+      {/* Hidden SEO Image */}
+      <img 
+        src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format,compress&fm=webp&q=75&w=1200" 
+        alt="Top AI Mobile App Development Agency Dubai Sharjah | iOS & Android Developers" 
+        className="sr-only"
+        loading="lazy"
+      />
+      {/* Strategic Synergy Grid */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="micro-label block mb-4">Strategic Synergy</span>
+              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
+            </div>
+            <Link to="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Web Development", link: "/services/website-development-dubai-sharjah", desc: "Convert your mobile users with a high-performance, responsive web presence." },
+              { title: "SaaS Development", link: "/services/saas-development-specialist-uae", desc: "Build unshakeable cloud-native backends to power your mobile ecosystem." },
+              { title: "AI Automation", link: "/services/ai-automation-agency-dubai-uae", desc: "Integrate intelligent backend agents to automate mobile user workflows." }
+            ].map((s, i) => (
+              <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>

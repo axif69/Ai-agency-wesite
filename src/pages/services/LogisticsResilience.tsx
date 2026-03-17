@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
 import SEO from "../../components/SEO";
 import { ArrowRight, Map, Truck, BarChart, HardDrive, ShieldAlert, Cpu } from "lucide-react";
+import { Link } from "react-router-dom";
 import Meteors from "../../components/animations/Meteors";
 
 export default function LogisticsResilience() {
@@ -11,12 +11,46 @@ export default function LogisticsResilience() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
+  const faqs = [
+    {
+      question: "How does AI improve logistics resilience in the UAE?",
+      answer: "Our AI agents monitor regional data feeds in real-time to predict disruptions. They can autonomously analyze thousands of rerouting permutations and execute bookings via API in seconds, far faster than human dispatchers."
+    },
+    {
+      question: "Is the logistics AI hosted locally in the UAE?",
+      answer: "Yes. We prioritize UAE data sovereignty by deploying on local infrastructure like G42 Khazna compute and AWS UAE regions, ensuring low latency and protection from global network issues."
+    },
+    {
+      question: "Can these agents integrate with my existing ERP?",
+      answer: "Absolutely. Our agents are built to bridge sea, land, and air APIs natively, integrating directly with your existing logistics management software or ERP for a unified conversational interface."
+    },
+    {
+      question: "What is the typical deployment timeline?",
+      answer: "A standard supply chain resilience audit and agent pilot deployment typically takes 45 to 60 days, depending on the complexity of your current integrations."
+    }
+  ];
+
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
       <SEO 
         title="Logistics AI Resilience UAE | Sovereign Supply Chain Architecture"
         description="Automate supply chain rerouting and logistics management. 24/7 autonomous operations for trade hubs in Dubai and Sharjah to counter cargo disruption."
         keywords="AI supply chain optimization, Logistics rerouting UAE, Jebel Ali AI automation, Sovereign logistics AI UAE"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Logistics AI Resilience",
+          "provider": {
+            "@type": "LocalBusiness",
+            "@id": "https://asifdigital.agency"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Dubai" },
+            { "@type": "City", "name": "Sharjah" }
+          ],
+          "description": "Autonomous supply chain rerouting and logistics management agents for UAE trade hubs, ensuring operational resilience against disruptions."
+        }}
+        faqSchema={faqs}
       />
       
       {/* ── 1. Immersive Hero ── */}
@@ -34,6 +68,13 @@ export default function LogisticsResilience() {
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="text-5xl md:text-7xl lg:text-8xl font-serif tracking-tight mb-8 leading-[0.9]">
             Logistics & Cargo <br/><span className="italic text-white/40">Resilience.</span>
           </motion.h1>
+          {/* Hidden SEO Image */}
+          <img 
+            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format,compress&fm=webp&q=75&w=1200" 
+            alt="Autonomous Logistics and Supply Chain Resilience AI UAE Dubai" 
+            className="sr-only"
+            loading="lazy"
+          />
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }} className="text-xl md:text-2xl text-white/60 font-light leading-relaxed max-w-3xl mx-auto mb-10">
             When maritime choke points close, a human dispatcher takes 48 hours to secure a reroute. A Sovereign logistics Agentic swarm takes 2.3 seconds. We build war-agnostic supply chain architectures.
           </motion.p>
@@ -74,74 +115,57 @@ export default function LogisticsResilience() {
               <div className="text-[10px] uppercase tracking-widest text-blue-400 font-bold mb-4">Agentic Response Time</div>
               <p className="text-xs text-white/50">Time taken to analyze 1,400 alternative routing permutations and execute a booking API call.</p>
             </div>
-            <div className="p-8 border border-white/10 bg-white/[0.02] rounded-2xl sm:col-span-2">
-              <div className="text-3xl font-serif text-white mb-2">22% Cost Reduction</div>
-              <div className="text-[10px] uppercase tracking-widest text-white/50 font-bold mb-4">Operational Alpha</div>
-              <p className="text-xs text-white/50">By tracking global bunker fuel prices and dynamic slot availability simultaneously without fatigue.</p>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ── 3. Technical Implementation Overview ── */}
-      <section className="py-32 px-6">
-        <div className="max-w-7xl mx-auto text-center mb-20">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 mb-4 block">Unshakeable Systems</span>
-          <h2 className="text-4xl md:text-6xl font-serif">UAE Data Sovereignty Meets <br/><span className="italic text-white/40">Global Procurement.</span></h2>
-          <p className="text-white/60 max-w-2xl mx-auto mt-6 text-lg">Your agent swarms operate on protected digital soil. We integrate directly into AWS UAE Region and G42 Khazna compute, assuring zero latency and protection from global fiber-optic sabotage.</p>
-        </div>
-        
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          <div className="p-8 border border-white/10 rounded-2xl flex flex-col items-center text-center bg-white/[0.02]">
-            <Map className="w-10 h-10 text-white/30 mb-6" />
-            <h3 className="text-xl font-bold mb-3">Geospatial Intelligence</h3>
-            <p className="text-sm text-white/50 font-light">Direct integration with satellite routing APIs, predicting delays caused by port congestion at Jebel Ali or globally.</p>
+      {/* FAQ Section */}
+      <section className="py-24 bg-white/[0.02] border-t border-white/5">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="micro-label block mb-4 text-blue-400 text-[10px] font-bold uppercase tracking-widest">Common Inquiries</span>
+            <h2 className="text-4xl font-serif tracking-tight">Logistics Resilience FAQs</h2>
           </div>
-          <div className="p-8 border border-white/10 rounded-2xl flex flex-col items-center text-center bg-white/[0.02]">
-             <Cpu className="w-10 h-10 text-white/30 mb-6" />
-            <h3 className="text-xl font-bold mb-3">Edge Compute</h3>
-            <p className="text-sm text-white/50 font-light">Critical routing fallback systems deployed locally on edge networks within UAE borders to maintain functioning ports even during cloud outages.</p>
-          </div>
-          <div className="p-8 border border-white/10 rounded-2xl flex flex-col items-center text-center bg-white/[0.02]">
-            <HardDrive className="w-10 h-10 text-white/30 mb-6" />
-            <h3 className="text-xl font-bold mb-3">Multi-Modal Integration</h3>
-            <p className="text-sm text-white/50 font-light">Bridging sea, land, and air APIs natively into one conversational WhatsApp or Slack interface for rapid executive decisions.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4. Capabilities ── */}
-      <section className="py-32 px-6 border-t border-white/5 bg-[#080808]">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif mb-6">Autonomous Workflows <span className="italic text-white/40">in Action.</span></h2>
-          </div>
-
           <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-              <div className="p-10 border border-white/10 rounded-3xl bg-[#0a0a0a]">
-                <Truck className="w-10 h-10 text-white/50 mb-6" />
-                <h3 className="text-2xl font-serif mb-4">The 24/7 Digital Dispatcher</h3>
-                <p className="text-white/50 font-light mb-6">Human dispatchers leave at 6 PM. Autonomous dispatchers coordinate trucking arrivals at Khalifa Port and Jebel Ali directly with port customs systems in real time. The agent autonomously modifies loading bay schedules automatically if geofencing indicates a truck delay.</p>
-              </div>
-              
-              <div className="p-10 border border-white/10 rounded-3xl bg-[#0a0a0a]">
-                <BarChart className="w-10 h-10 text-white/50 mb-6" />
-                <h3 className="text-2xl font-serif mb-4">Spot Market Predation</h3>
-                <p className="text-white/50 font-light mb-6">AI models dynamically scrape sea freight spot prices worldwide. When a cancellation opens up a TEU slot at a discounted rate, the system secures the booking via API instantly before human brokers are even notified.</p>
-              </div>
-            </div>
+            {faqs.map((faq, i) => (
+              <details key={i} className="group border-b border-white/10 pb-6">
+                <summary className="text-xl font-serif cursor-pointer list-none flex justify-between items-center hover:text-blue-400 transition-colors">
+                  {faq.question}
+                  <span className="text-2xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <p className="mt-4 text-white/60 font-light leading-relaxed text-sm">
+                  {faq.answer}
+                </p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── 5. Final CTA ── */}
-      <section className="py-40 px-6 max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl md:text-6xl font-serif mb-8">Disruption is inevitable. <br/><span className="italic text-white/40">Paralysis is a choice.</span></h2>
-        <p className="text-lg text-white/50 font-light mb-12">Fortify your logistics architecture with Sovereign AI in 60 days. Secure the chain today.</p>
-        <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} className="bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 mx-auto">
-          Begin Resilience Audit <ArrowRight className="w-4 h-4" />
-        </button>
+      {/* Strategic Synergy Grid */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="micro-label block mb-4 text-[10px] font-bold uppercase tracking-widest">Strategic Synergy</span>
+              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
+            </div>
+            <Link to="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Agentic Finance", link: "/services/agentic-finance-compliance-automation-uae", desc: "Automate financial audits and trade compliance alongside logistics." },
+              { title: "SaaS Development", link: "/services/saas-development-specialist-uae", desc: "Build unshakeable cloud infrastructure to power your logistics agents." },
+              { title: "AI HR & Workforce", link: "/services/ai-hr-emiratization-tracking-uae", desc: "Manage your field workforce and personnel tracking with intelligent AI agents." }
+            ].map((s, i) => (
+              <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   );

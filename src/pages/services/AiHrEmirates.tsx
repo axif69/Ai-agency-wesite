@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
 import SEO from "../../components/SEO";
 import { ArrowRight, Users, CheckCircle, Clock, Database, Globe, AlertTriangle, ShieldCheck } from "lucide-react";
 import SpotlightCard from "../../components/animations/SpotlightCard";
@@ -17,6 +17,34 @@ export default function AiHrEmirates() {
         title="AI HR & Emiratization Tracking Dubai UAE | Sovereign Architecture"
         description="Manage Emiratization quotas autonomously. Protect your business from AED 108,000+ fines. Accelerate onboarding with AI HR Agents hosted on UAE native compute."
         keywords="Emiratization software UAE, AI HR agent Dubai, Automate HR UAE, WPS compliance UAE, Nafis software tracking"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "AI HR & Emiratization Tracking",
+          "provider": {
+            "@type": "LocalBusiness",
+            "@id": "https://asifdigital.agency"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Dubai" },
+            { "@type": "City", "name": "Abu Dhabi" }
+          ],
+          "description": "Autonomous AI HR agents for Emiratization quota management, visa lifecycle tracking, and onboarding automation in the UAE."
+        }}
+        faqSchema={[
+          {
+            question: "How does the AI help with Emiratization quotas?",
+            answer: "Our AI agents sync with your current headcount and MoHRE data to calculate real-time quotas, pre-screen Emirati candidates from Nafis, and alert you before compliance drops below federal thresholds."
+          },
+          {
+            question: "Is employee data stored within the UAE?",
+            answer: "Yes. We use UAE-native sovereign infrastructure (G42/Khazna) to ensure all PII data and employee records remain within the country, complying with UAE Data Protection Laws."
+          },
+          {
+            question: "Can the AI automate the onboarding process?",
+            answer: "Absolutely. The agents can verify Emirates IDs, draft offer letters, and trigger visa staging processes instantly, reducing onboarding time from days to minutes."
+          }
+        ]}
       />
       
       {/* ── 1. Immersive Hero ── */}
@@ -43,6 +71,14 @@ export default function AiHrEmirates() {
             </button>
           </motion.div>
         </motion.div>
+        
+        <img 
+            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format,compress&fm=webp&q=75&w=1200" 
+            alt="AI Mobile App Development Agency Dubai and Sharjah" 
+            className="parallax-img"
+            referrerPolicy="no-referrer"
+            loading="lazy"
+          />
         
         {/* Background gradient effects */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)] pointer-events-none blur-[100px]" />
@@ -161,6 +197,78 @@ export default function AiHrEmirates() {
         <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} aria-label="Begin HR Architecture Audit and Start Your AI HR Project" className="bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 mx-auto">
           Begin HR Architecture Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
         </button>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="px-6 md:px-12 py-24 bg-white/[0.02] border-t border-white/5">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="micro-label block mb-4">Common Inquiries</span>
+            <h2 className="text-4xl font-serif tracking-tight">AI HR & Compliance FAQs</h2>
+          </div>
+          <div className="space-y-6">
+            {[
+              {
+                q: "How does the AI help with Emiratization quotas?",
+                a: "Our AI agents sync with your headcount data to calculate real-time quotas, pre-screen Emirati candidates from Nafis, and alert you before compliance drops below federal thresholds."
+              },
+              {
+                q: "Is employee data stored within the UAE?",
+                a: "Yes. We use UAE-native sovereign infrastructure (G42/Khazna) to ensure all PII data remains within the country, complying with UAE Data Protection Laws."
+              },
+              {
+                q: "Can the AI automate the onboarding process?",
+                a: "Absolutely. The agents verify Emirates IDs, draft offer letters, and trigger visa staging processes instantly, reducing onboarding time from days to minutes."
+              },
+              {
+                q: "How does WPS automation work?",
+                a: "The AI agent performs pre-flight checks on all payroll data against MoHRE SIFF file requirements, guaranteeing a 100% acceptance rate from banks."
+              }
+            ].map((faq, i) => (
+              <details key={i} className="group border-b border-white/10 pb-6">
+                <summary className="text-xl font-serif cursor-pointer list-none flex justify-between items-center hover:text-white/70 transition-colors">
+                  {faq.q}
+                  <span className="text-2xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <p className="mt-4 text-white/70 font-light leading-relaxed text-sm">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+        <img 
+          src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format,compress&fm=webp&q=75&w=1200" 
+          alt="AI HR Management and Emiratization Tracking Software Dubai" 
+          className="sr-only"
+          loading="lazy"
+        />
+      </section>
+
+      {/* Strategic Synergy Grid */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="micro-label block mb-4">Strategic Synergy</span>
+              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
+            </div>
+            <Link to="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Agentic Finance", link: "/services/agentic-finance-compliance-automation-uae", desc: "Automate audits and compliance alongside your workforce management." },
+              { title: "SaaS Development", link: "/services/saas-development-specialist-uae", desc: "Build unshakeable internal platforms for secure HR operations." },
+              { title: "Logistics Resilience", link: "/services/ai-logistics-supply-chain-resilience", desc: "Optimize your field workforce and supply chain personnel tracking." }
+            ].map((s, i) => (
+              <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
+                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   );
