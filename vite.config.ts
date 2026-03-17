@@ -5,12 +5,12 @@ import {defineConfig, loadEnv} from 'vite';
 
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const groqApiKey = process.env.VITE_GROQ_API_KEY || env.VITE_GROQ_API_KEY || '';
+  const geminiApiKey = process.env.VITE_GEMINI_API_KEY || env.VITE_GEMINI_API_KEY || '';
 
   return {
     plugins: [react(), tailwindcss()],
     define: {
-      'import.meta.env.VITE_GROQ_API_KEY': JSON.stringify(groqApiKey),
+      'import.meta.env.VITE_GEMINI_API_KEY': JSON.stringify(geminiApiKey),
     },
     resolve: {
       alias: {

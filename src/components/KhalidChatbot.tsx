@@ -160,15 +160,6 @@ export default function KhalidChatbot() {
       console.log("Khalid Debug: Initializing with API Key prefix:", apiKey.substring(0, 7));
       const genAI = new GoogleGenerativeAI(apiKey);
       
-      // Attempting the most stable model identifier with a fallback
-      let model;
-      try {
-        model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", systemInstruction: SYSTEM_INSTRUCTION });
-      } catch (e) {
-        console.warn("Flash failed, falling back to Pro:", e);
-        model = genAI.getGenerativeModel({ model: "gemini-1.5-pro", systemInstruction: SYSTEM_INSTRUCTION });
-      }
-
       const apiHistory = messages
         .filter((m, index) => !(index === 0 && m.role === 'model'))
         .map(m => ({
@@ -176,9 +167,42 @@ export default function KhalidChatbot() {
           parts: [{ text: m.text }],
         }));
 
-      const chat = model.startChat({ history: apiHistory });
-      const result = await chat.sendMessage(userMessage);
-      const resultText = result.response.text();
+      // Try these models in order if one fails with 404
+      const modelsToTry = ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-pro"];
+      let resultText = "";
+      let lastError = null;
+
+      for (const modelName of modelsToTry) {
+        try {
+          console.log(`Khalid Debug: Attempting contact via ${modelName}...`);
+          const model = genAI.getGenerativeModel({ 
+            model: modelName,
+            systemInstruction: SYSTEM_INSTRUCTION
+          });
+
+          const chat = model.startChat({ history: apiHistory });
+          const result = await chat.sendMessage(userMessage);
+          resultText = result.response.text();
+          
+          if (resultText) {
+            console.log(`Khalid Debug: Success with ${modelName}`);
+            break; 
+          }
+        } catch (e: any) {
+          lastError = e;
+          console.warn(`Khalid Debug: ${modelName} failed.`, e.message);
+          if (!e.message?.includes('404')) {
+             // If it's not a 404 (e.g. 429 quota), don't bother trying others if they share same quota
+             break;
+          }
+          // Continue to next model if 404
+        }
+      }
+
+      if (!resultText) {
+        throw lastError || new Error("All AI models failed to respond.");
+      }
+
       const { cleanText, suggestions } = parseResponse(resultText);
       
       if (isSpeaking && cleanText) {
@@ -195,9 +219,17 @@ export default function KhalidChatbot() {
       if (lowerText.includes("contact") || lowerText.includes("phone") || lowerText.includes("whatsapp") || lowerText.includes("reach out")) {
         setLeadData(prev => ({ ...prev, contact: userMessage }));
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Chatbot Error:", error);
-      setMessages(prev => [...prev, { role: 'model', text: "Sorry, I'm having some trouble connecting to Gemini. Please check your API key!" }]);
+      let userFriendlyMessage = "Sorry, I'm having some trouble connecting to Gemini. Please check your API key!";
+      
+      if (error.message?.includes('404')) {
+        userFriendlyMessage = "The AI model requested was not found (404). This usually means the API is not fully enabled in your Google Project.";
+      } else if (error.message?.includes('quota')) {
+        userFriendlyMessage = "We've hit the Gemini free tier limit. Please try again in a moment.";
+      }
+
+      setMessages(prev => [...prev, { role: 'model', text: userFriendlyMessage }]);
     } finally {
       setIsLoading(false);
     }
