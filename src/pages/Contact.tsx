@@ -1,13 +1,13 @@
 import { motion } from "motion/react";
 import SEO from "../components/SEO";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, Globe, Phone, Send } from "lucide-react";
 
 export default function Contact() {
   return (
     <div className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
       <SEO 
-        title="Contact Asif Khan" 
-        description="Get in touch with Asif Khan for AI Web Development, Digital Marketing, and SaaS solutions in Sharjah, UAE."
+        title="Contact Asif Digital" 
+        description="Get in touch with Asif Digital for AI Web Development, Digital Marketing, and SaaS solutions across the GCC territory."
       />
       
       <motion.div 
@@ -56,11 +56,11 @@ export default function Contact() {
               
               <div className="flex items-start gap-6 group">
                 <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-500">
-                  <MapPin className="w-5 h-5" />
+                  <Globe className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-xs uppercase tracking-widest font-semibold text-white/40 mb-2">Address</h3>
-                  <p className="text-xl font-light text-white/80">Muwaileh, Ind area, Maliha Rd, Sharjah, UAE</p>
+                  <h3 className="text-xs uppercase tracking-widest font-semibold text-white/40 mb-2">Location</h3>
+                  <p className="text-xl font-light text-white/80 italic">Operating across the GCC territory.</p>
                 </div>
               </div>
             </div>

@@ -36,7 +36,7 @@ export default function About() {
         <span className="micro-label block mb-4">The Agency</span>
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8vw] font-serif leading-tight tracking-tight mb-8">About Asif Digital</h1>
         <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl">
-          A full-service digital agency headquartered in Sharjah, UAE — delivering web, marketing, creative, and AI services to businesses across Dubai, Sharjah, Abu Dhabi, and beyond.
+          A full-service digital agency delivering web, marketing, creative, and AI services to businesses across Dubai, Sharjah, Abu Dhabi, and the wider GCC region.
         </p>
       </motion.div>
 
@@ -67,7 +67,7 @@ export default function About() {
                 What started as a boutique web and marketing practice has grown into a full-service virtual agency with specialist teams across 13 disciplines — web design, development, ecommerce, SEO, PPC, social media, AI automation, branding, graphic design, and UI/UX.
               </p>
               <p>
-                We're headquartered in Sharjah with clients across Dubai, Abu Dhabi, Ajman, and internationally. 150+ businesses served. One goal: your growth.
+                We operate across the UAE and the wider GCC territory, serving clients in Dubai, Abu Dhabi, Sharjah, and internationally. 150+ businesses served. One goal: your growth.
               </p>
             </div>
           </div>
@@ -142,9 +142,9 @@ export default function About() {
       {/* Location & CTA */}
       <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="p-10 border border-white/5 rounded-2xl bg-white/[0.02]">
-          <h2 className="text-2xl font-serif mb-4">Where We're Based</h2>
-          <p className="text-white/50 font-light leading-relaxed mb-2">Muwaileh, Industrial Area, Maliha Rd<br />Sharjah, United Arab Emirates</p>
-          <p className="text-white/30 text-sm">Serving clients in Dubai, Sharjah, Abu Dhabi, Ajman, RAK, and internationally.</p>
+          <h2 className="text-2xl font-serif mb-4">Location</h2>
+          <p className="text-white/50 font-light leading-relaxed mb-2 italic text-xl">Operating across the UAE & GCC territory.</p>
+          <p className="text-white/30 text-sm">Serving clients in Dubai, Sharjah, Abu Dhabi, Ajman, RAK, and internationally through our distributed specialist teams.</p>
         </div>
         <div className="p-10 border border-white/5 rounded-2xl bg-white/[0.02] flex flex-col justify-between">
           <div>
