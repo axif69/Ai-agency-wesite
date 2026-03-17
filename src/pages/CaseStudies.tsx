@@ -14,7 +14,7 @@ const caseStudies = [
     solution: "We redesigned the entire website in 5 weeks—creating dedicated landing pages for each property project with full SEO optimization (title tags, schema markup, Core Web Vitals). We simultaneously executed a Local SEO campaign targeting 'luxury apartments Dubai' and 'off-plan properties Dubai Marina'.",
     results: ["Ranked #1 for 'luxury apartments Dubai' in 11 weeks", "Bounce rate reduced from 78% to 34%", "312% increase in qualified organic leads", "AED 4.2M in attributable property sales within 90 days"],
     tags: ["Web Design", "SEO", "Local SEO"],
-    img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=90&w=2560&auto=format&fit=crop"
+    img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format,compress&fm=webp&q=75&w=1200"
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const caseStudies = [
     solution: "We migrated the store to a headless Next.js + Shopify architecture, redesigned the product pages with conversion CRO best practices, implemented structured data for all 2,400 SKUs, and rebuilt Google Shopping campaigns with smart bidding strategies and negative keyword sculpting.",
     results: ["Page load time reduced from 4.1s to 1.4s", "Mobile conversion rate up 187%", "Cost-per-acquisition reduced from AED 87 to AED 31", "Monthly revenue increased 340% from AED 145K to AED 636K"],
     tags: ["Ecommerce", "PPC", "Web Development"],
-    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=90&w=2560&auto=format&fit=crop"
+    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format,compress&fm=webp&q=75&w=1200"
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const caseStudies = [
     solution: "We created a complete brand identity from scratch—logo, typography, colour system, packaging design. We then executed a content strategy anchored on Reels showing the café's preparation process and ambiance, collaborated with 8 UAE micro-influencers, and ran targeted Instagram ads for a 5km radius of the café.",
     results: ["Instagram: 800 → 28,000 followers in 12 months", "Average post reach increased from 200 to 14,000", "Saturday revenue increased 5x versus pre-campaign", "Featured in 3 UAE food publications and Time Out Dubai"],
     tags: ["Social Media", "Branding", "Graphic Design"],
-    img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=90&w=2560&auto=format&fit=crop"
+    img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format,compress&fm=webp&q=75&w=1200"
   },
   {
     id: 4,
@@ -50,7 +50,7 @@ const caseStudies = [
     solution: "We built an n8n-powered automation ecosystem: an AI chatbot on WhatsApp that handled 90% of client shipment queries using real-time data from their WMS, automated route dispatch notifications via email and WhatsApp, and a GPT-4-powered email triage system that categorised and drafted responses for all incoming inquiries.",
     results: ["2,400 manual employee hours saved monthly", "Operational cost reduction of 38%", "Client query response time from 4 hours to under 2 minutes", "Customer satisfaction score improved from 6.2 to 9.1 / 10"],
     tags: ["AI Automation", "Chatbot Development", "Process Automation"],
-    img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=90&w=2560&auto=format&fit=crop"
+    img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format,compress&fm=webp&q=75&w=1200"
   },
   {
     id: 5,
@@ -62,7 +62,7 @@ const caseStudies = [
     solution: "We conducted 12 user interviews, analyzed 3 months of session recordings and heatmaps, and identified 7 critical friction points in the onboarding flow. We redesigned the entire in-app experience from the ground up in Figma, built a new onboarding wizard, and created a comprehensive component design system that the development team could scale.",
     results: ["Trial-to-paid conversion rate increased from 11% to 34% (+210%)", "Support tickets reduced from 140/week to 41/week (71% reduction)", "Net Promoter Score improved from 28 to 67", "Time-to-first-value in onboarding reduced from 17 minutes to 4 minutes"],
     tags: ["UI/UX Design", "SaaS", "User Research"],
-    img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=90&w=2560&auto=format&fit=crop"
+    img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format,compress&fm=webp&q=75&w=1200"
   },
   {
     id: 6,
@@ -74,7 +74,7 @@ const caseStudies = [
     solution: "We rebuilt the entire account structure with tightly themed ad groups, created 6 dedicated landing pages for different car models, implemented server-side conversion tracking, set up smart bidding campaigns with 90-day conversion data windows, and added 1,200 negative keywords.",
     results: ["Cost-per-lead reduced from AED 420 to AED 67 (84% reduction)", "Monthly leads increased from 83 to 410", "Ad spend maintained at AED 35,000/month", "Test drive bookings increased 5x within 60 days"],
     tags: ["PPC", "Google Ads", "Landing Page Design"],
-    img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=90&w=2560&auto=format&fit=crop"
+    img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format,compress&fm=webp&q=75&w=1200"
   },
 ];
 
@@ -117,7 +117,7 @@ export default function CaseStudies() {
             {/* Image */}
             <div className="w-full md:w-[45%] flex-shrink-0">
               <div className="rounded-2xl aspect-[4/5] overflow-hidden border border-white/5">
-                <motion.img whileHover={{ scale: 1.04 }} transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }} src={study.img} alt={study.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <motion.img whileHover={{ scale: 1.04 }} transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }} src={study.img} alt={study.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" />
               </div>
             </div>
 

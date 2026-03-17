@@ -19,6 +19,17 @@ export default defineConfig(({mode}) => {
     },
     build: {
       outDir: 'dist',
+      minify: 'esbuild',
+      cssMinify: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
+            motion: ['motion'],
+            three: ['three', '@react-three/fiber', '@react-three/drei']
+          }
+        }
+      }
     }
   };
 });
