@@ -160,14 +160,15 @@ export default function KhalidChatbot() {
       console.log("Khalid Debug: Initializing with API Key prefix:", apiKey.substring(0, 7));
       const genAI = new GoogleGenerativeAI(apiKey);
       
-      // Attempting the most stable model identifier
-      const model = genAI.getGenerativeModel({ 
-        model: "gemini-1.5-flash",
-        systemInstruction: SYSTEM_INSTRUCTION
-      });
+      // Attempting the most stable model identifier with a fallback
+      let model;
+      try {
+        model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", systemInstruction: SYSTEM_INSTRUCTION });
+      } catch (e) {
+        console.warn("Flash failed, falling back to Pro:", e);
+        model = genAI.getGenerativeModel({ model: "gemini-1.5-pro", systemInstruction: SYSTEM_INSTRUCTION });
+      }
 
-      // Gemini history must alternate and usually start with 'user'.
-      // If our first message is 'model' (the welcome message), we should skip it for the API history.
       const apiHistory = messages
         .filter((m, index) => !(index === 0 && m.role === 'model'))
         .map(m => ({
@@ -175,10 +176,7 @@ export default function KhalidChatbot() {
           parts: [{ text: m.text }],
         }));
 
-      const chat = model.startChat({
-        history: apiHistory,
-      });
-
+      const chat = model.startChat({ history: apiHistory });
       const result = await chat.sendMessage(userMessage);
       const resultText = result.response.text();
       const { cleanText, suggestions } = parseResponse(resultText);
