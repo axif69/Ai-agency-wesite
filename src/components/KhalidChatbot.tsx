@@ -168,12 +168,14 @@ export default function KhalidChatbot() {
         }));
 
       // Try these models in order if one fails with 404
+      // We are trying specific versions and "latest" aliases to bypass 404 errors
       const modelsToTry = [
         "gemini-1.5-flash", 
+        "gemini-1.5-flash-latest",
+        "gemini-1.5-flash-001",
         "gemini-1.5-pro", 
-        "gemini-pro",
-        "models/gemini-1.5-flash",
-        "models/gemini-1.5-pro"
+        "gemini-1.5-pro-latest",
+        "gemini-pro"
       ];
       let resultText = "";
       let lastError = null;
@@ -181,27 +183,33 @@ export default function KhalidChatbot() {
       for (const modelName of modelsToTry) {
         try {
           console.log(`Khalid Debug: Attempting contact via ${modelName}...`);
-          const model = genAI.getGenerativeModel({ 
-            model: modelName,
-            systemInstruction: SYSTEM_INSTRUCTION
+          const model = genAI.getGenerativeModel({ model: modelName });
+          const chat = model.startChat({
+            history: apiHistory.slice(0, -1),
+            generationConfig: {
+              maxOutputTokens: 1000,
+            },
           });
 
-          const chat = model.startChat({ history: apiHistory });
-          const result = await chat.sendMessage(userMessage);
-          resultText = result.response.text();
+          const result = await chat.sendMessage(SYSTEM_INSTRUCTION + "\n\nUser current message: " + userMessage);
+          const response = await result.response;
+          resultText = response.text();
           
           if (resultText) {
             console.log(`Khalid Debug: Success with ${modelName}`);
-            break; 
+            break; // Success! Exit the loop
           }
-        } catch (e: any) {
-          lastError = e;
-          console.warn(`Khalid Debug: ${modelName} failed.`, e.message);
-          if (!e.message?.includes('404')) {
-             // If it's not a 404 (e.g. 429 quota), don't bother trying others if they share same quota
-             break;
+        } catch (error: any) {
+          lastError = error;
+          console.warn(`Khalid Debug: ${modelName} failed.`, error);
+          
+          // If it's NOT a 404, it might be a rate limit or quota issue, so we might want to stop or treat it differently
+          // But for now, we continue to the next model for any error to be safe.
+          if (modelName === modelsToTry[modelsToTry.length - 1]) {
+            throw error; // If the last model fails, throw the error
           }
-          // Continue to next model if 404
+          // Optional: Add a small delay between retries
+          await new Promise(resolve => setTimeout(resolve, 500));
         }
       }
 
