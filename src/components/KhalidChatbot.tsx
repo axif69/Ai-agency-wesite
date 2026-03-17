@@ -168,7 +168,13 @@ export default function KhalidChatbot() {
         }));
 
       // Try these models in order if one fails with 404
-      const modelsToTry = ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-pro"];
+      const modelsToTry = [
+        "gemini-1.5-flash", 
+        "gemini-1.5-pro", 
+        "gemini-pro",
+        "models/gemini-1.5-flash",
+        "models/gemini-1.5-pro"
+      ];
       let resultText = "";
       let lastError = null;
 
