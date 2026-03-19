@@ -9,6 +9,17 @@ export default defineConfig(({mode}) => {
 
   return {
     plugins: [react(), tailwindcss()],
+    server: {
+      port: 3000,
+      host: '0.0.0.0',
+      proxy: {
+        '/hf-api': {
+          target: 'https://router.huggingface.co',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/hf-api/, ''),
+        },
+      },
+    },
     define: {
       'import.meta.env.VITE_GEMINI_API_KEY': JSON.stringify(geminiApiKey),
     },

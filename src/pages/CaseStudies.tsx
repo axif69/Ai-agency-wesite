@@ -86,7 +86,7 @@ export default function CaseStudies() {
         description="Real results for real UAE businesses. Read detailed case studies showing how Asif Digital delivered measurable ROI through web design, SEO, PPC, social media, and AI automation in Dubai and Sharjah."
       />
 
-      <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-24 text-center md:text-left">
+      <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-24 text-center md:text-left">
         <span className="micro-label block mb-4">Proven Results</span>
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8vw] font-serif leading-tight tracking-tight mb-8">Case Studies</h1>
         <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl">
@@ -99,7 +99,7 @@ export default function CaseStudies() {
         {[{ n: "150+", l: "UAE Clients Served" }, { n: "340%", l: "Avg Revenue Growth" }, { n: "84%", l: "Avg CPA Reduction (PPC)" }, { n: "87%", l: "Clients on Page 1 Google" }].map((s, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-6 border border-white/5 rounded-2xl text-center">
             <div className="text-3xl font-serif mb-2">{s.n}</div>
-            <div className="text-white/40 text-xs uppercase tracking-widest">{s.l}</div>
+            <div className="text-white/70 text-xs uppercase tracking-widest">{s.l}</div>
           </motion.div>
         ))}
       </div>
@@ -125,20 +125,20 @@ export default function CaseStudies() {
             <div className="w-full md:w-[55%] space-y-8 pt-4">
               <div>
                 <div className="flex flex-wrap gap-2 mb-5">
-                  {study.tags.map((tag, j) => <span key={j} className="text-[10px] font-bold uppercase tracking-widest border border-white/15 text-white/50 px-3 py-1.5 rounded-full">{tag}</span>)}
+                  {study.tags.map((tag, j) => <span key={j} className="text-[10px] font-bold uppercase tracking-widest border border-white/15 text-white/80 px-3 py-1.5 rounded-full">{tag}</span>)}
                 </div>
-                <span className="text-white/30 text-xs font-bold tracking-[0.2em] uppercase block mb-3">{study.industry} — {study.client}</span>
+                <span className="text-white/60 text-xs font-bold tracking-[0.2em] uppercase block mb-3">{study.industry} — {study.client}</span>
                 <h2 className="text-3xl md:text-4xl font-serif tracking-tight leading-tight mb-0">{study.title}</h2>
               </div>
 
               <div className="space-y-6">
                 <div className="p-6 border border-white/5 rounded-xl bg-white/[0.01]">
-                  <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/30 mb-3">The Challenge</h3>
-                  <p className="text-white/60 font-light leading-relaxed text-sm">{study.challenge}</p>
+                  <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/60 mb-3">The Challenge</h3>
+                  <p className="text-white/90 font-light leading-relaxed text-sm">{study.challenge}</p>
                 </div>
                 <div className="p-6 border border-white/5 rounded-xl bg-white/[0.01]">
-                  <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/30 mb-3">Our Solution</h3>
-                  <p className="text-white/60 font-light leading-relaxed text-sm">{study.solution}</p>
+                  <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/60 mb-3">Our Solution</h3>
+                  <p className="text-white/90 font-light leading-relaxed text-sm">{study.solution}</p>
                 </div>
               </div>
 

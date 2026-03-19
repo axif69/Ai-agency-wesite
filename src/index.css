@@ -14,21 +14,12 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply tracking-tighter;
-    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
   .animate-meteor-effect {
     animation: meteor 5s linear infinite;
   }
 }
 
-@keyframes pulse-slow {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
 
 @keyframes meteor {
   0% {
@@ -50,11 +41,11 @@
   }
 
   .micro-label {
-    @apply text-[10px] uppercase tracking-[0.4em] font-black text-white/30;
+    @apply text-[10px] uppercase tracking-[0.4em] font-black text-white/70;
   }
 
   .nav-link {
-    @apply text-sm font-medium text-white/50 hover:text-white transition-all duration-500 relative py-2;
+    @apply text-sm font-medium text-white/80 hover:text-white transition-all duration-500 relative py-2;
   }
 
   .nav-link::after {

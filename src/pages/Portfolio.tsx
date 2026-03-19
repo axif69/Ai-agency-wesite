@@ -35,7 +35,7 @@ export default function Portfolio() {
         description="Browse our portfolio of web design, ecommerce, SEO, PPC, social media, branding, UI/UX, and AI projects for businesses in Dubai, Sharjah, and across the UAE."
       />
 
-      <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="mb-16 text-center md:text-left">
+      <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-16 text-center md:text-left">
         <span className="micro-label block mb-4">Selected Works</span>
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8vw] font-serif leading-tight tracking-tight mb-8">Portfolio</h1>
         <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl">
@@ -58,7 +58,7 @@ export default function Portfolio() {
 
       {/* Grid */}
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 relative">
-        <AnimatePresence mode="popLayout">
+        <AnimatePresence>
           {filtered.map((item) => (
             <motion.div
               key={item.id}
@@ -88,10 +88,10 @@ export default function Portfolio() {
               <div>
                 <div className="flex justify-between items-start mb-3 gap-4">
                   <h3 className="text-2xl font-serif tracking-tight leading-tight">{item.title}</h3>
-                  <span className="text-[9px] uppercase tracking-[0.15em] font-bold text-white/40 border border-white/10 px-3 py-1.5 rounded-full whitespace-nowrap flex-shrink-0">{item.category}</span>
+                  <span className="text-[9px] uppercase tracking-[0.15em] font-bold text-white/70 border border-white/10 px-3 py-1.5 rounded-full whitespace-nowrap flex-shrink-0">{item.category}</span>
                 </div>
-                <p className="text-white/40 text-xs font-bold uppercase tracking-widest mb-3">{item.location}</p>
-                <p className="text-white/55 font-light leading-relaxed text-sm">{item.desc}</p>
+                <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-3">{item.location}</p>
+                <p className="text-white/85 font-light leading-relaxed text-sm">{item.desc}</p>
               </div>
             </motion.div>
           ))}

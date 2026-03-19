@@ -91,12 +91,12 @@ export default function Home() {
           </motion.div>
           
           <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="text-4xl sm:text-6xl md:text-8xl lg:text-[7vw] font-serif font-bold leading-[0.9] tracking-tight mb-8 max-w-7xl mx-auto drop-shadow-2xl">
-            Architecting <span className="italic text-white/40">Sovereign</span><br />Intelligence.
+            Architecting <span className="italic text-white/70">Sovereign</span><br />Intelligence.
           </motion.h1>
           
           <TextGenerateEffect 
             words="Decoupling UAE productivity from geopolitical risk. We build continuous, fault-tolerant AI ecosystems and digital infrastructure for enterprises."
-            className="text-lg md:text-xl lg:text-3xl text-white/80 font-medium max-w-4xl mx-auto font-sans leading-tight mb-12 drop-shadow-md"
+            className="text-lg md:text-xl lg:text-3xl text-white font-medium max-w-4xl mx-auto font-sans leading-tight mb-12 drop-shadow-md"
           />
           
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1 }} className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0 justify-center z-10">
@@ -112,11 +112,11 @@ export default function Home() {
 
       {/* ── Trust Signals Bar ── */}
       <section className="py-8 bg-black border-y border-white/5 relative z-20">
-        <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-8 text-[10px] uppercase font-bold tracking-[0.2em] text-white/30">
-          <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-white/50" /> 100% Data Sovereignty</div>
-          <div className="flex items-center gap-2"><Database className="w-4 h-4 text-white/50" /> UAE Hosted Compute</div>
-          <div className="flex items-center gap-2"><Brain className="w-4 h-4 text-white/50" /> Agentic Architecture</div>
-          <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-white/50" /> War-Agnostic Infrastructure</div>
+        <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-8 text-[10px] uppercase font-bold tracking-[0.2em] text-white/60">
+          <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-white/70" /> 100% Data Sovereignty</div>
+          <div className="flex items-center gap-2"><Database className="w-4 h-4 text-white/70" /> UAE Hosted Compute</div>
+          <div className="flex items-center gap-2"><Brain className="w-4 h-4 text-white/70" /> Agentic Architecture</div>
+          <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-white/70" /> War-Agnostic Infrastructure</div>
         </div>
       </section>
 
@@ -125,9 +125,9 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-6xl font-serif tracking-tight leading-[1.1] mb-10">
-              The standard office is fragile. 2026 demands <span className="italic text-white/40">unbreakable operations.</span>
+              The standard office is fragile. 2026 demands <span className="italic text-white/70">unbreakable operations.</span>
             </h2>
-            <div className="space-y-6 text-white/60 font-light xl:text-lg leading-relaxed">
+            <div className="space-y-6 text-white/80 font-light xl:text-lg leading-relaxed">
               <p>In the wake of regional volatility and rapid workforce shifts across the GCC, relying solely on human capital introduces a critical single point of failure. When flights pause, logistics disruption hits, and remote mandates are issued—does your business stop?</p>
               <p>The 2026 UAE business environment demands structural resilience. A human mid-level office worker costs upwards of AED 650,000 annually when factoring in visas, mandatory housing, and end-of-service gratuity—all for 8 hours of daily output heavily vulnerable to global events.</p>
               <p className="text-white font-medium border-l-2 border-white pl-4 mt-8 py-2">
@@ -137,11 +137,11 @@ export default function Home() {
             <div className="mt-12 flex gap-8">
               <div>
                 <div className="text-4xl font-serif text-white mb-2">98%</div>
-                <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Of UAE Executives prioritize AI Sovereignty</div>
+                <div className="text-[10px] uppercase tracking-widest text-white/70 font-bold">Of UAE Executives prioritize AI Sovereignty</div>
               </div>
               <div>
                 <div className="text-4xl font-serif text-white mb-2">70%</div>
-                <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Reduction in operational overhead</div>
+                <div className="text-[10px] uppercase tracking-widest text-white/70 font-bold">Reduction in operational overhead</div>
               </div>
             </div>
           </motion.div>

@@ -26,7 +26,6 @@ export default function Layout() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#050505] text-white selection:bg-green-500/30 overflow-x-hidden font-sans">
-      <PageLoader />
       <WhatsAppButton />
       <KhalidChatbot />
 
@@ -143,20 +142,17 @@ export default function Layout() {
         )}
       </AnimatePresence>
 
-      <AnimatePresence mode="wait">
-        <motion.main
-          key={location.pathname}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
-          className="pt-24 min-h-screen"
-        >
-          <Suspense fallback={<PageLoader />}>
-            <Outlet />
-          </Suspense>
-        </motion.main>
-      </AnimatePresence>
+      <motion.main
+        key={location.pathname}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="pt-24 min-h-screen outline-none"
+      >
+        <Suspense fallback={<PageLoader />}>
+          <Outlet />
+        </Suspense>
+      </motion.main>
 
       <footer className="py-32 px-6 md:px-12 border-t border-white/5 mt-20 bg-black relative overflow-hidden">
         {/* Subtle Background Glow */}

@@ -1,28 +1,40 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, X, Send, Bot, User, Loader2, Mic, MicOff, Volume2, VolumeX } from 'lucide-react';
-import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const SYSTEM_INSTRUCTION = `
-You are Khalid, an elite AI Strategic Consultant & Architect for Asif Digital.
-Asif Digital is a high-ticket Sovereign AI Architecture Firm in the UAE, led by Asif Khan.
+You are Khalid, an elite AI Strategic Consultant for Asif Digital.
+Asif Digital is a high-ticket Sovereign AI & Digital Transformation Firm led by Asif Khan.
+
+Primary Sovereign AI Pillars:
+1. Agentic Finance & Compliance
+2. AI HR & Emiratization Tracking
+3. B2B Autonomous Sales Swarms
+4. Logistics & Supply Chain AI
 
 Your Mission:
-1. Conduct an initial "Operational Resilience Audit" for C-level executives (CEOs, CFOs, COOs, HR Directors) in the UAE.
-2. Speak with authority, precision, and high-level strategic insight. You are not a regular customer service bot; you are a peer to the executive.
-3. Keep replies concise, sharp, and focused on business continuity, cost arbitrage, and geopolitical resilience. 
+1. Conduct an INTERACTIVE "Operational Resilience Audit."
+2. NEVER PROVIDE ESTIMATES: You must not say "30% reduction" or "potential gains." You MUST ask the user for their specific data.
+3. DRIVE THE DISCOVERY: Every message MUST end with a targeted question to extract operational metrics.
+4. STRATEGIC BREVITY: Keep responses to 2-3 CONCISE sentences.
 
-Conversation Flow:
-- First, warmly greet them as Khalid and ask for their name and title.
-- Ask them which department they are most concerned about regarding workforce fragility or operational disruption (e.g., Finance, HR, Logistics, Sales).
-- Briefly highlight how Agentic AI can decouple that specific department from human risks (visas, salaries, evacuation), then politely ask for their WhatsApp/Phone number so Asif Khan can review their audit.
+Audit Discovery Process (Follow strictly):
+Step 1: Greet briefly as Khalid. Ask: "Which Sovereign AI Pillar represents your highest manual workforce dependency today?"
+Step 2: Acknowledge. Ask: "What is the specific manual bottleneck in that department (e.g., Reconciliation, Onboarding, Lead-Gen)?"
+Step 3: Quantify Risk. Ask: "If this manual process was disrupted for 72 hours, what is your estimated operational loss in AED?"
+Step 4: Analyze FTEs. Ask: "How many Full-Time Equivalents (FTEs) are currently dedicated solely to this manual task?"
+Step 5: Conclude. "I have identified the localized fragility. I need your verified WhatsApp number to deliver the full 'Sovereign Shield' blueprint review with Asif Khan."
+
+Discovery for Other Services (Design/Dev/Marketing):
+If they ask for non-AI services, pivot and ask: "What is the primary objective of this project, and what is your desired launch trajectory for these results?"
 
 Interactive Suggestions:
-- Always append "[SUGGESTIONS: Option 1, Option 2]" at the very end of your message to give them clickable options. Example: [SUGGESTIONS: Auditing Finance, Auditing HR, Auditing Sales]
+- Always append "[SUGGESTIONS: Option 1, Option 2]" at the very end.
+- Use 1-2 words for suggestions (e.g., [SUGGESTIONS: Finance, HR, Sales]).
 `;
 
 interface Message {
-  role: 'user' | 'model';
+  role: 'user' | 'assistant' | 'model';
   text: string;
   suggestions?: string[];
 }
@@ -32,8 +44,8 @@ export default function KhalidChatbot() {
   const [messages, setMessages] = useState<Message[]>([
     { 
       role: 'model', 
-      text: "I am Khalid. I am here to conduct your operational resilience audit. In light of the current workforce shifts in the UAE, which department's continuity are you most concerned about?",
-      suggestions: ["Finance", "HR", "Logistics", "Sales"]
+      text: "I am Khalid, your Strategic AI Consultant. Which Sovereign AI Pillar are we auditing today to safeguard your operational continuity?",
+      suggestions: ["Agentic Finance", "AI HR & Emiratization", "B2B Sales Swarms", "Supply Chain AI", "Other Services"]
     }
   ]);
   const [input, setInput] = useState('');
@@ -45,13 +57,16 @@ export default function KhalidChatbot() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
 
-  // Initialize Speech Recognition and Synthesis Voices
+  // Initialize Speech Recognition & Voice Preloading
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
+    // Force voices to load
+    const loadVoices = () => {
       window.speechSynthesis.getVoices();
-      window.speechSynthesis.onvoiceschanged = () => {
-        window.speechSynthesis.getVoices();
-      };
+    };
+    
+    if (typeof window !== 'undefined') {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+      loadVoices();
     }
 
     if (typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
@@ -68,48 +83,53 @@ export default function KhalidChatbot() {
         handleSend(transcript);
       };
 
-      recognitionRef.current.onerror = (event: any) => {
-        console.error('Speech recognition error:', event.error);
-        setIsListening(false);
-      };
-
-      recognitionRef.current.onend = () => {
-        setIsListening(false);
-      };
+      recognitionRef.current.onerror = () => setIsListening(false);
+      recognitionRef.current.onend = () => setIsListening(false);
     }
   }, []);
 
-  const speak = async (text: string) => {
+  const speak = (text: string) => {
     if (!isSpeaking || typeof window === 'undefined') return;
     
-    try {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      
-      const voices = window.speechSynthesis.getVoices();
-      const bestVoice = 
-        voices.find(v => v.lang.startsWith('en-') && (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google'))) ||
-        voices.find(v => v.lang.startsWith('en-') && !v.name.includes('Microsoft Default'));
-        
-      if (bestVoice) {
-        utterance.voice = bestVoice;
-      }
-      
-      utterance.rate = 1.0;
-      utterance.pitch = 1.0;
-      window.speechSynthesis.speak(utterance);
-    } catch (error) {
-      console.error("TTS Error:", error);
-    }
-  };
+    // Stop any current speech
+    window.speechSynthesis.cancel();
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    
+    // Khalid should sound professional, strategic, and calm.
+    utterance.rate = 0.92; // Slightly slower for more human cadence
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
 
-  const toggleListening = () => {
-    if (isListening) {
-      recognitionRef.current?.stop();
-    } else {
-      setIsListening(true);
-      recognitionRef.current?.start();
+    const voices = window.speechSynthesis.getVoices();
+    
+    // Elite Human Voice Selection:
+    // 1. Microsoft Aria/Guy (Online/Natural) - Gold Standard
+    // 2. Any "Online (Natural)" voice
+    // 3. Any "Natural" voice
+    // 4. Google High-Quality English
+    // 5. en-GB (British Elite accent)
+    
+    const bestVoice = 
+      voices.find(v => v.name.includes('Aria') && v.name.includes('Online')) || 
+      voices.find(v => v.name.includes('Guy') && v.name.includes('Online')) ||
+      voices.find(v => v.name.includes('Online (Natural)')) ||
+      voices.find(v => v.name.includes('Natural') && v.lang.includes('en-')) ||
+      voices.find(v => (v.name.includes('Google') || v.name.includes('High Quality')) && v.lang.startsWith('en-')) ||
+      voices.find(v => v.lang === 'en-GB' && !v.name.includes('David') && !v.name.includes('Zira')) ||
+      voices.find(v => v.lang.startsWith('en-')) ||
+      voices[0];
+
+    if (bestVoice) {
+      utterance.voice = bestVoice;
+      if (bestVoice.name.includes('Online') || bestVoice.name.includes('Natural')) {
+        console.log(`Khalid: Elite Neural Voice Activated - ${bestVoice.name}`);
+      } else {
+        console.log(`Khalid: Standard Voice Activated - ${bestVoice.name}. Tip: Use Microsoft Edge for the best Human voice experience.`);
+      }
     }
+
+    window.speechSynthesis.speak(utterance);
   };
 
   const scrollToBottom = () => {
@@ -143,131 +163,124 @@ export default function KhalidChatbot() {
     const messageToSend = overrideInput || input;
     if (!messageToSend.trim() || isLoading) return;
 
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-    if (!apiKey) {
-       setMessages(prev => [...prev, { role: 'user', text: messageToSend.trim() }]);
-       setMessages(prev => [...prev, { role: 'model', text: "Gemini API key is missing. Please add VITE_GEMINI_API_KEY to your .env file." }]);
-       return;
-    }
-
-    const userMessage = messageToSend.trim();
+    const userMessageContent = messageToSend.trim();
     if (!overrideInput) setInput('');
     
-    setMessages(prev => [...prev, { role: 'user', text: userMessage }]);
+    setMessages(prev => [...prev, { role: 'user', text: userMessageContent }]);
     setIsLoading(true);
 
     try {
-      console.log("Khalid Debug: Initializing with API Key prefix:", apiKey.substring(0, 7));
-      const genAI = new GoogleGenerativeAI(apiKey);
-      
-      const apiHistory = messages
-        .filter((m, index) => !(index === 0 && m.role === 'model'))
-        .map(m => ({
-          role: m.role === 'model' ? 'model' : 'user',
-          parts: [{ text: m.text }],
-        }));
+      const groqKey = (import.meta.env.VITE_GROQ_API_KEY || "").trim();
+      if (!groqKey) throw new Error("GROQ_API_KEY_MISSING");
 
-      // Try these models in order if one fails with 404
-      // We are trying specific versions and "latest" aliases to bypass 404 errors
-      const modelsToTry = [
-        "gemini-1.5-flash", 
-        "gemini-1.5-flash-latest",
-        "gemini-1.5-flash-001",
-        "gemini-1.5-pro", 
-        "gemini-1.5-pro-latest",
-        "gemini-pro"
+      const API_URL = "https://api.groq.com/openai/v1/chat/completions";
+
+      // Prepare messages for Groq API (OpenAI format)
+      // Standardize roles to 'user' and 'assistant' for the API call
+      const groqMessages = [
+        { role: "system", content: SYSTEM_INSTRUCTION },
+        ...messages.map(m => ({
+          role: m.role === 'model' ? 'assistant' : m.role,
+          content: m.text
+        })),
+        { role: "user", content: userMessageContent }
       ];
-      let resultText = "";
-      let lastError = null;
 
-      for (const modelName of modelsToTry) {
-        try {
-          console.log(`Khalid Debug: Attempting contact via ${modelName}...`);
-          const model = genAI.getGenerativeModel({ model: modelName });
-          const chat = model.startChat({
-            history: apiHistory.slice(0, -1),
-            generationConfig: {
-              maxOutputTokens: 1000,
-            },
-          });
+      console.log("Khalid: Syncing with sovereign intelligence layers...");
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${groqKey}`
+        },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: groqMessages,
+          temperature: 0.7,
+          max_tokens: 1024
+        })
+      });
 
-          const result = await chat.sendMessage(SYSTEM_INSTRUCTION + "\n\nUser current message: " + userMessage);
-          const response = await result.response;
-          resultText = response.text();
-          
-          if (resultText) {
-            console.log(`Khalid Debug: Success with ${modelName}`);
-            break; // Success! Exit the loop
-          }
-        } catch (error: any) {
-          lastError = error;
-          console.warn(`Khalid Debug: ${modelName} failed.`, error);
-          
-          // If it's NOT a 404, it might be a rate limit or quota issue, so we might want to stop or treat it differently
-          // But for now, we continue to the next model for any error to be safe.
-          if (modelName === modelsToTry[modelsToTry.length - 1]) {
-            throw error; // If the last model fails, throw the error
-          }
-          // Optional: Add a small delay between retries
-          await new Promise(resolve => setTimeout(resolve, 500));
-        }
+      if (!response.ok) {
+        const err = await response.json();
+        console.error("Groq Error Body:", err);
+        throw new Error(err.error?.message || "Groq API Error");
       }
 
-      if (!resultText) {
-        throw lastError || new Error("All AI models failed to respond.");
-      }
-
-      const { cleanText, suggestions } = parseResponse(resultText);
+      const data = await response.json();
+      const resultText = data.choices?.[0]?.message?.content || "";
       
-      if (isSpeaking && cleanText) {
-        speak(cleanText);
-      }
+      const { cleanText, suggestions } = parseResponse(resultText);
+      if (isSpeaking && cleanText) speak(cleanText);
 
       setMessages(prev => [...prev, { 
-        role: 'model', 
-        text: cleanText || "I'm sorry, I couldn't process that.",
+        role: 'assistant',
+        text: cleanText,
         suggestions: suggestions.length > 0 ? suggestions : undefined
       }]);
 
-      const lowerText = cleanText.toLowerCase();
-      if (lowerText.includes("contact") || lowerText.includes("phone") || lowerText.includes("whatsapp") || lowerText.includes("reach out")) {
-        setLeadData(prev => ({ ...prev, contact: userMessage }));
+      // Simple lead detection for WhatsApp numbers
+      if (cleanText.toLowerCase().includes("whatsapp") || cleanText.toLowerCase().includes("number")) {
+        setLeadData(prev => ({ ...prev, contact: userMessageContent }));
       }
     } catch (error: any) {
       console.error("Chatbot Error:", error);
-      let userFriendlyMessage = "Sorry, I'm having some trouble connecting to Gemini. Please check your API key!";
-      
-      if (error.message?.includes('404')) {
-        userFriendlyMessage = "The AI model requested was not found (404). This usually means the API is not fully enabled in your Google Project.";
-      } else if (error.message?.includes('quota')) {
-        userFriendlyMessage = "We've hit the Gemini free tier limit. Please try again in a moment.";
-      }
-
-      setMessages(prev => [...prev, { role: 'model', text: userFriendlyMessage }]);
+      let errMsg = "Forgive me, my neural link is experiencing minor latency. Please try again.";
+      if (error.message === "GROQ_API_KEY_MISSING") errMsg = "Groq API key is missing. Please check your .env file.";
+      setMessages(prev => [...prev, { role: 'assistant', text: errMsg }]);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const toggleListening = () => {
+    if (isListening) {
+      recognitionRef.current?.stop();
+    } else {
+      setIsListening(true);
+      recognitionRef.current?.start();
     }
   };
 
   const sendToWhatsApp = async () => {
     setIsSummarizing(true);
     try {
-      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-      if (!apiKey) throw new Error("API Key missing");
-      
-      const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-      const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`).join('\n');
-      
-      const prompt = `Please provide a very concise, professional summary of the following customer requirements for Asif Digital. 
+      const groqKey = (import.meta.env.VITE_GROQ_API_KEY || "").trim();
+      if (!groqKey) throw new Error("GROQ_API_KEY_MISSING");
+
+      const history = messages
+        .map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`)
+        .join('\n');
+
+      const prompt = `
+          Analyze this chat history and provide a HIGH-LEVEL EXECUTIVE SUMMARY for Asif Khan (the CEO). 
           Focus on: Name, Service Needed, Budget (if mentioned), and Timeline. 
           Format it as a clean list for WhatsApp.
           
           Chat History:
           ${history}`;
 
-      const result = await model.generateContent(prompt);
-      const summary = result.response.text() || "No summary available.";
+      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${groqKey}`
+        },
+        body: JSON.stringify({
+          model: "llama-3.1-8b-instant", // Use faster model for summary
+          messages: [
+            { role: "system", content: "You are a lead generation assistant for an AI agency." },
+            { role: "user", content: prompt }
+          ],
+          temperature: 0.3
+        })
+      });
+
+      if (!response.ok) throw new Error("Groq Summary Error");
+
+      const data = await response.json();
+      const summary = data.choices[0].message.content;
+      
       const phoneNumber = "971545866094";
       const text = encodeURIComponent(`*New Strategic Lead Summary*\n\n${summary}\n\n*Direct Contact:* ${leadData.contact || 'Provided in chat'}`);
       window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
@@ -360,13 +373,13 @@ export default function KhalidChatbot() {
                 </div>
               ))}
               
-              {/* WhatsApp Forwarding Button (appears at end of lead capture) */}
+              {/* WhatsApp Forwarding Button */}
               {messages.length > 4 && (
                 <div className="flex justify-center pt-4">
                   <button
                     onClick={sendToWhatsApp}
                     disabled={isSummarizing}
-                    className="flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white rounded-full text-xs font-bold hover:scale-105 transition-transform shadow-lg disabled:opacity-50 disabled:scale-100"
+                    className="flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white rounded-full text-xs font-bold hover:scale-105 transition-transform shadow-lg disabled:opacity-50"
                   >
                     {isSummarizing ? (
                       <>
@@ -424,7 +437,7 @@ export default function KhalidChatbot() {
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="p-4 rounded-full bg-white text-black hover:scale-105 transition-transform disabled:opacity-50 disabled:scale-100 flex-shrink-0"
+                  className="p-4 rounded-full bg-white text-black hover:scale-105 transition-transform disabled:opacity-50 flex-shrink-0"
                 >
                   <Send className="w-4 h-4" />
                 </button>
