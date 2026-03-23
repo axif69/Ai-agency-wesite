@@ -31,7 +31,7 @@ export default function Layout() {
       <KhalidChatbot />
 
       <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-6 md:px-12">
-        <Link to="/" className="text-2xl font-serif font-bold tracking-tight mix-blend-difference">
+        <Link to="/" className="text-[26px] font-serif font-bold tracking-tight mix-blend-difference">
           Asif Khan.
         </Link>
         
@@ -42,7 +42,7 @@ export default function Layout() {
           {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
 
-        <nav className="hidden md:flex gap-8 text-[10px] font-semibold uppercase tracking-[0.2em]">
+        <nav className="hidden md:flex gap-8 text-[13px] font-semibold uppercase tracking-[0.2em]">
           {navLinks.map((link) => (
             <div key={link.path} className="relative group">
               <Link
@@ -58,10 +58,10 @@ export default function Layout() {
               {link.name === "Sovereign AI" && (
                 <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[350px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
                   <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col font-sans normal-case tracking-normal text-left p-6 space-y-2">
-                    <Link to="/services/agentic-finance-uae" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Agentic Finance & Compliance</Link>
-                    <Link to="/services/ai-hr-emirates" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI HR & Emiratization tracking</Link>
-                    <Link to="/services/whatsapp-automation-gcc" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">B2B Autonomous Sales Swarms</Link>
-                    <Link to="/services/logistics-resilience" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-3 hover:pl-2 duration-200">Logistics & Supply Chain AI</Link>
+                    <Link to="/services/agentic-finance-uae" className="text-white/80 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Agentic Finance & Compliance</Link>
+                    <Link to="/services/ai-hr-emirates" className="text-white/80 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI HR & Emiratization tracking</Link>
+                    <Link to="/services/whatsapp-automation-gcc" className="text-white/80 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">B2B Autonomous Sales Swarms</Link>
+                    <Link to="/services/logistics-resilience" className="text-white/80 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200">Logistics & Supply Chain AI</Link>
                   </div>
                 </div>
               )}
@@ -73,7 +73,7 @@ export default function Layout() {
                     
                     {/* Web Column */}
                     <div className="w-[37%] bg-[#111111] p-10 border-r border-white/5">
-                      <h3 className="text-white/40 text-[10px] font-bold uppercase tracking-[0.25em] mb-8 flex items-center gap-2">
+                      <h3 className="text-white/40 text-[11px] font-bold uppercase tracking-[0.25em] mb-8 flex items-center gap-2">
                         <Code className="w-4 h-4" /> Web
                       </h3>
                       <ul className="space-y-5">
@@ -87,7 +87,7 @@ export default function Layout() {
                     
                     {/* Digital Marketing Column */}
                     <div className="w-[33%] bg-[#0c0c0c] p-10 border-r border-white/5">
-                      <h3 className="text-white/40 text-[10px] font-bold uppercase tracking-[0.25em] mb-8 flex items-center gap-2">
+                      <h3 className="text-white/40 text-[11px] font-bold uppercase tracking-[0.25em] mb-8 flex items-center gap-2">
                         <Megaphone className="w-4 h-4" /> Digital Marketing
                       </h3>
                       <ul className="space-y-5">
@@ -100,7 +100,7 @@ export default function Layout() {
 
                     {/* Creative Column */}
                     <div className="w-[30%] bg-[#111111] p-10">
-                      <h3 className="text-white/40 text-[10px] font-bold uppercase tracking-[0.25em] mb-8 flex items-center gap-2">
+                      <h3 className="text-white/40 text-[11px] font-bold uppercase tracking-[0.25em] mb-8 flex items-center gap-2">
                         <PenTool className="w-4 h-4" /> Creative
                       </h3>
                       <ul className="space-y-5">
