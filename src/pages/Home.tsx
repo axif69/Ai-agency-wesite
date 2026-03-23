@@ -16,19 +16,19 @@ const sovereignSolutions = [
   {
     title: "Autonomous Sales Swarms",
     desc: "B2B WhatsApp & Email agents that qualify leads, negotiate, and close deals 24/7 without fatigue or geographical limits.",
-    icon: <MessageSquare className="w-6 h-6" />,
+    icon: <MessageSquare className="w-6 h-6" role="img" aria-label="Sales Swarm Icon" />,
     link: "/services/whatsapp-automation-gcc",
   },
   {
     title: "Answer Engine Optimization (AEO)",
     desc: "Dominate Gemini, Perplexity, and ChatGPT. We position your enterprise where UAE decision-makers do 80% of their research.",
-    icon: <Globe className="w-6 h-6" />,
+    icon: <Globe className="w-6 h-6" role="img" aria-label="Global Search Icon" />,
     link: "/services/seo-agency-dubai-sharjah-uae",
   },
   {
     title: "Sovereign Digital Ecosystems",
     desc: "Native apps and portals hosted on unshakeable UAE infrastructure (G42/Khazna) ensuring 100% data sovereignty and uptime.",
-    icon: <Database className="w-6 h-6" />,
+    icon: <Database className="w-6 h-6" role="img" aria-label="Database Platform Icon" />,
     link: "/services/web-development-dubai-uae",
   }
 ];
@@ -37,19 +37,19 @@ const foundationalServices = [
   {
     title: "Web & Ecommerce Development",
     desc: "High-performance, headless commerce architectures designed to scale locally and globally.",
-    icon: <Briefcase className="w-5 h-5" />,
+    icon: <Briefcase className="w-5 h-5" role="img" aria-label="Ecommerce Icon" />,
     link: "/services/ecommerce-website-development-dubai",
   },
   {
     title: "Corporate Branding",
     desc: "Identity systems engineered for authority, trust, and premium market positioning.",
-    icon: <Shield className="w-5 h-5" />,
+    icon: <Shield className="w-5 h-5" role="img" aria-label="Branding Shield Icon" />,
     link: "/services/branding-agency-dubai-sharjah",
   },
   {
     title: "Search & Paid Media (SEO/PPC)",
     desc: "Data-driven acquisition channels to capture high-intent traffic across the Emirates.",
-    icon: <TrendingUp className="w-5 h-5" />,
+    icon: <TrendingUp className="w-5 h-5" role="img" aria-label="Growth Chart Icon" />,
     link: "/services/ppc-google-ads-agency-dubai",
   }
 ];
@@ -72,9 +72,50 @@ export default function Home() {
   return (
     <div ref={containerRef} className="relative bg-[#050505]">
       <SEO
-        title="Sovereign AI Architecture & Business Continuity | Asif Digital"
-        description="We architect agentic AI ecosystems and resilient digital infrastructure for UAE enterprises. Guarantee business continuity and decouple from geopolitical risk."
-        keywords="Sovereign AI UAE, AI Agent Dubai, Business Continuity UAE, AI Automation Sharjah, Digital Ecosystems"
+        title="Sovereign AI Architecture & Business Continuity Dubai"
+        description="Asif Digital: The leading AI Agency in Dubai & Sharjah. We build Sovereign AI ecosystems and resilient digital infrastructure for UAE enterprises. Decouple from geopolitical risk."
+        keywords="Sovereign AI Dubai, AI Agency Sharjah, SEO Dubai, Web Design UAE, Business Continuity Sharjah, Abu Dhabi AI Automation"
+        canonical="https://asifdigital.agency"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "Asif Digital",
+          "image": "https://asifdigital.agency/logo.png",
+          "description": "Premium AI Agency & Digital Transformation Firm specializing in Sovereign Architecture and Business Continuity in Dubai and Sharjah.",
+          "@id": "https://asifdigital.agency",
+          "url": "https://asifdigital.agency",
+          "telephone": "+971545866094",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Business Bay",
+            "addressLocality": "Dubai",
+            "addressRegion": "Dubai",
+            "postalCode": "00000",
+            "addressCountry": "AE"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 25.185,
+            "longitude": 55.272
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "00:00",
+            "closes": "23:59"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/asif-digital"
+          ]
+        }}
       />
 
       {/* ── 1. The "Authority" Hero Section ── */}
@@ -101,8 +142,8 @@ export default function Home() {
           
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1 }} className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0 justify-center z-10">
             <MagneticButton>
-              <Link to="/contact" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)]">
-                Book an Operational Audit <ArrowRight className="w-4 h-4" />
+              <Link to="/contact" aria-label="Book an Operational AI Audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)]">
+                Book an Operational Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right" />
               </Link>
             </MagneticButton>
           </motion.div>
@@ -190,14 +231,14 @@ export default function Home() {
                <div className="space-y-6">
                  {sovereignSolutions.map((sol, i) => (
                    <TiltCard key={i}>
-                     <Link to={sol.link} className="block group w-full h-full">
+                     <Link to={sol.link} aria-label={`Learn more about ${sol.title}`} className="block group w-full h-full">
                        <SpotlightCard className="p-8 w-full h-full bg-white/[0.02] group-hover:bg-white/[0.05] transition-colors duration-300">
                          <div className="flex justify-between items-start mb-6 relative z-10">
                            <div className="p-3 rounded-lg bg-green-500/10 text-green-400">
                              {sol.icon}
                            </div>
                            <span className="text-white/30 group-hover:text-white transition-colors">
-                             <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300 transform origin-center" />
+                             <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300 transform origin-center" role="img" aria-label="Arrow Right" />
                            </span>
                          </div>
                          <h4 className="text-2xl font-serif mb-3 group-hover:text-green-400 transition-colors relative z-10">{sol.title}</h4>
@@ -219,14 +260,14 @@ export default function Home() {
                
                <div className="space-y-6">
                  {foundationalServices.map((sol, i) => (
-                   <Link to={sol.link} key={i} className="block p-8 rounded-2xl border border-white/5 bg-transparent hover:bg-white/[0.02] hover:border-white/20 transition-all duration-300 group opacity-80 hover:opacity-100">
+                   <Link to={sol.link} key={i} aria-label={`Explore ${sol.title}`} className="block p-8 rounded-2xl border border-white/5 bg-transparent hover:bg-white/[0.02] hover:border-white/20 transition-all duration-300 group opacity-80 hover:opacity-100">
                       <div className="flex gap-6 items-start">
                         <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white/80 transition-all">
                           {sol.icon}
                         </div>
                         <div>
-                          <h4 className="text-xl font-serif mb-2 text-white/80">{sol.title}</h4>
-                          <p className="text-white/40 text-sm leading-relaxed">{sol.desc}</p>
+                          <h4 className="text-xl font-serif mb-2 text-white/90">{sol.title}</h4>
+                          <p className="text-white/60 text-sm leading-relaxed">{sol.desc}</p>
                         </div>
                       </div>
                    </Link>
@@ -304,8 +345,12 @@ export default function Home() {
           </motion.p>
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
             {/* Let user click directly to open chatbot / or linking to a focus page */}
-            <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} className="bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-black/80 transition-all flex items-center justify-center gap-3 shadow-2xl mx-auto hover:scale-105 active:scale-95">
-              Begin Audit with Khalid <ArrowRight className="w-4 h-4" />
+            <button 
+              onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} 
+              aria-label="Begin AI Audit with Khalid"
+              className="bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs border border-white/20 hover:bg-black/80 transition-all flex items-center justify-center gap-3 shadow-2xl mx-auto hover:scale-105 active:scale-95"
+            >
+              Begin Audit with Khalid <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
             </button>
           </motion.div>
         </div>

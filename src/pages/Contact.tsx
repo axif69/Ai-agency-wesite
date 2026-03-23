@@ -1,8 +1,64 @@
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
+import React, { useState } from "react";
 import SEO from "../components/SEO";
-import { Mail, Globe, Phone, Send } from "lucide-react";
+import { Mail, Globe, Phone, Send, CheckCircle2, Loader2 } from "lucide-react";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    service: "",
+    message: ""
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isLoading) return;
+    
+    setIsLoading(true);
+    
+    try {
+      // Using Web3Forms for easy serverless email delivery
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE", 
+          name: formData.name,
+          email: formData.email,
+          service: formData.service,
+          message: formData.message,
+          subject: `New Lead: ${formData.service} - ${formData.name}`,
+          from_name: "Asif Digital Website"
+        })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setIsSuccess(true);
+        setFormData({ name: "", email: "", service: "", message: "" });
+        setTimeout(() => setIsSuccess(false), 5000); // Hide success after 5 seconds
+      } else {
+        throw new Error("Submission failed");
+      }
+    } catch (error) {
+      console.error("Form Error:", error);
+      alert("Forgive me, my neural link is experiencing minor latency. Please try again or reach out via WhatsApp.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
   return (
     <div className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
       <SEO 
@@ -83,15 +139,39 @@ export default function Contact() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="glass-panel p-10 md:p-12 rounded-3xl border border-white/5"
+          className="glass-panel p-10 md:p-12 rounded-3xl border border-white/5 relative"
         >
-          <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+          <AnimatePresence>
+            {isSuccess && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#050505]/95 rounded-3xl p-8 text-center"
+              >
+                <CheckCircle2 className="w-16 h-16 text-green-500 mb-6" />
+                <h3 className="text-3xl font-serif mb-4">Message Sent</h3>
+                <p className="text-white/60 font-light">I've received your data. Expect a response shortly.</p>
+                <button 
+                  onClick={() => setIsSuccess(false)}
+                  className="mt-8 text-xs font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors"
+                >
+                  Return to form
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <form className="space-y-8" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-3">
                 <label htmlFor="name" className="text-[10px] font-semibold text-white/40 uppercase tracking-[0.2em]">Name</label>
                 <input 
                   type="text" 
                   id="name" 
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white focus:outline-none focus:border-white transition-colors font-light"
                   placeholder="John Doe"
                 />
@@ -101,6 +181,9 @@ export default function Contact() {
                 <input 
                   type="email" 
                   id="email" 
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white focus:outline-none focus:border-white transition-colors font-light"
                   placeholder="john@example.com"
                 />
@@ -111,6 +194,9 @@ export default function Contact() {
               <label htmlFor="service" className="text-[10px] font-semibold text-white/40 uppercase tracking-[0.2em]">Service Interested In</label>
                 <select
                 id="service"
+                required
+                value={formData.service}
+                onChange={handleChange}
                 className="w-full bg-[#050505] border-b border-white/20 px-0 py-3 text-white/80 focus:outline-none focus:border-white transition-colors font-light"
               >
                 <option value="" className="bg-[#050505]">Select a service...</option>
@@ -140,7 +226,10 @@ export default function Contact() {
               <label htmlFor="message" className="text-[10px] font-semibold text-white/40 uppercase tracking-[0.2em]">Message</label>
               <textarea 
                 id="message" 
+                required
                 rows={4}
+                value={formData.message}
+                onChange={handleChange}
                 className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white focus:outline-none focus:border-white transition-colors resize-none font-light"
                 placeholder="Tell me about your project..."
               ></textarea>
@@ -148,9 +237,18 @@ export default function Contact() {
             
             <button 
               type="submit"
-              className="w-full bg-white text-black font-semibold uppercase tracking-widest py-5 rounded-full flex items-center justify-center gap-3 hover:bg-white/90 transition-colors text-xs"
+              disabled={isLoading}
+              className="w-full bg-white text-black font-semibold uppercase tracking-widest py-5 rounded-full flex items-center justify-center gap-3 hover:bg-white/90 transition-colors text-xs disabled:opacity-50"
             >
-              Send Message <Send className="w-4 h-4" />
+              {isLoading ? (
+                <>
+                  Sending... <Loader2 className="w-4 h-4 animate-spin" />
+                </>
+              ) : (
+                <>
+                  Send Message <Send className="w-4 h-4" />
+                </>
+              )}
             </button>
           </form>
         </motion.div>

@@ -300,6 +300,7 @@ export default function KhalidChatbot() {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
+        aria-label="Open Khalid Strategic AI Chatbot"
         className={`fixed bottom-24 right-6 z-50 p-4 rounded-full bg-white text-black shadow-2xl hover:scale-110 transition-transform duration-300 ${isOpen ? 'hidden' : 'flex'}`}
       >
         <MessageSquare className="w-6 h-6" />
@@ -335,7 +336,7 @@ export default function KhalidChatbot() {
                 >
                   {isSpeaking ? <Volume2 className="w-4 h-4 text-white/60" /> : <VolumeX className="w-4 h-4 text-white/20" />}
                 </button>
-                <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-white/10 rounded-full transition-colors">
+                <button onClick={() => setIsOpen(false)} aria-label="Close Chat" className="p-2 hover:bg-white/10 rounded-full transition-colors">
                   <X className="w-5 h-5 text-white/60" />
                 </button>
               </div>
