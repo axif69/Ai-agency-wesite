@@ -52,7 +52,53 @@
   <url><loc>https://asifdigital.agency/services/ui-ux-design-agency-dubai</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://asifdigital.agency/services/creative-web-design-dubai</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
+  <!-- Sovereign AI Services -->
+  <url><loc>https://asifdigital.agency/services/agentic-finance-uae</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://asifdigital.agency/services/ai-hr-emirates</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://asifdigital.agency/services/whatsapp-automation-gcc</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://asifdigital.agency/services/logistics-resilience</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
   <!-- Blog Posts -->
+  <url>
+    <loc>https://asifdigital.agency/blog/sovereign-shield-ai-cybersecurity-gcc-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://asifdigital.agency/blog/green-ai-sustainability-gcc-2050</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://asifdigital.agency/blog/workforce-2030-human-ai-orchestration-gcc</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://asifdigital.agency/blog/digital-concierge-uae-luxury-retail-ai</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://asifdigital.agency/blog/real-estate-ai-dubai-property-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://asifdigital.agency/blog/agentic-ai-gcc-operations-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://asifdigital.agency/blog/aeo-mastery-dubai-search-future</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://asifdigital.agency/blog/sovereign-ai-blueprint-gcc-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://asifdigital.agency/blog/future-of-ai-marketing-dubai</loc>
     <changefreq>monthly</changefreq>

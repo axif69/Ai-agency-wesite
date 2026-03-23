@@ -21,24 +21,22 @@ export default function Contact() {
     
     try {
       // Using Web3Forms for easy serverless email delivery
+      const submissionData = new FormData();
+      submissionData.append("access_key", (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "").trim());
+      submissionData.append("name", formData.name);
+      submissionData.append("email", formData.email);
+      submissionData.append("service", formData.service);
+      submissionData.append("message", formData.message);
+      submissionData.append("subject", `New Inquiry: ${formData.service} from ${formData.name}`);
+      submissionData.append("from_name", "Asif Digital Website");
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE", 
-          name: formData.name,
-          email: formData.email,
-          service: formData.service,
-          message: formData.message,
-          subject: `New Lead: ${formData.service} - ${formData.name}`,
-          from_name: "Asif Digital Website"
-        })
+        body: submissionData
       });
 
       const result = await response.json();
+      
       if (result.success) {
         setIsSuccess(true);
         setFormData({ name: "", email: "", service: "", message: "" });

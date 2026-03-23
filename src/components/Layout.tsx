@@ -21,6 +21,7 @@ export default function Layout() {
     { name: "Services", path: "/services" },
     { name: "Portfolio", path: "/portfolio" },
     { name: "Case Studies", path: "/case-studies" },
+    { name: "Blog", path: "/blog" },
     { name: "Contact", path: "/contact" },
   ];
 

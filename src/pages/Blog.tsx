@@ -2,37 +2,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, Clock, User } from "lucide-react";
 import SEO from "../components/SEO";
-
-// Dummy blog data for scaffolding
-const POSTS = [
-  {
-    slug: "future-of-ai-marketing-dubai",
-    title: "The Future of AI Marketing in Dubai: 2024 Trends",
-    excerpt: "Discover how top UAE brands are leveraging autonomous AI agents to slash customer acquisition costs.",
-    date: "Mar 15, 2024",
-    readTime: "5 min read",
-    author: "Asif Khan",
-    category: "AI Marketing"
-  },
-  {
-    slug: "top-saas-architectures-uae",
-    title: "Scaling SaaS Architectures for the UAE Market",
-    excerpt: "A deep dive into cloud-native structures that comply with GCC data regulations while maintaining high availability.",
-    date: "Mar 10, 2024",
-    readTime: "8 min read",
-    author: "Asif Khan",
-    category: "SaaS Development"
-  },
-  {
-    slug: "seo-vs-aeo-sharjah",
-    title: "SEO vs AEO: Why Answer Engine Optimization is the new standard in Sharjah",
-    excerpt: "Traditional Google searches are declining. Here is how AEO positions your brand in ChatGPT and Gemini responses.",
-    date: "Feb 28, 2024",
-    readTime: "6 min read",
-    author: "Asif Khan",
-    category: "SEO & AEO"
-  }
-];
+import { BLOG_POSTS } from "../data/blogData";
 
 export default function Blog() {
   return (
@@ -63,7 +33,7 @@ export default function Blog() {
       {/* Blog Grid */}
       <section className="px-6 md:px-12 py-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {POSTS.map((post, index) => (
+          {BLOG_POSTS.map((post, index) => (
             <motion.article 
               key={post.slug}
               initial={{ opacity: 0, y: 30 }}

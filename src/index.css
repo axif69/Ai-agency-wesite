@@ -99,3 +99,37 @@ html {
 .parallax-img {
   @apply w-full h-full object-cover;
 }
+
+/* Blog Content Typography */
+.blog-content h2 {
+  @apply text-3xl font-serif mt-16 mb-8 text-white tracking-tight;
+}
+
+.blog-content h3 {
+  @apply text-xl font-sans font-bold mt-12 mb-6 text-white/90 uppercase tracking-widest;
+}
+
+.blog-content p {
+  @apply mb-8 text-white/70 font-light leading-relaxed text-lg;
+}
+
+.blog-content strong {
+  @apply text-white font-semibold;
+}
+
+.blog-content blockquote {
+  @apply border-l-2 border-white/20 pl-8 my-16 italic text-2xl font-serif text-white/90 py-4;
+}
+
+.blog-content ul {
+  @apply space-y-4 mb-12 list-none;
+}
+
+.blog-content li {
+  @apply text-white/70 pl-8 relative;
+}
+
+.blog-content li::before {
+  content: "";
+  @apply absolute left-0 top-[13px] w-4 h-[1px] bg-white/30;
+}
