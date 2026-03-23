@@ -18,6 +18,7 @@ export default function BlogPost() {
       <SEO 
         title={`${post.title} | Asif Digital Blog`} 
         description={post.excerpt}
+        canonical={`https://asifdigital.agency/blog/${post.slug}`}
       />
       
       {/* Article Header */}

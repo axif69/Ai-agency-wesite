@@ -10,6 +10,7 @@ export default function Blog() {
       <SEO 
         title="AI Digital Marketing & Dev Blog | Asif Digital UAE" 
         description="Expert insights on artificial intelligence, web development, SaaS architectures, and AEO strategies for businesses in Dubai and Sharjah."
+        canonical="https://asifdigital.agency/blog"
       />
       
       {/* Hero Section */}
