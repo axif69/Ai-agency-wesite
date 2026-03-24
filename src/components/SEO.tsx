@@ -33,7 +33,7 @@ export default function SEO({ title, description, keywords, schema, canonical }:
 
   return (
     <Helmet>
-      <title>{title} | Asif Digital Agency UAE</title>
+      <title>{title} | Asif Digital</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
       {canonical && <link rel="canonical" href={canonical} />}

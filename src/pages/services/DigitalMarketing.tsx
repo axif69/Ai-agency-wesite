@@ -59,8 +59,11 @@ export default function DigitalMarketing() {
           className="parallax-container rounded-3xl aspect-[4/5]"
         >
           <img 
-            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format,compress&fm=webp&q=75&w=1200" 
-            alt="Digital Marketing" 
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&q=75&w=800" 
+            alt="Digital Marketing UAE" 
+            width="800"
+            height="1000"
+            loading="lazy"
             className="parallax-img"
             referrerPolicy="no-referrer"
           />
