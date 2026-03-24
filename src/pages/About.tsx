@@ -4,10 +4,10 @@ import SEO from "../components/SEO";
 import { ArrowRight, Users, Target, Globe, Award, CheckCircle } from "lucide-react";
 
 const teamValues = [
-  { icon: <Target className="w-6 h-6" />, title: "Results Over Everything", desc: "Every service we offer is measured by one standard: does it generate measurable business growth? Vanity metrics don't pay salaries — results do." },
-  { icon: <Users className="w-6 h-6" />, title: "Specialist Teams, Not Generalists", desc: "Each service discipline — web, SEO, paid ads, social, creative — is executed by a dedicated specialist team that eats, sleeps, and breathes their craft." },
-  { icon: <Globe className="w-6 h-6" />, title: "Built for the UAE Market", desc: "We understand Arabic bilingual requirements, local payment gateways (Telr, PayFort), Ramadan campaign nuances, and what actually converts UAE audiences." },
-  { icon: <Award className="w-6 h-6" />, title: "Transparent Partnership", desc: "No jargon, no black boxes. You get full dashboard access, monthly reporting calls, and clear attribution of every dirham spent to business outcomes." },
+  { icon: <Target className="w-6 h-6" role="img" aria-label="Target Icon" />, title: "Results Over Everything", desc: "Every service we offer is measured by one standard: does it generate measurable business growth? Vanity metrics don't pay salaries — results do." },
+  { icon: <Users className="w-6 h-6" role="img" aria-label="Users Icon" />, title: "Specialist Teams, Not Generalists", desc: "Each service discipline — web, SEO, paid ads, social, creative — is executed by a dedicated specialist team that eats, sleeps, and breathes their craft." },
+  { icon: <Globe className="w-6 h-6" role="img" aria-label="Global Icon" />, title: "Built for the UAE Market", desc: "We understand Arabic bilingual requirements, local payment gateways (Telr, PayFort), Ramadan campaign nuances, and what actually converts UAE audiences." },
+  { icon: <Award className="w-6 h-6" role="img" aria-label="Award Icon" />, title: "Transparent Partnership", desc: "No jargon, no black boxes. You get full dashboard access, monthly reporting calls, and clear attribution of every dirham spent to business outcomes." },
 ];
 
 const milestones = [

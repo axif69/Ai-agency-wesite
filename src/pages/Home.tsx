@@ -76,6 +76,24 @@ export default function Home() {
         description="Asif Digital: The leading AI Agency in Dubai & Sharjah. We build Sovereign AI ecosystems and resilient digital infrastructure for UAE enterprises. Decouple from geopolitical risk."
         keywords="Sovereign AI Dubai, AI Agency Sharjah, SEO Dubai, Web Design UAE, Business Continuity Sharjah, Abu Dhabi AI Automation"
         canonical="https://asifdigital.agency"
+        faqSchema={[
+          {
+            question: "What is Sovereign AI in the UAE context?",
+            answer: "Sovereign AI refers to AI systems built and hosted locally on state-backed infrastructure like G42 and Khazna. This ensures that sensitive UAE enterprise data never leaves the country and remains compliant with Federal Decree-Law No. 45."
+          },
+          {
+            question: "How does Asif Digital ensure business continuity?",
+            answer: "We build agentic swarms—autonomous digital employees—that operate 24/7 on locally-hosted servers. Unlike human staff, these systems are resilient to geographical disruptions, visa changes, and global connectivity issues."
+          },
+          {
+            question: "What is Answer Engine Optimization (AEO)?",
+            answer: "AEO is the evolution of SEO. We optimize your brand's data so that AI models like Gemini, ChatGPT, and Perplexity cite your business as the definitive answer for industry-specific queries in the UAE."
+          },
+          {
+            question: "Do you serve businesses in Abu Dhabi and Sharjah?",
+            answer: "Yes, Asif Digital is a UAE-wide agency. While founded in Sharjah, we provide multi-disciplinary digital and AI services to enterprises across Dubai, Abu Dhabi, Ajman, and the wider GCC."
+          }
+        ]}
         schema={{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
@@ -143,7 +161,7 @@ export default function Home() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1 }} className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0 justify-center z-10">
             <MagneticButton>
               <Link to="/contact" aria-label="Book an Operational AI Audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)]">
-                Book an Operational Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right" />
+                Book an Operational Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
               </Link>
             </MagneticButton>
           </motion.div>
@@ -154,10 +172,10 @@ export default function Home() {
       {/* ── Trust Signals Bar ── */}
       <section className="py-8 bg-black border-y border-white/5 relative z-20">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-8 text-[10px] uppercase font-bold tracking-[0.2em] text-white/60">
-          <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-white/70" /> 100% Data Sovereignty</div>
-          <div className="flex items-center gap-2"><Database className="w-4 h-4 text-white/70" /> UAE Hosted Compute</div>
-          <div className="flex items-center gap-2"><Brain className="w-4 h-4 text-white/70" /> Agentic Architecture</div>
-          <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-white/70" /> War-Agnostic Infrastructure</div>
+          <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-white/70" role="img" aria-label="Sovereignty Shield icon" /> 100% Data Sovereignty</div>
+          <div className="flex items-center gap-2"><Database className="w-4 h-4 text-white/70" role="img" aria-label="Database storage icon" /> UAE Hosted Compute</div>
+          <div className="flex items-center gap-2"><Brain className="w-4 h-4 text-white/70" role="img" aria-label="AI reasoning brain icon" /> Agentic Architecture</div>
+          <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-white/70" role="img" aria-label="Global networking icon" /> War-Agnostic Infrastructure</div>
         </div>
       </section>
 
@@ -238,7 +256,7 @@ export default function Home() {
                              {sol.icon}
                            </div>
                            <span className="text-white/30 group-hover:text-white transition-colors">
-                             <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300 transform origin-center" role="img" aria-label="Arrow Right" />
+                             <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300 transform origin-center" role="img" aria-label="Arrow Right icon" />
                            </span>
                          </div>
                          <h4 className="text-2xl font-serif mb-3 group-hover:text-green-400 transition-colors relative z-10">{sol.title}</h4>
@@ -339,7 +357,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-6xl font-serif tracking-tight">Latest Deep Dives</h2>
           </div>
           <Link to="/blog" className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] border border-white/10 transition-all flex items-center gap-2 group">
-            Explore All Journal Entries <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            Explore All Journal Entries <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" role="img" aria-label="Chevron Right icon" />
           </Link>
         </div>
 
@@ -375,18 +393,43 @@ export default function Home() {
                 {post.excerpt}
               </p>
               <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
-                Read Full Manuscript <ArrowRight className="w-4 h-4" />
+                Read Full Manuscript <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* ── 7. "Khalid" Integration ── */}
+      {/* ── 7. FAQ Section (A11y & SEO) ── */}
+      <section className="py-32 px-6 md:px-12 max-w-4xl mx-auto border-t border-white/5">
+        <div className="text-center mb-16">
+          <span className="micro-label block mb-4">Common Briefings</span>
+          <h2 className="text-4xl md:text-5xl font-serif">Frequently Asked</h2>
+        </div>
+        <div className="space-y-4">
+          {[
+            { q: "What is Sovereign AI?", a: "AI systems built and hosted locally on UAE state-backed infrastructure to ensure 100% data residency and compliance." },
+            { q: "How fast can you deploy an Agentic swarm?", a: "Standard deployments take 4-6 weeks, depending on the complexity of the reasoning chains and legacy systems integration." },
+            { q: "Do you provide ongoing support?", a: "Yes, all our Tier-1 and Tier-2 solutions include dedicated support and periodic model fine-tuning for UAE market shifts." }
+          ].map((faq, i) => (
+            <details key={i} className="group border border-white/5 bg-white/[0.02] rounded-2xl overflow-hidden">
+              <summary className="p-8 cursor-pointer list-none flex justify-between items-center hover:bg-white/[0.04] transition-colors">
+                <span className="text-lg font-serif">{faq.q}</span>
+                <ChevronRight className="w-5 h-5 text-white/30 group-open:rotate-90 transition-transform" role="img" aria-label="Toggle Answer icon" />
+              </summary>
+              <div className="px-8 pb-8 text-white/50 font-light leading-relaxed">
+                {faq.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {/* ── 8. "Khalid" Integration ── */}
       <section className="py-32 px-6 md:px-12 bg-white text-black text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="w-20 h-20 mx-auto mb-8 bg-black rounded-full flex items-center justify-center text-white shadow-2xl">
-            <Zap className="w-8 h-8" />
+            <Zap className="w-8 h-8" role="img" aria-label="Energy Zap icon" />
           </div>
           <motion.h2 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-5xl md:text-7xl font-serif tracking-tighter leading-tight mb-8">
             Meet the <span className="italic opacity-40">Architect.</span>

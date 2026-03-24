@@ -5,10 +5,11 @@ interface SEOProps {
   description: string;
   keywords?: string;
   schema?: Record<string, any>;
+  faqSchema?: { question: string; answer: string }[];
   canonical?: string;
 }
 
-export default function SEO({ title, description, keywords, schema, canonical }: SEOProps) {
+export default function SEO({ title, description, keywords, schema, faqSchema, canonical }: SEOProps) {
   const siteUrl = "https://asifdigital.agency";
   
   // Default Breadcrumb Schema
@@ -30,6 +31,20 @@ export default function SEO({ title, description, keywords, schema, canonical }:
       }
     ]
   };
+
+  // FAQ Schema if provided
+  const faqJsonLd = faqSchema ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqSchema.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  } : null;
 
   return (
     <Helmet>
@@ -57,6 +72,11 @@ export default function SEO({ title, description, keywords, schema, canonical }:
       <script type="application/ld+json">
         {JSON.stringify(breadcrumbSchema)}
       </script>
+      {faqJsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(faqJsonLd)}
+        </script>
+      )}
       {schema && (
         <script type="application/ld+json">
           {JSON.stringify(schema)}

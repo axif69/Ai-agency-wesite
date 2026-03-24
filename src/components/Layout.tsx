@@ -27,17 +27,22 @@ export default function Layout() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#050505] text-white selection:bg-green-500/30 overflow-x-hidden font-sans">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-black focus:px-6 focus:py-3 focus:rounded-full focus:font-bold">
+        Skip to Content
+      </a>
       <WhatsAppButton />
       <KhalidChatbot />
 
       <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-6 md:px-12">
-        <Link to="/" className="text-[26px] font-serif font-bold tracking-tight mix-blend-difference">
+        <Link to="/" aria-label="Asif Digital Home" className="text-[26px] font-serif font-bold tracking-tight mix-blend-difference">
           Asif Khan.
         </Link>
         
         <button
           className="md:hidden z-50 p-2 mix-blend-difference"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-expanded={isMenuOpen}
+          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
           {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -47,6 +52,7 @@ export default function Layout() {
             <div key={link.path} className="relative group">
               <Link
                 to={link.path}
+                aria-label={`Go to ${link.name} page`}
                 className="relative hover:text-white/60 transition-colors py-4 inline-block mix-blend-difference"
               >
                 {link.name}
@@ -144,6 +150,7 @@ export default function Layout() {
       </AnimatePresence>
 
       <motion.main
+        id="main-content"
         key={location.pathname}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -169,11 +176,11 @@ export default function Layout() {
               </p>
               <div className="flex gap-4 pt-4">
                 {[
-                  { name: 'LN', label: 'LinkedIn' },
-                  { name: 'TW', label: 'Twitter' },
-                  { name: 'IG', label: 'Instagram' }
+                  { name: 'LN', label: 'LinkedIn profile', icon: 'LinkedIn' },
+                  { name: 'TW', label: 'Twitter profile', icon: 'Twitter' },
+                  { name: 'IG', label: 'Instagram profile', icon: 'Instagram' }
                 ].map((social) => (
-                  <a key={social.name} href="#" className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 text-[10px] font-bold group">
+                  <a key={social.name} href="#" aria-label={`Visit our ${social.label}`} className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 text-[10px] font-bold group">
                     <span className="group-hover:scale-110 transition-transform">{social.name}</span>
                   </a>
                 ))}
@@ -217,22 +224,27 @@ export default function Layout() {
             {/* Quick Contact Form */}
             <div>
               <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold mb-10">Briefing</h4>
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()} aria-label="Quick Project Briefing Form">
                 <div className="relative group">
+                  <label htmlFor="footer-email" className="sr-only">Corporate Email</label>
                   <input 
+                    id="footer-email"
                     type="email" 
                     placeholder="Corporate Email" 
+                    autoComplete="email"
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-white/30 transition-all duration-500 placeholder:text-white/20"
                   />
                 </div>
                 <div className="relative group">
+                  <label htmlFor="footer-brief" className="sr-only">Project Brief</label>
                   <textarea 
+                    id="footer-brief"
                     placeholder="Project Brief" 
                     rows={4}
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-white/30 transition-all duration-500 resize-none placeholder:text-white/20"
                   ></textarea>
                 </div>
-                <button className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-5 rounded-2xl hover:bg-white/90 transition-all duration-500 text-[10px] shadow-2xl hover:scale-[1.02] active:scale-[0.98]">
+                <button type="submit" aria-label="Submit your project briefing" className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-5 rounded-2xl hover:bg-white/90 transition-all duration-500 text-[10px] shadow-2xl hover:scale-[1.02] active:scale-[0.98]">
                   Submit Brief
                 </button>
               </form>
