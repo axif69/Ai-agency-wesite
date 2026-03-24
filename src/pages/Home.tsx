@@ -331,7 +331,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 5. "Khalid" Integration ── */}
+      {/* ── 6. Latest Insights (Internal Linking for SEO) ── */}
+      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
+          <div>
+            <span className="micro-label block mb-4 text-[#0066FF]">The Intelligence Journal</span>
+            <h2 className="text-4xl md:text-6xl font-serif tracking-tight">Latest Deep Dives</h2>
+          </div>
+          <Link to="/blog" className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] border border-white/10 transition-all flex items-center gap-2 group">
+            Explore All Journal Entries <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: "The Sovereign Shield: AI & Cybersecurity in the GCC 2026",
+              slug: "sovereign-shield-ai-cybersecurity-gcc-2026",
+              category: "Cybersecurity & Sovereignty",
+              excerpt: "Why the GCC's pivot to local data residency is the ultimate competitive advantage in the 2026 threat landscape."
+            },
+            {
+              title: "AEO Mastery: Dominating the Answer Engine Era",
+              slug: "aeo-mastery-dubai-search-future",
+              category: "Search Strategy",
+              excerpt: "Traditional SEO is dead. Learn how to optimize for Gemini, Perplexity, and ChatGPT to win the Dubai market."
+            },
+            {
+              title: "Sovereign AI Blueprint: The GCC Enterprise Guide",
+              slug: "sovereign-ai-blueprint-gcc-2026",
+              category: "Executive Strategy",
+              excerpt: "A comprehensive roadmap for UAE-based firms to deploy unshakeable, locally-hosted AI architectures."
+            }
+          ].map((post, i) => (
+            <Link key={i} to={`/blog/${post.slug}`} className="group block p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500 flex flex-col h-full">
+              <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0066FF] mb-6">
+                {post.category}
+              </div>
+              <h3 className="text-2xl font-serif mb-6 group-hover:text-white transition-colors leading-tight flex-grow">
+                {post.title}
+              </h3>
+              <p className="text-sm text-white/40 font-light leading-relaxed mb-8 line-clamp-2">
+                {post.excerpt}
+              </p>
+              <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
+                Read Full Manuscript <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ── 7. "Khalid" Integration ── */}
       <section className="py-32 px-6 md:px-12 bg-white text-black text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="w-20 h-20 mx-auto mb-8 bg-black rounded-full flex items-center justify-center text-white shadow-2xl">
