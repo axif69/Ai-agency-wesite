@@ -32,15 +32,15 @@ export default function WhatsAppAutomationGCC() {
             </span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="text-5xl md:text-7xl lg:text-8xl font-serif tracking-tight mb-8 leading-[0.9]">
-            Autonomous B2B <br/><span className="italic text-white/40">Sales Swarms.</span>
+            Autonomous B2B <br/><span className="italic text-white/90">Sales Swarms.</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }} className="text-xl md:text-2xl text-white/60 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }} className="text-xl md:text-2xl text-white/95 font-light leading-relaxed max-w-3xl mx-auto mb-10">
             Human sales teams sleep. They burn out. They require visas. Our Agentic swarms live on UAE-native compute, qualifying enterprise leads via WhatsApp in under 3 seconds—in flawless Khaleeji Arabic and English.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.7 }}>
             <MagneticButton>
-              <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/90 transition-all shadow-[0_0_40px_rgba(255,150,0,0.2)] hover:scale-105 active:scale-95 flex items-center justify-center gap-3 mx-auto z-10">
-                Initiate Revenue Audit <ArrowRight className="w-4 h-4" />
+              <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} aria-label="Initiate Revenue Audit and Start Your WhatsApp AI Project" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/90 transition-all shadow-[0_0_40px_rgba(255,150,0,0.2)] hover:scale-105 active:scale-95 flex items-center justify-center gap-3 mx-auto z-10">
+                Initiate Revenue Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
               </button>
             </MagneticButton>
           </motion.div>
@@ -53,8 +53,8 @@ export default function WhatsAppAutomationGCC() {
       <section className="py-32 px-6 border-y border-white/5 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">Your funnel is leaking while <br /><span className="italic text-white/40">your competitors automate.</span></h2>
-            <div className="space-y-6 text-white/60 text-lg font-light leading-relaxed">
+            <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">Your funnel is leaking while <br /><span className="italic text-white/90">your competitors automate.</span></h2>
+            <div className="space-y-6 text-white/95 text-lg font-light leading-relaxed">
               <p>In the high-ticket B2B landscape of Dubai (Real Estate, Corporate SaaS, Consulting), the first vendor to respond wins the deal 78% of the time. Yet, the average human SDR takes 4 hours to respond to a web lead.</p>
               <p>Worse, human sales teams are expensive to scale here. Expanding a regional sales team involves high base salaries, extensive visa processing, and long onboarding cycles. When a crisis hits, or a remote mandate is issued, productivity plummets.</p>
               <p className="text-white font-medium border-l-2 border-white pl-4 mt-8">
@@ -85,26 +85,26 @@ export default function WhatsAppAutomationGCC() {
       {/* ── 3. High-Tier Architecture ── */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto text-center mb-20">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 mb-4 block">G42 / Khazna Hosted</span>
-          <h2 className="text-4xl md:text-6xl font-serif">Enterprise-Grade <br/><span className="italic text-white/40">Data Privacy.</span></h2>
-          <p className="text-white/60 max-w-2xl mx-auto mt-6 text-lg">Your proprietary sales scripts and customer data remain entirely within the UAE. We leverage state-backed compute to ensure zero data leakage.</p>
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/95 mb-4 block">G42 / Khazna Hosted</span>
+          <h2 className="text-4xl md:text-6xl font-serif">Enterprise-Grade <br/><span className="italic text-white/90">Data Privacy.</span></h2>
+          <p className="text-white/95 max-w-2xl mx-auto mt-6 text-lg">Your proprietary sales scripts and customer data remain entirely within the UAE. We leverage state-backed compute to ensure zero data leakage.</p>
         </div>
         
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           <div className="p-8 border border-white/10 rounded-2xl flex flex-col items-center text-center bg-white/[0.02]">
-            <Database className="w-10 h-10 text-white/30 mb-6" />
+            <Database className="w-10 h-10 text-white/90 mb-6" role="img" aria-label="Database Icon" />
             <h3 className="text-xl font-bold mb-3">Sovereign CRM Sync</h3>
-            <p className="text-sm text-white/50 font-light">Direct API linkage with Salesforce and HubSpot, hosted securely. PII never routes through third-party foreign APIs.</p>
+            <p className="text-sm text-white/95 font-light">Direct API linkage with Salesforce and HubSpot, hosted securely. PII never routes through third-party foreign APIs.</p>
           </div>
           <div className="p-8 border border-white/10 rounded-2xl flex flex-col items-center text-center bg-white/[0.02]">
-             <Bot className="w-10 h-10 text-white/30 mb-6" />
+             <Bot className="w-10 h-10 text-white/90 mb-6" role="img" aria-label="Bot Icon" />
             <h3 className="text-xl font-bold mb-3">Jais Arabic LLM</h3>
-            <p className="text-sm text-white/50 font-light">Trained on G42's powerful Arabic language models to perfectly mirror the linguistic nuances of Emirati and Gulf decision-makers.</p>
+            <p className="text-sm text-white/95 font-light">Trained on G42's powerful Arabic language models to perfectly mirror the linguistic nuances of Emirati and Gulf decision-makers.</p>
           </div>
           <div className="p-8 border border-white/10 rounded-2xl flex flex-col items-center text-center bg-white/[0.02]">
-            <ShieldCheck className="w-10 h-10 text-white/30 mb-6" />
+            <ShieldCheck className="w-10 h-10 text-white/90 mb-6" role="img" aria-label="Shield Check Icon" />
             <h3 className="text-xl font-bold mb-3">Role-Based Guardrails</h3>
-            <p className="text-sm text-white/50 font-light">Strict pricing floors and negotiation parameters. The agent knows exactly when to offer a discount and when to hold firm.</p>
+            <p className="text-sm text-white/95 font-light">Strict pricing floors and negotiation parameters. The agent knows exactly when to offer a discount and when to hold firm.</p>
           </div>
         </div>
       </section>
@@ -136,10 +136,10 @@ export default function WhatsAppAutomationGCC() {
 
       {/* ── 5. Final CTA ── */}
       <section className="py-40 px-6 max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl md:text-6xl font-serif mb-8">Scale your revenue, <br/><span className="italic text-white/40">not your headcount.</span></h2>
-        <p className="text-lg text-white/50 font-light mb-12">Replace the "invisible funnel" drop-off with 100% lead engagement. Full Agentic WhatsApp deployment takes roughly 14 days.</p>
-        <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} className="bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 mx-auto">
-          Begin Pipeline Audit <ArrowRight className="w-4 h-4" />
+        <h2 className="text-4xl md:text-6xl font-serif mb-8">Scale your revenue, <br/><span className="italic text-white/90">not your headcount.</span></h2>
+        <p className="text-lg text-white/95 font-light mb-12">Replace the "invisible funnel" drop-off with 100% lead engagement. Full Agentic WhatsApp deployment takes roughly 14 days.</p>
+        <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} aria-label="Begin Pipeline Audit and Start Your WhatsApp AI Strategy" className="bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 mx-auto">
+          Begin Pipeline Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
         </button>
       </section>
     </div>

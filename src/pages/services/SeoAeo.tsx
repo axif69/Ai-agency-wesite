@@ -95,9 +95,9 @@ export default function SeoAeo() {
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8vw] font-serif leading-tight tracking-tight mb-8">
             Dubai & Sharjah<br />
-            <span className="italic text-white/50">SEO & AEO</span>
+            <span className="italic text-white/90">SEO & AEO</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/95 font-light max-w-2xl leading-relaxed">
             Dominate UAE search results. From traditional Google Maps rankings in Sharjah to the new frontier of AI-driven Answer Engine Optimization.
           </p>
         </motion.div>
@@ -127,8 +127,8 @@ export default function SeoAeo() {
             </p>
             <ul className="space-y-4">
               {['Schema Markup', 'Voice Search Optimization', 'Content Structuring', 'Authority Link Building'].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-white/80 font-light">
-                  <CheckCircle2 className="w-5 h-5 text-white/40" />
+                <li key={i} className="flex items-center gap-3 text-white/95 font-light">
+                  <CheckCircle2 className="w-5 h-5 text-white/90" role="img" aria-label="Checkmark icon" />
                   {item}
                 </li>
               ))}
@@ -145,9 +145,9 @@ export default function SeoAeo() {
                 transition={{ delay: i * 0.1 }}
                 className="glass-panel p-8 rounded-3xl border border-white/5 hover:bg-white/5 transition-colors duration-500"
               >
-                <div className="mb-6 text-white/80">{feature.icon}</div>
+                <div className="mb-6 text-white/90" role="img" aria-label={`${feature.title} Icon`}>{feature.icon}</div>
                 <h3 className="text-xl font-serif mb-3">{feature.title}</h3>
-                <p className="text-sm text-white/50 font-light leading-relaxed">{feature.description}</p>
+                <p className="text-sm text-white/95 font-light leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>

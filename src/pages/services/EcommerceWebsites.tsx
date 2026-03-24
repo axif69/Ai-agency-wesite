@@ -25,16 +25,16 @@ export default function EcommerceWebsites() {
       {/* Hero */}
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-          <span className="text-white/40 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Ecommerce Development — Dubai & UAE</span>
+          <span className="text-white/95 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Ecommerce Development — Dubai & UAE</span>
           <h1 className="text-5xl md:text-7xl font-serif leading-tight tracking-tight mb-8">
-            Online Stores That<br /><span className="italic text-white/40">Sell Relentlessly.</span>
+            Online Stores That<br /><span className="italic text-white/90">Sell Relentlessly.</span>
           </h1>
-          <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl mb-12">
+          <p className="text-xl text-white/95 font-light leading-relaxed max-w-2xl mb-12">
             The UAE ecommerce market is projected to exceed $9 billion by 2026. We build the online stores that capture the lion's share of it—fast, secure, beautifully designed, and engineered to maximize every dirham of revenue from your traffic.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link to="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">
-              Get A Free Store Audit <ArrowRight className="w-4 h-4" />
+            <Link to="/contact" aria-label="Get A Free Store Audit and Start Your Ecommerce Project" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">
+              Get A Free Store Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
             </Link>
             <Link to="/portfolio" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:border-white transition-colors">
               View Ecommerce Work
@@ -49,7 +49,7 @@ export default function EcommerceWebsites() {
           {[{ n: "40+", l: "Stores Launched" }, { n: "340%", l: "Avg Revenue Increase" }, { n: "2.1s", l: "Avg Page Load Target" }, { n: "99.9%", l: "Store Uptime" }].map((s, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
               <div className="text-4xl font-serif mb-2">{s.n}</div>
-              <div className="text-white/40 text-xs uppercase tracking-widest">{s.l}</div>
+              <div className="text-white/95 text-xs uppercase tracking-widest">{s.l}</div>
             </motion.div>
           ))}
         </div>
@@ -65,9 +65,9 @@ export default function EcommerceWebsites() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
-                <div className="text-white/60 mb-5">{f.icon}</div>
+                <div className="text-white/95 mb-5" role="img" aria-label={`${f.title} Icon`}>{f.icon}</div>
                 <h3 className="text-lg font-bold mb-3">{f.title}</h3>
-                <p className="text-white/50 font-light leading-relaxed text-sm">{f.desc}</p>
+                <p className="text-white/95 font-light leading-relaxed text-sm">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -93,8 +93,8 @@ export default function EcommerceWebsites() {
             <h2 className="text-4xl font-serif mb-10">Every Store Comes With</h2>
             <ul className="space-y-4">
               {["Custom design matched to your brand", "Mobile-first responsive layout", "UAE payment gateway (Telr, PayFort, Stripe)", "Product schema & SEO for every product page", "Inventory management setup", "Abandoned cart email automation", "Analytics dashboard configuration", "30-day post-launch support"].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-white/70 text-sm font-light">
-                  <CheckCircle className="w-4 h-4 text-white/60 flex-shrink-0 mt-0.5" />
+                <li key={i} className="flex items-start gap-3 text-white/95 text-sm font-light">
+                  <CheckCircle className="w-4 h-4 text-white/90 flex-shrink-0 mt-0.5" role="img" aria-label="Feature Included" />
                   {item}
                 </li>
               ))}
@@ -102,9 +102,9 @@ export default function EcommerceWebsites() {
           </div>
           <div className="p-10 border border-white/10 rounded-2xl text-center">
             <h3 className="text-2xl font-serif mb-4">Launch in 30 Days</h3>
-            <p className="text-white/50 font-light text-sm leading-relaxed mb-8">We operate on an accelerated timeline that gets your store live and selling within 30 days without compromising on quality or functionality.</p>
-            <Link to="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
-              Start Today <ArrowRight className="w-4 h-4" />
+            <p className="text-white/95 font-light text-sm leading-relaxed mb-8">We operate on an accelerated timeline that gets your store live and selling within 30 days without compromising on quality or functionality.</p>
+            <Link to="/contact" aria-label="Start Your Ecommerce Project with Asif Digital Today" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
+              Start Today <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
             </Link>
           </div>
         </div>

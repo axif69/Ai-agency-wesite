@@ -39,16 +39,16 @@ export default function Branding() {
       {/* Hero */}
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-          <span className="text-white/40 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Branding & Identity — Dubai & UAE</span>
+          <span className="text-white/95 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Branding & Identity — Dubai & UAE</span>
           <h1 className="text-5xl md:text-7xl font-serif leading-tight tracking-tight mb-8">
-            A Brand They'll<br /><span className="italic text-white/40">Never Forget.</span>
+            A Brand They'll<br /><span className="italic text-white/90">Never Forget.</span>
           </h1>
-          <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl mb-12">
+          <p className="text-xl text-white/95 font-light leading-relaxed max-w-2xl mb-12">
             In the UAE's hyper-competitive business landscape, a generic logo and a colour palette aren't enough. We build brands from the ground up—strategy first, identity second—that earn immediate trust, command premium pricing, and create the kind of emotional connection that turns customers into advocates.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link to="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">
-              Start Your Brand Project <ArrowRight className="w-4 h-4" />
+            <Link to="/contact" aria-label="Start Your Brand Project with Asif Digital" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">
+              Start Your Brand Project <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
             </Link>
             <Link to="/portfolio" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:border-white transition-colors">
               View Brand Work
@@ -63,7 +63,7 @@ export default function Branding() {
           {[{ n: "200+", l: "Brands Created" }, { n: "Arab. & Eng.", l: "Bilingual Identity Experts" }, { n: "50-80pg", l: "Brand Guidelines Delivered" }, { n: "4-6 wks", l: "Avg Project Duration" }].map((s, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
               <div className="text-3xl font-serif mb-2">{s.n}</div>
-              <div className="text-white/40 text-xs uppercase tracking-widest">{s.l}</div>
+              <div className="text-white/95 text-xs uppercase tracking-widest">{s.l}</div>
             </motion.div>
           ))}
         </div>
@@ -79,9 +79,9 @@ export default function Branding() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {deliverables.map((d, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
-                <div className="text-white/60 mb-5">{d.icon}</div>
+                <div className="text-white/90 mb-5" role="img" aria-label={`${d.title} Icon`}>{d.icon}</div>
                 <h3 className="text-lg font-bold mb-3">{d.title}</h3>
-                <p className="text-white/50 font-light leading-relaxed text-sm">{d.desc}</p>
+                <p className="text-white/95 font-light leading-relaxed text-sm">{d.desc}</p>
               </motion.div>
             ))}
           </div>

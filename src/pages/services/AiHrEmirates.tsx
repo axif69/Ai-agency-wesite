@@ -32,14 +32,14 @@ export default function AiHrEmirates() {
             </span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="text-5xl md:text-7xl lg:text-8xl font-serif tracking-tight mb-8 leading-[0.9]">
-            AI HR Architecture <br/><span className="italic text-white/40">& Emiratization.</span>
+            AI HR Architecture <br/><span className="italic text-white/90">& Emiratization.</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }} className="text-xl md:text-2xl text-white/60 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }} className="text-xl md:text-2xl text-white/95 font-light leading-relaxed max-w-3xl mx-auto mb-10">
             Automate onboarding, streamline visa lifecycle tracking, and systematically hit Emiratization quotas without hiring massive HR departments. Protected by UAE-native data sovereignty.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.7 }}>
-            <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/90 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:scale-105 active:scale-95 flex items-center justify-center gap-3 mx-auto">
-              Initiate HR Audit <ArrowRight className="w-4 h-4" />
+            <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} aria-label="Initiate HR Audit and Start Your AI HR Project" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/90 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:scale-105 active:scale-95 flex items-center justify-center gap-3 mx-auto">
+              Initiate HR Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
             </button>
           </motion.div>
         </motion.div>
@@ -52,8 +52,8 @@ export default function AiHrEmirates() {
       <section className="py-32 px-6 border-y border-white/5 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">Human error in MoHRE compliance <br /><span className="italic text-white/40">carries a severe price.</span></h2>
-            <div className="space-y-6 text-white/60 text-lg font-light leading-relaxed">
+            <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">Human error in MoHRE compliance <br /><span className="italic text-white/90">carries a severe price.</span></h2>
+            <div className="space-y-6 text-white/95 text-lg font-light leading-relaxed">
               <p>Mainland companies in the UAE are entering the final phase of Emiratization targets. The government requires a steady increase in skilled national roles, and failure to comply results in devastating financial penalties. Yet, most companies rely on disjointed spreadsheets to track Nafis metrics.</p>
               <p>Beyond compliance, the 2026 expat labor market is volatile. High turnover due to geopolitical shifts creates an onboarding nightmare for understaffed HR teams. Human HR staff simply cannot process visa tracking, WPS management, and talent acquisition at the speed required in a regional crisis.</p>
               <p className="text-white font-medium border-l-2 border-white pl-4 mt-8">
@@ -87,26 +87,26 @@ export default function AiHrEmirates() {
       {/* ── 3. Sovereign Infrastructure & Operations ── */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto text-center mb-20">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 mb-4 block">Engineered for the Emirates</span>
-          <h2 className="text-4xl md:text-6xl font-serif">UAE Native Data. <br/><span className="italic text-white/40">Total Privacy.</span></h2>
-          <p className="text-white/60 max-w-2xl mx-auto mt-6 text-lg">Employee data is hyper-sensitive. Our HR agents rely on UAE sovereign networks (G42/Khazna) so PII data never crosses borders into foreign servers.</p>
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/95 mb-4 block">Engineered for the Emirates</span>
+          <h2 className="text-4xl md:text-6xl font-serif">UAE Native Data. <br/><span className="italic text-white/90">Total Privacy.</span></h2>
+          <p className="text-white/95 max-w-2xl mx-auto mt-6 text-lg">Employee data is hyper-sensitive. Our HR agents rely on UAE sovereign networks (G42/Khazna) so PII data never crosses borders into foreign servers.</p>
         </div>
         
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           <div className="p-8 border border-white/10 rounded-2xl flex flex-col items-center text-center bg-white/[0.02]">
-            <Database className="w-10 h-10 text-white/30 mb-6" />
+            <Database className="w-10 h-10 text-white/90 mb-6" role="img" aria-label="Database Icon" />
             <h3 className="text-xl font-bold mb-3">Sovereign Data Centers</h3>
-            <p className="text-sm text-white/50 font-light">Hosted entirely within Abu Dhabi and Dubai. Complies with the UAE Data Protection Law automatically.</p>
+            <p className="text-sm text-white/95 font-light">Hosted entirely within Abu Dhabi and Dubai. Complies with the UAE Data Protection Law automatically.</p>
           </div>
           <div className="p-8 border border-white/10 rounded-2xl flex flex-col items-center text-center bg-white/[0.02]">
-             <Globe className="w-10 h-10 text-white/30 mb-6" />
+             <Globe className="w-10 h-10 text-white/90 mb-6" role="img" aria-label="Globe Icon" />
             <h3 className="text-xl font-bold mb-3">Multilingual Capability</h3>
-            <p className="text-sm text-white/50 font-light">Bilingual (Khaleeji Arabic / English) internal support chatbots capable of resolving complex employee queries.</p>
+            <p className="text-sm text-white/95 font-light">Bilingual (Khaleeji Arabic / English) internal support chatbots capable of resolving complex employee queries.</p>
           </div>
           <div className="p-8 border border-white/10 rounded-2xl flex flex-col items-center text-center bg-white/[0.02]">
-            <ShieldCheck className="w-10 h-10 text-white/30 mb-6" />
+            <ShieldCheck className="w-10 h-10 text-white/90 mb-6" role="img" aria-label="Shield Check Icon" />
             <h3 className="text-xl font-bold mb-3">Military-Grade Security</h3>
-            <p className="text-sm text-white/50 font-light">Salary data, passports, and visas are processed in secure, isolated containers with granular role-based access.</p>
+            <p className="text-sm text-white/95 font-light">Salary data, passports, and visas are processed in secure, isolated containers with granular role-based access.</p>
           </div>
         </div>
       </section>
@@ -157,9 +157,9 @@ export default function AiHrEmirates() {
       {/* ── 5. Final CTA ── */}
       <section className="py-40 px-6 max-w-4xl mx-auto text-center">
         <h2 className="text-4xl md:text-6xl font-serif mb-8">Scale your workforce, <br/><span className="italic text-white/40">not your overhead.</span></h2>
-        <p className="text-lg text-white/50 font-light mb-12">Deployment timeline for autonomous UAE compliance tracking is approximately 30 days. Contact Khalid to review technical integrations.</p>
-        <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} className="bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 mx-auto">
-          Begin HR Architecture Audit <ArrowRight className="w-4 h-4" />
+        <p className="text-lg text-white/95 font-light mb-12">Deployment timeline for autonomous UAE compliance tracking is approximately 30 days. Contact Khalid to review technical integrations.</p>
+        <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} aria-label="Begin HR Architecture Audit and Start Your AI HR Project" className="bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 mx-auto">
+          Begin HR Architecture Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
         </button>
       </section>
     </div>

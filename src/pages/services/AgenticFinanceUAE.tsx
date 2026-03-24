@@ -32,15 +32,15 @@ export default function AgenticFinanceUAE() {
             </span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="text-5xl md:text-7xl lg:text-8xl font-serif tracking-tight mb-8 leading-[0.9]">
-            Agentic Finance <br/><span className="italic text-white/40">& Compliance.</span>
+            Agentic Finance <br/><span className="italic text-white/90">& Compliance.</span>
           </motion.h1>
           <TextGenerateEffect
             words="Compress 3-week manual financial audits into 4 seconds. We architect UAE-localized AI agents that automate CBUAE reporting, invoice matching, and governance—hosted exclusively on Khazna and G42 sovereign compute."
-            className="text-xl md:text-2xl text-white/60 font-light leading-relaxed max-w-3xl mx-auto mb-10"
+            className="text-xl md:text-2xl text-white/95 font-light leading-relaxed max-w-3xl mx-auto mb-10"
           />
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.7 }}>
-            <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/90 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:scale-105 active:scale-95 flex items-center justify-center gap-3 mx-auto">
-              Initiate Financial Audit <ArrowRight className="w-4 h-4" />
+            <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} aria-label="Initiate Financial Audit and Start Your AI Finance Strategy" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/90 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:scale-105 active:scale-95 flex items-center justify-center gap-3 mx-auto">
+              Initiate Financial Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
             </button>
           </motion.div>
         </motion.div>
@@ -53,8 +53,8 @@ export default function AgenticFinanceUAE() {
       <section className="py-32 px-6 border-y border-white/5 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">The highest cost in your finance department isn't software. <span className="italic text-white/40">It's human latency.</span></h2>
-            <div className="space-y-6 text-white/60 text-lg font-light leading-relaxed">
+            <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">The highest cost in your finance department isn't software. <span className="italic text-white/90">It's human latency.</span></h2>
+            <div className="space-y-6 text-white/95 text-lg font-light leading-relaxed">
               <p>In the rapid regulatory shifts of the 2026 UAE market, relying on a human workforce for invoice matching and compliance reporting is a critical vulnerability. Human accountants suffer from fatigue, require costly visas (averaging AED 12,000+), housing allowances, and are susceptible to regional remote-work mandates.</p>
               <p>A single manual data entry error in CBUAE (Central Bank of the UAE) compliance reporting can result in catastrophic fines. Yet, 84% of mid-market enterprises in Dubai still rely on manual spreadsheet validation.</p>
               <p className="text-white font-medium border-l-2 border-white pl-4 mt-8">
@@ -85,26 +85,26 @@ export default function AgenticFinanceUAE() {
       {/* ── 3. Sovereign Infrastructure (G42/Khazna) ── */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto text-center mb-20">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 mb-4 block">Uncompromising Security</span>
-          <h2 className="text-4xl md:text-6xl font-serif">Sovereign Data. <span className="italic text-white/40">UAE Native Compute.</span></h2>
-          <p className="text-white/60 max-w-2xl mx-auto mt-6 text-lg">Your financial data never leaves the Emirates. We deploy our AI models exclusively on state-backed sovereign infrastructure.</p>
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/95 mb-4 block">Uncompromising Security</span>
+          <h2 className="text-4xl md:text-6xl font-serif">Sovereign Data. <span className="italic text-white/90">UAE Native Compute.</span></h2>
+          <p className="text-white/95 max-w-2xl mx-auto mt-6 text-lg">Your financial data never leaves the Emirates. We deploy our AI models exclusively on state-backed sovereign infrastructure.</p>
         </div>
         
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-8 border border-white/10 rounded-2xl flex flex-col items-center text-center">
-            <Database className="w-10 h-10 text-white/30 mb-6" />
+            <Database className="w-10 h-10 text-white/90 mb-6" role="img" aria-label="Database Icon" />
             <h3 className="text-xl font-bold mb-3">Khazna Data Centers</h3>
-            <p className="text-sm text-white/50 font-light">Models hosted locally in Dubai and Abu Dhabi Khazna facilities, guaranteeing 100% data residency and compliance with UAE data privacy laws.</p>
+            <p className="text-sm text-white/95 font-light">Models hosted locally in Dubai and Abu Dhabi Khazna facilities, guaranteeing 100% data residency and compliance with UAE data privacy laws.</p>
           </div>
           <div className="p-8 border border-white/10 rounded-2xl flex flex-col items-center text-center">
-            <Lock className="w-10 h-10 text-white/30 mb-6" />
+            <Lock className="w-10 h-10 text-white/90 mb-6" role="img" aria-label="Lock Icon" />
             <h3 className="text-xl font-bold mb-3">G42 Integration</h3>
-            <p className="text-sm text-white/50 font-light">Leveraging G42's Jais Arabic LLM capabilities for bilingual financial extraction, ensuring flawless parsing of Arabic invoices and tax documents.</p>
+            <p className="text-sm text-white/95 font-light">Leveraging G42's Jais Arabic LLM capabilities for bilingual financial extraction, ensuring flawless parsing of Arabic invoices and tax documents.</p>
           </div>
           <div className="p-8 border border-white/10 rounded-2xl flex flex-col items-center text-center">
-            <ShieldCheck className="w-10 h-10 text-white/30 mb-6" />
+            <ShieldCheck className="w-10 h-10 text-white/90 mb-6" role="img" aria-label="Shield Check Icon" />
             <h3 className="text-xl font-bold mb-3">Air-Gapped Deployment</h3>
-            <p className="text-sm text-white/50 font-light">For ultra-sensitive financial institutions, agents can be deployed in secure, air-gapped environments disconnected from the public internet.</p>
+            <p className="text-sm text-white/95 font-light">For ultra-sensitive financial institutions, agents can be deployed in secure, air-gapped environments disconnected from the public internet.</p>
           </div>
         </div>
       </section>
@@ -148,10 +148,10 @@ export default function AgenticFinanceUAE() {
 
       {/* ── 5. Final CTA ── */}
       <section className="py-40 px-6 max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl md:text-6xl font-serif mb-8">Stop paying for human latency. <br/><span className="italic text-white/40">Architect for the future.</span></h2>
-        <p className="text-lg text-white/50 font-light mb-12">The transition from manual back-office labor to an Agentic Finance architecture takes approximately 45 days. Contact Khalid today to model your ROI.</p>
-        <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} className="bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 mx-auto">
-          Begin Operational Audit <ArrowRight className="w-4 h-4" />
+        <h2 className="text-4xl md:text-6xl font-serif mb-8">Stop paying for human latency. <br/><span className="italic text-white/90">Architect for the future.</span></h2>
+        <p className="text-lg text-white/95 font-light mb-12">The transition from manual back-office labor to an Agentic Finance architecture takes approximately 45 days. Contact Khalid today to model your ROI.</p>
+        <button onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} aria-label="Begin Operational Audit and Start Your AI Finance Strategy" className="bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 mx-auto">
+          Begin Operational Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
         </button>
       </section>
     </div>

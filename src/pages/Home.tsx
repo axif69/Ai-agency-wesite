@@ -356,7 +356,7 @@ export default function Home() {
             <span className="micro-label block mb-4 text-[#0066FF]">The Intelligence Journal</span>
             <h2 className="text-4xl md:text-6xl font-serif tracking-tight">Latest Deep Dives</h2>
           </div>
-          <Link to="/blog" className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] border border-white/10 transition-all flex items-center gap-2 group">
+          <Link to="/blog" aria-label="Explore all Journal entries and AI deep dives" className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] border border-white/10 transition-all flex items-center gap-2 group">
             Explore All Journal Entries <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" role="img" aria-label="Chevron Right icon" />
           </Link>
         </div>
@@ -382,7 +382,7 @@ export default function Home() {
               excerpt: "A comprehensive roadmap for UAE-based firms to deploy unshakeable, locally-hosted AI architectures."
             }
           ].map((post, i) => (
-            <Link key={i} to={`/blog/${post.slug}`} className="group block p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500 flex flex-col h-full">
+            <Link key={i} to={`/blog/${post.slug}`} aria-label={`Read Full Manuscript: ${post.title}`} className="group block p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500 flex flex-col h-full">
               <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0066FF] mb-6">
                 {post.category}
               </div>

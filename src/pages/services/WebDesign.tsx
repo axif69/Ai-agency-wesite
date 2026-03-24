@@ -35,17 +35,17 @@ export default function WebDesign() {
       {/* Hero */}
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-          <span className="text-white/40 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Web Design — Dubai & Sharjah</span>
+          <span className="text-white/95 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Web Design — Dubai & Sharjah</span>
           <h1 className="text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight mb-8">
             Websites That<br />
-            <span className="italic text-white/40">Win Clients.</span>
+            <span className="italic text-white/90">Win Clients.</span>
           </h1>
-          <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl mb-12">
+          <p className="text-xl text-white/95 font-light leading-relaxed max-w-2xl mb-12">
             We design premium websites for Dubai and Sharjah businesses that don't just look extraordinary—they rank on Google, engage every visitor, and convert prospects into paying customers with remarkable consistency.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link to="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">
-              Get A Free Consultation <ArrowRight className="w-4 h-4" />
+            <Link to="/contact" aria-label="Get A Free Consultation and Start Your Web Design Project" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">
+              Get A Free Consultation <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
             </Link>
             <Link to="/portfolio" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:border-white transition-colors">
               View Our Work
@@ -60,7 +60,7 @@ export default function WebDesign() {
           {[{ n: "150+", l: "Websites Delivered" }, { n: "98%", l: "Client Satisfaction" }, { n: "3x", l: "Average Traffic Increase" }, { n: "72hr", l: "Avg. Response Time" }].map((s, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
               <div className="text-4xl font-serif mb-2">{s.n}</div>
-              <div className="text-white/40 text-xs uppercase tracking-widest">{s.l}</div>
+              <div className="text-white/95 text-xs uppercase tracking-widest">{s.l}</div>
             </motion.div>
           ))}
         </div>
@@ -76,9 +76,9 @@ export default function WebDesign() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {whyUs.map((item, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
-                <div className="text-white/60 mb-5">{item.icon}</div>
+                <div className="text-white/95 mb-5" role="img" aria-label={`${item.title} Icon`}>{item.icon}</div>
                 <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-white/50 font-light leading-relaxed text-sm">{item.desc}</p>
+                <p className="text-white/95 font-light leading-relaxed text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -110,8 +110,8 @@ export default function WebDesign() {
             <h2 className="text-4xl md:text-5xl font-serif mb-10">What You Get With Every Website</h2>
             <ul className="space-y-4">
               {["Custom, bespoke design (no templates)", "Fully responsive for all devices", "Google Core Web Vitals optimization", "On-page SEO setup (meta tags, schema, sitemap)", "Arabic/English bilingual support available", "Hosting setup and DNS configuration", "30-day post-launch support", "Google Analytics & Search Console integration"].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-white/70 text-sm font-light">
-                  <CheckCircle className="w-4 h-4 text-white/60 flex-shrink-0 mt-0.5" />
+                <li key={i} className="flex items-start gap-3 text-white/95 text-sm font-light">
+                  <CheckCircle className="w-4 h-4 text-white/90 flex-shrink-0 mt-0.5" role="img" aria-label="Feature Included" />
                   {item}
                 </li>
               ))}
@@ -120,11 +120,11 @@ export default function WebDesign() {
           <div className="space-y-4">
             {testimonials.map((t, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.2 }} className="p-8 border border-white/10 rounded-2xl">
-                <Star className="w-5 h-5 text-white/60 mb-4" />
-                <p className="text-white/70 font-light leading-relaxed italic mb-6 text-sm">"{t.quote}"</p>
+                <Star className="w-5 h-5 text-white/90 mb-4" role="img" aria-label="Star Icon" />
+                <p className="text-white/95 font-light leading-relaxed italic mb-6 text-sm">"{t.quote}"</p>
                 <div>
                   <div className="font-bold text-sm">{t.author}</div>
-                  <div className="text-white/40 text-xs">{t.role}</div>
+                  <div className="text-white/90 text-xs">{t.role}</div>
                 </div>
               </motion.div>
             ))}
@@ -137,8 +137,8 @@ export default function WebDesign() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-serif mb-6">Ready to build a website that dominates?</h2>
           <p className="text-white/50 text-lg font-light mb-10">Join 150+ UAE businesses who trusted Asif Digital to transform their digital presence.</p>
-          <Link to="/contact" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
-            Start Your Project <ArrowRight className="w-4 h-4" />
+          <Link to="/contact" aria-label="Start Your Web Design Project with Asif Digital" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
+            Start Your Project <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
           </Link>
         </div>
       </section>

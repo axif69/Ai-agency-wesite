@@ -45,16 +45,16 @@ export default function SocialMedia() {
       {/* Hero */}
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-          <span className="text-white/40 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Social Media — Dubai & UAE</span>
+          <span className="text-white/95 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Social Media — Dubai & UAE</span>
           <h1 className="text-5xl md:text-7xl font-serif leading-tight tracking-tight mb-8">
-            A Social Presence<br /><span className="italic text-white/40">Worth Following.</span>
+            A Social Presence<br /><span className="italic text-white/90">Worth Following.</span>
           </h1>
-          <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl mb-12">
+          <p className="text-xl text-white/95 font-light leading-relaxed max-w-2xl mb-12">
             We manage your entire social media ecosystem—from strategy and content creation to community management and paid amplification—turning followers into loyal customers.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link to="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
-              Let's Grow Your Brand <ArrowRight className="w-4 h-4" />
+            <Link to="/contact" aria-label="Let's Grow Your Brand and Start Your Social Media Project" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
+              Let's Grow Your Brand <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
             </Link>
             <Link to="/case-studies" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:border-white transition-colors">
               See Our Results
@@ -69,8 +69,8 @@ export default function SocialMedia() {
           {results.map((r, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
               <div className="text-3xl font-serif mb-2">{r.n}</div>
-              <div className="text-white/60 text-sm font-medium mb-1">{r.l}</div>
-              <div className="text-white/30 text-xs">{r.sub}</div>
+              <div className="text-white/95 text-sm font-medium mb-1">{r.l}</div>
+              <div className="text-white/90 text-xs">{r.sub}</div>
             </motion.div>
           ))}
         </div>
@@ -86,9 +86,9 @@ export default function SocialMedia() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/25 transition-colors">
-                <div className="text-white/50 mb-5">{s.icon}</div>
+                <div className="text-white/95 mb-5" role="img" aria-label={`${s.title} Icon`}>{s.icon}</div>
                 <h3 className="text-lg font-bold mb-3">{s.title}</h3>
-                <p className="text-white/50 font-light leading-relaxed text-sm">{s.desc}</p>
+                <p className="text-white/95 font-light leading-relaxed text-sm">{s.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -101,7 +101,7 @@ export default function SocialMedia() {
           <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-8">Platforms We Manage</span>
           <div className="flex flex-wrap gap-3">
             {platforms.map((p, i) => (
-              <span key={i} className="border border-white/15 text-white/60 px-5 py-2.5 rounded-full text-sm font-medium">{p}</span>
+              <span key={i} className="border border-white/15 text-white/95 px-5 py-2.5 rounded-full text-sm font-medium">{p}</span>
             ))}
           </div>
         </div>
@@ -116,11 +116,11 @@ export default function SocialMedia() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {plans.map((plan, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className={`p-8 rounded-2xl border flex flex-col ${i === 1 ? "border-white/40 bg-white/[0.04]" : "border-white/10"}`}>
-                {i === 1 && <span className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-4 block">Most Popular</span>}
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className={`p-8 rounded-2xl border flex flex-col ${i === 1 ? "border-white/50 bg-white/[0.04]" : "border-white/10"}`}>
+                {i === 1 && <span className="text-[10px] font-bold uppercase tracking-widest text-white/95 mb-4 block">Most Popular</span>}
                 <h3 className="text-2xl font-serif mb-2">{plan.name}</h3>
-                <div className="text-3xl font-bold mb-2">{plan.price}<span className="text-sm text-white/40 font-normal"> / mo</span></div>
-                <p className="text-white/40 text-sm mb-6">{plan.desc}</p>
+                <div className="text-3xl font-bold mb-2">{plan.price}<span className="text-sm text-white/90 font-normal"> / mo</span></div>
+                <p className="text-white/95 text-sm mb-6">{plan.desc}</p>
                 <ul className="space-y-3 mb-8 flex-grow">
                   {plan.includes.map((item, j) => (
                     <li key={j} className="flex items-center gap-2 text-white/60 text-sm">
@@ -145,7 +145,7 @@ export default function SocialMedia() {
             {faqs.map((faq, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="border border-white/10 rounded-2xl p-8">
                 <h3 className="font-bold text-lg mb-3">{faq.q}</h3>
-                <p className="text-white/50 font-light text-sm leading-relaxed">{faq.a}</p>
+                <p className="text-white/95 font-light text-sm leading-relaxed">{faq.a}</p>
               </motion.div>
             ))}
           </div>
@@ -157,8 +157,8 @@ export default function SocialMedia() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-serif mb-6">Your audience is already scrolling.<br /><span className="italic text-white/40">Are they seeing you?</span></h2>
           <p className="text-white/50 text-lg font-light mb-10">Book a free strategy call and we'll audit your current presence and show you exactly how to grow.</p>
-          <Link to="/contact" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
-            Book Free Audit <ArrowRight className="w-4 h-4" />
+          <Link to="/contact" aria-label="Book Your Free Social Media Strategy Audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
+            Book Free Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
           </Link>
         </div>
       </section>

@@ -41,10 +41,10 @@ export default function WebDevelopment() {
       >
         <span className="micro-label block mb-4">Service Details</span>
         <div className="flex items-center gap-6 mb-8">
-          <Code className="w-12 h-12 text-white/40" />
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">Dubai & Sharjah<br/><span className="text-white/50 italic">AI Web Dev</span></h1>
+          <Code className="w-12 h-12 text-white/90" role="img" aria-label="Web Code Icon" />
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">Dubai & Sharjah<br/><span className="text-white/80 italic text-white/90">AI Web Dev</span></h1>
         </div>
-        <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl">
+        <p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl">
           Transform your digital presence in the UAE with immersive, high-performance web applications powered by Artificial Intelligence.
         </p>
       </motion.div>
@@ -74,7 +74,7 @@ export default function WebDevelopment() {
         >
           <div>
             <h2 className="text-4xl font-serif tracking-tight mb-6">Next-Gen Web Experiences for UAE Businesses</h2>
-            <p className="text-white/60 font-light leading-relaxed">
+            <p className="text-white/90 font-light leading-relaxed">
               In the competitive markets of Dubai and Sharjah, a standard website isn't enough. I build intelligent web platforms that adapt to user behavior, automate customer interactions, and provide seamless, immersive experiences. Using modern frameworks like React and Next.js combined with AI APIs, your website becomes a powerful business tool designed to convert local traffic into loyal customers.
             </p>
           </div>
@@ -87,16 +87,16 @@ export default function WebDevelopment() {
               "Immersive 3D & WebGL Interfaces",
               "High-Performance & SEO Optimized Architecture"
             ].map((feature, i) => (
-              <li key={i} className="flex items-center gap-4 text-white/80 font-light">
-                <CheckCircle className="w-5 h-5 text-white/40" />
+              <li key={i} className="flex items-center gap-4 text-white/95 font-light">
+                <CheckCircle className="w-5 h-5 text-white/90" role="img" aria-label="Feature Checkmark" />
                 {feature}
               </li>
             ))}
           </ul>
 
           <div className="pt-8">
-            <Link to="/contact?service=web-dev" className="inline-flex items-center gap-2 border border-white/20 rounded-full px-8 py-4 uppercase tracking-widest text-xs font-semibold hover:bg-white hover:text-black transition-all duration-500 glass-panel">
-              Start Your Project <ArrowRight className="w-4 h-4" />
+            <Link to="/contact?service=web-dev" aria-label="Start Your Web Development Project with Asif Digital" className="inline-flex items-center gap-2 border border-white/20 rounded-full px-8 py-4 uppercase tracking-widest text-xs font-semibold hover:bg-white hover:text-black transition-all duration-500 glass-panel">
+              Start Your Project <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
             </Link>
           </div>
         </motion.div>
@@ -116,9 +116,9 @@ export default function WebDevelopment() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            { icon: <Layers />, title: "1. Architecture & Design", desc: "Planning the tech stack, database schema, and creating high-fidelity UI/UX prototypes." },
-            { icon: <Code />, title: "2. Development & AI Integration", desc: "Writing clean, scalable code and integrating intelligent AI features tailored to your needs." },
-            { icon: <ShieldCheck />, title: "3. Testing & Deployment", desc: "Rigorous performance, security, and SEO testing before a seamless launch." }
+            { icon: <Layers className="w-6 h-6" role="img" aria-label="Architecture Icon" />, title: "1. Architecture & Design", desc: "Planning the tech stack, database schema, and creating high-fidelity UI/UX prototypes." },
+            { icon: <Code className="w-6 h-6" role="img" aria-label="Code Icon" />, title: "2. Development & AI Integration", desc: "Writing clean, scalable code and integrating intelligent AI features tailored to your needs." },
+            { icon: <ShieldCheck className="w-6 h-6" role="img" aria-label="Security Icon" />, title: "3. Testing & Deployment", desc: "Rigorous performance, security, and SEO testing before a seamless launch." }
           ].map((step, i) => (
             <motion.div 
               key={i}
@@ -128,9 +128,9 @@ export default function WebDevelopment() {
               transition={{ delay: i * 0.1 }}
               className="p-10 glass-panel rounded-3xl border border-white/5"
             >
-              <div className="text-white/40 mb-6">{step.icon}</div>
+              <div className="text-white/90 mb-6">{step.icon}</div>
               <h3 className="text-2xl font-serif mb-4">{step.title}</h3>
-              <p className="text-white/50 font-light leading-relaxed">{step.desc}</p>
+              <p className="text-white/90 font-light leading-relaxed">{step.desc}</p>
             </motion.div>
           ))}
         </div>

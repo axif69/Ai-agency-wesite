@@ -41,10 +41,10 @@ export default function SaaSServices() {
       >
         <span className="micro-label block mb-4">Service Details</span>
         <div className="flex items-center gap-6 mb-8">
-          <Cpu className="w-12 h-12 text-white/40" />
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">UAE Scaleable<br/><span className="text-white/50 italic">SaaS Solutions</span></h1>
+          <Cpu className="w-12 h-12 text-white/90" role="img" aria-label="SaaS CPU Icon" />
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">UAE Scaleable<br/><span className="text-white/90 italic">SaaS Solutions</span></h1>
         </div>
-        <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl">
+        <p className="text-xl md:text-2xl text-white/95 font-light max-w-3xl">
           Robust, cloud-native architecture and custom software platforms designed specifically for forward-thinking enterprises across Dubai and Sharjah.
         </p>
       </motion.div>
@@ -74,7 +74,7 @@ export default function SaaSServices() {
         >
           <div>
             <h2 className="text-4xl font-serif tracking-tight mb-6">Robust Cloud Architecture</h2>
-            <p className="text-white/60 font-light leading-relaxed">
+            <p className="text-white/95 font-light leading-relaxed">
               Transform your business idea into a scalable, subscription-based SaaS product. I handle the entire lifecycle—from database architecture and secure authentication to seamless payment integration and intuitive user dashboards. Built for scale, security, and speed to serve the dynamic UAE market and beyond.
             </p>
           </div>
@@ -87,16 +87,16 @@ export default function SaaSServices() {
               "Scalable Cloud Databases (Firebase/Supabase)",
               "Real-time Data & Analytics Dashboards"
             ].map((feature, i) => (
-              <li key={i} className="flex items-center gap-4 text-white/80 font-light">
-                <CheckCircle className="w-5 h-5 text-white/40" />
+              <li key={i} className="flex items-center gap-4 text-white/95 font-light">
+                <CheckCircle className="w-5 h-5 text-white/90" role="img" aria-label="Feature Checkmark" />
                 {feature}
               </li>
             ))}
           </ul>
 
           <div className="pt-8">
-            <Link to="/contact?service=saas" className="inline-flex items-center gap-2 border border-white/20 rounded-full px-8 py-4 uppercase tracking-widest text-xs font-semibold hover:bg-white hover:text-black transition-all duration-500 glass-panel">
-              Discuss Architecture <ArrowRight className="w-4 h-4" />
+            <Link to="/contact?service=saas" aria-label="Start Your SaaS Development Project with Asif Digital" className="inline-flex items-center gap-2 border border-white/20 rounded-full px-8 py-4 uppercase tracking-widest text-xs font-semibold hover:bg-white hover:text-black transition-all duration-500 glass-panel">
+              Discuss Architecture <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
             </Link>
           </div>
         </motion.div>
@@ -116,9 +116,9 @@ export default function SaaSServices() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            { icon: <Database />, title: "1. Data Modeling", desc: "Designing scalable, multi-tenant database schemas to ensure data isolation and performance." },
-            { icon: <Server />, title: "2. Cloud Infrastructure", desc: "Setting up robust CI/CD pipelines and auto-scaling cloud environments." },
-            { icon: <Lock />, title: "3. Security & Auth", desc: "Implementing enterprise-grade authentication (OAuth, SAML) and role-based access control." }
+            { icon: <Database className="w-6 h-6" role="img" aria-label="Database Icon" />, title: "1. Data Modeling", desc: "Designing scalable, multi-tenant database schemas to ensure data isolation and performance." },
+            { icon: <Server className="w-6 h-6" role="img" aria-label="Server Icon" />, title: "2. Cloud Infrastructure", desc: "Setting up robust CI/CD pipelines and auto-scaling cloud environments." },
+            { icon: <Lock className="w-6 h-6" role="img" aria-label="Lock Icon" />, title: "3. Security & Auth", desc: "Implementing enterprise-grade authentication (OAuth, SAML) and role-based access control." }
           ].map((step, i) => (
             <motion.div 
               key={i}
@@ -128,9 +128,9 @@ export default function SaaSServices() {
               transition={{ delay: i * 0.1 }}
               className="p-10 glass-panel rounded-3xl border border-white/5"
             >
-              <div className="text-white/40 mb-6">{step.icon}</div>
+              <div className="text-white/90 mb-6">{step.icon}</div>
               <h3 className="text-2xl font-serif mb-4">{step.title}</h3>
-              <p className="text-white/50 font-light leading-relaxed">{step.desc}</p>
+              <p className="text-white/90 font-light leading-relaxed">{step.desc}</p>
             </motion.div>
           ))}
         </div>
