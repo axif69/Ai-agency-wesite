@@ -58,11 +58,8 @@ export default function AiMobileApps() {
           className="parallax-container rounded-3xl aspect-[4/5]"
         >
           <img 
-            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format,compress&fm=webp&q=75&w=800" 
-            alt="AI Mobile Apps UAE" 
-            width="800"
-            height="1000"
-            loading="lazy"
+            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format,compress&fm=webp&q=75&w=1200" 
+            alt="AI Mobile Apps" 
             className="parallax-img"
             referrerPolicy="no-referrer"
           />

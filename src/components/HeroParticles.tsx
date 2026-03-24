@@ -16,7 +16,7 @@ const ParticleSwarm = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
   
-  const particleCount = 3500;
+  const particleCount = 6000;
   
   // Generate random positions and colors for particles
   const [positions, colors, basePositions] = useMemo(() => {
@@ -80,39 +80,44 @@ const ParticleSwarm = () => {
     const targetX = (mousePos.current.x * viewport.width) / 2;
     const targetY = (mousePos.current.y * viewport.height) / 2;
     
-    // Pre-calculate rotation matrix once per frame instead of per-particle
-    const rotationMatrix = new THREE.Matrix4().makeRotationFromEuler(pointsRef.current.rotation);
-    const tempVec = new THREE.Vector3();
-    
     for (let i = 0; i < particleCount; i++) {
       const i3 = i * 3;
       
+      // Current positions
+      const px = positionsArray[i3];
+      const py = positionsArray[i3 + 1];
+      const pz = positionsArray[i3 + 2];
+      
+      // Base positions (where they want to return)
       const bx = basePositions[i3];
       const by = basePositions[i3 + 1];
       const bz = basePositions[i3 + 2];
       
-      // Use tempVec and rotationMatrix to avoid per-particle object creation
-      tempVec.set(bx, by, bz).applyMatrix4(rotationMatrix);
+      // Calculate world position of this particle after rotation
+      const vec = new THREE.Vector3(bx, by, bz);
+      vec.applyEuler(pointsRef.current.rotation);
       
-      const dx = targetX - tempVec.x;
-      const dy = targetY - tempVec.y;
-      const distSq = dx * dx + dy * dy; // Use distance squared for faster checks
+      // Distance from mouse to particle
+      const dx = targetX - vec.x;
+      const dy = targetY - vec.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
       
-      if (distSq < 36) { // 6^2
-        const dist = Math.sqrt(distSq);
-        const force = (6 - dist) * 0.16;
-        positionsArray[i3]     += (-dx / dist) * force;
-        positionsArray[i3 + 1] += (-dy / dist) * force;
+      // Decreased repulsion range and force by ~20%
+      const force = Math.max(0, 6 - dist); 
+      
+      if (force > 0) {
+        // Push away from mouse less aggressively
+        positionsArray[i3]     += (-dx / dist) * force * 0.16;
+        positionsArray[i3 + 1] += (-dy / dist) * force * 0.16;
       } else {
-        const px = positionsArray[i3];
-        const py = positionsArray[i3 + 1];
-        const pz = positionsArray[i3 + 2];
+        // Return to base position softly
         positionsArray[i3]     += (bx - px) * 0.05;
         positionsArray[i3 + 1] += (by - py) * 0.05;
         positionsArray[i3 + 2] += (bz - pz) * 0.05;
       }
       
-      positionsArray[i3 + 1] += Math.sin(state.clock.elapsedTime * 2 + bx) * 0.01;
+      // Add subtle wave motion
+      positionsArray[i3 + 1] += Math.sin(state.clock.elapsedTime * 2 + px) * 0.01;
     }
     
     pointsRef.current.geometry.attributes.position.needsUpdate = true;

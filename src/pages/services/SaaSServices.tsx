@@ -58,11 +58,8 @@ export default function SaaSServices() {
           className="parallax-container rounded-3xl aspect-[4/5]"
         >
           <img 
-            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format,compress&fm=webp&q=75&w=800" 
-            alt="SaaS Platform Development" 
-            width="800"
-            height="1000"
-            loading="lazy"
+            src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format,compress&fm=webp&q=75&w=1200" 
+            alt="SaaS Solutions" 
             className="parallax-img"
             referrerPolicy="no-referrer"
           />

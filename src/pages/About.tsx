@@ -47,9 +47,6 @@ export default function About() {
           <img
             src="https://lh3.googleusercontent.com/d/1ChELaq_hCpBMzUpw9Z7H1TBYZ9nW_JU0"
             alt="Asif Khan — Founder, Asif Digital"
-            width="600"
-            height="800"
-            loading="lazy"
             className="w-full h-auto rounded-3xl object-cover grayscale hover:grayscale-0 transition-all duration-1000 relative z-10 border border-white/10"
             referrerPolicy="no-referrer"
           />

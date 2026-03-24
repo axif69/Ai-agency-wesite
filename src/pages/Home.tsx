@@ -1,14 +1,11 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
-import React, { useRef, useState, useEffect, Suspense, lazy } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
-
-// Lazy load heavy components for PSI Mobile 90+ score
-const HeroParticles = lazy(() => import("../components/HeroParticles"));
-const ParticleBackground = lazy(() => import("../components/animations/ParticleBackground"));
-
+import HeroParticles from "../components/HeroParticles";
 import TiltCard from "../components/animations/TiltCard";
 import SpotlightCard from "../components/animations/SpotlightCard";
+import ParticleBackground from "../components/animations/ParticleBackground";
 import MagneticButton from "../components/animations/MagneticButton";
 import { TextGenerateEffect } from "../components/animations/TextGenerateEffect";
 import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap } from "lucide-react";
@@ -75,7 +72,7 @@ export default function Home() {
   return (
     <div ref={containerRef} className="relative bg-[#050505]">
       <SEO
-        title="Sovereign AI & Digital Strategy Dubai"
+        title="Sovereign AI Architecture & Business Continuity Dubai"
         description="Asif Digital: The leading AI Agency in Dubai & Sharjah. We build Sovereign AI ecosystems and resilient digital infrastructure for UAE enterprises. Decouple from geopolitical risk."
         keywords="Sovereign AI Dubai, AI Agency Sharjah, SEO Dubai, Web Design UAE, Business Continuity Sharjah, Abu Dhabi AI Automation"
         canonical="https://asifdigital.agency"
@@ -134,9 +131,9 @@ export default function Home() {
             </span>
           </motion.div>
           
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[7vw] font-serif font-bold leading-[0.9] tracking-tight mb-8 max-w-7xl mx-auto drop-shadow-2xl">
+          <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="text-4xl sm:text-6xl md:text-8xl lg:text-[7vw] font-serif font-bold leading-[0.9] tracking-tight mb-8 max-w-7xl mx-auto drop-shadow-2xl">
             Architecting <span className="italic text-white/70">Sovereign</span><br />Intelligence.
-          </h1>
+          </motion.h1>
           
           <TextGenerateEffect 
             words="Decoupling UAE productivity from geopolitical risk. We build continuous, fault-tolerant AI ecosystems and digital infrastructure for enterprises."
@@ -151,10 +148,7 @@ export default function Home() {
             </MagneticButton>
           </motion.div>
         </motion.div>
-        
-        <Suspense fallback={<div className="absolute inset-0 bg-black" />}>
-          <HeroParticles />
-        </Suspense>
+        <HeroParticles />
       </section>
 
       {/* ── Trust Signals Bar ── */}
@@ -195,9 +189,7 @@ export default function Home() {
 
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative aspect-square rounded-[2rem] overflow-hidden border border-white/10 bg-[#0a0a0a] p-10 flex flex-col justify-center">
              {/* New Animated Particle Background */}
-            <Suspense fallback={<div className="absolute inset-0 bg-black" />}>
-              <ParticleBackground />
-            </Suspense>
+            <ParticleBackground />
 
             {/* Existing Grid Overlay */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)] opacity-20 z-[1]" />
@@ -339,106 +331,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 5. Sector Expertise & Sovereign AI Manifesto ── */}
-      <section className="py-40 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
-          <div>
-            <span className="micro-label block mb-6">Expertise & Thesis</span>
-            <h2 className="text-4xl md:text-6xl font-serif tracking-tight leading-tight mb-12">
-              Beyond the LLM: Architecting <span className="italic text-white/50">Predictable</span> Intelligence.
-            </h2>
-            <div className="space-y-8 text-white/70 font-light leading-[1.8]">
-              <p>The current hype cycle around generative AI has obscured a fundamental truth: generic intelligence is a commodity. For UAE-based enterprises, the real value lies in <strong>Sovereign Intelligence</strong>—systems that are finely tuned to regional regulations, Arabic linguistic nuances, and the specific operational logic of the Middle East.</p>
-              <p>Asif Digital is not here to build "chatbots." We are here to engineer <strong>Autonomous Decision Engines</strong>. These are agentic swarms capable of managing high-stakes logic in finance, logistics, and human resources. By leveraging state-of-the-art infrastructure locally in Dubai and Abu Dhabi via G42 and Khazna, we ensure that your corporate memory remains your most protected asset, entirely decoupling your productivity from global cloud dependencies and geopolitical flux.</p>
-              <p>Our commitment to <strong>Business Continuity</strong> goes deeper than code. We recognize that in a world of rapid shifts, the only "unbreakable" business is one that owns its intelligence. Our Tier-1 Sovereign AI solutions are designed for 100% uptime, operating as "Digital Employees" that scale without the friction of traditional human headcount growth, housing costs, or visa dependencies.</p>
-            </div>
-          </div>
-          <div className="space-y-12 bg-white/[0.02] p-12 rounded-[2.5rem] border border-white/5">
-            <div>
-              <h3 className="text-xl font-serif text-white mb-4 flex items-center gap-3">
-                <Brain className="w-5 h-5 text-[#0066FF]" /> Agentic Reasoning
-              </h3>
-              <p className="text-sm text-white/50 leading-relaxed">
-                We move past simple prompt-response cycles. Our agents utilize <strong>multi-step reasoning chains</strong> to solve complex business problems, providing verifiable outputs and self-correcting logic that mirrors high-level human professional output.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-serif text-white mb-4 flex items-center gap-3">
-                <Shield className="w-5 h-5 text-[#0066FF]" /> Data Guardianship
-              </h3>
-              <p className="text-sm text-white/50 leading-relaxed">
-                In compliance with <strong>UAE Federal Decree-Law No. 45</strong>, our architectures prioritize data residency and localized processing. We eliminate the risk of sensitive corporate intel being used to train third-party public models.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-serif text-white mb-4 flex items-center gap-3">
-                <TrendingUp className="w-5 h-5 text-[#0066FF]" /> AEO Dominance
-              </h3>
-              <p className="text-sm text-white/50 leading-relaxed">
-                The search landscape is shifting from "links" to "answers." Through our proprietary <strong>Answer Engine Optimization (AEO)</strong> frameworks, we ensure your brand is the definitive source for generative AI queries across Gemini, Perplexity, and ChatGPT.
-              </p>
-            </div>
-            <div className="pt-6">
-              <Link to="/portfolio" className="inline-flex items-center gap-2 text-[#0066FF] font-bold uppercase tracking-widest text-xs hover:gap-4 transition-all">
-                Explore our Technical Thesis <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 6. Latest Insights (Internal Linking for SEO) ── */}
-      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
-          <div>
-            <span className="micro-label block mb-4 text-[#0066FF]">The Intelligence Journal</span>
-            <h2 className="text-4xl md:text-6xl font-serif tracking-tight">Latest Deep Dives</h2>
-          </div>
-          <Link to="/blog" className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] border border-white/10 transition-all flex items-center gap-2 group">
-            Explore All Journal Entries <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              title: "The Sovereign Shield: AI & Cybersecurity in the GCC 2026",
-              slug: "sovereign-shield-ai-cybersecurity-gcc-2026",
-              category: "Cybersecurity & Sovereignty",
-              excerpt: "Why the GCC's pivot to local data residency is the ultimate competitive advantage in the 2026 threat landscape."
-            },
-            {
-              title: "AEO Mastery: Dominating the Answer Engine Era",
-              slug: "aeo-mastery-dubai-search-future",
-              category: "Search Strategy",
-              excerpt: "Traditional SEO is dead. Learn how to optimize for Gemini, Perplexity, and ChatGPT to win the Dubai market."
-            },
-            {
-              title: "Sovereign AI Blueprint: The GCC Enterprise Guide",
-              slug: "sovereign-ai-blueprint-gcc-2026",
-              category: "Executive Strategy",
-              excerpt: "A comprehensive roadmap for UAE-based firms to deploy unshakeable, locally-hosted AI architectures."
-            }
-          ].map((post, i) => (
-            <Link key={i} to={`/blog/${post.slug}`} className="group block p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500 flex flex-col h-full">
-              <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0066FF] mb-6">
-                {post.category}
-              </div>
-              <h3 className="text-2xl font-serif mb-6 group-hover:text-white transition-colors leading-tight flex-grow">
-                {post.title}
-              </h3>
-              <p className="text-sm text-white/40 font-light leading-relaxed mb-8 line-clamp-2">
-                {post.excerpt}
-              </p>
-              <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
-                Read Full Manuscript <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* ── 7. "Khalid" Integration ── */}
+      {/* ── 5. "Khalid" Integration ── */}
       <section className="py-32 px-6 md:px-12 bg-white text-black text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="w-20 h-20 mx-auto mb-8 bg-black rounded-full flex items-center justify-center text-white shadow-2xl">
