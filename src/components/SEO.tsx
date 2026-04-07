@@ -11,6 +11,7 @@ interface SEOProps {
 
 export default function SEO({ title, description, keywords, schema, faqSchema, canonical }: SEOProps) {
   const siteUrl = "https://asifdigital.agency";
+  const finalCanonical = canonical || `${siteUrl}${window.location.pathname}`;
   
   // Default Breadcrumb Schema
   const breadcrumbSchema = {
@@ -27,7 +28,7 @@ export default function SEO({ title, description, keywords, schema, faqSchema, c
         "@type": "ListItem",
         "position": 2,
         "name": title,
-        "item": canonical || siteUrl
+        "item": finalCanonical
       }
     ]
   };
@@ -51,12 +52,12 @@ export default function SEO({ title, description, keywords, schema, faqSchema, c
       <title>{title} | Asif Digital Agency UAE</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
-      {canonical && <link rel="canonical" href={canonical} />}
+      <link rel="canonical" href={finalCanonical} />
       
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={canonical || siteUrl} />
+      <meta property="og:url" content={finalCanonical} />
       
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
