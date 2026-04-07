@@ -18,6 +18,48 @@ export default function SEOPage() {
       <SEO
         title="SEO Agency Dubai & Sharjah | Rank #1 on Google | Asif Digital"
         description="Dubai's most results-focused SEO agency. We rank businesses on page 1 of Google for high-value UAE search terms using technical SEO, content authority, and link building. Free audit available."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "SEO & Organic Growth Services",
+          "description": "Premium SEO services in Dubai and Sharjah focusing on technical audits, content authority, and link building for UAE enterprises.",
+          "provider": {
+            "@type": "LocalBusiness",
+            "@id": "https://asifdigital.agency"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Dubai" },
+            { "@type": "City", "name": "Sharjah" },
+            { "@type": "City", "name": "Abu Dhabi" }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "SEO Services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technical SEO Audit" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Local SEO & GMB Optimization" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content Authority Strategy" } }
+            ]
+          }
+        }}
+        faqSchema={[
+          {
+            question: "How long does it take to rank on page 1 of Google in Dubai?",
+            answer: "Most UAE businesses see significant ranking improvements within 90 days. Competitive keywords in the Dubai market typically take 4-6 months to reach the top 3 positions using our authority-building methodology."
+          },
+          {
+            question: "What is the difference between SEO and AEO?",
+            answer: "SEO optimizes for traditional search engines like Google, whereas AEO (Answer Engine Optimization) optimizes for AI-driven platforms like Gemini, ChatGPT, and Perplexity. We implement both to ensure your brand is cited as the primary answer across all platforms."
+          },
+          {
+            question: "Do you provide local SEO for Sharjah and Abu Dhabi businesses?",
+            answer: "Yes, we specialize in multi-location UAE SEO. We optimize your Google Business Profiles and create geo-targeted landing pages to ensure you dominate the 'Local Pack' in Dubai, Sharjah, Abu Dhabi, and beyond."
+          },
+          {
+            question: "Is your SEO work compliant with Google's latest AI updates?",
+            answer: "Absolutely. We focus on Google's E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) guidelines, which are specifically designed to reward high-quality, expert-authored content in the age of AI search."
+          }
+        ]}
       />
 
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
@@ -88,6 +130,45 @@ export default function SEOPage() {
             <Link to="/contact" aria-label="Book Your Free SEO Audit with Asif Digital" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
               Book Free Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 py-24 bg-white/[0.02] border-t border-white/5">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Expert Insights</span>
+            <h2 className="text-4xl font-serif">SEO Frequently Asked Questions</h2>
+          </div>
+          <div className="space-y-6">
+            {[
+              {
+                q: "How long until I see results on the first page of Google?",
+                a: "SEO is a medium-to-long-term investment. Most clients see significant ranking improvements within the first 90 days, with competitive Dubai keywords typically reaching page 1 within 4-6 months."
+              },
+              {
+                q: "Do you offer 'Guaranteed' page 1 rankings?",
+                a: "While no agency can 'own' Google, our data-backed methodology has a 100% success rate for long-term clients. If we don't hit the agreed growth targets within the first 6 months, we work for free until we do."
+              },
+              {
+                q: "Will you provide backlinks as part of the service?",
+                a: "Yes. High-authority, clean link building is a core pillar of our strategy. We focus on digital PR and guest outreach on authoritative UAE and global tech/business publications."
+              },
+              {
+                q: "How is SEO different from PPC (Google Ads)?",
+                a: "PPC is immediate but costs money for every click. SEO is an asset that builds over time; once you rank, the traffic is 'free' and carries much higher trust and conversion intent than ads."
+              }
+            ].map((faq, i) => (
+              <details key={i} className="group border-b border-white/10 pb-6">
+                <summary className="text-xl font-serif cursor-pointer list-none flex justify-between items-center hover:text-white/70 transition-colors">
+                  {faq.q}
+                  <span className="text-2xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <p className="mt-4 text-white/70 font-light leading-relaxed text-sm">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

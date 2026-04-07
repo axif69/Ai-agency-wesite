@@ -30,6 +30,48 @@ export default function WebDesign() {
       <SEO
         title="Web Design Agency Dubai & Sharjah | Award-Winning Design | Asif Digital"
         description="Dubai's premier web design agency. We craft high-converting, visually stunning websites optimized for Google rankings and UAE market success. Get a free consultation today."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Premium Web Design & UI/UX",
+          "description": "High-performance, award-winning web design services in Dubai and Sharjah. We specialize in conversion-focused websites and bilingual UAE digital experiences.",
+          "provider": {
+            "@type": "LocalBusiness",
+            "@id": "https://asifdigital.agency"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Dubai" },
+            { "@type": "City", "name": "Sharjah" },
+            { "@type": "City", "name": "Abu Dhabi" }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Web Design Services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Corporate Website Design" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bilingual Arabic/English UI/UX" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing Page Optimization" } }
+            ]
+          }
+        }}
+        faqSchema={[
+          {
+            question: "How long does it take to design a custom website in Dubai?",
+            answer: "A standard premium corporate website typically takes 3-5 weeks from discovery to launch. This includes strategy, wireframing, high-fidelity UI design, and responsive development."
+          },
+          {
+            question: "Will my website be mobile-friendly and fast?",
+            answer: "Yes. Every website we build is mobile-first and optimized for Google's Core Web Vitals. We aim for a 90+ score on PageSpeed Insights to ensure best-in-class performance on UAE mobile networks."
+          },
+          {
+            question: "Do you offer bilingual Arabic and English web design?",
+            answer: "Absolutely. We specialize in Right-to-Left (RTL) design for Arabic audiences, ensuring your brand communicates effectively with both local and international customers in the UAE."
+          },
+          {
+            question: "Is SEO included in the web design package?",
+            answer: "Yes. Every website launch includes technical SEO foundations: clean semantic code, meta tag implementation, schema markup, and Google Search Console integration."
+          }
+        ]}
       />
 
       {/* Hero */}
@@ -127,6 +169,46 @@ export default function WebDesign() {
                   <div className="text-white/90 text-xs">{t.role}</div>
                 </div>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="px-6 md:px-12 py-24 bg-white/[0.02] border-t border-white/5">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Project Briefing</span>
+            <h2 className="text-4xl font-serif">Web Design FAQs</h2>
+          </div>
+          <div className="space-y-6">
+            {[
+              {
+                q: "How long until my new website is live?",
+                a: "A standard corporate website typically transitions from discovery to launch in 3-5 weeks. High-complexity ecommerce sites may take 6-8 weeks due to deep integration requirements."
+              },
+              {
+                q: "Do you use templates like WordPress or Wix?",
+                a: "No. We build custom, high-performance websites using modern frameworks like React and Next.js. This ensures your site is faster, more secure, and infinitely more scalable than a template-based site."
+              },
+              {
+                q: "Will I be able to update the content myself?",
+                a: "Yes. We can integrate a 'Headless CMS' that allows you to update text, images, and blog posts as easily as editing a Google Doc, without ever touching the code."
+              },
+              {
+                q: "Do you handle domain and hosting?",
+                a: "Yes, we handle the entire technical setup including high-speed UAE-based hosting, SSL certificates, and DNS configuration so you don't have to worry about the 'tech' stuff."
+              }
+            ].map((faq, i) => (
+              <details key={i} className="group border-b border-white/10 pb-6">
+                <summary className="text-xl font-serif cursor-pointer list-none flex justify-between items-center hover:text-white/70 transition-colors">
+                  {faq.q}
+                  <span className="text-2xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <p className="mt-4 text-white/70 font-light leading-relaxed text-sm">
+                  {faq.a}
+                </p>
+              </details>
             ))}
           </div>
         </div>

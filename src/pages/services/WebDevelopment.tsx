@@ -30,7 +30,48 @@ export default function WebDevelopment() {
         title="Best Web Development Agency in Dubai & Sharjah | AI Websites" 
         description="Looking for expert web developers in Dubai or Sharjah? We build immersive, high-performance, and AI-powered Next.js web applications tailored for UAE businesses."
         keywords="Web Development Agency Dubai, Web Developer Sharjah, React Developer UAE, Custom Website Design Dubai, AI Web Integration"
-        schema={serviceSchema}
+        schema={{
+          "@context": "https://schema.org/",
+          "@type": "Service",
+          "name": "Custom AI Web Development",
+          "provider": {
+            "@type": "LocalBusiness",
+            "@id": "https://asifdigital.agency"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Dubai" },
+            { "@type": "City", "name": "Sharjah" },
+            { "@type": "City", "name": "Abu Dhabi" }
+          ],
+          "description": "Enterprise-grade web development using React, Next.js and AI integration for UAE businesses seeking unshakeable digital infrastructure.",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Web Development Services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Next.js Web Applications" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Agent Integration" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Headless CMS Solutions" } }
+            ]
+          }
+        }}
+        faqSchema={[
+          {
+            question: "What technical stack do you use for web development in the UAE?",
+            answer: "We primarily use the 'T3' and 'Vercel' stacks, focusing on React, Next.js, and TypeScript. This ensures maximum performance and security for UAE enterprise applications."
+          },
+          {
+            question: "Can you integrate AI into my existing business website?",
+            answer: "Yes. We specialize in retrofitting legacy websites with intelligent AI features like custom chatbots, automated lead qualification, and dynamic content personalization."
+          },
+          {
+            question: "How do you ensure data security for Dubai businesses?",
+            answer: "All our applications are built with UAE Federal Decree-Law No. 45 in mind. We can host your applications and data on local UAE infrastructure like G42 or Khazna to ensure 100% data residency."
+          },
+          {
+            question: "Do you provide post-launch support and maintenance?",
+            answer: "Yes. Every project includes 30 days of complimentary support. We also offer monthly maintenance retainers to keep your application updated and secure."
+          }
+        ]}
       />
       
       <motion.div 
@@ -42,7 +83,7 @@ export default function WebDevelopment() {
         <span className="micro-label block mb-4">Service Details</span>
         <div className="flex items-center gap-6 mb-8">
           <Code className="w-12 h-12 text-white/90" role="img" aria-label="Web Code Icon" />
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">Dubai & Sharjah<br/><span className="text-white/80 italic text-white/90">AI Web Dev</span></h1>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight">Dubai & Sharjah<br/><span className="text-white/80 italic text-white/90 text-white/90">AI Web Dev</span></h1>
         </div>
         <p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl">
           Transform your digital presence in the UAE with immersive, high-performance web applications powered by Artificial Intelligence.
@@ -74,7 +115,7 @@ export default function WebDevelopment() {
         >
           <div>
             <h2 className="text-4xl font-serif tracking-tight mb-6">Next-Gen Web Experiences for UAE Businesses</h2>
-            <p className="text-white/90 font-light leading-relaxed">
+            <p className="text-white/90 font-light leading-relaxed text-white/90 font-light leading-relaxed">
               In the competitive markets of Dubai and Sharjah, a standard website isn't enough. I build intelligent web platforms that adapt to user behavior, automate customer interactions, and provide seamless, immersive experiences. Using modern frameworks like React and Next.js combined with AI APIs, your website becomes a powerful business tool designed to convert local traffic into loyal customers.
             </p>
           </div>
@@ -103,7 +144,7 @@ export default function WebDevelopment() {
       </div>
 
       {/* Process Section */}
-      <section className="py-20 border-t border-white/5">
+      <section className="py-20 border-y border-white/5">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -132,6 +173,44 @@ export default function WebDevelopment() {
               <h3 className="text-2xl font-serif mb-4">{step.title}</h3>
               <p className="text-white/90 font-light leading-relaxed">{step.desc}</p>
             </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 max-w-3xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Engineering Briefing</span>
+          <h2 className="text-4xl font-serif">Development FAQs</h2>
+        </div>
+        <div className="space-y-6">
+          {[
+            {
+              q: "Why do you use Next.js instead of WordPress?",
+              a: "Next.js provides superior speed, security, and SEO. It allows us to build 'Sovereign' applications that are immune to the vulnerabilities and performance bottlenecks of template-based systems like WordPress."
+            },
+            {
+              q: "Can you build mobile apps alongside the web platform?",
+              a: "Yes. We use cross-platform frameworks that allow your application to run seamlessly as a web app, iOS app, and Android app using a shared codebase, reducing development time by 40%."
+            },
+            {
+              q: "Do you integrate with UAE payment gateways?",
+              a: "Yes. We have deep experience integrating with local gateways like Telr, Checkout.com, and Stripe (UAE) to ensure smooth AED transactions."
+            },
+            {
+              q: "What is your typical project timeline?",
+              a: "Standard web applications take 4-8 weeks. High-ticket AI enterprise deployments usually span 12-16 weeks depending on the complexity of the custom model training."
+            }
+          ].map((faq, i) => (
+            <details key={i} className="group border-b border-white/10 pb-6">
+              <summary className="text-xl font-serif cursor-pointer list-none flex justify-between items-center hover:text-white/70 transition-colors">
+                {faq.q}
+                <span className="text-2xl group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p className="mt-4 text-white/70 font-light leading-relaxed text-sm">
+                {faq.a}
+              </p>
+            </details>
           ))}
         </div>
       </section>
