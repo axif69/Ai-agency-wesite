@@ -34,26 +34,46 @@ export default function WebsiteSupport() {
     }
   ];
 
+  const supportSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Asif Digital — Website Support Dubai",
+    "image": "https://images.unsplash.com/photo-1454165833968-4e71580cadda?auto=format,compress&fm=webp&q=80&w=1200",
+    "@id": "https://asifdigital.agency/services/website-maintenance-support-dubai",
+    "url": "https://asifdigital.agency/services/website-maintenance-support-dubai",
+    "telephone": "+971500000000",
+    "priceRange": "AED 500 - AED 5,000",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dubai",
+      "addressRegion": "Dubai",
+      "addressCountry": "AE"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Abu Dhabi" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "description": "Professional website maintenance and technical support for UAE businesses. 24/7 monitoring, security hardening, and rapid content updates."
+  };
+
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
       <SEO 
         title="Website Support & Maintenance Dubai | Managed Services UAE | Asif Digital"
         description="Professional website maintenance and technical support for Dubai and Sharjah businesses. 24/7 monitoring, security hardening, and rapid content updates."
         keywords="Website Support Dubai, Website Maintenance Sharjah, Managed WordPress UAE, Website Security Dubai"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Website Support & Maintenance",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" }
-          ],
-          "description": "Comprehensive website maintenance and technical support services including security, updates, and performance optimization for UAE businesses."
-        }}
+        ogImage="https://images.unsplash.com/photo-1454165833968-4e71580cadda?auto=format,compress&fm=webp&q=75&w=1200"
+        schema={supportSchema}
         faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
       />
       

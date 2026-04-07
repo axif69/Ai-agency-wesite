@@ -5,7 +5,7 @@ import { ArrowRight, Cloud, Shield, Zap, Code, CheckCircle, Database, Globe, Sma
 import { Link } from "react-router-dom";
 
 const features = [
-  { icon: <Cloud className="w-6 h-6" />, title: "Cloud-Native Architecture", desc: "We build SaaS platform using modern cloud-native architectures (Serverless, Microservices) on AWS, Azure, or Google Cloud. This ensures your application can scale from 10 to 100,000+ concurrent users without breaking a sweat." },
+  { icon: <Cloud className="w-6 h-6" />, title: "Cloud-Native Architecture", desc: "We build SaaS platforms using modern cloud-native architectures (Serverless, Microservices) on AWS, Azure, or Google Cloud. This ensures your application can scale from 10 to 100,000+ concurrent users without breaking a sweat." },
   { icon: <Code className="w-6 h-6" />, title: "Full-Stack Development", desc: "Our expertise spans the entire stack—from high-performance React/Next.js frontends to robust Node.js, Python, or Go backends. We use TypeScript across the board to ensure code quality and maintainability as your product evolves." },
   { icon: <Shield className="w-6 h-6" />, title: "Security & Compliance", desc: "Security is baked into our development lifecycle. We implement OAuth2, JWT, and encrypted data storage as standard, and ensure your platform meets regional UAE data residency and global GDPR/SOC2 standards." },
   { icon: <Zap className="w-6 h-6" />, title: "High-Performance APIs", desc: "We design and build clean, well-documented RESTful or GraphQL APIs that power your web app, mobile companions, and third-party integrations with sub-100ms response times." },
@@ -34,26 +34,46 @@ export default function SaaSServices() {
     }
   ];
 
+  const saasSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Asif Digital — SaaS Development Dubai",
+    "image": "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format,compress&fm=webp&q=80&w=1200",
+    "@id": "https://asifdigital.agency/services/saas-development-specialist-uae",
+    "url": "https://asifdigital.agency/services/saas-development-specialist-uae",
+    "telephone": "+971500000000",
+    "priceRange": "AED 15,000 - AED 150,000",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dubai",
+      "addressRegion": "Dubai",
+      "addressCountry": "AE"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Abu Dhabi" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "description": "Custom SaaS product engineering from ideation to launch, focusing on scalability, security, and exceptional user experience for UAE startups."
+  };
+
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
       <SEO 
         title="SaaS Product Development UAE | Custom Software Dubai | Asif Digital"
         description="Expert SaaS development for Dubai and Sharjah startups. We build scalable, high-performance cloud applications and MVPs with a focus on UAE market success."
         keywords="SaaS development Dubai, Cloud software UAE, Custom SaaS specialist Sharjah, Startup MVP UAE"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "SaaS Product Development",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" }
-          ],
-          "description": "Custom SaaS product engineering from ideation to launch, focusing on scalability, security, and exceptional user experience."
-        }}
+        ogImage="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format,compress&fm=webp&q=75&w=1200"
+        schema={saasSchema}
         faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
       />
       

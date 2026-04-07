@@ -34,26 +34,46 @@ export default function WebHosting() {
     }
   ];
 
+  const hostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Asif Digital — Cloud Hosting Dubai",
+    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format,compress&fm=webp&q=80&w=1200",
+    "@id": "https://asifdigital.agency/services/web-hosting-dubai",
+    "url": "https://asifdigital.agency/services/web-hosting-dubai",
+    "telephone": "+971500000000",
+    "priceRange": "AED 99 - AED 2,500",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dubai",
+      "addressRegion": "Dubai",
+      "addressCountry": "AE"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Abu Dhabi" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "description": "Premium managed cloud hosting services on UAE-based infrastructure, focusing on speed, security, and local compliance for GCC businesses."
+  };
+
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
       <SEO 
         title="Premium Cloud Hosting Dubai | UAE-Based Data Centers | Asif Digital"
         description="High-performance managed cloud hosting in Dubai and Sharjah. UAE data residency compliant, enterprise-grade security, and sub-50ms latency for GCC businesses."
         keywords="Web Hosting Dubai, Cloud Hosting UAE, Managed Hosting Sharjah, UAE Data Residency Hosting"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Managed Cloud Hosting",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" }
-          ],
-          "description": "Premium managed cloud hosting services on UAE-based infrastructure, focusing on speed, security, and local compliance."
-        }}
+        ogImage="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format,compress&fm=webp&q=75&w=1200"
+        schema={hostingSchema}
         faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
       />
       

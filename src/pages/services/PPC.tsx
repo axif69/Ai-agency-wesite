@@ -38,19 +38,46 @@ export default function PPC() {
     }
   ];
 
+  const ppcSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Asif Digital — PPC & Ads Agency Dubai",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format,compress&fm=webp&q=80&w=1200",
+    "@id": "https://asifdigital.agency/services/ppc-google-meta-ads-agency-dubai",
+    "url": "https://asifdigital.agency/services/ppc-google-meta-ads-agency-dubai",
+    "telephone": "+971500000000",
+    "priceRange": "AED 3,000 - AED 25,000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Dubai Design District",
+      "addressLocality": "Dubai",
+      "addressRegion": "Dubai",
+      "addressCountry": "AE"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Abu Dhabi" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "description": "Certified Google Ads and Meta Ads management in Dubai and Sharjah. Data-driven PPC strategies focusing on ROAS and lead generation for UAE enterprises."
+  };
+
   return (
     <div ref={containerRef} className="pt-20">
       <SEO
         title="PPC Agency Dubai | Google Ads & Meta Ads Management | Asif Digital"
         description="Expert PPC management in Dubai and UAE. Certified Google Ads and Meta Ads specialists who generate qualified leads and sales with measurable, transparent ROI."
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "PPC & Paid Advertising Management",
-          "provider": { "@type": "LocalBusiness", "@id": "https://asifdigital.agency" },
-          "areaServed": [{ "@type": "City", "name": "Dubai" }, { "@type": "City", "name": "Sharjah" }],
-          "description": "Google Ads and Meta Ads management for UAE businesses with transparent ROI reporting and certified specialists."
-        }}
+        ogImage="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format,compress&fm=webp&q=75&w=1200"
+        schema={ppcSchema}
         faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
       />
 
@@ -79,9 +106,11 @@ export default function PPC() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex items-center justify-center text-center px-6">
-          <motion.h2 style={{ y, opacity }} className="text-4xl md:text-7xl font-serif text-white tracking-tight">
-            Precision <span className="italic">Amplified</span>
-          </motion.h2>
+          <motion.div style={{ y, opacity }}>
+            <h2 className="text-4xl md:text-7xl font-serif text-white tracking-tight">
+              Precision <span className="italic">Amplified</span>
+            </h2>
+          </motion.div>
         </div>
         <img 
           src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format,compress&fm=webp&q=75&w=1200" 
@@ -180,7 +209,7 @@ export default function PPC() {
             {[
               { title: "SEO Strategy", link: "/services/seo-aeo-specialist-dubai", desc: "Balance instant PPC traffic with long-term organic growth." },
               { title: "Digital Marketing", link: "/services/digital-marketing-agency-dubai-sharjah", desc: "Multi-channel marketing strategies for maximum UAE brand reach." },
-              { title: "Social Media", link: "/services/social-media-management-uae", desc: "Build high-engagement communities to lower your retargeting costs." }
+              { title: "Social Media", link: "/services/social-media-management-dubai-sharjah", desc: "Build high-engagement communities to lower your retargeting costs." }
             ].map((s, i) => (
               <Link key={i} to={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

@@ -19,22 +19,36 @@ export default function AiServices() {
 
   const serviceSchema = {
     "@context": "https://schema.org/",
-    "@type": "Service",
-    "serviceType": "Artificial Intelligence Consulting & Development",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Asif Digital"
+    "@type": "LocalBusiness",
+    "name": "Asif Digital — AI Automation Dubai",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format,compress&fm=webp&q=80&w=1200",
+    "@id": "https://asifdigital.agency/services/ai-automation-chatbot-development-dubai",
+    "url": "https://asifdigital.agency/services/ai-automation-chatbot-development-dubai",
+    "telephone": "+971500000000",
+    "priceRange": "AED 5,000 - AED 50,000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Business Bay",
+      "addressLocality": "Dubai",
+      "addressRegion": "Dubai",
+      "postalCode": "00000",
+      "addressCountry": "AE"
     },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
     "areaServed": [
       { "@type": "City", "name": "Dubai" },
       { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Abu Dhabi" },
       { "@type": "Country", "name": "United Arab Emirates" }
     ],
-    "description": "Enterprise-grade AI solutions by Asif Khan in Dubai and Sharjah. Specialist in LLM integration, AI automation, and intelligent agents.",
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "AED"
-    }
+    "description": "Enterprise-grade AI solutions by Asif Digital in Dubai and Sharjah. Specialist in LLM integration, AI automation, and intelligent agents."
   };
 
   const faqs = [
@@ -58,6 +72,7 @@ export default function AiServices() {
         title="Enterprise AI Solutions & Consulting Dubai | Asif Digital" 
         description="Transform your UAE business with custom AI solutions. Specialist in LLM integration, automated agent swarms, and intelligent workflows for Dubai and Sharjah enterprises."
         keywords="AI Consulting Dubai, Custom AI Development Sharjah, LLM Integration UAE, AI Automation UAE"
+        ogImage="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format,compress&fm=webp&q=75&w=1200"
         schema={serviceSchema}
         faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
       />

@@ -34,26 +34,46 @@ export default function SocialMedia() {
     }
   ];
 
+  const socialSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Asif Digital — Social Media Agency Dubai",
+    "image": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format,compress&fm=webp&q=80&w=1200",
+    "@id": "https://asifdigital.agency/services/social-media-management-dubai-sharjah",
+    "url": "https://asifdigital.agency/services/social-media-management-dubai-sharjah",
+    "telephone": "+971500000000",
+    "priceRange": "AED 2,500 - AED 15,000",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dubai",
+      "addressRegion": "Dubai",
+      "addressCountry": "AE"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      }
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Abu Dhabi" },
+      { "@type": "Country", "name": "United Arab Emirates" }
+    ],
+    "description": "Comprehensive social media management including organic content, community engagement, and regional influencer coordination for UAE brands."
+  };
+
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
       <SEO 
         title="Social Media Management Dubai | Content Strategy Sharjah | Asif Digital"
         description="Full-service social media management for Dubai and Sharjah brands. From content creation and community management to high-growth UAE social strategy."
         keywords="Social Media Dubai, Instagram Management Sharjah, LinkedIn Marketing UAE, TikTok Marketing Dubai"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Social Media Management & Strategy",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" }
-          ],
-          "description": "Comprehensive social media management including organic content, community engagement, and regional influencer coordination for UAE brands."
-        }}
+        ogImage="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format,compress&fm=webp&q=75&w=1200"
+        schema={socialSchema}
         faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
       />
       
