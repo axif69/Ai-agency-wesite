@@ -19,7 +19,7 @@ export default function Layout() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Sovereign AI", path: "#" },
+    { name: "Sovereign AI", path: "/sovereign-sales-agent" },
     { name: "Services", path: "/services" },
     { name: "Portfolio", path: "/portfolio" },
     { name: "Case Studies", path: "/case-studies" },
