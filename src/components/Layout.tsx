@@ -158,7 +158,7 @@ export default function Layout() {
                       </div>
                     )}
                   </div>
-                link.name === "Services" ? (
+                ) : link.name === "Services" ? (
                   <div key={link.path}>
                     <button
                       className="hover:text-white/90 transition-colors flex items-center justify-center gap-2 w-full"
