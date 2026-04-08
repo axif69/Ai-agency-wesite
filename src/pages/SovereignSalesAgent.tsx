@@ -366,7 +366,7 @@ export default function SovereignSalesAgent() {
         >
           <h2 className="text-5xl md:text-7xl font-serif tracking-tight mb-8">Stop renting your pipeline.<br/><span className="text-white/60 italic">Architect your own.</span></h2>
           <p className="text-white/50 font-light text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
-            The Sovereign Engine is deployed strictly for high-ticket B2B enterprises in the GCC. Deployments are completed in **3–4 days**, giving you full self-management capabilities from day one.
+            The Sovereign Engine is deployed strictly for high-ticket B2B enterprises in the GCC. Deployments are completed in 3–4 days, giving you full self-management capabilities from day one.
           </p>
           <div className="flex flex-col items-center gap-8">
             <Link to="/contact" className="bg-white text-black px-12 py-6 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-all shadow-[0_0_60px_rgba(255,255,255,0.1)]">Speak with Khalid (Strategic Intake Agent)</Link>
