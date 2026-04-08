@@ -4,11 +4,12 @@ import PageLoader from "./PageLoader";
 import WhatsAppButton from "./WhatsAppButton";
 import KhalidChatbot from "./KhalidChatbot";
 import { useState, useEffect, Suspense } from "react";
-import { Menu, X, Code, Megaphone, PenTool } from "lucide-react";
+import { Menu, X, Code, Megaphone, PenTool, ChevronDown } from "lucide-react";
 
 export default function Layout() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSovereignOpen, setIsSovereignOpen] = useState(false);
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -135,15 +136,36 @@ export default function Layout() {
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
             className="fixed inset-0 z-30 flex flex-col items-center justify-center bg-[#050505] md:hidden"
           >
-            <nav className="flex flex-col gap-8 text-3xl font-serif tracking-tight text-center">
+            <nav className="flex flex-col gap-6 text-3xl font-serif tracking-tight text-center">
               {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="hover:text-white/90 transition-colors"
-                >
-                  {link.name}
-                </Link>
+                link.name === "Sovereign AI" ? (
+                  <div key={link.path}>
+                    <button
+                      className="hover:text-white/90 transition-colors flex items-center justify-center gap-2 w-full"
+                      onClick={() => setIsSovereignOpen(!isSovereignOpen)}
+                    >
+                      {link.name}
+                      <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${isSovereignOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    {isSovereignOpen && (
+                      <div className="mt-4 space-y-3 text-lg text-white/70">
+                        <Link to="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Sales Agent (B2B)</Link>
+                        <Link to="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Agentic Finance & Compliance</Link>
+                        <Link to="/services/ai-hr-emirates" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI HR & Emiratization</Link>
+                        <Link to="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">WhatsApp Automation</Link>
+                        <Link to="/services/logistics-resilience" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Logistics & Supply Chain AI</Link>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="hover:text-white/90 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
             </nav>
           </motion.div>
