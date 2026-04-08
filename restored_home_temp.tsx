@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
+﻿import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
@@ -10,7 +10,7 @@ import MagneticButton from "../components/animations/MagneticButton";
 import { TextGenerateEffect } from "../components/animations/TextGenerateEffect";
 import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap } from "lucide-react";
 
-/* ─── DATA ─── */
+/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ DATA ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 
 const sovereignSolutions = [
   {
@@ -146,7 +146,7 @@ export default function Home() {
         }}
       />
 
-      {/* ── 1. The "Authority" Hero Section ── */}
+      {/* ΓöÇΓöÇ 1. The "Authority" Hero Section ΓöÇΓöÇ */}
       <section className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden px-6 pt-24 sm:pt-0">
         <motion.div style={{ y, opacity }} className="relative z-10 text-center flex flex-col items-center -mt-20 md:-mt-32 w-full">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="mb-6 flex items-center justify-center gap-3">
@@ -179,7 +179,7 @@ export default function Home() {
         <HeroParticles />
       </section>
 
-      {/* ── Trust Signals Bar ── */}
+      {/* ΓöÇΓöÇ Trust Signals Bar ΓöÇΓöÇ */}
       <section className="py-8 bg-black border-y border-white/5 relative z-20">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-8 text-[10px] uppercase font-bold tracking-[0.2em] text-white/60">
           <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-white/70" role="img" aria-label="Sovereignty Shield icon" /> 100% Data Sovereignty</div>
@@ -189,7 +189,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 2. The Problem / Market Context ("Why Now") ── */}
+      {/* ΓöÇΓöÇ 2. The Problem / Market Context ("Why Now") ΓöÇΓöÇ */}
       <section className="py-40 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -236,7 +236,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 3. Two-Tiered Solutions Grid ── */}
+      {/* ΓöÇΓöÇ 3. Two-Tiered Solutions Grid ΓöÇΓöÇ */}
       <section className="py-32 px-6 md:px-12 bg-[#080808] border-y border-white/5 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-[150px] pointer-events-none opacity-50" />
         
@@ -307,7 +307,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 4. Intelligence Arbitrage ROI Calculator ── */}
+      {/* ΓöÇΓöÇ 4. Intelligence Arbitrage ROI Calculator ΓöÇΓöÇ */}
       <section className="py-40 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="micro-label block mb-4">Intelligence Arbitrage</span>
@@ -335,9 +335,9 @@ export default function Home() {
                 <h4 className="text-[10px] uppercase tracking-widest text-red-500/80 font-bold mb-4">Current Human Overhead</h4>
                 <div className="text-3xl font-serif text-white mb-2">AED {(totalHumanCost / 1000000).toFixed(2)}M <span className="text-sm font-sans text-white/40">/ yr</span></div>
                 <ul className="text-xs text-white/40 space-y-2 mt-4">
-                  <li>• High Visa & Gov Fees</li>
-                  <li>• Mandatory Flight/Housing Allowances</li>
-                  <li>• Vulnerable to crisis remote mandates</li>
+                  <li>ΓÇó High Visa & Gov Fees</li>
+                  <li>ΓÇó Mandatory Flight/Housing Allowances</li>
+                  <li>ΓÇó Vulnerable to crisis remote mandates</li>
                 </ul>
              </div>
              
@@ -345,9 +345,9 @@ export default function Home() {
                 <h4 className="text-[10px] uppercase tracking-widest text-green-500/80 font-bold mb-4">Agentic Architecture Cost</h4>
                 <div className="text-3xl font-serif text-white mb-2">AED {(totalAgentCost / 1000000).toFixed(2)}M <span className="text-sm font-sans text-white/40">/ yr</span></div>
                  <ul className="text-xs text-white/60 space-y-2 mt-4">
-                  <li>• Zero Visa or Housing overhead</li>
-                  <li>• 24/7/365 Continuous Uptime</li>
-                  <li>• Housed in Secure UAE Datacenters</li>
+                  <li>ΓÇó Zero Visa or Housing overhead</li>
+                  <li>ΓÇó 24/7/365 Continuous Uptime</li>
+                  <li>ΓÇó Housed in Secure UAE Datacenters</li>
                 </ul>
              </div>
           </div>
@@ -359,64 +359,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SOVEREIGN SALES AGENT HIGHLIGHT ── */}
-      <section className="py-40 px-6 md:px-12 bg-[#080808] border-y border-white/5 relative overflow-hidden">
-        <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-white/[0.02] rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <span className="micro-label block mb-4 text-green-500/80">New: Autonomous B2B Acquisition</span>
-              <h2 className="text-4xl md:text-6xl font-serif tracking-tight leading-[1.05] mb-8">
-                Deploy a Sovereign<br /><span className="italic text-white/60">Sales Agent.</span>
-              </h2>
-              <p className="text-white/50 font-light leading-relaxed mb-10 text-lg max-w-xl">
-                A 24/7 autonomous engine that hunts UAE businesses, recovers direct WhatsApp numbers via OSINT, and fires hyper-personalized cold emails. No SDR team. No subscriptions. Yours to own.
-              </p>
-              <div className="grid grid-cols-2 gap-4 mb-10">
-                {[
-                  { stat: "3–4 Days", label: "Full Deployment" },
-                  { stat: "24/7", label: "Continuous Hunting" },
-                  { stat: "WhatsApp", label: "OSINT Recovery" },
-                  { stat: "4 Steps", label: "Self-Setup Flow" },
-                ].map((item, i) => (
-                  <div key={i} className="p-5 border border-white/5 bg-white/[0.02] rounded-2xl">
-                    <div className="text-2xl font-serif text-white mb-1">{item.stat}</div>
-                    <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold">{item.label}</div>
-                  </div>
-                ))}
-              </div>
-              <Link
-                to="/sovereign-sales-agent"
-                aria-label="Explore the Sovereign Sales Agent"
-                className="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-all shadow-[0_0_40px_rgba(255,255,255,0.15)]"
-              >
-                Explore the Agent <ArrowRight className="w-4 h-4" />
-              </Link>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="space-y-4">
-              {[
-                { title: "Live Web Crawling & OSINT", desc: "Scrapes company websites, Google Maps, and GMB profiles in real-time. Data is always fresh — never a stale list." },
-                { title: "WhatsApp Number Recovery", desc: "Automatically retrieves direct WhatsApp contact numbers from website metadata and GMB listings for direct stakeholder access." },
-                { title: "Reply Sentiment Intelligence", desc: "Automatically categorizes incoming replies as Interested, Neutral, or Auto-Reply — visible in your analytics dashboard." },
-                { title: "Enterprise Data Export", desc: "One-click export of your entire discovered database to Excel or CSV. Full data sovereignty with zero vendor lock-in." },
-              ].map((f, i) => (
-                <div key={i} className="flex gap-5 p-6 border border-white/5 bg-white/[0.02] rounded-2xl group hover:border-white/20 transition-all duration-500">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center text-green-400 font-serif font-bold text-sm">
-                    0{i + 1}
-                  </div>
-                  <div>
-                    <h4 className="font-bold mb-1 group-hover:text-white transition-colors">{f.title}</h4>
-                    <p className="text-sm text-white/40 font-light leading-relaxed">{f.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 6. Latest Insights (Internal Linking for SEO) ── */}
+      {/* ΓöÇΓöÇ 6. Latest Insights (Internal Linking for SEO) ΓöÇΓöÇ */}
       <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
           <div>
@@ -467,7 +410,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 7. FAQ Section (A11y & SEO) ── */}
+      {/* ΓöÇΓöÇ 7. FAQ Section (A11y & SEO) ΓöÇΓöÇ */}
       <section className="py-32 px-6 md:px-12 max-w-4xl mx-auto border-t border-white/5">
         <div className="text-center mb-16">
           <span className="micro-label block mb-4">Common Briefings</span>
@@ -492,7 +435,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 8. "Khalid" Integration ── */}
+      {/* ΓöÇΓöÇ 8. "Khalid" Integration ΓöÇΓöÇ */}
       <section className="py-32 px-6 md:px-12 bg-white text-black text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="w-20 h-20 mx-auto mb-8 bg-black rounded-full flex items-center justify-center text-white shadow-2xl">
@@ -519,4 +462,3 @@ export default function Home() {
     </div>
   );
 }
-
