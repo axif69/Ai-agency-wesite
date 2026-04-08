@@ -1,0 +1,10 @@
+{
+  "name": "ai-agency-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix \"Asif agency website\"",
+    "build": "npm run build --prefix \"Asif agency website\"",
+    "start": "npm start --prefix \"Asif agency website\""
+  }
+}

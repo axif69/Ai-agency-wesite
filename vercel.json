@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm run build --prefix \"Asif agency website\"",
+  "outputDirectory": "Asif agency website/dist",
+  "installCommand": "npm install --prefix \"Asif agency website\"",
+  "framework": "vite"
+}
