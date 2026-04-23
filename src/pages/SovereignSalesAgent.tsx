@@ -159,7 +159,7 @@ export default function SovereignSalesAgent() {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link to="/contact" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/80 transition-all shadow-[0_0_40px_rgba(255,255,255,0.15)]">Initiate Operational Audit</Link>
-            <a href="#technical" className="border border-white/20 text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/10 transition-all">View Technical Specs</a>
+            <Link to="/ai-marketing-agency-dubai" className="border border-white/20 text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/10 transition-all">Sovereign Marketing Strategy</Link>
           </div>
         </motion.div>
       </section>
@@ -377,6 +377,20 @@ export default function SovereignSalesAgent() {
             </div>
           </div>
         </motion.div>
+      </section>
+      {/* Footer Linking Swarm */}
+      <section className="py-20 border-t border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center text-white/80 text-[11px] uppercase tracking-[0.2em] font-bold text-center">
+            <Link to="/ai-marketing-agency-dubai" className="hover:text-white transition-colors">AI Marketing Agency Dubai</Link>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <Link to="/ai-lead-generation-agency-dubai" className="hover:text-white transition-colors">AI Lead Generation Dubai</Link>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <Link to="/ai-real-estate-agency-dubai" className="hover:text-white transition-colors">AI Real Estate Dubai</Link>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <Link to="/ai-automation-agency-dubai" className="hover:text-white transition-colors">AI Automation Agency Dubai</Link>
+          </div>
+        </div>
       </section>
     </div>
   );

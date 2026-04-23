@@ -34,7 +34,9 @@ export default function Blog() {
       {/* Blog Grid */}
       <section className="px-6 md:px-12 py-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {BLOG_POSTS.map((post, index) => (
+          {[...BLOG_POSTS]
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+            .map((post, index) => (
             <motion.article 
               key={post.slug}
               initial={{ opacity: 0, y: 30 }}

@@ -42,6 +42,12 @@ const Design = lazy(() => import("./pages/services/Design"));
 const UIUX = lazy(() => import("./pages/services/UIUX"));
 const CreativeWebDesign = lazy(() => import("./pages/services/CreativeWebDesign"));
 const SovereignSalesAgent = lazy(() => import("./pages/SovereignSalesAgent"));
+const AiMarketingDubai = lazy(() => import("./pages/AiMarketingDubai"));
+const AiAutomationDubai = lazy(() => import("./pages/AiAutomationDubai"));
+const AiLeadGenDubai = lazy(() => import("./pages/AiLeadGenDubai"));
+const AiRealEstateDubai = lazy(() => import("./pages/AiRealEstateDubai"));
+const ArabicAiHub = lazy(() => import("./pages/ArabicAiHub"));
+const SovereignDashboard = lazy(() => import("./pages/SovereignDashboard"));
 
 // Loading fallback for Suspense
 const PageLoader = () => (
@@ -62,6 +68,12 @@ export default function App() {
               <Route path="about" element={<About />} />
               <Route path="services" element={<Services />} />
               <Route path="sovereign-sales-agent" element={<SovereignSalesAgent />} />
+              <Route path="ai-marketing-agency-dubai" element={<AiMarketingDubai />} />
+              <Route path="ai-automation-agency-dubai" element={<AiAutomationDubai />} />
+              <Route path="ai-lead-generation-agency-dubai" element={<AiLeadGenDubai />} />
+              <Route path="ai-real-estate-agency-dubai" element={<AiRealEstateDubai />} />
+              <Route path="arabic-ai-hub" element={<ArabicAiHub />} />
+              <Route path="sovereign-dashboard" element={<SovereignDashboard />} />
 
               {/* Sovereign AI Solutions routes */}
               <Route path="services/agentic-finance-uae" element={<AgenticFinanceUAE />} />

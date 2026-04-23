@@ -8,28 +8,35 @@ import SpotlightCard from "../components/animations/SpotlightCard";
 import ParticleBackground from "../components/animations/ParticleBackground";
 import MagneticButton from "../components/animations/MagneticButton";
 import { TextGenerateEffect } from "../components/animations/TextGenerateEffect";
-import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap } from "lucide-react";
+import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap, Workflow, Languages } from "lucide-react";
+import { CASE_STUDIES } from "../data/caseStudyData";
 
 /* ─── DATA ─── */
 
 const sovereignSolutions = [
   {
+    title: "AI Automation Agency",
+    desc: "Architecting autonomous workflows, private LLMs, and cognitive process automation for high-ticket GCC enterprises.",
+    icon: <Workflow className="w-6 h-6" role="img" aria-label="Workflow Icon" />,
+    link: "/ai-automation-agency-dubai",
+  },
+  {
+    title: "Sovereign AI Marketing",
+    desc: "Autonomous marketing swarms that dominate UAE search & social with data-sovereign intelligence and AEO precision.",
+    icon: <Zap className="w-6 h-6" role="img" aria-label="Marketing Flash Icon" />,
+    link: "/ai-marketing-agency-dubai",
+  },
+  {
     title: "Autonomous Sales Swarms",
     desc: "B2B WhatsApp & Email agents that qualify leads, negotiate, and close deals 24/7 without fatigue or geographical limits.",
     icon: <MessageSquare className="w-6 h-6" role="img" aria-label="Sales Swarm Icon" />,
-    link: "/services/whatsapp-automation-gcc",
+    link: "/sovereign-sales-agent",
   },
   {
-    title: "Answer Engine Optimization (AEO)",
-    desc: "Dominate Gemini, Perplexity, and ChatGPT. We position your enterprise where UAE decision-makers do 80% of their research.",
-    icon: <Globe className="w-6 h-6" role="img" aria-label="Global Search Icon" />,
-    link: "/services/seo-agency-dubai-sharjah-uae",
-  },
-  {
-    title: "Sovereign Digital Ecosystems",
-    desc: "Native apps and portals hosted on unshakeable UAE infrastructure (G42/Khazna) ensuring 100% data sovereignty and uptime.",
-    icon: <Database className="w-6 h-6" role="img" aria-label="Database Platform Icon" />,
-    link: "/services/web-development-dubai-uae",
+    title: "Arabic Intelligence Hub",
+    desc: "Sovereign Khaleeji NLP and culturally-aligned Arabic intelligence for UAE government and enterprise. Neural alignment for the GCC.",
+    icon: <Languages className="w-6 h-6" role="img" aria-label="Arabic Language Icon" />,
+    link: "/arabic-ai-hub",
   }
 ];
 
@@ -83,7 +90,7 @@ export default function Home() {
           },
           {
             question: "How does Asif Digital ensure business continuity?",
-            answer: "We build agentic swarmsΓÇöautonomous digital employeesΓÇöthat operate 24/7 on locally-hosted servers. Unlike human staff, these systems are resilient to geographical disruptions, visa changes, and global connectivity issues."
+            answer: "We build agentic swarms—autonomous digital employees—that operate 24/7 on locally-hosted servers. Unlike human staff, these systems are resilient to geographical disruptions, visa changes, and global connectivity issues."
           },
           {
             question: "What is Answer Engine Optimization (AEO)?",
@@ -174,6 +181,11 @@ export default function Home() {
                 Book an Operational Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
               </Link>
             </MagneticButton>
+            <MagneticButton>
+              <Link to="/sovereign-dashboard" aria-label="View Live Agentic Dashboard" className="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all flex items-center justify-center gap-3 backdrop-blur-md">
+                View Live Dashboard <Activity className="w-4 h-4" role="img" aria-label="Activity icon" />
+              </Link>
+            </MagneticButton>
           </motion.div>
         </motion.div>
         <HeroParticles />
@@ -197,8 +209,8 @@ export default function Home() {
               The standard office is fragile. 2026 demands <span className="italic text-white/70">unbreakable operations.</span>
             </h2>
             <div className="space-y-6 text-white/80 font-light xl:text-lg leading-relaxed">
-              <p>In the wake of regional volatility and rapid workforce shifts across the GCC, relying solely on human capital introduces a critical single point of failure. When flights pause, logistics disruption hits, and remote mandates are issuedΓÇödoes your business stop?</p>
-              <p>The 2026 UAE business environment demands structural resilience. A human mid-level office worker costs upwards of AED 650,000 annually when factoring in visas, mandatory housing, and end-of-service gratuityΓÇöall for 8 hours of daily output heavily vulnerable to global events.</p>
+              <p>In the wake of regional volatility and rapid workforce shifts across the GCC, relying solely on human capital introduces a critical single point of failure. When flights pause, logistics disruption hits, and remote mandates are issued—does your business stop?</p>
+              <p>The 2026 UAE business environment demands structural resilience. A human mid-level office worker costs upwards of AED 650,000 annually when factoring in visas, mandatory housing, and end-of-service gratuity—all for 8 hours of daily output heavily vulnerable to global events.</p>
               <p className="text-white font-medium border-l-2 border-white pl-4 mt-8 py-2">
                 We build Agentic Digital Employees. They do not require visas. They do not sleep. They execute complex reasoning tasks in milliseconds. And they reside entirely on <span className="text-green-400">G42 and Khazna</span> state-backed sovereign infrastructure, ensuring 100% data residency and absolute business continuity.
               </p>
@@ -294,8 +306,8 @@ export default function Home() {
                           {sol.icon}
                         </div>
                         <div>
-                          <h4 className="text-xl font-serif mb-2 text-white/90">{sol.title}</h4>
-                          <p className="text-white/60 text-sm leading-relaxed">{sol.desc}</p>
+                           <h4 className="text-xl font-serif mb-2 text-white/90">{sol.title}</h4>
+                           <p className="text-white/60 text-sm leading-relaxed">{sol.desc}</p>
                         </div>
                       </div>
                    </Link>
@@ -355,6 +367,55 @@ export default function Home() {
           <div className="text-center pt-8 border-t border-white/10">
             <div className="text-[12px] uppercase tracking-widest text-white/60 font-bold mb-2">Projected Annual Savings</div>
             <div className="text-5xl md:text-7xl font-serif text-white">AED {(totalSavings / 1000000).toFixed(2)}M</div>
+          </div>
+        </div>
+      </section>
+      
+      {/* ── 4.5 Featured Success: Institutional Proof ── */}
+      <section className="py-32 px-6 md:px-12 bg-[#050505] border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div className="max-w-2xl">
+              <span className="micro-label block mb-4 text-white/30">Institutional Proof</span>
+              <h2 className="text-4xl md:text-6xl font-serif tracking-tight leading-tight mb-6">
+                The Revenue <span className="italic text-white/60">Engine.</span>
+              </h2>
+              <p className="text-white/40 text-lg font-light leading-relaxed">
+                Raw technical results from our top-tier GCC deployments. We don't just build software; we architect capital acquisition systems.
+              </p>
+            </div>
+            <Link to="/case-studies" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors uppercase tracking-[0.3em] text-[10px] font-bold">
+              View All Global Results <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {CASE_STUDIES.slice(0, 3).map((study, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 30 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] hover:border-white/20 transition-all duration-500 flex flex-col h-full"
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img src={study.img} alt={study.title} className="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700" />
+                </div>
+                <div className="p-8 flex flex-col flex-grow">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-4">{study.industry} — {study.client}</span>
+                  <h3 className="text-xl font-serif mb-6 leading-tight group-hover:text-white transition-colors">{study.title}</h3>
+                  <div className="space-y-3 mt-auto">
+                    {study.results.slice(0, 2).map((res, j) => (
+                      <div key={j} className="flex items-start gap-3 text-xs text-white/50 font-light italic">
+                        <TrendingUp className="w-3 h-3 mt-0.5 text-white/30" />
+                        <span>{res}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -467,6 +528,80 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── 6.5 Implementation Roadmap ── */}
+      <section className="py-32 px-6 md:px-12 bg-[#080808] border-t border-b border-white/5 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0066FF]/5 rounded-full blur-[150px] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-20">
+            <div className="max-w-2xl">
+              <span className="micro-label block mb-4">The Sovereign Journey</span>
+              <h2 className="text-4xl md:text-6xl font-serif leading-tight">
+                Architecting Your <span className="italic">Revenue Domain.</span>
+              </h2>
+            </div>
+            <p className="text-white/40 font-light max-w-sm mb-2 text-sm leading-relaxed">
+              We move beyond generic software. We deploy autonomous intelligence layers that become your company's most valuable asset.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              {
+                phase: "Phase 01",
+                title: "Sovereign Audit",
+                desc: "We perform a clinical deep-dive into your legacy friction points, identifying exactly where human latency is costing you revenue.",
+                tags: ["Friction Mapping", "OSINT Audit"]
+              },
+              {
+                phase: "Phase 02",
+                title: "Neural Mapping",
+                desc: "We architect the specific reasoning chains and agentic swarms required to automate your high-ticket acquisition and retention cycles.",
+                tags: ["Logic Architecture", "Swarm Design"]
+              },
+              {
+                phase: "Phase 03",
+                title: "Sovereign Deployment",
+                desc: "Deployment on local GCC-certified infrastructure (G42/Azure UAE North) ensuring 100% data residency and regional compliance.",
+                tags: ["GCC Residency", "UAE Law 45"]
+              },
+              {
+                phase: "Phase 04",
+                title: "Revenue Scaling",
+                desc: "Your autonomous engine begins real-time market arbitrage, operating 24/7 across global time zones to maximize yield.",
+                tags: ["Yield Arbitrage", "Market Dominance"]
+              }
+            ].map((step, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 hover:border-[#0066FF]/50 transition-all duration-700 group"
+              >
+                <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#0066FF] mb-12">
+                  {step.phase}
+                </div>
+                <h3 className="text-2xl font-serif mb-6 group-hover:translate-x-2 transition-transform duration-500">
+                  {step.title}
+                </h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed mb-10">
+                  {step.desc}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {step.tags.map(tag => (
+                    <span key={tag} className="text-[8px] uppercase tracking-widest px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-white/40">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── 7. FAQ Section (A11y & SEO) ── */}
       <section className="py-32 px-6 md:px-12 max-w-4xl mx-auto border-t border-white/5">
         <div className="text-center mb-16">
@@ -516,7 +651,22 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      {/* Footer Internal Linking Swarm (SEO Boost) */}
+      <section className="py-20 border-t border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center text-white/80 text-[11px] uppercase tracking-[0.2em] font-bold text-center">
+            <Link to="/ai-marketing-agency-dubai" className="hover:text-white transition-colors">AI Marketing Agency Dubai</Link>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <Link to="/ai-automation-agency-dubai" className="hover:text-white transition-colors">AI Automation Agency Dubai</Link>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <Link to="/ai-lead-generation-agency-dubai" className="hover:text-white transition-colors">AI Lead Generation Dubai</Link>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <Link to="/ai-real-estate-agency-dubai" className="hover:text-white transition-colors">AI Real Estate Dubai</Link>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <Link to="/sovereign-sales-agent" className="hover:text-white transition-colors">B2B Sales AI</Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
-

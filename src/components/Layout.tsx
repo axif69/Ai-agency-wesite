@@ -20,10 +20,10 @@ export default function Layout() {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Sovereign AI", path: "/sovereign-sales-agent" },
-    { name: "Services", path: "/services" },
-    { name: "Portfolio", path: "/portfolio" },
+    { name: "Strategic Pillars", path: "/services" },
+    { name: "Arabic AI", path: "/arabic-ai-hub" },
     { name: "Case Studies", path: "/case-studies" },
-    { name: "Blog", path: "/blog" },
+    { name: "Dashboard", path: "/sovereign-dashboard" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -35,7 +35,23 @@ export default function Layout() {
       <WhatsAppButton />
       <KhalidChatbot />
 
-      <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-6 md:px-12">
+      {/* Sovereign Status Bar */}
+      <div className="bg-[#0a0a0a] border-b border-white/5 py-2 px-6 md:px-12 flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.2em] text-white/40 z-[60] relative">
+        <div className="flex items-center gap-4">
+          <span className="flex items-center gap-1.5 text-green-500/80">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" /> Sovereign Network: Active
+          </span>
+          <span className="hidden sm:inline text-white/20">|</span>
+          <span className="hidden sm:inline italic">Dubai Node: DXB-PRIME</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <span>{new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit' })} GST</span>
+          <span className="text-white/20">|</span>
+          <Link to="/sovereign-dashboard" className="hover:text-white transition-colors">Command Access</Link>
+        </div>
+      </div>
+
+      <header className="fixed top-9 left-0 right-0 z-40 flex items-center justify-between px-6 py-6 md:px-12">
         <Link to="/" aria-label="Asif Digital Home" className="text-[26px] font-serif font-bold tracking-tight mix-blend-difference">
           Asif Khan.
         </Link>
@@ -66,17 +82,19 @@ export default function Layout() {
               {link.name === "Sovereign AI" && (
                 <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[350px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
                   <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col font-sans normal-case tracking-normal text-left p-6 space-y-2">
-                    <Link to="/sovereign-sales-agent" className="text-white/95 hover:text-white transition-all text-[15px] font-bold block py-3 hover:pl-2 duration-200 border-b border-white/5 bg-white/5 px-2 rounded-lg mb-2">Sovereign Sales Agent (Autonomous B2B)</Link>
+                    <Link to="/sovereign-sales-agent" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 italic">Sovereign Sales Agent (Autonomous B2B)</Link>
+                    <Link to="/sovereign-dashboard" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Command & Control Dashboard</Link>
+                    <Link to="/arabic-ai-hub" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Arabic Intelligence Hub (Khaleeji NLP)</Link>
+                    <Link to="/ai-automation-agency-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI Automation Agency (Enterprise)</Link>
+                    <Link to="/ai-marketing-agency-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Sovereign Marketing Swarms</Link>
                     <Link to="/services/agentic-finance-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Agentic Finance & Compliance</Link>
-                    <Link to="/services/ai-hr-emirates" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI HR & Emiratization tracking</Link>
-                    <Link to="/services/whatsapp-automation-gcc" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">WhatsApp Business Automation</Link>
-                    <Link to="/services/logistics-resilience" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200">Logistics & Supply Chain AI</Link>
+                    <Link to="/services/whatsapp-automation-gcc" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200">WhatsApp Business Automation</Link>
                   </div>
                 </div>
               )}
 
               {/* Mega Menu Dropdown - isolated from blend mode */}
-              {link.name === "Services" && (
+              {link.name === "Strategic Pillars" && (
                 <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[920px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
                   <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex font-sans normal-case tracking-normal text-left">
                     
@@ -158,7 +176,7 @@ export default function Layout() {
                       </div>
                     )}
                   </div>
-                ) : link.name === "Services" ? (
+                ) : link.name === "Strategic Pillars" ? (
                   <div key={link.path}>
                     <button
                       className="hover:text-white/90 transition-colors flex items-center justify-center gap-2 w-full"

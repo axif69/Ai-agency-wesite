@@ -51,6 +51,46 @@ export default function SEO({
     ]
   };
 
+  // Default Organization & LocalBusiness Schema (E-E-A-T)
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${siteUrl}/#organization`,
+    "name": "Asif Digital | Sovereign AI Architecture",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/brand/logo-gold.png`
+    },
+    "image": `${siteUrl}/brand/office-dubai.jpg`,
+    "description": "Elite AI Architectural Firm in Dubai, UAE. Specializing in Sovereign AI Hubs, Khaleeji NLP, and Agentic Workflow Automation for GCC Enterprise.",
+    "telephone": "+971545866094",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Business Bay",
+      "addressLocality": "Dubai",
+      "addressRegion": "DU",
+      "addressCountry": "AE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "25.1852",
+      "longitude": "55.2743"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/asifdigital",
+      "https://twitter.com/asifdigitaluae"
+    ],
+    "priceRange": "$$$$",
+    "areaServed": [
+      { "@type": "City", "name": "Dubai" },
+      { "@type": "City", "name": "Abu Dhabi" },
+      { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Riyadh" }
+    ],
+    "knowsAbout": ["Sovereign AI", "Khaleeji NLP", "Agentic Automation", "Enterprise Software Architecture", "AEO Strategy"]
+  };
+
   // FAQ Schema if provided
   const faqJsonLd = faqSchema ? {
     "@context": "https://schema.org",
@@ -102,6 +142,9 @@ export default function SEO({
       {/* Structured Data */}
       <script type="application/ld+json">
         {JSON.stringify(breadcrumbSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(orgSchema)}
       </script>
       {faqJsonLd && (
         <script type="application/ld+json">

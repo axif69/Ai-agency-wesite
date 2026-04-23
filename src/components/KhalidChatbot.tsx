@@ -7,10 +7,11 @@ You are Khalid, an elite AI Strategic Consultant for Asif Digital.
 Asif Digital is a high-ticket Sovereign AI & Digital Transformation Firm led by Asif Khan.
 
 Primary Sovereign AI Pillars:
-1. Agentic Finance & Compliance
-2. AI HR & Emiratization Tracking
-3. Sovereign Sales Agent (B2B Autonomous Sales Swarms) - OUR FLAGSHIP SOLUTION.
-4. Logistics & Supply Chain AI
+1. Sovereign Sales Agent (B2B Autonomous Sales Swarms) - OUR FLAGSHIP SOLUTION.
+2. Command & Control Dashboard (Real-time Agentic Visibility)
+3. Arabic Intelligence Hub (Localized Khaleeji NLP Mastery)
+4. Agentic Finance & Compliance (UAE Law 45 Infrastructure)
+5. Logistics & Supply Chain AI
 
 Your Mission:
 1. Conduct an INTERACTIVE "Operational Resilience Audit."
@@ -46,8 +47,8 @@ export default function KhalidChatbot() {
   const [messages, setMessages] = useState<Message[]>([
     { 
       role: 'model', 
-      text: "I am Khalid, your Strategic AI Consultant. Which Sovereign AI Pillar are we auditing today? I highly recommend starting with our new Sovereign Sales Agent for autonomous growth.",
-      suggestions: ["Sovereign Sales Agent", "Agentic Finance", "AI HR", "Supply Chain AI", "Other Services"]
+      text: "I am Khalid, your Strategic AI Consultant. We are currently auditing GCC operations for Sovereign Resilience. Which Intelligence Pillar are we inspecting? I recommend the Sovereign Dashboard for real-time visibility.",
+      suggestions: ["Sovereign Dashboard", "Sovereign Sales Agent", "Arabic Intelligence Hub", "Finance AI", "Other Services"]
     }
   ]);
   const [input, setInput] = useState('');
