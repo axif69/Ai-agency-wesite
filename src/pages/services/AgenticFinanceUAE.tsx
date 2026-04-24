@@ -13,25 +13,33 @@ export default function AgenticFinanceUAE() {
 
   const faqs = [
     {
-      q: "Does the AI handle VAT and UAE Corporate Tax compliance?",
-      a: "Yes. Our agents are specifically trained on FTA (Federal Tax Authority) regulations to ensure that every automated transaction and report is fully compliant with UAE tax laws."
+      q: "Does your AI handle UAE Corporate Tax and FTA compliance?",
+      a: "Yes. Our agents are specifically trained on UAE Federal Tax Authority (FTA) regulations. They autonomously manage ledger classification, tax provision calculations, and draft tax returns with 100% accuracy, ensuring you never miss a filing deadline."
     },
     {
-      q: "Can this integrate with Tally or Zoho Books?",
-      a: "Absolutely. We build custom API bridges for legacy systems like Tally and deep-layer integrations for modern ERPs like Zoho Books, Oracle NetSuite, and SAP."
+      q: "Can this AI automate AML and KYC for DIFC/ADGM firms?",
+      a: "Absolutely. We build 'Compliance Swarms' that perform real-time Anti-Money Laundering (AML) and Know Your Customer (KYC) checks against global sanctions lists. This reduces onboarding time for new investment accounts by up to 90%."
     },
     {
-      q: "Is the data stored locally in the UAE?",
-      a: "We prioritize data sovereignty. Our solutions can be deployed on UAE-based infrastructure like G42 Khazna or AWS UAE Regions to meet local data residency requirements."
+      q: "How does Sovereign AI comply with UAE Data Law No. 45?",
+      a: "We prioritize data residency. Our financial agents are deployed on UAE-sovereign clouds (G42 Khazna) or your own private on-premise infrastructure. This ensures that sensitive financial data never leaves the UAE, maintaining 100% legal compliance."
+    },
+    {
+      q: "Can the AI integrate with legacy banking systems and Tally?",
+      a: "Yes. We create secure API bridges that connect modern AI swarms to legacy accounting systems like Tally, as well as enterprise-grade ERPs like Oracle NetSuite, SAP, and Zoho Books."
+    },
+    {
+      q: "What is the ROI of autonomous financial auditing?",
+      a: "For a Tier-1 Dubai enterprise, the reduction in manual reconciliation labor and the elimination of reporting errors typically delivers a 3x ROI within the first year of deployment."
     }
   ];
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
       <SEO 
-        title="Agentic Finance & Compliance AI UAE | Asif Digital"
-        description="Automate financial audits, KYC, and corporate tax compliance with sovereign AI agents. Built for UAE investment firms and enterprises in Dubai and Abu Dhabi."
-        keywords="AI finance automation UAE, UAE Corporate Tax AI, KYC automation Dubai, Sovereign finance AI"
+        title="DIFC & ADGM Agentic Finance | UAE Corporate Tax AI Automation"
+        description="Automate financial audits, KYC, and UAE Corporate Tax compliance with sovereign AI. Built for DIFC, ADGM, and Tier-1 investment firms in Dubai and Abu Dhabi."
+        keywords="AI finance automation Dubai, DIFC compliance AI, UAE Corporate Tax automation, KYC AI UAE, Sovereign finance intelligence"
         schema={{
           "@context": "https://schema.org",
           "@type": "Service",
@@ -90,10 +98,10 @@ export default function AgenticFinanceUAE() {
           <div>
             <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">Your compliance team is <br /><span className="italic text-white/40">exhausted by manual logs.</span></h2>
             <div className="space-y-6 text-white/60 text-lg font-light leading-relaxed">
-              <p>In the UAE's evolving regulatory landscape, a single reporting oversight can lead to massive fines. Human auditors take weeks to spot discrepancies; our finance agents identify them in milliseconds.</p>
-              <p>Most regional firms still rely on spreadsheets. In a high-speed investment environment like Dubai Internet City or ADGM, that latency is a liability. Our Agents bridge the gap between your bank APIs and your ERP automatically.</p>
+              <p>In the UAE's evolving regulatory landscape, a single reporting oversight can lead to massive fines. For firms in **DIFC and ADGM**, compliance is not a checkbox—it is a survival requirement. Human auditors take weeks to spot discrepancies; our finance agents identify them in milliseconds.</p>
+              <p>Most regional firms still rely on manual spreadsheets. In a high-speed investment environment like **Dubai Internet City**, that latency is a liability. Our Agents bridge the gap between your bank APIs and your enterprise ERP automatically, ensuring unshakeable financial integrity.</p>
               <p className="text-white font-medium border-l-2 border-white pl-4 mt-8">
-                Autonomous Agents don't just report—they predict. Identifying liquidity gaps and compliance risks before they become balance-sheet burdens.
+                Autonomous Agents don't just report—they protect. Identifying liquidity gaps and AML risks before they become balance-sheet burdens.
               </p>
             </div>
           </div>

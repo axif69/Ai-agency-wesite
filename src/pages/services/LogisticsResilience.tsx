@@ -13,29 +13,33 @@ export default function LogisticsResilience() {
 
   const faqs = [
     {
-      question: "How does AI improve logistics resilience in the UAE?",
-      answer: "Our AI agents monitor regional data feeds in real-time to predict disruptions. They can autonomously analyze thousands of rerouting permutations and execute bookings via API in seconds, far faster than human dispatchers."
+      question: "How can AI reduce downtime in Sharjah manufacturing plants?",
+      answer: "We deploy 'Predictive Maintenance Agents' that analyze thermal, acoustic, and vibrational data from your machinery in real-time. By identifying sub-threshold anomalies before a failure occurs, we reduce unplanned downtime by up to 35% in industrial environments like SAIF Zone."
     },
     {
-      question: "Is the logistics AI hosted locally in the UAE?",
-      answer: "Yes. We prioritize UAE data sovereignty by deploying on local infrastructure like G42 Khazna compute and AWS UAE regions, ensuring low latency and protection from global network issues."
+      question: "How does AI improve logistics resilience for Sharjah-based firms?",
+      answer: "Our agents monitor regional cargo flows and port congestion at Khalid Port and Jebel Ali simultaneously. They can autonomously secure air-freight and secondary routing via Sharjah International Airport (SHJ) in seconds, bypassing maritime bottlenecks."
     },
     {
-      question: "Can these agents integrate with my existing ERP?",
-      answer: "Absolutely. Our agents are built to bridge sea, land, and air APIs natively, integrating directly with your existing logistics management software or ERP for a unified conversational interface."
+      question: "Is the logistics AI hosted locally in the UAE for Law 45 compliance?",
+      answer: "Yes. We prioritize UAE data sovereignty by deploying on local Tier-4 infrastructure (G42 Khazna) and private UAE clouds. This ensures your industrial data stays within the UAE, fully complying with Federal Decree-Law No. 45."
     },
     {
-      question: "What is the typical deployment timeline?",
-      answer: "A standard supply chain resilience audit and agent pilot deployment typically takes 45 to 60 days, depending on the complexity of your current integrations."
+      question: "Can these agents integrate with industrial ERPs like SAP or Oracle?",
+      answer: "Absolutely. Our agentic swarms are built to bridge the gap between legacy industrial ERPs and modern AI. We create a unified conversational interface that allows you to manage supply chain resilience via a single WhatsApp or dashboard interface."
+    },
+    {
+      question: "What is the ROI for AI automation in Sharjah logistics?",
+      answer: "A standard deployment typically pays for itself within 8-12 months through a combination of reduced administrative labor, lower freight spot-rate exposure, and the elimination of cargo spoilage risks."
     }
   ];
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
       <SEO 
-        title="Logistics AI Resilience UAE | Sovereign Supply Chain Architecture"
-        description="Automate supply chain rerouting and logistics management. 24/7 autonomous operations for trade hubs in Dubai and Sharjah to counter cargo disruption."
-        keywords="AI supply chain optimization, Logistics rerouting UAE, Jebel Ali AI automation, Sovereign logistics AI UAE"
+        title="Sharjah Industrial AI & Logistics Resilience | SAIF Zone Automation"
+        description="Automate industrial supply chains and manufacturing in Sharjah and Dubai. Predictive maintenance and 24/7 autonomous logistics for SAIF Zone and Jebel Ali hubs."
+        keywords="AI industrial automation Sharjah, Logistics rerouting Dubai, SAIF Zone AI automation, Sovereign logistics AI UAE, Predictive maintenance Sharjah"
         schema={{
           "@context": "https://schema.org",
           "@type": "Service",
@@ -94,10 +98,10 @@ export default function LogisticsResilience() {
           <div>
             <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">In the Middle East, <br /><span className="italic text-white/40">hesitation is devastating.</span></h2>
             <div className="space-y-6 text-white/60 text-lg font-light leading-relaxed">
-              <p>The Strait of Hormuz and the wider GCC logistics grid operate on razor-thin margins. In a 2026 geopolitical disruption, insurance premiums skyrocket and human freight forwarders become paralyzed by overwhelmed communication channels.</p>
-              <p>Most UAE logistics firms rely on large banks of human dispatchers. If a crisis triggers a remote-work mandate, access to secure on-premise routing software is severed. A single delayed container ship reroute can write down millions in perishable losses or manufacturing delays.</p>
+              <p>The Strait of Hormuz and the Sharjah-Dubai industrial corridor operate on razor-thin margins. In a 2026 geopolitical disruption, insurance premiums skyrocket and human freight forwarders become paralyzed by overwhelmed communication channels.</p>
+              <p>Manufacturing hubs in the <strong>SAIF Zone and Sharjah Industrial Areas</strong> cannot afford latency. If a crisis triggers a disruption, a single delayed component can halt a production line. Most UAE logistics firms rely on large banks of human dispatchers—an unsustainable model in the era of autonomous intelligence.</p>
               <p className="text-white font-medium border-l-2 border-white pl-4 mt-8">
-                Autonomous Agents predict regional disruption through real-time data feeds, preemptively securing air-freight and secondary port routing before competitors even realize a route is closed.
+                Sovereign Agents predict regional disruption through real-time data feeds, preemptively securing secondary port routing and air-freight via Sharjah International before competitors even realize a route is closed.
               </p>
             </div>
           </div>

@@ -16,8 +16,8 @@ const features = [
   },
   {
     icon: <Target className="w-6 h-6" />,
-    title: "AEO Optimization",
-    description: "Structuring content to answer specific questions, optimizing for AI engines like ChatGPT and Gemini."
+    title: "AEO & LLMO",
+    description: "Structuring entity data for AI engines like ChatGPT and Gemini to ensure your brand is the primary answer."
   },
   {
     icon: <BarChart className="w-6 h-6" />,
@@ -73,26 +73,30 @@ export default function SeoAeo() {
   return (
     <div className="pt-20">
       <SEO 
-        title="Best SEO & AEO Agency in Dubai & Sharjah | Peak Search Visibility" 
-        description="Top-rated SEO and Answer Engine Optimization (AEO) services in Sharjah and Dubai. Dominate local Maps, Google Search, and AI Engines like ChatGPT."
-        keywords="SEO Agency Dubai, Best SEO Services Sharjah, Answer Engine Optimization UAE, Local SEO Dubai, Technical SEO Expert"
+        title="Best SEO & AEO Agency in Dubai & Sharjah | AI Search Mastery" 
+        description="Top-rated SEO and Answer Engine Optimization (AEO) for UAE businesses. Dominate Google SGE, Maps, and AI Engines like ChatGPT in Dubai and Sharjah."
+        keywords="SEO Agency Dubai, AEO Services Sharjah, Google SGE Optimization UAE, Local SEO Dubai, LLM Optimization Dubai"
         schema={serviceSchema}
         faqSchema={[
           {
-            question: "What is the difference between SEO and AEO?",
-            answer: "SEO (Search Engine Optimization) focuses on ranking your website on traditional search engines like Google. AEO (Answer Engine Optimization) focuses on structuring your content so that AI engines like ChatGPT, Gemini, and Claude provide your brand as the direct answer to user queries."
+            question: "How do I rank in Google's AI Overviews (SGE) in Dubai?",
+            answer: "Google's Search Generative Experience (SGE) favors high-authority entities with structured schema and 'Answer-Ready' content. We optimize your UAE business by structuring data in the Knowledge Graph, ensuring you are the primary source for AI-generated summaries."
           },
           {
-            question: "How long does it take to see SEO results in Dubai?",
-            answer: "While technical fixes show impact in weeks, significant ranking improvements for competitive keywords in Dubai and Sharjah typically take 3 to 6 months of consistent optimization and authority building."
+            question: "What is the difference between SEO and AEO for UAE businesses?",
+            answer: "SEO ranks your website on traditional search engines. AEO (Answer Engine Optimization) ensures that LLMs like ChatGPT, Gemini, and Claude recognize your brand as the definitive authority in the UAE, providing your business as the direct 'recommended' answer to conversational queries."
           },
           {
-            question: "Do you specialize in local UAE SEO?",
-            answer: "Yes. We specialize in dominating the 'Local Pack' (Google Maps) for businesses in Dubai, Sharjah, and Abu Dhabi, ensuring you capture high-intent local foot traffic and inquiries."
+            question: "How long does it take to see AEO results in Sharjah?",
+            answer: "AEO impact depends on Entity Verification. While technical schema changes are picked up in weeks, establishing your Sharjah-based business as an 'Authority Entity' for AI models typically takes 3 to 4 months of structured content deployment."
           },
           {
-            question: "Is AEO necessary for my business?",
-            answer: "If your customers use voice search or AI assistants to find services, AEO is critical. It ensures your business is the 'recommended' choice when users ask conversational questions to their devices."
+            question: "Do you specialize in local UAE 'Maps' SEO?",
+            answer: "Yes. We dominate the 'Local Pack' for businesses in Dubai, Sharjah, and Abu Dhabi. Local citations and high-fidelity GMB (Google My Business) management are foundational to our search strategy, feeding the data that AI engines use for local recommendations."
+          },
+          {
+            question: "Is LLM Optimization (LLMO) different from traditional SEO?",
+            answer: "Yes. LLMO focuses on 'semantic readability' rather than just keywords. We structure your UAE enterprise data so that large language models can easily parse and cite your brand as an expert source in the GCC region."
           }
         ]}
       />
@@ -146,9 +150,9 @@ export default function SeoAeo() {
       <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
           <div>
-            <h2 className="text-4xl font-serif tracking-tight mb-6">Future-Proof Search in UAE</h2>
+            <h2 className="text-4xl font-serif tracking-tight mb-6">Future-Proof Search in the UAE</h2>
             <p className="text-white/60 font-light leading-relaxed text-lg mb-8">
-              Search is evolving rapidly. While traditional SEO remains crucial for dominating Google Maps in Sharjah and Dubai, optimizing for AI models (AEO) ensures your brand is the definitive answer when users ask ChatGPT, Gemini, or Claude about services in the UAE.
+              Search is undergoing a phase shift. While traditional SEO is essential for Google Maps dominance in Sharjah, optimizing for **Entity Authority** ensures your brand is the definitive source when UAE users ask ChatGPT, Gemini, or Claude for recommendations. We bridge the gap between traditional rankings and AI readability.
             </p>
             <ul className="space-y-4">
               {['Schema Markup', 'Voice Search Optimization', 'Content Structuring', 'Authority Link Building'].map((item, i) => (
