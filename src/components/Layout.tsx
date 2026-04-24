@@ -85,9 +85,9 @@ export default function Layout() {
                     <Link to="/sovereign-sales-agent" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 italic">Sovereign Sales Agent (Autonomous B2B)</Link>
                     <Link to="/sovereign-dashboard" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Command & Control Dashboard</Link>
                     <Link to="/arabic-ai-hub" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Arabic Intelligence Hub (Khaleeji NLP)</Link>
-                    <Link to="/ai-automation-agency-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI Automation Agency (Enterprise)</Link>
-                    <Link to="/ai-marketing-agency-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Sovereign Marketing Swarms</Link>
-                    <Link to="/services/agentic-finance-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Agentic Finance & Compliance</Link>
+                    <Link to="/services/autonomous-logistics-supply-chain-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Logistics & Supply Chain AI</Link>
+                    <Link to="/services/agentic-finance-compliance-automation-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Agentic Finance & Compliance</Link>
+                    <Link to="/services/seo-aeo-search-mastery-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AEO & Search Mastery</Link>
                     <Link to="/services/whatsapp-automation-gcc" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200">WhatsApp Business Automation</Link>
                   </div>
                 </div>
@@ -118,10 +118,11 @@ export default function Layout() {
                         <Megaphone className="w-4 h-4" role="img" aria-label="Megaphone Icon" /> Digital Marketing
                       </h3>
                       <ul className="space-y-5">
-                        <li><Link to="/services/seo-agency-dubai-sharjah-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">SEO</Link></li>
-                        <li><Link to="/services/ppc-google-ads-agency-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">PPC</Link></li>
-                        <li><Link to="/services/social-media-management-dubai-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Social Media</Link></li>
-                        <li><Link to="/services/ai-automation-chatbot-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">AI</Link></li>
+                        <li><Link to="/services/seo-aeo-search-mastery-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200 italic">SEO & AEO Mastery</Link></li>
+                        <li><Link to="/services/autonomous-logistics-supply-chain-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200 italic">Logistics Resilience</Link></li>
+                        <li><Link to="/services/agentic-finance-compliance-automation-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200 italic">Agentic Finance</Link></li>
+                        <li><Link to="/services/ai-automation-chatbot-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">AI Automation</Link></li>
+                        <li><Link to="/services/ppc-google-ads-agency-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">PPC / Google Ads</Link></li>
                       </ul>
                     </div>
 
@@ -170,10 +171,9 @@ export default function Layout() {
                       <div className="mt-6 space-y-4 text-base text-white/60 font-sans uppercase tracking-widest">
                         <Link to="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">Sovereign Sales Agent</Link>
                         <Link to="/sovereign-dashboard" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">Command Dashboard</Link>
-                        <Link to="/arabic-ai-hub" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">Arabic Intel Hub</Link>
-                        <Link to="/ai-automation-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">Automation Agency</Link>
-                        <Link to="/ai-marketing-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">Marketing Swarms</Link>
-                        <Link to="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">Agentic Finance</Link>
+                        <Link to="/services/autonomous-logistics-supply-chain-uae" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors italic">Logistics Resilience (Sharjah)</Link>
+                        <Link to="/services/agentic-finance-compliance-automation-uae" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors italic">Agentic Finance (DIFC)</Link>
+                        <Link to="/services/seo-aeo-search-mastery-dubai" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors italic">AEO Mastery</Link>
                         <Link to="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">WhatsApp Business</Link>
                       </div>
                     )}

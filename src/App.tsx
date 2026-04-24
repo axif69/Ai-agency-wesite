@@ -76,9 +76,9 @@ export default function App() {
               <Route path="sovereign-dashboard" element={<SovereignDashboard />} />
 
               {/* Sovereign AI Solutions routes */}
-              <Route path="services/agentic-finance-uae" element={<AgenticFinanceUAE />} />
+              <Route path="services/agentic-finance-compliance-automation-uae" element={<AgenticFinanceUAE />} />
               <Route path="services/ai-hr-emirates" element={<AiHrEmirates />} />
-              <Route path="services/logistics-resilience" element={<LogisticsResilience />} />
+              <Route path="services/autonomous-logistics-supply-chain-uae" element={<LogisticsResilience />} />
               <Route path="services/whatsapp-automation-gcc" element={<WhatsAppAutomationGCC />} />
 
               {/* Individual service pages */}
@@ -87,7 +87,7 @@ export default function App() {
               <Route path="services/ecommerce-website-development-dubai" element={<EcommerceWebsites />} />
               <Route path="services/web-hosting-uae" element={<WebHosting />} />
               <Route path="services/website-maintenance-support-dubai" element={<WebsiteSupport />} />
-              <Route path="services/seo-agency-dubai-sharjah-uae" element={<SEO />} />
+              <Route path="services/seo-aeo-search-mastery-dubai" element={<SeoAeo />} />
               <Route path="services/ppc-google-ads-agency-dubai" element={<PPC />} />
               <Route path="services/social-media-management-dubai-uae" element={<SocialMedia />} />
               <Route path="services/ai-automation-chatbot-dubai" element={<AiServices />} />
