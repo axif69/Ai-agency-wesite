@@ -86,9 +86,10 @@ export default function SEO({
       { "@type": "City", "name": "Dubai" },
       { "@type": "City", "name": "Abu Dhabi" },
       { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Ajman" },
       { "@type": "City", "name": "Riyadh" }
     ],
-    "knowsAbout": ["Sovereign AI", "Khaleeji NLP", "Agentic Automation", "Enterprise Software Architecture", "AEO Strategy"]
+    "knowsAbout": ["Sovereign AI", "Khaleeji NLP", "Agentic Automation", "Enterprise Software Architecture", "AEO Strategy", "Local AI UAE"]
   };
 
   // FAQ Schema if provided

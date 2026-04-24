@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nimir's Pizzeria | Artisanal NYC Slices</title>
+  <!-- Added v=3 cache clear to ensure styles properly load -->
+  <link rel="stylesheet" href="style.css?v=7">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="pizza-icons-container" id="pizza-container"></div>
+
+  <nav class="navbar">
+    <div class="logo">
+      <span class="logo-red">NIMIR'S</span> PIZZERIA
+    </div>
+    <a href="tel:065345442" class="call-btn">CALL TO ORDER</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="bounce-in">
+        NIMIR'S PIZZERIA
+        <span class="hero-sub">- EST. 2020 -</span>
+      </h1>
+      <p class="fade-in">Hand-crafted NYC-style pizza in the heart of Sharjah</p>
+      <a href="tel:065345442" class="primary-cta pulse-fast">CALL 06 534 5442</a>
+    </div>
+  </header>
+
+  <main class="content-wrapper">
+    <div class="menu-header slide-up">
+      <h2 class="grand-title">THE MENU</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- SIGNATURE PIES -->
+    <section id="signature-pies" class="menu-section slide-up">
+      <h3 class="section-title">SIGNATURE PIES & SLICES</h3>
+      <div class="menu-grid">
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>THE TOP NOTCH</h4>
+            <span class="price">80 / 25 AED</span>
+          </div>
+          <p class="desc">Sauce, Pecorino Romano, Mozz, Oregano</p>
+          <p class="add-on">Stracciatella / Pesto +15 AED</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>HOLY</h4>
+            <span class="price">95 / 30 AED</span>
+          </div>
+          <p class="desc">Sauce, Pecorino Romano, Mozz, Pepperoni, Chilli Flakes</p>
+          <p class="add-on">Stracciatella / Pesto +15 AED</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>THE TRIBUTE</h4>
+            <span class="price">90 AED</span>
+          </div>
+          <p class="desc">Tomato Sauce, EVOO, Oregano, Pecorino Romano, Finished with Stracciatella, Fresh Basil and Freshly Cracked Pepper (Full Pie Only)</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>VEGGIE</h4>
+            <span class="price">80 AED</span>
+          </div>
+          <p class="desc">Sauce, Spanish Onions, Green Peppers, Sauteed Mushrooms, Kalamata Olives, Mozz, Chilli Flakes, Pesto</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>HALF & HALF</h4>
+            <span class="price">95 AED</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREMIUM PIES -->
+    <section id="premium-pies" class="menu-section slide-up delay-1">
+      <h3 class="section-title">PREMIUM PIES & SLICES</h3>
+      <div class="menu-grid">
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>SPICY STALLION</h4>
+            <span class="price">95 / 30 AED</span>
+          </div>
+          <p class="desc">Sauce, Mozz, Italian Fennel Mince, Fresh Jalapenos, Ex-vir Olive Oil, Hot Honey</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>WHITE HAVEN</h4>
+            <span class="price">99 / 28 AED</span>
+          </div>
+          <p class="desc">Truffle White Sauce, Mozz, Mushrooms, Spicy Salami, Garnished with Parsley, Hot Honey, Grated Parmegiano Reggiano (Full Pie Only)</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>RUSSIAN ROULETTE</h4>
+            <span class="price">139 / 32 AED</span>
+          </div>
+          <p class="desc">Sauce, Mozz, Spanish Onion, Slow-braised Russian Black Angus Short Ribs, Garnished with our NYC-style BBQ Sauce and topped with crispy onions, parsley</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>NEW YORKER</h4>
+            <span class="price">95 AED</span>
+          </div>
+          <p class="desc">Sauce, Onions, Peppers, Mushrooms, Olives, Italian Sausage, Mozz, Pepperoni</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>HALF & HALF</h4>
+            <span class="price">105 AED</span>
+          </div>
+          <p class="add-on">Russian Roulette +25 AED &nbsp;|&nbsp; Stracciatella +15 AED</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIDES & DIPS -->
+    <section id="sides-dips" class="menu-section slide-up delay-1">
+      <h3 class="section-title">SIDES & DIPS</h3>
+      <div class="menu-grid">
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>CLASSIC CAESAR SALAD</h4>
+            <span class="price">38 AED</span>
+          </div>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>GARLIC KNOTS</h4>
+            <span class="price">15/25/32 AED</span>
+          </div>
+          <p class="desc">Available in 2 / 4 / 8 Pieces</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>LEMON RANCH DIP</h4>
+            <span class="price">10 AED</span>
+          </div>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>SPICY HOT HONEY</h4>
+            <span class="price">10 AED</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRINKS -->
+    <section id="drinks" class="menu-section slide-up delay-2">
+      <h3 class="section-title">COLD DRINKS</h3>
+      <div class="menu-grid">
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>HOUSE GINGER ALE</h4>
+            <span class="price">25 AED</span>
+          </div>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>SICILIAN LEMONADE</h4>
+            <span class="price">25 AED</span>
+          </div>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>SICILIAN BLOOD ORANGE</h4>
+            <span class="price">25 AED</span>
+          </div>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>SOFT DRINKS</h4>
+            <span class="price">10 AED</span>
+          </div>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>NIMIR'S HIBISCUS</h4>
+            <span class="price">15/40 AED</span>
+          </div>
+          <p class="desc">300ml / 1Ltr</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>STILL WATER</h4>
+            <span class="price">7/15 AED</span>
+          </div>
+          <p class="desc">330ml / 750ml</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>SPARKLING WATER</h4>
+            <span class="price">10 AED</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-title" style="margin-top: 5rem;">HOT DRINKS</h3>
+      <div class="menu-grid">
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>MILK BASE COFFEE</h4>
+            <span class="price">15 AED</span>
+          </div>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>ESPRESSO</h4>
+            <span class="price">10 AED</span>
+          </div>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>PICCOLO</h4>
+            <span class="price">13 AED</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESSERTS -->
+    <section id="desserts" class="menu-section slide-up delay-3">
+      <h3 class="section-title">SIGNATURE DESSERTS</h3>
+      <div class="menu-grid">
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>AFFOGATO</h4>
+            <span class="price">30 AED</span>
+          </div>
+          <p class="desc">Vanilla Gelato topped with a shot of hot espresso. Simple, rich, and classic.</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>VANILLA GELATO WITH OLIVE OIL</h4>
+            <span class="price">28 AED</span>
+          </div>
+          <p class="desc">Creamy vanilla gelato finished with extra virgin olive oil and a pinch of sea salt.</p>
+        </div>
+        <div class="menu-item tilt-card">
+          <div class="item-header">
+            <h4>PISTACHIO GELATO WITH OLIVE OIL</h4>
+            <span class="price">28 AED</span>
+          </div>
+          <p class="desc">Smooth pistachio gelato drizzled with olive oil and a touch of sea salt.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="social-proof-container content-wrapper">
+    <div class="sp-wrapper">
+      <!-- Reviews Block -->
+      <div id="reviews-section" class="reviews-section slide-up">
+        <h2 class="grand-title">THE WORD ON THE STREET</h2>
+        <div class="divider"></div>
+        <div id="reviews-container">
+          <div class="menu-item tilt-card" style="margin-bottom: 20px;">
+            <div class="stars" style="color: #f39c12; font-size: 1.5rem; letter-spacing: 5px; margin-bottom: 10px;">★★★★★</div>
+            <p class="desc" style="font-size: 1.2rem; color: #fff; font-style: italic;">"Absolutely incredible NYC style slice in Sharjah. The Spicy Stallion balance with the hot honey is perfect. Highly recommend!"</p>
+            <p class="add-on">- Sarah L., Local Guide</p>
+          </div>
+          <div class="menu-item tilt-card" style="margin-bottom: 20px;">
+            <div class="stars" style="color: #f39c12; font-size: 1.5rem; letter-spacing: 5px; margin-bottom: 10px;">★★★★★</div>
+            <p class="desc" style="font-size: 1.2rem; color: #fff; font-style: italic;">"Their Russian Roulette pie with the slow-braised short ribs is out of this world. The crust is crispy and the ingredients are super fresh."</p>
+            <p class="add-on">- Ahmed M., Verified Review</p>
+          </div>
+          <div class="menu-item tilt-card" style="margin-bottom: 20px;">
+            <div class="stars" style="color: #f39c12; font-size: 1.5rem; letter-spacing: 5px; margin-bottom: 10px;">★★★★★</div>
+            <p class="desc" style="font-size: 1.2rem; color: #fff; font-style: italic;">"Finally, authentic East Coast pizza in the UAE. The Tribute pie was phenomenal. Reminds me exactly of New York slices."</p>
+            <p class="add-on">- David K., Verified Review</p>
+          </div>
+        </div>
+        <div class="rating-badge pulse-fast" style="display: inline-block; padding: 15px 30px; border: 2px solid #f39c12; color: #f39c12; font-family: 'Oswald', sans-serif; font-size: 1.2rem; border-radius: 50px; margin-top: 20px;">
+          ★ 4.7 Google Rating based on hundreds of reviews
+        </div>
+      </div>
+
+      <!-- Instagram Block -->
+      <div id="instagram-section" class="instagram-section slide-up">
+        <h2 class="grand-title">FROM THE GRAM</h2>
+        <div class="divider"></div>
+        
+        <!-- Big highlight block for their huge following -->
+        <div class="menu-item tilt-card" style="margin-bottom: 30px; text-align: center; border-color: #C0392B;">
+          <h3 style="color: #C0392B; font-family: 'Oswald', sans-serif; font-size: 2.5rem; margin-bottom: 5px; letter-spacing: 2px;">11K+ FOLLOWERS</h3>
+          <p style="color: #fff; font-size: 1.1rem; letter-spacing: 1px;">Join the community @nimirs_pizzeria</p>
+          <a href="https://www.instagram.com/nimirs_pizzeria/" target="_blank" class="call-btn-small" style="margin-top: 15px; display: inline-block; background: #C0392B; color: #fff !important; text-decoration: none; border-radius: 5px; padding: 10px 20px;">Follow Us Now</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-col tilt-card">
+        <h3>LOCATION</h3>
+        <p>Muwaileh Commercial<br>Industrial Area, Sharjah</p>
+      </div>
+      <div class="footer-col tilt-card">
+        <h3>HOURS</h3>
+        <p>4:00 PM - 12:00 AM</p>
+      </div>
+      <div class="footer-col contact-col tilt-card">
+        <h3>CONNECT</h3>
+        <a href="tel:065345442" class="call-btn-small pulse-fast" style="text-decoration:none;">Call: 06 534 5442</a>
+        <a href="https://www.instagram.com/nimirs_pizzeria/" target="_blank" class="social-link" style="text-decoration:none;">Instagram: @nimirs_pizzeria</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
