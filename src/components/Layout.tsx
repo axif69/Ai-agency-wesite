@@ -149,57 +149,57 @@ export default function Layout() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-30 flex flex-col items-center justify-center bg-[#050505] md:hidden"
+            className="fixed inset-0 z-30 flex flex-col items-end justify-start bg-[#050505] md:hidden pt-32 px-12 overflow-y-auto"
           >
-            <nav className="flex flex-col gap-6 text-3xl font-serif tracking-tight text-center">
+            <nav className="flex flex-col gap-8 text-2xl font-serif tracking-tight text-right w-full">
               {navLinks.map((link) => (
                 link.name === "Sovereign AI" ? (
-                  <div key={link.path}>
+                  <div key={link.path} className="w-full">
                     <button
-                      className="hover:text-white/90 transition-colors flex items-center justify-center gap-2 w-full"
+                      className="hover:text-white/90 transition-colors flex items-center justify-end gap-3 w-full"
                       onClick={() => setIsSovereignOpen(!isSovereignOpen)}
                     >
                       {link.name}
-                      <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${isSovereignOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isSovereignOpen ? 'rotate-180' : ''}`} />
                     </button>
                     {isSovereignOpen && (
-                      <div className="mt-4 space-y-3 text-lg text-white/70">
-                        <Link to="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Sales Agent (B2B)</Link>
-                        <Link to="/sovereign-dashboard" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Command & Control Dashboard</Link>
-                        <Link to="/arabic-ai-hub" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Arabic Intelligence Hub</Link>
-                        <Link to="/ai-automation-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI Automation Agency</Link>
-                        <Link to="/ai-marketing-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Marketing Swarms</Link>
-                        <Link to="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Agentic Finance & Compliance</Link>
-                        <Link to="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">WhatsApp Automation</Link>
+                      <div className="mt-6 space-y-4 text-base text-white/60 font-sans uppercase tracking-widest">
+                        <Link to="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">Sovereign Sales Agent</Link>
+                        <Link to="/sovereign-dashboard" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">Command Dashboard</Link>
+                        <Link to="/arabic-ai-hub" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">Arabic Intel Hub</Link>
+                        <Link to="/ai-automation-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">Automation Agency</Link>
+                        <Link to="/ai-marketing-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">Marketing Swarms</Link>
+                        <Link to="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">Agentic Finance</Link>
+                        <Link to="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-white transition-colors">WhatsApp Business</Link>
                       </div>
                     )}
                   </div>
                 ) : link.name === "Services" ? (
-                  <div key={link.path}>
+                  <div key={link.path} className="w-full">
                     <button
-                      className="hover:text-white/90 transition-colors flex items-center justify-center gap-2 w-full"
+                      className="hover:text-white/90 transition-colors flex items-center justify-end gap-3 w-full"
                       onClick={() => setIsServicesOpen(!isServicesOpen)}
                     >
                       {link.name}
-                      <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
                     </button>
                     {isServicesOpen && (
-                      <div className="mt-4 space-y-4 text-left px-8">
+                      <div className="mt-6 space-y-6 text-right w-full">
                         <div>
-                          <h4 className="text-[10px] uppercase tracking-widest text-white/40 mb-3 font-bold">Web & Tech</h4>
-                          <div className="flex flex-col gap-2 text-base text-white/70">
+                          <h4 className="text-[10px] uppercase tracking-widest text-white/30 mb-3 font-bold">Web & Tech</h4>
+                          <div className="flex flex-col gap-3 text-base text-white/60 font-sans uppercase tracking-widest">
                             <Link to="/services/web-design-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Design</Link>
                             <Link to="/services/web-development-dubai-uae" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Development</Link>
                             <Link to="/services/ecommerce-website-development-dubai" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Ecommerce</Link>
                           </div>
                         </div>
                         <div>
-                          <h4 className="text-[10px] uppercase tracking-widest text-white/40 mb-3 font-bold">Marketing & Creative</h4>
-                          <div className="flex flex-col gap-2 text-base text-white/70">
+                          <h4 className="text-[10px] uppercase tracking-widest text-white/30 mb-3 font-bold">Marketing & Creative</h4>
+                          <div className="flex flex-col gap-3 text-base text-white/60 font-sans uppercase tracking-widest">
                             <Link to="/services/seo-agency-dubai-sharjah-uae" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">SEO & AEO</Link>
                             <Link to="/services/ppc-google-ads-agency-dubai" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">PPC / Ads</Link>
                             <Link to="/services/branding-agency-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Branding</Link>
