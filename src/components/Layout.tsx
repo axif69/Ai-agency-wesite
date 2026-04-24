@@ -169,10 +169,12 @@ export default function Layout() {
                     {isSovereignOpen && (
                       <div className="mt-4 space-y-3 text-lg text-white/70">
                         <Link to="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Sales Agent (B2B)</Link>
+                        <Link to="/sovereign-dashboard" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Command & Control Dashboard</Link>
+                        <Link to="/arabic-ai-hub" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Arabic Intelligence Hub</Link>
+                        <Link to="/ai-automation-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI Automation Agency</Link>
+                        <Link to="/ai-marketing-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Marketing Swarms</Link>
                         <Link to="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Agentic Finance & Compliance</Link>
-                        <Link to="/services/ai-hr-emirates" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI HR & Emiratization</Link>
                         <Link to="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">WhatsApp Automation</Link>
-                        <Link to="/services/logistics-resilience" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Logistics & Supply Chain AI</Link>
                       </div>
                     )}
                   </div>
@@ -244,7 +246,7 @@ export default function Layout() {
             <div className="space-y-8">
               <Link to="/" className="text-4xl font-serif font-bold tracking-tight block">Asif Digital.</Link>
               <p className="text-white/95 font-light text-base max-w-xs leading-relaxed">
-                Architecting the future of digital commerce through AI-driven precision and enterprise-grade software engineering.
+                Architecting the future of global commerce through <strong>Sovereign AI</strong> precision and enterprise-grade autonomous engineering.
               </p>
               <div className="flex gap-4 pt-4">
                 {[

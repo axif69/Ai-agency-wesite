@@ -133,3 +133,32 @@ html {
   content: "";
   @apply absolute left-0 top-[13px] w-4 h-[1px] bg-white/30;
 }
+
+/* Sovereign Specific Layouts */
+.blog-content .bg-gray-800 {
+  @apply bg-[#0c0c0c] border border-white/10 rounded-[2rem] p-10 md:p-16 my-20 shadow-[0_40px_80px_rgba(0,0,0,0.4)];
+}
+
+.blog-content .bg-blue-900/20 {
+  @apply bg-blue-500/5 border border-blue-500/20 rounded-[2rem] p-10 md:p-16 my-20;
+}
+
+.blog-content .text-blue-400 {
+  @apply text-blue-500 font-bold uppercase tracking-[0.2em] text-xs mb-6 block;
+}
+
+.blog-content .grid {
+  @apply gap-12 mt-12;
+}
+
+.blog-content .grid h4 {
+  @apply text-white font-bold text-sm uppercase tracking-widest mb-4;
+}
+
+.blog-content .grid p {
+  @apply text-sm leading-relaxed text-white/60 mb-0;
+}
+
+.blog-content a.inline-block {
+  @apply bg-white text-black hover:bg-white/90 font-black uppercase tracking-[0.2em] py-6 px-12 rounded-full transition-all duration-500 hover:scale-105 active:scale-95 shadow-2xl;
+}
