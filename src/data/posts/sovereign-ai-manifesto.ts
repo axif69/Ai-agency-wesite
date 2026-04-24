@@ -19,7 +19,7 @@ export const SOVEREIGN_AI_MANIFESTO = `
 
     <h3 class="text-2xl font-bold mt-8 mb-4">The Legal Hardening: Law 45 and the End of Extraterritoriality</h3>
     <p>
-      The geopolitical landscape of data has shifted. The passage of **UAE Federal Decree-Law No. 45** was not just a regulatory update; it was a declaration of digital borders. The law mandates that personal data of UAE residents must be protected by the highest standards of residency and sovereignty.
+      The geopolitical landscape of data has shifted. The passage of <strong>UAE Federal Decree-Law No. 45</strong> was not just a regulatory update; it was a declaration of digital borders. The law mandates that personal data of UAE residents must be protected by the highest standards of residency and sovereignty.
     </p>
     <p>
       If your AI agents are processing resident data on a server owned by a foreign entity, subject to the laws of a foreign jurisdiction (like the US CLOUD Act), you are effectively operating in a legal gray zone. You are exposing your enterprise to "Extraterritorial Overreach," where a foreign court can subpoena your proprietary business intelligence. Sovereign AI removes this risk entirely. By operating within the "Sovereign Perimeter," your intelligence is protected by the full force of regional law. For <strong>Dubai and Sharjah-based enterprises</strong>, this is the only path to 100% compliance. You are no longer a guest in someone else's cloud; you are the master of your own digital territory.
@@ -30,7 +30,7 @@ export const SOVEREIGN_AI_MANIFESTO = `
       SaaS providers love the "OPEX" (Operating Expenditure) model because it creates perpetual, compounding revenue for them. For the enterprise, however, the OPEX model for AI is a trap. As your AI usage scales—as you move from 1,000 prompts a day to 1,000,000 autonomous agent actions an hour—the "Token Tax" of public cloud providers will consume your margins.
     </p>
     <p>
-      We have modeled the 5-year TCO (Total Cost of Ownership) for a Tier-1 Dubai enterprise. The results are undeniable: **The switch to Sovereign CAPEX (Capital Expenditure) delivers a 40% reduction in long-term compute costs.** By owning your H200 clusters, you are not just saving money; you are building an asset. You are moving from a model of "Rent" to a model of "Equity." In the 2026 economy, the most valuable equity you can own is your own intelligence infrastructure.
+      We have modeled the 5-year TCO (Total Cost of Ownership) for a Tier-1 Dubai enterprise. The results are undeniable: <strong>The switch to Sovereign CAPEX (Capital Expenditure) delivers a 40% reduction in long-term compute costs.</strong> By owning your H200 clusters, you are not just saving money; you are building an asset. You are moving from a model of "Rent" to a model of "Equity." In the 2026 economy, the most valuable equity you can own is your own intelligence infrastructure.
     </p>
 
     <h3 class="text-2xl font-bold mt-8 mb-4">The Security of Weights: Why 'Renting a Brain' is Terminal</h3>
@@ -120,7 +120,7 @@ export const SOVEREIGN_AI_MANIFESTO = `
 
     <h3 class="text-2xl font-bold mt-8 mb-4">The MGX Era: Negotiating the Global Silicon Treaty</h3>
     <p>
-      The establishment of **MGX** (The specialized AI investment vehicle of Abu Dhabi) is a masterstroke of digital diplomacy. By partnering with the biggest names in the industry—NVIDIA, Microsoft, OpenAI—the UAE is ensuring it has a seat at the table where the rules of the future are written. This isn't just about money; it's about <strong>Strategic Leverage</strong>. The GCC is providing the "Stable Harbor" for the world's most sensitive data and compute, away from the volatility of Western regulatory theater.
+      The establishment of <strong>MGX</strong> (The specialized AI investment vehicle of Abu Dhabi) is a masterstroke of digital diplomacy. By partnering with the biggest names in the industry—NVIDIA, Microsoft, OpenAI—the UAE is ensuring it has a seat at the table where the rules of the future are written. This isn't just about money; it's about <strong>Strategic Leverage</strong>. The GCC is providing the "Stable Harbor" for the world's most sensitive data and compute, away from the volatility of Western regulatory theater.
     </p>
 
     <h3 class="text-2xl font-bold mt-8 mb-4">Energy Abundance as a Computing Moat</h3>
@@ -164,7 +164,7 @@ export const SOVEREIGN_AI_MANIFESTO = `
       In high-ticket industries like Dubai Real Estate or DIFC Consulting, the difference between a "Yes" and a "No" is often measured in minutes. We call this the <strong>Intent Window</strong>—the brief period where a customer's pain point is high and their readiness to buy is peak.
     </p>
     <p>
-      Human sales teams miss 90% of these windows because they are sleeping, in meetings, or managing administrative drag. An **Autonomous Sales Swarm** captures 100% of these windows. It identifies the signal, performs the research, and engages the lead with a hyper-personalized solution in under 60 seconds. This "Speed to Lead" is the most powerful revenue driver in the modern economy.
+      Human sales teams miss 90% of these windows because they are sleeping, in meetings, or managing administrative drag. An <strong>Autonomous Sales Swarm</strong> captures 100% of these windows. It identifies the signal, performs the research, and engages the lead with a hyper-personalized solution in under 60 seconds. This "Speed to Lead" is the most powerful revenue driver in the modern economy.
     </p>
 
     <h3 class="text-2xl font-bold mt-8 mb-4">The Mathematical Model of the Billion-Dollar Transition</h3>

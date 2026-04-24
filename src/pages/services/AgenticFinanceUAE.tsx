@@ -98,8 +98,8 @@ export default function AgenticFinanceUAE() {
           <div>
             <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">Your compliance team is <br /><span className="italic text-white/40">exhausted by manual logs.</span></h2>
             <div className="space-y-6 text-white/60 text-lg font-light leading-relaxed">
-              <p>In the UAE's evolving regulatory landscape, a single reporting oversight can lead to massive fines. For firms in **DIFC and ADGM**, compliance is not a checkbox—it is a survival requirement. Human auditors take weeks to spot discrepancies; our finance agents identify them in milliseconds.</p>
-              <p>Most regional firms still rely on manual spreadsheets. In a high-speed investment environment like **Dubai Internet City**, that latency is a liability. Our Agents bridge the gap between your bank APIs and your enterprise ERP automatically, ensuring unshakeable financial integrity.</p>
+              <p>In the UAE's evolving regulatory landscape, a single reporting oversight can lead to massive fines. For firms in DIFC and ADGM, compliance is not a checkbox—it is a survival requirement. Human auditors take weeks to spot discrepancies; our finance agents identify them in milliseconds.</p>
+              <p>Most regional firms still rely on manual spreadsheets. In a high-speed investment environment like Dubai Internet City, that latency is a liability. Our Agents bridge the gap between your bank APIs and your enterprise ERP automatically, ensuring unshakeable financial integrity.</p>
               <p className="text-white font-medium border-l-2 border-white pl-4 mt-8">
                 Autonomous Agents don't just report—they protect. Identifying liquidity gaps and AML risks before they become balance-sheet burdens.
               </p>

@@ -152,7 +152,7 @@ export default function SeoAeo() {
           <div>
             <h2 className="text-4xl font-serif tracking-tight mb-6">Future-Proof Search in the UAE</h2>
             <p className="text-white/60 font-light leading-relaxed text-lg mb-8">
-              Search is undergoing a phase shift. While traditional SEO is essential for Google Maps dominance in Sharjah, optimizing for **Entity Authority** ensures your brand is the definitive source when UAE users ask ChatGPT, Gemini, or Claude for recommendations. We bridge the gap between traditional rankings and AI readability.
+              Search is undergoing a phase shift. While traditional SEO is essential for Google Maps dominance in Sharjah, optimizing for Entity Authority ensures your brand is the definitive source when UAE users ask ChatGPT, Gemini, or Claude for recommendations. We bridge the gap between traditional rankings and AI readability.
             </p>
             <ul className="space-y-4">
               {['Schema Markup', 'Voice Search Optimization', 'Content Structuring', 'Authority Link Building'].map((item, i) => (

@@ -28,6 +28,11 @@ const SaaSServices = lazy(() => import("./pages/services/SaaSServices"));
 const GraphicDesign = lazy(() => import("./pages/services/GraphicDesign"));
 const SeoAeo = lazy(() => import("./pages/services/SeoAeo"));
 
+// New Dedicated Hubs
+const SharjahIndustrialAI = lazy(() => import("./pages/services/SharjahIndustrialAI"));
+const DubaiCorporateAI = lazy(() => import("./pages/services/DubaiCorporateAI"));
+const AeoMasteryUAE = lazy(() => import("./pages/services/AeoMasteryUAE"));
+
 // Individual service pages
 const WebDesign = lazy(() => import("./pages/services/WebDesign"));
 const EcommerceWebsites = lazy(() => import("./pages/services/EcommerceWebsites"));
@@ -80,6 +85,11 @@ export default function App() {
               <Route path="services/ai-hr-emirates" element={<AiHrEmirates />} />
               <Route path="services/autonomous-logistics-supply-chain-uae" element={<LogisticsResilience />} />
               <Route path="services/whatsapp-automation-gcc" element={<WhatsAppAutomationGCC />} />
+
+              {/* New Dedicated Hubs */}
+              <Route path="services/sharjah-industrial-ai-automation" element={<SharjahIndustrialAI />} />
+              <Route path="services/dubai-corporate-finance-compliance-ai" element={<DubaiCorporateAI />} />
+              <Route path="services/aeo-mastery-ai-search-uae" element={<AeoMasteryUAE />} />
 
               {/* Individual service pages */}
               <Route path="services/web-design-dubai-sharjah" element={<WebDesign />} />
