@@ -57,12 +57,12 @@ export default function Layout() {
         </Link>
         
         <button
-          className="md:hidden z-50 p-2 mix-blend-difference"
+          className="md:hidden z-[110] p-2 mix-blend-difference"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
-          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMenuOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6" />}
         </button>
 
         <nav className="hidden md:flex gap-8 text-[13px] font-semibold uppercase tracking-[0.2em]">
@@ -153,7 +153,7 @@ export default function Layout() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-30 flex flex-col items-end justify-start bg-[#050505] md:hidden pt-32 px-12 overflow-y-auto"
+            className="fixed inset-0 z-[100] flex flex-col items-end justify-start bg-[#050505] md:hidden pt-40 pb-20 px-12 overflow-y-auto"
           >
             <nav className="flex flex-col gap-8 text-2xl font-serif tracking-tight text-right w-full">
               {navLinks.map((link) => (
