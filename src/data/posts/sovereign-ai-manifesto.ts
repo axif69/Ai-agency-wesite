@@ -135,7 +135,8 @@ export const SOVEREIGN_AI_MANIFESTO = `
     <p>
       The world is currently being divided between the "Silicon Valley Model" (Corporate-driven) and the "Beijing Model" (State-driven). The GCC is building the <strong>Third Pillar: The Sovereign Model</strong>. This model combines the agility of the private sector with the long-term vision of the state, all while maintaining a commitment to neutrality and data sovereignty. For the global enterprise, this makes the GCC the most attractive jurisdiction for hosting the "Sovereign Brain" of their global operations.
     </p>
-h    <h2 class="text-4xl font-extrabold mb-6">Chapter 6: Ethical Hardening – The Sovereign Shield</h2>
+
+    <h2 class="text-4xl font-extrabold mb-6">Chapter 6: Ethical Hardening – The Sovereign Shield</h2>
     <p>
       As we move from "Chat" to "Agency," the stakes of security undergo a phase shift. In a generative world, a bad output is an embarrassment. In an agentic world, a bad output is a failed bank transfer, a compromised supply chain, or a breach of national security. This is where <strong>Ethical Hardening</strong> becomes the most critical layer of the stack.
     </p>
