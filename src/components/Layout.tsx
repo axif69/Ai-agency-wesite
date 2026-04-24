@@ -20,10 +20,10 @@ export default function Layout() {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Sovereign AI", path: "/sovereign-sales-agent" },
-    { name: "Strategic Pillars", path: "/services" },
+    { name: "Services", path: "/services" },
+    { name: "Portfolio", path: "/portfolio" },
     { name: "Arabic AI", path: "/arabic-ai-hub" },
     { name: "Case Studies", path: "/case-studies" },
-    { name: "Dashboard", path: "/sovereign-dashboard" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -94,7 +94,7 @@ export default function Layout() {
               )}
 
               {/* Mega Menu Dropdown - isolated from blend mode */}
-              {link.name === "Strategic Pillars" && (
+              {link.name === "Services" && (
                 <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[920px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
                   <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex font-sans normal-case tracking-normal text-left">
                     
@@ -176,7 +176,7 @@ export default function Layout() {
                       </div>
                     )}
                   </div>
-                ) : link.name === "Strategic Pillars" ? (
+                ) : link.name === "Services" ? (
                   <div key={link.path}>
                     <button
                       className="hover:text-white/90 transition-colors flex items-center justify-center gap-2 w-full"
