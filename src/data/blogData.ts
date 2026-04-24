@@ -1,3 +1,5 @@
+import { SOVEREIGN_AI_MANIFESTO } from "./posts/sovereign-ai-manifesto";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -10,6 +12,16 @@ export interface BlogPost {
 }
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "sovereign-ai-manifesto-2026",
+    title: "The Sovereign AI Manifesto: Architecting the Future of Global Intelligence and the GCC's Path to Total Autonomy",
+    excerpt: "The definitive 12,000-word blueprint on why public cloud AI is a terminal risk and how the GCC is building the world's first Sovereign Neural Infrastructure.",
+    date: "April 24, 2026",
+    readTime: "60 min read",
+    author: "Asif Khan",
+    category: "Master Guide",
+    content: SOVEREIGN_AI_MANIFESTO
+  },
   {
     slug: "predicting-dubai-real-estate-cycles-ai",
     title: "The Investor's Edge: Using AI to Predict Dubai Real Estate Cycles",
