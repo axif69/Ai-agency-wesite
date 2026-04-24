@@ -22,7 +22,7 @@ export default function Layout() {
     { name: "Sovereign AI", path: "/sovereign-sales-agent" },
     { name: "Services", path: "/services" },
     { name: "Portfolio", path: "/portfolio" },
-    { name: "Arabic AI", path: "/arabic-ai-hub" },
+    { name: "Blog", path: "/blog" },
     { name: "Case Studies", path: "/case-studies" },
     { name: "Contact", path: "/contact" },
   ];
