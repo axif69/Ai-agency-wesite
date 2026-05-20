@@ -39,7 +39,7 @@ CLAUDE.md
 GEMINI.md
 scratch/
 
-# ── STALE ROOT FILES (website is inside "asif ai agency website/" subfolder) ──
+# ── STALE ROOT FILES (website is inside "agency-website/" subfolder) ──
 index.html
 vercel.json
 vite.config.ts
