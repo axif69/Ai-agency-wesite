@@ -1,20 +1,22 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "motion/react";
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import PageLoader from "./PageLoader";
 import WhatsAppButton from "./WhatsAppButton";
 import KhalidChatbot from "./KhalidChatbot";
 import { useState, useEffect, Suspense } from "react";
 import { Menu, X, Code, Megaphone, PenTool, ChevronDown } from "lucide-react";
 
-export default function Layout() {
-  const location = useLocation();
+export default function Layout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSovereignOpen, setIsSovereignOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   useEffect(() => {
     setIsMenuOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -47,12 +49,12 @@ export default function Layout() {
         <div className="flex items-center gap-4">
           <span>{new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit' })} GST</span>
           <span className="text-white/20">|</span>
-          <Link to="/sovereign-dashboard" className="hover:text-white transition-colors">Command Access</Link>
+          <Link href="/sovereign-dashboard" className="hover:text-white transition-colors">Command Access</Link>
         </div>
       </div>
 
       <header className="fixed top-9 left-0 right-0 z-40 flex items-center justify-between px-6 py-6 md:px-12">
-        <Link to="/" aria-label="Asif Digital Home" className="text-[26px] font-serif font-bold tracking-tight mix-blend-difference">
+        <Link href="/" aria-label="Asif Digital Home" className="text-[26px] font-serif font-bold tracking-tight mix-blend-difference">
           Asif Khan.
         </Link>
         
@@ -69,7 +71,7 @@ export default function Layout() {
           {navLinks.map((link) => (
             <div key={link.path} className="relative group">
               <Link
-                to={link.path}
+                href={link.path}
                 aria-label={`Navigate to ${link.name}`}
                 className="relative hover:text-white transition-colors py-4 inline-block mix-blend-difference"
               >
@@ -82,13 +84,13 @@ export default function Layout() {
               {link.name === "Sovereign AI" && (
                 <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[350px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
                   <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col font-sans normal-case tracking-normal text-left p-6 space-y-2">
-                    <Link to="/sovereign-sales-agent" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 italic">Sovereign Sales Agent (Autonomous B2B)</Link>
-                    <Link to="/sovereign-dashboard" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Command & Control Dashboard</Link>
-                    <Link to="/arabic-ai-hub" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Arabic Intelligence Hub (Khaleeji NLP)</Link>
-                    <Link to="/ai-automation-agency-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI Automation Agency (Enterprise)</Link>
-                    <Link to="/ai-marketing-agency-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Sovereign Marketing Swarms</Link>
-                    <Link to="/services/agentic-finance-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Agentic Finance & Compliance</Link>
-                    <Link to="/services/whatsapp-automation-gcc" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200">WhatsApp Business Automation</Link>
+                    <Link href="/sovereign-sales-agent" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 italic">Sovereign Sales Agent (Autonomous B2B)</Link>
+                    <Link href="/sovereign-dashboard" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Command & Control Dashboard</Link>
+                    <Link href="/arabic-ai-hub" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Arabic Intelligence Hub (Khaleeji NLP)</Link>
+                    <Link href="/ai-automation-agency-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI Automation Agency (Enterprise)</Link>
+                    <Link href="/ai-marketing-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Sovereign Marketing Swarms</Link>
+                    <Link href="/services/agentic-finance-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Agentic Finance & Compliance</Link>
+                    <Link href="/services/whatsapp-automation-gcc" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200">WhatsApp Business Automation</Link>
                   </div>
                 </div>
               )}
@@ -104,11 +106,11 @@ export default function Layout() {
                         <Code className="w-4 h-4" role="img" aria-label="Code Icon" /> Web
                       </h3>
                       <ul className="space-y-5">
-                        <li><Link to="/services/web-design-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Design</Link></li>
-                        <li><Link to="/services/web-development-dubai-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Development</Link></li>
-                        <li><Link to="/services/ecommerce-website-development-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Ecommerce Websites</Link></li>
-                        <li><Link to="/services/web-hosting-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Hosting</Link></li>
-                        <li><Link to="/services/website-maintenance-support-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Website Support</Link></li>
+                        <li><Link href="/services/web-design-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Design</Link></li>
+                        <li><Link href="/services/web-development-dubai-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Development</Link></li>
+                        <li><Link href="/services/ecommerce-website-development-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Ecommerce Websites</Link></li>
+                        <li><Link href="/services/web-hosting-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Hosting</Link></li>
+                        <li><Link href="/services/website-maintenance-support-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Website Support</Link></li>
                       </ul>
                     </div>
                     
@@ -118,10 +120,10 @@ export default function Layout() {
                         <Megaphone className="w-4 h-4" role="img" aria-label="Megaphone Icon" /> Digital Marketing
                       </h3>
                       <ul className="space-y-5">
-                        <li><Link to="/services/seo-agency-dubai-sharjah-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">SEO</Link></li>
-                        <li><Link to="/services/ppc-google-ads-agency-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">PPC</Link></li>
-                        <li><Link to="/services/social-media-management-dubai-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Social Media</Link></li>
-                        <li><Link to="/services/ai-automation-chatbot-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">AI</Link></li>
+                        <li><Link href="/services/seo-agency-dubai-sharjah-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">SEO</Link></li>
+                        <li><Link href="/services/ppc-google-ads-agency-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">PPC</Link></li>
+                        <li><Link href="/services/social-media-management-dubai-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Social Media</Link></li>
+                        <li><Link href="/ai-chatbots-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">AI</Link></li>
                       </ul>
                     </div>
 
@@ -131,10 +133,10 @@ export default function Layout() {
                         <PenTool className="w-4 h-4" role="img" aria-label="Pen Tool Icon" /> Creative
                       </h3>
                       <ul className="space-y-5">
-                        <li><Link to="/services/branding-agency-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Branding</Link></li>
-                        <li><Link to="/services/graphic-design-agency-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Design</Link></li>
-                        <li><Link to="/services/ui-ux-design-agency-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">UI/UX</Link></li>
-                        <li><Link to="/services/creative-web-design-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Design</Link></li>
+                        <li><Link href="/services/branding-agency-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Branding</Link></li>
+                        <li><Link href="/services/graphic-design-agency-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Design</Link></li>
+                        <li><Link href="/services/ui-ux-design-agency-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">UI/UX</Link></li>
+                        <li><Link href="/services/creative-web-design-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Design</Link></li>
                       </ul>
                     </div>
 
@@ -168,11 +170,11 @@ export default function Layout() {
                     </button>
                     {isSovereignOpen && (
                       <div className="mt-4 space-y-3 text-lg text-white/70">
-                        <Link to="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Sales Agent (B2B)</Link>
-                        <Link to="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Agentic Finance & Compliance</Link>
-                        <Link to="/services/ai-hr-emirates" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI HR & Emiratization</Link>
-                        <Link to="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">WhatsApp Automation</Link>
-                        <Link to="/services/logistics-resilience" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Logistics & Supply Chain AI</Link>
+                        <Link href="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Sales Agent (B2B)</Link>
+                        <Link href="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Agentic Finance & Compliance</Link>
+                        <Link href="/services/ai-hr-emirates" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI HR & Emiratization</Link>
+                        <Link href="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">WhatsApp Automation</Link>
+                        <Link href="/services/logistics-resilience" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Logistics & Supply Chain AI</Link>
                       </div>
                     )}
                   </div>
@@ -190,17 +192,17 @@ export default function Layout() {
                         <div>
                           <h4 className="text-[10px] uppercase tracking-widest text-white/40 mb-3 font-bold">Web & Tech</h4>
                           <div className="flex flex-col gap-2 text-base text-white/70">
-                            <Link to="/services/web-design-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Design</Link>
-                            <Link to="/services/web-development-dubai-uae" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Development</Link>
-                            <Link to="/services/ecommerce-website-development-dubai" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Ecommerce</Link>
+                            <Link href="/services/web-design-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Design</Link>
+                            <Link href="/services/web-development-dubai-uae" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Development</Link>
+                            <Link href="/services/ecommerce-website-development-dubai" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Ecommerce</Link>
                           </div>
                         </div>
                         <div>
                           <h4 className="text-[10px] uppercase tracking-widest text-white/40 mb-3 font-bold">Marketing & Creative</h4>
                           <div className="flex flex-col gap-2 text-base text-white/70">
-                            <Link to="/services/seo-agency-dubai-sharjah-uae" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">SEO & AEO</Link>
-                            <Link to="/services/ppc-google-ads-agency-dubai" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">PPC / Ads</Link>
-                            <Link to="/services/branding-agency-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Branding</Link>
+                            <Link href="/services/seo-agency-dubai-sharjah-uae" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">SEO & AEO</Link>
+                            <Link href="/services/ppc-google-ads-agency-dubai" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">PPC / Ads</Link>
+                            <Link href="/services/branding-agency-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Branding</Link>
                           </div>
                         </div>
                       </div>
@@ -209,7 +211,7 @@ export default function Layout() {
                 ) : (
                   <Link
                     key={link.path}
-                    to={link.path}
+                    href={link.path}
                     className="hover:text-white/90 transition-colors"
                   >
                     {link.name}
@@ -223,14 +225,14 @@ export default function Layout() {
 
       <motion.main
         id="main-content"
-        key={location.pathname}
+        key={pathname}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
         className="pt-24 min-h-screen outline-none"
       >
         <Suspense fallback={<PageLoader />}>
-          <Outlet />
+          {children}
         </Suspense>
       </motion.main>
 
@@ -242,7 +244,7 @@ export default function Layout() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32">
             {/* Brand Section */}
             <div className="space-y-8">
-              <Link to="/" className="text-4xl font-serif font-bold tracking-tight block">Asif Digital.</Link>
+              <Link href="/" className="text-4xl font-serif font-bold tracking-tight block">Asif Digital.</Link>
               <p className="text-white/95 font-light text-base max-w-xs leading-relaxed">
                 Architecting the future of digital commerce through AI-driven precision and enterprise-grade software engineering.
               </p>
@@ -265,7 +267,7 @@ export default function Layout() {
               <ul className="space-y-5">
                 {navLinks.map((link) => (
                   <li key={link.path}>
-                    <Link to={link.path} className="text-white/95 hover:text-white transition-all duration-300 flex items-center gap-3 group text-sm font-medium">
+                    <Link href={link.path} className="text-white/95 hover:text-white transition-all duration-300 flex items-center gap-3 group text-sm font-medium">
                       <span className="w-0 h-[1px] bg-white transition-all duration-500 group-hover:w-6" />
                       {link.name}
                     </Link>

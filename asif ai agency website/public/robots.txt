@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Core Sitemap
 Sitemap: https://asifdigital.agency/sitemap.xml

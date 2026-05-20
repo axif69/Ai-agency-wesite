@@ -1,8 +1,9 @@
+"use client";
 import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, Sphere, Stars, MeshWobbleMaterial, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
-import { useScroll, useTransform } from "motion/react";
+import { useScroll, useTransform } from "framer-motion";
 
 function FloatingElements() {
   const groupRef = useRef<THREE.Group>(null);

@@ -1,9 +1,11 @@
+"use client";
 import { useState } from 'react';
-import { motion } from 'motion/react';
-import { Sparkles, Send, Loader2, Copy, Check, Instagram, Twitter, Linkedin, Facebook } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Sparkles, Send, Loader2, Copy, Check } from 'lucide-react';
+import { Instagram, Twitter, Linkedin, Facebook } from './SocialIcons';
 import Groq from "groq-sdk";
 
-const groq = new Groq({ apiKey: import.meta.env.VITE_GROQ_API_KEY, dangerouslyAllowBrowser: true });
+const groq = new Groq({ apiKey: process.env.NEXT_PUBLIC_GROQ_API_KEY, dangerouslyAllowBrowser: true });
 
 export default function SocialPostGenerator() {
   const [topic, setTopic] = useState('');

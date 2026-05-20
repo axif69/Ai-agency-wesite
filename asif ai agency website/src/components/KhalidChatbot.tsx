@@ -1,5 +1,6 @@
+"use client";
 import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Bot, User, Loader2, Mic, MicOff, Volume2, VolumeX } from 'lucide-react';
 
 const SYSTEM_INSTRUCTION = `
@@ -173,7 +174,7 @@ export default function KhalidChatbot() {
     setIsLoading(true);
 
     try {
-      const groqKey = (import.meta.env.VITE_GROQ_API_KEY || "").trim();
+      const groqKey = (process.env.NEXT_PUBLIC_GROQ_API_KEY || "").trim();
       if (!groqKey) throw new Error("GROQ_API_KEY_MISSING");
 
       const API_URL = "https://api.groq.com/openai/v1/chat/completions";
@@ -248,7 +249,7 @@ export default function KhalidChatbot() {
   const sendToWhatsApp = async () => {
     setIsSummarizing(true);
     try {
-      const groqKey = (import.meta.env.VITE_GROQ_API_KEY || "").trim();
+      const groqKey = (process.env.NEXT_PUBLIC_GROQ_API_KEY || "").trim();
       if (!groqKey) throw new Error("GROQ_API_KEY_MISSING");
 
       const history = messages
