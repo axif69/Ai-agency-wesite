@@ -171,41 +171,29 @@ export default function KhalidChatbot() {
     setIsLoading(true);
 
     try {
-      const groqKey = (process.env.NEXT_PUBLIC_GROQ_API_KEY || "").trim();
-      if (!groqKey) throw new Error("GROQ_API_KEY_MISSING");
+      const API_URL = "/api/chat";
 
-      const API_URL = "https://api.groq.com/openai/v1/chat/completions";
-
-      // Prepare messages for Groq API (OpenAI format)
-      // Standardize roles to 'user' and 'assistant' for the API call
-      const groqMessages = [
-        { role: "system", content: SYSTEM_INSTRUCTION },
-        ...messages.map(m => ({
-          role: m.role === 'model' ? 'assistant' : m.role,
-          content: m.text
-        })),
-        { role: "user", content: userMessageContent }
-      ];
+      const formattedMessages = messages.map(m => ({
+        role: m.role === 'model' ? 'assistant' : m.role,
+        content: m.text
+      }));
 
       console.log("Khalid: Syncing with sovereign intelligence layers...");
       const response = await fetch(API_URL, {
         method: "POST",
         headers: { 
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${groqKey}`
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: groqMessages,
-          temperature: 0.7,
-          max_tokens: 1024
+          systemInstruction: SYSTEM_INSTRUCTION,
+          messages: [...formattedMessages, { role: "user", content: userMessageContent }]
         })
       });
 
       if (!response.ok) {
         const err = await response.json();
-        console.error("Groq Error Body:", err);
-        throw new Error(err.error?.message || "Groq API Error");
+        console.error("Chat API Error Body:", err);
+        throw new Error(err.error?.message || "Chat API Error");
       }
 
       const data = await response.json();
@@ -260,27 +248,25 @@ export default function KhalidChatbot() {
           
           Chat History:
           ${history}`;
-
-      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          
+      const response = await fetch("/api/chat", {
         method: "POST",
         headers: { 
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${groqKey}`
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "llama-3.1-8b-instant", // Use faster model for summary
+          model: "llama-3.1-8b-instant",
+          systemInstruction: "You are a lead generation assistant for an AI agency.",
           messages: [
-            { role: "system", content: "You are a lead generation assistant for an AI agency." },
             { role: "user", content: prompt }
-          ],
-          temperature: 0.3
+          ]
         })
       });
 
       if (!response.ok) throw new Error("Groq Summary Error");
 
       const data = await response.json();
-      const summary = data.choices[0].message.content;
+      const summary = data.choices?.[0]?.message?.content || "No summary generated.";
       
       const phoneNumber = "971545866094";
       const text = encodeURIComponent(`*New Strategic Lead Summary*\n\n${summary}\n\n*Direct Contact:* ${leadData.contact || 'Provided in chat'}`);
