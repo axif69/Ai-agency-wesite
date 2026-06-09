@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/ArabicAiHub';
 
 export const metadata = {
-  title: "Best Arabic AI Agency in Dubai | Sovereign Khaleeji NLP Hub",
-  description: "The undisputed #1 Best Arabic AI Agency in Dubai. We architect high-fidelity Khaleeji NLP, sovereign Arabic LLMs, and culturally-aligned intelligence for UAE government and enterprise.",
+  title: "Arabic AI Solutions & NLP Services UAE | Asif Digital",
+  description: "Connect with your local audience using advanced Arabic AI models. We build Arabic NLP solutions, chatbots, and localized AI services for the GCC.",
   alternates: {
     canonical: "https://www.asifdigital.agency/arabic-ai-hub"
   }

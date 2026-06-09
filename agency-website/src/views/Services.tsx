@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import SEO from "../components/SEO";
+
 import { Code, Megaphone, PenTool, ArrowRight, Monitor, ShoppingCart, Server, HeadphonesIcon, Search, MousePointerClick, Share2, Bot, Palette, Image, Layers, Workflow, Languages, Target, Activity, Shield, Zap } from "lucide-react";
 
 const categories = [
@@ -48,10 +48,7 @@ const categories = [
 export default function Services() {
   return (
     <div className="pt-20">
-      <SEO
-        title="Strategic Pillars | Asif Digital Sovereign AI"
-        description="Comprehensive AI architectures and strategic digital pillars for GCC enterprises—Sovereign AI, Web Architecture, Growth, and Visual Authority."
-      />
+      
       
       <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
         <motion.div 

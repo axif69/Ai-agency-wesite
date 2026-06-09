@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import SEO from "../components/SEO";
+
 import HeroParticles from "../components/HeroParticles";
 import TiltCard from "../components/animations/TiltCard";
 import SpotlightCard from "../components/animations/SpotlightCard";
@@ -79,80 +79,7 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="relative bg-[#050505]">
-      <SEO
-        title="Sovereign AI Architecture & Business Continuity Dubai"
-        description="Asif Digital: The leading AI Agency in Dubai & Sharjah. We build Sovereign AI ecosystems and resilient digital infrastructure for UAE enterprises. Decouple from geopolitical risk."
-        keywords="Sovereign AI Dubai, AI Agency Sharjah, SEO Dubai, Web Design UAE, Business Continuity Sharjah, Abu Dhabi AI Automation"
-        canonical="https://www.asifdigital.agency"
-        faqSchema={[
-          {
-            question: "What is Sovereign AI in the UAE context?",
-            answer: "Sovereign AI refers to AI systems built and hosted locally on state-backed infrastructure like G42 and Khazna. This ensures that sensitive UAE enterprise data never leaves the country and remains compliant with Federal Decree-Law No. 45."
-          },
-          {
-            question: "How does Asif Digital ensure business continuity?",
-            answer: "We build agentic swarms—autonomous digital employees—that operate 24/7 on locally-hosted servers. Unlike human staff, these systems are resilient to geographical disruptions, visa changes, and global connectivity issues."
-          },
-          {
-            question: "What is Answer Engine Optimization (AEO)?",
-            answer: "AEO is the evolution of SEO. We optimize your brand's data so that AI models like Gemini, ChatGPT, and Perplexity cite your business as the definitive answer for industry-specific queries in the UAE."
-          },
-          {
-            question: "Do you serve businesses in Abu Dhabi and Sharjah?",
-            answer: "Yes, Asif Digital is a UAE-wide agency. While founded in Sharjah, we provide multi-disciplinary digital and AI services to enterprises across Dubai, Abu Dhabi, Ajman, and the wider GCC."
-          }
-        ]}
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          "name": "Asif Digital Agency",
-          "image": "https://www.asifdigital.agency/logo.png",
-          "description": "Elite AI Agency & Digital Transformation Firm specializing in Sovereign Architecture, Business Continuity, and AEO in the UAE.",
-          "@id": "https://www.asifdigital.agency",
-          "url": "https://www.asifdigital.agency",
-          "telephone": "+971545866094",
-          "priceRange": "AED 5,000 - AED 500,000",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Business Bay",
-            "addressLocality": "Dubai",
-            "addressRegion": "Dubai",
-            "postalCode": "00000",
-            "addressCountry": "AE"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 25.185,
-            "longitude": 55.272
-          },
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              "opens": "09:00",
-              "closes": "18:00"
-            },
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Saturday", "Sunday"],
-              "opens": "10:00",
-              "closes": "14:00"
-            }
-          ],
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" },
-            { "@type": "City", "name": "Abu Dhabi" },
-            { "@type": "City", "name": "Ajman" },
-            { "@type": "Country", "name": "United Arab Emirates" }
-          ],
-          "sameAs": [
-            "https://www.linkedin.com/company/asif-digital",
-            "https://twitter.com/asifdigitaluae",
-            "https://www.instagram.com/asifdigital.agency"
-          ]
-        }}
-      />
+      
 
       {/* ── 1. The "Authority" Hero Section ── */}
       <section className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden px-6 pt-24 sm:pt-0">
@@ -168,11 +95,11 @@ export default function Home() {
           </motion.div>
           
           <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="text-4xl sm:text-6xl md:text-8xl lg:text-[7vw] font-serif font-bold leading-[0.9] tracking-tight mb-8 max-w-7xl mx-auto drop-shadow-2xl">
-            Architecting <span className="italic text-white/70">Sovereign</span><br />Intelligence.
+            #1 AI Automation Agency <br /><span className="italic text-white/70">in Dubai.</span>
           </motion.h1>
           
           <TextGenerateEffect 
-            words="Decoupling UAE productivity from geopolitical risk. We build continuous, fault-tolerant AI ecosystems and digital infrastructure for enterprises."
+            words="Helping UAE businesses scale with custom AI Agents, intelligent workflow automation, and data-driven marketing."
             className="text-lg md:text-xl lg:text-3xl text-white font-medium max-w-4xl mx-auto font-sans leading-tight mb-12 drop-shadow-md"
           />
           

@@ -25,7 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { name: "Strategic Pillars", path: "/services" },
     { name: "Arabic AI", path: "/arabic-ai-hub" },
     { name: "Case Studies", path: "/case-studies" },
-    { name: "Dashboard", path: "/sovereign-dashboard" },
+    { name: "Blog", path: "/blog" },
     { name: "Contact", path: "/contact" },
   ];
 

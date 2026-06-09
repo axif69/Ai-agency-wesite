@@ -1,8 +1,8 @@
 import PageComponent from '../../../src/views/services/CreativeWebDesign';
 
 export const metadata = {
-  title: "Creative Web Design Agency Dubai | Premium Web UI/UX",
-  description: "Stunning, high-performance web design services in Dubai. We build immersive web experiences with modern typography, custom animations, and interactive 3D.",
+  title: "Creative Web Design Agency Dubai | Premium UX/UI Design",
+  description: "Experience luxury web design in Dubai. We create immersive, high-converting websites featuring custom animations, 3D elements, and modern aesthetics.",
   alternates: {
     canonical: "https://www.asifdigital.agency/services/creative-web-design-dubai"
   }

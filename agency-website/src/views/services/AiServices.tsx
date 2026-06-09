@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { Bot, Zap, Shield, Cpu, ArrowRight, BarChart3, CheckCircle } from "lucide-react";
 import Link from "next/link";
 
@@ -69,14 +69,7 @@ export default function AiServices() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="Enterprise AI Solutions & Consulting Dubai | Asif Digital" 
-        description="Transform your UAE business with custom AI solutions. Specialist in LLM integration, automated agent swarms, and intelligent workflows for Dubai and Sharjah enterprises."
-        keywords="AI Consulting Dubai, Custom AI Development Sharjah, LLM Integration UAE, AI Automation UAE"
-        ogImage="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format,compress&fm=webp&q=75&w=1200"
-        schema={serviceSchema}
-        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
-      />
+      
       
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12">

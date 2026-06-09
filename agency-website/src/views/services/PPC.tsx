@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import Link from "next/link";
 import { ArrowRight, Target, DollarSign, BarChart3, Layers, CheckCircle, TrendingUp } from "lucide-react";
 
@@ -74,19 +74,13 @@ export default function PPC() {
 
   return (
     <div ref={containerRef} className="pt-20">
-      <SEO
-        title="PPC Agency Dubai | Google Ads & Meta Ads Management | Asif Digital"
-        description="Expert PPC management in Dubai and UAE. Certified Google Ads and Meta Ads specialists who generate qualified leads and sales with measurable, transparent ROI."
-        ogImage="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format,compress&fm=webp&q=75&w=1200"
-        schema={ppcSchema}
-        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
-      />
+      
 
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
           <span className="text-white/95 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Pay-Per-Click Advertising — Dubai & UAE</span>
           <h1 className="text-5xl md:text-7xl font-serif leading-tight tracking-tight mb-8">
-            Every Dirham.<br /><span className="italic text-white/90">Maximum Return.</span>
+            PPC & Google Ads <br/><span className="italic text-white/40">Agency Dubai.</span>
           </h1>
           <p className="text-xl text-white/95 font-light leading-relaxed max-w-2xl mb-12">
             Poorly managed PPC campaigns silently drain your budget on irrelevant clicks. Our certified Google and Meta Ads specialists build precision campaigns that send the right message to the right person at exactly the right moment—generating qualified leads, not just clicks.
@@ -143,7 +137,9 @@ export default function PPC() {
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
                 <div className="text-white/95 mb-5" role="img" aria-label={`${f.title} Icon`}>{f.icon}</div>
                 <h3 className="text-lg font-bold mb-3">{f.title}</h3>
-                <p className="text-white/95 font-light leading-relaxed text-sm">{f.desc}</p>
+                <p className="text-white/95 font-light leading-relaxed text-sm">
+            Drive immediate, high-quality traffic with the leading PPC & Google Ads Agency in Dubai. We manage highly targeted pay-per-click campaigns designed to lower your customer acquisition cost, maximize ROI, and dominate the top of Google search results.
+          </p>
               </motion.div>
             ))}
           </div>

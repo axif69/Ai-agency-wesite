@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { Search, TrendingUp, Target, BarChart, Globe, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
@@ -73,30 +73,7 @@ export default function SeoAeo() {
 
   return (
     <div className="pt-20">
-      <SEO 
-        title="Best SEO & AEO Agency in Dubai & Sharjah | Peak Search Visibility" 
-        description="Top-rated SEO and Answer Engine Optimization (AEO) services in Sharjah and Dubai. Dominate local Maps, Google Search, and AI Engines like ChatGPT."
-        keywords="SEO Agency Dubai, Best SEO Services Sharjah, Answer Engine Optimization UAE, Local SEO Dubai, Technical SEO Expert"
-        schema={serviceSchema}
-        faqSchema={[
-          {
-            question: "What is the difference between SEO and AEO?",
-            answer: "SEO (Search Engine Optimization) focuses on ranking your website on traditional search engines like Google. AEO (Answer Engine Optimization) focuses on structuring your content so that AI engines like ChatGPT, Gemini, and Claude provide your brand as the direct answer to user queries."
-          },
-          {
-            question: "How long does it take to see SEO results in Dubai?",
-            answer: "While technical fixes show impact in weeks, significant ranking improvements for competitive keywords in Dubai and Sharjah typically take 3 to 6 months of consistent optimization and authority building."
-          },
-          {
-            question: "Do you specialize in local UAE SEO?",
-            answer: "Yes. We specialize in dominating the 'Local Pack' (Google Maps) for businesses in Dubai, Sharjah, and Abu Dhabi, ensuring you capture high-intent local foot traffic and inquiries."
-          },
-          {
-            question: "Is AEO necessary for my business?",
-            answer: "If your customers use voice search or AI assistants to find services, AEO is critical. It ensures your business is the 'recommended' choice when users ask conversational questions to their devices."
-          }
-        ]}
-      />
+      
       
       {/* Hero Section */}
       <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto relative">

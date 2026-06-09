@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { ArrowRight, ShoppingBag, CreditCard, Truck, BarChart, CheckCircle, Smartphone } from "lucide-react";
 import Link from "next/link";
 
@@ -28,26 +28,7 @@ export default function EcommerceWebsites() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="E-commerce Website Development Dubai | Shopify & Custom UAE | Asif Digital"
-        description="High-conversion e-commerce stores for Dubai and Sharjah retailers. Shopify experts, headless commerce, and deep integration with UAE payment and logistics providers."
-        keywords="E-commerce Dubai, Shopify Developer Sharjah, Headless Commerce UAE, Dubai Online Store Builder"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "E-commerce Website Development",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://www.asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" }
-          ],
-          "description": "Premium e-commerce development services including Shopify, WooCommerce, and custom headless commerce for UAE businesses."
-        }}
-        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
-      />
+      
 
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12">
@@ -60,8 +41,8 @@ export default function EcommerceWebsites() {
           <motion.div style={{ y, opacity }} className="max-w-4xl">
             <span className="micro-label block mb-4 text-white/60">Dubai & Sharjah Specialized</span>
             <h1 className="text-4xl md:text-7xl font-serif text-white tracking-tight leading-tight">
-               Convert Every<br /><span className="italic text-white/80">Digital Visit.</span>
-            </h1>
+            E-Commerce Website <br/><span className="italic text-white/40">Development Dubai.</span>
+          </h1>
           </motion.div>
         </div>
         {/* Hidden SEO Image */}
@@ -81,7 +62,7 @@ export default function EcommerceWebsites() {
           className="mb-24"
         >
           <p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl leading-relaxed">
-            Beautiful design meets brutal efficiency. We build e-commerce engines that don't just look world-class—they are optimized for maximum conversion, lightning speed, and seamless UAE logistics integration.
+            Maximize your online sales with professional E-Commerce Website Development in Dubai. We build fast, secure, and highly optimized online stores on Shopify, WooCommerce, and custom platforms, designed specifically to turn UAE visitors into loyal customers.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
              <Link href="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">Build Your Store <ArrowRight className="w-4 h-4" /></Link>

@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../components/SEO";
+
 import { 
   ArrowRight, Shield, Zap, Globe, Database, Cpu, Lock, 
   MessageSquare, Users, Phone, CheckCircle2, Bot, Target, 
@@ -58,13 +58,7 @@ export default function AiAgentsDubai() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="AI Agents Dubai | Autonomous Sales & Support Agents | Asif Digital"
-        description="Deploy autonomous B2B sales agents, WhatsApp bots, and custom AI agents in Dubai. Automate support, voice calling, and lead qualification 24/7 in the UAE."
-        canonical="https://www.asifdigital.agency/ai-agents-dubai"
-        schema={agentSchema}
-        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
-      />
+      
 
       {/* Hero Section */}
       <section className="min-h-[90vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">

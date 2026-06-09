@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import SEO from "../components/SEO";
+
 import { ExternalLink, ArrowRight, Shield, TrendingUp, Zap } from "lucide-react";
 
 const categories = ["All", "Sovereign AI", "Web Architecture", "AEO & SEO", "Branding", "UI/UX", "Ecommerce"];
@@ -25,10 +25,7 @@ export default function Portfolio() {
 
   return (
     <div className="pt-20">
-      <SEO
-        title="Proven Architectures | Asif Digital Sovereign Portfolio"
-        description="Explore the proven AI architectures and strategic digital domains engineered by Asif Digital for GCC enterprises."
-      />
+      
 
       <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
         <motion.div 

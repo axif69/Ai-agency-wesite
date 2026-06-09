@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/SovereignSalesAgent';
 
 export const metadata = {
-  title: "Sovereign Sales Agent | Autonomous B2B Outreach Engine",
-  description: "Configure and launch autonomous B2B sales agents for personalized multi-channel outreach, sentiment tracking, and booking automation in the GCC.",
+  title: "B2B AI Sales Agents Dubai | Outbound Sales Automation UAE",
+  description: "Automate your B2B sales process with AI sales agents in Dubai. Manage outbound outreach, follow-ups, and meeting bookings effortlessly.",
   alternates: {
     canonical: "https://www.asifdigital.agency/sovereign-sales-agent"
   }

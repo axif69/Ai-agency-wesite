@@ -2,17 +2,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Calendar, Clock, User } from "lucide-react";
-import SEO from "../components/SEO";
+
 import { BLOG_POSTS } from "../data/blogData";
 
 export default function Blog() {
   return (
     <div className="pt-20">
-      <SEO 
-        title="AI Digital Marketing & Dev Blog | Asif Digital UAE" 
-        description="Expert insights on artificial intelligence, web development, SaaS architectures, and AEO strategies for businesses in Dubai and Sharjah."
-        canonical="https://www.asifdigital.agency/blog"
-      />
+      
       
       {/* Hero Section */}
       <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto text-center md:text-left">

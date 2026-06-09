@@ -1,8 +1,8 @@
 import PageComponent from '../../../src/views/services/AiHrEmirates';
 
 export const metadata = {
-  title: "AI in HR & Recruiting Emirates | Talent Acquisition UAE",
-  description: "Streamline HR operations, candidate screening, onboarding, and talent analytics using custom AI systems tailored for UAE labor law compliance.",
+  title: "AI Recruitment & HR Automation Services Dubai, UAE",
+  description: "Transform human resources with AI recruitment and HR automation in the UAE. Streamline candidate screening, onboarding, and compliance management.",
   alternates: {
     canonical: "https://www.asifdigital.agency/services/ai-hr-emirates"
   }

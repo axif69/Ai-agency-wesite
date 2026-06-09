@@ -1,8 +1,8 @@
 import PageComponent from '../../../src/views/services/Design';
 
 export const metadata = {
-  title: "Premium Graphic Design Agency Dubai & Sharjah | Asif Digital",
-  description: "High-end graphic design, marketing collateral, social media assets, and digital illustrations crafted for luxury brands in Dubai and UAE.",
+  title: "Graphic Design Agency Dubai & Sharjah | Visual Assets & Marketing",
+  description: "High-quality graphic design services in Dubai and Sharjah. We create luxury brochures, marketing collateral, and social media assets for your brand.",
   alternates: {
     canonical: "https://www.asifdigital.agency/services/graphic-design-agency-dubai-sharjah"
   }

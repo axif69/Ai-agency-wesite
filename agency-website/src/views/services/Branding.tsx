@@ -1,5 +1,5 @@
 "use client";
-import SEO from "../../components/SEO";
+
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Palette, Layers, Globe, Star, CheckCircle, Users } from "lucide-react";
@@ -32,24 +32,14 @@ const faqs = [
 export default function Branding() {
   return (
     <div className="pt-20">
-      <SEO
-        faqSchema={[
-          { question: "How long does a branding project take in Dubai?", answer: "A complete brand identity project (logo, typography, brand guidelines) typically takes 3–5 weeks. Full brand strategy overhauls may take 8–12 weeks depending on scope." },
-          { question: "Do you create bilingual Arabic/English brand identities?", answer: "Yes. We specialize in dual-language brand systems that work beautifully in both Arabic RTL and English LTR contexts, essential for UAE and GCC market success." },
-          { question: "What deliverables are included in a branding package?", answer: "Every branding project includes: logo suite (primary, secondary, icon), brand colour palette, typography system, brand guidelines document (PDF), and social media templates." },
-          { question: "Can you rebrand an existing business?", answer: "Absolutely. We handle both new brand creation and complete rebrands. Our rebranding process includes a full audit of your existing brand equity before making any strategic changes." }
-        ]}
-        schema={{ "@context": "https://schema.org", "@type": "Service", "name": "Corporate Branding & Identity Design", "provider": { "@type": "LocalBusiness", "@id": "https://www.asifdigital.agency" }, "areaServed": [{ "@type": "City", "name": "Dubai" }, { "@type": "City", "name": "Sharjah" }] }}
-        title="Brand Identity & Strategy Agency Dubai | Asif Digital"
-        description="Premium brand identity design for Dubai and UAE businesses. Logo design, brand strategy, guidelines, and complete visual identity systems. Bilingual Arabic/English specialists."
-      />
+      
 
       {/* Hero */}
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
           <span className="text-white/95 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Branding & Identity — Dubai & UAE</span>
           <h1 className="text-5xl md:text-7xl font-serif leading-tight tracking-tight mb-8">
-            A Brand They'll<br /><span className="italic text-white/90">Never Forget.</span>
+            Branding Agency <br/><span className="italic text-white/40">Dubai & Sharjah.</span>
           </h1>
           <p className="text-xl text-white/95 font-light leading-relaxed max-w-2xl mb-12">
             In the UAE's hyper-competitive business landscape, a generic logo and a colour palette aren't enough. We build brands from the ground up—strategy first, identity second—that earn immediate trust, command premium pricing, and create the kind of emotional connection that turns customers into advocates.
@@ -109,7 +99,9 @@ export default function Branding() {
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
                 <div className="text-white/90 mb-5" role="img" aria-label={`${d.title} Icon`}>{d.icon}</div>
                 <h3 className="text-lg font-bold mb-3">{d.title}</h3>
-                <p className="text-white/95 font-light leading-relaxed text-sm">{d.desc}</p>
+                <p className="text-white/95 font-light leading-relaxed text-sm">
+            Establish a powerful market presence with the leading Branding Agency in Dubai and Sharjah. From corporate identity design to brand strategy and guidelines, we craft memorable brands that resonate with the UAE market and drive lasting customer loyalty.
+          </p>
               </motion.div>
             ))}
           </div>

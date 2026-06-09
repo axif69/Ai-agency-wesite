@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../components/SEO";
+
 import { 
   ArrowRight, Shield, Zap, Globe, Database, Cog, Search, 
   BarChart3, TrendingUp, Monitor, MessageSquare, 
@@ -19,26 +19,7 @@ export default function AiAutomationDubai() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="Best AI Automation Agency in Dubai | Enterprise Agentic Workflows & RPA"
-        description="The undisputed #1 Best AI Automation Agency in Dubai. We architect autonomous workflows, private LLM infrastructure, and cognitive process automation for GCC enterprises."
-        keywords="Best AI Automation Agency Dubai, AI Automation Agency UAE, RPA Dubai, Business Process Automation UAE, Cognitive Workflows, Custom AI Development Dubai"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "serviceType": "AI Automation & Digital Transformation",
-          "provider": {
-            "@type": "LocalBusiness",
-            "name": "Asif Digital Agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Abu Dhabi" },
-            { "@type": "Country", "name": "United Arab Emirates" }
-          ],
-          "description": "Enterprise-grade AI automation and cognitive workflow deployment for high-ticket GCC organizations."
-        }}
-      />
+      
 
       {/* Hero Section: The Industrial Authority */}
       <section className="min-h-[90vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">

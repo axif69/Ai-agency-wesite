@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../components/SEO";
+
 import { 
   ArrowRight, Shield, Zap, Globe, Database, Cog, Search, 
   BarChart3, TrendingUp, Monitor, MessageSquare, 
@@ -18,25 +18,7 @@ export default function AiMarketingDubai() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="Best AI Marketing Agency in Dubai | Sovereign Acquisition Systems"
-        description="Rank #1 with the undisputed Best AI Marketing Agency in Dubai. We deploy autonomous, data-sovereign marketing swarms for high-ticket UAE enterprises. 2500+ word strategy guide."
-        keywords="Best AI Marketing Agency Dubai, AI Marketing Agency UAE, AI Advertising Dubai, Autonomous Marketing Swarms UAE, Digital Transformation Dubai, Sovereign AI Marketing"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "serviceType": "AI Marketing & Automation",
-          "provider": {
-            "@type": "LocalBusiness",
-            "name": "Asif Digital Agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Abu Dhabi" }
-          ],
-          "description": "High-density AI marketing deployment for enterprise acquisition in the GCC region."
-        }}
-      />
+      
 
       {/* Hero Section: The Authority Hook */}
       <section className="min-h-[90vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">

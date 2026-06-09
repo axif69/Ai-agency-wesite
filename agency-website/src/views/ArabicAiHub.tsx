@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../components/SEO";
+
 import { 
   Languages, Shield, Cpu, MessageSquare, 
   Globe, Database, Lock, Sparkles, Target, 
@@ -18,26 +18,7 @@ export default function ArabicAiHub() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="Best Arabic AI Agency in Dubai | Sovereign Khaleeji NLP Hub"
-        description="The undisputed #1 Best Arabic AI Agency in Dubai. We architect high-fidelity Khaleeji NLP, sovereign Arabic LLMs, and culturally-aligned intelligence for UAE government and enterprise."
-        keywords="Best Arabic AI Agency Dubai, Khaleeji NLP UAE, Arabic Language Models Dubai, Sovereign AI UAE, Sharia Compliant AI, Arabic Chatbots Dubai"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "serviceType": "Arabic AI & NLP Hub",
-          "provider": {
-            "@type": "LocalBusiness",
-            "name": "Asif Digital Agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Abu Dhabi" },
-            { "@type": "City", "name": "Riyadh" }
-          ],
-          "description": "Enterprise-grade Arabic NLP and culturally-aligned AI hub for the GCC region."
-        }}
-      />
+      
 
       {/* Hero Section: The Linguistic Hook */}
       <section className="min-h-[90vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">

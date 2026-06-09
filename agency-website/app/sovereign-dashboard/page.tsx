@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/SovereignDashboard';
 
 export const metadata = {
-  title: "Sovereign AI Dashboard | Asif Digital Enterprise Portal",
-  description: "Access your Sovereign AI infrastructure, monitor worker swarms, review lead enrichment, and track automated pipeline metrics in real-time.",
+  title: "Enterprise AI Dashboard Development Dubai | Custom Software UAE",
+  description: "Get a centralized view of your business data with custom enterprise AI dashboards. Track leads, monitor AI agents, and visualize metrics in real-time.",
   alternates: {
     canonical: "https://www.asifdigital.agency/sovereign-dashboard"
   }

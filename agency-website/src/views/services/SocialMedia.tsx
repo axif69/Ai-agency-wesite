@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { ArrowRight, MessageCircle, Share2, CheckCircle, Video, Users, BarChart3 } from "lucide-react";
 import { Instagram, Linkedin } from "../../components/SocialIcons";
 import Link from "next/link";
@@ -70,14 +70,7 @@ export default function SocialMedia() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="Social Media Management Dubai | Content Strategy Sharjah | Asif Digital"
-        description="Full-service social media management for Dubai and Sharjah brands. From content creation and community management to high-growth UAE social strategy."
-        keywords="Social Media Dubai, Instagram Management Sharjah, LinkedIn Marketing UAE, TikTok Marketing Dubai"
-        ogImage="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format,compress&fm=webp&q=75&w=1200"
-        schema={socialSchema}
-        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
-      />
+      
       
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12 font-serif text-white tracking-tight leading-tight">
@@ -90,8 +83,8 @@ export default function SocialMedia() {
           <motion.div style={{ y, opacity }} className="max-w-4xl">
             <span className="micro-label block mb-4 text-white/60">Dubai & Sharjah Community</span>
             <h1 className="text-4xl md:text-7xl">
-              Dominate the<br/><span className="text-white/80 italic">Digital Conversation.</span>
-            </h1>
+            Social Media Management <br/><span className="italic text-white/40">Agency Dubai.</span>
+          </h1>
           </motion.div>
         </div>
         {/* Hidden SEO Image */}
@@ -111,7 +104,7 @@ export default function SocialMedia() {
           className="mb-24"
         >
           <p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl leading-relaxed">
-            In the UAE, social media isn't just about presence—it's about influence. We build communities that don't just 'like' your content, but become loyal advocates for your brand in Dubai and beyond.
+            Grow your audience and drive sales with the top Social Media Management Agency in Dubai. We create engaging content, manage community interactions, and run targeted ad campaigns across Instagram, LinkedIn, and TikTok tailored for the UAE market.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">Build Your Influence <ArrowRight className="w-4 h-4" /></Link>

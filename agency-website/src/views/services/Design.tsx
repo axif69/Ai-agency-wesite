@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import Link from "next/link";
 import { ArrowRight, PenTool, Image, Layout, Film, CheckCircle } from "lucide-react";
 
@@ -31,25 +31,7 @@ export default function Design() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO
-        title="Graphic Design Services Dubai & Sharjah | Creative Agency | Asif Digital"
-        description="Professional graphic design services in Dubai and Sharjah. Marketing materials, social media graphics, presentations, ad creatives, infographics, and annual reports."
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Graphic Design Services",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://www.asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" }
-          ],
-          "description": "Professional graphic design services in Dubai and Sharjah including marketing collateral, social media content, and corporate presentations."
-        }}
-        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
-      />
+      
 
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12 font-serif text-white tracking-tight leading-tight">
@@ -62,8 +44,8 @@ export default function Design() {
           <motion.div style={{ y, opacity }} className="max-w-4xl">
             <span className="micro-label block mb-4 text-white/50 font-bold tracking-[0.3em] uppercase">Dubai & Sharjah Creative</span>
             <h1 className="text-5xl md:text-8xl">
-              Design That Demands<br /><span className="italic text-white/40">Attention.</span>
-            </h1>
+            Graphic Design Agency <br/><span className="italic text-white/40">Dubai & Sharjah.</span>
+          </h1>
           </motion.div>
         </div>
         {/* Hidden SEO Image */}
@@ -83,7 +65,7 @@ export default function Design() {
           className="mb-24"
         >
           <p className="text-xl md:text-2xl text-white/60 font-light leading-relaxed max-w-3xl mb-12">
-            In a world where every brand competes for the same audience's limited attention, exceptional graphic design is not a luxury—it is your most powerful sales tool. We create visual communication that makes your audience stop, read, and act.
+            Capture your audience's attention with the top Graphic Design Agency in Dubai and Sharjah. Our creative team delivers premium marketing materials, social media graphics, and print designs that elevate your brand and communicate your message effectively.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link href="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">

@@ -1,5 +1,5 @@
 "use client";
-import SEO from "../../components/SEO";
+
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Monitor, Zap, Globe, Palette, CheckCircle, Star, Users, TrendingUp } from "lucide-react";
@@ -28,60 +28,14 @@ const testimonials = [
 export default function WebDesign() {
   return (
     <div className="pt-20">
-      <SEO
-        title="Web Design Agency Dubai & Sharjah | Award-Winning Design | Asif Digital"
-        description="Dubai's premier web design agency. We craft high-converting, visually stunning websites optimized for Google rankings and UAE market success. Get a free consultation today."
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Premium Web Design & UI/UX",
-          "description": "High-performance, award-winning web design services in Dubai and Sharjah. We specialize in conversion-focused websites and bilingual UAE digital experiences.",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://www.asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" },
-            { "@type": "City", "name": "Abu Dhabi" }
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Web Design Services",
-            "itemListElement": [
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Corporate Website Design" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bilingual Arabic/English UI/UX" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing Page Optimization" } }
-            ]
-          }
-        }}
-        faqSchema={[
-          {
-            question: "How long does it take to design a custom website in Dubai?",
-            answer: "A standard premium corporate website typically takes 3-5 weeks from discovery to launch. This includes strategy, wireframing, high-fidelity UI design, and responsive development."
-          },
-          {
-            question: "Will my website be mobile-friendly and fast?",
-            answer: "Yes. Every website we build is mobile-first and optimized for Google's Core Web Vitals. We aim for a 90+ score on PageSpeed Insights to ensure best-in-class performance on UAE mobile networks."
-          },
-          {
-            question: "Do you offer bilingual Arabic and English web design?",
-            answer: "Absolutely. We specialize in Right-to-Left (RTL) design for Arabic audiences, ensuring your brand communicates effectively with both local and international customers in the UAE."
-          },
-          {
-            question: "Is SEO included in the web design package?",
-            answer: "Yes. Every website launch includes technical SEO foundations: clean semantic code, meta tag implementation, schema markup, and Google Search Console integration."
-          }
-        ]}
-      />
+      
 
       {/* Hero */}
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
           <span className="text-white/95 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Web Design — Dubai & Sharjah</span>
           <h1 className="text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight mb-8">
-            Websites That<br />
-            <span className="italic text-white/90">Win Clients.</span>
+            Web Design <br/><span className="italic text-white/40">Agency Dubai.</span>
           </h1>
           <p className="text-xl text-white/95 font-light leading-relaxed max-w-2xl mb-12">
             We design premium websites for Dubai and Sharjah businesses that don't just look extraordinary—they rank on Google, engage every visitor, and convert prospects into paying customers with remarkable consistency.
@@ -141,7 +95,9 @@ export default function WebDesign() {
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
                 <div className="text-white/95 mb-5" role="img" aria-label={`${item.title} Icon`}>{item.icon}</div>
                 <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-white/95 font-light leading-relaxed text-sm">{item.desc}</p>
+                <p className="text-white/95 font-light leading-relaxed text-sm">
+            Launch a high-converting digital storefront with a premier Web Design Agency in Dubai. We create modern, fast, and SEO-optimized websites that not only look incredible but are strategically built to generate leads and grow your business.
+          </p>
               </motion.div>
             ))}
           </div>

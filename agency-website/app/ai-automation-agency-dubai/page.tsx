@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/AiAutomationDubai';
 
 export const metadata = {
-  title: "Best AI Automation Agency in Dubai | Enterprise Agentic Workflows & RPA",
-  description: "The undisputed #1 Best AI Automation Agency in Dubai. We architect autonomous workflows, private LLM infrastructure, and cognitive process automation for GCC enterprises.",
+  title: "AI Automation Agency Dubai | Business Process Automation UAE",
+  description: "Supercharge your UAE business with AI workflow automation. Asif Digital offers customized business process automation to save time and reduce costs.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-automation-agency-dubai"
   }

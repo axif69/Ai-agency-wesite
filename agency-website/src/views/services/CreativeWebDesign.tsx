@@ -1,5 +1,5 @@
 "use client";
-import SEO from "../../components/SEO";
+
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Layers, Globe, Zap, Sparkles, CheckCircle, Code } from "lucide-react";
@@ -25,43 +25,7 @@ const faqs = [
 export default function CreativeWebDesign() {
   return (
     <div className="pt-20">
-      <SEO 
-        title="Creative Web Design Agency Dubai | Award-Winning Websites | Asif Digital" 
-        description="Bespoke creative web design for premium Dubai brands. Advanced animations, immersive scroll experiences, and visually extraordinary websites that make your brand unforgettable."
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Creative Web Design",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://www.asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" },
-            { "@type": "Country", "name": "UAE" }
-          ],
-          "description": "Bespoke creative web design for premium brands in Dubai, featuring advanced animations, immersive scroll experiences, and cinematic storytelling."
-        }}
-        faqSchema={[
-          {
-            question: "What makes creative web design different from standard web design?",
-            answer: "Standard web design prioritises usability and conversion within established templates. Creative web design pushes boundaries with advanced animations, experimental layouts, and immersive storytelling to create a work of digital art."
-          },
-          {
-            question: "Will a heavily animated website hurt my Google rankings?",
-            answer: "Not if it's built correctly. We adhere to Core Web Vitals standards and ensure all animations are performance-optimised for fast load times and strong technical SEO foundations."
-          },
-          {
-            question: "How long does a creative web design project take?",
-            answer: "Creative web design projects typically take 8-12 weeks due to the elevated level of design craft and custom development involved in creating an exceptional digital experience."
-          },
-          {
-            question: "Do you build creative websites on CMS platforms like WordPress?",
-            answer: "Yes. We build on headless CMS platforms including Sanity, Contentful, and Strapi, as well as custom WordPress implementations for easy content management."
-          }
-        ]}
-      />
+      
 
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12">
@@ -78,8 +42,8 @@ export default function CreativeWebDesign() {
           >
             <span className="micro-label mb-8 block">Creative Web Design — Dubai</span>
             <h1 className="text-5xl md:text-8xl font-serif text-white tracking-tight leading-tight">
-              Beyond Design.<br /><span className="italic text-white/40">Into Experience.</span>
-            </h1>
+            Creative Web Design <br/><span className="italic text-white/40">Agency Dubai.</span>
+          </h1>
             <div className="flex flex-wrap gap-4 justify-center mt-12">
               <Link href="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">Start Your Project <ArrowRight className="w-4 h-4" /></Link>
               <Link href="/portfolio" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:border-white transition-colors">View Creative Work</Link>
@@ -116,7 +80,9 @@ export default function CreativeWebDesign() {
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
                 <div className="text-white/60 mb-5">{f.icon}</div>
                 <h3 className="text-lg font-bold mb-3">{f.title}</h3>
-                <p className="text-white/50 font-light leading-relaxed text-sm">{f.desc}</p>
+                <p className="text-white/50 font-light leading-relaxed text-sm">
+            Transform your online presence with an elite Creative Web Design Agency in Dubai. We specialize in building visually stunning, high-performance websites optimized for user experience, mobile responsiveness, and maximum lead conversion in the UAE market.
+          </p>
               </motion.div>
             ))}
           </div>

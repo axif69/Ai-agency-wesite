@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/Services';
 
 export const metadata = {
-  title: "Strategic Pillars | Asif Digital Sovereign AI",
-  description: "Comprehensive AI architectures and strategic digital pillars for GCC enterprises—Sovereign AI, Web Architecture, Growth, and Visual Authority.",
+  title: "AI & Digital Marketing Services Dubai | Asif Digital",
+  description: "Discover Asif Digital's comprehensive services, including custom AI agents, workflow automation, corporate web design, SEO, and PPC in Dubai and Sharjah.",
   alternates: {
     canonical: "https://www.asifdigital.agency/services"
   }

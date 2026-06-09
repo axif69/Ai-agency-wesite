@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { ArrowRight, Cloud, Shield, Zap, Code, CheckCircle, Database, Globe, Smartphone } from "lucide-react";
 import Link from "next/link";
 
@@ -69,14 +69,7 @@ export default function SaaSServices() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="SaaS Product Development UAE | Custom Software Dubai | Asif Digital"
-        description="Expert SaaS development for Dubai and Sharjah startups. We build scalable, high-performance cloud applications and MVPs with a focus on UAE market success."
-        keywords="SaaS development Dubai, Cloud software UAE, Custom SaaS specialist Sharjah, Startup MVP UAE"
-        ogImage="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format,compress&fm=webp&q=75&w=1200"
-        schema={saasSchema}
-        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
-      />
+      
       
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12 font-serif text-white tracking-tight leading-tight">
@@ -89,8 +82,8 @@ export default function SaaSServices() {
           <motion.div style={{ y, opacity }} className="max-w-4xl">
             <span className="micro-label block mb-4 text-white/60">Dubai & Sharjah Innovation</span>
             <h1 className="text-4xl md:text-7xl">
-              Scalable Cloud<br/><span className="text-white/80 italic">Infrastructure.</span>
-            </h1>
+            SaaS Development <br/><span className="italic text-white/40">Specialist UAE.</span>
+          </h1>
           </motion.div>
         </div>
         {/* Hidden SEO Image */}
@@ -110,7 +103,7 @@ export default function SaaSServices() {
           className="mb-24"
         >
           <p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl leading-relaxed">
-            I don't just build software; I engineer scalable digital products. From initial MVP to enterprise-grade cloud architecture, my SaaS solutions are designed to handle rapid user growth and unshakeable uptime.
+            Scale your business with the premier SaaS Development Specialist in the UAE. We architect, build, and deploy custom cloud-based software applications that are secure, highly scalable, and tailored to automate your unique enterprise workflows.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">Architect Your Product <ArrowRight className="w-4 h-4" /></Link>

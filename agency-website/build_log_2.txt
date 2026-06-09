@@ -1,0 +1,15 @@
+﻿
+> asif-digital-agency@0.1.0 build
+> next build && next export
+
+  Γû▓ Next.js 14.2.3
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/62) ...
+   Generating static pages (15/62) 
+   Generating static pages (30/62) 
+   Generating static pages (46/62) 
+ Γ£ô Generating static pages (62/62)

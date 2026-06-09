@@ -1,5 +1,5 @@
 "use client";
-import SEO from "../../components/SEO";
+
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, MousePointer, Layout, Users, Zap, CheckCircle, BarChart3 } from "lucide-react";
@@ -23,31 +23,13 @@ const faqs = [
 export default function UIUX() {
   return (
     <div className="pt-20">
-      <SEO
-        title="UI/UX Design Agency Dubai | User Experience Design | Asif Digital"
-        description="Expert UI/UX design services in Dubai. Research-backed user experience design and pixel-perfect interface design that converts users into loyal customers."
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "UI/UX Design Services",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://www.asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" }
-          ],
-          "description": "Professional UI/UX design services including user research, wireframing, prototyping, and visual design for web and mobile products in the UAE."
-        }}
-        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
-      />
+      
 
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
           <span className="text-white/40 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">UI/UX Design — Dubai</span>
           <h1 className="text-5xl md:text-7xl font-serif leading-tight tracking-tight mb-8">
-            Experiences Users<br /><span className="italic text-white/40">Actually Love.</span>
+            UI/UX Design <br/><span className="italic text-white/40">Agency Dubai.</span>
           </h1>
           <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl mb-12">
             A beautiful interface built on poor UX foundations is a beautiful trap. Users get confused, frustrated, and leave. We design digital products that are both visually extraordinary and intuitively simple to use—because the best interface is one your users never have to think about.
@@ -105,7 +87,9 @@ export default function UIUX() {
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
                 <div className="text-white/60 mb-5">{s.icon}</div>
                 <h3 className="text-lg font-bold mb-3">{s.title}</h3>
-                <p className="text-white/50 font-light leading-relaxed text-sm">{s.desc}</p>
+                <p className="text-white/50 font-light leading-relaxed text-sm">
+            Deliver flawless digital experiences with an expert UI/UX Design Agency in Dubai. We design intuitive, user-centric interfaces for web and mobile applications that reduce friction, increase engagement, and drive higher conversion rates.
+          </p>
               </motion.div>
             ))}
           </div>

@@ -1,8 +1,8 @@
 import PageComponent from '../../../src/views/services/SocialMedia';
 
 export const metadata = {
-  title: "AI Social Media Management Dubai | Asif Digital Agency",
-  description: "Automate and scale content creation, post scheduling, performance analytics, and community engagement using custom AI social agents in Dubai.",
+  title: "Social Media Management Agency Dubai | Content Creation UAE",
+  description: "Boost your online presence with professional social media management in Dubai. We handle content creation, scheduling, and community engagement.",
   alternates: {
     canonical: "https://www.asifdigital.agency/services/social-media-management-dubai-uae"
   }

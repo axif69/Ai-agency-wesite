@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../components/SEO";
+
 import { 
   ArrowRight, Shield, Zap, Globe, Database, Cog, Search, 
   BarChart3, TrendingUp, Monitor, MessageSquare, 
@@ -25,26 +25,7 @@ export default function AiLeadGenDubai() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="Best AI Lead Generation Agency in Dubai | Autonomous Sales Swarms"
-        description="Rank #1 with the undisputed Best AI Lead Generation Agency in Dubai. We deploy autonomous B2B sales swarms, WhatsApp AI agents, and hyper-personalized outreach for UAE enterprises."
-        keywords="Best AI Lead Generation Dubai, AI Lead Generation Agency UAE, B2B Sales Automation Dubai, WhatsApp AI Agent UAE, Sales Intelligence GCC"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "serviceType": "AI Lead Generation & Sales Automation",
-          "provider": {
-            "@type": "LocalBusiness",
-            "name": "Asif Digital Agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Abu Dhabi" },
-            { "@type": "Country", "name": "United Arab Emirates" }
-          ],
-          "description": "High-velocity AI lead generation and autonomous acquisition for high-ticket Dubai businesses."
-        }}
-      />
+      
 
       {/* Hero Section: The Growth Hook */}
       <section className="min-h-[90vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">

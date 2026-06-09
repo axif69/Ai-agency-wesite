@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { ArrowRight, Smartphone, CheckCircle, Cpu, Layers, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
@@ -27,30 +27,7 @@ export default function AiMobileApps() {
 
   return (
     <div className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
-      <SEO 
-        title="Top AI Mobile App Development Agency in Dubai & Sharjah" 
-        description="Build premium, intelligent mobile applications with AI integration. Top rated iOS and Android app developers serving Sharjah, Dubai and the UAE."
-        keywords="App Development Agency Dubai, Mobile App Developer Sharjah, iOS Developer UAE, Android App Development Dubai, AI Mobile Apps"
-        schema={serviceSchema}
-        faqSchema={[
-          {
-            question: "What is the typical cost of AI mobile app development in the UAE?",
-            answer: "The cost varies depending on complexity, but a premium AI-integrated mobile app typically starts from AED 35,000 for a cross-platform (iOS & Android) MVP with basic AI functionality."
-          },
-          {
-            question: "How long does it take to build an AI mobile app?",
-            answer: "A standard AI mobile application takes between 12 to 16 weeks from discovery and UI/UX design to final App Store and Play Store launch."
-          },
-          {
-            question: "Do you handle App Store and Play Store submissions?",
-            answer: "Yes. We manage the entire submission process, ensuring your app meets all technical and design guidelines for both Apple and Google platforms."
-          },
-          {
-            question: "Can you integrate custom AI models into mobile apps?",
-            answer: "Absolutely. We specialize in integrating advanced AI features like computer vision, NLP, and predictive algorithms directly into mobile experiences for a competitive edge."
-          }
-        ]}
-      />
+      
       
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12">

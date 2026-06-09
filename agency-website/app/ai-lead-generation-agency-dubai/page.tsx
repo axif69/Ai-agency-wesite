@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/AiLeadGenDubai';
 
 export const metadata = {
-  title: "Best AI Lead Generation Agency in Dubai | Autonomous Sales Swarms",
-  description: "Rank #1 with the undisputed Best AI Lead Generation Agency in Dubai. We deploy autonomous B2B sales swarms, WhatsApp AI agents, and hyper-personalized outreach for UAE enterprises.",
+  title: "AI Lead Generation Agency Dubai | Automated B2B Leads UAE",
+  description: "Maximize sales with AI-powered lead generation in Dubai. Asif Digital automates B2B outreach and lead qualification to boost your sales pipeline.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-lead-generation-agency-dubai"
   }

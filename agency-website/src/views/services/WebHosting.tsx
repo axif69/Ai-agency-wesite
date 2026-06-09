@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { ArrowRight, Server, Shield, Zap, Globe, CheckCircle, Database, Lock } from "lucide-react";
 import Link from "next/link";
 
@@ -69,14 +69,7 @@ export default function WebHosting() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="Premium Cloud Hosting Dubai | UAE-Based Data Centers | Asif Digital"
-        description="High-performance managed cloud hosting in Dubai and Sharjah. UAE data residency compliant, enterprise-grade security, and sub-50ms latency for GCC businesses."
-        keywords="Web Hosting Dubai, Cloud Hosting UAE, Managed Hosting Sharjah, UAE Data Residency Hosting"
-        ogImage="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format,compress&fm=webp&q=75&w=1200"
-        schema={hostingSchema}
-        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
-      />
+      
       
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12 font-serif text-white tracking-tight leading-tight">

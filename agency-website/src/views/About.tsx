@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import SEO from "../components/SEO";
+
 import { ArrowRight, Shield, Cpu, Network, Zap, CheckCircle } from "lucide-react";
 
 const sovereignPillars = [
@@ -21,10 +21,7 @@ const evolution = [
 export default function About() {
   return (
     <div className="pt-20">
-      <SEO
-        title="About Asif Digital | Sovereign AI Architectural Firm Dubai"
-        description="Asif Digital is an elite AI architectural firm in Dubai, UAE. We specialize in sovereign intelligence, agentic automation, and GCC-compliant digital transformation."
-      />
+      
 
       {/* Hero Section */}
       <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto">

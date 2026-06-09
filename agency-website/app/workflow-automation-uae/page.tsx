@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/AiAutomationDubai';
 
 export const metadata = {
-  title: "Business Workflow Automation UAE | AI-Powered Processes | Asif Digital",
-  description: "Supercharge your operations with business workflow automation in the UAE. We build custom integrations, API bridges, and RPA bots using n8n and Make.",
+  title: "Workflow Automation Agency Dubai | API & Process Integration UAE",
+  description: "Streamline your operations with custom workflow automation in Dubai. We integrate APIs and deploy RPA bots using n8n, Make, and AI technologies.",
   alternates: {
     canonical: "https://www.asifdigital.agency/workflow-automation-uae"
   }

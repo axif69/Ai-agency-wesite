@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { ArrowRight, Megaphone, CheckCircle, Target, Users, BarChart } from "lucide-react";
 import Link from "next/link";
 
@@ -28,30 +28,7 @@ export default function DigitalMarketing() {
 
   return (
     <div className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
-      <SEO 
-        title="Top Digital Marketing Agency in Sharjah & Dubai | Meta Ads" 
-        description="Data-driven Digital Marketing, High-Converting Meta Ads, Google Ads, and SEO services by Asif Khan in Sharjah and Dubai. Dominate local search and social media."
-        keywords="Digital Marketing Agency Sharjah, Meta Ads Expert Dubai, Google Ads Specialist UAE, Best SEO Services Sharjah, Social Media Management Dubai"
-        schema={serviceSchema}
-        faqSchema={[
-          {
-            question: "What digital marketing services do you offer in Dubai and Sharjah?",
-            answer: "We offer comprehensive digital marketing solutions including Meta and Google Ads, SEO, Social Media Management, and AEO (AI Search Optimization) tailored for the UAE market."
-          },
-          {
-            question: "How long does it take to see results from digital marketing?",
-            answer: "Paid ads (Meta/Google) can show results within days, while organic SEO and AEO typically take 3 to 6 months to see significant improvements in search rankings and traffic."
-          },
-          {
-            question: "Do you provide transparent ROI tracking?",
-            answer: "Yes. We set up advanced tracking and provide detailed monthly reports showing EXACTLY how many leads and sales your digital marketing campaigns are generating."
-          },
-          {
-            question: "Which platform is best for my UAE business: Meta or Google?",
-            answer: "This depends on your business. Google is ideal for capturing high-intent searches, while Meta (Instagram/Facebook) is powerful for brand building and visual products."
-          }
-        ]}
-      />
+      
       
       <motion.div 
         initial={{ opacity: 0, y: 50 }}

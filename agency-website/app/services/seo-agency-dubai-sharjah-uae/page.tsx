@@ -1,8 +1,8 @@
 import PageComponent from '../../../src/views/services/SEO';
 
 export const metadata = {
-  title: "SEO & AEO Optimization Agency Dubai, Sharjah & UAE",
-  description: "Rank on Google, Gemini, and ChatGPT Search. Advanced SEO/AEO strategies, structured JSON-LD schema, and local search targeting in the UAE.",
+  title: "SEO Agency Dubai & Sharjah | Top Organic Search Ranking UAE",
+  description: "Dominate Google search results with the leading SEO agency in Dubai and Sharjah. We offer advanced SEO strategies, local search optimization, and link building.",
   alternates: {
     canonical: "https://www.asifdigital.agency/services/seo-agency-dubai-sharjah-uae"
   }

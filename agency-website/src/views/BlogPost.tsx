@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useParams, redirect } from "next/navigation";
 import { ArrowLeft, Calendar, Clock, User, Share2 } from "lucide-react";
-import SEO from "../components/SEO";
+
 
 import { BLOG_POSTS } from "../data/blogData";
 
@@ -18,11 +18,7 @@ export default function BlogPost() {
 
   return (
     <div className="pt-20">
-      <SEO 
-        title={`${post.title} | Asif Digital Blog`} 
-        description={post.excerpt}
-        canonical={`https://www.asifdigital.agency/blog/${post.slug}`}
-      />
+      
       
       {/* Article Header */}
       <section className="px-6 md:px-12 pt-20 pb-10 max-w-4xl mx-auto">

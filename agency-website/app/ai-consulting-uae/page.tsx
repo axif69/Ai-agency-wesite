@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/AiConsultingUAE';
 
 export const metadata = {
-  title: "Best AI Consulting Agency in UAE | Enterprise AI Consulting",
-  description: "Transform your business with the leading AI Consulting Agency in the UAE. Specialist in LLM strategy, vector databases, and Sharia-compliant AI development.",
+  title: "AI Consulting Services Dubai & UAE | Artificial Intelligence Experts",
+  description: "Transform your business strategy with top-tier AI consulting services in Dubai and the UAE. Discover how artificial intelligence can drive your growth.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-consulting-uae"
   }

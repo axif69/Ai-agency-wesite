@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { ArrowRight, Map, Truck, BarChart, HardDrive, ShieldAlert, Cpu } from "lucide-react";
 import Link from "next/link";
 import Meteors from "../../components/animations/Meteors";
@@ -33,26 +33,7 @@ export default function LogisticsResilience() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="Logistics AI Resilience UAE | Sovereign Supply Chain Architecture"
-        description="Automate supply chain rerouting and logistics management. 24/7 autonomous operations for trade hubs in Dubai and Sharjah to counter cargo disruption."
-        keywords="AI supply chain optimization, Logistics rerouting UAE, Jebel Ali AI automation, Sovereign logistics AI UAE"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Logistics AI Resilience",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://www.asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" }
-          ],
-          "description": "Autonomous supply chain rerouting and logistics management agents for UAE trade hubs, ensuring operational resilience against disruptions."
-        }}
-        faqSchema={faqs}
-      />
+      
       
       {/* ── 1. Immersive Hero ── */}
       <section className="relative min-h-[90svh] flex flex-col items-center justify-center px-6 overflow-hidden">
@@ -67,7 +48,7 @@ export default function LogisticsResilience() {
             </span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="text-5xl md:text-7xl lg:text-8xl font-serif tracking-tight mb-8 leading-[0.9]">
-            Logistics & Cargo <br/><span className="italic text-white/40">Resilience.</span>
+            AI Logistics & Supply Chain <br/><span className="italic text-white/40">Automation UAE.</span>
           </motion.h1>
           {/* Hidden SEO Image */}
           <img 
@@ -95,7 +76,7 @@ export default function LogisticsResilience() {
           <div>
             <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">In the Middle East, <br /><span className="italic text-white/40">hesitation is devastating.</span></h2>
             <div className="space-y-6 text-white/60 text-lg font-light leading-relaxed">
-              <p>The Strait of Hormuz and the wider GCC logistics grid operate on razor-thin margins. In a 2026 geopolitical disruption, insurance premiums skyrocket and human freight forwarders become paralyzed by overwhelmed communication channels.</p>
+              <p>Optimize your operations with Dubai's premier AI Logistics and Supply Chain Automation solutions. We implement predictive AI and route optimization agents to minimize delays, reduce cargo costs, and provide real-time visibility across all GCC logistics networks.</p>
               <p>Most UAE logistics firms rely on large banks of human dispatchers. If a crisis triggers a remote-work mandate, access to secure on-premise routing software is severed. A single delayed container ship reroute can write down millions in perishable losses or manufacturing delays.</p>
               <p className="text-white font-medium border-l-2 border-white pl-4 mt-8">
                 Autonomous Agents predict regional disruption through real-time data feeds, preemptively securing air-freight and secondary port routing before competitors even realize a route is closed.

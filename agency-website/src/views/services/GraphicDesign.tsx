@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import SEO from "../../components/SEO";
+
 import { PenTool, Layers, Image as ImageIcon, MonitorSmartphone, Palette, CheckCircle2 } from "lucide-react";
 
 const features = [
@@ -73,30 +73,7 @@ export default function GraphicDesign() {
 
   return (
     <div className="pt-20">
-      <SEO 
-        title="Premium Graphic Design & Branding Agency in Dubai & Sharjah" 
-        description="Elevate your brand with award-winning Graphic Design, UI/UX, and Social Media Creatives. Top graphic design agency in Sharjah and Dubai."
-        keywords="Graphic Design Agency Dubai, Best Graphic Designer Sharjah, UI/UX Design UAE, Branding Agency Dubai, Logo Design Sharjah"
-        schema={serviceSchema}
-        faqSchema={[
-          {
-            question: "How long does a branding project typically take?",
-            answer: "A complete brand identity project, including logo design, color palette, and typography, usually takes 2 to 4 weeks for research, concepts, and refinement."
-          },
-          {
-            question: "Do you provide source files for the designs?",
-            answer: "Yes. Upon completion and final payment, we provide all source files (AI, PSD, Figma) along with high-resolution exports and a brand style guide."
-          },
-          {
-            question: "Can you create social media graphics for my UAE business?",
-            answer: "Absolutely. We design high-engagement social media creatives tailored for UAE audiences on platforms like Instagram, LinkedIn, and TikTok, ensuring your brand stays consistent and relevant."
-          },
-          {
-            question: "Do you handle print design?",
-            answer: "Yes. From business cards and brochures to large-format signage and event collateral, we provide print-ready designs that meet high professional standards."
-          }
-        ]}
-      />
+      
       
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12">

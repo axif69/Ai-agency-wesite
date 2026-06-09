@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { ArrowRight, Code, CheckCircle, Layers, Zap, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
@@ -27,53 +27,7 @@ export default function WebDevelopment() {
 
   return (
     <div className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
-      <SEO 
-        title="Best Web Development Agency in Dubai & Sharjah | AI Websites" 
-        description="Looking for expert web developers in Dubai or Sharjah? We build immersive, high-performance, and AI-powered Next.js web applications tailored for UAE businesses."
-        keywords="Web Development Agency Dubai, Web Developer Sharjah, React Developer UAE, Custom Website Design Dubai, AI Web Integration"
-        schema={{
-          "@context": "https://schema.org/",
-          "@type": "Service",
-          "name": "Custom AI Web Development",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://www.asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" },
-            { "@type": "City", "name": "Abu Dhabi" }
-          ],
-          "description": "Enterprise-grade web development using React, Next.js and AI integration for UAE businesses seeking unshakeable digital infrastructure.",
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Web Development Services",
-            "itemListElement": [
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Next.js Web Applications" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Agent Integration" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Headless CMS Solutions" } }
-            ]
-          }
-        }}
-        faqSchema={[
-          {
-            question: "What technical stack do you use for web development in the UAE?",
-            answer: "We primarily use the 'T3' and 'Vercel' stacks, focusing on React, Next.js, and TypeScript. This ensures maximum performance and security for UAE enterprise applications."
-          },
-          {
-            question: "Can you integrate AI into my existing business website?",
-            answer: "Yes. We specialize in retrofitting legacy websites with intelligent AI features like custom chatbots, automated lead qualification, and dynamic content personalization."
-          },
-          {
-            question: "How do you ensure data security for Dubai businesses?",
-            answer: "All our applications are built with UAE Federal Decree-Law No. 45 in mind. We can host your applications and data on local UAE infrastructure like G42 or Khazna to ensure 100% data residency."
-          },
-          {
-            question: "Do you provide post-launch support and maintenance?",
-            answer: "Yes. Every project includes 30 days of complimentary support. We also offer monthly maintenance retainers to keep your application updated and secure."
-          }
-        ]}
-      />
+      
       
       <motion.div 
         initial={{ opacity: 0, y: 50 }}

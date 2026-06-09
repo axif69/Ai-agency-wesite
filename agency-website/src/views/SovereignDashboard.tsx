@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import SEO from "../components/SEO";
+
 import { 
   Activity, Shield, Database, Brain, 
   TrendingUp, Users, MessageSquare, Globe, 
@@ -44,10 +44,7 @@ export default function SovereignDashboard() {
 
   return (
     <div className="bg-[#050505] min-h-screen text-white pt-24 pb-20 selection:bg-white/30">
-      <SEO 
-        title="Sovereign AI Analytics | Live Agentic Dashboard"
-        description="Monitor your autonomous AI swarms in real-time. Transparent intelligence, sovereign data residency, and high-fidelity lead acquisition metrics for UAE enterprise."
-      />
+      
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         {/* Header */}

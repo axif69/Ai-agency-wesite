@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/AiChatbotsDubai';
 
 export const metadata = {
-  title: "Best AI Chatbots Agency in Dubai & Sharjah | Custom LLM Chatbots",
-  description: "Deploy intelligent, multi-lingual conversational AI chatbots integrated with your CRM and databases to automate customer service 24/7 in the UAE.",
+  title: "AI Chatbots Development Services Dubai | Customer Support AI",
+  description: "Enhance customer support with advanced AI chatbots in Dubai. Asif Digital builds intelligent conversational agents for websites and WhatsApp in the UAE.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-chatbots-dubai"
   }

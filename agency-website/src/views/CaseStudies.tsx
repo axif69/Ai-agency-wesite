@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import SEO from "../components/SEO";
+
 import { ArrowRight, CheckCircle, TrendingUp } from "lucide-react";
 
 import { CASE_STUDIES } from "../data/caseStudyData";
@@ -9,10 +9,7 @@ import { CASE_STUDIES } from "../data/caseStudyData";
 export default function CaseStudies() {
   return (
     <div className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
-      <SEO
-        title="Case Studies | Digital Marketing & Web Design Results | Asif Digital Dubai"
-        description="Real results for real UAE businesses. Read detailed case studies showing how Asif Digital delivered measurable ROI through web design, SEO, PPC, social media, and AI automation in Dubai and Sharjah."
-      />
+      
 
       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-24 text-center md:text-left">
         <span className="micro-label block mb-4">Proven Results</span>

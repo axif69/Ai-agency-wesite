@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import SEO from "../components/SEO";
+
 import { ArrowRight, Shield, Zap, Globe, Database, Cog, Search, Mail, UserCheck, BarChart3, TrendingUp, Monitor, X, Maximize2, MessageSquare, Key, UserPlus, Play, DownloadCloud } from "lucide-react";
 import Link from "next/link";
 
@@ -58,42 +58,7 @@ export default function SovereignSalesAgent() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="Sovereign Sales Agent | Autonomous B2B Discovery | Asif Digital"
-        description="Deploy an autonomous, 24/7 B2B hunting agent engineered for the UAE market. Data-sovereign discovery, real-time OSINT research, and cold outreach."
-        keywords="Sovereign Sales UAE, Autonomous B2B Hunting, AI SDR Dubai, B2B Acquisition Engine"
-        ogImage="/images/sovereign/dashboard-command.png"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          "name": "Asif Digital — Sovereign Systems",
-          "image": "/images/sovereign/dashboard-command.png",
-          "@id": "https://www.asifdigital.agency/sovereign-sales-agent",
-          "url": "https://www.asifdigital.agency/sovereign-sales-agent",
-          "telephone": "+971500000000",
-          "priceRange": "AED 15,000 - AED 150,000",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Dubai",
-            "addressRegion": "Dubai",
-            "addressCountry": "AE"
-          },
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              "opens": "09:00",
-              "closes": "18:00"
-            }
-          ],
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" },
-            { "@type": "Country", "name": "United Arab Emirates" }
-          ],
-          "description": "Deployment of the Sovereign Sales Engine, a localized, data-sovereign B2B acquisition asset."
-        }}
-      />
+      
 
       {/* Lightbox Modal */}
       <AnimatePresence>

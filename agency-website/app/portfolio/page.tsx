@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/Portfolio';
 
 export const metadata = {
-  title: "Proven Architectures | Asif Digital Sovereign Portfolio",
-  description: "Explore the proven AI architectures and strategic digital domains engineered by Asif Digital for GCC enterprises.",
+  title: "Our Portfolio | AI Automation & Web Development Projects UAE",
+  description: "View Asif Digital's portfolio of successful AI integrations, custom web development, and digital marketing campaigns for businesses across Dubai and the UAE.",
   alternates: {
     canonical: "https://www.asifdigital.agency/portfolio"
   }

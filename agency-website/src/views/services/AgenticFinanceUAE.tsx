@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { ArrowRight, ShieldCheck, Database, Zap, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import Meteors from "../../components/animations/Meteors";
@@ -29,26 +29,7 @@ export default function AgenticFinanceUAE() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="Agentic Finance & Compliance AI UAE | Asif Digital"
-        description="Automate financial audits, KYC, and corporate tax compliance with sovereign AI agents. Built for UAE investment firms and enterprises in Dubai and Abu Dhabi."
-        keywords="AI finance automation UAE, UAE Corporate Tax AI, KYC automation Dubai, Sovereign finance AI"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Agentic Finance & Compliance Automation",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://www.asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Abu Dhabi" }
-          ],
-          "description": "Autonomous AI agents for financial reconciliation, regulatory compliance, and tax reporting tailored for the UAE market."
-        }}
-        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
-      />
+      
       
       {/* ── 1. Immersive Hero ── */}
       <section className="relative min-h-[90svh] flex flex-col items-center justify-center px-6 overflow-hidden">
@@ -63,7 +44,7 @@ export default function AgenticFinanceUAE() {
             </span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="text-5xl md:text-7xl lg:text-8xl font-serif tracking-tight mb-8 leading-[0.9]">
-            Agentic Finance & <br/><span className="italic text-white/40">Compliance.</span>
+            AI Accounting & <br/><span className="italic text-white/40">Financial Automation.</span>
           </motion.h1>
           {/* Hidden SEO Image */}
           <img 

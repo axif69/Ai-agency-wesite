@@ -1,5 +1,5 @@
 "use client";
-import SEO from "../../components/SEO";
+
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Search, FileText, MapPin, TrendingUp, Link2, BarChart3, CheckCircle } from "lucide-react";
@@ -16,58 +16,13 @@ const pillars = [
 export default function SEOPage() {
   return (
     <div className="pt-20">
-      <SEO
-        title="SEO Agency Dubai & Sharjah | Rank #1 on Google | Asif Digital"
-        description="Dubai's most results-focused SEO agency. We rank businesses on page 1 of Google for high-value UAE search terms using technical SEO, content authority, and link building. Free audit available."
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "SEO & Organic Growth Services",
-          "description": "Premium SEO services in Dubai and Sharjah focusing on technical audits, content authority, and link building for UAE enterprises.",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://www.asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Sharjah" },
-            { "@type": "City", "name": "Abu Dhabi" }
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "SEO Services",
-            "itemListElement": [
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technical SEO Audit" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Local SEO & GMB Optimization" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content Authority Strategy" } }
-            ]
-          }
-        }}
-        faqSchema={[
-          {
-            question: "How long does it take to rank on page 1 of Google in Dubai?",
-            answer: "Most UAE businesses see significant ranking improvements within 90 days. Competitive keywords in the Dubai market typically take 4-6 months to reach the top 3 positions using our authority-building methodology."
-          },
-          {
-            question: "What is the difference between SEO and AEO?",
-            answer: "SEO optimizes for traditional search engines like Google, whereas AEO (Answer Engine Optimization) optimizes for AI-driven platforms like Gemini, ChatGPT, and Perplexity. We implement both to ensure your brand is cited as the primary answer across all platforms."
-          },
-          {
-            question: "Do you provide local SEO for Sharjah and Abu Dhabi businesses?",
-            answer: "Yes, we specialize in multi-location UAE SEO. We optimize your Google Business Profiles and create geo-targeted landing pages to ensure you dominate the 'Local Pack' in Dubai, Sharjah, Abu Dhabi, and beyond."
-          },
-          {
-            question: "Is your SEO work compliant with Google's latest AI updates?",
-            answer: "Absolutely. We focus on Google's E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) guidelines, which are specifically designed to reward high-quality, expert-authored content in the age of AI search."
-          }
-        ]}
-      />
+      
 
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
           <span className="text-white/95 text-xs font-bold tracking-[0.3em] uppercase mb-6 block">SEO — Dubai & Sharjah UAE</span>
           <h1 className="text-5xl md:text-7xl font-serif leading-tight tracking-tight mb-8">
-            Page 1 of Google.<br /><span className="italic text-white/90">Guaranteed Results.</span>
+            SEO Agency <br/><span className="italic text-white/40">Dubai & Sharjah.</span>
           </h1>
           <p className="text-xl text-white/95 font-light leading-relaxed max-w-2xl mb-12">
             91.5% of Google traffic goes to page 1 results. If your business isn't ranking there for your most valuable keywords, you are invisible to the customers who are right now actively searching for what you sell. We change that, permanently.
@@ -125,7 +80,9 @@ export default function SEOPage() {
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
                 <div className="text-white/95 mb-5" role="img" aria-label={`${p.title} Icon`}>{p.icon}</div>
                 <h3 className="text-xl font-bold mb-3">{p.title}</h3>
-                <p className="text-white/95 font-light leading-relaxed text-sm">{p.desc}</p>
+                <p className="text-white/95 font-light leading-relaxed text-sm">
+            Dominate search rankings with the best SEO Agency in Dubai and Sharjah. Our data-driven search engine optimization strategies, technical audits, and high-quality backlink campaigns ensure your website reaches page 1 for the keywords your customers are actually searching.
+          </p>
               </motion.div>
             ))}
           </div>

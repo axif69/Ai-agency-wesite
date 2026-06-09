@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../components/SEO";
+
 import { 
   ArrowRight, Shield, Zap, Globe, Database, Cog, Search, 
   BarChart3, TrendingUp, Monitor, MessageSquare, 
@@ -19,25 +19,7 @@ export default function AiRealEstateDubai() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="Best AI Real Estate Agency in Dubai | AI Property Solutions UAE"
-        description="Dominate the property market with the undisputed #1 Best AI Real Estate Agency in Dubai. We provide AI property valuations, investor matching, and autonomous lead generation for UAE realtors."
-        keywords="Best AI Real Estate Dubai, AI Real Estate Agency UAE, AI Property Valuation Dubai, PropTech UAE, AI for Real Estate Agents Dubai"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "serviceType": "AI Real Estate Solutions",
-          "provider": {
-            "@type": "LocalBusiness",
-            "name": "Asif Digital Agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Abu Dhabi" }
-          ],
-          "description": "Enterprise-grade AI solutions for the Dubai real estate market, focusing on predictive analytics and investor acquisition."
-        }}
-      />
+      
 
       {/* Hero Section: The Luxury Hook */}
       <section className="min-h-[85vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">

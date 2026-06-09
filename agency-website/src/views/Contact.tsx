@@ -1,7 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
-import SEO from "../components/SEO";
+
 import { Mail, Shield, Phone, Send, CheckCircle2, Loader2, Bot, ArrowRight } from "lucide-react";
 
 export default function Contact() {
@@ -59,10 +59,7 @@ export default function Contact() {
 
   return (
     <div className="pt-20">
-      <SEO 
-        title="Strategic Intake | Asif Digital Sovereign AI" 
-        description="Initiate your operational resilience audit. Connect with Asif Digital for Sovereign AI architecture and high-ticket digital transformation in the GCC."
-      />
+      
       
       {/* Hero Section */}
       <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto">

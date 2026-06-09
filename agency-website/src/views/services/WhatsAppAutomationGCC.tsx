@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { ArrowRight, MessageSquare, Bot, Zap, Shield, CheckCircle, Smartphone, Globe, Users } from "lucide-react";
 import Link from "next/link";
 
@@ -37,27 +37,7 @@ export default function WhatsAppAutomationGCC() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="WhatsApp Business API & Automation UAE | GCC Marketing | Asif Digital"
-        description="Transform your UAE customer engagement with official WhatsApp Business API automation. Intelligent AI bots, automated broadcasts, and GCC-wide support by Asif Digital."
-        keywords="WhatsApp Automation Dubai, WhatsApp Business API UAE, AI Chatbots Sharjah, WhatsApp Marketing GCC"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "WhatsApp Business Automation",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://www.asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "Country", "name": "United Arab Emirates" },
-            { "@type": "Country", "name": "Saudi Arabia" }
-          ],
-          "description": "Expert implementation of WhatsApp Business API and AI-driven conversational automation for high-growth GCC brands."
-        }}
-        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
-      />
+      
       
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12 font-serif text-white tracking-tight leading-tight">
@@ -70,8 +50,8 @@ export default function WhatsAppAutomationGCC() {
           <motion.div style={{ y, opacity }} className="max-w-4xl">
             <span className="micro-label block mb-4 text-white/60">GCC & UAE Specialized</span>
             <h1 className="text-4xl md:text-7xl">
-              Where Your Customers<br/><span className="text-white/80 italic">Actually Live.</span>
-            </h1>
+            WhatsApp Chatbot & <br/><span className="italic text-white/40">Automation Dubai.</span>
+          </h1>
           </motion.div>
         </div>
         {/* Hidden SEO Image */}
@@ -91,8 +71,7 @@ export default function WhatsAppAutomationGCC() {
           className="mb-24"
         >
           <p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl leading-relaxed">
-            WhatsApp is the digital town square of the Middle East. We help you move your business directly into your customers' pockets with intelligent automation that scales without losing the personal touch.
-          </p>
+            As the leading WhatsApp Chatbot and Automation agency in Dubai and the UAE, we help businesses scale customer service and lead generation. We build intelligent WhatsApp API integrations that automate replies, recover sales, and engage customers natively in English and Arabic.</p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">Automate Your WhatsApp <ArrowRight className="w-4 h-4" /></Link>
           </div>

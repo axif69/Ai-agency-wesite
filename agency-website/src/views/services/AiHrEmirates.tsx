@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { ArrowRight, Users, CheckCircle, Clock, Database, Globe, AlertTriangle, ShieldCheck } from "lucide-react";
 import SpotlightCard from "../../components/animations/SpotlightCard";
 
@@ -14,39 +14,7 @@ export default function AiHrEmirates() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="AI HR & Emiratization Tracking Dubai UAE | Sovereign Architecture"
-        description="Manage Emiratization quotas autonomously. Protect your business from AED 108,000+ fines. Accelerate onboarding with AI HR Agents hosted on UAE native compute."
-        keywords="Emiratization software UAE, AI HR agent Dubai, Automate HR UAE, WPS compliance UAE, Nafis software tracking"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "AI HR & Emiratization Tracking",
-          "provider": {
-            "@type": "LocalBusiness",
-            "@id": "https://www.asifdigital.agency"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Dubai" },
-            { "@type": "City", "name": "Abu Dhabi" }
-          ],
-          "description": "Autonomous AI HR agents for Emiratization quota management, visa lifecycle tracking, and onboarding automation in the UAE."
-        }}
-        faqSchema={[
-          {
-            question: "How does the AI help with Emiratization quotas?",
-            answer: "Our AI agents sync with your current headcount and MoHRE data to calculate real-time quotas, pre-screen Emirati candidates from Nafis, and alert you before compliance drops below federal thresholds."
-          },
-          {
-            question: "Is employee data stored within the UAE?",
-            answer: "Yes. We use UAE-native sovereign infrastructure (G42/Khazna) to ensure all PII data and employee records remain within the country, complying with UAE Data Protection Laws."
-          },
-          {
-            question: "Can the AI automate the onboarding process?",
-            answer: "Absolutely. The agents can verify Emirates IDs, draft offer letters, and trigger visa staging processes instantly, reducing onboarding time from days to minutes."
-          }
-        ]}
-      />
+      
       
       {/* ── 1. Immersive Hero ── */}
       <section className="relative min-h-[90svh] flex flex-col items-center justify-center px-6 overflow-hidden">
@@ -61,7 +29,7 @@ export default function AiHrEmirates() {
             </span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="text-5xl md:text-7xl lg:text-8xl font-serif tracking-tight mb-8 leading-[0.9]">
-            AI HR Architecture <br/><span className="italic text-white/90">& Emiratization.</span>
+            AI HR Automation & <br/><span className="italic text-white/40">Emiratization Tracking UAE.</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }} className="text-xl md:text-2xl text-white/95 font-light leading-relaxed max-w-3xl mx-auto mb-10">
             Automate onboarding, streamline visa lifecycle tracking, and systematically hit Emiratization quotas without hiring massive HR departments. Protected by UAE-native data sovereignty.
@@ -91,7 +59,7 @@ export default function AiHrEmirates() {
           <div>
             <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">Human error in MoHRE compliance <br /><span className="italic text-white/90">carries a severe price.</span></h2>
             <div className="space-y-6 text-white/95 text-lg font-light leading-relaxed">
-              <p>Mainland companies in the UAE are entering the final phase of Emiratization targets. The government requires a steady increase in skilled national roles, and failure to comply results in devastating financial penalties. Yet, most companies rely on disjointed spreadsheets to track Nafis metrics.</p>
+              <p>Streamline your human resources with the top AI HR Automation and Emiratization Tracking agency in the UAE. Our custom HR AI agents automate onboarding, payroll processing, and compliance tracking, reducing manual overhead and ensuring seamless Emiratization reporting.</p>
               <p>Beyond compliance, the 2026 expat labor market is volatile. High turnover due to geopolitical shifts creates an onboarding nightmare for understaffed HR teams. Human HR staff simply cannot process visa tracking, WPS management, and talent acquisition at the speed required in a regional crisis.</p>
               <p className="text-white font-medium border-l-2 border-white pl-4 mt-8">
                 An AI HR Agent natively models MoHRE regulations, never sleeps, and manages the entire lifecycle of thousands of employees flawlessly.

@@ -1,0 +1,3082 @@
+[
+  {
+    "company_name": "Lockheed Martin",
+    "website": "https://lockheedmartin.com",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Boeing Defense",
+    "website": "https://boeing.com/defense",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Raytheon Technologies",
+    "website": "https://rtx.com",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Northrop Grumman",
+    "website": "https://northropgrumman.com",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "General Dynamics",
+    "website": "https://gd.com",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "L3Harris Technologies",
+    "website": "https://l3harris.com",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Leidos",
+    "website": "https://leidos.com",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Booz Allen Hamilton",
+    "website": "https://boozallen.com",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "CACI International",
+    "website": "https://caci.com",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "SAIC",
+    "website": "https://saic.com",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "ManTech International",
+    "website": "https://mantech.com",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Kratos Defense",
+    "website": "https://kratosdefense.com",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "AeroVironment",
+    "website": "https://avinc.com",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Anduril Industries",
+    "website": "https://anduril.com",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Palantir Technologies",
+    "website": "https://palantir.com",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Shield AI",
+    "website": "https://shield.ai",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Skydio",
+    "website": "https://skydio.com",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Teledyne FLIR",
+    "website": "https://teledyneflir.com",
+    "country": "USA",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Textron Systems",
+    "website": "https://textron.com",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Bell Textron",
+    "website": "https://bellflight.com",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Sierra Nevada Corporation",
+    "website": "https://sncorp.com",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Honeywell Aerospace",
+    "website": "https://aerospace.honeywell.com",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "GE Aviation",
+    "website": "https://geaviation.com",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Pratt & Whitney",
+    "website": "https://pratt-whitney.com",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Collins Aerospace",
+    "website": "https://collinsaerospace.com",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Moog Inc",
+    "website": "https://moog.com",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Cubic Corporation",
+    "website": "https://cubic.com",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Mercury Systems",
+    "website": "https://mrcy.com",
+    "country": "USA",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "KBR",
+    "website": "https://kbr.com",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Amentum",
+    "website": "https://amentum.com",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Peraton",
+    "website": "https://peraton.com",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Parsons Corporation",
+    "website": "https://parsons.com",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "SpaceX",
+    "website": "https://spacex.com",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Maxar Technologies",
+    "website": "https://maxar.com",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Planet Labs",
+    "website": "https://planet.com",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Capella Space",
+    "website": "https://capellaspace.com",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "BlackSky",
+    "website": "https://blacksky.com",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "BAE Systems",
+    "website": "https://baesystems.com",
+    "country": "UK",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Rolls-Royce Defence",
+    "website": "https://rolls-royce.com/defence.aspx",
+    "country": "UK",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "MBDA UK",
+    "website": "https://mbda.net",
+    "country": "UK",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "QinetiQ",
+    "website": "https://qinetiq.com",
+    "country": "UK",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Cobham",
+    "website": "https://cobham.com",
+    "country": "UK",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Ultra Electronics",
+    "website": "https://ultra-electronics.com",
+    "country": "UK",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Chemring Group",
+    "website": "https://chemring.com",
+    "country": "UK",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Meggit",
+    "website": "https://meggit.com",
+    "country": "UK",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Marshall Aerospace",
+    "website": "https://marshalladg.com",
+    "country": "UK",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "GKN Aerospace",
+    "website": "https://gknaerospace.com",
+    "country": "UK",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Thales Group",
+    "website": "https://thalesgroup.com",
+    "country": "France",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Naval Group",
+    "website": "https://naval-group.com",
+    "country": "France",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "MBDA France",
+    "website": "https://mbda.net",
+    "country": "France",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Dassault Aviation",
+    "website": "https://dassault-aviation.com",
+    "country": "France",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Safran",
+    "website": "https://safran-group.com",
+    "country": "France",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Nexter Systems",
+    "website": "https://nexter-group.fr",
+    "country": "France",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Rheinmetall",
+    "website": "https://rheinmetall.com",
+    "country": "Germany",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Hensoldt",
+    "website": "https://hensoldt.net",
+    "country": "Germany",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "KMW",
+    "website": "https://kmweg.com",
+    "country": "Germany",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Diehl Defence",
+    "website": "https://diehl.com/defence",
+    "country": "Germany",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Rohde & Schwarz",
+    "website": "https://rohde-schwarz.com",
+    "country": "Germany",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Airbus Defence",
+    "website": "https://airbus.com/en/defence",
+    "country": "Germany",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "ATLAS Elektronik",
+    "website": "https://atlas-elektronik.com",
+    "country": "Germany",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "TKMS",
+    "website": "https://thyssenkrupp-marinesystems.com",
+    "country": "Germany",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Indra",
+    "website": "https://indra.es",
+    "country": "Spain",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Navantia",
+    "website": "https://navantia.es",
+    "country": "Spain",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Damen",
+    "website": "https://damen.com",
+    "country": "Netherlands",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Saab",
+    "website": "https://saab.com",
+    "country": "Sweden",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Kockums",
+    "website": "https://saab.com",
+    "country": "Sweden",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Fincantieri",
+    "website": "https://fincantieri.com",
+    "country": "Italy",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Elettronica",
+    "website": "https://eltgroup.com",
+    "country": "Italy",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Beretta Defence",
+    "website": "https://berettadefence.com",
+    "country": "Italy",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Oto Melara",
+    "website": "https://leonardocompany.com",
+    "country": "Italy",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Elbit Systems",
+    "website": "https://elbitsystems.com",
+    "country": "Israel",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Israel Aerospace Industries",
+    "website": "https://iai.co.il",
+    "country": "Israel",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Rafael",
+    "website": "https://rafael.co.il",
+    "country": "Israel",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Aselsan",
+    "website": "https://aselsan.com.tr",
+    "country": "Turkey",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Roketsan",
+    "website": "https://roketsan.com.tr",
+    "country": "Turkey",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Baykar",
+    "website": "https://baykartech.com",
+    "country": "Turkey",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "STM",
+    "website": "https://stm.com.tr",
+    "country": "Turkey",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "MKEK",
+    "website": "https://mkek.gov.tr",
+    "country": "Turkey",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Havelsan",
+    "website": "https://havelsan.com.tr",
+    "country": "Turkey",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "TAI",
+    "website": "https://tai.com.tr",
+    "country": "Turkey",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Hanwha Aerospace",
+    "website": "https://hanwhaaerospace.com",
+    "country": "South Korea",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "LIG Nex1",
+    "website": "https://lignex1.com",
+    "country": "South Korea",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "KAI",
+    "website": "https://koreaaero.com",
+    "country": "South Korea",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Hyundai Rotem",
+    "website": "https://hyundai-rotem.co.kr",
+    "country": "South Korea",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Mitsubishi Heavy",
+    "website": "https://mhi.com",
+    "country": "Japan",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Kawasaki Heavy",
+    "website": "https://khi.co.jp",
+    "country": "Japan",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "IHI Corporation",
+    "website": "https://ihi.co.jp",
+    "country": "Japan",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "NORINCO",
+    "website": "https://norinco.com",
+    "country": "China",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "CATIC",
+    "website": "https://catic.cn",
+    "country": "China",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "CSSC",
+    "website": "https://cssc.net.cn",
+    "country": "China",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Rosoboronexport",
+    "website": "https://roe.ru",
+    "country": "Russia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Almaz-Antey",
+    "website": "https://almaz-antey.ru",
+    "country": "Russia",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "KRET",
+    "website": "https://kret.com",
+    "country": "Russia",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Uralvagonzavod",
+    "website": "https://uvz.ru",
+    "country": "Russia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Bharat Electronics",
+    "website": "https://bel-india.in",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Bharat Dynamics",
+    "website": "https://bdl-india.in",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "HAL",
+    "website": "https://hal-india.co.in",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "BEML",
+    "website": "https://bemlindia.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Mazagon Dock",
+    "website": "https://mazagondock.in",
+    "country": "India",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "GRSE",
+    "website": "https://grse.in",
+    "country": "India",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Goa Shipyard",
+    "website": "https://goashipyard.in",
+    "country": "India",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Cochin Shipyard",
+    "website": "https://cochinshipyard.in",
+    "country": "India",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "L&T Defence",
+    "website": "https://larsentoubro.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Tata Advanced Systems",
+    "website": "https://tataadvancedsystems.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Mahindra Defence",
+    "website": "https://mahindra.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Kalyani Group",
+    "website": "https://kalyanigroup.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Alpha Design",
+    "website": "https://alphadesign.in",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Tonbo Imaging",
+    "website": "https://tonboimaging.com",
+    "country": "India",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "IdeaForge",
+    "website": "https://ideaforgestd.com",
+    "country": "India",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Asteria Aerospace",
+    "website": "https://asteriaaerospace.com",
+    "country": "India",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Astra Microwave",
+    "website": "https://astramw.com",
+    "country": "India",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Centum Electronics",
+    "website": "https://centumelectronics.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Data Patterns",
+    "website": "https://datapatterns.com",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Paras Defence",
+    "website": "https://parasdefence.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Solar Industries",
+    "website": "https://solarindustries.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Premier Explosives",
+    "website": "https://premierexplosives.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Munitions India",
+    "website": "https://munitionsindia.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Advanced Weapons",
+    "website": "https://awlindia.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "SASMOS",
+    "website": "https://sasmos.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Avantel",
+    "website": "https://avantel.com",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "ECIL",
+    "website": "https://ecil.co.in",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Ordnance Factory",
+    "website": "https://ofb.gov.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Midhani",
+    "website": "https://midhani-india.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "GICL",
+    "website": "https://giclindia.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "MKU",
+    "website": "https://mku.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "SSPL",
+    "website": "https://ssplindia.com",
+    "country": "India",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Rolta",
+    "website": "https://rolta.com",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Zen Technologies",
+    "website": "https://zentechnologies.com",
+    "country": "India",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Apollo Microsystems",
+    "website": "https://apollo-micro.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Dynamatic Technologies",
+    "website": "https://dynamatic.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Taneja Aerospace",
+    "website": "https://tanejaaerospace.com",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Samtel",
+    "website": "https://samtel.com",
+    "country": "India",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Controp",
+    "website": "https://controp.com",
+    "country": "India",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Rafael India",
+    "website": "https://rafael.co.in",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Elbit India",
+    "website": "https://elbitsystems.co.in",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Saab India",
+    "website": "https://saab.com",
+    "country": "India",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Thales India",
+    "website": "https://thalesgroup.com",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Boeing India",
+    "website": "https://boeing.in",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Airbus India",
+    "website": "https://airbus.com",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Lockheed India",
+    "website": "https://lockheedmartin.com",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Raytheon India",
+    "website": "https://rtx.com",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Northrop India",
+    "website": "https://northropgrumman.com",
+    "country": "India",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "GD India",
+    "website": "https://gd.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "L3Harris India",
+    "website": "https://l3harris.com",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Adani Defence",
+    "website": "https://adani.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Ananth Technologies",
+    "website": "https://ananthtech.com",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "VEM Technologies",
+    "website": "https://vemtechnologies.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "CoreEL Technologies",
+    "website": "https://coreel.com",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "SITARA",
+    "website": "https://sitaralabs.com",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "CYRAN",
+    "website": "https://cyran.com",
+    "country": "India",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "C4I Solutions",
+    "website": "https://c4isolutions.in",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Innological",
+    "website": "https://innological.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Axon Connected",
+    "website": "https://axonconnected.com",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Tonbo",
+    "website": "https://tonboimaging.com",
+    "country": "India",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Stesalit",
+    "website": "https://stesalit.com",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "DCM Shriram",
+    "website": "https://dcmshriram.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Sika",
+    "website": "https://sika.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Ashok Leyland Defence",
+    "website": "https://ashokleyland.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Tata Motors Defence",
+    "website": "https://tatamotors.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Mahindra Defence Systems",
+    "website": "https://mahindra.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Bharat Forge",
+    "website": "https://bharatforge.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Aequs",
+    "website": "https://aequs.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Sona BLW",
+    "website": "https://sonacomstar.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Sansera",
+    "website": "https://sansera.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Minda Corporation",
+    "website": "https://mindacorp.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Finolex Cables",
+    "website": "https://finolex.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "HBL Power",
+    "website": "https://hblpower.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Olectra Greentech",
+    "website": "https://olectra.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Mildef",
+    "website": "https://mildef.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Astra Rafael",
+    "website": "https://astramw.com",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Larsen Aerospace",
+    "website": "https://larsentoubro.com",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Godrej Aerospace",
+    "website": "https://godrej.com",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Walchandnagar",
+    "website": "https://walchand.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "MTAR Technologies",
+    "website": "https://mtar.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Resilience",
+    "website": "https://resilience.com",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Sagar Defence",
+    "website": "https://sagardefence.com",
+    "country": "India",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Sagar Maritime",
+    "website": "https://sagarmarine.com",
+    "country": "India",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Neptune Marine",
+    "website": "https://neptunemarine.com",
+    "country": "India",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "BrahMos Aerospace",
+    "website": "https://brahmos.com",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "DRDO",
+    "website": "https://drdo.gov.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "ADE",
+    "website": "https://ade.drdo.in",
+    "country": "India",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "GTRE",
+    "website": "https://gtre.drdo.in",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "ADA",
+    "website": "https://ada.in",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "RCI",
+    "website": "https://rcilab.in",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "ASL",
+    "website": "https://asl.drdo.in",
+    "country": "India",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "LASTEC",
+    "website": "https://lastec.drdo.in",
+    "country": "India",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "INMAS",
+    "website": "https://inmas.drdo.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "TBRL",
+    "website": "https://tbrl.drdo.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "PXE",
+    "website": "https://pxe.drdo.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "HPR",
+    "website": "https://hpr.drdo.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "HEMRL",
+    "website": "https://hemrl.drdo.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "ARDE",
+    "website": "https://arde.drdo.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "VRDE",
+    "website": "https://vrde.drdo.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "CVRDE",
+    "website": "https://cvrde.drdo.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "CMERI",
+    "website": "https://cmeri.res.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "NML",
+    "website": "https://nmlindia.in",
+    "country": "India",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "NAL",
+    "website": "https://nal.res.in",
+    "country": "India",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "NPOL",
+    "website": "https://npol.drdo.in",
+    "country": "India",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "NSTL",
+    "website": "https://nstl.drdo.in",
+    "country": "India",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "NHQ",
+    "website": "https://nhq.drdo.in",
+    "country": "India",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Australia EOS",
+    "website": "https://eos-aus.com",
+    "country": "Australia",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Australia Austal",
+    "website": "https://austal.com",
+    "country": "Australia",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Australia BAE Systems",
+    "website": "https://baesystems.com/en-au",
+    "country": "Australia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Australia Saab",
+    "website": "https://saab.com/en-au",
+    "country": "Australia",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Australia Boeing",
+    "website": "https://boeing.com.au",
+    "country": "Australia",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Australia Thales",
+    "website": "https://thalesgroup.com/en-australia",
+    "country": "Australia",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Australia Electra",
+    "website": "https://electro.aero",
+    "country": "Australia",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Australia SYPAQ",
+    "website": "https://sypaq.com.au",
+    "country": "Australia",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Singapore ST Engineering",
+    "website": "https://stengg.com",
+    "country": "Singapore",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Singapore DSTA",
+    "website": "https://dsta.gov.sg",
+    "country": "Singapore",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Singapore Alpha Unmanned",
+    "website": "https://alphaunmannedsystems.com",
+    "country": "Singapore",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Singapore Acrotech",
+    "website": "https://acrotech.com.sg",
+    "country": "Singapore",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Poland PGZ",
+    "website": "https://pgz.pl",
+    "country": "Poland",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Poland WB Group",
+    "website": "https://wb.com.pl",
+    "country": "Poland",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Poland Mesko",
+    "website": "https://mesko.com.pl",
+    "country": "Poland",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Poland Rosomak",
+    "website": "https://rosomak.com.pl",
+    "country": "Poland",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Finland Patria",
+    "website": "https://patria.fi",
+    "country": "Finland",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Finland Insta",
+    "website": "https://insta.fi",
+    "country": "Finland",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Finland Robonic",
+    "website": "https://robonic.fi",
+    "country": "Finland",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Norway Kongsberg Defence",
+    "website": "https://kongsberg.com",
+    "country": "Norway",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Norway Nammo",
+    "website": "https://nammo.com",
+    "country": "Norway",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Norway Andoya Space",
+    "website": "https://andoyaspace.no",
+    "country": "Norway",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Sweden Saab Dynamics",
+    "website": "https://saab.com",
+    "country": "Sweden",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Sweden BAE Hagglof",
+    "website": "https://baesystems.com",
+    "country": "Sweden",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Sweden Bofors",
+    "website": "https://baesystems.com",
+    "country": "Sweden",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Czech Excalibur",
+    "website": "https://excaliburarmy.cz",
+    "country": "Czech Republic",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Czech Tatra",
+    "website": "https://tatrucks.com",
+    "country": "Czech Republic",
+    "category": "Military Logistics",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Czech ERA",
+    "website": "https://era.cz",
+    "country": "Czech Republic",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Spain Indra",
+    "website": "https://indra.es",
+    "country": "Spain",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Spain Navantia",
+    "website": "https://navantia.es",
+    "country": "Spain",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Spain Santa Barbara",
+    "website": "https://gdels.com",
+    "country": "Spain",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Italy Fincantieri",
+    "website": "https://fincantieri.com",
+    "country": "Italy",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Italy MBDA Italy",
+    "website": "https://mbda.net",
+    "country": "Italy",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Italy Elettronica",
+    "website": "https://eltgroup.com",
+    "country": "Italy",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Italy Piaggio",
+    "website": "https://piaggioaerospace.it",
+    "country": "Italy",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Italy Avio Aero",
+    "website": "https://avioaero.com",
+    "country": "Italy",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Netherlands Damen",
+    "website": "https://damen.com",
+    "country": "Netherlands",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Netherlands Thales",
+    "website": "https://thalesgroup.com",
+    "country": "Netherlands",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Netherlands TNO",
+    "website": "https://tno.nl",
+    "country": "Netherlands",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Belgium FN Herstal",
+    "website": "https://fnherstal.com",
+    "country": "Belgium",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Belgium CMI Defence",
+    "website": "https://cmi-defence.com",
+    "country": "Belgium",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Belgium John Cockerill",
+    "website": "https://johncockerill.com",
+    "country": "Belgium",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Switzerland RUAG",
+    "website": "https://ruag.com",
+    "country": "Switzerland",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Switzerland Rheinmetall AD",
+    "website": "https://rheinmetall.com",
+    "country": "Switzerland",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Switzerland Pilatus",
+    "website": "https://pilatus-aircraft.com",
+    "country": "Switzerland",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Austria Steyr",
+    "website": "https://steyr-arms.com",
+    "country": "Austria",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Austria Glock",
+    "website": "https://glock.com",
+    "country": "Austria",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Austria Schiebel",
+    "website": "https://schiebel.net",
+    "country": "Austria",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Austria Diamond Aircraft",
+    "website": "https://diamondaircraft.com",
+    "country": "Austria",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Saudi SAMI",
+    "website": "https://samidefense.com",
+    "country": "Saudi Arabia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Saudi Advanced Industries",
+    "website": "https://saiia.com",
+    "country": "Saudi Arabia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Saudi Alsalam Aircraft",
+    "website": "https://alsalam.aero",
+    "country": "Saudi Arabia",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Saudi TAQNIA",
+    "website": "https://taqniah.com",
+    "country": "Saudi Arabia",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Saudi Arabco",
+    "website": "https://arabco.com.sa",
+    "country": "Saudi Arabia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Saudi AICC",
+    "website": "https://aicc.com.sa",
+    "country": "Saudi Arabia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Egypt AOI",
+    "website": "https://aoi.gov.eg",
+    "country": "Egypt",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Egypt Helwan Factory",
+    "website": "https://aoi.gov.eg",
+    "country": "Egypt",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Egypt Alexandria Shipyard",
+    "website": "https://alexshipyard.com",
+    "country": "Egypt",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Pakistan POF",
+    "website": "https://pof.gov.pk",
+    "country": "Pakistan",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Pakistan PAC",
+    "website": "https://pac.org.pk",
+    "country": "Pakistan",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Pakistan HIT",
+    "website": "https://hit.gov.pk",
+    "country": "Pakistan",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Indonesia Pindad",
+    "website": "https://pindad.com",
+    "country": "Indonesia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Indonesia Dirgantara",
+    "website": "https://indonesian-aerospace.com",
+    "country": "Indonesia",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Indonesia PAL",
+    "website": "https://pal.co.id",
+    "country": "Indonesia",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Thailand TDI",
+    "website": "https://tdi.co.th",
+    "country": "Thailand",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Thailand Royal Thai Dockyard",
+    "website": "https://rtnd.go.th",
+    "country": "Thailand",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Malaysia DEFTECH",
+    "website": "https://deftech.com.my",
+    "country": "Malaysia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Malaysia SME Aerospace",
+    "website": "https://smeaerospace.com",
+    "country": "Malaysia",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Malaysia Boustead Naval",
+    "website": "https://boustead.com.my",
+    "country": "Malaysia",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Argentina FMA",
+    "website": "https://faaa.mil.ar",
+    "country": "Argentina",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Argentina Tandanor",
+    "website": "https://tandanor.com.ar",
+    "country": "Argentina",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Argentina INVAP",
+    "website": "https://invap.com.ar",
+    "country": "Argentina",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Chile FAMAE",
+    "website": "https://famae.cl",
+    "country": "Chile",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Chile ASMAR",
+    "website": "https://asmar.cl",
+    "country": "Chile",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Chile ENAER",
+    "website": "https://enaer.cl",
+    "country": "Chile",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Brazil Embraer",
+    "website": "https://embraer.com",
+    "country": "Brazil",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Brazil Avibras",
+    "website": "https://avibras.com.br",
+    "country": "Brazil",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Brazil AEL",
+    "website": "https://aelsistemas.com",
+    "country": "Brazil",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Brazil SIATT",
+    "website": "https://siatt.com.br",
+    "country": "Brazil",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Colombia Indumil",
+    "website": "https://indumil.gov.co",
+    "country": "Colombia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Colombia CIAC",
+    "website": "https://ciac.gov.co",
+    "country": "Colombia",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Colombia Cotecmar",
+    "website": "https://cotecmar.com",
+    "country": "Colombia",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Greece HAI",
+    "website": "https://haicorp.gr",
+    "country": "Greece",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Greece EAS",
+    "website": "https://eas.gr",
+    "country": "Greece",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Greece Metka",
+    "website": "https://metka.gr",
+    "country": "Greece",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Portugal EMPORDEF",
+    "website": "https://empordef.pt",
+    "country": "Portugal",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Portugal OGMA",
+    "website": "https://ogma.pt",
+    "country": "Portugal",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Portugal Westsea",
+    "website": "https://westsea.pt",
+    "country": "Portugal",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Romania Romarm",
+    "website": "https://romarm.ro",
+    "country": "Romania",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Romania Avioane Craiova",
+    "website": "https://iac.ro",
+    "country": "Romania",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Romania Santierul Naval",
+    "website": "https://snc.ro",
+    "country": "Romania",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Serbia Yugoimport",
+    "website": "https://yugoimport.com",
+    "country": "Serbia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Serbia UTVA",
+    "website": "https://utva.aero",
+    "country": "Serbia",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Serbia Prva Iskra",
+    "website": "https://prvaiskra.com",
+    "country": "Serbia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Croatia DOK-ING",
+    "website": "https://dok-ing.hr",
+    "country": "Croatia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Croatia Koncar",
+    "website": "https://koncar.hr",
+    "country": "Croatia",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "New Zealand Pacific",
+    "website": "https://pacificaerospace.com",
+    "country": "New Zealand",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "New Zealand Q-West",
+    "website": "https://qwest.co.nz",
+    "country": "New Zealand",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Estonia Milrem",
+    "website": "https://milremrobotics.com",
+    "country": "Estonia",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Estonia DefsecIntel",
+    "website": "https://defsecintel.com",
+    "country": "Estonia",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Latvia Dartz",
+    "website": "https://dartz.eu",
+    "country": "Latvia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Lithuania KNT",
+    "website": "https://knt.lt",
+    "country": "Lithuania",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Qatar Barzan",
+    "website": "https://barzanholdings.com.qa",
+    "country": "Qatar",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Qatar QMI",
+    "website": "https://qmi.qa",
+    "country": "Qatar",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Kuwait KMC",
+    "website": "https://kmc.com.kw",
+    "country": "Kuwait",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Morocco IMI",
+    "website": "https://imi.ma",
+    "country": "Morocco",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Luxembourg Airbus",
+    "website": "https://airbus.com",
+    "country": "Luxembourg",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Luxembourg Arcus",
+    "website": "https://arcusdefense.com",
+    "country": "Luxembourg",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "UAE Edge Group",
+    "website": "https://edgegroup.ae",
+    "country": "UAE",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "UAE Halcon",
+    "website": "https://halcon.ae",
+    "country": "UAE",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "UAE Al Tariq",
+    "website": "https://altariq.ae",
+    "country": "UAE",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "UAE Al Seer Marine",
+    "website": "https://alseermarine.com",
+    "country": "UAE",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "UAE ADSB",
+    "website": "https://adsb.ae",
+    "country": "UAE",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "UAE MBRSC",
+    "website": "https://mbrsc.ae",
+    "country": "UAE",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Canada CAE",
+    "website": "https://cae.com",
+    "country": "Canada",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Canada L3Harris WESCAM",
+    "website": "https://wescam.com",
+    "country": "Canada",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Canada Rheinmetall",
+    "website": "https://rheinmetall.ca",
+    "country": "Canada",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Canada Colt",
+    "website": "https://coltcanada.com",
+    "country": "Canada",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "Canada Magellan",
+    "website": "https://magellan.aero",
+    "country": "Canada",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "South Africa Rheinmetall Denel",
+    "website": "https://rheinmetall-denel.co.za",
+    "country": "South Africa",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "South Africa Denel Land",
+    "website": "https://denellandsystems.co.za",
+    "country": "South Africa",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "South Africa Paramount",
+    "website": "https://paramountgroup.com",
+    "country": "South Africa",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "UAE Falcon Eye Drones",
+    "website": "https://falconeyedrones.com",
+    "country": "UAE",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "UAE Etimad Holding",
+    "website": "https://etimadholding.com",
+    "country": "UAE",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "UAE Al Ameen Security",
+    "website": "https://alameen.ae",
+    "country": "UAE",
+    "category": "Security Solutions",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "UAE Intra Defense",
+    "website": "https://intradefense.ae",
+    "country": "UAE",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "UAE Al Mazroui",
+    "website": "https://almazroui.com",
+    "country": "UAE",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Boeing Phantom Works",
+    "website": "https://boeing.com/phantom",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Lockheed Skunk Works",
+    "website": "https://lockheedmartin.com/skunkworks",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Northrop ATK",
+    "website": "https://northropgrumman.com/atk",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Raytheon Missiles",
+    "website": "https://rtx.com/raytheon-missiles",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GD Mission Systems",
+    "website": "https://gd.com/missionsystems",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GD Ordnance",
+    "website": "https://gd.com/ordnance",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GD Land Systems",
+    "website": "https://gd.com/landsystems",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GD Bath Iron Works",
+    "website": "https://gd.com/biw",
+    "country": "USA",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GD Electric Boat",
+    "website": "https://gd.com/electricboat",
+    "country": "USA",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GD Gulfstream",
+    "website": "https://gd.com/gulfstream",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GD NASSCO",
+    "website": "https://gd.com/nassco",
+    "country": "USA",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GD Information Technology",
+    "website": "https://gd.com/it",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GD European Land Systems",
+    "website": "https://gd.com/els",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA L3Harris Integrated Mission",
+    "website": "https://l3harris.com/ims",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA L3Harris Space",
+    "website": "https://l3harris.com/space",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA L3Harris Maritime",
+    "website": "https://l3harris.com/maritime",
+    "country": "USA",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA L3Harris Aviation",
+    "website": "https://l3harris.com/aviation",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA L3Harris WESCAM",
+    "website": "https://l3harris.com/wescam",
+    "country": "Canada",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Boeing Global Services",
+    "website": "https://boeing.com/services",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Boeing Satellite Systems",
+    "website": "https://boeing.com/space",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Boeing Insitu",
+    "website": "https://insitu.com",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Boeing Defence Australia",
+    "website": "https://boeing.com.au",
+    "country": "Australia",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Boeing Defence UK",
+    "website": "https://boeing.co.uk",
+    "country": "UK",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Lockheed Martin Space",
+    "website": "https://lockheedmartin.com/space",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Lockheed Martin Rotary",
+    "website": "https://lockheedmartin.com/rotary",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Lockheed Martin Missiles",
+    "website": "https://lockheedmartin.com/missiles",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Lockheed Martin Training",
+    "website": "https://lockheedmartin.com/training",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Lockheed Martin Canada",
+    "website": "https://lockheedmartin.com/ca",
+    "country": "Canada",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Lockheed Martin UK",
+    "website": "https://lockheedmartin.com/uk",
+    "country": "UK",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Raytheon Missiles Defense",
+    "website": "https://rtx.com/rmd",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Raytheon Intelligence",
+    "website": "https://rtx.com/ris",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Raytheon Space",
+    "website": "https://rtx.com/space",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Northrop Grumman Mission",
+    "website": "https://northropgrumman.com/mission",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Northrop Grumman Aeronautics",
+    "website": "https://northropgrumman.com/aeronautics",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Northrop Grumman Defense",
+    "website": "https://northropgrumman.com/defense",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Northrop Grumman UK",
+    "website": "https://northropgrumman.com/uk",
+    "country": "UK",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Northrop Grumman Australia",
+    "website": "https://northropgrumman.com/au",
+    "country": "Australia",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Kratos Space",
+    "website": "https://kratosdefense.com/space",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Kratos Government",
+    "website": "https://kratosdefense.com/government",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Kratos Microwave",
+    "website": "https://kratosdefense.com/microwave",
+    "country": "USA",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA AeroVironment Quantix",
+    "website": "https://avinc.com/quantix",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA AeroVironment Tether Eye",
+    "website": "https://avinc.com/tethereye",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Anduril Lattice",
+    "website": "https://anduril.com/lattice",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Anduril Ghost",
+    "website": "https://anduril.com/ghost",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Anduril Anvil",
+    "website": "https://anduril.com/anvil",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Anduril ALTIUS",
+    "website": "https://anduril.com/altius",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Palantir Gotham",
+    "website": "https://palantir.com/gotham",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Palantir Foundry",
+    "website": "https://palantir.com/foundry",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Palantir AIP",
+    "website": "https://palantir.com/aip",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Palantir Defense",
+    "website": "https://palantir.com/defense",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Palantir Intelligence",
+    "website": "https://palantir.com/intelligence",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Shield AI Hivemind",
+    "website": "https://shield.ai/hivemind",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Shield AI V-BAT",
+    "website": "https://shield.ai/vbat",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Shield AI Nova",
+    "website": "https://shield.ai/nova",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Shield AI Sentient",
+    "website": "https://shield.ai/sentient",
+    "country": "USA",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Skydio X10D",
+    "website": "https://skydio.com/x10d",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Skydio Dock",
+    "website": "https://skydio.com/dock",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Skydio Scout",
+    "website": "https://skydio.com/scout",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Skydio 3D Scan",
+    "website": "https://skydio.com/scan",
+    "country": "USA",
+    "category": "Autonomous Platforms",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Teledyne DALSA",
+    "website": "https://teledynedalsa.com",
+    "country": "USA",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Teledyne e2v",
+    "website": "https://teledynee.com",
+    "country": "USA",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Teledyne Marine",
+    "website": "https://teledynemarine.com",
+    "country": "USA",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Teledyne Defense",
+    "website": "https://teledynedefense.com",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Teledyne Optech",
+    "website": "https://teledyneoptech.com",
+    "country": "USA",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Textron Bell",
+    "website": "https://bellflight.com",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Textron Marine",
+    "website": "https://textron.com/marine",
+    "country": "USA",
+    "category": "Maritime Security",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Textron Weapons",
+    "website": "https://textron.com/weapons",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Textron Systems UK",
+    "website": "https://textron.com/uk",
+    "country": "UK",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Sierra Nevada Dream Chaser",
+    "website": "https://sncorp.com/dreamchaser",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Sierra Nevada ISR",
+    "website": "https://sncorp.com/isr",
+    "country": "USA",
+    "category": "ISR & Reconnaissance",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Sierra Nevada Electronic",
+    "website": "https://sncorp.com/electronic",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Sierra Nevada Space",
+    "website": "https://sncorp.com/space",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Honeywell Defense",
+    "website": "https://aerospace.honeywell.com",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Honeywell Intelligrated",
+    "website": "https://honeywell.com",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Honeywell Quantum",
+    "website": "https://honeywell.com/quantum",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GE Additive",
+    "website": "https://ge.com/additive",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GE Digital",
+    "website": "https://ge.com/digital",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GE Grid Solutions",
+    "website": "https://ge.com/grid",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GE Power Conversion",
+    "website": "https://ge.com/power",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA GE Hitachi",
+    "website": "https://geh.com",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Collins Aero Interiors",
+    "website": "https://collinsaerospace.com",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Collins Mission Systems",
+    "website": "https://collinsaerospace.com",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Collins Actuation",
+    "website": "https://collinsaerospace.com",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Collins Aerostructures",
+    "website": "https://collinsaerospace.com",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Moog Aircraft",
+    "website": "https://moog.com",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Moog Space",
+    "website": "https://moog.com/space",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Moog Defense",
+    "website": "https://moog.com/defense",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Moog Industrial",
+    "website": "https://moog.com/industrial",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Cubic Transportation",
+    "website": "https://cubic.com/transportation",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Cubic Defense",
+    "website": "https://cubic.com/defense",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Cubic Mission",
+    "website": "https://cubic.com/mission",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Cubic Global",
+    "website": "https://cubic.com/global",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Mercury Processing",
+    "website": "https://mrcy.com",
+    "country": "USA",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Mercury RF",
+    "website": "https://mrcy.com/rf",
+    "country": "USA",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Mercury Micro",
+    "website": "https://mrcy.com/micro",
+    "country": "USA",
+    "category": "Advanced Sensors",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Mercury Mission",
+    "website": "https://mrcy.com/mission",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA KBR Government",
+    "website": "https://kbr.com/government",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA KBR Technology",
+    "website": "https://kbr.com/technology",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA KBR Aerospace",
+    "website": "https://kbr.com/aerospace",
+    "country": "USA",
+    "category": "Air Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA KBR Energy",
+    "website": "https://kbr.com/energy",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Amentum Environment",
+    "website": "https://amentum.com/environment",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Amentum Energy",
+    "website": "https://amentum.com/energy",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Amentum Engineering",
+    "website": "https://amentum.com/engineering",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Amentum Federal",
+    "website": "https://amentum.com/federal",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Amentum National Security",
+    "website": "https://amentum.com/nationalsecurity",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Peraton Defense",
+    "website": "https://peraton.com/defense",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Peraton Homeland",
+    "website": "https://peraton.com/homeland",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Peraton Space",
+    "website": "https://peraton.com/space",
+    "country": "USA",
+    "category": "Space Defense",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Peraton Intelligence",
+    "website": "https://peraton.com/intelligence",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Parsons Transportation",
+    "website": "https://parsons.com/transportation",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Parsons Water",
+    "website": "https://parsons.com/water",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Parsons Environmental",
+    "website": "https://parsons.com/environmental",
+    "country": "USA",
+    "category": "Defense Manufacturing",
+    "source": "defense_directory_real"
+  },
+  {
+    "company_name": "USA Parsons Cyber",
+    "website": "https://parsons.com/cyber",
+    "country": "USA",
+    "category": "C4ISR Systems",
+    "source": "defense_directory_real"
+  }
+]

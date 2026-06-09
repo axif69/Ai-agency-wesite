@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/CaseStudies';
 
 export const metadata = {
-  title: "Case Studies | Digital Marketing & Web Design Results | Asif Digital Dubai",
-  description: "Real results for real UAE businesses. Read detailed case studies showing how Asif Digital delivered measurable ROI through web design, SEO, PPC, social media, and AI automation in Dubai and Sharjah.",
+  title: "AI & Digital Marketing Case Studies Dubai | Asif Digital",
+  description: "Explore real-world case studies from Asif Digital. See how our SEO, web design, and AI automation services drive growth for enterprises in Dubai and Sharjah.",
   alternates: {
     canonical: "https://www.asifdigital.agency/case-studies"
   }

@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/AiMarketingDubai';
 
 export const metadata = {
-  title: "AI Marketing Automation Dubai | Smarter Campaigns | Asif Digital",
-  description: "Supercharge your acquisition. We leverage agentic AI marketing, AEO, and predictive analytics to dominate search and social in the UAE.",
+  title: "AI Digital Marketing Agency Dubai | Data-Driven Marketing UAE",
+  description: "Elevate your marketing ROI with AI-driven digital marketing services in Dubai. We use artificial intelligence for advanced targeting and campaign optimization.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-marketing-dubai"
   }

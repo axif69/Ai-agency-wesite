@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SEO from "../../components/SEO";
+
 import { ArrowRight, Wrench, Shield, Zap, RefreshCw, CheckCircle, Clock, LifeBuoy } from "lucide-react";
 import Link from "next/link";
 
@@ -69,14 +69,7 @@ export default function WebsiteSupport() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <SEO 
-        title="Website Support & Maintenance Dubai | Managed Services UAE | Asif Digital"
-        description="Professional website maintenance and technical support for Dubai and Sharjah businesses. 24/7 monitoring, security hardening, and rapid content updates."
-        keywords="Website Support Dubai, Website Maintenance Sharjah, Managed WordPress UAE, Website Security Dubai"
-        ogImage="https://images.unsplash.com/photo-1454165833968-4e71580cadda?auto=format,compress&fm=webp&q=75&w=1200"
-        schema={supportSchema}
-        faqSchema={faqs.map(f => ({ question: f.q, answer: f.a }))}
-      />
+      
       
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12 font-serif text-white tracking-tight leading-tight">
@@ -89,8 +82,8 @@ export default function WebsiteSupport() {
           <motion.div style={{ y, opacity }} className="max-w-4xl">
             <span className="micro-label block mb-4 text-white/60">Dubai & Sharjah Reliability</span>
             <h1 className="text-4xl md:text-7xl">
-              Zero Downtime.<br/><span className="text-white/80 italic">Complete Peace.</span>
-            </h1>
+            Website Maintenance & <br/><span className="italic text-white/40">Support Dubai.</span>
+          </h1>
           </motion.div>
         </div>
         {/* Hidden SEO Image */}
@@ -110,7 +103,7 @@ export default function WebsiteSupport() {
           className="mb-24"
         >
           <p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl leading-relaxed">
-            Your website is your hardest working employee. We ensure it never takes a sick day. From proactive security hardening to rapid content updates, we manage the technical complexity so you can focus on growth.
+            Secure your digital assets with reliable Website Maintenance & Support in Dubai. We provide 24/7 monitoring, security updates, regular backups, and technical troubleshooting to ensure your website remains fast, secure, and always online.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">Secure Your Website <ArrowRight className="w-4 h-4" /></Link>
