@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { BLOG_POSTS } from '@/data/blogData'
+import { BLOG_POSTS } from '../src/data/blogData'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.asifdigital.agency';
