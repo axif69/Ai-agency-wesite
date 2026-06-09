@@ -19,7 +19,7 @@ export default function Page() {
     "telephone": "054 586 6094",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Muwaileh Commercial - Industrial Area",
+      "streetAddress": "Muwaileh Commercial",
       "addressLocality": "Sharjah",
       "addressRegion": "Sharjah",
       "addressCountry": "AE"
