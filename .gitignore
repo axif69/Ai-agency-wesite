@@ -50,7 +50,7 @@ metadata.json
 blog_guide.md
 compress-images.mjs
 generate-services.js
-src/
-public/
+/src/
+/public/
 README.md
 .env.example

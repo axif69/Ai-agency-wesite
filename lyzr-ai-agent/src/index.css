@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@theme {
+  --color-apple-blue: #0071e3;
+  --color-apple-bg: #f5f5f8;
+  --color-apple-border: #eef0f5;
+  --color-success-green: #34c759;
+  --color-error-red: #ff3b30;
+  --color-hunter-gold: #d4af37;
+  --color-profiler-blue: #3b82f6;
+  
+  --radius-20: 20px;
+  
+  --shadow-apple: 0 8px 30px rgba(0,0,0,0.03);
+  --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.05);
+  
+  --font-sans: "Inter", "Outfit", sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+:root {
+  --apple-bg: #f8fafc;
+}
+
+body {
+  background-color: var(--apple-bg);
+  font-family: 'Inter', sans-serif;
+  @apply text-slate-900 antialiased;
+}
+
+@layer components {
+  .card-apple {
+    @apply bg-white rounded-20 border border-apple-border shadow-apple p-8;
+  }
+  
+  .btn-primary {
+    @apply bg-apple-blue text-white rounded-xl px-6 py-3 font-semibold hover:opacity-90 transition-all active:scale-95;
+  }
+  
+  .input-apple {
+    @apply bg-[#fcfcfd] border border-apple-border rounded-xl px-4 py-3 focus:outline-none focus:border-apple-blue transition-all;
+  }
+}
+
+/* Custom scrollbar for the intelligence stream */
+.intelligence-stream::-webkit-scrollbar {
+  width: 6px;
+}
+.intelligence-stream::-webkit-scrollbar-track {
+  background: transparent;
+}
+.intelligence-stream::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
