@@ -22,6 +22,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Asif Digital: AI Automation, Web & Graphic Design",
+              "image": "https://asifdigital.agency/favicon.png",
+              "url": "https://asifdigital.agency",
+              "telephone": "+971545866094",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Muwaileh Commercial",
+                "addressLocality": "Sharjah",
+                "addressRegion": "Sharjah",
+                "addressCountry": "AE"
+              },
+              "openingHours": "Mo,Tu,We,Th,Fr 09:00-18:00"
+            })
+          }}
+        />
       </head>
       <body>
         <Layout>
