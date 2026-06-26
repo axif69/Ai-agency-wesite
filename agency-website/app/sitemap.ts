@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { BLOG_POSTS } from '../src/data/blogData'
+import { uaeLocations } from '../data/locations'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.asifdigital.agency';
@@ -63,5 +64,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticUrls, ...blogUrls];
+  const locationUrls = uaeLocations.map((location) => ({
+    url: `${baseUrl}/location/${location.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticUrls, ...blogUrls, ...locationUrls];
 }
