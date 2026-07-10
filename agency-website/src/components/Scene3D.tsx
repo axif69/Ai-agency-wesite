@@ -14,9 +14,16 @@ function FloatingElements() {
 
   useFrame((state) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y = rotationY.get();
-      groupRef.current.position.y = positionY.get();
-      groupRef.current.rotation.x = state.clock.getElapsedTime() * 0.1;
+      // Base scroll-controlled rotation + mouse pointer parallax tracking
+      const targetRotY = rotationY.get() + state.pointer.x * 0.2;
+      const targetPosY = positionY.get() + state.pointer.y * 0.4;
+      const targetPosX = state.pointer.x * 0.4;
+      
+      // Smooth interpolation
+      groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, targetRotY, 0.05);
+      groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, targetPosY, 0.05);
+      groupRef.current.position.x = THREE.MathUtils.lerp(groupRef.current.position.x, targetPosX, 0.05);
+      groupRef.current.rotation.x = state.clock.getElapsedTime() * 0.05 + state.pointer.y * 0.1;
     }
   });
 
@@ -95,7 +102,6 @@ export default function Scene3D() {
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={2} color="#ffffff" />
         <pointLight position={[-10, -10, -10]} intensity={1} color="#444444" />
         
-        <MainBlob />
         <FloatingElements />
         
         <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={0.5} />

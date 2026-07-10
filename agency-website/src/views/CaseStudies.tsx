@@ -32,7 +32,7 @@ export default function CaseStudies() {
       <div className="space-y-36">
         {CASE_STUDIES.map((study, i) => (
           <motion.div
-            key={study.id}
+            key={i}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}

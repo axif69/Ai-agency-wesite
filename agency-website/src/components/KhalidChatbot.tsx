@@ -4,30 +4,27 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Bot, User, Loader2, Mic, MicOff, Volume2, VolumeX } from 'lucide-react';
 
 const SYSTEM_INSTRUCTION = `
-You are Khalid, an elite AI Strategic Consultant for Asif Digital.
-Asif Digital is a high-ticket Sovereign AI & Digital Transformation Firm led by Asif Khan.
+You are Khalid, the Lead AI Architect and Strategic Intake Agent for Asif Digital.
+Asif Digital is an elite, high-ticket Sovereign AI & Digital Transformation Firm led by Khalfan Obaid.
 
 Primary Sovereign AI Pillars:
 1. Sovereign Sales Agent (B2B Autonomous Sales Swarms) - OUR FLAGSHIP SOLUTION.
 2. Command & Control Dashboard (Real-time Agentic Visibility)
 3. Arabic Intelligence Hub (Localized Khaleeji NLP Mastery)
 4. Agentic Finance & Compliance (UAE Law 45 Infrastructure)
-5. Logistics & Supply Chain AI
+5. Web Design & Digital Marketing
 
 Your Personality & Mission:
-1. ACT LIKE A $1,000/HOUR CONSULTANT: You are highly intelligent, empathetic, and strategic. You do not interrogate; you consult.
-2. ACTIVE LISTENING: Always validate the user's business pain points before moving the conversation forward. Show that you understand their industry constraints.
-3. VALUE FIRST: Naturally weave in a brief, high-value insight about how AI solves their specific problem before asking a follow-up question.
-4. DYNAMIC PACING: Let the conversation flow naturally. Do not use a rigid script. Wait for the user to show genuine interest before steering the conversation toward the "Sovereign Sales Agent" or asking for contact details.
+1. ACT LIKE A BRILLIANT, HUMAN CTO: You are highly intelligent, empathetic, and strategic. Do NOT sound like a standard robot. Use natural pacing.
+2. CRITICAL RULE - NO PRICING: NEVER, EVER quote a specific price (e.g., do not say "50,000 AED"). If asked about pricing, state that "Every Sovereign AI deployment is custom-architected based on your specific operational bottlenecks. We require a technical audit before scoping the investment."
+3. VALUE FIRST: Before asking questions, provide a highly specific, intelligent insight about how AI can solve their exact problem. Prove your expertise.
+4. DYNAMIC PACING: Let the conversation flow naturally. Do not interrogate. 
 5. STRATEGIC BREVITY: Keep responses to 2-3 CONCISE sentences. Executives do not have time to read paragraphs.
 
 Discovery Goals (To achieve naturally over time, NOT all at once):
-- Identify their biggest operational bottleneck (e.g., Sales prospecting, Finance reconciliation).
-- Subtly help them realize the financial cost of this bottleneck (e.g., FTEs wasted, AED lost).
-- Once value is established, politely request their WhatsApp number so Asif Khan can review their "Sovereign Shield Blueprint."
-
-Discovery for Other Services (Design/Dev/Marketing):
-If they ask for non-AI services, gracefully pivot. Emphasize that a website or brand without intelligent automation is just a static brochure, but agree to help them build a high-performance digital asset.
+- Identify their biggest operational bottleneck.
+- Help them realize the financial cost of this bottleneck.
+- Once value is established, politely request their WhatsApp number so Khalfan Obaid can review their "Sovereign Shield Blueprint."
 
 Interactive Suggestions:
 - Always append "[SUGGESTIONS: Option 1, Option 2]" at the very end to guide the user.
@@ -142,6 +139,12 @@ export default function KhalidChatbot() {
   }, [messages]);
 
   useEffect(() => {
+    const handleOpenChatbot = () => setIsOpen(true);
+    window.addEventListener('open-chatbot', handleOpenChatbot);
+    return () => window.removeEventListener('open-chatbot', handleOpenChatbot);
+  }, []);
+
+  useEffect(() => {
     if (isOpen && messages.length === 1 && messages[0].role === 'model') {
       speak(messages[0].text);
     }
@@ -242,7 +245,7 @@ export default function KhalidChatbot() {
         .join('\n');
 
       const prompt = `
-          Analyze this chat history and provide a HIGH-LEVEL EXECUTIVE SUMMARY for Asif Khan (the CEO). 
+          Analyze this chat history and provide a HIGH-LEVEL EXECUTIVE SUMMARY for Khalfan Obaid (the CEO). 
           Focus on: Name, Service Needed, Budget (if mentioned), and Timeline. 
           Format it as a clean list for WhatsApp.
           
@@ -275,7 +278,7 @@ export default function KhalidChatbot() {
       console.error("Summary Generation Error:", error);
       const phoneNumber = "971545866094";
       const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`).join('\n');
-      const text = encodeURIComponent(`Hi Asif, I have a new lead (Summary failed, sending history):\n\n${history}`);
+      const text = encodeURIComponent(`Hi Khalfan, I have a new lead (Summary failed, sending history):\n\n${history}`);
       window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
     } finally {
       setIsSummarizing(false);
@@ -375,7 +378,7 @@ export default function KhalidChatbot() {
                         Summarizing...
                       </>
                     ) : (
-                      "Forward to Asif's WhatsApp"
+                      "Forward to WhatsApp"
                     )}
                   </button>
                 </div>

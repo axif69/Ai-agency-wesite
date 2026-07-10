@@ -14,6 +14,48 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [isSovereignOpen, setIsSovereignOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
+  const [footerEmail, setFooterEmail] = useState("");
+  const [footerBrief, setFooterBrief] = useState("");
+  const [isBriefSubmitting, setIsBriefSubmitting] = useState(false);
+  const [isBriefSuccess, setIsBriefSuccess] = useState(false);
+
+  const handleBriefSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!footerEmail.trim() || !footerBrief.trim() || isBriefSubmitting) return;
+    
+    setIsBriefSubmitting(true);
+    
+    try {
+      const submissionData = new FormData();
+      submissionData.append("access_key", (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "").trim());
+      submissionData.append("email", footerEmail);
+      submissionData.append("message", footerBrief);
+      submissionData.append("subject", `New Project Brief from Footer`);
+      submissionData.append("from_name", "Asif Digital Brief Intake");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submissionData
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        setIsBriefSuccess(true);
+        setFooterEmail("");
+        setFooterBrief("");
+        setTimeout(() => setIsBriefSuccess(false), 5000);
+      } else {
+        throw new Error("Submission failed");
+      }
+    } catch (error) {
+      console.error("Brief Error:", error);
+      alert("Operational Latency. Please contact us via WhatsApp.");
+    } finally {
+      setIsBriefSubmitting(false);
+    }
+  };
+
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
@@ -286,7 +328,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </li>
                 <li className="flex flex-col gap-2 overflow-hidden">
                   <span className="text-[9px] uppercase tracking-widest text-white/90 font-black">Email Correspondence</span>
-                  <a href="mailto:Aiautomationdevelopement@gmail.com" className="text-white/95 hover:text-white transition-colors text-xs sm:text-sm max-w-full break-all">Aiautomationdevelopement@gmail.com</a>
+                  <a href="mailto:hello@asifdigital.agency" className="text-white/95 hover:text-white transition-colors text-xs sm:text-sm max-w-full break-all">hello@asifdigital.agency</a>
                 </li>
                 <li className="flex flex-col gap-2">
                   <span className="text-[9px] uppercase tracking-widest text-white/90 font-black">Asif Digital Architecture</span>
@@ -298,30 +340,49 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Quick Contact Form */}
             <div>
               <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/95 font-bold mb-10">Briefing</h4>
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()} aria-label="Quick Project Briefing Form">
-                <div className="relative group">
-                  <label htmlFor="footer-email" className="sr-only">Corporate Email</label>
-                  <input 
-                    id="footer-email"
-                    type="email" 
-                    placeholder="Corporate Email" 
-                    autoComplete="email"
-                    className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-white/50 transition-all duration-500 placeholder:text-white/90"
-                  />
+              {isBriefSuccess ? (
+                <div className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 text-center text-sm font-light text-green-400">
+                  Briefing Received. Our team will review and contact you within 12 hours.
                 </div>
-                <div className="relative group">
-                  <label htmlFor="footer-brief" className="sr-only">Project Brief</label>
-                  <textarea 
-                    id="footer-brief"
-                    placeholder="Project Brief" 
-                    rows={4}
-                    className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-white/50 transition-all duration-500 resize-none placeholder:text-white/90"
-                  ></textarea>
-                </div>
-                <button type="submit" aria-label="Submit your project briefing" className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-5 rounded-2xl hover:bg-white/90 transition-all duration-500 text-[10px] shadow-2xl hover:scale-[1.02] active:scale-[0.98]">
-                  Submit Brief
-                </button>
-              </form>
+              ) : (
+                <form className="space-y-4" onSubmit={handleBriefSubmit} aria-label="Quick Project Briefing Form">
+                  <div className="relative group">
+                    <label htmlFor="footer-email" className="sr-only">Corporate Email</label>
+                    <input 
+                      id="footer-email"
+                      type="email" 
+                      placeholder="Corporate Email" 
+                      autoComplete="email"
+                      required
+                      value={footerEmail}
+                      onChange={(e) => setFooterEmail(e.target.value)}
+                      disabled={isBriefSubmitting}
+                      className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-white/50 transition-all duration-500 placeholder:text-white/90"
+                    />
+                  </div>
+                  <div className="relative group">
+                    <label htmlFor="footer-brief" className="sr-only">Project Brief</label>
+                    <textarea 
+                      id="footer-brief"
+                      placeholder="Project Brief" 
+                      rows={4}
+                      required
+                      value={footerBrief}
+                      onChange={(e) => setFooterBrief(e.target.value)}
+                      disabled={isBriefSubmitting}
+                      className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-white/50 transition-all duration-500 resize-none placeholder:text-white/90"
+                    ></textarea>
+                  </div>
+                  <button 
+                    type="submit" 
+                    disabled={isBriefSubmitting}
+                    aria-label="Submit your project briefing" 
+                    className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-5 rounded-2xl hover:bg-white/90 transition-all duration-500 text-[10px] shadow-2xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isBriefSubmitting ? "Sending..." : "Submit Brief"}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
 

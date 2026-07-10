@@ -1,5 +1,19 @@
 import './globals.css';
 import Layout from '../src/components/Layout';
+import SmoothScroll from '../src/components/SmoothScroll';
+import { Syne, Space_Grotesk } from 'next/font/google';
+
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-syne',
+  display: 'swap',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+});
 
 export const metadata = {
   title: "AI Automation Agency Dubai | Asif Digital — AI Agents & Workflows UAE",
@@ -8,7 +22,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${syne.variable} ${spaceGrotesk.variable}`}>
       <head>
         <meta name="google-site-verification" content="3GJPTV-4-OEXb4Z_r0EAIVCYBzHYp8YDR2QavSzPGm8" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-DKTWMYPBV7"></script>
@@ -27,11 +41,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "Asif Digital: AI Automation, Web & Graphic Design",
+              "@type": "ProfessionalService",
+              "name": "Asif Digital: AI Automation, Web & Custom Software Agency",
               "image": "https://asifdigital.agency/favicon.png",
               "url": "https://asifdigital.agency",
               "telephone": "+971545866094",
+              "priceRange": "$$$",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Muwaileh Commercial",
@@ -39,15 +54,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 "addressRegion": "Sharjah",
                 "addressCountry": "AE"
               },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 25.3218,
+                "longitude": 55.4564
+              },
+              "areaServed": [
+                "Dubai",
+                "Sharjah",
+                "Abu Dhabi",
+                "United Arab Emirates",
+                "GCC"
+              ],
               "openingHours": "Mo,Tu,We,Th,Fr 09:00-18:00"
             })
           }}
         />
       </head>
       <body>
-        <Layout>
-          {children}
-        </Layout>
+        <SmoothScroll>
+          <Layout>
+            {children}
+          </Layout>
+        </SmoothScroll>
       </body>
     </html>
   );

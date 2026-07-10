@@ -106,7 +106,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">Secure Intelligence</h3>
-                    <a href="mailto:aiautomationdevelopement@gmail.com" className="text-2xl font-serif text-white/80 hover:text-white transition-colors">aiautomationdevelopement@gmail.com</a>
+                    <a href="mailto:hello@asifdigital.agency" className="text-2xl font-serif text-white/80 hover:text-white transition-colors">hello@asifdigital.agency</a>
                   </div>
                 </div>
               </div>

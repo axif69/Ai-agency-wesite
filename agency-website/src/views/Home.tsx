@@ -2,6 +2,10 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 import HeroParticles from "../components/HeroParticles";
 import TiltCard from "../components/animations/TiltCard";
@@ -9,33 +13,39 @@ import SpotlightCard from "../components/animations/SpotlightCard";
 import ParticleBackground from "../components/animations/ParticleBackground";
 import MagneticButton from "../components/animations/MagneticButton";
 import { TextGenerateEffect } from "../components/animations/TextGenerateEffect";
-import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap, Workflow, Languages } from "lucide-react";
+import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap, Workflow, Languages, Phone } from "lucide-react";
 import { CASE_STUDIES } from "../data/caseStudyData";
+
+const Scene3D = dynamic(() => import("../components/Scene3D"), { ssr: false });
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 /* ─── DATA ─── */
 
 const sovereignSolutions = [
   {
     title: "AI Automation Agency",
-    desc: "Architecting autonomous workflows, private LLMs, and cognitive process automation for high-ticket GCC enterprises.",
+    desc: "We build custom AI workflows that handle your repetitive daily tasks automatically, saving your team hundreds of hours a month.",
     icon: <Workflow className="w-6 h-6" role="img" aria-label="Workflow Icon" />,
     link: "/ai-automation-agency-dubai",
   },
   {
     title: "Sovereign AI Marketing",
-    desc: "Autonomous marketing swarms that dominate UAE search & social with data-sovereign intelligence and AEO precision.",
+    desc: "Smart marketing campaigns that get your business to the top of Google Maps and search results in the UAE.",
     icon: <Zap className="w-6 h-6" role="img" aria-label="Marketing Flash Icon" />,
     link: "/ai-marketing-dubai",
   },
   {
     title: "Autonomous Sales Swarms",
-    desc: "B2B WhatsApp & Email agents that qualify leads, negotiate, and close deals 24/7 without fatigue or geographical limits.",
+    desc: "AI Chatbots that live on your website and WhatsApp, answering customer questions and booking sales 24/7 without ever taking a break.",
     icon: <MessageSquare className="w-6 h-6" role="img" aria-label="Sales Swarm Icon" />,
     link: "/sovereign-sales-agent",
   },
   {
     title: "Arabic Intelligence Hub",
-    desc: "Sovereign Khaleeji NLP and culturally-aligned Arabic intelligence for UAE government and enterprise. Neural alignment for the GCC.",
+    desc: "Our AI systems speak perfect Khaleeji Arabic and English, ensuring you never miss a lead from any part of the UAE market.",
     icon: <Languages className="w-6 h-6" role="img" aria-label="Arabic Language Icon" />,
     link: "/arabic-ai-hub",
   }
@@ -44,75 +54,253 @@ const sovereignSolutions = [
 const foundationalServices = [
   {
     title: "Web & Ecommerce Development",
-    desc: "High-performance, headless commerce architectures designed to scale locally and globally.",
+    desc: "Lightning-fast, premium websites engineered specifically to turn your casual visitors into paying customers.",
     icon: <Briefcase className="w-5 h-5" role="img" aria-label="Ecommerce Icon" />,
     link: "/services/ecommerce-website-development-dubai",
   },
   {
+    title: "Custom Web App & Software Development",
+    desc: "We build secure portal software, customer dashboards, and custom SaaS platforms tailored for your business.",
+    icon: <Server className="w-5 h-5" role="img" aria-label="Server Icon" />,
+    link: "/services/web-development-dubai-uae",
+  },
+  {
     title: "Corporate Branding",
-    desc: "Identity systems engineered for authority, trust, and premium market positioning.",
+    desc: "Professional logos and brand identities designed to make your local business look like an elite global enterprise.",
     icon: <Shield className="w-5 h-5" role="img" aria-label="Branding Shield Icon" />,
     link: "/services/branding-agency-dubai-sharjah",
   },
   {
     title: "Search & Paid Media (SEO/PPC)",
-    desc: "Data-driven acquisition channels to capture high-intent traffic across the Emirates.",
+    desc: "Data-driven Google and Meta ads designed to get you the highest possible return on your marketing budget.",
     icon: <TrendingUp className="w-5 h-5" role="img" aria-label="Growth Chart Icon" />,
     link: "/services/ppc-google-ads-agency-dubai",
   }
 ];
 
+const TEAM_MEMBERS = [
+  {
+    name: "Khalfan Obaid",
+    role: "Principal AI Architect & Director",
+    desc: "Architecting custom AI workflows and leading digital transformation strategies for businesses across the GCC.",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80"
+  },
+  {
+    name: "Tariq Mahmood",
+    role: "Lead Web Developer",
+    desc: "Specialist in building high-performance, lightning-fast Next.js storefronts and custom integrations.",
+    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&q=80"
+  },
+  {
+    name: "Sarah Al-Mansoori",
+    role: "AI Conversation Designer",
+    desc: "Crafting multi-lingual WhatsApp and web chatbots that communicate perfectly in Arabic (Khaleeji) and English.",
+    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&q=80"
+  }
+];
+
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const horizontalScrollRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   // ROI Calculator State
-  const [employees, setEmployees] = useState(10);
-  const humanCostPerYear = 650000; // AED per mid-level employee fully loaded
-  const agentCostPerYear = (humanCostPerYear * 0.3); // 70% cheaper
+  const [employees, setEmployees] = useState(5);
+  const humanCostPerYear = 120000; // AED per average employee (salary + visa)
+  const agentCostPerYear = 15000; // Average AI Software yearly cost
   
   const totalHumanCost = employees * humanCostPerYear;
   const totalAgentCost = employees * agentCostPerYear;
   const totalSavings = totalHumanCost - totalAgentCost;
 
-  return (
-    <div ref={containerRef} className="relative bg-[#050505]">
-      
+  useGSAP(() => {
+    // Reveal animations for headings/paragraphs
+    const reveals = gsap.utils.toArray(".gsap-reveal");
+    reveals.forEach((elem: any) => {
+      gsap.fromTo(
+        elem,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: elem,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
 
+    // Why Now section GSAP animations
+    gsap.fromTo(
+      ".why-now-text",
+      { x: -50, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".why-now-text",
+          start: "top 80%",
+        },
+      }
+    );
+
+    const whyNowTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".why-now-graphic",
+        start: "top 75%",
+      },
+    });
+
+    whyNowTl.fromTo(
+      ".why-now-graphic",
+      { scale: 0.95, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.8, ease: "power2.out" }
+    )
+    .fromTo(
+      ".legacy-card",
+      { x: -50, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+      "-=0.4"
+    )
+    .fromTo(
+      ".arrow-graphic",
+      { scale: 0, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" },
+      "-=0.2"
+    )
+    .fromTo(
+      ".automated-card",
+      { x: 50, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+      "-=0.3"
+    );
+
+    // ROI Calculator animations
+    gsap.fromTo(
+      ".roi-card-left",
+      { x: -50, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".roi-card-left",
+          start: "top 85%",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      ".roi-card-right",
+      { x: 50, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".roi-card-right",
+          start: "top 85%",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      ".roi-savings-container",
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "back.out(1.5)",
+        scrollTrigger: {
+          trigger: ".roi-savings-container",
+          start: "top 90%",
+        },
+      }
+    );
+
+    // Horizontal Scroll Trigger for Services Section
+    const scrollEl = horizontalScrollRef.current;
+    const triggerEl = triggerRef.current;
+    if (scrollEl && triggerEl) {
+      const getScrollAmount = () => {
+        let scrollWidth = scrollEl.scrollWidth;
+        let windowWidth = window.innerWidth;
+        return -(scrollWidth - windowWidth);
+      };
+
+      const tween = gsap.fromTo(
+        scrollEl,
+        { x: 0 },
+        {
+          x: getScrollAmount,
+          ease: "none",
+          scrollTrigger: {
+            trigger: triggerEl,
+            pin: true,
+            scrub: 1,
+            start: "top top",
+            end: () => `+=${scrollEl.scrollWidth - window.innerWidth}`,
+            invalidateOnRefresh: true,
+          }
+        }
+      );
+
+      return () => {
+        tween.kill();
+      };
+    }
+  }, { dependencies: [] });
+
+  return (
+    <div ref={containerRef} className="relative bg-[#050505] overflow-hidden">
+      {/* 3D Interactive Background */}
+      <Scene3D />
+      
       {/* ── 1. The "Authority" Hero Section ── */}
       <section className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden px-6 pt-24 sm:pt-0">
-        <motion.div style={{ y, opacity }} className="relative z-10 text-center flex flex-col items-center -mt-20 md:-mt-32 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="mb-6 flex items-center justify-center gap-3">
+        <motion.div style={{ y, opacity }} className="relative z-10 text-center flex flex-col items-center -mt-24 md:-mt-36 w-full">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="mb-3 flex items-center justify-center gap-3">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80">
-              UAE Sovereign Infrastructure Online
+              Dubai's Premier AI Automation & Digital Architects
             </span>
           </motion.div>
           
-          <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="text-4xl sm:text-6xl md:text-8xl lg:text-[7vw] font-serif font-bold leading-[0.9] tracking-tight mb-8 max-w-7xl mx-auto drop-shadow-2xl">
-            #1 AI Automation Agency <br /><span className="italic text-white/70">in Dubai.</span>
+          <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="text-4xl sm:text-6xl md:text-7xl lg:text-[6vw] xl:text-[5.5vw] font-serif font-bold leading-[1.1] tracking-tight mb-4 max-w-6xl mx-auto drop-shadow-2xl">
+            Turn Your Digital Presence <br /><span className="italic text-white/70 tracking-normal pr-2">Into an AI Revenue Engine.</span>
           </motion.h1>
           
           <TextGenerateEffect 
-            words="Helping UAE businesses scale with custom AI Agents, intelligent workflow automation, and data-driven marketing."
-            className="text-lg md:text-xl lg:text-3xl text-white font-medium max-w-4xl mx-auto font-sans leading-tight mb-12 drop-shadow-md"
+            words="We build high-performance digital storefronts powered by intelligent AI agents. Capture leads, answer complex queries in English and Arabic, and book meetings on autopilot, 24/7."
+            className="text-base md:text-lg lg:text-xl text-white/95 font-normal max-w-3xl mx-auto font-sans leading-relaxed mb-6 drop-shadow-md"
           />
           
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1 }} className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0 justify-center z-10">
             <MagneticButton>
-              <Link href="/contact" aria-label="Book an Operational AI Audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)]">
-                Book an Operational Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
-              </Link>
+              <div onClick={() => window.dispatchEvent(new CustomEvent('open-calendar'))} aria-label="Deploy My AI Agent" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer">
+                Deploy My AI Agent <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
+              </div>
             </MagneticButton>
             <MagneticButton>
-              <Link href="/sovereign-dashboard" aria-label="View Live Agentic Dashboard" className="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all flex items-center justify-center gap-3 backdrop-blur-md">
-                View Live Dashboard <Activity className="w-4 h-4" role="img" aria-label="Activity icon" />
-              </Link>
+              <div onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} aria-label="See the AI in Action" className="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all flex items-center justify-center gap-3 backdrop-blur-md cursor-pointer">
+                See the AI in Action <MessageSquare className="w-4 h-4" role="img" aria-label="Message icon" />
+              </div>
             </MagneticButton>
           </motion.div>
         </motion.div>
@@ -122,148 +310,299 @@ export default function Home() {
       {/* ── Trust Signals Bar ── */}
       <section className="py-8 bg-black border-y border-white/5 relative z-20">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-8 text-[10px] uppercase font-bold tracking-[0.2em] text-white/60">
-          <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-white/70" role="img" aria-label="Sovereignty Shield icon" /> 100% Data Sovereignty</div>
-          <div className="flex items-center gap-2"><Database className="w-4 h-4 text-white/70" role="img" aria-label="Database storage icon" /> UAE Hosted Compute</div>
-          <div className="flex items-center gap-2"><Brain className="w-4 h-4 text-white/70" role="img" aria-label="AI reasoning brain icon" /> Agentic Architecture</div>
-          <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-white/70" role="img" aria-label="Global networking icon" /> War-Agnostic Infrastructure</div>
+          <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-white/70" role="img" aria-label="Sovereignty Shield icon" /> 100% Data Security</div>
+          <div className="flex items-center gap-2"><Database className="w-4 h-4 text-white/70" role="img" aria-label="Database storage icon" /> Fast UAE Hosting</div>
+          <div className="flex items-center gap-2"><Brain className="w-4 h-4 text-white/70" role="img" aria-label="AI reasoning brain icon" /> AI Automation</div>
+          <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-white/70" role="img" aria-label="Global networking icon" /> Proven ROI</div>
         </div>
       </section>
 
       {/* ── 2. The Problem / Market Context ("Why Now") ── */}
       <section className="py-40 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+          <div className="why-now-text opacity-0">
             <h2 className="text-4xl md:text-6xl font-serif tracking-tight leading-[1.1] mb-10">
-              The standard office is fragile. 2026 demands <span className="italic text-white/70">unbreakable operations.</span>
+              A standard website is a brochure. <br/><span className="italic text-white/70">You need an active employee.</span>
             </h2>
-            <div className="space-y-6 text-white/80 font-light xl:text-lg leading-relaxed">
-              <p>In the wake of regional volatility and rapid workforce shifts across the GCC, relying solely on human capital introduces a critical single point of failure. When flights pause, logistics disruption hits, and remote mandates are issued—does your business stop?</p>
-              <p>The 2026 UAE business environment demands structural resilience. A human mid-level office worker costs upwards of AED 650,000 annually when factoring in visas, mandatory housing, and end-of-service gratuity—all for 8 hours of daily output heavily vulnerable to global events.</p>
-              <p className="text-white font-medium border-l-2 border-white pl-4 mt-8 py-2">
-                We build Agentic Digital Employees. They do not require visas. They do not sleep. They execute complex reasoning tasks in milliseconds. And they reside entirely on <span className="text-green-400">G42 and Khazna</span> state-backed sovereign infrastructure, ensuring 100% data residency and absolute business continuity.
+            <div className="space-y-6 text-white/80 font-normal xl:text-lg leading-relaxed">
+              <p>In the UAE, your customers are searching online at all hours. If your website is a static, slow-loading brochure, and your human sales team clocks out at 6 PM, you are losing money to your competitors every single night.</p>
+              <p className="text-white font-medium border-l-2 border-white pl-4 py-2">
+                We build Digital Storefronts powered by AI Employees. Our premium websites rank on Google to bring in traffic, while our integrated AI Chatbots talk to your customers in English and Arabic, answering questions and booking sales 24/7.
               </p>
             </div>
             <div className="mt-12 flex gap-8">
               <div>
-                <div className="text-4xl font-serif text-white mb-2">98%</div>
-                <div className="text-[10px] uppercase tracking-widest text-white/70 font-bold">Of UAE Executives prioritize AI Sovereignty</div>
+                <div className="text-4xl font-serif text-white mb-2">24/7</div>
+                <div className="text-[10px] uppercase tracking-widest text-white/70 font-bold">Always Online Chatbots</div>
               </div>
               <div>
-                <div className="text-4xl font-serif text-white mb-2">70%</div>
-                <div className="text-[10px] uppercase tracking-widest text-white/70 font-bold">Reduction in operational overhead</div>
+                <div className="text-4xl font-serif text-white mb-2">#1</div>
+                <div className="text-[10px] uppercase tracking-widest text-white/70 font-bold">Google Ranking Web Design</div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative aspect-square rounded-[2rem] overflow-hidden border border-white/10 bg-[#0a0a0a] p-10 flex flex-col justify-center">
-             {/* New Animated Particle Background */}
-            <ParticleBackground />
-
-            {/* Existing Grid Overlay */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)] opacity-20 z-[1]" />
+          <div className="why-now-graphic relative aspect-square rounded-[2rem] overflow-hidden border border-white/10 bg-[#0a0a0a] p-10 flex flex-col justify-center opacity-0">
+             <ParticleBackground />
+             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)] opacity-20 z-[1]" />
+             
              <div className="relative z-10 space-y-8">
-                <div className="p-6 border border-red-500/20 bg-red-500/5 rounded-xl">
-                  <h4 className="text-red-400 font-bold text-xs uppercase tracking-widest mb-2">Legacy Vulnerability</h4>
-                  <p className="text-white/60 text-sm">Human dependency exposed to evacuation risks, high visa overheads, and mandatory remote disruptions.</p>
+                <div className="legacy-card p-6 border border-red-500/20 bg-red-500/5 rounded-xl opacity-0">
+                  <h4 className="text-red-400 font-bold text-xs uppercase tracking-widest mb-2">The Legacy Model</h4>
+                  <p className="text-white/80 font-normal text-sm">Static websites that don't sell, and human sales teams that sleep.</p>
                 </div>
-                <div className="flex justify-center"><ArrowRight className="w-6 h-6 rotate-90 text-white/20" /></div>
-                <div className="p-6 border border-green-500/30 bg-green-500/10 rounded-xl">
-                  <h4 className="text-green-400 font-bold text-xs uppercase tracking-widest mb-2">Sovereign Architecture</h4>
-                  <p className="text-white/80 text-sm">Decentralized agentic swarms hosted locally. 100% uptime. Zero geographical dependency.</p>
+                <div className="arrow-graphic flex justify-center opacity-0"><ArrowRight className="w-6 h-6 rotate-90 text-white/20" /></div>
+                <div className="automated-card p-6 border border-green-500/30 bg-green-500/10 rounded-xl opacity-0">
+                  <h4 className="text-green-400 font-bold text-xs uppercase tracking-widest mb-2">The Automated Model</h4>
+                  <p className="text-white/90 font-normal text-sm">High-speed websites staffed by AI Chatbots that close sales around the clock.</p>
                 </div>
              </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* ── 3. Two-Tiered Solutions Grid ── */}
-      <section className="py-32 px-6 md:px-12 bg-[#080808] border-y border-white/5 relative overflow-hidden">
+      {/* ── 3. Horizontal Scroll Services Section ── */}
+      <section ref={triggerRef} className="relative min-h-screen bg-[#080808] border-y border-white/5 flex flex-col justify-center overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-[150px] pointer-events-none opacity-50" />
         
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-24">
-            <h2 className="text-5xl md:text-7xl font-serif tracking-tight mb-6">Strategic Capabilities</h2>
-            <p className="text-white/40 text-xl font-light">From high-ticket agentic automation to robust digital foundations.</p>
+        <div className="w-full flex flex-col justify-center relative z-10">
+          <div className="px-6 md:px-12 max-w-7xl mx-auto w-full mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-2 gsap-reveal">Our Services</span>
+              <h2 className="text-4xl md:text-6xl font-serif tracking-tight text-white gsap-reveal">Strategic Capabilities</h2>
+            </div>
+            <p className="text-white/50 text-sm max-w-sm gsap-reveal">
+              Scroll down to explore our AI automation and foundational digital services designed for GCC market leaders.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Horizontal scroll container */}
+          <div ref={horizontalScrollRef} data-cursor="drag" className="flex gap-8 px-6 md:px-12 w-max flex-nowrap pb-12">
             
-            {/* Tier 1 */}
-            <div>
-               <div className="mb-8 flex items-center gap-4">
-                 <div className="h-[1px] flex-grow bg-white/20"></div>
-                 <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-white">Tier 1: Sovereign AI Solutions</h3>
-                 <div className="h-[1px] flex-grow bg-white/20"></div>
-               </div>
-               
-               <div className="space-y-6">
-                 {sovereignSolutions.map((sol, i) => (
-                   <TiltCard key={i}>
-                     <Link href={sol.link} aria-label={`Learn more about ${sol.title}`} className="block group w-full h-full">
-                       <SpotlightCard className="p-8 w-full h-full bg-white/[0.02] group-hover:bg-white/[0.05] transition-colors duration-300">
-                         <div className="flex justify-between items-start mb-6 relative z-10">
-                           <div className="p-3 rounded-lg bg-green-500/10 text-green-400">
-                             {sol.icon}
-                           </div>
-                           <span className="text-white/30 group-hover:text-white transition-colors">
-                             <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300 transform origin-center" role="img" aria-label="Arrow Right icon" />
-                           </span>
-                         </div>
-                         <h4 className="text-2xl font-serif mb-3 group-hover:text-green-400 transition-colors relative z-10">{sol.title}</h4>
-                         <p className="text-white/60 font-light text-sm relative z-10">{sol.desc}</p>
-                       </SpotlightCard>
-                     </Link>
-                   </TiltCard>
-                 ))}
-               </div>
+            {/* Introductory Panel */}
+            <div className="w-[300px] md:w-[450px] h-[400px] md:h-[450px] rounded-3xl border border-white/10 bg-white/[0.01] p-10 flex flex-col justify-between flex-shrink-0 backdrop-blur-sm">
+              <div>
+                <span className="text-[10px] uppercase font-bold text-white/40 tracking-[0.2em]">Asif Digital</span>
+                <h3 className="text-2xl md:text-3xl font-serif text-white mt-4 leading-snug">
+                  We build the high-speed foundation, and power it with intelligent automation.
+                </h3>
+              </div>
+              <div className="text-xs uppercase font-bold tracking-widest text-green-500 flex items-center gap-2">
+                Scroll to Explore <ArrowRight className="w-4 h-4 animate-pulse" />
+              </div>
             </div>
 
-            {/* Tier 2 */}
-            <div>
-               <div className="mb-8 flex items-center gap-4">
-                 <div className="h-[1px] flex-grow bg-white/10"></div>
-                 <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-white/40">Tier 2: Core Infrastructure</h3>
-                 <div className="h-[1px] flex-grow bg-white/10"></div>
-               </div>
-               
-               <div className="space-y-6">
-                 {foundationalServices.map((sol, i) => (
-                   <Link href={sol.link} key={i} aria-label={`Explore ${sol.title}`} className="block p-8 rounded-2xl border border-white/5 bg-transparent hover:bg-white/[0.02] hover:border-white/20 transition-all duration-300 group opacity-80 hover:opacity-100">
-                      <div className="flex gap-6 items-start">
-                        <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white/80 transition-all">
-                          {sol.icon}
-                        </div>
-                        <div>
-                           <h4 className="text-xl font-serif mb-2 text-white/90">{sol.title}</h4>
-                           <p className="text-white/60 text-sm leading-relaxed">{sol.desc}</p>
-                        </div>
-                      </div>
-                   </Link>
-                 ))}
-               </div>
+            {/* AI Solutions Panels */}
+            {sovereignSolutions.map((sol, i) => (
+              <div key={i} className="w-[300px] md:w-[400px] h-[400px] md:h-[450px] rounded-3xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] p-8 md:p-10 flex flex-col justify-between flex-shrink-0 transition-all group backdrop-blur-sm">
+                <div className="flex justify-between items-start">
+                  <div className="p-4 rounded-2xl bg-green-500/10 text-green-400 group-hover:bg-green-500 group-hover:text-black transition-colors duration-300">
+                    {sol.icon}
+                  </div>
+                  <span className="text-xs uppercase font-bold tracking-[0.2em] text-green-500/60">Sovereign AI</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-green-400 transition-colors">{sol.title}</h3>
+                  <p className="text-white/70 font-normal text-sm leading-relaxed">{sol.desc}</p>
+                </div>
+                <Link href={sol.link} aria-label={`Explore ${sol.title}`} className="inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-white/40 group-hover:text-white transition-colors pt-4 border-t border-white/5">
+                  Learn More <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            ))}
+
+            {/* Core Infrastructure Panels */}
+            {foundationalServices.map((sol, i) => (
+              <div key={i} className="w-[300px] md:w-[400px] h-[400px] md:h-[450px] rounded-3xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] p-8 md:p-10 flex flex-col justify-between flex-shrink-0 transition-all group backdrop-blur-sm">
+                <div className="flex justify-between items-start">
+                  <div className="p-4 rounded-2xl bg-white/5 text-white/50 group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                    {sol.icon}
+                  </div>
+                  <span className="text-xs uppercase font-bold tracking-[0.2em] text-white/30">Infrastructure</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-green-400 transition-colors">{sol.title}</h3>
+                  <p className="text-white/65 font-normal text-sm leading-relaxed">{sol.desc}</p>
+                </div>
+                <Link href={sol.link} aria-label={`Explore ${sol.title}`} className="inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-white/30 group-hover:text-white transition-colors pt-4 border-t border-white/5">
+                  Learn More <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            ))}
+
+            {/* Closing / Contact Panel */}
+            <div className="w-[300px] md:w-[400px] h-[400px] md:h-[450px] rounded-3xl border border-green-500/20 bg-green-500/5 p-8 md:p-10 flex flex-col justify-between flex-shrink-0 backdrop-blur-sm">
+              <div>
+                <span className="text-[10px] uppercase font-bold text-green-400 tracking-[0.2em]">Next Step</span>
+                <h3 className="text-2xl md:text-3xl font-serif text-white mt-4 leading-snug">
+                  Ready to deploy these capabilities in your business?
+                </h3>
+              </div>
+              <Link href="/contact" className="inline-flex items-center justify-center gap-3 bg-white text-black py-4 px-6 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors w-full">
+                Get a Free Quote <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonials Section ── */}
+      <section className="py-24 px-6 md:px-12 bg-[#050505] border-t border-white/5 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4 gsap-reveal">Success Stories</span>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-4 gsap-reveal">What Our Clients Say</h2>
+            <p className="text-white/60 text-sm max-w-xl mx-auto gsap-reveal">
+              Read real feedback from business owners and directors in Dubai, Sharjah, and Abu Dhabi.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                quote: "Since deploying Asif Digital's Sales Agent on our new website, we capture leads at 2 AM and our booking rate increased by 314%. It's like having a top-performing salesperson who never sleeps.",
+                author: "Tariq Mahmood",
+                role: "Dubai Real Estate Director",
+                img: "https://randomuser.me/api/portraits/men/32.jpg"
+              },
+              {
+                quote: "Our law firm's outbound pipeline was zero. Asif Digital built a high-speed, modern booking site and integrated an AI assistant that qualifies leads. Outbound meetings increased by 5.5x in Month 1.",
+                author: "Faisal Al-Suwaidi",
+                role: "Managing Partner, Legal Firm",
+                img: "https://randomuser.me/api/portraits/men/44.jpg"
+              },
+              {
+                quote: "As a smaller business, we can't afford a massive sales team. The WhatsApp AI agent gave us the firepower of a massive enterprise on a small budget. Setup was incredibly fast.",
+                author: "Mariam Al-Mansoori",
+                role: "Founder, Specialized Services",
+                img: "https://randomuser.me/api/portraits/women/44.jpg"
+              }
+            ].map((item, i) => (
+              <div key={i} className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.02] transition-colors flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex gap-1 mb-6">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <svg key={star} className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="text-white/80 font-normal text-sm leading-relaxed mb-8">
+                    "{item.quote}"
+                  </p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <img src={item.img} alt={item.author} className="w-10 h-10 rounded-full border border-white/10" />
+                  <div>
+                    <h4 className="text-white font-bold text-xs">{item.author}</h4>
+                    <p className="text-white/40 text-[9px] uppercase tracking-widest font-bold">{item.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Industries We Automate ── */}
+      <section className="relative z-20 py-32 px-6 md:px-12 bg-black border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4 gsap-reveal">Bespoke Solutions</span>
+            <h2 className="text-4xl md:text-6xl font-serif tracking-tight mb-6 gsap-reveal text-white">Industries We Automate</h2>
+            <p className="text-white/60 text-lg font-light max-w-2xl mx-auto gsap-reveal">
+              We design custom AI workflows and high-speed software tailored to the unique operational demands of GCC businesses.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                industry: "Real Estate & Property Development",
+                desc: "Qualify prospective buyers, automate brochure delivery via WhatsApp, sync lead profiles to Salesforce/HubSpot, and capture international inquiries 24/7.",
+                features: ["OSINT Prospect Mapping", "WhatsApp Brochure Bots", "Bilingual Lead Qualification"]
+              },
+              {
+                industry: "Professional Services (Legal & Consulting)",
+                desc: "Remove the admin overhead. Auto-calculate quotes based on client parameters, schedule consultations directly into partners' calendars, and automate retainer onboarding.",
+                features: ["Interactive Client Onboarding", "Automated Billing Flows", "CRM Sync (Salesforce/HubSpot)"]
+              },
+              {
+                industry: "E-commerce & Local Services",
+                desc: "Convert high-ticket traffic instantly. Standard websites lose after-hours leads; our automated stores use conversational agents to close sales around the clock.",
+                features: ["Instant Cart Recovery", "WhatsApp Sales Swarms", "Technician Dispatch Routing"]
+              }
+            ].map((item, i) => (
+              <div key={i} className="p-8 rounded-3xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-500 flex flex-col justify-between h-full group hover:border-green-500/20">
+                <div>
+                  <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-green-400 transition-colors">{item.industry}</h3>
+                  <p className="text-sm text-white/70 leading-relaxed mb-8">{item.desc}</p>
+                </div>
+                <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">
+                  {item.features.map((f, j) => (
+                    <span key={j} className="text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-full bg-white/5 text-white/60 border border-white/5">
+                      {f}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Integrations Section ── */}
+      <section className="relative z-20 py-24 px-6 md:px-12 bg-[#080808] border-t border-b border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4 gsap-reveal">Unified Ecosystem</span>
+              <h2 className="text-4xl md:text-6xl font-serif tracking-tight mb-8 gsap-reveal text-white">Seamless Integration With Your Tech Stack</h2>
+              <p className="text-white/70 leading-relaxed text-sm mb-6">
+                Our AI agents don't live in isolation. We connect them directly to your existing systems—from CRMs and email suites to payment processors and team messaging apps.
+              </p>
+              <p className="text-white/50 text-xs">
+                We are official integration partners for leading automation engines like n8n, Make.com, and Zapier, ensuring clean API setups without downtime.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {[
+                { name: "n8n & Make.com", type: "Automation Engines" },
+                { name: "Salesforce", type: "CRM Ecosystem" },
+                { name: "HubSpot", type: "Sales & Marketing" },
+                { name: "OpenAI / Anthropic", type: "LLM Orchestration" },
+                { name: "WhatsApp Business API", type: "Customer Messaging" },
+                { name: "Zapier Portal", type: "Cloud Workflows" }
+              ].map((stack, i) => (
+                <div key={i} className="p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-white/10 transition-all text-center">
+                  <div className="text-white font-bold text-sm mb-1">{stack.name}</div>
+                  <div className="text-white/40 text-[9px] uppercase tracking-widest font-black">{stack.type}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── 4. Intelligence Arbitrage ROI Calculator ── */}
-      <section className="py-40 px-6 md:px-12 max-w-7xl mx-auto">
+      <section className="relative z-20 py-40 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5 bg-[#050505]">
         <div className="text-center mb-16">
           <span className="micro-label block mb-4">Intelligence Arbitrage</span>
-          <h2 className="text-4xl md:text-6xl font-serif tracking-tight">The Cost of <span className="italic text-white/40">Human Capital.</span></h2>
-          <p className="text-white/50 mt-4 max-w-2xl mx-auto">Calculate the financial exposure of your current mid-level office headcount vs. an Agentic deployment.</p>
+          <h2 className="text-4xl md:text-6xl font-serif tracking-tight">Human vs. AI: <span className="italic text-white/40">Calculate Savings.</span></h2>
+          <p className="text-white/60 mt-4 max-w-2xl mx-auto font-normal">Compare the cost of hiring human sales and support staff vs. deploying an AI Chatbot directly onto your new website.</p>
         </div>
 
         <div className="max-w-4xl mx-auto bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-14 shadow-2xl">
           <div className="mb-10">
             <div className="flex justify-between items-end mb-4">
-              <label className="text-xs uppercase tracking-widest font-bold text-white/60">Number of Mid-Level Employees</label>
+              <label className="text-xs uppercase tracking-widest font-bold text-white/60">Number of Customer Support/Sales Staff</label>
               <span className="text-3xl font-serif text-white">{employees}</span>
             </div>
             <input 
               type="range" 
-              min="1" max="100" 
+              min="1" max="50" 
               value={employees} 
               onChange={(e) => setEmployees(parseInt(e.target.value))}
               className="w-full h-1 bg-white/20 rounded-lg appearance-none cursor-pointer accent-white"
@@ -271,49 +610,50 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-             <div className="p-6 rounded-2xl border border-red-500/20 bg-red-500/5">
+             <div className="roi-card-left p-6 rounded-2xl border border-red-500/20 bg-red-500/5 opacity-0">
                 <h4 className="text-[10px] uppercase tracking-widest text-red-500/80 font-bold mb-4">Current Human Overhead</h4>
-                <div className="text-3xl font-serif text-white mb-2">AED {(totalHumanCost / 1000000).toFixed(2)}M <span className="text-sm font-sans text-white/40">/ yr</span></div>
-                <ul className="text-xs text-white/40 space-y-2 mt-4">
-                  <li>• High Visa & Gov Fees</li>
-                  <li>• Mandatory Flight/Housing Allowances</li>
-                  <li>• Vulnerable to crisis remote mandates</li>
+                <div className="text-3xl font-serif text-white mb-2">AED {(totalHumanCost).toLocaleString()} <span className="text-sm font-sans text-white/40">/ yr</span></div>
+                <ul className="text-xs font-normal text-white/60 space-y-2 mt-4">
+                  <li>• Salaries & UAE Visa Fees</li>
+                  <li>• Office Space & Allowances</li>
+                  <li>• Only available 8 hours a day</li>
                 </ul>
              </div>
              
-             <div className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5">
-                <h4 className="text-[10px] uppercase tracking-widest text-green-500/80 font-bold mb-4">Agentic Architecture Cost</h4>
-                <div className="text-3xl font-serif text-white mb-2">AED {(totalAgentCost / 1000000).toFixed(2)}M <span className="text-sm font-sans text-white/40">/ yr</span></div>
-                 <ul className="text-xs text-white/60 space-y-2 mt-4">
-                  <li>• Zero Visa or Housing overhead</li>
-                  <li>• 24/7/365 Continuous Uptime</li>
-                  <li>• Housed in Secure UAE Datacenters</li>
+             <div className="roi-card-right p-6 rounded-2xl border border-green-500/20 bg-green-500/5 opacity-0">
+                <h4 className="text-[10px] uppercase tracking-widest text-green-500/80 font-bold mb-4">Our Solution: AI Chatbot on Your Website</h4>
+                <div className="text-3xl font-serif text-white mb-2">AED {(totalAgentCost).toLocaleString()} <span className="text-sm font-sans text-white/40">/ yr</span></div>
+                 <ul className="text-xs font-normal text-white/80 space-y-2 mt-4">
+                  <li>• No visa costs, no housing allowance needed</li>
+                  <li>• Answers customers 24 hours a day, 7 days a week</li>
+                  <li>• Handles unlimited conversations at once</li>
                 </ul>
              </div>
           </div>
 
-          <div className="text-center pt-8 border-t border-white/10">
-            <div className="text-[12px] uppercase tracking-widest text-white/60 font-bold mb-2">Projected Annual Savings</div>
-            <div className="text-5xl md:text-7xl font-serif text-white">AED {(totalSavings / 1000000).toFixed(2)}M</div>
+          <div className="roi-savings-container text-center pt-8 border-t border-white/10 opacity-0">
+            <div className="text-[12px] uppercase tracking-widest text-white/60 font-bold mb-2">You Could Save Every Year</div>
+            <div id="roi-savings-value" className="text-5xl md:text-7xl font-serif text-green-400">AED {(totalSavings).toLocaleString()}</div>
+            <p className="text-white/40 text-sm mt-4 font-normal">Based on average UAE staff costs. Book a free call to see your exact numbers.</p>
           </div>
         </div>
       </section>
       
-      {/* ── 4.5 Featured Success: Institutional Proof ── */}
+      {/* ── Case Studies ── */}
       <section className="py-32 px-6 md:px-12 bg-[#050505] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div className="max-w-2xl">
-              <span className="micro-label block mb-4 text-white/30">Institutional Proof</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 block mb-4">Proof It Works</span>
               <h2 className="text-4xl md:text-6xl font-serif tracking-tight leading-tight mb-6">
-                The Revenue <span className="italic text-white/60">Engine.</span>
+                Real Results for <span className="italic text-white/60">UAE Businesses.</span>
               </h2>
-              <p className="text-white/40 text-lg font-light leading-relaxed">
-                Raw technical results from our top-tier GCC deployments. We don't just build software; we architect capital acquisition systems.
+              <p className="text-white/60 text-lg font-normal leading-relaxed">
+                Here are real results we have delivered for businesses in Dubai, Sharjah, and across the UAE.
               </p>
             </div>
             <Link href="/case-studies" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors uppercase tracking-[0.3em] text-[10px] font-bold">
-              View All Global Results <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+              View All Results <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
             </Link>
           </div>
 
@@ -325,19 +665,26 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }} 
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] hover:border-white/20 transition-all duration-500 flex flex-col h-full"
+                data-cursor="view"
+                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] hover:border-white/20 transition-all duration-500 flex flex-col h-full cursor-pointer"
               >
-                <div className="aspect-video overflow-hidden">
-                  <img src={study.img} alt={study.title} className="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700" />
+                <div className="aspect-video overflow-hidden border-b border-white/5">
+                  <img src={study.img} alt={study.title || study.client} className="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
                 </div>
                 <div className="p-8 flex flex-col flex-grow">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-4">{study.industry} — {study.client}</span>
-                  <h3 className="text-xl font-serif mb-6 leading-tight group-hover:text-white transition-colors">{study.title}</h3>
-                  <div className="space-y-3 mt-auto">
-                    {study.results.slice(0, 2).map((res, j) => (
-                      <div key={j} className="flex items-start gap-3 text-xs text-white/50 font-light italic">
-                        <TrendingUp className="w-3 h-3 mt-0.5 text-white/30" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-4">{study.industry} — {study.client}</span>
+                  <h3 className="text-xl font-serif mb-4 leading-tight text-white">{study.title || study.client}</h3>
+                  <p className="text-white/60 font-normal text-sm mb-6 leading-relaxed flex-grow">{study.desc || study.challenge}</p>
+                  <div className="space-y-3 mt-auto pt-6 border-t border-white/5">
+                    {study.results ? study.results.slice(0, 2).map((res, j) => (
+                      <div key={j} className="flex items-start gap-3 text-xs text-green-400 font-bold">
+                        <TrendingUp className="w-3 h-3 mt-0.5 text-green-500" />
                         <span>{res}</span>
+                      </div>
+                    )) : study.highlights.slice(0,2).map((hl, j) => (
+                      <div key={j} className="flex items-start gap-3 text-xs text-green-400 font-bold">
+                        <TrendingUp className="w-3 h-3 mt-0.5 text-green-500" />
+                        <span>{hl}</span>
                       </div>
                     ))}
                   </div>
@@ -348,54 +695,55 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SOVEREIGN SALES AGENT HIGHLIGHT ── */}
+      {/* ── AI Chatbot Highlight ── */}
       <section className="py-40 px-6 md:px-12 bg-[#080808] border-y border-white/5 relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-white/[0.02] rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <span className="micro-label block mb-4 text-green-500/80">New: Autonomous B2B Acquisition</span>
+              <span className="micro-label block mb-4 text-green-500/80">AI Chatbot for Your Website & WhatsApp</span>
               <h2 className="text-4xl md:text-6xl font-serif tracking-tight leading-[1.05] mb-8">
-                Deploy a Sovereign<br /><span className="italic text-white/60">Sales Agent.</span>
+                Never Miss a<br /><span className="italic text-white/60">Customer Again.</span>
               </h2>
-              <p className="text-white/50 font-light leading-relaxed mb-10 text-lg max-w-xl">
-                A 24/7 autonomous engine that hunts UAE businesses, recovers direct WhatsApp numbers via OSINT, and fires hyper-personalized cold emails. No SDR team. No subscriptions. Yours to own.
+              <p className="text-white/80 font-normal leading-relaxed mb-10 text-lg max-w-xl">
+                Imagine having a smart assistant on your website and WhatsApp that answers every customer question in English and Arabic, collects their contact details, and books them into your calendar — automatically, 24 hours a day.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-10">
                 {[
-                  { stat: "3–4 Days", label: "Full Deployment" },
-                  { stat: "24/7", label: "Continuous Hunting" },
-                  { stat: "WhatsApp", label: "OSINT Recovery" },
-                  { stat: "4 Steps", label: "Self-Setup Flow" },
+                  { stat: "3–4 Days", label: "Setup Time" },
+                  { stat: "24/7", label: "Always Online" },
+                  { stat: "Arabic & English", label: "Both Languages" },
+                  { stat: "No Monthly Fees", label: "You Own It" },
                 ].map((item, i) => (
                   <div key={i} className="p-5 border border-white/5 bg-white/[0.02] rounded-2xl">
                     <div className="text-2xl font-serif text-white mb-1">{item.stat}</div>
-                    <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold">{item.label}</div>
+                    <div className="text-[10px] uppercase tracking-widest text-white/60 font-bold">{item.label}</div>
                   </div>
                 ))}
               </div>
-              <Link href="/sovereign-sales-agent"
-                aria-label="Explore the Sovereign Sales Agent"
-                className="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-all shadow-[0_0_40px_rgba(255,255,255,0.15)]"
+              <div 
+                onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
+                aria-label="See the AI Chatbot in Action"
+                className="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-all shadow-[0_0_40px_rgba(255,255,255,0.15)] cursor-pointer"
               >
-                Explore the Agent <ArrowRight className="w-4 h-4" />
-              </Link>
+                See It in Action <ArrowRight className="w-4 h-4" />
+              </div>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="space-y-4">
               {[
-                { title: "Live Web Crawling & OSINT", desc: "Scrapes company websites, Google Maps, and GMB profiles in real-time. Data is always fresh — never a stale list." },
-                { title: "WhatsApp Number Recovery", desc: "Automatically retrieves direct WhatsApp contact numbers from website metadata and GMB listings for direct stakeholder access." },
-                { title: "Reply Sentiment Intelligence", desc: "Automatically categorizes incoming replies as Interested, Neutral, or Auto-Reply — visible in your analytics dashboard." },
-                { title: "Enterprise Data Export", desc: "One-click export of your entire discovered database to Excel or CSV. Full data sovereignty with zero vendor lock-in." },
+                { title: "Answers Customer Questions Instantly", desc: "Trained on your business, it knows your prices, services, and FAQs. Customers get answers in seconds — in English or Arabic." },
+                { title: "Works on WhatsApp Too", desc: "Customers can message your AI assistant on WhatsApp — the most popular app in the UAE — making it incredibly easy for them to reach you." },
+                { title: "Captures Every Lead Automatically", desc: "It collects customer names and phone numbers, then sends them straight to you so you never miss a potential sale." },
+                { title: "Books Appointments for You", desc: "It connects to your calendar and lets customers book consultations or service appointments automatically — no back-and-forth needed." },
               ].map((f, i) => (
                 <div key={i} className="flex gap-5 p-6 border border-white/5 bg-white/[0.02] rounded-2xl group hover:border-white/20 transition-all duration-500">
                   <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center text-green-400 font-serif font-bold text-sm">
                     0{i + 1}
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1 group-hover:text-white transition-colors">{f.title}</h4>
-                    <p className="text-sm text-white/40 font-light leading-relaxed">{f.desc}</p>
+                    <h4 className="font-bold mb-1 text-white">{f.title}</h4>
+                    <p className="text-sm text-white/70 font-normal leading-relaxed">{f.desc}</p>
                   </div>
                 </div>
               ))}
@@ -404,99 +752,98 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 6. Latest Insights (Internal Linking for SEO) ── */}
+      {/* ── Blog ── */}
       <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
           <div>
-            <span className="micro-label block mb-4 text-[#0066FF]">The Intelligence Journal</span>
-            <h2 className="text-4xl md:text-6xl font-serif tracking-tight">Latest Deep Dives</h2>
+            <span className="micro-label block mb-4 text-[#0066FF]">Free Tips & Guides</span>
+            <h2 className="text-4xl md:text-6xl font-serif tracking-tight">Our Blog</h2>
           </div>
-          <Link href="/blog" aria-label="Explore all Journal entries and AI deep dives" className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] border border-white/10 transition-all flex items-center gap-2 group">
-            Explore All Journal Entries <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" role="img" aria-label="Chevron Right icon" />
+          <Link href="/blog" aria-label="Explore all blog articles" className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] border border-white/10 transition-all flex items-center gap-2 group">
+            Read All Articles <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" role="img" aria-label="Chevron Right icon" />
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {
-              title: "The Sovereign Shield: AI & Cybersecurity in the GCC 2026",
+              title: "How to Get Your Business to the Top of Google in Dubai",
               slug: "sovereign-shield-ai-cybersecurity-gcc-2026",
-              category: "Cybersecurity & Sovereignty",
-              excerpt: "Why the GCC's pivot to local data residency is the ultimate competitive advantage in the 2026 threat landscape."
+              category: "Local SEO",
+              excerpt: "A simple, step-by-step guide to getting your local business appearing at the top of Google Maps and Google Search in your area."
             },
             {
-              title: "AEO Mastery: Dominating the Answer Engine Era",
+              title: "Why Your Old Website is Losing You Customers",
               slug: "aeo-mastery-dubai-search-future",
-              category: "Search Strategy",
-              excerpt: "Traditional SEO is dead. Learn how to optimize for Gemini, Perplexity, and ChatGPT to win the Dubai market."
+              category: "Web Design",
+              excerpt: "If your website takes more than 3 seconds to load, you're losing up to half your visitors before they even see what you offer. Here's how to fix it."
             },
             {
-              title: "Sovereign AI Blueprint: The GCC Enterprise Guide",
+              title: "How an AI Chatbot Can Double the Leads From Your Website",
               slug: "sovereign-ai-blueprint-gcc-2026",
-              category: "Executive Strategy",
-              excerpt: "A comprehensive roadmap for UAE-based firms to deploy unshakeable, locally-hosted AI architectures."
+              category: "AI Chatbots",
+              excerpt: "See how Dubai businesses are using AI chatbots to have real conversations with customers and capture leads automatically — instead of boring contact forms."
             }
           ].map((post, i) => (
-            <Link key={i} href={`/blog/${post.slug}`} aria-label={`Read Full Manuscript: ${post.title}`} className="group block p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500 flex flex-col h-full">
+            <Link key={i} href={`/blog/${post.slug}`} aria-label={`Read Article: ${post.title}`} className="group block p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500 flex flex-col h-full">
               <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0066FF] mb-6">
                 {post.category}
               </div>
-              <h3 className="text-2xl font-serif mb-6 group-hover:text-white transition-colors leading-tight flex-grow">
+              <h3 className="text-2xl font-serif mb-6 text-white leading-tight flex-grow">
                 {post.title}
               </h3>
-              <p className="text-sm text-white/40 font-light leading-relaxed mb-8 line-clamp-2">
+              <p className="text-sm text-white/70 font-normal leading-relaxed mb-8 line-clamp-2">
                 {post.excerpt}
               </p>
               <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
-                Read Full Manuscript <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
+                Read Article <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* ── 6.5 Implementation Roadmap ── */}
+      {/* ── How We Work ── */}
       <section className="py-32 px-6 md:px-12 bg-[#080808] border-t border-b border-white/5 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0066FF]/5 rounded-full blur-[150px] pointer-events-none" />
-        
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-20">
             <div className="max-w-2xl">
-              <span className="micro-label block mb-4">The Sovereign Journey</span>
+              <span className="micro-label block mb-4">Our Simple Process</span>
               <h2 className="text-4xl md:text-6xl font-serif leading-tight">
-                Architecting Your <span className="italic">Revenue Domain.</span>
+                How It Works. <span className="italic">Simple & Fast.</span>
               </h2>
             </div>
-            <p className="text-white/40 font-light max-w-sm mb-2 text-sm leading-relaxed">
-              We move beyond generic software. We deploy autonomous intelligence layers that become your company's most valuable asset.
+            <p className="text-white/60 font-normal max-w-sm mb-2 text-sm leading-relaxed">
+              No technical jargon, no confusion. Just a clear process that gets your business online and growing fast.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
-                phase: "Phase 01",
-                title: "Sovereign Audit",
-                desc: "We perform a clinical deep-dive into your legacy friction points, identifying exactly where human latency is costing you revenue.",
-                tags: ["Friction Mapping", "OSINT Audit"]
+                phase: "Step 01",
+                title: "Free Discovery Call",
+                desc: "We start with a free 15-minute call to understand your business, your goals, and what's not working right now. No pressure, just a conversation.",
+                tags: ["Free Consultation", "No Obligation"]
               },
               {
-                phase: "Phase 02",
-                title: "Neural Mapping",
-                desc: "We architect the specific reasoning chains and agentic swarms required to automate your high-ticket acquisition and retention cycles.",
-                tags: ["Logic Architecture", "Swarm Design"]
+                phase: "Step 02",
+                title: "We Plan Everything",
+                desc: "We design your website structure, write your marketing copy in plain English, and plan exactly how your AI chatbot will work for your business.",
+                tags: ["Design", "Strategy"]
               },
               {
-                phase: "Phase 03",
-                title: "Sovereign Deployment",
-                desc: "Deployment on local GCC-certified infrastructure (G42/Azure UAE North) ensuring 100% data residency and regional compliance.",
-                tags: ["GCC Residency", "UAE Law 45"]
+                phase: "Step 03",
+                title: "We Build It",
+                desc: "Our team builds your fast, professional website and sets up all your digital tools. Most projects are fully ready within 2 to 4 weeks.",
+                tags: ["Development", "Testing"]
               },
               {
-                phase: "Phase 04",
-                title: "Revenue Scaling",
-                desc: "Your autonomous engine begins real-time market arbitrage, operating 24/7 across global time zones to maximize yield.",
-                tags: ["Yield Arbitrage", "Market Dominance"]
+                phase: "Step 04",
+                title: "Go Live & Grow",
+                desc: "We launch your website and immediately start your SEO campaign so customers start finding you on Google as quickly as possible.",
+                tags: ["Launch", "Marketing"]
               }
             ].map((step, i) => (
               <motion.div 
@@ -510,15 +857,15 @@ export default function Home() {
                 <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#0066FF] mb-12">
                   {step.phase}
                 </div>
-                <h3 className="text-2xl font-serif mb-6 group-hover:translate-x-2 transition-transform duration-500">
+                <h3 className="text-2xl font-serif mb-6 text-white group-hover:translate-x-2 transition-transform duration-500">
                   {step.title}
                 </h3>
-                <p className="text-sm text-white/50 font-light leading-relaxed mb-10">
+                <p className="text-sm text-white/70 font-normal leading-relaxed mb-10">
                   {step.desc}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {step.tags.map(tag => (
-                    <span key={tag} className="text-[8px] uppercase tracking-widest px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-white/40">
+                    <span key={tag} className="text-[8px] uppercase tracking-widest px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-white/60">
                       {tag}
                     </span>
                   ))}
@@ -529,24 +876,67 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 7. FAQ Section (A11y & SEO) ── */}
+      {/* ── Meet the Team Section ── */}
+      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5 relative z-10">
+        <div className="text-center mb-20">
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4 gsap-reveal">Who We Are</span>
+          <h2 className="text-4xl md:text-6xl font-serif tracking-tight mb-6 gsap-reveal">Meet the Architects</h2>
+          <p className="text-white/60 text-lg font-light max-w-2xl mx-auto gsap-reveal">
+            A small team of dedicated AI architects, web engineers, and conversation designers based in the UAE.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {TEAM_MEMBERS.map((member, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.15 }}
+              className="group relative overflow-hidden rounded-[2rem] border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-green-500/30 transition-all duration-500 flex flex-col h-full"
+            >
+              {/* Profile Image with zoom effect */}
+              <div className="aspect-square w-full overflow-hidden relative">
+                <img 
+                  src={member.img} 
+                  alt={member.name} 
+                  className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-80" />
+              </div>
+              
+              {/* Member Details */}
+              <div className="p-8 flex flex-col flex-grow relative z-10 -mt-10 bg-[#050505]/90 backdrop-blur-sm rounded-t-[1.5rem] border-t border-white/5">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-green-400 mb-2">{member.role}</span>
+                <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-green-400 transition-colors">{member.name}</h3>
+                <p className="text-sm text-white/70 font-normal leading-relaxed">{member.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
       <section className="py-32 px-6 md:px-12 max-w-4xl mx-auto border-t border-white/5">
         <div className="text-center mb-16">
-          <span className="micro-label block mb-4">Common Briefings</span>
-          <h2 className="text-4xl md:text-5xl font-serif">Frequently Asked</h2>
+          <span className="micro-label block mb-4">Common Questions</span>
+          <h2 className="text-4xl md:text-5xl font-serif">Frequently Asked Questions</h2>
         </div>
         <div className="space-y-4">
           {[
-            { q: "What is Sovereign AI?", a: "AI systems built and hosted locally on UAE state-backed infrastructure to ensure 100% data residency and compliance." },
-            { q: "How fast can you deploy an Agentic swarm?", a: "Standard deployments take 4-6 weeks, depending on the complexity of the reasoning chains and legacy systems integration." },
-            { q: "Do you provide ongoing support?", a: "Yes, all our Tier-1 and Tier-2 solutions include dedicated support and periodic model fine-tuning for UAE market shifts." }
+            { q: "Do I need a new website to get an AI chatbot?", a: "No — we can install our AI chatbot on your existing website. However, if your current site is slow or outdated, we strongly recommend our full Web + AI package for the best results. A fast website combined with an AI chatbot is our most powerful offering." },
+            { q: "How does the AI chatbot actually work?", a: "We train it on your specific business information — your services, prices, FAQs, and location. It then sits on your website and WhatsApp, answering customer questions in English and Arabic, collecting their contact details, and booking appointments — all automatically." },
+            { q: "How much does a website and AI chatbot cost?", a: "Our packages range from AED 2,000 to AED 10,000 depending on the size of your website and how advanced the AI chatbot needs to be. Contact us for a free, no-obligation quote tailored to your business." },
+            { q: "How long does it take to build my website?", a: "Most websites are ready to launch within 2 to 4 weeks from the day we agree on the design. The AI chatbot setup takes an additional 3 to 4 business days after the website is ready." },
+            { q: "Will my website show up on Google?", a: "Yes — every website we build is fully optimised for Google from day one. We also offer monthly SEO packages that actively work to move your business up the Google rankings for the exact keywords your customers are searching." }
           ].map((faq, i) => (
             <details key={i} className="group border border-white/5 bg-white/[0.02] rounded-2xl overflow-hidden">
               <summary className="p-8 cursor-pointer list-none flex justify-between items-center hover:bg-white/[0.04] transition-colors">
-                <span className="text-lg font-serif">{faq.q}</span>
-                <ChevronRight className="w-5 h-5 text-white/30 group-open:rotate-90 transition-transform" role="img" aria-label="Toggle Answer icon" />
+                <span className="text-lg font-serif text-white pr-4">{faq.q}</span>
+                <ChevronRight className="w-5 h-5 text-white/30 group-open:rotate-90 transition-transform flex-shrink-0" role="img" aria-label="Toggle Answer icon" />
               </summary>
-              <div className="px-8 pb-8 text-white/50 font-light leading-relaxed">
+              <div className="px-8 pb-8 text-white/70 font-normal leading-relaxed">
                 {faq.a}
               </div>
             </details>
@@ -554,43 +944,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 8. "Khalid" Integration ── */}
+      {/* ── Final CTA ── */}
       <section className="py-32 px-6 md:px-12 bg-white text-black text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="w-20 h-20 mx-auto mb-8 bg-black rounded-full flex items-center justify-center text-white shadow-2xl">
-            <Zap className="w-8 h-8" role="img" aria-label="Energy Zap icon" />
+            <Phone className="w-8 h-8" role="img" aria-label="Phone icon" />
           </div>
           <motion.h2 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-5xl md:text-7xl font-serif tracking-tighter leading-tight mb-8">
-            Meet the <span className="italic opacity-40">Architect.</span>
+            Ready to Grow <span className="italic opacity-40">Your Business?</span>
           </motion.h2>
-          <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-black/60 text-xl font-light max-w-2xl mx-auto leading-relaxed mb-12">
-            We don't do standard "Contact Us" forms. Speak with Khalid, our Strategic Intake Agent, to begin your business resilience audit immediately.
+          <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-black/70 font-normal text-xl max-w-2xl mx-auto leading-relaxed mb-12">
+            Get a free strategy call with our team. We will look at your current website and digital presence and tell you exactly what needs to be improved — at no cost, with no obligation.
           </motion.p>
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
-            {/* Let user click directly to open chatbot / or linking to a focus page */}
-            <button 
-              onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} 
-              aria-label="Begin AI Audit with Khalid"
-              className="bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs border border-white/20 hover:bg-black/80 transition-all flex items-center justify-center gap-3 shadow-2xl mx-auto hover:scale-105 active:scale-95"
-            >
-              Begin Audit with Khalid <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
-            </button>
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <MagneticButton>
+              <Link 
+                href="/contact"
+                className="bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs border border-white/20 hover:bg-black/80 transition-all flex items-center justify-center gap-3 shadow-2xl hover:scale-105 active:scale-95"
+              >
+                Book My Free Strategy Call <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
+              </Link>
+            </MagneticButton>
+            <MagneticButton>
+              <a 
+                href="https://wa.me/971545866094" target="_blank" rel="noopener noreferrer"
+                className="bg-transparent text-black border border-black/20 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-black/5 transition-all flex items-center justify-center gap-3"
+              >
+                WhatsApp Us Now <MessageSquare className="w-4 h-4" role="img" aria-label="WhatsApp icon" />
+              </a>
+            </MagneticButton>
           </motion.div>
         </div>
       </section>
-      {/* Footer Internal Linking Swarm (SEO Boost) */}
+      
+      {/* Footer SEO Link Swarm */}
       <section className="py-20 border-t border-white/5 bg-black">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center text-white/80 text-[11px] uppercase tracking-[0.2em] font-bold text-center">
-            <Link href="/ai-marketing-dubai" className="hover:text-white transition-colors">AI Marketing Agency Dubai</Link>
+            <Link href="/services/web-design-dubai-sharjah" className="hover:text-white transition-colors">Web Design Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/ai-automation-agency-dubai" className="hover:text-white transition-colors">AI Automation Agency Dubai</Link>
+            <Link href="/services/seo-agency-dubai-sharjah-uae" className="hover:text-white transition-colors">SEO Agency Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/ai-lead-generation-agency-dubai" className="hover:text-white transition-colors">AI Lead Generation Dubai</Link>
+            <Link href="/sovereign-sales-agent" className="hover:text-white transition-colors">AI Chatbot Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/ai-real-estate-agency-dubai" className="hover:text-white transition-colors">AI Real Estate Dubai</Link>
+            <Link href="/services/ppc-google-ads-agency-dubai" className="hover:text-white transition-colors">Google Ads Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/sovereign-sales-agent" className="hover:text-white transition-colors">B2B Sales AI</Link>
+            <Link href="/services/branding-agency-dubai-sharjah" className="hover:text-white transition-colors">Branding Agency Dubai</Link>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <Link href="/services/social-media-management-dubai-uae" className="hover:text-white transition-colors">Social Media Dubai</Link>
           </div>
         </div>
       </section>
