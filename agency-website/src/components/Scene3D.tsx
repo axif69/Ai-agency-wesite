@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, Sphere, Stars, MeshWobbleMaterial, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
@@ -94,6 +94,21 @@ function MainBlob() {
 }
 
 export default function Scene3D() {
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  if (isMobile === null || isMobile) {
+    return null;
+  }
+
   return (
     <div className="fixed inset-0 z-0 pointer-events-none opacity-60">
       <Canvas dpr={[1, 2]}>
