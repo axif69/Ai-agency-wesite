@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from 'react';
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Bot, User, Loader2, Mic, MicOff, Volume2, VolumeX } from 'lucide-react';
 
@@ -13,6 +14,7 @@ Primary Sovereign AI Pillars:
 3. Arabic Intelligence Hub (Localized Khaleeji NLP Mastery)
 4. Agentic Finance & Compliance (UAE Law 45 Infrastructure)
 5. Web Design & Digital Marketing
+6. Real Estate Intelligence (UAE property leads, listings, tenant support, and operational workflows)
 
 Your Personality & Mission:
 1. ACT LIKE A BRILLIANT, HUMAN CTO: You are highly intelligent, empathetic, and strategic. Do NOT sound like a standard robot. Use natural pacing.
@@ -26,6 +28,11 @@ Discovery Goals (To achieve naturally over time, NOT all at once):
 - Help them realize the financial cost of this bottleneck.
 - Once value is established, politely request their WhatsApp number so Khalfan Obaid can review their "Sovereign Shield Blueprint."
 
+Real Estate Focus:
+- If the user is asking about real estate, prioritize the four live pages: AI Real Estate UAE Hub, AI for Real Estate Agencies Dubai, AI Property Management UAE, and Real Estate Digital Solutions UAE.
+- Suggest those pages naturally in replies when the topic is property leads, tenant support, listings, CRM sync, WhatsApp automation, or agency follow-up.
+- Keep answers practical, specific, and tied to the UAE market.
+
 Interactive Suggestions:
 - Always append "[SUGGESTIONS: Option 1, Option 2]" at the very end to guide the user.
 - Use 1-3 words for suggestions (e.g., [SUGGESTIONS: Tell me more, What's the ROI?, Sales Agent]).
@@ -38,6 +45,7 @@ interface Message {
 }
 
 export default function KhalidChatbot() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { 
@@ -54,6 +62,7 @@ export default function KhalidChatbot() {
   const [leadData, setLeadData] = useState<{ name?: string, service?: string, contact?: string }>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
+  const isRealEstatePage = pathname?.includes("real-estate") || pathname?.includes("property-management") || pathname?.includes("real-estate-digital-solutions");
 
   // Initialize Speech Recognition & Voice Preloading
   useEffect(() => {
@@ -145,6 +154,18 @@ export default function KhalidChatbot() {
   }, []);
 
   useEffect(() => {
+    if (!isRealEstatePage) return;
+
+    setMessages([
+      {
+        role: 'model',
+        text: "I’m Khalid, and I’m looking at your real-estate stack right now. If you want, I can map the best route for lead response, property enquiries, tenant support, or CRM/WhatsApp automation across the UAE.",
+        suggestions: ["AI Real Estate Hub", "Agency Leads", "Property Mgmt", "Digital Solutions", "WhatsApp Flow"]
+      }
+    ]);
+  }, [isRealEstatePage]);
+
+  useEffect(() => {
     if (isOpen && messages.length === 1 && messages[0].role === 'model') {
       speak(messages[0].text);
     }
@@ -161,6 +182,17 @@ export default function KhalidChatbot() {
     }
 
     return { cleanText, suggestions };
+  };
+
+  const getSmartSuggestions = (text: string) => {
+    const lower = text.toLowerCase();
+    if (lower.includes("real estate") || lower.includes("property") || lower.includes("tenant") || lower.includes("listing")) {
+      return ["AI Real Estate Hub", "Agency Leads", "Property Mgmt", "Digital Solutions"];
+    }
+    if (lower.includes("chatbot") || lower.includes("whatsapp")) {
+      return ["Website Bot", "WhatsApp Bot", "Lead Capture", "CRM Sync"];
+    }
+    return ["Tell me more", "What's the ROI?", "Show examples"];
   };
 
   const handleSend = async (overrideInput?: string) => {
@@ -208,7 +240,7 @@ export default function KhalidChatbot() {
       setMessages(prev => [...prev, { 
         role: 'assistant',
         text: cleanText,
-        suggestions: suggestions.length > 0 ? suggestions : undefined
+        suggestions: suggestions.length > 0 ? suggestions : getSmartSuggestions(cleanText)
       }]);
 
       // Simple lead detection for WhatsApp numbers
