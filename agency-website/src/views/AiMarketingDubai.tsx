@@ -370,7 +370,7 @@ export default function AiMarketingDubai() {
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center text-white/80 text-[11px] uppercase tracking-[0.2em] font-bold text-center">
             <Link href="/ai-lead-generation-agency-dubai" className="hover:text-white transition-colors">AI Lead Generation Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/ai-real-estate-agency-dubai" className="hover:text-white transition-colors">AI Real Estate Dubai</Link>
+            <Link href="/ai-real-estate-uae" className="hover:text-white transition-colors">AI Real Estate Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/ai-automation-agency-dubai" className="hover:text-white transition-colors">AI Automation Agency Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />

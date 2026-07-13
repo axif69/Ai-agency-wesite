@@ -1,8 +1,8 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useState } from "react";
-
+import React, { useState, useRef } from "react";
 import { Mail, Shield, Phone, Send, CheckCircle2, Loader2, Bot, ArrowRight } from "lucide-react";
+import { trackEvent } from "../utils/analytics";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,6 +13,7 @@ export default function Contact() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const formStartedRef = useRef(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,8 +39,14 @@ export default function Contact() {
       const result = await response.json();
       
       if (result.success) {
+        trackEvent("form_submit", {
+          form_name: "Contact Audit Intake Form",
+          service_name: "Strategic Audit",
+          link_url: "https://api.web3forms.com/submit"
+        });
         setIsSuccess(true);
         setFormData({ name: "", email: "", service: "", message: "" });
+        formStartedRef.current = false;
         setTimeout(() => setIsSuccess(false), 5000);
       } else {
         throw new Error("Submission failed");
@@ -55,11 +62,18 @@ export default function Contact() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
     setFormData(prev => ({ ...prev, [id]: value }));
+
+    if (!formStartedRef.current && value.trim().length > 0) {
+      formStartedRef.current = true;
+      trackEvent("form_start", {
+        form_name: "Contact Audit Intake Form",
+        service_name: "Strategic Audit"
+      });
+    }
   };
 
   return (
     <div className="pt-20">
-      
       
       {/* Hero Section */}
       <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
@@ -74,7 +88,7 @@ export default function Contact() {
             Initiate <span className="italic text-white/50">Audit.</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl leading-relaxed">
-            Ready to architect your sovereign domain? Reach out to begin a clinical deep-dive into your operational friction points.
+            Ready to architect your sovereign domain? Reach out to begin a deep-dive into your operational friction points.
           </p>
         </motion.div>
       </section>
@@ -96,7 +110,18 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">Priority WhatsApp</h3>
-                    <a href="https://wa.me/971545866094" className="text-2xl font-serif text-white/80 hover:text-white transition-colors">0545866094</a>
+                    <a 
+                      href="https://wa.me/971545866094" 
+                      onClick={() => trackEvent("whatsapp_click", {
+                        cta_text: "0545866094",
+                        cta_location: "Contact Info Block",
+                        link_url: "https://wa.me/971545866094",
+                        service_name: "Strategic Audit"
+                      })}
+                      className="text-2xl font-serif text-white/80 hover:text-white transition-colors"
+                    >
+                      0545866094
+                    </a>
                   </div>
                 </div>
                 
@@ -105,7 +130,7 @@ export default function Contact() {
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">Secure Intelligence</h3>
+                    <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">Secure Email</h3>
                     <a href="mailto:hello@asifdigital.agency" className="text-2xl font-serif text-white/80 hover:text-white transition-colors">hello@asifdigital.agency</a>
                   </div>
                 </div>
@@ -122,7 +147,14 @@ export default function Contact() {
                 Khalid, our Strategic Intake Agent, can perform a preliminary resilience audit on your operations in under 5 minutes.
               </p>
               <button 
-                onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
+                onClick={() => {
+                  trackEvent("consultation_click", {
+                    cta_text: "Launch Khalid Agent",
+                    cta_location: "Contact Page Khalid Box",
+                    service_name: "Strategic Audit"
+                  });
+                  window.dispatchEvent(new CustomEvent('open-chatbot'));
+                }}
                 className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#0066FF] hover:text-white transition-colors"
               >
                 Launch Khalid Agent <ArrowRight className="w-4 h-4" />
@@ -132,8 +164,8 @@ export default function Contact() {
             <div className="pt-10 border-t border-white/5 flex items-center gap-4">
               <Shield className="w-10 h-10 text-[#0066FF]" />
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">Data Residency Guarantee</div>
-                <div className="text-sm font-light text-white/60">G42/Azure UAE North Residency Compliant</div>
+                <div className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">Secure Contact Intake</div>
+                <div className="text-sm font-light text-white/60">We discuss your data-handling requirements before deciding which tools, hosting locations and integrations are suitable.</div>
               </div>
             </div>
           </motion.div>

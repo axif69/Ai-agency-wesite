@@ -309,7 +309,7 @@ export default function AiAutomationDubai() {
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/ai-lead-generation-agency-dubai" className="hover:text-white transition-colors">AI Lead Generation Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/ai-real-estate-agency-dubai" className="hover:text-white transition-colors">AI Real Estate Dubai</Link>
+            <Link href="/ai-real-estate-uae" className="hover:text-white transition-colors">AI Real Estate Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/sovereign-sales-agent" className="hover:text-white transition-colors">B2B Sales AI</Link>
           </div>
