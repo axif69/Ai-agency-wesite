@@ -2,8 +2,6 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import PageLoader from "./PageLoader";
 import { useState, useEffect, Suspense } from "react";
 import { Menu, X, Code, Megaphone, PenTool, ChevronDown } from "lucide-react";
 
@@ -197,15 +195,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </nav>
       </header>
 
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-30 flex flex-col items-center justify-center bg-[#050505] md:hidden"
-          >
+      {isMenuOpen && (
+          <div className="fixed inset-0 z-30 flex flex-col items-center justify-center bg-[#050505] md:hidden">
             <nav className="flex flex-col gap-6 text-3xl font-serif tracking-tight text-center">
               {navLinks.map((link) => (
                 link.name === "Sovereign AI" ? (
@@ -273,22 +264,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 )
               ))}
             </nav>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
 
-      <motion.main
+      <main
         id="main-content"
         key={pathname}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
         className="pt-24 min-h-screen outline-none"
       >
-        <Suspense fallback={<PageLoader />}>
+        <Suspense fallback={<div className="min-h-[40vh]" />}>
           {children}
         </Suspense>
-      </motion.main>
+      </main>
 
       <footer className="py-32 px-6 md:px-12 border-t border-white/5 mt-20 bg-black relative overflow-hidden">
         {/* Subtle Background Glow */}
