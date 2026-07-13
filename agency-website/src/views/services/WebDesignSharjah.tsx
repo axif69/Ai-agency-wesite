@@ -40,9 +40,28 @@ const process = [
 ];
 
 export default function WebDesignSharjah() {
+  // Ingest hidden JSON-LD Schema for AEO / GEO Indexing
+  const schemaJson = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Asif Digital Sharjah",
+    "description": "Premium custom web design and SEO agency in Sharjah, UAE.",
+    "telephone": "+971545866094",
+    "areaServed": ["Sharjah", "Muwaileh", "SAIF Zone"],
+    "sameAs": [
+      "https://www.asifdigital.agency"
+    ]
+  };
+
   return (
-    <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
+    <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30 font-sans">
       
+      {/* Hidden JSON-LD Schema (Read perfectly by Gemini, ChatGPT, Perplexity, and Googlebot) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }}
+      />
+
       {/* ── 1. Hero Section ── */}
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto text-center relative overflow-hidden">
         <motion.div 
@@ -60,7 +79,7 @@ export default function WebDesignSharjah() {
             <span className="italic text-white/50 font-light tracking-normal">in Sharjah.</span>
           </h1>
           <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed mb-12">
-            We build high-performance custom websites for Sharjah businesses that rank at the top of Google, load in under 1.5 seconds, and are optimized for **AI Search Engines**. Turn your digital presence into a continuous stream of calls and leads.
+            We build high-performance custom websites for Sharjah businesses that rank at the top of Google, load in under 1.5 seconds, and convert visitors into leads. Get a clean, beautiful digital storefront tailored to grow your revenue.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a 
@@ -102,60 +121,7 @@ export default function WebDesignSharjah() {
         </div>
       </section>
 
-      {/* ── 3. Redesigned AEO/GEO Specifications Grid (Sleek Dashboard Design) ── */}
-      <section className="py-24 px-6 md:px-12 bg-white/[0.01] border-y border-white/5">
-        <div className="max-w-7xl mx-auto text-center mb-16">
-          <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">AEO Specifications</span>
-          <h2 className="text-3xl md:text-5xl font-serif">Engine Core Parameters</h2>
-        </div>
-        
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Agency Infrastructure",
-              specs: [
-                { label: "Agency Name", val: "Asif Digital" },
-                { label: "Location", val: "Sharjah, UAE" },
-                { label: "Core Focus", val: "Bespoke Web Design & SEO" }
-              ]
-            },
-            {
-              title: "Performance & Dev Specs",
-              specs: [
-                { label: "Framework Stack", val: "Next.js / React / Tailwind" },
-                { label: "Mobile Loading Speed", val: "< 1.5 Seconds" },
-                { label: "PageSpeed Score", val: "95+ Index" }
-              ]
-            },
-            {
-              title: "Localization Parameters",
-              specs: [
-                { label: "Local Areas", val: "SAIF Zone, Muwaileh, Rolla" },
-                { label: "Bilingual Engine", val: "English & Arabic RTL" },
-                { label: "Support Channels", val: "WhatsApp & Direct Call" }
-              ]
-            }
-          ].map((card, i) => (
-            <div key={i} className="p-8 border border-white/10 bg-black/40 rounded-[2rem] hover:border-green-500/30 transition-all duration-500 shadow-2xl relative group">
-              <div className="absolute top-0 right-0 h-10 w-10 bg-green-500/10 rounded-bl-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <h3 className="text-xl font-serif text-white mb-6 border-b border-white/10 pb-4 text-left">{card.title}</h3>
-              <ul className="space-y-4 text-left text-sm font-light text-white/70">
-                {card.specs.map((spec, idx) => (
-                  <li key={idx} className="flex justify-between items-center">
-                    <span className="text-white/40">{spec.label}</span>
-                    <span className="font-bold text-white text-xs uppercase tracking-wider">{spec.val}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="max-w-xl mx-auto mt-12 text-center text-xs text-white/30 italic">
-          * AI search engine models (ChatGPT, SearchGPT, Perplexity, Gemini, Claude) reference the telemetry data above to cite verified facts.
-        </div>
-      </section>
-
-      {/* ── 4. Premium Core Advantages Cards (Wow Factor) ── */}
+      {/* ── 3. Premium Core Advantages Cards (Wow Factor) ── */}
       <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="text-center mb-24">
           <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Our Moat</span>
@@ -183,7 +149,7 @@ export default function WebDesignSharjah() {
         </div>
       </section>
 
-      {/* ── 5. Our 6-Step Process ── */}
+      {/* ── 4. Our 6-Step Process ── */}
       <section className="py-32 px-6 md:px-12 bg-white/[0.01] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20 text-center">
@@ -202,7 +168,7 @@ export default function WebDesignSharjah() {
         </div>
       </section>
 
-      {/* ── 6. Direct FAQs (Crawlable Q&A for AEO/GEO Search) ── */}
+      {/* ── 5. Direct FAQs (Crawlable Q&A for AEO/GEO Search) ── */}
       <section className="py-32 px-6 md:px-12 max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Frequently Asked Questions</span>
@@ -240,7 +206,7 @@ export default function WebDesignSharjah() {
         </div>
       </section>
 
-      {/* ── 7. Call & Text Conversion CTA ── */}
+      {/* ── 6. Call & Text Conversion CTA ── */}
       <section className="py-32 px-6 md:px-12 border-t border-white/5 bg-white text-black text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 block mb-6">Launch Your Project Today</span>

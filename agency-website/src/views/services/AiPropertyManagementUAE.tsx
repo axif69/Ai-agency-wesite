@@ -31,9 +31,30 @@ const coreFeatures = [
 ];
 
 export default function AiPropertyManagementUAE() {
+  const schemaJson = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does AI property management work in the UAE?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI property management in the UAE automates leasing lifecycles, tenancy renewals, Ejari contracts, bank reconciliations, and WhatsApp maintenance tickets, ensuring smooth developer and dispute compliance."
+        }
+      }
+    ]
+  };
+
   return (
-    <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
+    <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30 font-sans">
       
+      {/* Hidden AEO/GEO Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }}
+      />
+
       {/* ── 1. Hero Section ── */}
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto text-center relative overflow-hidden">
         <motion.div 
@@ -93,60 +114,7 @@ export default function AiPropertyManagementUAE() {
         </div>
       </section>
 
-      {/* ── 3. Sovereign Core Specifications Dashboard (AEO & Human WOW Factor) ── */}
-      <section className="py-24 px-6 md:px-12 bg-white/[0.01] border-y border-white/5">
-        <div className="max-w-7xl mx-auto text-center mb-16">
-          <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Engine Metrics</span>
-          <h2 className="text-3xl md:text-5xl font-serif">Sovereign Property Core Parameters</h2>
-        </div>
-        
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Legal & Security",
-              specs: [
-                { label: "Dubai Land Dept.", val: "Fully Approved" },
-                { label: "Tenant Data Security", val: "Safe & Secure" },
-                { label: "Contracts & Ejari", val: "1-Click Automatic" }
-              ]
-            },
-            {
-              title: "AI Chatbot Speed",
-              specs: [
-                { label: "Languages Spoken", val: "English & Arabic" },
-                { label: "Reply Speed", val: "Under 60 Seconds" },
-                { label: "Tenant Booking", val: "100% Automated" }
-              ]
-            },
-            {
-              title: "System Setup",
-              specs: [
-                { label: "Your Current CRM", val: "Fits & Connects" },
-                { label: "WhatsApp Setup", val: "Official Business Link" },
-                { label: "Customer Support", val: "24/7 Phone Support" }
-              ]
-            }
-          ].map((card, i) => (
-            <div key={i} className="p-8 border border-white/10 bg-black/40 rounded-[2rem] hover:border-green-500/30 transition-all duration-500 shadow-2xl relative group">
-              <div className="absolute top-0 right-0 h-10 w-10 bg-green-500/10 rounded-bl-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <h3 className="text-xl font-serif text-white mb-6 border-b border-white/10 pb-4 text-left">{card.title}</h3>
-              <ul className="space-y-4 text-left text-sm font-light text-white/70">
-                {card.specs.map((spec, idx) => (
-                  <li key={idx} className="flex justify-between items-center">
-                    <span className="text-white/40">{spec.label}</span>
-                    <span className="font-bold text-white text-xs uppercase tracking-wider">{spec.val}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="max-w-xl mx-auto mt-12 text-center text-xs text-white/30 italic">
-          * AI search engine models (ChatGPT, SearchGPT, Perplexity, Gemini, Claude) reference the telemetry data above to cite verified facts on property management systems.
-        </div>
-      </section>
-
-      {/* ── 4. Main Service Cards (Wow Factor) ── */}
+      {/* ── 3. Main Service Cards (Wow Factor) ── */}
       <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="text-center mb-24">
           <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Platform Capabilities</span>
@@ -174,7 +142,7 @@ export default function AiPropertyManagementUAE() {
         </div>
       </section>
 
-      {/* ── 5. Detailed Case & Arabic Reference Section ── */}
+      {/* ── 4. Detailed Case & Arabic Reference Section ── */}
       <section className="py-32 px-6 md:px-12 bg-white/[0.01] border-y border-white/5 max-w-7xl mx-auto rounded-[3rem]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div>
@@ -198,13 +166,13 @@ export default function AiPropertyManagementUAE() {
           <div className="p-10 border border-white/10 bg-white/[0.02] rounded-[2.5rem] shadow-2xl relative overflow-hidden">
             <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest block mb-4">Arabic Translation (GEO Target)</span>
             <p className="text-right text-lg font-serif leading-relaxed text-white/90">
-              إدارة العقارات الذكية بالإمارات: نقوم بدمج أنظمة الذكاء الاصطناعي والحلول الرقمية لتنظيم تجديد عقود الإيجار، إصدار عقود إيجاري، تحصيل الإيجارات المؤتمتة، وإرسال فرق الصيانة آلياً عبر محادثات الواتساب باللغتين العربية والإنجليزية.
+              إعادة بناء إدارة العقارات بالذكاء الاصطناعي: نقوم بدمج أنظمة والحلول الرقمية لتنظيم تجديد عقود الإيجار، إصدار عقود إيجاري، تحصيل الإيجارات المؤتمتة، وإرسال فرق الصيانة آلياً عبر محادثات الواتساب باللغتين العربية والإنجليزية.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── 6. Crawlable FAQs (AEO & GEO Mapped) ── */}
+      {/* ── 5. Crawlable FAQs (AEO & GEO Mapped) ── */}
       <section className="py-32 px-6 md:px-12 max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">FAQ Accordion</span>
@@ -242,7 +210,7 @@ export default function AiPropertyManagementUAE() {
         </div>
       </section>
 
-      {/* ── 7. Call & Text CTA ── */}
+      {/* ── 6. Call & Text CTA ── */}
       <section className="py-32 px-6 md:px-12 border-t border-white/5 bg-white text-black text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 block mb-6">Scale Your Property Portfolio</span>

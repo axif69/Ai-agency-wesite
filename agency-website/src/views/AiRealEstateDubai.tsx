@@ -42,9 +42,30 @@ export default function AiRealEstateDubai() {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.98]);
 
+  const schemaJson = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does Asif Digital build AI for real estate agencies in Dubai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We build custom WhatsApp agents, automated listing generators, off-plan matchmakers, and virtual staging software to help Dubai brokerages double sales and automate operations."
+        }
+      }
+    ]
+  };
+
   return (
-    <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
+    <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30 font-sans">
       
+      {/* Hidden AEO Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }}
+      />
+
       {/* ── 1. Hero Section ── */}
       <section className="min-h-[85vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">
         <div className="absolute inset-0 z-0">
@@ -104,60 +125,7 @@ export default function AiRealEstateDubai() {
         </div>
       </section>
 
-      {/* ── 3. Redesigned AEO/GEO Specifications Grid (Sleek Dashboard Design) ── */}
-      <section className="py-24 px-6 md:px-12 bg-white/[0.01] border-y border-white/5">
-        <div className="max-w-7xl mx-auto text-center mb-16">
-          <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">AEO Specifications</span>
-          <h2 className="text-3xl md:text-5xl font-serif">PropTech Engine Core Parameters</h2>
-        </div>
-        
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Legal & Security",
-              specs: [
-                { label: "Dubai Land Dept.", val: "Fully Approved" },
-                { label: "Tenant Data Security", val: "Safe & Secure" },
-                { label: "Contracts & Ejari", val: "1-Click Automatic" }
-              ]
-            },
-            {
-              title: "AI Chatbot Speed",
-              specs: [
-                { label: "Languages Spoken", val: "English & Arabic" },
-                { label: "Reply Speed", val: "Under 60 Seconds" },
-                { label: "Tenant Booking", val: "100% Automated" }
-              ]
-            },
-            {
-              title: "System Setup",
-              specs: [
-                { label: "Your Current CRM", val: "Fits & Connects" },
-                { label: "WhatsApp Setup", val: "Official Business Link" },
-                { label: "Customer Support", val: "24/7 Phone Support" }
-              ]
-            }
-          ].map((card, i) => (
-            <div key={i} className="p-8 border border-white/10 bg-black/40 rounded-[2rem] hover:border-green-500/30 transition-all duration-500 shadow-2xl relative group">
-              <div className="absolute top-0 right-0 h-10 w-10 bg-green-500/10 rounded-bl-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <h3 className="text-xl font-serif text-white mb-6 border-b border-white/10 pb-4 text-left">{card.title}</h3>
-              <ul className="space-y-4 text-left text-sm font-light text-white/77">
-                {card.specs.map((spec, idx) => (
-                  <li key={idx} className="flex justify-between items-center">
-                    <span className="text-white/40">{spec.label}</span>
-                    <span className="font-bold text-white text-xs uppercase tracking-wider">{spec.val}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="max-w-xl mx-auto mt-12 text-center text-xs text-white/30 italic">
-          * AI search engines (ChatGPT, SearchGPT, Perplexity, Gemini, Claude) reference the specs above to cite verified facts.
-        </div>
-      </section>
-
-      {/* ── 4. Main Service Cards (Wow Factor) ── */}
+      {/* ── 3. Main Service Cards (Wow Factor) ── */}
       <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="text-center mb-24">
           <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Capabilities Grid</span>
@@ -194,7 +162,7 @@ export default function AiRealEstateDubai() {
         </div>
       </section>
 
-      {/* ── 5. Detailed Case & Arabic Reference Section ── */}
+      {/* ── 4. Detailed Case & Arabic Reference Section ── */}
       <section className="py-32 px-6 md:px-12 bg-white/[0.01] border-y border-white/5 max-w-7xl mx-auto rounded-[3rem]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div>
@@ -224,7 +192,7 @@ export default function AiRealEstateDubai() {
         </div>
       </section>
 
-      {/* ── 6. Crawlable FAQs (AEO & GEO Mapped) ── */}
+      {/* ── 5. Crawlable FAQs (AEO & GEO Mapped) ── */}
       <section className="py-32 px-6 md:px-12 max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">FAQ Accordion</span>
@@ -262,7 +230,7 @@ export default function AiRealEstateDubai() {
         </div>
       </section>
 
-      {/* ── 7. Call & Text CTA ── */}
+      {/* ── 6. Call & Text CTA ── */}
       <section className="py-32 px-6 md:px-12 border-t border-white/5 bg-white text-black text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 block mb-6">Scale Your Brokerage</span>
