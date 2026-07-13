@@ -50,9 +50,9 @@ export default function SovereignSalesAgent() {
           
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1 }} className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0 justify-center z-10">
             <MagneticButton>
-              <div onClick={() => window.dispatchEvent(new CustomEvent('open-calendar'))} aria-label="Schedule Your Free Competitive Audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer">
+              <Link href="/contact" aria-label="Schedule Your Free Competitive Audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer">
                 Schedule Your Free Competitive Audit <ArrowRight className="w-4 h-4" />
-              </div>
+              </Link>
             </MagneticButton>
             <MagneticButton>
               <Link href="#case-studies" className="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all flex items-center justify-center gap-3 backdrop-blur-md">
@@ -496,9 +496,9 @@ export default function SovereignSalesAgent() {
           </div>
 
           <div className="flex flex-col items-center gap-6">
-            <div onClick={() => window.dispatchEvent(new CustomEvent('open-calendar'))} className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 cursor-pointer">
+            <Link href="/contact" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 cursor-pointer">
               Book Your Free Operational Audit <ArrowRight className="w-4 h-4" />
-            </div>
+            </Link>
             <p className="text-white/40 text-[10px] uppercase tracking-widest text-center max-w-sm">
               20-minute call. No obligation. We'll show you exactly where your lead gen is leaking capital.
             </p>
@@ -595,9 +595,9 @@ export default function SovereignSalesAgent() {
           
           <div className="mt-16 text-center">
             <p className="text-white/60 mb-6 text-sm">Still have questions? Let's talk. No obligation. No pitch. Just answers.</p>
-            <div onClick={() => window.dispatchEvent(new CustomEvent('open-calendar'))} className="inline-flex bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/80 transition-colors cursor-pointer">
+            <Link href="/contact" className="inline-flex bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-white/80 transition-colors cursor-pointer">
               Book a Call
-            </div>
+            </Link>
           </div>
         </div>
       </section>

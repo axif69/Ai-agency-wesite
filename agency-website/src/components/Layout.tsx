@@ -302,11 +302,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </p>
               <div className="flex gap-4 pt-4">
                 {[
-                  { name: 'LN', label: 'LinkedIn profile', icon: 'LinkedIn' },
-                  { name: 'TW', label: 'Twitter profile', icon: 'Twitter' },
-                  { name: 'IG', label: 'Instagram profile', icon: 'Instagram' }
+                  { name: 'LN', label: 'LinkedIn profile', href: 'https://www.linkedin.com' },
+                  { name: 'TW', label: 'X profile', href: 'https://x.com' },
+                  { name: 'IG', label: 'Instagram profile', href: 'https://www.instagram.com' }
                 ].map((social) => (
-                  <a key={social.name} href="#" aria-label={`Visit our ${social.label}`} className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 text-[10px] font-bold group">
+                  <a key={social.name} href={social.href} target="_blank" rel="noreferrer" aria-label={`Visit our ${social.label}`} className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 text-[10px] font-bold group">
                     <span className="group-hover:scale-110 transition-transform">{social.name}</span>
                   </a>
                 ))}
@@ -401,8 +401,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               &copy; 2026 Asif Digital &mdash; Intelligent Systems.
             </div>
             <div className="flex gap-12 text-[10px] text-white/95 uppercase tracking-[0.3em] font-bold">
-              <a href="#" className="hover:text-white transition-colors" aria-label="Read our Privacy Architecture">Privacy Architecture</a>
-              <a href="#" className="hover:text-white transition-colors" aria-label="Review our Legal Framework">Legal Framework</a>
+              <a href="/contact" className="hover:text-white transition-colors" aria-label="Read our Privacy Architecture">Privacy Architecture</a>
+              <a href="/contact" className="hover:text-white transition-colors" aria-label="Review our Legal Framework">Legal Framework</a>
             </div>
           </div>
         </div>

@@ -325,9 +325,9 @@ export default function Home() {
           
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1 }} className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0 justify-center z-10">
             <MagneticButton>
-              <div onClick={() => window.dispatchEvent(new CustomEvent('open-calendar'))} aria-label="Deploy My AI Agent" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer">
+              <Link href="/contact" aria-label="Deploy My AI Agent" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer">
                 Deploy My AI Agent <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
-              </div>
+              </Link>
             </MagneticButton>
             <MagneticButton>
               <div onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} aria-label="See the AI in Action" className="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all flex items-center justify-center gap-3 backdrop-blur-md cursor-pointer">
@@ -680,12 +680,13 @@ export default function Home() {
         </div>
 
         <div className="max-w-4xl mx-auto bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-14 shadow-2xl">
-          <div className="mb-10">
+            <div className="mb-10">
             <div className="flex justify-between items-end mb-4">
-              <label className="text-xs uppercase tracking-widest font-bold text-white/60">Number of Customer Support/Sales Staff</label>
+              <label htmlFor="roi-employees" className="text-xs uppercase tracking-widest font-bold text-white/60">Number of Customer Support/Sales Staff</label>
               <span className="text-3xl font-serif text-white">{employees}</span>
             </div>
             <input 
+              id="roi-employees"
               type="range" 
               min="1" max="50" 
               value={employees} 
