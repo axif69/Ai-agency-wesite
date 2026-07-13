@@ -52,6 +52,39 @@ const sovereignSolutions = [
   }
 ];
 
+const realEstateSolutions = [
+  {
+    title: "AI Real Estate UAE Hub",
+    desc: "A practical guide to how UAE property teams can use AI for enquiries, listings, support, and day-to-day operations.",
+    icon: <Globe className="w-6 h-6" role="img" aria-label="Real Estate Hub Icon" />,
+    link: "/ai-real-estate-uae",
+  },
+  {
+    title: "AI for Real Estate Agencies",
+    desc: "Dubai agency workflows for faster response times, better qualification, and cleaner CRM handoffs across every channel.",
+    icon: <MessageSquare className="w-6 h-6" role="img" aria-label="Agency Leads Icon" />,
+    link: "/ai-real-estate-agencies-dubai",
+  },
+  {
+    title: "AI Property Management UAE",
+    desc: "Tenant communication, maintenance intake, renewals, and operational reminders for property management teams.",
+    icon: <Phone className="w-6 h-6" role="img" aria-label="Property Management Icon" />,
+    link: "/ai-property-management-uae",
+  },
+  {
+    title: "Real Estate Digital Solutions",
+    desc: "The connected website, portal, CRM, and WhatsApp foundation that powers real estate automation and lead flow.",
+    icon: <Server className="w-6 h-6" role="img" aria-label="Digital Solutions Icon" />,
+    link: "/real-estate-digital-solutions-uae",
+  },
+  {
+    title: "Lead Generation for Real Estate",
+    desc: "SEO, AEO, and conversion-focused lead capture built to bring in property enquiries that are worth following up.",
+    icon: <TrendingUp className="w-6 h-6" role="img" aria-label="Lead Generation Icon" />,
+    link: "/ai-lead-generation-agency-dubai",
+  }
+];
+
 const foundationalServices = [
   {
     title: "Web & Ecommerce Development",
@@ -442,6 +475,24 @@ export default function Home() {
                   <p className="text-white/70 font-normal text-sm leading-relaxed">{sol.desc}</p>
                 </div>
                 <Link href={sol.link} aria-label={`Explore ${sol.title}`} className="inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-white/40 group-hover:text-white transition-colors pt-4 border-t border-white/5">
+                  Learn More <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            ))}
+
+            {realEstateSolutions.map((sol, i) => (
+              <div key={`re-${i}`} className="w-[300px] md:w-[400px] h-[400px] md:h-[450px] rounded-3xl border border-green-500/10 bg-gradient-to-b from-white/[0.03] to-white/[0.015] hover:bg-white/[0.06] hover:border-green-500/25 p-8 md:p-10 flex flex-col justify-between flex-shrink-0 transition-all group backdrop-blur-sm">
+                <div className="flex justify-between items-start">
+                  <div className="p-4 rounded-2xl bg-green-500/10 text-green-400 group-hover:bg-green-500 group-hover:text-black transition-colors duration-300">
+                    {sol.icon}
+                  </div>
+                  <span className="text-xs uppercase font-bold tracking-[0.2em] text-green-500/60">Real Estate</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-green-300 transition-colors">{sol.title}</h3>
+                  <p className="text-white/70 font-normal text-sm leading-relaxed">{sol.desc}</p>
+                </div>
+                <Link href={sol.link} aria-label={`Explore ${sol.title}`} className="inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-white/40 group-hover:text-green-300 transition-colors pt-4 border-t border-white/5">
                   Learn More <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
