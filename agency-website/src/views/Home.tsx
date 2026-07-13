@@ -8,7 +8,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 import MagneticButton from "../components/animations/MagneticButton";
-import LazySection from "../components/LazySection";
 import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap, Workflow, Languages, Phone } from "lucide-react";
 import { CASE_STUDIES } from "../data/caseStudyData";
 import { BLOG_POSTS } from "../data/blogData";
@@ -547,7 +546,6 @@ export default function Home() {
         </div>
       </section>
 
-      <LazySection className="contents" placeholderClassName="block min-h-[3200px] bg-[#050505] border-t border-white/5" rootMargin="300px">
       {/* ── Testimonials Section ── */}
       <section className="py-24 px-6 md:px-12 bg-[#050505] border-t border-white/5 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -1078,7 +1076,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      </LazySection>
     </div>
   );
 }
