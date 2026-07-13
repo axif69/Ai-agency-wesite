@@ -135,6 +135,8 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const horizontalScrollRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
+  const [showDecor, setShowDecor] = useState(false);
+  const [isCompactViewport, setIsCompactViewport] = useState(false);
 
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
@@ -148,6 +150,18 @@ export default function Home() {
   const totalHumanCost = employees * humanCostPerYear;
   const totalAgentCost = employees * agentCostPerYear;
   const totalSavings = totalHumanCost - totalAgentCost;
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const updateViewport = () => setIsCompactViewport(window.innerWidth < 768);
+    updateViewport();
+    const timer = window.setTimeout(() => setShowDecor(true), 1200);
+    window.addEventListener("resize", updateViewport);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("resize", updateViewport);
+    };
+  }, []);
 
   useGSAP(() => {
     // Reveal animations for headings/paragraphs
@@ -299,7 +313,7 @@ export default function Home() {
   return (
     <div ref={containerRef} className="relative bg-[#050505] overflow-hidden">
       {/* 3D Interactive Background */}
-      <Scene3D />
+      {showDecor && !isCompactViewport ? <Scene3D /> : null}
       
       {/* ── 1. The "Authority" Hero Section ── */}
       <section className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden px-6 pt-24 sm:pt-0">
@@ -336,7 +350,7 @@ export default function Home() {
             </MagneticButton>
           </motion.div>
         </motion.div>
-        <HeroParticles />
+        {showDecor ? <HeroParticles /> : null}
       </section>
 
       {/* ── Trust Signals Bar ── */}
@@ -410,7 +424,7 @@ export default function Home() {
           </div>
 
           <div className="why-now-graphic relative aspect-square rounded-[2rem] overflow-hidden border border-white/10 bg-[#0a0a0a] p-10 flex flex-col justify-center opacity-0">
-             <ParticleBackground />
+             {showDecor ? <ParticleBackground /> : null}
              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)] opacity-20 z-[1]" />
              
              <div className="relative z-10 space-y-8">

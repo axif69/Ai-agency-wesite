@@ -1,12 +1,14 @@
 "use client";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import PageLoader from "./PageLoader";
-import WhatsAppButton from "./WhatsAppButton";
-import KhalidChatbot from "./KhalidChatbot";
 import { useState, useEffect, Suspense } from "react";
 import { Menu, X, Code, Megaphone, PenTool, ChevronDown } from "lucide-react";
+
+const WhatsAppButton = dynamic(() => import("./WhatsAppButton"), { ssr: false });
+const KhalidChatbot = dynamic(() => import("./KhalidChatbot"), { ssr: false });
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
