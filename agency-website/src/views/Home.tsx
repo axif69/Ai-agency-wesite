@@ -318,6 +318,40 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="px-6 md:px-12 py-16 max-w-7xl mx-auto">
+        <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-3 gsap-reveal">Start Here</span>
+            <h2 className="text-3xl md:text-4xl font-serif tracking-tight gsap-reveal">Choose what you need right now.</h2>
+          </div>
+          <p className="text-white/55 text-sm max-w-xl gsap-reveal">
+            If you came here with a specific intent, these paths get you to the right page faster than a full homepage scroll.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4">
+          {[
+            { title: "Need More Leads", desc: "SEO, PPC, and AI sales capture.", href: "/services/seo-agency-dubai-sharjah-uae" },
+            { title: "Need a Better Website", desc: "Fast design, development, and support.", href: "/services/web-design-dubai-sharjah" },
+            { title: "Need AI for Real Estate", desc: "Property leads, tenant support, and workflows.", href: "/ai-real-estate-uae" },
+            { title: "Need WhatsApp Automation", desc: "Faster replies and lead qualification.", href: "/services/whatsapp-automation-gcc" },
+            { title: "Need AEO / GEO Visibility", desc: "Content built for search and answer engines.", href: "/services/seo-agency-dubai-sharjah-uae" }
+          ].map((item, i) => (
+            <Link
+              key={i}
+              href={item.href}
+              className="group p-6 rounded-[1.75rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/15 transition-all duration-300 flex flex-col min-h-[190px]"
+            >
+              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-green-400 mb-4">{item.title}</span>
+              <p className="text-white/65 text-sm leading-relaxed flex-grow">{item.desc}</p>
+              <div className="mt-6 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 group-hover:text-white transition-colors">
+                Open Path <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* ── 2. The Problem / Market Context ("Why Now") ── */}
       <section className="py-40 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -980,3 +1014,5 @@ export default function Home() {
     </div>
   );
 }
+
+
