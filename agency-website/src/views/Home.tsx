@@ -331,7 +331,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4">
           {[
-            { title: "Need More Leads", desc: "SEO, PPC, and AI sales capture.", href: "/services/seo-agency-dubai-sharjah-uae" },
+            { title: "Need More Leads", desc: "SEO, PPC, and AI sales capture.", href: "/ai-lead-generation-agency-dubai" },
             { title: "Need a Better Website", desc: "Fast design, development, and support.", href: "/services/web-design-dubai-sharjah" },
             { title: "Need AI for Real Estate", desc: "Property leads, tenant support, and workflows.", href: "/ai-real-estate-uae" },
             { title: "Need WhatsApp Automation", desc: "Faster replies and lead qualification.", href: "/services/whatsapp-automation-gcc" },
@@ -340,7 +340,7 @@ export default function Home() {
             <Link
               key={i}
               href={item.href}
-              className="group p-6 rounded-[1.75rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/15 transition-all duration-300 flex flex-col min-h-[190px]"
+              className="group block p-6 rounded-[1.75rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/15 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.04)] transition-all duration-300 flex flex-col min-h-[190px] cursor-pointer"
             >
               <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-green-400 mb-4">{item.title}</span>
               <p className="text-white/65 text-sm leading-relaxed flex-grow">{item.desc}</p>
@@ -1014,5 +1014,6 @@ export default function Home() {
     </div>
   );
 }
+
 
 
