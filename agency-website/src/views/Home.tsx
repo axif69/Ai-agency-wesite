@@ -340,11 +340,12 @@ export default function Home() {
             <Link
               key={i}
               href={item.href}
-              className="group block p-6 rounded-[1.75rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/15 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.04)] transition-all duration-300 flex flex-col min-h-[190px] cursor-pointer"
+              className="group relative block p-6 rounded-[1.75rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] hover:border-green-500/30 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition-all duration-300 ease-out flex flex-col min-h-[190px] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400/60"
             >
+              <span className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-green-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-green-400 mb-4">{item.title}</span>
               <p className="text-white/65 text-sm leading-relaxed flex-grow">{item.desc}</p>
-              <div className="mt-6 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 group-hover:text-white transition-colors">
+              <div className="mt-6 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 group-hover:text-green-300 transition-colors">
                 Open Path <ArrowRight className="w-4 h-4" />
               </div>
             </Link>
