@@ -15,6 +15,7 @@ import MagneticButton from "../components/animations/MagneticButton";
 import { TextGenerateEffect } from "../components/animations/TextGenerateEffect";
 import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap, Workflow, Languages, Phone } from "lucide-react";
 import { CASE_STUDIES } from "../data/caseStudyData";
+import { BLOG_POSTS } from "../data/blogData";
 
 const Scene3D = dynamic(() => import("../components/Scene3D"), { ssr: false });
 
@@ -759,33 +760,14 @@ export default function Home() {
             <span className="micro-label block mb-4 text-[#0066FF]">Free Tips & Guides</span>
             <h2 className="text-4xl md:text-6xl font-serif tracking-tight">Our Blog</h2>
           </div>
-          <Link href="/blog" aria-label="Explore all blog articles" className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] border border-white/10 transition-all flex items-center gap-2 group">
+          <a href="/blog" aria-label="Explore all blog articles" className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] border border-white/10 transition-all flex items-center gap-2 group">
             Read All Articles <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" role="img" aria-label="Chevron Right icon" />
-          </Link>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              title: "How to Get Your Business to the Top of Google in Dubai",
-              slug: "sovereign-shield-ai-cybersecurity-gcc-2026",
-              category: "Local SEO",
-              excerpt: "A simple, step-by-step guide to getting your local business appearing at the top of Google Maps and Google Search in your area."
-            },
-            {
-              title: "Why Your Old Website is Losing You Customers",
-              slug: "aeo-mastery-dubai-search-future",
-              category: "Web Design",
-              excerpt: "If your website takes more than 3 seconds to load, you're losing up to half your visitors before they even see what you offer. Here's how to fix it."
-            },
-            {
-              title: "How an AI Chatbot Can Double the Leads From Your Website",
-              slug: "sovereign-ai-blueprint-gcc-2026",
-              category: "AI Chatbots",
-              excerpt: "See how Dubai businesses are using AI chatbots to have real conversations with customers and capture leads automatically — instead of boring contact forms."
-            }
-          ].map((post, i) => (
-            <Link key={i} href={`/blog/${post.slug}`} aria-label={`Read Article: ${post.title}`} className="group block p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500 flex flex-col h-full">
+          {BLOG_POSTS.slice(0, 3).map((post, i) => (
+            <a key={i} href={`/blog/${post.slug}`} aria-label={`Read Article: ${post.title}`} className="group block p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500 flex flex-col h-full">
               <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0066FF] mb-6">
                 {post.category}
               </div>
@@ -798,7 +780,7 @@ export default function Home() {
               <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
                 Read Article <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </section>
