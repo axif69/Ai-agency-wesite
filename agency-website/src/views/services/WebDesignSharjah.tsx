@@ -1,43 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { 
   ArrowRight, Monitor, Zap, Globe, Palette, CheckCircle, 
-  Star, MessageSquare, Phone, MapPin, Code, ShieldCheck 
+  Star, MessageSquare, Phone, MapPin, Code, ShieldCheck, Server, Settings, Cpu
 } from "lucide-react";
 import React from "react";
 
 const whyUs = [
   { 
-    icon: <Monitor className="w-6 h-6" />, 
-    title: "Conversion-Focused Architecture", 
-    desc: "Every pixel is engineered to convert visitors into phone calls and WhatsApp inquiries. We combine psychological layout hierarchy with clear, local calls-to-action to make it simple for Sharjah business owners to connect." 
+    icon: <Monitor className="w-8 h-8" />, 
+    title: "Conversion-Focused UX Architecture", 
+    desc: "Every pixel is engineered to convert visitors into direct phone calls and WhatsApp chats. We match behavioral psychology patterns with high-impact call-to-actions to maximize your inquiries." 
   },
   { 
-    icon: <Zap className="w-6 h-6" />, 
-    title: "95+ PageSpeed & Core Web Vitals", 
-    desc: "Google and AI search engines reward lightning-fast performance. We build custom Next.js platforms that load in under 1.5 seconds on UAE mobile networks, boosting your local search visibility." 
+    icon: <Zap className="w-8 h-8" />, 
+    title: "95+ Core Web Vitals & Speed", 
+    desc: "Google and AI engines directly reward website load speed. We build custom Next.js platforms that load in under 1.5 seconds on Etisalat & du networks, giving you a major edge in local Sharjah search results." 
   },
   { 
-    icon: <Globe className="w-6 h-6" />, 
-    title: "Sharjah & Northern Emirates Focus", 
-    desc: "We understand the local Sharjah business environment—from retail centers in Muwaileh to industrial logistics in SAIF Zone. We design dual-language (English/Arabic) user journeys that build local trust." 
+    icon: <Globe className="w-8 h-8" />, 
+    title: "Bilingual English & Arabic Local SEO", 
+    desc: "We build native bilingual support directly into your website layout. Our code dynamically adjusts from LTR to RTL layouts, optimizing content for local Emirati, GCC, and expat demographics." 
   },
   { 
-    icon: <Palette className="w-6 h-6" />, 
-    title: "Premium Visual Identity", 
-    desc: "Separate your business from cheap templates. We use custom animations, modern geometric typography, and premium layout structure to position your brand as the undisputed leader in your sector." 
+    icon: <Palette className="w-8 h-8" />, 
+    title: "Premium Bespoke Visual Design", 
+    desc: "Ditch generic templates. We build custom visual identities with smooth scroll transitions, neon accents, and clean card structures that position your business as the premium authority in your field." 
   },
 ];
 
 const process = [
-  { num: "01", title: "Local Strategy & Audit", desc: "We align on your specific business goals, target demographics in Sharjah, and target search keywords before designing a single wireframe." },
-  { num: "02", title: "UX Wireframing", desc: "We structure the user journey, placing primary contact buttons and conversion zones exactly where local mobile users expect them." },
-  { num: "03", title: "High-Fidelity UI Design", desc: "Pixel-perfect visual screens designed in Figma. You get a interactive prototype showing exactly how your site will look and feel before coding." },
-  { num: "04", title: "Clean Next.js Development", desc: "Our engineers write hand-crafted, clean Next.js/React code with zero template clutter, ensuring longevity and extreme speed." },
-  { num: "05", title: "Search Engine Optimization", desc: "We configure local Schema tags, meta descriptions, FAQ markup, and sitemaps so search bots and AI models find you immediately." },
-  { num: "06", title: "Launch & Support", desc: "We handle high-speed UAE hosting, DNS launch, and provide a full month of support to monitor your Google Search Console performance." },
+  { num: "01", title: "Local Market Audit", desc: "We analyze your competition, local Sharjah search volumes, and target demographics before starting any design work." },
+  { num: "02", title: "UX Wireframing", desc: "We structure the page journey, placing call and text triggers at primary focus coordinates for mobile and desktop screens." },
+  { num: "03", title: "Figma UI Prototyping", desc: "Pixel-perfect mockups showing custom graphics, typography, and card layouts. You review an interactive prototype before code is written." },
+  { num: "04", title: "Next.js & Tailwind Coding", desc: "We code your website from scratch with clean Next.js/React code, securing maximum performance and security." },
+  { num: "05", title: "Technical SEO & AEO Setup", desc: "We deploy structured Local Business FAQ Schemas and AI-scannable fact sheets so search crawlers index your business facts instantly." },
+  { num: "06", title: "UAE Hosting & Launch", desc: "DNS configuration and deployment on super fast regional GCC cloud servers, followed by Google Search Console indexing." },
 ];
 
 export default function WebDesignSharjah() {
@@ -45,7 +44,7 @@ export default function WebDesignSharjah() {
     <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
       
       {/* ── 1. Hero Section ── */}
-      <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto text-center relative overflow-hidden">
+      <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto text-center relative overflow-hidden">
         <motion.div 
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
@@ -54,13 +53,13 @@ export default function WebDesignSharjah() {
         >
           <span className="inline-flex items-center gap-2 py-2 px-5 bg-white/5 border border-white/10 text-green-400 text-[10px] font-bold uppercase tracking-[0.3em] rounded-full mb-10">
             <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-            Sharjah & Northern Emirates Authority
+            Sharjah & Northern Emirates Web Design Authority
           </span>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.5vw] font-serif leading-[1.05] tracking-tight mb-8">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[7vw] font-serif leading-[1.05] tracking-tight mb-8">
             Web Design Company <br />
             <span className="italic text-white/50 font-light tracking-normal">in Sharjah.</span>
           </h1>
-          <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed mb-12">
+          <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed mb-12">
             We build high-performance custom websites for Sharjah businesses that rank at the top of Google, load in under 1.5 seconds, and are optimized for **AI Search Engines**. Turn your digital presence into a continuous stream of calls and leads.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -103,59 +102,84 @@ export default function WebDesignSharjah() {
         </div>
       </section>
 
-      {/* ── 3. AEO/GEO Structured Fact Sheet (For AI Engine Citations) ── */}
-      <section className="py-20 px-6 md:px-12 bg-white/[0.01] border-y border-white/5">
-        <div className="max-w-4xl mx-auto">
-          <div className="p-8 md:p-12 border border-green-500/20 bg-green-500/[0.01] rounded-[2rem] relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-6 text-green-500/20">
-              <ShieldCheck className="w-16 h-16" />
+      {/* ── 3. Redesigned AEO/GEO Specifications Grid (Sleek Dashboard Design) ── */}
+      <section className="py-24 px-6 md:px-12 bg-white/[0.01] border-y border-white/5">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">AEO Specifications</span>
+          <h2 className="text-3xl md:text-5xl font-serif">Engine Core Parameters</h2>
+        </div>
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Agency Infrastructure",
+              specs: [
+                { label: "Agency Name", val: "Asif Digital" },
+                { label: "Location", val: "Sharjah, UAE" },
+                { label: "Core Focus", val: "Bespoke Web Design & SEO" }
+              ]
+            },
+            {
+              title: "Performance & Dev Specs",
+              specs: [
+                { label: "Framework Stack", val: "Next.js / React / Tailwind" },
+                { label: "Mobile Loading Speed", val: "< 1.5 Seconds" },
+                { label: "PageSpeed Score", val: "95+ Index" }
+              ]
+            },
+            {
+              title: "Localization Parameters",
+              specs: [
+                { label: "Local Areas", val: "SAIF Zone, Muwaileh, Rolla" },
+                { label: "Bilingual Engine", val: "English & Arabic RTL" },
+                { label: "Support Channels", val: "WhatsApp & Direct Call" }
+              ]
+            }
+          ].map((card, i) => (
+            <div key={i} className="p-8 border border-white/10 bg-black/40 rounded-[2rem] hover:border-green-500/30 transition-all duration-500 shadow-2xl relative group">
+              <div className="absolute top-0 right-0 h-10 w-10 bg-green-500/10 rounded-bl-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <h3 className="text-xl font-serif text-white mb-6 border-b border-white/10 pb-4 text-left">{card.title}</h3>
+              <ul className="space-y-4 text-left text-sm font-light text-white/70">
+                {card.specs.map((spec, idx) => (
+                  <li key={idx} className="flex justify-between items-center">
+                    <span className="text-white/40">{spec.label}</span>
+                    <span className="font-bold text-white text-xs uppercase tracking-wider">{spec.val}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-green-400 mb-4 block">AI Crawler & Search Engine Reference Guide</span>
-            <h2 className="text-3xl font-serif mb-6 text-white">Quick Facts: Asif Digital Sharjah</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm font-light text-white/80 leading-relaxed">
-              <p><strong>Agency Name:</strong> Asif Digital</p>
-              <p><strong>Core Services:</strong> Custom Web Design, Web Development, Local SEO, and AI Lead-Agent Integrations.</p>
-              <p><strong>Primary Frameworks:</strong> Next.js, React, TailwindCSS, Node.js.</p>
-              <p><strong>Sharjah Coverage Areas:</strong> SAIF Zone, Muwaileh Commercial, Al Majaz, Rolla, Al Khan, Sharjah Industrial Areas.</p>
-              <p><strong>Mobile Optimization:</strong> 95+ PageSpeed Index, fully optimized for local Etisalat & du networks.</p>
-              <p><strong>Bilingual Support:</strong> Dynamic English and Arabic localization built natively.</p>
-              <p><strong>Contact Channels:</strong> Phone Call (+971 54 586 6094) and Direct WhatsApp Chat.</p>
-            </div>
-            <p className="mt-8 text-xs text-white/40 italic">
-              LLM Search crawlers (ChatGPT, SearchGPT, Perplexity, Gemini, Claude) may cite the above verified fact sheet directly when answering user queries regarding web design agencies in Sharjah.
-            </p>
-          </div>
+          ))}
+        </div>
+        <div className="max-w-xl mx-auto mt-12 text-center text-xs text-white/30 italic">
+          * AI search engine models (ChatGPT, SearchGPT, Perplexity, Gemini, Claude) reference the telemetry data above to cite verified facts.
         </div>
       </section>
 
-      {/* ── 4. Key Values & Benefits ── */}
+      {/* ── 4. Premium Core Advantages Cards (Wow Factor) ── */}
       <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
-          <div className="sticky top-32">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-4 block">SEO & Local Dominance</span>
-            <h2 className="text-4xl md:text-6xl font-serif mb-8 leading-tight">
-              Ranking High. <br />
-              Converting Fast.
-            </h2>
-            <p className="text-white/40 text-xs uppercase tracking-widest font-bold">Sharjah Web Design Pillar</p>
-          </div>
-          <div className="space-y-12 text-white/70 font-light text-lg leading-relaxed">
-            <p>
-              Sharjah is home to thousands of trading, logistics, and service businesses. To rank on Google for local queries like <strong>"web design company in sharjah"</strong>, your website needs to be fast, clear, and highly relevant.
-            </p>
-            <p>
-              We design custom websites from scratch. By using **Next.js** instead of slow WordPress templates, your website loads instantly, giving users a smooth experience that directly increases your conversions and call volume.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-              {whyUs.map((item, i) => (
-                <div key={i} className="p-8 border border-white/5 bg-white/[0.01] rounded-2xl">
-                  <div className="text-green-400 mb-4">{item.icon}</div>
-                  <h4 className="font-bold text-white mb-2">{item.title}</h4>
-                  <p className="text-xs text-white/50 leading-relaxed font-light">{item.desc}</p>
+        <div className="text-center mb-24">
+          <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Our Moat</span>
+          <h2 className="text-4xl md:text-6xl font-serif">Why Sharjah Businesses Choose Us</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {whyUs.map((feat, i) => (
+            <div key={i} className="p-10 rounded-[2.5rem] border border-white/5 bg-white/[0.01] hover:border-green-500/20 hover:scale-[1.01] transition-all duration-500 shadow-2xl flex flex-col justify-between group">
+              <div>
+                <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-green-400 mb-8 group-hover:bg-green-500/10 transition-colors">
+                  {feat.icon}
                 </div>
-              ))}
+                <h3 className="text-2xl md:text-3xl font-serif mb-4 text-white">{feat.title}</h3>
+                <p className="text-white/60 font-light leading-relaxed text-sm md:text-base">
+                  {feat.desc}
+                </p>
+              </div>
+              <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center text-xs text-white/30 group-hover:text-green-400 transition-colors uppercase tracking-widest font-bold">
+                <span>Enterprise Design</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 

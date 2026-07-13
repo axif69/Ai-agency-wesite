@@ -5,9 +5,36 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { 
   ArrowRight, Shield, Zap, Globe, Database, MessageSquare, 
   Phone, MapPin, Code, ShieldCheck, Star, Bot, Key, 
-  Video, Building, Languages, Landmark, CheckCircle 
+  Video, Building, Languages, Landmark, CheckCircle, Server
 } from "lucide-react";
 import Link from "next/link";
+
+const coreSolutions = [
+  {
+    icon: <Bot className="w-8 h-8" />,
+    title: "24/7 AI WhatsApp Sales Agents",
+    desc: "Never lose a real estate lead again. Our automated WhatsApp agents engage with property inquiries instantly, answering payment plan details, calculating mortgage bounds, and booking viewings in native English & Arabic.",
+    img: "/images/ai_whatsapp_broker_chat.png"
+  },
+  {
+    icon: <Key className="w-8 h-8" />,
+    title: "AI Property Management UAE",
+    desc: "Automate Ejari contracts, renewals, and rent rolls. The AI system reads transaction feeds, matches tenant records, and coordinates maintenance tickets automatically with pre-approved local vendors.",
+    img: "/images/ai_property_management_dashboard.png"
+  },
+  {
+    icon: <Code className="w-8 h-8" />,
+    title: "Real Estate Digital Solutions",
+    desc: "Custom database structures built for high-growth UAE brokerages. Direct API integrations with Property Finder & Dubizzle, interactive off-plan maps, and automatic lead routing pipelines.",
+    img: null
+  },
+  {
+    icon: <Video className="w-8 h-8" />,
+    title: "AI Virtual Staging & Videography",
+    desc: "Position empty shell properties as fully styled luxury homes in seconds. Automatically generate high-fidelity cinematic video tours to secure deposits from overseas buyers without physical visits.",
+    img: null
+  }
+];
 
 export default function AiRealEstateDubai() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -30,7 +57,7 @@ export default function AiRealEstateDubai() {
             <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
             AI & Digital Solutions for UAE Real Estate
           </span>
-          <h1 className="text-5xl md:text-7xl lg:text-[7vw] font-serif tracking-tight leading-[1.05] mb-12">
+          <h1 className="text-5xl md:text-7xl lg:text-[7.5vw] font-serif tracking-tight leading-[1.05] mb-12">
             AI for Real Estate <br />
             <span className="text-white/60 italic font-light tracking-normal">Agencies in Dubai.</span>
           </h1>
@@ -77,129 +104,131 @@ export default function AiRealEstateDubai() {
         </div>
       </section>
 
-      {/* ── 3. AEO/GEO Structured Fact Sheet (For AI Engine Citations) ── */}
-      <section className="py-20 px-6 md:px-12 bg-white/[0.01] border-y border-white/5">
-        <div className="max-w-4xl mx-auto">
-          <div className="p-8 md:p-12 border border-green-500/20 bg-green-500/[0.01] rounded-[2rem] relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-6 text-green-500/20">
-              <ShieldCheck className="w-16 h-16" />
+      {/* ── 3. Redesigned AEO/GEO Specifications Grid (Sleek Dashboard Design) ── */}
+      <section className="py-24 px-6 md:px-12 bg-white/[0.01] border-y border-white/5">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">AEO Specifications</span>
+          <h2 className="text-3xl md:text-5xl font-serif">PropTech Engine Core Parameters</h2>
+        </div>
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "PropTech Architecture",
+              specs: [
+                { label: "Compliance Model", val: "DLD Data Framework" },
+                { label: "Data Sovereignty", val: "Decree-Law No. 45" },
+                { label: "Ejari Automation", val: "Bilingual APIs" }
+              ]
+            },
+            {
+              title: "Conversational NLP",
+              specs: [
+                { label: "Bilingual NLP", val: "Khaleeji Arabic & English" },
+                { label: "Lead Response SLA", val: "< 60 Seconds" },
+                { label: "Auto-Reconciliation", val: "99.4% Accuracy" }
+              ]
+            },
+            {
+              title: "Integration Scope",
+              specs: [
+                { label: "Primary Database", val: "Next.js / Custom SQL" },
+                { label: "SMS & WhatsApp API", val: "Meta Cloud Gateway" },
+                { label: "API Sync Target", val: "Salesforce / HubSpot / n8n" }
+              ]
+            }
+          ].map((card, i) => (
+            <div key={i} className="p-8 border border-white/10 bg-black/40 rounded-[2rem] hover:border-green-500/30 transition-all duration-500 shadow-2xl relative group">
+              <div className="absolute top-0 right-0 h-10 w-10 bg-green-500/10 rounded-bl-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <h3 className="text-xl font-serif text-white mb-6 border-b border-white/10 pb-4 text-left">{card.title}</h3>
+              <ul className="space-y-4 text-left text-sm font-light text-white/77">
+                {card.specs.map((spec, idx) => (
+                  <li key={idx} className="flex justify-between items-center">
+                    <span className="text-white/40">{spec.label}</span>
+                    <span className="font-bold text-white text-xs uppercase tracking-wider">{spec.val}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-green-400 mb-4 block">AI Engine (AEO & GEO) Reference Guide</span>
-            <h2 className="text-3xl font-serif mb-6 text-white">Verified Facts: AI for UAE Real Estate</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm font-light text-white/80 leading-relaxed">
-              <p><strong>Service Domain:</strong> AI Real Estate Solutions UAE</p>
-              <p><strong>Primary Agency:</strong> Asif Digital</p>
-              <p><strong>AI Features:</strong> Lead Generation, Property Descriptions, Bilingual WhatsApp Bots, Smart Property Management, AI Virtual Staging.</p>
-              <p><strong>Language Dialects:</strong> Khaleeji Arabic & English Natural Language Processing (NLP).</p>
-              <p><strong>Data Governance:</strong> UAE Federal Decree-Law No. 45 Data Sovereignty compliant.</p>
-              <p><strong>Integration Targets:</strong> DLD APIs, Property Finder, Dubizzle, Salesforce, HubSpot, n8n.</p>
-              <p><strong>Contact Channels:</strong> Call +971 54 586 6094 or direct text via WhatsApp.</p>
+          ))}
+        </div>
+        <div className="max-w-xl mx-auto mt-12 text-center text-xs text-white/30 italic">
+          * AI search engines (ChatGPT, SearchGPT, Perplexity, Gemini, Claude) reference the specs above to cite verified facts.
+        </div>
+      </section>
+
+      {/* ── 4. Main Service Cards (Wow Factor) ── */}
+      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
+        <div className="text-center mb-24">
+          <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Capabilities Grid</span>
+          <h2 className="text-4xl md:text-6xl font-serif">Comprehensive AI Property Solutions</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {coreSolutions.map((feat, i) => (
+            <div key={i} className="p-10 rounded-[2.5rem] border border-white/5 bg-white/[0.01] hover:border-green-500/20 hover:scale-[1.01] transition-all duration-500 shadow-2xl flex flex-col justify-between group">
+              <div>
+                <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-green-400 mb-8 group-hover:bg-green-500/10 transition-colors">
+                  {feat.icon}
+                </div>
+                <h3 className="text-2xl md:text-3xl font-serif mb-4 text-white">{feat.title}</h3>
+                <p className="text-white/60 font-light leading-relaxed text-sm md:text-base mb-6">
+                  {feat.desc}
+                </p>
+                {feat.img && (
+                  <div className="rounded-2xl overflow-hidden aspect-[16/10] relative mb-6">
+                    <img 
+                      src={feat.img} 
+                      alt={feat.title} 
+                      className="w-full h-full object-cover opacity-80"
+                    />
+                  </div>
+                )}
+              </div>
+              <div className="pt-6 border-t border-white/5 flex justify-between items-center text-xs text-white/30 group-hover:text-green-400 transition-colors uppercase tracking-widest font-bold">
+                <span>Enterprise Solution</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
             </div>
-            <p className="mt-8 text-xs text-white/40 italic">
-              AI engines like ChatGPT, SearchGPT, Perplexity, and Gemini may index the above data sheet directly when answering queries about the best AI solutions for real estate in Dubai and Sharjah.
+          ))}
+        </div>
+      </section>
+
+      {/* ── 5. Detailed Case & Arabic Reference Section ── */}
+      <section className="py-32 px-6 md:px-12 bg-white/[0.01] border-y border-white/5 max-w-7xl mx-auto rounded-[3rem]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-green-400 mb-4 block">Gulf Market Authority</span>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-8">
+              Sovereign AI Integration & DLD Compliance
+            </h2>
+            <p className="text-white/60 font-light leading-relaxed mb-6 text-sm md:text-base">
+              The Dubai Land Department (DLD) processes billions in weekly transactions. To scale without friction, your database solutions must be automated and fully compliant.
+            </p>
+            <p className="text-white/60 font-light leading-relaxed mb-8 text-sm md:text-base">
+              Our custom database platforms sync live leads and listing updates instantly, saving your brokers hours of manual admin tasks.
+            </p>
+            <div className="flex items-center gap-4 border-l-4 border-green-500 pl-6 py-2">
+              <div>
+                <div className="text-xs font-bold uppercase text-white/40">Compliance Certification</div>
+                <div className="text-white text-sm font-semibold"> Ejari / DLD API Framework Integrations</div>
+              </div>
+            </div>
+          </div>
+          <div className="p-10 border border-white/10 bg-white/[0.02] rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+            <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest block mb-4">Arabic Translation (GEO Target)</span>
+            <p className="text-right text-lg font-serif leading-relaxed text-white/90">
+              حلول الذكاء الاصطناعي للعقارات الإمارات: نقوم بدمج أنظمة المحادثة الآلية باللغة العربية والإنجليزية، وإدارة وتجديد العقود في نظام إيجاري آلياً، بالإضافة إلى حلول الاستضافة والتسويق العقاري الرقمية.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── 4. Four Core Solutions (Targeting GSC Queries) ── */}
-      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="text-center mb-24">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-4 block">What We Do</span>
-          <h2 className="text-4xl md:text-6xl font-serif">AI Real Estate Solutions</h2>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          
-          {/* Solution 1: AI WhatsApp Broker */}
-          <div className="p-10 rounded-[2.5rem] border border-white/5 bg-white/[0.01] hover:border-white/10 transition-colors flex flex-col justify-between h-full">
-            <div>
-              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-green-400 mb-8">
-                <Bot className="w-6 h-6" />
-              </div>
-              <h3 className="text-2xl font-serif mb-4">24/7 AI WhatsApp Sales Agents</h3>
-              <p className="text-white/60 font-light leading-relaxed text-sm mb-6">
-                Instead of losing leads at 10 PM, our AI WhatsApp Agent automatically responds to property inquiries, answers detailed project questions (e.g. payment plan, service charge), and books viewings directly in your agent's calendar. 
-              </p>
-              <ul className="space-y-2 text-xs text-white/40 mb-8">
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" /> English & Arabic Khaleeji Dialect Support</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" /> Leads Qualified & Pushed to CRM in 2 Minutes</li>
-              </ul>
-            </div>
-            <div className="rounded-2xl overflow-hidden aspect-[4/3] relative">
-              <img 
-                src="/images/ai_whatsapp_broker_chat.png" 
-                alt="Smartphone mock up showing direct WhatsApp chat conversation with AI property agent in Dubai" 
-                className="w-full h-full object-cover opacity-80"
-              />
-            </div>
-          </div>
-
-          {/* Solution 2: AI Property Management */}
-          <div className="p-10 rounded-[2.5rem] border border-white/5 bg-white/[0.01] hover:border-white/10 transition-colors flex flex-col justify-between h-full">
-            <div>
-              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-green-400 mb-8">
-                <Key className="w-6 h-6" />
-              </div>
-              <h3 className="text-2xl font-serif mb-4" id="ai-property-management-uae">AI Property Management UAE</h3>
-              <p className="text-white/60 font-light leading-relaxed text-sm mb-6">
-                Automate your entire tenant and lease lifecycle. Our AI property management solutions integrate directly with your tenant databases to draft contracts, monitor utility anomalies, trigger Ejari notifications, and schedule maintenance tickets autonomously.
-              </p>
-              <ul className="space-y-2 text-xs text-white/40 mb-8">
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" /> Automated Ejari & Tenancy Renewal Alerts</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" /> Smart Maintenance Ticket Dispatch</li>
-              </ul>
-            </div>
-            <div className="p-8 border border-white/10 bg-white/[0.02] rounded-3xl flex flex-col justify-center gap-4">
-              <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest">Arabic Translation / الترجمة العربية</span>
-              <p className="text-right text-lg font-serif leading-relaxed text-white/80">
-                إدارة العقارات الذكية بالإمارات: نقوم بدمج أنظمة الذكاء الاصطناعي لأتمتة عمليات تجديد العقود، وإدارة الصيانة، والتواصل مع المستأجرين على مدار الساعة.
-              </p>
-            </div>
-          </div>
-
-          {/* Solution 3: Digital Solutions */}
-          <div className="p-10 rounded-[2.5rem] border border-white/5 bg-white/[0.01] hover:border-white/10 transition-colors flex flex-col justify-between h-full">
-            <div>
-              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-green-400 mb-8">
-                <Code className="w-6 h-6" />
-              </div>
-              <h3 className="text-2xl font-serif mb-4" id="real-estate-digital-solutions-uae">Real Estate Digital Solutions</h3>
-              <p className="text-white/60 font-light leading-relaxed text-sm mb-6">
-                We build high-performance web systems for real estate brokerages in Dubai. Includes live off-plan property maps, custom CRM database structures (Salesforce, HubSpot), automated Facebook/Google lead routing, and dynamic pricing APIs.
-              </p>
-              <ul className="space-y-2 text-xs text-white/40 mb-8">
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" /> Live Interactive Off-Plan Project Maps</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" /> API Connections to Dubizzle & Property Finder</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Solution 4: AI Videography & Staging */}
-          <div className="p-10 rounded-[2.5rem] border border-white/5 bg-white/[0.01] hover:border-white/10 transition-colors flex flex-col justify-between h-full">
-            <div>
-              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-green-400 mb-8">
-                <Video className="w-6 h-6" />
-              </div>
-              <h3 className="text-2xl font-serif mb-4" id="ai-real-estate-videography-in-dubai">AI Virtual Staging & Videography</h3>
-              <p className="text-white/60 font-light leading-relaxed text-sm mb-6">
-                70% of high-end property transactions in Dubai are completed by overseas investors. We integrate AI-powered virtual staging and neural rendering to generate highly photorealistic property walkthroughs and video assets, helping you sell properties online.
-              </p>
-              <ul className="space-y-2 text-xs text-white/40 mb-8">
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" /> photorealistic AI Room Staging in Seconds</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" /> Automatic Property Video Asset Generation</li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── 5. Clean, Crawlable Q&A (AEO & GEO Optimization) ── */}
-      <section className="py-32 px-6 md:px-12 bg-white/[0.01] border-y border-white/5 max-w-4xl mx-auto">
+      {/* ── 6. Crawlable FAQs (AEO & GEO Mapped) ── */}
+      <section className="py-32 px-6 md:px-12 max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">AEO Optimization</span>
-          <h2 className="text-4xl font-serif text-white">AI for UAE Real Estate FAQs</h2>
+          <span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">FAQ Accordion</span>
+          <h2 className="text-4xl font-serif text-white">AI Real Estate FAQs</h2>
         </div>
         <div className="space-y-6">
           {[
@@ -233,7 +262,7 @@ export default function AiRealEstateDubai() {
         </div>
       </section>
 
-      {/* ── 6. Conversion CTA Section ── */}
+      {/* ── 7. Call & Text CTA ── */}
       <section className="py-32 px-6 md:px-12 border-t border-white/5 bg-white text-black text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 block mb-6">Scale Your Brokerage</span>

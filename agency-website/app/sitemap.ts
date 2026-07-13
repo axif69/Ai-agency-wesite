@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services",
     "/services/agentic-finance-uae",
     "/services/ai-hr-emirates",
+    "/services/ai-property-management-uae",
     "/services/branding-agency-dubai-sharjah",
     "/services/creative-web-design-dubai",
     "/services/ecommerce-website-development-dubai",
