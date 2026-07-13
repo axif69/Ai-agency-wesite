@@ -7,17 +7,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-import HeroParticles from "../components/HeroParticles";
-import TiltCard from "../components/animations/TiltCard";
-import SpotlightCard from "../components/animations/SpotlightCard";
-import ParticleBackground from "../components/animations/ParticleBackground";
 import MagneticButton from "../components/animations/MagneticButton";
-import { TextGenerateEffect } from "../components/animations/TextGenerateEffect";
 import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap, Workflow, Languages, Phone } from "lucide-react";
 import { CASE_STUDIES } from "../data/caseStudyData";
 import { BLOG_POSTS } from "../data/blogData";
 
 const Scene3D = dynamic(() => import("../components/Scene3D"), { ssr: false });
+const HeroParticles = dynamic(() => import("../components/HeroParticles"), { ssr: false });
+const ParticleBackground = dynamic(() => import("../components/animations/ParticleBackground"), { ssr: false });
+const TextGenerateEffect = dynamic(() => import("../components/animations/TextGenerateEffect").then(mod => mod.TextGenerateEffect), { ssr: false });
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
