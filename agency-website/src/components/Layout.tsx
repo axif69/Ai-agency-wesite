@@ -129,6 +129,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <Link href="/sovereign-sales-agent" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 italic">Sovereign Sales Agent (Autonomous B2B)</Link>
                     <Link href="/sovereign-dashboard" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Command & Control Dashboard</Link>
                     <Link href="/arabic-ai-hub" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Arabic Intelligence Hub (Khaleeji NLP)</Link>
+                    <Link href="/ai-real-estate-agency-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI Real Estate Dubai (PropTech)</Link>
+                    <Link href="/services/ai-property-management-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI Property Management UAE</Link>
                     <Link href="/ai-automation-agency-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI Automation Agency (Enterprise)</Link>
                     <Link href="/ai-marketing-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Sovereign Marketing Swarms</Link>
                     <Link href="/services/agentic-finance-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Agentic Finance & Compliance</Link>
@@ -149,6 +151,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       </h3>
                       <ul className="space-y-5">
                         <li><Link href="/services/web-design-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Design</Link></li>
+                        <li><Link href="/services/web-design-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200 font-semibold text-green-400">Web Design Sharjah</Link></li>
                         <li><Link href="/services/web-development-dubai-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Development</Link></li>
                         <li><Link href="/services/ecommerce-website-development-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Ecommerce Websites</Link></li>
                         <li><Link href="/services/web-hosting-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Hosting</Link></li>
@@ -213,6 +216,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     {isSovereignOpen && (
                       <div className="mt-4 space-y-3 text-lg text-white/70">
                         <Link href="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Sales Agent (B2B)</Link>
+                        <Link href="/ai-real-estate-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI Real Estate Dubai</Link>
+                        <Link href="/services/ai-property-management-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI Property Management UAE</Link>
                         <Link href="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Agentic Finance & Compliance</Link>
                         <Link href="/services/ai-hr-emirates" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI HR & Emiratization</Link>
                         <Link href="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">WhatsApp Automation</Link>
@@ -235,6 +240,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                           <h4 className="text-[10px] uppercase tracking-widest text-white/40 mb-3 font-bold">Web & Tech</h4>
                           <div className="flex flex-col gap-2 text-base text-white/70">
                             <Link href="/services/web-design-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Design</Link>
+                            <Link href="/services/web-design-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors text-green-400">Web Design Sharjah</Link>
                             <Link href="/services/web-development-dubai-uae" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Development</Link>
                             <Link href="/services/ecommerce-website-development-dubai" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Ecommerce</Link>
                           </div>

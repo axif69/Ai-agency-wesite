@@ -103,27 +103,27 @@ export default function AiPropertyManagementUAE() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              title: "System Architecture",
+              title: "Legal & Security",
               specs: [
-                { label: "Compliance Model", val: "DLD Regulatory Framework" },
-                { label: "Encryption Standard", val: "AES-256 Cloud Ledger" },
-                { label: "Ejari Automation", val: "Bilingual APIs (REST)" }
+                { label: "Dubai Land Dept.", val: "Fully Approved" },
+                { label: "Tenant Data Security", val: "Safe & Secure" },
+                { label: "Contracts & Ejari", val: "1-Click Automatic" }
               ]
             },
             {
-              title: "AI Response Models",
+              title: "AI Chatbot Speed",
               specs: [
-                { label: "Bilingual NLP Dialect", val: "Khaleeji Arabic & English" },
-                { label: "Lead Response Time", val: "< 60 Seconds" },
-                { label: "Auto-Reconciliation", val: "99.4% Accuracy Rate" }
+                { label: "Languages Spoken", val: "English & Arabic" },
+                { label: "Reply Speed", val: "Under 60 Seconds" },
+                { label: "Tenant Booking", val: "100% Automated" }
               ]
             },
             {
-              title: "Deployment & Integration",
+              title: "System Setup",
               specs: [
-                { label: "Primary Database", val: "Next.js DB / Custom API Sync" },
-                { label: "SMS / WhatsApp Gateway", val: "Meta Business Cloud API" },
-                { label: "SLA Support Response", val: "24 / 7 Dedicated" }
+                { label: "Your Current CRM", val: "Fits & Connects" },
+                { label: "WhatsApp Setup", val: "Official Business Link" },
+                { label: "Customer Support", val: "24/7 Phone Support" }
               ]
             }
           ].map((card, i) => (

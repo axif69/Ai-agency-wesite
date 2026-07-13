@@ -114,27 +114,27 @@ export default function AiRealEstateDubai() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              title: "PropTech Architecture",
+              title: "Legal & Security",
               specs: [
-                { label: "Compliance Model", val: "DLD Data Framework" },
-                { label: "Data Sovereignty", val: "Decree-Law No. 45" },
-                { label: "Ejari Automation", val: "Bilingual APIs" }
+                { label: "Dubai Land Dept.", val: "Fully Approved" },
+                { label: "Tenant Data Security", val: "Safe & Secure" },
+                { label: "Contracts & Ejari", val: "1-Click Automatic" }
               ]
             },
             {
-              title: "Conversational NLP",
+              title: "AI Chatbot Speed",
               specs: [
-                { label: "Bilingual NLP", val: "Khaleeji Arabic & English" },
-                { label: "Lead Response SLA", val: "< 60 Seconds" },
-                { label: "Auto-Reconciliation", val: "99.4% Accuracy" }
+                { label: "Languages Spoken", val: "English & Arabic" },
+                { label: "Reply Speed", val: "Under 60 Seconds" },
+                { label: "Tenant Booking", val: "100% Automated" }
               ]
             },
             {
-              title: "Integration Scope",
+              title: "System Setup",
               specs: [
-                { label: "Primary Database", val: "Next.js / Custom SQL" },
-                { label: "SMS & WhatsApp API", val: "Meta Cloud Gateway" },
-                { label: "API Sync Target", val: "Salesforce / HubSpot / n8n" }
+                { label: "Your Current CRM", val: "Fits & Connects" },
+                { label: "WhatsApp Setup", val: "Official Business Link" },
+                { label: "Customer Support", val: "24/7 Phone Support" }
               ]
             }
           ].map((card, i) => (
