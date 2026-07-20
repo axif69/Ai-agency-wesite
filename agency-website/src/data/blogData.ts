@@ -308,6 +308,8 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>“Digital transformation” is one of the most overused phrases in UAE real estate. Many teams buy software, redesign a site, or connect a few tools and still feel like nothing actually improved. The reason is simple: most businesses do not need more disconnected platforms. They need a clearer operating system.</p>
 
       <h2>What “real estate digital solutions” should mean</h2>
+      <p><strong>Need this implemented?</strong> See our <a href="/real-estate-digital-solutions-uae" class="text-white hover:underline">Real Estate Digital Solutions UAE service</a>.</p>
+
       <p>In a practical UAE context, digital solutions should help a real estate business do six things better:</p>
       <ul>
         <li>attract and convert enquiries,</li>
@@ -388,6 +390,8 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <h2>Conclusion</h2>
       <p>Real estate digital solutions in the UAE should not be judged by how many tools are installed. They should be judged by whether the business becomes easier to run, easier to trust, and better at turning demand into conversations and conversations into deals.</p>
+
+      <p><strong>Need this implemented?</strong> See our <a href="/real-estate-digital-solutions-uae" class="text-white hover:underline">Real Estate Digital Solutions UAE service</a>.</p>
 
       <p>If your current stack feels expensive but still fragmented, review our <a href="/real-estate-digital-solutions-uae" class="text-white hover:underline">real estate digital solutions service</a>, then <a href="/contact" class="text-white hover:underline">contact Asif Digital</a> to map the missing workflow layer and build a system that fits the way your team actually works.</p>
     `

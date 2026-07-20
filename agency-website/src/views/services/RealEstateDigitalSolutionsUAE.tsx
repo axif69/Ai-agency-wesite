@@ -156,6 +156,28 @@ export default function RealEstateDigitalSolutionsUAE() {
         </motion.div>
       </section>
 
+      {/* Who This Is For */}
+      <section className="px-6 md:px-12 py-14 max-w-7xl mx-auto">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <h2 className="text-2xl md:text-4xl font-serif mb-4">Who This Is For</h2>
+          <p className="text-[17px] md:text-[18px] text-white/70 font-light leading-[1.7]">
+            These real estate digital solutions are designed for UAE property businesses that need their website, enquiries, listings, communications, and reporting to work as one connected operation.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { title: "Real Estate Agencies", desc: "Brokerages that need faster lead capture, assignment, follow-up, and visibility across agents." },
+            { title: "Property Developers", desc: "Development teams managing project enquiries, campaign landing pages, inventory, and sales pipelines." },
+            { title: "Property Management Teams", desc: "Operators coordinating tenant requests, listing updates, owner communication, and recurring workflows." }
+          ].map((audience) => (
+            <div key={audience.title} className="p-7 border border-white/10 bg-white/[0.02] rounded-2xl text-left">
+              <h3 className="text-xl font-serif mb-3">{audience.title}</h3>
+              <p className="text-[16px] text-white/70 leading-[1.7] font-light">{audience.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Hero Visual Section - WebP */}
       <section className="px-6 md:px-12 pb-14 max-w-5xl mx-auto">
         <div className="relative rounded-3xl overflow-hidden border border-white/10 aspect-[16/9] w-full bg-neutral-900 shadow-2xl">
@@ -310,6 +332,45 @@ export default function RealEstateDigitalSolutionsUAE() {
       </section>
 
       {/* ── 8. How It Works Step by Step ── */}
+      {/* Commercial Implementation Services */}
+      <section className="py-14 px-6 md:px-12 max-w-7xl mx-auto">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <h2 className="text-2xl md:text-4xl font-serif mb-4">Real Estate Systems We Implement</h2>
+          <p className="text-[17px] md:text-[18px] text-white/70 font-light leading-[1.7]">
+            Each implementation is configured around your current channels, team structure, property data, and sales process.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              title: "CRM Setup",
+              desc: "We configure contact fields, pipeline stages, ownership rules, source tracking, and integrations in HubSpot, Salesforce, Zoho, or a suitable custom system."
+            },
+            {
+              title: "WhatsApp Automation",
+              desc: "We connect structured WhatsApp enquiry flows for immediate acknowledgement, qualification questions, brochure delivery, and human handoff."
+            },
+            {
+              title: "Lead Routing",
+              desc: "New enquiries are categorized and assigned using location, property type, budget, language, campaign, or availability rules."
+            },
+            {
+              title: "Property Listing Workflows",
+              desc: "We organize inventory data and create reliable processes for publishing, updating, reusing, and removing property listings across connected channels."
+            },
+            {
+              title: "Reporting Dashboard",
+              desc: "Your team gets a clear view of enquiry sources, response times, assigned owners, pipeline stages, campaign performance, and unresolved follow-ups."
+            }
+          ].map((service) => (
+            <div key={service.title} className="p-7 border border-white/10 bg-black rounded-2xl text-left">
+              <h3 className="text-xl font-serif text-green-400 mb-3">{service.title}</h3>
+              <p className="text-[16px] text-white/70 leading-[1.7] font-light">{service.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="py-14 px-6 md:px-12 max-w-4xl mx-auto">
         <h2 className="text-2xl md:text-4xl font-serif mb-10 text-center">How the System Works</h2>
         <div className="space-y-6 text-left">
@@ -358,6 +419,34 @@ export default function RealEstateDigitalSolutionsUAE() {
       </section>
 
       {/* ── 10. Why Choose Asif Digital ── */}
+      {/* Pricing and Consultation CTA */}
+      <section className="py-16 px-6 md:px-12 max-w-5xl mx-auto">
+        <div className="p-8 md:p-12 border border-green-500/20 bg-green-500/[0.04] rounded-3xl text-center">
+          <span className="text-green-400 text-[13px] font-bold uppercase tracking-[0.2em] font-mono">Pricing & Consultation</span>
+          <h2 className="text-3xl md:text-5xl font-serif mt-4 mb-5">Get a Scope and Implementation Quote</h2>
+          <p className="text-[17px] md:text-[18px] text-white/75 font-light leading-[1.7] max-w-3xl mx-auto mb-8">
+            Pricing depends on your website, number of integrations, CRM requirements, listing volume, automation rules, and reporting needs. Book a consultation for a practical scope, timeline, and fixed proposal.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[13px] hover:bg-white/85 transition-all"
+            >
+              Request a Consultation
+            </Link>
+            <a
+              href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20a%20quote%20for%20real%20estate%20digital%20solutions%20in%20the%20UAE."
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleCTA("Request Pricing", "Pricing CTA", "whatsapp", "https://wa.me/971545866094")}
+              className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[13px] hover:bg-white/5 transition-all"
+            >
+              Request Pricing on WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section className="py-14 px-6 md:px-12 max-w-4xl mx-auto">
         <h2 className="text-2xl md:text-4xl font-serif mb-8 text-center">Why Work With Us</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
