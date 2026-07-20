@@ -131,6 +131,26 @@ const TEAM_MEMBERS = [
   }
 ];
 
+const PLATFORM_BRANDS = [
+  { name: "OpenAI", mark: "OAI" },
+  { name: "Google Cloud", mark: "G" },
+  { name: "Google Analytics", mark: "GA" },
+  { name: "Google Ads", mark: "GAds" },
+  { name: "Meta", mark: "M" },
+  { name: "Meta Ads", mark: "MAds" },
+  { name: "WhatsApp", mark: "WA" },
+  { name: "Next.js", mark: "N" },
+  { name: "Vercel", mark: "V" },
+  { name: "n8n", mark: "n8n" },
+  { name: "Zapier", mark: "Z" },
+  { name: "Shopify", mark: "S" },
+  { name: "WooCommerce", mark: "Woo" },
+  { name: "Stripe", mark: "St" },
+  { name: "HubSpot", mark: "H" },
+  { name: "Twilio", mark: "Tw" },
+  { name: "Microsoft Azure", mark: "AZ" }
+];
+
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const horizontalScrollRef = useRef<HTMLDivElement>(null);
@@ -360,6 +380,34 @@ export default function Home() {
           <div className="flex items-center gap-2"><Database className="w-4 h-4 text-white/70" role="img" aria-label="Database storage icon" /> Fast UAE Hosting</div>
           <div className="flex items-center gap-2"><Brain className="w-4 h-4 text-white/70" role="img" aria-label="AI reasoning brain icon" /> AI Automation</div>
           <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-white/70" role="img" aria-label="Global networking icon" /> Proven ROI</div>
+        </div>
+      </section>
+
+      {/* Technology ecosystem marquee — platform use, not client endorsement */}
+      <section className="relative z-20 overflow-hidden border-b border-white/5 bg-[#070707] py-12" aria-labelledby="platform-ecosystem-heading">
+        <div className="px-6 md:px-12 mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-3 max-w-7xl mx-auto">
+          <div>
+            <span className="text-[9px] font-bold uppercase tracking-[0.32em] text-green-500/80 block mb-2">Technology Ecosystem</span>
+            <h2 id="platform-ecosystem-heading" className="text-xl md:text-2xl font-serif tracking-tight">Platforms we build and integrate with</h2>
+          </div>
+          <p className="text-white/40 text-xs md:text-sm max-w-xl leading-relaxed">
+            Technologies selected according to each project&apos;s workflow, security, data, commerce, and growth requirements.
+          </p>
+        </div>
+
+        <div className="brand-marquee" role="region" aria-label="Technology platforms used by Asif Digital">
+          <div className="brand-marquee-track">
+            {[0, 1].map((setIndex) => (
+              <div key={setIndex} className="brand-marquee-set" aria-hidden={setIndex === 1}>
+                {PLATFORM_BRANDS.map((brand) => (
+                  <div key={`${setIndex}-${brand.name}`} className="brand-marquee-item" title={brand.name}>
+                    <span className="brand-marquee-mark" aria-hidden="true">{brand.mark}</span>
+                    <span>{brand.name}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
