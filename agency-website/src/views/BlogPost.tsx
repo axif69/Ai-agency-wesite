@@ -51,6 +51,11 @@ export default function BlogPost() {
               <Clock className="w-4 h-4" />
               {post.readTime}
             </div>
+            {post.lastReviewed && (
+              <div className="text-white/40">
+                Reviewed {post.lastReviewed}{post.reviewedBy ? ` by ${post.reviewedBy}` : ""}
+              </div>
+            )}
           </div>
         </motion.div>
       </section>

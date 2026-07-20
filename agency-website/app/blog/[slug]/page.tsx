@@ -26,13 +26,45 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} | Asif Digital Blog`,
     description: post.excerpt || `${post.title}. Read the full article on Asif Digital.`,
+    authors: [{ name: post.author, url: 'https://www.asifdigital.agency/about' }],
+    openGraph: {
+      type: 'article',
+      title: post.title,
+      description: post.excerpt,
+      url: `https://www.asifdigital.agency/blog/${post.slug}`,
+      publishedTime: new Date(post.date).toISOString(),
+      modifiedTime: new Date(post.lastReviewed || post.date).toISOString(),
+      authors: [post.author],
+    },
     alternates: {
       canonical: `https://www.asifdigital.agency/blog/${params.slug}`
     }
   };
 }
 
-export default function Page() {
-  return <PageComponent />;
+export default async function Page({ params }: Props) {
+  const post = BLOG_POSTS.find((item) => item.slug === params.slug);
+  const articleSchema = post ? {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: new Date(post.date).toISOString(),
+    dateModified: new Date(post.lastReviewed || post.date).toISOString(),
+    mainEntityOfPage: `https://www.asifdigital.agency/blog/${post.slug}`,
+    author: { '@type': 'Person', name: post.author, url: 'https://www.asifdigital.agency/about' },
+    reviewedBy: post.reviewedBy ? { '@type': 'Organization', name: post.reviewedBy } : undefined,
+    publisher: {
+      '@type': 'Organization',
+      name: 'Asif Digital',
+      url: 'https://www.asifdigital.agency',
+      logo: { '@type': 'ImageObject', url: 'https://www.asifdigital.agency/icon-512.png' },
+    },
+  } : null;
+
+  return <>
+    {articleSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />}
+    <PageComponent />
+  </>;
 }
 
