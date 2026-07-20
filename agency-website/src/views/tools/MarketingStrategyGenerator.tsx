@@ -1,0 +1,88 @@
+"use client";
+
+import { useState } from "react";
+import { ArrowLeft, ArrowRight, BrainCircuit, CheckCircle2, Loader2, RefreshCw } from "lucide-react";
+import ToolLeadForm from "../../components/tools/ToolLeadForm";
+import ToolPageFrame, { fieldClass, labelClass, panelClass } from "../../components/tools/ToolPageFrame";
+import { trackEvent } from "../../utils/analytics";
+
+const initial = { company: "", website: "", industry: "Real estate", model: "B2B", market: "Dubai", language: "English and Arabic", offer: "", saleValue: "AED 10,000–50,000", salesCycle: "1–4 weeks", team: "Owner-led", goal: "Qualified leads", budget: "AED 5,000–15,000", timeline: "90 days", channels: "Google Search and social media", tracking: "Basic analytics", websiteStatus: "Functional", crm: "Spreadsheets", constraint: "Lead quality" };
+
+function classify(form: typeof initial) {
+  const maturity = form.tracking === "CRM attribution" && form.crm.includes("automation") ? "optimization" : form.websiteStatus === "High-performing" ? "scale" : form.tracking === "None" ? "foundation" : "traction";
+  const funnel = form.salesCycle === "Same day" ? "immediate transaction" : form.salesCycle.includes("month") ? "complex high-consideration sale" : "considered purchase";
+  return { maturity, funnel, constraint: form.constraint, marketComplexity: form.market === "GCC" ? "multi-market" : "single-market", budgetMode: form.budget.includes("Under") ? "narrow focus" : form.budget.includes("50,000+") ? "multi-channel" : "balanced focus" };
+}
+
+function fallbackReport(form: typeof initial) {
+  const paid = form.goal === "Qualified leads" ? 40 : 30;
+  return {
+    executiveSummary: `${form.company || "Your business"} should focus its next 90 days on one measurable customer journey rather than spreading activity across disconnected channels. Build reliable tracking and a conversion-focused landing experience first, then use search and useful content to capture demand while improving follow-up through CRM or WhatsApp.`,
+    strategicFocus: `${form.goal} in ${form.market}, with ${form.constraint.toLowerCase()} treated as the primary constraint.`,
+    channelMix: [{ channel: "High-intent search", percentage: paid, purpose: "Capture people already looking for the offer." }, { channel: "Authority content & SEO", percentage: 30, purpose: "Build discoverability and answer buyer questions." }, { channel: "Retargeting & social proof", percentage: 15, purpose: "Re-engage informed prospects." }, { channel: "CRM, tracking & optimization", percentage: 100 - paid - 45, purpose: "Measure and improve the full lead journey." }],
+    phases: { days1to30: ["Define one conversion and install reliable tracking.", "Create or improve the primary landing page.", "Map CRM and WhatsApp lead ownership."], days31to60: ["Launch the highest-intent channel first.", "Publish two evidence-led content assets.", "Review lead quality and response time weekly."], days61to90: ["Shift budget toward verified outcomes.", "Test one message or creative variable at a time.", "Document the winning lead journey." ] },
+    contentPillars: [{ name: "Buyer questions", example: "Answer cost, process and comparison questions." }, { name: "Proof", example: "Show methods, examples and measurable outcomes." }, { name: "Local expertise", example: `Explain ${form.market}-specific buying considerations.` }, { name: "Implementation", example: "Show how the service works in practice." }],
+    kpis: ["Qualified leads", "Cost per qualified lead", "Lead response time", "Lead-to-customer rate"], avoid: ["Launching every channel at once", "Optimizing clicks without checking lead quality"], nextAction: "Define the one conversion event and owner that will govern the 90-day plan.", caveat: "This is a planning framework, not a performance forecast or guarantee."
+  };
+}
+
+const steps = ["Company", "Commercial Model", "Goals & Budget", "Current System"];
+
+export default function MarketingStrategyGenerator() {
+  const [form, setForm] = useState(initial);
+  const [step, setStep] = useState(0);
+  const [report, setReport] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+  const set = (key: keyof typeof initial, value: string) => setForm({ ...form, [key]: value });
+
+  async function generate() {
+    setLoading(true);
+    const base = fallbackReport(form);
+    setReport(base);
+    trackEvent("tool_start", { tool_name: "AI Marketing Strategy Generator", industry: form.industry, market: form.market });
+    try {
+      const response = await fetch("/api/tools/generate-report", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ tool: "strategy-generator", facts: { ...form, classification: classify(form) } }) });
+      if (response.ok) {
+        const data = await response.json();
+        if (data.report) setReport(data.report);
+      }
+    } catch { /* deterministic report remains available */ }
+    setLoading(false);
+    trackEvent("tool_analysis_success", { tool_name: "AI Marketing Strategy Generator", industry: form.industry, market: form.market });
+  }
+
+  const input = (key: keyof typeof initial, label: string, placeholder = "") => <div><label className={labelClass} htmlFor={`strategy-${key}`}>{label}</label><input id={`strategy-${key}`} className={fieldClass} value={form[key]} placeholder={placeholder} onChange={(e) => set(key, e.target.value)} /></div>;
+  const select = (key: keyof typeof initial, label: string, options: string[]) => <div><label className={labelClass} htmlFor={`strategy-${key}`}>{label}</label><select id={`strategy-${key}`} className={fieldClass} value={form[key]} onChange={(e) => set(key, e.target.value)}>{options.map((option) => <option key={option}>{option}</option>)}</select></div>;
+
+  const summary = report ? `${report.executiveSummary} Strategic focus: ${report.strategicFocus}. Next action: ${report.nextAction}` : "";
+
+  return (
+    <ToolPageFrame eyebrow="AI Marketing Strategy Generator" title="Build Your UAE Marketing Strategy in Minutes" description="Answer a focused set of business questions and receive a practical 90-day plan based on your market, sales cycle, budget, current capabilities and primary growth objective."
+      methodologyTitle="How the strategy is produced" methodology={["Your answers classify the buying journey, marketing maturity, primary constraint, market complexity and realistic channel scope.", "A decision framework creates the foundation before AI is used, so the plan remains useful even if the model is unavailable.", "AI organizes the verified context into a channel mix, content pillars, measurement plan and 30/60/90-day sequence.", "The plan never invents competitor research, market statistics or guaranteed performance targets."]}
+      guideTitle="A useful strategy connects demand, conversion and follow-up" guide={[{ title: "Strategy before tactics", text: "A strategy defines the customer, commercial objective, constraint, positioning and measurement system. Individual ads and posts are tactics inside that structure." }, { title: "High-ticket versus transactional", text: "A same-day purchase can prioritize direct conversion. A complex B2B or property sale requires education, trust, qualification and structured follow-up." }, { title: "WhatsApp is part of the funnel", text: "For many UAE buyers, the journey continues in WhatsApp. Source tracking, response time, qualification and CRM ownership must remain connected." }, { title: "Budget determines focus", text: "A smaller budget needs fewer channels and faster learning. Spreading it evenly across every platform usually weakens the evidence needed to improve decisions." }]}
+      faqs={[{ q: "Is this an AI-generated marketing plan?", a: "AI helps personalize and organize the plan, while the business classification and fallback recommendations are produced by a transparent decision framework." }, { q: "How is the channel mix selected?", a: "It considers your objective, market, sale value, sales cycle, budget, team capacity, existing channels and main constraint." }, { q: "Can it create a real-estate strategy?", a: "Yes. Real estate is included, and the plan can account for high-value enquiries, WhatsApp qualification, project landing pages and CRM routing." }, { q: "Does it support Arabic campaigns?", a: "Yes. Select a bilingual customer journey to make localization and Arabic/English content part of the plan." }, { q: "Is the budget allocation a forecast?", a: "No. It is a planning allocation, not a guaranteed forecast. Actual budget decisions should use conversion and sales data." }, { q: "Can Asif Digital implement the strategy?", a: "Yes. The result can be sent for a human review covering your website, content, campaigns, CRM and automation." }]}
+      related={[{ title: "AI Website Grader", href: "/tools/ai-website-grader", description: "Check whether your website can support the strategy." }, { title: "Ad Spend Efficiency Analyzer", href: "/tools/ad-spend-efficiency-analyzer", description: "Calculate the economics and measurement quality of current campaigns." }]}
+    >
+      {!report ? <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
+        <div className={panelClass}>
+          <div className="mb-8"><div className="flex items-center justify-between text-xs text-white/45"><span>Step {step + 1} of 4</span><span>{steps[step]}</span></div><div className="mt-3 h-1 overflow-hidden rounded-full bg-white/10"><div className="h-full bg-green-400 transition-all" style={{ width: `${(step + 1) * 25}%` }} /></div></div>
+          <div className="grid gap-5 md:grid-cols-2">
+            {step === 0 && <>{input("company", "Company name (optional)")}{input("website", "Website URL (optional)")}{select("industry", "Industry", ["Real estate", "Professional services", "E-commerce", "Healthcare", "Hospitality", "SaaS", "Logistics", "Education", "Other"])}{select("model", "Business model", ["B2B", "B2C", "B2B2C", "E-commerce", "Marketplace"])}{select("market", "Primary market", ["Dubai", "Abu Dhabi", "Sharjah", "UAE", "Saudi Arabia", "GCC", "International"])}{select("language", "Customer language", ["English", "Arabic", "English and Arabic", "Multilingual"])}</>}
+            {step === 1 && <>{input("offer", "Main product or service", "What do you sell?")}{select("saleValue", "Typical sale value", ["Under AED 1,000", "AED 1,000–10,000", "AED 10,000–50,000", "AED 50,000+"])}{select("salesCycle", "Typical sales cycle", ["Same day", "Under 7 days", "1–4 weeks", "1–3 months", "3+ months"])}{select("team", "Marketing team", ["Owner-led", "1–3 people", "Internal team", "Agency-supported"])}</>}
+            {step === 2 && <>{select("goal", "Primary objective", ["Qualified leads", "E-commerce sales", "Appointments", "Market launch", "Brand authority", "Retention"])}{select("budget", "Monthly marketing budget", ["Under AED 5,000", "AED 5,000–15,000", "AED 15,000–50,000", "AED 50,000+"])}{select("timeline", "Priority timeline", ["30 days", "60 days", "90 days", "180 days"])}</>}
+            {step === 3 && <>{input("channels", "Current channels")}{select("tracking", "Tracking maturity", ["None", "Basic analytics", "Conversion tracking", "CRM attribution"])}{select("websiteStatus", "Website status", ["None", "Outdated", "Functional", "High-performing"])}{select("crm", "CRM and lead routing", ["None", "Spreadsheets", "CRM", "CRM plus automation"])}{select("constraint", "Biggest constraint", ["Traffic", "Lead quality", "Conversion", "Follow-up", "Content", "Measurement", "Internal capacity"])}</>}
+          </div>
+          <div className="mt-8 flex items-center justify-between gap-4"><button type="button" disabled={step === 0} onClick={() => setStep(step - 1)} className="inline-flex items-center gap-2 px-3 py-3 text-xs font-bold uppercase tracking-widest text-white/45 disabled:opacity-20"><ArrowLeft className="h-4 w-4" /> Back</button>{step < 3 ? <button type="button" onClick={() => { setStep(step + 1); trackEvent("tool_step_complete", { tool_name: "AI Marketing Strategy Generator", step_number: step + 1 }); }} className="inline-flex min-h-14 items-center gap-2 rounded-2xl bg-white px-7 py-4 text-xs font-black uppercase tracking-widest text-black hover:bg-green-300">Next <ArrowRight className="h-4 w-4" /></button> : <button type="button" disabled={loading} onClick={generate} className="inline-flex min-h-14 items-center gap-2 rounded-2xl bg-white px-7 py-4 text-xs font-black uppercase tracking-widest text-black hover:bg-green-300 disabled:opacity-60">{loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <BrainCircuit className="h-4 w-4" />}{loading ? "Building plan..." : "Build My 90-Day Plan"}</button>}</div>
+        </div>
+        <aside className={`${panelClass} h-fit lg:sticky lg:top-32`}><span className="micro-label text-green-400">Plan preview</span><h3 className="mt-4 text-2xl font-serif">Focused on decisions you can use.</h3><div className="mt-7 space-y-4">{["Strategic diagnosis", "Channel allocation", "30/60/90-day actions", "Content pillars", "KPIs and next action"].map((item) => <div key={item} className="flex items-center gap-3 text-sm text-white/60"><CheckCircle2 className="h-4 w-4 text-green-400" />{item}</div>)}</div><p className="mt-8 text-xs leading-relaxed text-white/35">The complete plan is shown before contact details are requested.</p></aside>
+      </div> : <div aria-live="polite" className="space-y-8">
+        <div className={panelClass}><div className="flex flex-col justify-between gap-6 md:flex-row"><div><span className="micro-label text-green-400">Strategy snapshot</span><h2 className="mt-4 text-3xl font-serif md:text-5xl">{report.strategicFocus}</h2><p className="mt-5 max-w-4xl text-sm leading-relaxed text-white/60">{report.executiveSummary}</p></div><button onClick={() => { setReport(null); setStep(0); }} className="inline-flex h-fit items-center gap-2 text-xs uppercase tracking-widest text-white/45 hover:text-white"><RefreshCw className="h-4 w-4" /> Start again</button></div></div>
+        <div className="grid gap-8 lg:grid-cols-2"><div className={panelClass}><h3 className="text-2xl font-serif">Recommended channel mix</h3><div className="mt-7 space-y-6">{report.channelMix?.map((item: any) => <div key={item.channel}><div className="flex justify-between gap-4 text-sm"><span>{item.channel}</span><span className="text-green-400">{item.percentage}%</span></div><div className="mt-2 h-2 overflow-hidden rounded-full bg-white/10"><div className="h-full rounded-full bg-green-400" style={{ width: `${item.percentage}%` }} /></div><p className="mt-2 text-xs text-white/40">{item.purpose}</p></div>)}</div></div><div className={panelClass}><h3 className="text-2xl font-serif">Content pillars</h3><div className="mt-6 space-y-4">{report.contentPillars?.map((item: any) => <div key={item.name} className="rounded-2xl border border-white/5 bg-white/[0.02] p-4"><h4 className="font-semibold">{item.name}</h4><p className="mt-2 text-xs text-white/45">{item.example}</p></div>)}</div></div></div>
+        <div className={panelClass}><h3 className="text-2xl font-serif">Your 90-day roadmap</h3><div className="mt-7 grid gap-5 md:grid-cols-3">{[["Days 1–30", report.phases?.days1to30], ["Days 31–60", report.phases?.days31to60], ["Days 61–90", report.phases?.days61to90]].map(([title, actions]: any) => <div key={title} className="rounded-2xl border border-white/10 bg-black p-5"><div className="text-xs font-bold uppercase tracking-widest text-green-400">{title}</div><ul className="mt-5 space-y-3">{actions?.map((action: string) => <li key={action} className="flex gap-3 text-sm leading-relaxed text-white/60"><span className="text-green-400">•</span>{action}</li>)}</ul></div>)}</div></div>
+        <div className="grid gap-5 md:grid-cols-2"><div className={panelClass}><h3 className="text-xl font-serif">Measure weekly</h3><ul className="mt-5 space-y-3">{report.kpis?.map((kpi: string) => <li key={kpi} className="flex gap-3 text-sm text-white/60"><CheckCircle2 className="h-4 w-4 text-green-400" />{kpi}</li>)}</ul></div><div className={panelClass}><h3 className="text-xl font-serif">Do not prioritize yet</h3><ul className="mt-5 space-y-3">{report.avoid?.map((item: string) => <li key={item} className="text-sm text-white/60">— {item}</li>)}</ul><p className="mt-6 border-t border-white/5 pt-5 text-sm text-green-300">Next: {report.nextAction}</p></div></div>
+        <ToolLeadForm tool="AI Marketing Strategy Generator" summary={summary} heading="Turn This Plan Into a Working System" />
+      </div>}
+    </ToolPageFrame>
+  );
+}
+

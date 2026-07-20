@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 import MagneticButton from "../components/animations/MagneticButton";
-import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap, Workflow, Languages, Phone } from "lucide-react";
+import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap, Workflow, Languages, Phone, Gauge, BrainCircuit, BarChart3 } from "lucide-react";
 import { CASE_STUDIES } from "../data/caseStudyData";
 import { BLOG_POSTS } from "../data/blogData";
 
@@ -399,6 +399,35 @@ export default function Home() {
       </section>
 
       {/* ── 2. The Problem / Market Context ("Why Now") ── */}
+      <section className="px-6 md:px-12 py-24 bg-[#080808] border-y border-white/5 relative z-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+            <div className="max-w-3xl">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-3">Free AI Growth Tools</span>
+              <h2 className="text-4xl md:text-6xl font-serif tracking-tight">Diagnose before you invest.</h2>
+            </div>
+            <div className="max-w-xl">
+              <p className="text-white/55 text-sm leading-relaxed">Grade your website, build a focused UAE marketing plan or calculate what your advertising is producing. Each tool gives you an immediate result and a practical next step.</p>
+              <Link href="/tools" className="mt-5 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-green-400 hover:text-green-300">Explore all free tools <ArrowRight className="w-4 h-4" /></Link>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              { title: "AI Website Grader", desc: "Measure speed, SEO, conversion and AI-search readiness.", href: "/tools/ai-website-grader", icon: <Gauge className="w-6 h-6" />, meta: "5 measured categories" },
+              { title: "Marketing Strategy Generator", desc: "Build a UAE/GCC 90-day plan around your commercial goals.", href: "/tools/ai-marketing-strategy-generator", icon: <BrainCircuit className="w-6 h-6" />, meta: "Channel mix + roadmap" },
+              { title: "Ad Spend Efficiency Analyzer", desc: "Calculate CPL, CPA, ROAS and break-even economics.", href: "/tools/ad-spend-efficiency-analyzer", icon: <BarChart3 className="w-6 h-6" />, meta: "Transparent formulas" },
+            ].map((tool) => (
+              <Link key={tool.href} href={tool.href} className="group rounded-[2rem] border border-white/10 bg-black p-7 md:p-8 hover:border-green-400/30 hover:-translate-y-1 transition-all duration-300">
+                <div className="w-12 h-12 rounded-2xl bg-green-400/10 text-green-400 flex items-center justify-center">{tool.icon}</div>
+                <h3 className="mt-8 text-2xl font-serif group-hover:text-green-300 transition-colors">{tool.title}</h3>
+                <p className="mt-4 text-sm text-white/50 leading-relaxed min-h-[66px]">{tool.desc}</p>
+                <div className="mt-7 pt-5 border-t border-white/5 flex items-center justify-between gap-4"><span className="text-[10px] uppercase tracking-widest text-white/35">{tool.meta}</span><ArrowRight className="w-4 h-4 text-green-400 group-hover:translate-x-1 transition-transform" /></div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-40 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="why-now-text opacity-0">

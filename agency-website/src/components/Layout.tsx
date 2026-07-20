@@ -67,6 +67,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { name: "Strategic Pillars", path: "/services" },
     { name: "Arabic AI", path: "/arabic-ai-hub" },
     { name: "Case Studies", path: "/case-studies" },
+    { name: "Free Tools", path: "/tools" },
     { name: "Blog", path: "/blog" },
     { name: "Contact", path: "/contact" },
   ];
@@ -109,7 +110,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
 
-        <nav className="hidden md:flex gap-8 text-[13px] font-semibold uppercase tracking-[0.2em]">
+        <nav className="hidden md:flex gap-5 lg:gap-7 text-[11px] lg:text-[12px] font-semibold uppercase tracking-[0.16em]">
           {navLinks.map((link) => (
             <div key={link.path} className="relative group">
               <Link
