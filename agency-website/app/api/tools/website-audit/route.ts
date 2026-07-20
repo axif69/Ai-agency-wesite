@@ -43,7 +43,11 @@ async function safeFetch(startUrl: URL) {
     }
     if (!response.ok) throw new Error(`HTTP_${response.status}`);
     if (!(response.headers.get("content-type") || "").includes("text/html")) throw new Error("NOT_HTML");
-    return { response, finalUrl: current };
+    // Read the body before this request's timeout expires. Lighthouse can take
+    // much longer, so deferring response.text() until after it finishes can
+    // otherwise leave this body attached to an aborted signal.
+    const html = (await response.text()).slice(0, 1500000);
+    return { html, finalUrl: current };
   }
   throw new Error("TOO_MANY_REDIRECTS");
 }
@@ -116,9 +120,12 @@ async function runPageSpeed(url: URL, strategy: Strategy) {
   if (process.env.PAGESPEED_API_KEY) endpoint.searchParams.set("key", process.env.PAGESPEED_API_KEY);
 
   let lastError = "PageSpeed request failed.";
+  const deadline = Date.now() + 95000;
   for (let attempt = 0; attempt < 2; attempt += 1) {
+    const remaining = deadline - Date.now();
+    if (remaining < 5000) break;
     try {
-      const response = await fetch(endpoint, { signal: AbortSignal.timeout(85000), cache: "no-store" });
+      const response = await fetch(endpoint, { signal: AbortSignal.timeout(Math.min(70000, remaining)), cache: "no-store" });
       if (response.ok) {
         const data = await response.json();
         const report = normalizePsi(data, strategy);
@@ -129,6 +136,7 @@ async function runPageSpeed(url: URL, strategy: Strategy) {
       if (response.status !== 429 && response.status < 500) break;
     } catch (error: any) {
       lastError = error?.name === "TimeoutError" ? "Google PageSpeed timed out." : "Google PageSpeed could not be reached.";
+      if (error?.name === "TimeoutError") break;
     }
   }
   return { available: false, error: lastError };
@@ -149,8 +157,7 @@ export async function POST(request: Request) {
     const requestedUrl = new URL(input);
     await assertPublicUrl(requestedUrl);
 
-    const [{ response, finalUrl }, mobile, desktop] = await Promise.all([safeFetch(requestedUrl), runPageSpeed(requestedUrl, "mobile"), runPageSpeed(requestedUrl, "desktop")]);
-    const html = (await response.text()).slice(0, 1500000);
+    const [{ html, finalUrl }, mobile, desktop] = await Promise.all([safeFetch(requestedUrl), runPageSpeed(requestedUrl, "mobile"), runPageSpeed(requestedUrl, "desktop")]);
     const visibleText = textContent(html);
     const signals = {
       title: has(/<title[^>]*>\s*[^<]{10,70}\s*<\/title>/i, html), description: has(/<meta[^>]+name=["']description["'][^>]+content=["'][^"']{50,180}["']/i, html) || has(/<meta[^>]+content=["'][^"']{50,180}["'][^>]+name=["']description["']/i, html), canonical: has(/<link[^>]+rel=["']canonical["']/i, html), viewport: has(/<meta[^>]+name=["']viewport["']/i, html), h1: (html.match(/<h1\b/gi) || []).length === 1, structuredData: has(/application\/ld\+json/i, html), organization: has(/Organization|LocalBusiness|ProfessionalService/i, html), faq: has(/FAQ|Frequently Asked Questions/i, visibleText), aboutContact: has(/href=["'][^"']*(about|contact)/i, html), author: has(/author|reviewed by|written by/i, visibleText), sources: has(/sources|references|methodology/i, visibleText), cta: has(/contact|book|quote|consult|call|whatsapp|get started|request/i, visibleText), form: has(/<form\b/i, html), phoneOrWhatsApp: has(/tel:|wa\.me|whatsapp/i, html), trust: has(/case stud|testimonial|client|review|certif|privacy/i, visibleText), substantialText: visibleText.length > 1800,

@@ -17,6 +17,19 @@ const metricLabels: Record<string, string> = { fcp: "First Contentful Paint", lc
 function band(score: number | null) { if (score == null) return "Partial audit — no Lighthouse score"; if (score >= 80) return "Strong foundation"; if (score >= 55) return "Growth opportunity"; return "Priority fixes required"; }
 function resultForAi(audit: Audit) { const compact = (state: DeviceState) => state.available && state.report ? { scores: state.report.scores, metrics: state.report.metrics, opportunities: state.report.opportunities.slice(0, 5), failedAudits: state.report.failedAudits.slice(0, 8) } : { error: state.error }; return { url: audit.url, overall: audit.overall, verified: audit.verified, scores: audit.scores, mobile: compact(audit.pageSpeed.mobile), desktop: compact(audit.pageSpeed.desktop), pageInspection: audit.pageInspection }; }
 
+async function readApiResponse(response: Response) {
+  const contentType = response.headers.get("content-type") || "";
+  if (contentType.includes("application/json")) return response.json();
+  const text = await response.text();
+  return {
+    error: response.status === 502 || response.status === 504
+      ? "The live audit took too long to complete. Please try again shortly."
+      : text && text.length < 180 && !text.startsWith("<")
+        ? text
+        : "The audit service returned an unexpected response. Please try again shortly.",
+  };
+}
+
 export default function WebsiteGrader() {
   const [form, setForm] = useState({ url: "", industry: "", market: "UAE", goal: "Generate qualified leads" });
   const [audit, setAudit] = useState<Audit | null>(null);
@@ -33,12 +46,12 @@ export default function WebsiteGrader() {
     trackEvent("tool_start", { tool_name: "AI Website Grader", industry: form.industry, market: form.market });
     try {
       const response = await fetch("/api/tools/website-audit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url: form.url }) });
-      const result = await response.json();
+      const result = await readApiResponse(response);
       if (!response.ok) throw new Error(result.error || "Audit failed");
       setAudit(result); setStatus("idle"); setAiStatus("loading");
       trackEvent("tool_analysis_success", { tool_name: "AI Website Grader", result_band: band(result.overall), lighthouse_verified: result.verified });
       const aiResponse = await fetch("/api/tools/generate-report", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ tool: "website-grader", facts: { businessContext: form, verifiedAudit: resultForAi(result) } }) });
-      if (aiResponse.ok) { const data = await aiResponse.json(); if (data.report) { setAi(data.report); setAiStatus("complete"); } else setAiStatus("unavailable"); } else setAiStatus("unavailable");
+      if (aiResponse.ok) { const data = await readApiResponse(aiResponse); if (data.report) { setAi(data.report); setAiStatus("complete"); } else setAiStatus("unavailable"); } else setAiStatus("unavailable");
     } catch (err: any) { setError(err.message || "We could not analyze this website."); setStatus("error"); }
   }
 
