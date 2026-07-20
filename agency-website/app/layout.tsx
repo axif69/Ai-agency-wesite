@@ -2,6 +2,7 @@ import './globals.css';
 import Layout from '../src/components/Layout';
 import SmoothScroll from '../src/components/SmoothScroll';
 import { Syne, Space_Grotesk } from 'next/font/google';
+import type { Metadata } from 'next';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -15,10 +16,20 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL('https://www.asifdigital.agency'),
   title: "AI Automation Agency Dubai | Asif Digital — AI Agents & Workflows UAE",
-  description: "Asif Digital is a Dubai-based AI automation agency helping UAE businesses automate workflows, generate leads, and scale with custom AI agents. Book a free consultation."
+  description: "Asif Digital is a Dubai-based AI automation agency helping UAE businesses automate workflows, generate leads, and scale with custom AI agents. Book a free consultation.",
+  manifest: '/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.png', type: 'image/png', sizes: '48x48' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icon-512.png', type: 'image/png', sizes: '512x512' },
+    ],
+    shortcut: '/favicon.png',
+    apple: [{ url: '/apple-touch-icon.png', type: 'image/png', sizes: '180x180' }],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -44,8 +55,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               "name": "Asif Digital: AI Automation, Web & Custom Software Agency",
-              "image": "https://asifdigital.agency/favicon.png",
-              "url": "https://asifdigital.agency",
+              "image": "https://www.asifdigital.agency/icon-512.png",
+              "logo": "https://www.asifdigital.agency/icon-512.png",
+              "url": "https://www.asifdigital.agency",
               "telephone": "+971545866094",
               "priceRange": "$$$",
               "address": {
