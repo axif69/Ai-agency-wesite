@@ -320,6 +320,8 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <p>That usually means combining multiple layers rather than betting on a single tool.</p>
 
+      <p>For implementation support, explore Asif Digital's <a href="/real-estate-digital-solutions-uae" class="text-white hover:underline">real estate digital solutions in the UAE</a>, built for connected websites, lead capture, CRM routing, WhatsApp workflows, and reporting.</p>
+
       <h2>The core digital layers most UAE real estate teams need</h2>
       <h3>1. A credible, search-ready website</h3>
       <p>Your website is still the trust layer even when leads come from portals, ads, or social media. It should explain services clearly, load well on mobile, match real commercial-intent searches, and make contact obvious.</p>
@@ -387,7 +389,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Conclusion</h2>
       <p>Real estate digital solutions in the UAE should not be judged by how many tools are installed. They should be judged by whether the business becomes easier to run, easier to trust, and better at turning demand into conversations and conversations into deals.</p>
 
-      <p>If your current stack feels expensive but still fragmented, <a href="/contact" class="text-white hover:underline">Asif Digital can help you map the missing workflow layer</a> and build a system that fits the way your team actually works.</p>
+      <p>If your current stack feels expensive but still fragmented, review our <a href="/real-estate-digital-solutions-uae" class="text-white hover:underline">real estate digital solutions service</a>, then <a href="/contact" class="text-white hover:underline">contact Asif Digital</a> to map the missing workflow layer and build a system that fits the way your team actually works.</p>
     `
   },
   {

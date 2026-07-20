@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/services/RealEstateDigitalSolutionsUAE';
 
 export const metadata = {
-  title: "Real Estate Digital Solutions | UAE CRM & Web",
-  description: "Connect your property website, lead forms, listings, WhatsApp, and CRM. Streamline real estate operations without manual data transfer.",
+  title: "Real Estate Digital Solutions UAE | CRM, Websites & WhatsApp Automation",
+  description: "Real estate digital solutions in the UAE connecting property websites, lead capture, WhatsApp automation, CRM routing, and reporting systems.",
   alternates: {
     canonical: "https://www.asifdigital.agency/real-estate-digital-solutions-uae"
   },
   openGraph: {
-    title: "Real Estate Digital Solutions | UAE CRM & Web",
-    description: "Connect your property website, lead forms, listings, WhatsApp, and CRM. Streamline real estate operations without manual data transfer.",
+    title: "Real Estate Digital Solutions UAE | CRM, Websites & WhatsApp Automation",
+    description: "Real estate digital solutions in the UAE connecting property websites, lead capture, WhatsApp automation, CRM routing, and reporting systems.",
     url: "https://www.asifdigital.agency/real-estate-digital-solutions-uae",
     siteName: "Asif Digital",
     images: [
@@ -24,8 +24,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Real Estate Digital Solutions | UAE CRM & Web",
-    description: "Connect your property website, lead forms, listings, WhatsApp, and CRM. Streamline real estate operations without manual data transfer.",
+    title: "Real Estate Digital Solutions UAE | CRM, Websites & WhatsApp Automation",
+    description: "Real estate digital solutions in the UAE connecting property websites, lead capture, WhatsApp automation, CRM routing, and reporting systems.",
     images: ["https://www.asifdigital.agency/images/dubai_real_estate_ai_dashboard.png"]
   }
 };

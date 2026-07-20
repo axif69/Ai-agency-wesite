@@ -44,7 +44,7 @@ export default function RealEstateDigitalSolutionsUAE() {
         "@type": "WebPage",
         "@id": "https://www.asifdigital.agency/real-estate-digital-solutions-uae#webpage",
         "url": "https://www.asifdigital.agency/real-estate-digital-solutions-uae",
-        "name": "Real Estate Digital Solutions | UAE CRM & Web",
+        "name": "Real Estate Digital Solutions UAE | CRM, Websites & WhatsApp Automation",
         "isPartOf": { "@id": "https://www.asifdigital.agency/#website" },
         "breadcrumb": { "@id": "https://www.asifdigital.agency/real-estate-digital-solutions-uae#breadcrumb" }
       },
@@ -75,8 +75,8 @@ export default function RealEstateDigitalSolutionsUAE() {
       {
         "@type": "Service",
         "@id": "https://www.asifdigital.agency/real-estate-digital-solutions-uae#service",
-        "name": "Digital Systems for Real Estate Companies in the UAE",
-        "description": "Connect your property website, lead forms, listings, WhatsApp and CRM so your team can manage enquiries.",
+        "name": "Real Estate Digital Solutions in the UAE",
+        "description": "Connected property websites, lead capture, WhatsApp automation, CRM routing, and reporting systems for UAE real estate teams.",
         "provider": { "@id": "https://www.asifdigital.agency/#organization" }
       },
       {
@@ -122,11 +122,11 @@ export default function RealEstateDigitalSolutionsUAE() {
             Property Infrastructure Setup
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif leading-[1.15] tracking-tight mb-6">
-            Digital Systems for <br className="hidden md:inline" />
-            <span className="italic text-white/50 font-light tracking-normal">UAE Real Estate Companies</span>
+            Real Estate Digital Solutions <br className="hidden md:inline" />
+            <span className="italic text-white/50 font-light tracking-normal">in the UAE</span>
           </h1>
           <p className="text-[17px] md:text-[18px] leading-[1.7] text-white/90 max-w-3xl mx-auto mb-8 font-sans font-light">
-            Connect your property website, lead forms, listings, WhatsApp and CRM so your team can manage enquiries without copying information between separate tools.
+            Asif Digital builds real estate digital solutions in the UAE for agencies, developers, and property teams that need connected websites, lead capture, WhatsApp automation, CRM routing, and reporting systems.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
