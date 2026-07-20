@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
@@ -97,8 +98,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
 
       <header className="fixed top-9 left-0 right-0 z-40 flex items-center justify-between px-6 py-6 md:px-12">
-        <Link href="/" aria-label="Asif Digital Home" className="text-[26px] font-serif font-bold tracking-tight mix-blend-difference">
-          Asif Khan.
+        <Link href="/" aria-label="Asif Digital Home" className="flex items-center gap-2.5 shrink-0">
+          <Image
+            src="/images/asif-digital-ad-mark.png"
+            alt=""
+            width={36}
+            height={36}
+            priority
+            className="w-8 h-8 sm:w-9 sm:h-9 object-contain shrink-0"
+          />
+          <span className="text-[20px] sm:text-[23px] leading-none font-serif font-bold tracking-tight mix-blend-difference">
+            Asif Digital.
+          </span>
         </Link>
         
         <button
@@ -286,7 +297,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32">
             {/* Brand Section */}
             <div className="space-y-8">
-              <Link href="/" className="text-4xl font-serif font-bold tracking-tight block">Asif Digital.</Link>
+              <Link href="/" aria-label="Asif Digital Home" className="inline-flex items-center gap-3">
+                <Image
+                  src="/images/asif-digital-ad-mark.png"
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 object-contain shrink-0"
+                />
+                <span className="text-4xl leading-none font-serif font-bold tracking-tight">Asif Digital.</span>
+              </Link>
               <p className="text-white/95 font-light text-base max-w-xs leading-relaxed">
                 Architecting the future of digital commerce through AI-driven precision and enterprise-grade software engineering.
               </p>
