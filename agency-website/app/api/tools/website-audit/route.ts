@@ -119,27 +119,40 @@ async function runPageSpeed(url: URL, strategy: Strategy) {
   ["PERFORMANCE", "ACCESSIBILITY", "BEST_PRACTICES", "SEO"].forEach((category) => endpoint.searchParams.append("category", category));
   if (process.env.PAGESPEED_API_KEY) endpoint.searchParams.set("key", process.env.PAGESPEED_API_KEY);
 
-  let lastError = "PageSpeed request failed.";
-  const deadline = Date.now() + 95000;
-  for (let attempt = 0; attempt < 2; attempt += 1) {
-    const remaining = deadline - Date.now();
-    if (remaining < 5000) break;
-    try {
-      const response = await fetch(endpoint, { signal: AbortSignal.timeout(Math.min(70000, remaining)), cache: "no-store" });
-      if (response.ok) {
-        const data = await response.json();
-        const report = normalizePsi(data, strategy);
-        return report ? { available: true, report } : { available: false, error: "Google returned an incomplete Lighthouse report." };
-      }
-      const body = await response.json().catch(() => null);
-      lastError = body?.error?.message || `Google PageSpeed returned HTTP ${response.status}.`;
-      if (response.status !== 429 && response.status < 500) break;
-    } catch (error: any) {
-      lastError = error?.name === "TimeoutError" ? "Google PageSpeed timed out." : "Google PageSpeed could not be reached.";
-      if (error?.name === "TimeoutError") break;
+  try {
+    const response = await fetch(endpoint, { signal: AbortSignal.timeout(65000), cache: "no-store" });
+    if (response.ok) {
+      const data = await response.json();
+      const report = normalizePsi(data, strategy);
+      return report ? { available: true, report } : { available: false, error: "Google returned an incomplete Lighthouse report." };
     }
+    const body = await response.json().catch(() => null);
+    return { available: false, error: body?.error?.message || `Google PageSpeed returned HTTP ${response.status}.` };
+  } catch (error: any) {
+    const timedOut = error?.name === "TimeoutError" || error?.name === "AbortError";
+    return { available: false, error: timedOut ? "Google PageSpeed timed out." : "Google PageSpeed could not be reached." };
   }
-  return { available: false, error: lastError };
+}
+
+function runPageSpeedWithHardLimit(url: URL, strategy: Strategy) {
+  return new Promise<any>((resolve) => {
+    let settled = false;
+    const timer = setTimeout(() => {
+      settled = true;
+      resolve({ available: false, error: "Google PageSpeed timed out." });
+    }, 70000);
+    runPageSpeed(url, strategy).then((result) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      resolve(result);
+    }).catch(() => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      resolve({ available: false, error: "Google PageSpeed could not be reached." });
+    });
+  });
 }
 
 function has(pattern: RegExp, value: string) { return pattern.test(value); }
@@ -157,7 +170,7 @@ export async function POST(request: Request) {
     const requestedUrl = new URL(input);
     await assertPublicUrl(requestedUrl);
 
-    const [{ html, finalUrl }, mobile, desktop] = await Promise.all([safeFetch(requestedUrl), runPageSpeed(requestedUrl, "mobile"), runPageSpeed(requestedUrl, "desktop")]);
+    const [{ html, finalUrl }, mobile, desktop] = await Promise.all([safeFetch(requestedUrl), runPageSpeedWithHardLimit(requestedUrl, "mobile"), runPageSpeedWithHardLimit(requestedUrl, "desktop")]);
     const visibleText = textContent(html);
     const signals = {
       title: has(/<title[^>]*>\s*[^<]{10,70}\s*<\/title>/i, html), description: has(/<meta[^>]+name=["']description["'][^>]+content=["'][^"']{50,180}["']/i, html) || has(/<meta[^>]+content=["'][^"']{50,180}["'][^>]+name=["']description["']/i, html), canonical: has(/<link[^>]+rel=["']canonical["']/i, html), viewport: has(/<meta[^>]+name=["']viewport["']/i, html), h1: (html.match(/<h1\b/gi) || []).length === 1, structuredData: has(/application\/ld\+json/i, html), organization: has(/Organization|LocalBusiness|ProfessionalService/i, html), faq: has(/FAQ|Frequently Asked Questions/i, visibleText), aboutContact: has(/href=["'][^"']*(about|contact)/i, html), author: has(/author|reviewed by|written by/i, visibleText), sources: has(/sources|references|methodology/i, visibleText), cta: has(/contact|book|quote|consult|call|whatsapp|get started|request/i, visibleText), form: has(/<form\b/i, html), phoneOrWhatsApp: has(/tel:|wa\.me|whatsapp/i, html), trust: has(/case stud|testimonial|client|review|certif|privacy/i, visibleText), substantialText: visibleText.length > 1800,
