@@ -13,12 +13,27 @@ export default function ToolLeadForm({ tool, summary, heading = "Want a Human Re
     event.preventDefault();
     setState("loading");
     try {
-      const response = await fetch("/api/tools/send-report", {
+      const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "").trim();
+      if (!accessKey) throw new Error("Form delivery is not configured");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, tool, summary }),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: form.name,
+          email: form.email,
+          company: form.company || "Not provided",
+          phone: form.phone || "Not provided",
+          tool,
+          message: summary || "The visitor requested a review of their tool result.",
+          subject: `${tool} lead from ${form.name}`,
+          from_name: "Asif Digital Free Tools",
+          botcheck: "",
+        }),
       });
-      if (!response.ok) throw new Error("Submission failed");
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.success) throw new Error(result?.message || "Submission failed");
       setState("success");
       trackEvent("tool_lead_submit", { tool_name: tool, form_name: `${tool} report review` });
     } catch {
@@ -48,4 +63,3 @@ export default function ToolLeadForm({ tool, summary, heading = "Want a Human Re
     </div>
   );
 }
-
