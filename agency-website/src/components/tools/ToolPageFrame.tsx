@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 
-export const fieldClass = "w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-sm text-white outline-none transition focus:border-green-400/60 focus:ring-2 focus:ring-green-400/10 placeholder:text-white/30";
+export const fieldClass = "tool-field w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-sm text-white outline-none transition focus:border-green-400/60 focus:ring-2 focus:ring-green-400/10 placeholder:text-white/30";
 export const labelClass = "mb-2 block text-[10px] font-bold uppercase tracking-[0.22em] text-white/60";
 export const panelClass = "rounded-[2rem] border border-white/10 bg-[#0a0a0a] p-6 md:p-8";
 
@@ -120,4 +120,3 @@ export default function ToolPageFrame({ eyebrow, title, description, children, m
     </div>
   );
 }
-

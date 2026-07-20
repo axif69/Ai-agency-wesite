@@ -1,124 +1,72 @@
 "use client";
 
-import { useState } from "react";
-import { AlertCircle, CheckCircle2, ExternalLink, Gauge, Loader2, RefreshCw, Search, Smartphone, Sparkles, Target } from "lucide-react";
+import { useMemo, useState } from "react";
+import { AlertCircle, CheckCircle2, ExternalLink, Gauge, Loader2, Monitor, RefreshCw, Search, Smartphone, Sparkles, Target, TriangleAlert, XCircle } from "lucide-react";
 import ToolLeadForm from "../../components/tools/ToolLeadForm";
 import ToolPageFrame, { fieldClass, labelClass, panelClass } from "../../components/tools/ToolPageFrame";
 import ScoreRing from "../../components/tools/ScoreRing";
 import { trackEvent } from "../../utils/analytics";
 
-type Audit = {
-  url: string;
-  testedAt: string;
-  overall: number;
-  scores: Record<string, number>;
-  metrics: { lcpMs: number | null; cls: number | null; tbtMs: number | null; pageSpeedAvailable: boolean };
-  findings: string[];
-};
+type DeviceReport = { strategy: "mobile" | "desktop"; source: string; fetchTime: string | null; lighthouseVersion: string | null; scores: Record<string, number | null>; metrics: Record<string, { value: number | null; displayValue: string | null; score: number | null } | null>; fieldData: any; opportunities: any[]; failedAudits: any[]; passedCount: number; warnings: string[] };
+type DeviceState = { available: boolean; report?: DeviceReport; error?: string };
+type Audit = { url: string; testedAt: string; overall: number | null; verified: boolean; scores: Record<string, number | null>; pageSpeed: { mobile: DeviceState; desktop: DeviceState; keyConfigured: boolean }; pageInspection: { source: string; htmlSeo: number; signals: Record<string, boolean>; findings: string[] } };
 
-const categories = [
-  ["performance", "Performance", Gauge],
-  ["technicalSeo", "Technical SEO", Search],
-  ["mobileAccessibility", "Mobile & Accessibility", Smartphone],
-  ["conversionReadiness", "Conversion Readiness", Target],
-  ["aiSearchReadiness", "AI Search Readiness", Sparkles],
-] as const;
+const categories = [["performance", "Lighthouse Performance", Gauge], ["technicalSeo", "Technical SEO", Search], ["mobileAccessibility", "Accessibility", Smartphone], ["bestPractices", "Best Practices", CheckCircle2], ["conversionReadiness", "Conversion Readiness", Target], ["aiSearchReadiness", "AI Search Readiness", Sparkles]] as const;
+const metricLabels: Record<string, string> = { fcp: "First Contentful Paint", lcp: "Largest Contentful Paint", speedIndex: "Speed Index", tbt: "Total Blocking Time", cls: "Cumulative Layout Shift", tti: "Time to Interactive" };
 
-function band(score: number) {
-  if (score >= 80) return "Strong foundation";
-  if (score >= 55) return "Growth opportunity";
-  return "Priority fixes required";
-}
+function band(score: number | null) { if (score == null) return "Partial audit — no Lighthouse score"; if (score >= 80) return "Strong foundation"; if (score >= 55) return "Growth opportunity"; return "Priority fixes required"; }
+function resultForAi(audit: Audit) { const compact = (state: DeviceState) => state.available && state.report ? { scores: state.report.scores, metrics: state.report.metrics, opportunities: state.report.opportunities.slice(0, 5), failedAudits: state.report.failedAudits.slice(0, 8) } : { error: state.error }; return { url: audit.url, overall: audit.overall, verified: audit.verified, scores: audit.scores, mobile: compact(audit.pageSpeed.mobile), desktop: compact(audit.pageSpeed.desktop), pageInspection: audit.pageInspection }; }
 
 export default function WebsiteGrader() {
   const [form, setForm] = useState({ url: "", industry: "", market: "UAE", goal: "Generate qualified leads" });
   const [audit, setAudit] = useState<Audit | null>(null);
   const [ai, setAi] = useState<any>(null);
+  const [aiStatus, setAiStatus] = useState<"idle" | "loading" | "complete" | "unavailable">("idle");
+  const [device, setDevice] = useState<"mobile" | "desktop">("mobile");
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [error, setError] = useState("");
+  const deviceState = audit?.pageSpeed[device];
+  const deviceReport = deviceState?.available ? deviceState.report : null;
 
   async function analyze(event: React.FormEvent) {
-    event.preventDefault();
-    setStatus("loading"); setError(""); setAudit(null); setAi(null);
+    event.preventDefault(); setStatus("loading"); setError(""); setAudit(null); setAi(null); setAiStatus("idle");
     trackEvent("tool_start", { tool_name: "AI Website Grader", industry: form.industry, market: form.market });
     try {
       const response = await fetch("/api/tools/website-audit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url: form.url }) });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "Audit failed");
-      setAudit(result);
-      setStatus("idle");
-      trackEvent("tool_analysis_success", { tool_name: "AI Website Grader", result_band: band(result.overall) });
-      fetch("/api/tools/generate-report", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ tool: "website-grader", facts: { ...form, audit: result } }) })
-        .then((res) => res.ok ? res.json() : null).then((data) => data?.report && setAi(data.report)).catch(() => null);
-    } catch (err: any) {
-      setError(err.message || "We could not analyze this website.");
-      setStatus("error");
-    }
+      setAudit(result); setStatus("idle"); setAiStatus("loading");
+      trackEvent("tool_analysis_success", { tool_name: "AI Website Grader", result_band: band(result.overall), lighthouse_verified: result.verified });
+      const aiResponse = await fetch("/api/tools/generate-report", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ tool: "website-grader", facts: { businessContext: form, verifiedAudit: resultForAi(result) } }) });
+      if (aiResponse.ok) { const data = await aiResponse.json(); if (data.report) { setAi(data.report); setAiStatus("complete"); } else setAiStatus("unavailable"); } else setAiStatus("unavailable");
+    } catch (err: any) { setError(err.message || "We could not analyze this website."); setStatus("error"); }
   }
 
-  const summary = audit ? `${audit.url} scored ${audit.overall}/100. ${ai?.summary || `The lowest measured areas are ${Object.entries(audit.scores).sort((a, b) => a[1] - b[1]).slice(0, 2).map(([key]) => key).join(" and ")}.`} Priority fixes: ${audit.findings.join(" ")}` : "";
+  const verifiedSummary = useMemo(() => audit ? `${audit.url}. ${audit.overall == null ? "Google Lighthouse data was unavailable; only the public HTML inspection completed." : `Verified composite score ${audit.overall}/100.`} ${ai?.summary || ""}` : "", [audit, ai]);
+  const reset = () => { setAudit(null); setAi(null); setAiStatus("idle"); };
 
-  return (
-    <ToolPageFrame
-      eyebrow="AI Website Grader"
-      title="Free AI Website Grader for UAE Businesses"
-      description="Enter a public website URL to receive a measured audit across performance, technical SEO, mobile accessibility, conversion readiness and AI-search clarity."
-      methodologyTitle="How the website score is calculated"
-      methodology={[
-        "Performance uses Google PageSpeed and Lighthouse when available, including mobile lab data and Core Web Vitals diagnostics.",
-        "Technical SEO checks observable page signals such as the title, description, canonical, primary heading, indexable text and structured data.",
-        "Conversion readiness checks whether visitors can understand the next action and reach a form, phone number or WhatsApp journey with appropriate trust signals.",
-        "AI-search readiness evaluates entity clarity, extractable answers, authorship, sources, About/contact evidence and structured data that matches visible content.",
-      ]}
-      guideTitle="A high score is a foundation—not a ranking guarantee"
-      guide={[
-        { title: "Performance versus business performance", text: "A fast page creates a better foundation, but speed alone cannot prove that the offer, message or lead journey converts. The report separates technical quality from conversion readiness." },
-        { title: "Why mobile matters in the UAE", text: "Search, social and WhatsApp journeys frequently begin on mobile. The grader therefore treats mobile accessibility and a clear contact path as core business requirements." },
-        { title: "What AI-search readiness means", text: "Search and answer engines need clear, crawlable facts about who you are, what you provide, where you operate and why your claims should be trusted." },
-        { title: "What the grader cannot see", text: "One public URL cannot reveal your full analytics, CRM data, rankings, revenue, private integrations or customer feedback. A full audit adds those sources." },
-      ]}
-      faqs={[
-        { q: "Is the Website Grader free?", a: "Yes. You receive the score and prioritized findings without creating an account or entering contact details." },
-        { q: "Does the grader change my website?", a: "No. It only requests public page data and performs a read-only analysis." },
-        { q: "Is PageSpeed the same as SEO?", a: "No. PageSpeed measures performance and related diagnostics. SEO also depends on relevance, content quality, crawlability, authority and competition." },
-        { q: "What does AI-search readiness mean?", a: "It describes how clearly a page exposes useful facts, direct answers, entity information and trust evidence that search and answer systems can retrieve." },
-        { q: "Will a high score guarantee Google rankings?", a: "No. No grader can guarantee rankings. This score identifies observable foundations and gaps on the tested page." },
-        { q: "Can it audit Arabic and English websites?", a: "It can inspect the same technical signals on both. A deeper bilingual review is recommended for language quality and regional search intent." },
-      ]}
-      related={[
-        { title: "AI Marketing Strategy Generator", href: "/tools/ai-marketing-strategy-generator", description: "Turn your business context into a focused 90-day UAE marketing plan." },
-        { title: "Ad Spend Efficiency Analyzer", href: "/tools/ad-spend-efficiency-analyzer", description: "Calculate advertising economics and identify measurement gaps." },
-      ]}
-    >
-      {!audit ? (
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <form onSubmit={analyze} className={panelClass}>
-            <h2 className="text-2xl font-serif">Enter the page you want to test</h2>
-            <p className="mt-3 text-sm leading-relaxed text-white/50">Use a complete public URL. We never ask for your CMS or analytics password.</p>
-            <div className="mt-7"><label className={labelClass} htmlFor="grader-url">Website URL</label><input id="grader-url" required type="text" inputMode="url" placeholder="https://www.example.ae" className={fieldClass} value={form.url} onChange={(e) => setForm({ ...form, url: e.target.value })} /></div>
-            <div className="mt-5 grid gap-5 sm:grid-cols-2">
-              <div><label className={labelClass} htmlFor="grader-industry">Industry (optional)</label><select id="grader-industry" className={fieldClass} value={form.industry} onChange={(e) => setForm({ ...form, industry: e.target.value })}><option value="">Select industry</option><option>Real estate</option><option>Professional services</option><option>E-commerce</option><option>Healthcare</option><option>Hospitality</option><option>SaaS</option><option>Other</option></select></div>
-              <div><label className={labelClass} htmlFor="grader-market">Primary market</label><select id="grader-market" className={fieldClass} value={form.market} onChange={(e) => setForm({ ...form, market: e.target.value })}><option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option><option>UAE</option><option>GCC</option><option>International</option></select></div>
-            </div>
-            {status === "error" && <div className="mt-5 flex gap-3 rounded-2xl border border-red-400/20 bg-red-400/5 p-4 text-sm text-red-200"><AlertCircle className="h-5 w-5 shrink-0" />{error}</div>}
-            <button disabled={status === "loading"} className="mt-7 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-green-300 disabled:opacity-60">{status === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Gauge className="h-4 w-4" />}{status === "loading" ? "Testing performance and page signals..." : "Analyze My Website"}</button>
-          </form>
-          <div className={`${panelClass} flex flex-col justify-between bg-gradient-to-br from-green-400/[0.07] to-transparent`}>
-            <div><span className="micro-label text-green-400">Your report includes</span><h2 className="mt-4 text-3xl font-serif md:text-4xl">Five scores. One prioritized roadmap.</h2></div>
-            <div className="mt-10 grid gap-3 sm:grid-cols-2">{categories.map(([key, title, Icon]) => <div key={key} className="flex items-center gap-3 rounded-2xl border border-white/5 bg-black/40 p-4"><Icon className="h-5 w-5 text-green-400" /><span className="text-sm text-white/70">{title}</span></div>)}</div>
-            <p className="mt-8 text-xs leading-relaxed text-white/35">A live audit usually takes 30–60 seconds. If PageSpeed is temporarily unavailable, the report clearly labels the partial result.</p>
-          </div>
-        </div>
-      ) : (
-        <div aria-live="polite" className="space-y-8">
-          <div className={`${panelClass} grid gap-10 lg:grid-cols-[240px_1fr] lg:items-center`}><ScoreRing score={audit.overall} label={band(audit.overall)} /><div><div className="flex flex-wrap items-center gap-3"><h2 className="text-2xl font-serif md:text-4xl">Website audit complete</h2><a href={audit.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-green-400 hover:text-green-300">View tested page <ExternalLink className="h-3 w-3" /></a></div><p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/60">{ai?.summary || "The report combines live technical measurements with observable conversion and content signals. Start with the lowest-scoring category and the priority fixes below."}</p><button onClick={() => { setAudit(null); setAi(null); }} className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/50 hover:text-white"><RefreshCw className="h-4 w-4" /> Test another page</button></div></div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">{categories.map(([key, title, Icon]) => <div key={key} className="rounded-2xl border border-white/10 bg-black p-5"><Icon className="h-5 w-5 text-green-400" /><div className="mt-5 text-3xl font-serif">{audit.scores[key]}</div><div className="mt-1 text-xs text-white/45">{title}</div></div>)}</div>
-          {audit.metrics.pageSpeedAvailable && <div className="grid gap-4 md:grid-cols-3">{[["LCP", audit.metrics.lcpMs != null ? `${(audit.metrics.lcpMs / 1000).toFixed(1)}s` : "N/A", "Good: 2.5s or less"], ["CLS", audit.metrics.cls != null ? audit.metrics.cls.toFixed(3) : "N/A", "Good: 0.1 or less"], ["TBT", audit.metrics.tbtMs != null ? `${Math.round(audit.metrics.tbtMs)}ms` : "N/A", "Lab proxy for responsiveness"]].map(([name, value, note]) => <div key={name} className={panelClass}><div className="text-xs uppercase tracking-widest text-white/40">{name}</div><div className="mt-3 text-3xl font-serif">{value}</div><p className="mt-2 text-xs text-white/35">{note}</p></div>)}</div>}
-          <div className={panelClass}><h3 className="text-2xl font-serif">Priority fix plan</h3><div className="mt-6 grid gap-4 md:grid-cols-2">{(ai?.priorities || audit.findings.map((action, index) => ({ title: `Priority ${index + 1}`, reason: "This signal was missing or weak on the tested page.", action }))).slice(0, 6).map((item: any, index: number) => <div key={`${item.title}-${index}`} className="rounded-2xl border border-white/5 bg-white/[0.025] p-5"><div className="flex gap-3"><span className="font-serif text-green-400">{String(index + 1).padStart(2, "0")}</span><div><h4 className="font-semibold">{item.title}</h4><p className="mt-2 text-xs leading-relaxed text-white/45">{item.reason}</p><p className="mt-3 text-sm leading-relaxed text-white/70">{item.action}</p></div></div></div>)}</div></div>
-          <ToolLeadForm tool="AI Website Grader" summary={summary} heading="Want the Fix Plan Prioritized for Your Business?" />
-        </div>
-      )}
-    </ToolPageFrame>
-  );
+  return <ToolPageFrame eyebrow="AI Website Grader" title="Free AI Website Grader for UAE Businesses" description="Run live Google Lighthouse tests for mobile and desktop, inspect public SEO and conversion signals, and receive an AI explanation grounded in the measured evidence."
+    methodologyTitle="How the website score is calculated" methodology={["Mobile and desktop results are requested from Google's PageSpeed Insights API, which runs Lighthouse performance, accessibility, best-practices and SEO audits.", "The report exposes Lighthouse metrics, failed audits and performance opportunities instead of hiding them behind a single score.", "Asif Digital's server separately inspects public HTML for titles, canonical tags, headings, schema, crawlable text, conversion paths and trust evidence.", "If Google PageSpeed is unavailable, no performance score is invented. The page is labelled a partial audit and shows the exact unavailable data source."]}
+    guideTitle="A high score is a foundation—not a ranking guarantee" guide={[{ title: "Lab data and field data", text: "Lighthouse lab data is a controlled test. Chrome UX Report field data reflects eligible real-user visits. The report labels each source and does not substitute one for the other." }, { title: "Why scores can change", text: "Lighthouse scores can vary with server response, network conditions, third-party scripts, A/B tests and the tested device strategy. Use the detailed audits to identify repeatable issues." }, { title: "What AI adds", text: "AI reads the verified Lighthouse and page-inspection findings to prioritize them for the selected industry, market and goal. It does not create the underlying measurements." }, { title: "What remains outside scope", text: "A public-page test cannot see Search Console, analytics, CRM data, backlinks, rankings, private integrations or actual conversion revenue." }]}
+    faqs={[{ q: "Are these real Lighthouse results?", a: "Yes when the report displays the Google Lighthouse verified badge and test timestamp. If Google's API fails, the tool shows a partial audit and does not invent performance values." }, { q: "Why can this differ from Chrome DevTools?", a: "PageSpeed runs from Google's infrastructure with defined mobile or desktop settings. DevTools runs from your own device and network, so some variation is normal." }, { q: "Does AI calculate the performance score?", a: "No. Google Lighthouse supplies its own category scores and metrics. AI only explains and prioritizes those findings." }, { q: "Will a high score guarantee Google rankings?", a: "No. Technical quality matters, but rankings also depend on relevance, content, authority, competition and many other signals." }, { q: "Can it audit Arabic and English websites?", a: "It can measure the same technical signals. A human bilingual review is still needed for language quality and local intent." }, { q: "Does the grader change my site?", a: "No. It performs a read-only request against public URLs." }]}
+    related={[{ title: "AI Marketing Strategy Generator", href: "/tools/ai-marketing-strategy-generator", description: "Build an AI-generated plan from your specific business inputs." }, { title: "Ad Spend Efficiency Analyzer", href: "/tools/ad-spend-efficiency-analyzer", description: "Analyze real campaign numbers and verified formulas." }]}
+  >
+    {!audit ? <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+      <form onSubmit={analyze} className={panelClass}><h2 className="text-2xl font-serif">Enter the page you want to test</h2><p className="mt-3 text-sm leading-relaxed text-white/50">The test runs mobile and desktop Lighthouse plus a public-page inspection. No CMS password is required.</p><div className="mt-7"><label className={labelClass} htmlFor="grader-url">Website URL</label><input id="grader-url" required inputMode="url" placeholder="https://www.example.ae" className={fieldClass} value={form.url} onChange={(e) => setForm({ ...form, url: e.target.value })} /></div><div className="mt-5 grid gap-5 sm:grid-cols-2"><div><label className={labelClass} htmlFor="grader-industry">Industry</label><select id="grader-industry" className={fieldClass} value={form.industry} onChange={(e) => setForm({ ...form, industry: e.target.value })}><option value="">Select industry</option><option>Real estate</option><option>Professional services</option><option>E-commerce</option><option>Healthcare</option><option>Hospitality</option><option>SaaS</option><option>Other</option></select></div><div><label className={labelClass} htmlFor="grader-market">Primary market</label><select id="grader-market" className={fieldClass} value={form.market} onChange={(e) => setForm({ ...form, market: e.target.value })}><option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option><option>UAE</option><option>GCC</option><option>International</option></select></div></div>{status === "error" && <div className="mt-5 flex gap-3 rounded-2xl border border-red-400/20 bg-red-400/5 p-4 text-sm text-red-200"><AlertCircle className="h-5 w-5 shrink-0" />{error}</div>}<button disabled={status === "loading"} className="mt-7 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.2em] text-black hover:bg-green-300 disabled:opacity-60">{status === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Gauge className="h-4 w-4" />}{status === "loading" ? "Running mobile and desktop Lighthouse..." : "Run Verified Website Audit"}</button><p className="mt-4 text-xs leading-relaxed text-white/35">A two-device Lighthouse test may take 45–90 seconds.</p></form>
+      <div className={`${panelClass} flex flex-col justify-between bg-gradient-to-br from-green-400/[0.07] to-transparent`}><div><span className="micro-label text-green-400">Evidence included</span><h2 className="mt-4 text-3xl font-serif md:text-4xl">Lighthouse scores, metrics, failures and opportunities.</h2></div><div className="mt-10 grid gap-3 sm:grid-cols-2">{["Mobile + desktop tests", "Six loading metrics", "Performance opportunities", "SEO and accessibility failures", "Public HTML signals", "Evidence-grounded AI priorities"].map((item) => <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/5 bg-black/40 p-4"><CheckCircle2 className="h-5 w-5 text-green-400" /><span className="text-sm text-white/70">{item}</span></div>)}</div></div>
+    </div> : <div aria-live="polite" className="space-y-8">
+      <div className={`${panelClass} grid gap-10 lg:grid-cols-[240px_1fr] lg:items-center`}>{audit.overall != null ? <ScoreRing score={audit.overall} label={band(audit.overall)} /> : <div className="rounded-full border border-yellow-300/20 bg-yellow-300/5 p-8 text-center"><TriangleAlert className="mx-auto h-9 w-9 text-yellow-300" /><div className="mt-3 font-semibold">Partial audit</div><div className="mt-1 text-xs text-white/40">No invented score</div></div>}<div><div className="flex flex-wrap items-center gap-3"><h2 className="text-2xl font-serif md:text-4xl">Website audit complete</h2>{audit.verified ? <span className="rounded-full border border-green-400/25 bg-green-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-green-300">Google Lighthouse verified</span> : <span className="rounded-full border border-yellow-300/25 bg-yellow-300/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-yellow-200">Partial data only</span>}</div><a href={audit.url} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-1 text-xs text-green-400">{audit.url}<ExternalLink className="h-3 w-3" /></a><p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/60">{ai?.summary || (aiStatus === "loading" ? "The measured report is ready. AI is now prioritizing the verified evidence for your business context." : "Review the measured sources and detailed audit tables below.")}</p><div className="mt-5 flex flex-wrap gap-4 text-xs"><span className={aiStatus === "complete" ? "text-green-300" : "text-white/40"}>{aiStatus === "loading" ? "AI analysis in progress…" : aiStatus === "complete" ? "AI analysis completed from measured data" : "AI explanation unavailable — measured report still valid"}</span><button onClick={reset} className="inline-flex items-center gap-2 text-white/50 hover:text-white"><RefreshCw className="h-4 w-4" /> Test another page</button></div></div></div>
+      {!audit.verified && <div className="rounded-2xl border border-yellow-300/20 bg-yellow-300/5 p-5"><div className="flex gap-3"><TriangleAlert className="h-5 w-5 shrink-0 text-yellow-300" /><div><h3 className="font-semibold text-yellow-100">Live Lighthouse could not complete</h3><p className="mt-2 text-sm text-yellow-100/65">Mobile: {audit.pageSpeed.mobile.error || "Unavailable"} Desktop: {audit.pageSpeed.desktop.error || "Unavailable"} No performance, accessibility or best-practices score has been substituted.</p>{!audit.pageSpeed.keyConfigured && <p className="mt-2 text-xs text-white/40">A dedicated PageSpeed API key is not configured on the server; Google recommends one for frequent automated tests.</p>}</div></div></div>}
+      <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-6">{categories.map(([key, title, Icon]) => <div key={key} className="rounded-2xl border border-white/10 bg-black p-5"><Icon className="h-5 w-5 text-green-400" /><div className="mt-5 text-3xl font-serif">{audit.scores[key] ?? "N/A"}</div><div className="mt-1 text-xs leading-tight text-white/45">{title}</div><div className="mt-2 text-[9px] text-white/25">{["conversionReadiness", "aiSearchReadiness"].includes(key) ? "Asif public-page check" : "Lighthouse-derived"}</div></div>)}</div>
+      <div className="flex gap-2 rounded-2xl border border-white/10 bg-black p-2"><button onClick={() => setDevice("mobile")} className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-xs font-bold uppercase tracking-widest ${device === "mobile" ? "bg-white text-black" : "text-white/45"}`}><Smartphone className="h-4 w-4" /> Mobile</button><button onClick={() => setDevice("desktop")} className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-xs font-bold uppercase tracking-widest ${device === "desktop" ? "bg-white text-black" : "text-white/45"}`}><Monitor className="h-4 w-4" /> Desktop</button></div>
+      {deviceReport ? <>
+        <div className={panelClass}><div className="flex flex-wrap items-center justify-between gap-3"><div><h3 className="text-2xl font-serif capitalize">{device} Lighthouse evidence</h3><p className="mt-2 text-xs text-white/35">Source: {deviceReport.source} · Lighthouse {deviceReport.lighthouseVersion || "version unavailable"} · {deviceReport.fetchTime ? new Date(deviceReport.fetchTime).toLocaleString() : "timestamp unavailable"}</p></div><span className="text-xs text-green-300">{deviceReport.passedCount} audits passed</span></div><div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{Object.entries(deviceReport.scores).map(([key, value]) => <div key={key} className="rounded-2xl border border-white/5 bg-white/[0.02] p-5"><div className="text-3xl font-serif">{value ?? "N/A"}</div><div className="mt-1 text-xs capitalize text-white/40">{key.replace(/([A-Z])/g, " $1")}</div></div>)}</div></div>
+        <div className={panelClass}><h3 className="text-2xl font-serif">Loading metrics</h3><div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{Object.entries(deviceReport.metrics).map(([key, value]) => <div key={key} className="rounded-2xl border border-white/5 bg-black p-5"><div className="text-[9px] uppercase tracking-widest text-white/35">{metricLabels[key] || key}</div><div className="mt-3 text-2xl font-serif">{value?.displayValue || (value?.value != null ? String(value.value) : "N/A")}</div></div>)}</div>{deviceReport.fieldData ? <div className="mt-6 rounded-2xl border border-blue-300/15 bg-blue-300/5 p-5 text-sm text-blue-100/70">Chrome UX field data: {deviceReport.fieldData.overallCategory || "available"}. This reflects eligible real-user visits and is separate from the Lighthouse lab test.</div> : <p className="mt-5 text-xs text-white/35">Chrome UX field data was not available for this URL. Lighthouse lab data is shown above.</p>}</div>
+        <div className="grid gap-8 lg:grid-cols-2"><div className={panelClass}><h3 className="text-2xl font-serif">Performance opportunities</h3><div className="mt-6 space-y-4">{deviceReport.opportunities.length ? deviceReport.opportunities.map((item) => <div key={item.id} className="rounded-2xl border border-white/5 bg-white/[0.02] p-5"><div className="flex justify-between gap-4"><h4 className="font-semibold">{item.title}</h4><span className="text-xs text-green-300">{item.displayValue}</span></div><p className="mt-2 text-xs leading-relaxed text-white/45">{item.description}</p></div>) : <p className="text-sm text-white/45">Lighthouse did not return a failed performance opportunity for this run.</p>}</div></div><div className={panelClass}><h3 className="text-2xl font-serif">Failed audits and diagnostics</h3><div className="mt-6 space-y-4">{deviceReport.failedAudits.length ? deviceReport.failedAudits.map((item) => <div key={item.id} className="rounded-2xl border border-white/5 bg-white/[0.02] p-5"><div className="flex gap-3"><XCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-300" /><div><h4 className="font-semibold">{item.title}</h4><p className="mt-1 text-[10px] uppercase tracking-widest text-white/30">{item.category}</p><p className="mt-2 text-xs leading-relaxed text-white/45">{item.description}</p></div></div></div>) : <p className="text-sm text-white/45">No failed scored audits were returned for this run.</p>}</div></div></div>
+      </> : <div className="rounded-2xl border border-yellow-300/20 bg-yellow-300/5 p-6 text-sm text-yellow-100/70">{deviceState?.error || "This device report is unavailable."}</div>}
+      <div className={panelClass}><h3 className="text-2xl font-serif">Public page inspection</h3><p className="mt-2 text-xs text-white/35">Source: {audit.pageInspection.source}. These are deterministic HTML checks, not AI guesses.</p><div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{Object.entries(audit.pageInspection.signals).map(([key, passed]) => <div key={key} className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.02] p-4 text-sm"><span className={passed ? "text-green-400" : "text-red-300"}>{passed ? "✓" : "×"}</span><span className="capitalize text-white/60">{key.replace(/([A-Z])/g, " $1")}</span></div>)}</div></div>
+      {ai?.priorities?.length ? <div className={panelClass}><div className="flex items-center gap-3"><Sparkles className="h-5 w-5 text-green-400" /><h3 className="text-2xl font-serif">AI-prioritized action plan</h3></div><p className="mt-2 text-xs text-white/35">Generated only after the verified audit completed.</p><div className="mt-6 grid gap-4 md:grid-cols-2">{ai.priorities.map((item: any, index: number) => <div key={`${item.title}-${index}`} className="rounded-2xl border border-white/5 bg-white/[0.02] p-5"><div className="text-xs font-bold uppercase tracking-widest text-green-400">Priority {index + 1}</div><h4 className="mt-3 font-semibold">{item.title}</h4><p className="mt-2 text-xs text-white/45">{item.reason}</p><p className="mt-3 text-sm text-white/70">{item.action}</p></div>)}</div></div> : null}
+      <ToolLeadForm tool="AI Website Grader" summary={verifiedSummary} heading="Want the Verified Fixes Prioritized for Your Business?" />
+    </div>}
+  </ToolPageFrame>;
 }
-
