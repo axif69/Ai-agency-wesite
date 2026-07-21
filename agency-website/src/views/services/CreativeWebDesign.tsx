@@ -19,24 +19,28 @@ const showcaseTemplates = [
   {
     title: "Cinematic Brand Launch",
     tag: "Luxury / Hospitality / Real Estate",
+    image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format,compress&fm=webp&q=80&w=1200",
     desc: "A high-impact homepage with editorial typography, full-screen visual scenes, soft parallax, launch storytelling, premium CTAs and mobile-first lead capture.",
     details: ["Hero film frame", "Scroll chapter reveals", "Luxury proof blocks", "Lead-focused CTA flow"],
   },
   {
     title: "Interactive Product Story",
     tag: "SaaS / AI / Tech",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format,compress&fm=webp&q=80&w=1200",
     desc: "A modern product website where features unfold through scroll-triggered cards, animated interface mockups, workflow diagrams and conversion-focused comparison sections.",
     details: ["Animated UI panels", "Feature sequencing", "Sticky product story", "Demo/request flow"],
   },
   {
     title: "WebGL / 3D Experience",
     tag: "Premium / Experimental",
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format,compress&fm=webp&q=80&w=1200",
     desc: "A lightweight creative direction using Three.js/WebGL-style visuals, depth, particles, gradients and object movement while preserving SEO text and page speed.",
     details: ["3D hero concept", "Motion-safe fallback", "GPU-conscious effects", "SEO-visible copy"],
   },
   {
     title: "Magazine Editorial Website",
     tag: "Consultancy / Founder Brand",
+    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format,compress&fm=webp&q=80&w=1200",
     desc: "A sharp content-led site with oversized typography, case-study storytelling, proof-led sections, long-form landing pages and elegant micro-interactions.",
     details: ["Editorial grid", "Authority sections", "Case study modules", "Article-ready structure"],
   },
@@ -132,20 +136,27 @@ export default function CreativeWebDesign() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="group relative min-h-[340px] rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.015] overflow-hidden p-8"
+                className="group relative min-h-[520px] rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.015] overflow-hidden p-8"
               >
-                <div className="absolute inset-x-8 top-8 h-28 rounded-3xl border border-white/10 bg-black/40 overflow-hidden">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.18),transparent_28%),linear-gradient(135deg,rgba(255,255,255,0.12),transparent_45%)]" />
-                  <div className="absolute bottom-4 left-4 right-4 h-2 rounded-full bg-white/10">
-                    <div className="h-full w-2/3 rounded-full bg-white/40 group-hover:w-full transition-all duration-700" />
+                <div className="absolute inset-x-6 top-6 h-64 rounded-[1.5rem] border border-white/10 bg-black/40 overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={`${item.title} modern website showcase template for Dubai creative web design`}
+                    className="h-full w-full object-cover opacity-70 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                  <div className="absolute left-5 top-5 flex gap-2">
+                    <span className="w-3 h-3 rounded-full bg-red-400/70" />
+                    <span className="w-3 h-3 rounded-full bg-yellow-300/70" />
+                    <span className="w-3 h-3 rounded-full bg-green-400/70" />
                   </div>
-                  <div className="absolute right-5 top-5 flex gap-2">
-                    <span className="w-3 h-3 rounded-full bg-white/40" />
-                    <span className="w-3 h-3 rounded-full bg-white/20" />
-                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                  <div className="absolute bottom-5 left-5 right-5">
+                    <div className="mb-3 h-2 w-2/3 rounded-full bg-white/70" />
+                    <div className="h-2 w-1/2 rounded-full bg-white/30" />
                   </div>
                 </div>
-                <div className="pt-36">
+                <div className="pt-72">
                   <span className="text-[10px] uppercase tracking-[0.3em] text-white/35 font-bold">{item.tag}</span>
                   <h3 className="text-2xl md:text-3xl font-serif mt-4 mb-4">{item.title}</h3>
                   <p className="text-white/55 font-light leading-relaxed mb-6">{item.desc}</p>
