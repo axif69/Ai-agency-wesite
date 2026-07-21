@@ -52,26 +52,6 @@ export default function CreativeWebDesign() {
         </div>
       </section>
 
-      {/* Image Parallax Section */}
-      <section className="h-[60vh] relative overflow-hidden my-20">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&q=75&w=1200)' }}
-        />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 flex items-center justify-center text-center px-6">
-          <h2 className="text-4xl md:text-7xl font-serif text-white tracking-tight">
-            Art Meets <span className="italic">Logic</span>
-          </h2>
-        </div>
-        <img 
-          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&q=75&w=1200" 
-          alt="Bespoke Creative Web Design and Cinematic Experiences Dubai" 
-          className="sr-only"
-          loading="lazy"
-        />
-      </section>
-
       <section className="px-6 md:px-12 py-24 bg-white/[0.02] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16"><span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Our Creative Capabilities</span><h2 className="text-4xl md:text-5xl font-serif max-w-2xl">Where Art Meets Conversion Science</h2></div>
@@ -81,8 +61,8 @@ export default function CreativeWebDesign() {
                 <div className="text-white/60 mb-5">{f.icon}</div>
                 <h3 className="text-lg font-bold mb-3">{f.title}</h3>
                 <p className="text-white/50 font-light leading-relaxed text-sm">
-            Transform your online presence with an elite Creative Web Design Agency in Dubai. We specialize in building visually stunning, high-performance websites optimized for user experience, mobile responsiveness, and maximum lead conversion in the UAE market.
-          </p>
+                  {f.desc}
+                </p>
               </motion.div>
             ))}
           </div>
