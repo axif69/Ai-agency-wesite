@@ -258,6 +258,33 @@ export default function ArabicAiHub() {
         </div>
       </section>
 
+      <section className="py-20 px-6 md:px-12 border-b border-white/5 bg-[#070707]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 items-start">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.28em] text-emerald-400 block mb-5">Keyword focus</span>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-6">
+              Arabic AI chatbot UAE, Khaleeji AI automation and bilingual customer support.
+            </h2>
+            <p className="text-white/55 leading-relaxed">
+              This hub is built for businesses that need Arabic AI beyond translation: UAE-aware service language, WhatsApp conversations, source-grounded answers, CRM handoff and human escalation.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              ["Arabic AI chatbot UAE", "Website and WhatsApp assistants that answer customer questions in Arabic and English."],
+              ["Khaleeji Arabic AI", "Evaluation for Gulf wording, code-switching, business terms and right-to-left user experience."],
+              ["Arabic WhatsApp automation", "Lead capture, support intake, appointment requests and CRM routing through WhatsApp."],
+              ["Bilingual AI knowledge base", "Source-grounded answers from approved company content, policies, FAQs and service documents."]
+            ].map(([title, description]) => (
+              <div key={title} className="rounded-2xl border border-white/8 bg-black p-6">
+                <h3 className="font-serif text-xl mb-3">{title}</h3>
+                <p className="text-sm text-white/52 leading-relaxed">{description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-28 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[0.75fr_1.25fr] gap-16 lg:gap-24 items-start">
           <div className="lg:sticky lg:top-32">

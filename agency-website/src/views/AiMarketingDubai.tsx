@@ -33,11 +33,11 @@ export default function AiMarketingDubai() {
             THE SOVEREIGN MARKETING PROTOCOL v4.0
           </span>
           <h1 className="text-5xl md:text-9xl font-serif tracking-tighter leading-[0.85] mb-12">
-            The Best AI Marketing<br/>
+            AI Marketing<br/>
             <span className="text-white/60 italic font-light tracking-normal">Agency in Dubai.</span>
           </h1>
           <p className="text-lg md:text-2xl text-white/50 font-light max-w-3xl mx-auto leading-relaxed mb-16">
-            Stop renting generic ad platforms. Deploy an autonomous, <strong>data-sovereign marketing engine</strong> engineered for the UAE's high-ticket sectors. 
+            Build a practical AI-assisted marketing system for SEO, paid media, content, WhatsApp follow-up, reporting and conversion tracking across Dubai and the UAE.
           </p>
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
             <Link href="/contact" className="bg-white text-black px-12 py-6 rounded-full font-bold uppercase tracking-widest text-[11px] hover:scale-105 transition-all shadow-[0_0_50px_rgba(255,255,255,0.2)]">
@@ -68,13 +68,13 @@ export default function AiMarketingDubai() {
           </div>
           <div className="space-y-12 text-white/70 font-light text-lg leading-relaxed">
             <p>
-              The Dubai market is no longer a "standard" digital territory. It is a hyper-competitive nexus where global capital meets regional ambition. Traditional marketing agencies—relying on manual campaign management and generic SEO—are failing to keep pace with the <strong>Agentic Shift</strong>.
+              The Dubai market is no longer a standard digital territory. It is a competitive environment where search visibility, paid traffic, WhatsApp response speed and campaign measurement all need to work together. An AI marketing agency in Dubai should connect those parts into one operating system.
             </p>
             <p>
-              In 2026, the UAE consumer journey is fragmented across private majlis conversations, high-velocity WhatsApp threads, and a search landscape increasingly dominated by <strong>Answer Engines (AEO)</strong> like Gemini and Perplexity. If your agency is still talking about "Keywords" without mentioning <strong>Vector Embeddings</strong>, you are already invisible—and wasting 80% of your budget on generic, low-intent clicks.
+              In 2026, the UAE customer journey is fragmented across Google, Instagram, landing pages, WhatsApp threads and AI-generated answers. The goal is not to chase every channel. The goal is to build a clear system that captures intent, qualifies leads and shows which campaigns are actually moving pipeline.
             </p>
             <p>
-              At Asif Digital, we don't just "run ads." We architect <strong>Sovereign Neural Perimeters</strong> that allow your brand to capture intent at the edge, preventing competitors from poaching your high-ticket prospects. We utilize real-time OSINT (Open Source Intelligence) to identify high-net-worth (HNW) interest patterns before they ever click a link. This is not marketing; it is <strong>Acquisition Intelligence.</strong>
+              At Asif Digital, we combine SEO, paid media, AI-assisted content, conversion tracking and automation. That makes the page stronger for buyers searching for an AI marketing agency Dubai, while keeping the message understandable and commercially useful.
             </p>
             <div className="p-8 border border-white/10 bg-white/[0.02] rounded-3xl mt-12">
               <h4 className="font-serif text-2xl mb-4 italic text-white/90">"The 2% Trap"</h4>

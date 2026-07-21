@@ -128,11 +128,11 @@ export default function AiRealEstateUAE() {
             Real Estate AI Hub
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif leading-[1.15] tracking-tight mb-6">
-            How UAE Real Estate Businesses <br className="hidden md:inline" />
-            <span className="italic text-white/50 font-light tracking-normal">Can Use AI</span>
+            AI Real Estate Automation <br className="hidden md:inline" />
+            <span className="italic text-white/50 font-light tracking-normal">for Dubai and the UAE</span>
           </h1>
           <p className="text-[17px] md:text-[18px] leading-[1.7] text-white/90 max-w-3xl mx-auto mb-8 font-sans font-light">
-            A comprehensive, plain-English guide to artificial intelligence in the Gulf property sector. Learn how developers, landlords, and brokerages use systems to improve efficiency without losing the human relationships that close deals.
+            A practical guide for UAE agencies, developers and property teams that want WhatsApp AI chatbots, real estate CRM automation, lead routing, property listing workflows and reporting dashboards without losing the human relationships that close deals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
             <a 
@@ -158,6 +158,30 @@ export default function AiRealEstateUAE() {
             <span className="flex items-center gap-2"><Calendar className="w-4 h-4 text-green-400" /> LAST UPDATED: JULY 2026</span>
           </div>
         </motion.div>
+      </section>
+
+      <section className="px-6 md:px-12 py-14 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-10 items-start rounded-3xl border border-white/10 bg-white/[0.02] p-8 md:p-10">
+          <div>
+            <span className="text-[12px] font-bold uppercase tracking-[0.25em] text-green-400 block mb-4 font-mono">Ranking focus</span>
+            <h2 className="text-3xl md:text-4xl font-serif leading-tight">
+              Real estate CRM and WhatsApp automation for UAE property teams.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              ["AI real estate automation Dubai", "Automate enquiry triage, buyer qualification, viewing requests and agent notifications."],
+              ["Real estate CRM automation UAE", "Route portal, website and WhatsApp leads into the right pipeline with clean context."],
+              ["WhatsApp chatbot for real estate", "Send brochures, capture budget, answer FAQs and book callbacks in the channel buyers already use."],
+              ["Property listing workflows", "Draft listing copy, structure project details and keep developer information easier to reuse."]
+            ].map(([title, description]) => (
+              <div key={title} className="rounded-2xl border border-white/8 bg-black p-5">
+                <h3 className="font-serif text-lg mb-2">{title}</h3>
+                <p className="text-sm text-white/60 leading-relaxed">{description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Hero Image Section (UAE Real-Estate AI visual - WebP) */}

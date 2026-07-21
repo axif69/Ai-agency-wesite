@@ -40,11 +40,11 @@ export default function AiLeadGenDubai() {
             SOVEREIGN ACQUISITION v5.0
           </span>
           <h1 className="text-5xl md:text-9xl font-serif tracking-tighter leading-[0.85] mb-12">
-            The Best AI Lead Gen<br/>
-            <span className="text-white/60 italic font-light tracking-normal">Agency in Dubai.</span>
+            Real Estate Lead Generation<br/>
+            <span className="text-white/60 italic font-light tracking-normal">in Dubai.</span>
           </h1>
           <p className="text-lg md:text-2xl text-white/50 font-light max-w-3xl mx-auto leading-relaxed mb-16">
-            Stop waiting for inbound. Deploy <strong>Autonomous Sales Swarms</strong> that hunt, qualify, and close high-ticket deals in the UAE while you sleep.
+            Build property landing pages, SEO content, WhatsApp follow-up, CRM routing and AI-assisted lead qualification for Dubai real estate agencies and developers.
           </p>
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
             <Link href="/contact" className="bg-white text-black px-12 py-6 rounded-full font-bold uppercase tracking-widest text-[11px] hover:scale-105 transition-all shadow-[0_0_50px_rgba(255,255,255,0.2)]">
@@ -70,13 +70,13 @@ export default function AiLeadGenDubai() {
           </div>
           <div className="space-y-12 text-white/70 font-light text-lg leading-relaxed">
             <p>
-              Traditional B2B lead generation in Dubai is broken. Most agencies are still buying stale "databases" from 2022, hiring expensive human SDRs to send generic emails, and settling for a 1-2% reply rate. In a market as high-velocity as the UAE, that isn't just slow—it's a financial leak.
+              Real estate lead generation in Dubai is no longer just about buying portal leads or running one landing page. Agencies need search visibility, fast response, WhatsApp follow-up, CRM discipline and clear reporting across every enquiry source.
             </p>
             <p>
-              As the premier <strong>AI Lead Generation Agency in Dubai</strong>, we recognize that the local market operates on <strong>Relationships and Direct Access</strong>. If you aren't in their WhatsApp or their Primary Inbox with a hyper-personalized, value-first hook, you don't exist.
+              Asif Digital builds lead generation systems for UAE property teams. We connect SEO pages, campaign landing pages, enquiry forms, WhatsApp conversations and CRM records so brokers can respond with context instead of hunting through scattered messages.
             </p>
             <p>
-              The "Agentic Shift" has changed everything. We deploy <strong>Autonomous Sales Agents</strong> that perform deep OSINT (Open Source Intelligence) on every prospect. They read their latest LinkedIn posts, analyze their company's financial reports, and identify their exact pain points before ever sending a message. This is how we achieve 25%+ reply rates for our elite Dubai partners.
+              AI helps with the repetitive work around each lead: identifying source, budget, area, preferred language, project interest and next action. The human broker still owns trust, negotiation and closing.
             </p>
             <div className="p-8 border border-white/10 bg-white/[0.02] rounded-3xl mt-12 border-l-4 border-l-white/40">
               <h4 className="font-serif text-2xl mb-4 italic text-white/90">The Speed of Response</h4>
@@ -99,8 +99,8 @@ export default function AiLeadGenDubai() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32">
             {[
-              { icon: <Mail className="w-6 h-6" />, title: "Hyper-Personalized Outreach", desc: "We eliminate the 98% waste of generic cold email. Our AI writes unique, 1-to-1 hooks for every prospect based on their specific business context." },
-              { icon: <Phone className="w-6 h-6" />, title: "WhatsApp AI Agents", desc: "We convert leads where 70% of Dubai business actually happens. Deploy bilingual AI agents to qualify and close in the majlis of the mobile inbox." },
+              { icon: <Mail className="w-6 h-6" />, title: "Property Landing Pages", desc: "Build search and campaign pages around communities, project types, buyer intent, brochures, forms and call tracking." },
+              { icon: <Phone className="w-6 h-6" />, title: "WhatsApp Follow-Up", desc: "Use structured WhatsApp flows to capture budget, preferred area, unit type and viewing interest before broker handoff." },
               { icon: <Users className="w-6 h-6" />, title: "LinkedIn Sales Swarms", desc: "Autonomous profile management that identifies high-value stakeholders and initiates professional, non-spammy dialogues." },
               { icon: <Database className="w-6 h-6" />, title: "Real-Time Data Mining", desc: "We don't buy lists. We build them daily by crawling the live web, GMB, and DLD records for ground-truth data." }
             ].map((item, i) => (
@@ -171,12 +171,12 @@ export default function AiLeadGenDubai() {
                  </p>
                  <div className="grid grid-cols-2 gap-6 pt-8">
                     <div className="p-6 bg-white/[0.02] border border-white/5 rounded-2xl">
-                       <h5 className="font-bold text-xl mb-1">98%</h5>
-                       <p className="text-[10px] uppercase tracking-widest opacity-40">Open Rate</p>
+                       <h5 className="font-bold text-xl mb-1">Fast</h5>
+                       <p className="text-[10px] uppercase tracking-widest opacity-40">Lead Response</p>
                     </div>
                     <div className="p-6 bg-white/[0.02] border border-white/5 rounded-2xl">
-                       <h5 className="font-bold text-xl mb-1">45%</h5>
-                       <p className="text-[10px] uppercase tracking-widest opacity-40">Reply Rate</p>
+                       <h5 className="font-bold text-xl mb-1">Clear</h5>
+                       <p className="text-[10px] uppercase tracking-widest opacity-40">CRM Handoff</p>
                     </div>
                  </div>
               </div>
@@ -252,7 +252,7 @@ export default function AiLeadGenDubai() {
           <h2 className="text-4xl md:text-6xl font-serif mb-12 tracking-tight">Sovereign & Secure.</h2>
           <div className="space-y-8 text-white/50 font-light text-lg leading-relaxed text-left">
              <p>
-                Acquisition is useless if it exposes your organization to regulatory risk. As a dedicated <strong>AI Lead Generation Agency in Dubai</strong>, we ensure that every autonomous outreach is compliant with <strong>UAE Federal Decree-Law No. 45</strong>.
+                Acquisition is useless if it exposes your organization to unnecessary risk. As a real estate lead generation partner in Dubai, we design lead capture and follow-up flows around consent, clear data handling and secure CRM access.
              </p>
              <p>
                 We maintain full data sovereignty. Your prospect lists, interaction logs, and customer data never leave the regional cloud (G42/Azure UAE North). We build systems that protect your brand while growing your revenue.

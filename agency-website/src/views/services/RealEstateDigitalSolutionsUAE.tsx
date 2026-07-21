@@ -122,11 +122,11 @@ export default function RealEstateDigitalSolutionsUAE() {
             Property Infrastructure Setup
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif leading-[1.15] tracking-tight mb-6">
-            Real Estate Digital Solutions <br className="hidden md:inline" />
-            <span className="italic text-white/50 font-light tracking-normal">in the UAE</span>
+            Real Estate CRM Dubai <br className="hidden md:inline" />
+            <span className="italic text-white/50 font-light tracking-normal">and Digital Solutions UAE</span>
           </h1>
           <p className="text-[17px] md:text-[18px] leading-[1.7] text-white/90 max-w-3xl mx-auto mb-8 font-sans font-light">
-            Asif Digital builds real estate digital solutions in the UAE for agencies, developers, and property teams that need connected websites, lead capture, WhatsApp automation, CRM routing, and reporting systems.
+            Asif Digital builds real estate CRM and digital solutions in Dubai for agencies, developers, and property teams that need connected websites, lead capture, WhatsApp automation, CRM routing, and reporting systems.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -154,6 +154,16 @@ export default function RealEstateDigitalSolutionsUAE() {
             <span>✓ CUSTOM CRM CONFIGURATIONS</span>
           </div>
         </motion.div>
+      </section>
+
+      <section className="px-6 md:px-12 py-10 max-w-5xl mx-auto">
+        <div className="p-8 md:p-10 border border-green-500/20 bg-green-500/[0.035] rounded-3xl">
+          <span className="text-green-400 text-[13px] font-bold uppercase tracking-[0.2em] font-mono block mb-4">Real Estate CRM Dubai</span>
+          <h2 className="text-2xl md:text-4xl font-serif mb-5">A CRM setup built around property enquiries, brokers and follow-up.</h2>
+          <p className="text-[17px] text-white/75 leading-[1.7] font-light">
+            We configure real estate CRM workflows for Dubai teams that need to capture enquiries from websites, portals, WhatsApp and campaigns, then assign each lead by location, budget, property type, source and broker availability.
+          </p>
+        </div>
       </section>
 
       {/* Who This Is For */}

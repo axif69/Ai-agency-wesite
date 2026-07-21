@@ -1,8 +1,8 @@
 import Home from '../src/views/Home';
 
 export const metadata = {
-  title: "AI Automation Agency Dubai & UAE | Asif Digital",
-  description: "Asif Digital is the leading AI automation agency in Dubai. We build custom AI agents, automate workflows, and scale UAE businesses with cutting-edge artificial intelligence.",
+  title: "AI Automation Agency Dubai | AI, SEO, AEO & Chatbots",
+  description: "Asif Digital builds AI automation, WhatsApp chatbots, AEO/GEO search visibility, real estate CRM workflows and high-performance websites for Dubai and UAE businesses.",
   alternates: {
     canonical: "https://www.asifdigital.agency"
   }

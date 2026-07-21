@@ -58,6 +58,10 @@ export default function AiChatbotsDubai() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(chatbotSchema) }}
+      />
       
 
       {/* Hero Section */}
@@ -85,6 +89,30 @@ export default function AiChatbotsDubai() {
             </Link>
           </div>
         </motion.div>
+      </section>
+
+      <section className="py-20 px-6 md:px-12 border-y border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.75fr_1.25fr] gap-10 items-start">
+          <div>
+            <span className="micro-label block mb-4 text-green-400">Primary chatbot keywords</span>
+            <h2 className="text-3xl md:text-5xl font-serif leading-tight">
+              WhatsApp AI chatbot Dubai, website chatbot UAE and Arabic chatbot support in one build.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              ["WhatsApp AI chatbot Dubai", "Qualify leads, answer service questions, send brochures and route customer details into your CRM."],
+              ["AI chatbot for website Dubai", "Engage visitors while they are reading your landing pages, pricing pages or service pages."],
+              ["Arabic chatbot UAE", "Support Arabic-English switching, Gulf phrasing, source-grounded replies and human escalation."],
+              ["CRM chatbot integration", "Connect HubSpot, Zoho, Salesforce, spreadsheets, email alerts or custom dashboards."]
+            ].map(([title, description]) => (
+              <div key={title} className="rounded-2xl border border-white/8 bg-white/[0.02] p-6">
+                <h3 className="font-serif text-xl mb-3">{title}</h3>
+                <p className="text-sm text-white/55 leading-relaxed">{description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* WhatsApp Chatbot Section */}

@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/AiMarketingDubai';
 
 export const metadata = {
-  title: "AI Digital Marketing Agency Dubai | Data-Driven Marketing UAE",
-  description: "Elevate your marketing ROI with AI-driven digital marketing services in Dubai. We use artificial intelligence for advanced targeting and campaign optimization.",
+  title: "AI Marketing Agency Dubai | SEO, Ads & Automation UAE",
+  description: "AI marketing agency in Dubai for UAE businesses using SEO, paid media, WhatsApp automation, lead capture, conversion tracking and AI-assisted content systems.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-marketing-dubai"
   }

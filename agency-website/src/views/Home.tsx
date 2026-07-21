@@ -447,6 +447,40 @@ export default function Home() {
       </section>
 
       {/* ── 2. The Problem / Market Context ("Why Now") ── */}
+      <section className="px-6 md:px-12 py-20 border-y border-white/5 bg-black relative z-20" aria-labelledby="seo-cluster-heading">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-start">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4">Search Authority</span>
+            <h2 id="seo-cluster-heading" className="text-3xl md:text-5xl font-serif tracking-tight leading-tight mb-6">
+              AI automation agency in Dubai for search, sales and operations.
+            </h2>
+            <p className="text-white/60 text-sm md:text-base leading-relaxed">
+              Asif Digital helps UAE companies turn websites, WhatsApp conversations, CRMs and content into connected AI systems. We focus on the keywords buyers actually use: AI automation agency Dubai, WhatsApp AI chatbot Dubai, AI real estate automation Dubai, AEO agency Dubai and Arabic AI chatbot UAE.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { title: "AI Marketing Agency Dubai", desc: "SEO, paid media, content systems, conversion tracking and AI-assisted growth workflows for UAE companies.", href: "/ai-marketing-dubai" },
+              { title: "AI Automation Agency Dubai", desc: "Custom AI agents, business workflow automation, CRM routing and internal dashboards for UAE teams.", href: "/ai-automation-agency-dubai" },
+              { title: "AI Consulting Dubai", desc: "Workflow audits, AI strategy, chatbot planning, data readiness and practical implementation roadmaps.", href: "/ai-consulting-uae" },
+              { title: "WhatsApp Chatbot Dubai", desc: "Website and WhatsApp bots that answer FAQs, qualify leads, book calls and support Arabic-English conversations.", href: "/ai-chatbots-dubai" },
+              { title: "SEO Agency Dubai", desc: "Search visibility for Google rankings, AI Overviews, answer engines and entity-based recommendation systems.", href: "/services/seo-agency-dubai-sharjah-uae" },
+              { title: "Web Design Company Dubai", desc: "Fast, SEO-ready websites for service businesses, real estate teams, ecommerce brands and UAE companies.", href: "/services/web-design-dubai-sharjah" },
+              { title: "Real Estate Lead Generation Dubai", desc: "Landing pages, WhatsApp follow-up, CRM routing and AI-assisted sales workflows for property teams.", href: "/ai-lead-generation-agency-dubai" },
+              { title: "Real Estate CRM Dubai", desc: "Connected property websites, lead capture, WhatsApp automation, CRM routing and reporting systems.", href: "/real-estate-digital-solutions-uae" }
+            ].map((item) => (
+              <Link key={item.href} href={item.href} className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 hover:border-green-400/30 hover:bg-white/[0.04] transition-colors">
+                <h3 className="font-serif text-xl mb-3">{item.title}</h3>
+                <p className="text-sm text-white/52 leading-relaxed mb-5">{item.desc}</p>
+                <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-green-400">
+                  View page <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="px-6 md:px-12 py-24 bg-[#080808] border-y border-white/5 relative z-20">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
@@ -1143,13 +1177,13 @@ export default function Home() {
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/services/seo-agency-dubai-sharjah-uae" className="hover:text-white transition-colors">SEO Agency Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/sovereign-sales-agent" className="hover:text-white transition-colors">AI Chatbot Dubai</Link>
+            <Link href="/ai-chatbots-dubai" className="hover:text-white transition-colors">WhatsApp AI Chatbot Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/services/ppc-google-ads-agency-dubai" className="hover:text-white transition-colors">Google Ads Dubai</Link>
+            <Link href="/ai-real-estate-uae" className="hover:text-white transition-colors">AI Real Estate Automation Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/services/branding-agency-dubai-sharjah" className="hover:text-white transition-colors">Branding Agency Dubai</Link>
+            <Link href="/arabic-ai-hub" className="hover:text-white transition-colors">Arabic AI Chatbot UAE</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/services/social-media-management-dubai-uae" className="hover:text-white transition-colors">Social Media Dubai</Link>
+            <Link href="/services/seo-agency-dubai-sharjah-uae" className="hover:text-white transition-colors">AEO Agency Dubai</Link>
           </div>
         </div>
       </section>

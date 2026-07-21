@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/AiLeadGenDubai';
 
 export const metadata = {
-  title: "AI Lead Generation Agency Dubai | Automated B2B Leads UAE",
-  description: "Maximize sales with AI-powered lead generation in Dubai. Asif Digital automates B2B outreach and lead qualification to boost your sales pipeline.",
+  title: "Real Estate Lead Generation Dubai | AI Lead Capture UAE",
+  description: "Real estate lead generation in Dubai using SEO, landing pages, WhatsApp follow-up, CRM routing, lead qualification and AI-assisted sales workflows.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-lead-generation-agency-dubai"
   }

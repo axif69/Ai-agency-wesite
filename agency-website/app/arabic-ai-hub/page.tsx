@@ -1,8 +1,8 @@
 import PageComponent from '../../src/views/ArabicAiHub';
 
 export const metadata = {
-  title: "Arabic AI Solutions UAE | Chatbots, NLP & Automation",
-  description: "Arabic and bilingual AI solutions for UAE businesses: WhatsApp agents, knowledge assistants, NLP workflows, evaluation, integrations, and governance.",
+  title: "Arabic AI Chatbot UAE | Khaleeji AI Automation Dubai",
+  description: "Arabic AI chatbot and Khaleeji AI automation services for UAE businesses: WhatsApp agents, bilingual website bots, knowledge assistants, evaluation and governance.",
   alternates: {
     canonical: "https://www.asifdigital.agency/arabic-ai-hub"
   },

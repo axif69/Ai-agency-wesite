@@ -34,11 +34,11 @@ export default function AiAutomationDubai() {
             COGNITIVE OPERATING SYSTEMS v7.0
           </span>
           <h1 className="text-5xl md:text-9xl font-serif tracking-tighter leading-[0.85] mb-12">
-            The Best AI Automation<br/>
+            AI Automation<br/>
             <span className="text-white/60 italic font-light tracking-normal">Agency in Dubai.</span>
           </h1>
           <p className="text-lg md:text-2xl text-white/50 font-light max-w-3xl mx-auto leading-relaxed mb-16">
-            Stop patching legacy systems. Architect an autonomous organization with <strong>Cognitive Workflows</strong> and <strong>Private Neural Infrastructure</strong> designed for the UAE's high-stakes economy.
+            Build practical AI agents, workflow automation, CRM routing, WhatsApp follow-ups and reporting dashboards for UAE teams that need cleaner operations and faster customer response.
           </p>
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
             <Link href="/contact" className="bg-white text-black px-12 py-6 rounded-full font-bold uppercase tracking-widest text-[11px] hover:scale-105 transition-all shadow-[0_0_50px_rgba(255,255,255,0.2)]">
@@ -50,6 +50,30 @@ export default function AiAutomationDubai() {
             </div>
           </div>
         </motion.div>
+      </section>
+
+      <section className="py-20 px-6 md:px-12 border-y border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 items-start">
+          <div>
+            <span className="micro-label block mb-4 text-green-400">Commercial search focus</span>
+            <h2 className="text-3xl md:text-5xl font-serif leading-tight">
+              Business process automation UAE, AI workflow automation Dubai and custom AI agents.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              ["AI workflow automation Dubai", "Connect forms, WhatsApp, CRM, email, spreadsheets and dashboards into repeatable workflows."],
+              ["Custom AI agents UAE", "Build assistants for sales intake, internal knowledge, reporting, follow-up and operational triage."],
+              ["CRM routing automation", "Send each lead to the right team with budget, intent, channel, language and next-action context."],
+              ["Private business automation", "Choose hosting, logging, access controls and model providers according to your data requirements."]
+            ].map(([title, description]) => (
+              <Link key={title} href="/contact" className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 hover:border-white/20 transition-colors">
+                <h3 className="font-serif text-xl mb-3">{title}</h3>
+                <p className="text-sm text-white/55 leading-relaxed">{description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Chapter 1: The Automation Imperative (400 Words) */}

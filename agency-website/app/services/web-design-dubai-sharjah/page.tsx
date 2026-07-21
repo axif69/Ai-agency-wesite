@@ -1,8 +1,8 @@
 import PageComponent from '../../../src/views/services/WebDesign';
 
 export const metadata = {
-  title: "Web Design Agency Dubai & Sharjah | Custom Website Design",
-  description: "Professional website design services in Dubai and Sharjah. Get a fast, SEO-optimized, and responsive website tailored to grow your business online.",
+  title: "Web Design Company Dubai | Website Design UAE",
+  description: "Web design company in Dubai building fast, responsive, SEO-ready websites for service businesses, real estate teams, ecommerce brands and UAE companies.",
   alternates: {
     canonical: "https://www.asifdigital.agency/services/web-design-dubai-sharjah"
   }
