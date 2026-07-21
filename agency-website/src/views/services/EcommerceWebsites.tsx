@@ -145,9 +145,9 @@ export default function EcommerceWebsites() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "SEO Strategy", link: "/services/seo-aeo-specialist-dubai", desc: "Dominate search results and drive organic high-intent traffic to your store." },
-              { title: "Performance PPC", link: "/services/ppc-google-meta-ads-agency-dubai", desc: "Scalable customer acquisition through precision Meta and Google Ads." },
-              { title: "Digital Marketing", link: "/services/digital-marketing-agency-dubai-sharjah", desc: "Holistic brand growth across all major UAE digital channels." }
+              { title: "SEO Strategy", link: "/services/seo-agency-dubai-sharjah-uae", desc: "Improve search visibility and attract high-intent traffic to your store." },
+              { title: "Performance PPC", link: "/services/ppc-google-ads-agency-dubai", desc: "Measurable customer acquisition through structured Meta and Google Ads." },
+              { title: "Digital Marketing", link: "/ai-marketing-dubai", desc: "Holistic brand growth across major UAE digital channels." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

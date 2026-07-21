@@ -156,8 +156,8 @@ export default function AiMobileApps() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Web Development", link: "/services/website-development-dubai-sharjah", desc: "Convert your mobile users with a high-performance, responsive web presence." },
-              { title: "SaaS Development", link: "/services/saas-development-specialist-uae", desc: "Build unshakeable cloud-native backends to power your mobile ecosystem." },
+              { title: "Web Development", link: "/services/web-development-dubai-uae", desc: "Serve mobile users with a high-performance, responsive web presence." },
+              { title: "SaaS Development", link: "/services", desc: "Build dependable cloud-native backends to power your mobile ecosystem." },
               { title: "AI Automation", link: "/services/ai-automation-agency-dubai-uae", desc: "Integrate intelligent backend agents to automate mobile user workflows." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">

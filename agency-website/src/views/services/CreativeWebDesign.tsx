@@ -141,8 +141,8 @@ export default function CreativeWebDesign() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: "UI/UX Design", link: "/services/ui-ux-design-agency-dubai", desc: "User-centric interaction patterns for complex digital ecosystems." },
-              { title: "Graphic Design", link: "/services/graphic-design-agency-dubai", desc: "Comprehensive brand assets and visual collateral for multi-channel impact." },
-              { title: "Web Hosting", link: "/services/premium-web-hosting-uae", desc: "Ultra-fast, secure infrastructure for your creative digital storefront." }
+              { title: "Graphic Design", link: "/services/graphic-design-agency-dubai-sharjah", desc: "Comprehensive brand assets and visual collateral for multi-channel impact." },
+              { title: "Web Hosting", link: "/services/web-hosting-uae", desc: "Fast, secure infrastructure for your creative digital storefront." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

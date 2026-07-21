@@ -146,8 +146,8 @@ export default function WhatsAppAutomationGCC() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "AI Integration", link: "/services/ai-automation-chatbot-development-dubai", desc: "Power your WhatsApp bots with sophisticated LLMs and agents." },
-              { title: "Digital Marketing", link: "/services/digital-marketing-agency-dubai-sharjah", desc: "Integrate WhatsApp into your holistic multi-channel marketing funnels." },
+              { title: "AI Integration", link: "/ai-agents-dubai", desc: "Power your WhatsApp bots with capable LLMs and agents." },
+              { title: "Digital Marketing", link: "/ai-marketing-dubai", desc: "Integrate WhatsApp into your holistic multi-channel marketing funnels." },
               { title: "E-commerce", link: "/services/ecommerce-website-development-dubai", desc: "Automate order tracking and recovery for your online store." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">

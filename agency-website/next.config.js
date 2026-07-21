@@ -31,7 +31,21 @@ const nextConfig = {
       { source: '/services/social-media-management-dubai-sharjah', destination: '/services/social-media-management-dubai-uae', permanent: true },
       { source: '/services/saas-development-specialist-uae', destination: '/services', permanent: true },
       { source: '/services/web-hosting-dubai', destination: '/services/web-hosting-uae', permanent: true },
-      { source: '/services/website-maintenance-support-dubai', destination: '/services/website-maintenance-support-dubai', permanent: false },
+      // Legacy service slugs kept as permanent redirects for existing links and backlinks.
+      { source: '/services/agentic-finance-compliance-automation-uae', destination: '/services/agentic-finance-uae', permanent: true },
+      { source: '/services/ai-hr-emiratization-tracking-uae', destination: '/services/ai-hr-emirates', permanent: true },
+      { source: '/services/ai-logistics-supply-chain-resilience', destination: '/services/logistics-resilience', permanent: true },
+      { source: '/services/autonomous-logistics-supply-chain-uae', destination: '/services/logistics-resilience', permanent: true },
+      { source: '/services/branding-agency-dubai', destination: '/services/branding-agency-dubai-sharjah', permanent: true },
+      { source: '/services/digital-marketing-agency-dubai-sharjah', destination: '/ai-marketing-dubai', permanent: true },
+      { source: '/services/graphic-design-agency-dubai', destination: '/services/graphic-design-agency-dubai-sharjah', permanent: true },
+      { source: '/services/graphic-design-agency-uae', destination: '/services/graphic-design-agency-dubai-sharjah', permanent: true },
+      { source: '/services/mobile-app-development-agency-dubai', destination: '/services/ui-ux-design-agency-dubai', permanent: true },
+      { source: '/services/premium-web-hosting-uae', destination: '/services/web-hosting-uae', permanent: true },
+      { source: '/services/seo-aeo-specialist-dubai', destination: '/services/seo-agency-dubai-sharjah-uae', permanent: true },
+      { source: '/services/ui-ux-design-dubai', destination: '/services/ui-ux-design-agency-dubai', permanent: true },
+      { source: '/services/web-development-agency-dubai', destination: '/services/web-development-dubai-uae', permanent: true },
+      { source: '/services/website-development-dubai-sharjah', destination: '/services/web-development-dubai-uae', permanent: true },
       
       // Recent SEO Architecture URL Updates
       { source: '/ai-for-real-estate-agencies-dubai', destination: '/ai-real-estate-agencies-dubai', permanent: true },

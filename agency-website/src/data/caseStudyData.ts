@@ -1,6 +1,6 @@
 export const CASE_STUDIES = [
   {
-    client: "Property Development Group",
+    client: "Illustrative Scenario — Property Development Group",
     industry: "Real Estate",
     location: "Dubai",
     scale: "50+ agents | AED 500M+ annual revenue",
@@ -39,7 +39,7 @@ export const CASE_STUDIES = [
     ]
   },
   {
-    client: "Enterprise Software Provider",
+    client: "Illustrative Scenario — Enterprise Software Provider",
     industry: "B2B SaaS",
     location: "Dubai",
     scale: "20 sales reps | AED 50M+ ARR",
@@ -78,7 +78,7 @@ export const CASE_STUDIES = [
     ]
   },
   {
-    client: "Corporate Law & Consulting",
+    client: "Illustrative Scenario — Corporate Law & Consulting",
     industry: "B2B Consulting",
     location: "Abu Dhabi",
     scale: "35 consultants | AED 80M+ ARR",
@@ -117,7 +117,7 @@ export const CASE_STUDIES = [
     ]
   },
   {
-    client: "Specialized Local Services",
+    client: "Illustrative Scenario — Specialized Local Services",
     industry: "High-Ticket SMB",
     location: "Sharjah",
     scale: "15 employees | AED 5M+ ARR",

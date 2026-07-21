@@ -173,9 +173,9 @@ export default function Branding() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Graphic Design", link: "/services/graphic-design-agency-dubai", desc: "Extend your new brand across marketing collateral and social assets." },
-              { title: "Web Development", link: "/services/website-development-dubai-sharjah", desc: "Bring your digital identity to life with a high-performance web platform." },
-              { title: "App Design", link: "/services/mobile-app-development-agency-dubai", desc: "Create a signature mobile experience that reflects your brand's DNA." }
+              { title: "Graphic Design", link: "/services/graphic-design-agency-dubai-sharjah", desc: "Extend your new brand across marketing collateral and social assets." },
+              { title: "Web Development", link: "/services/web-development-dubai-uae", desc: "Bring your digital identity to life with a high-performance web platform." },
+              { title: "App Design", link: "/services/ui-ux-design-agency-dubai", desc: "Create a signature mobile experience that reflects your brand's DNA." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

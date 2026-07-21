@@ -40,8 +40,8 @@ export default function WebHosting() {
     "@type": "LocalBusiness",
     "name": "Asif Digital — Cloud Hosting Dubai",
     "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format,compress&fm=webp&q=80&w=1200",
-    "@id": "https://www.asifdigital.agency/services/web-hosting-dubai",
-    "url": "https://www.asifdigital.agency/services/web-hosting-dubai",
+    "@id": "https://www.asifdigital.agency/services/web-hosting-uae",
+    "url": "https://www.asifdigital.agency/services/web-hosting-uae",
     "telephone": "+971500000000",
     "priceRange": "AED 99 - AED 2,500",
     "address": {
@@ -126,7 +126,7 @@ export default function WebHosting() {
           <div>
             <h2 className="text-4xl font-serif mb-10">Compliance & Reliability</h2>
             <ul className="space-y-4">
-              {["100% UAE Data Residency compliant", "99.99% Uptime Service Level Agreement (SLA)", "24/7 Proactive Server Monitoring", "Managed OS & Security Patching", "DDoS Mitigation & Rate Limiting", "Enterprise-grade NVMe SSD Storage"].map((item, i) => (
+              {["UAE-region hosting options", "Provider SLA documented before deployment", "Monitoring and incident alerts", "Managed OS and security patching", "DDoS mitigation and rate limiting", "NVMe SSD storage options"].map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-white/70 text-sm font-light">
                   <CheckCircle className="w-4 h-4 text-white/60 flex-shrink-0 mt-0.5" />
                   {item}
@@ -180,8 +180,8 @@ export default function WebHosting() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: "Website Support", link: "/services/website-maintenance-support-dubai", desc: "Ongoing maintenance and security to keep your hosted site flawless." },
-              { title: "Web Development", link: "/services/web-development-agency-dubai", desc: "High-performance applications built specifically for our cloud stack." },
-              { title: "SaaS Development", link: "/services/saas-development-specialist-uae", desc: "Scalable cloud-native products architected for the GCC market." }
+              { title: "Web Development", link: "/services/web-development-dubai-uae", desc: "High-performance applications built for a modern cloud stack." },
+              { title: "SaaS Development", link: "/services", desc: "Scalable cloud-native products designed for the GCC market." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

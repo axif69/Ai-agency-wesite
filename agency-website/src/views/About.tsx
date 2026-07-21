@@ -7,7 +7,7 @@ import { ArrowRight, Shield, Cpu, Network, Zap, CheckCircle, Code2, MessageSquar
 const sovereignPillars = [
   { icon: <Shield className="w-6 h-6" />, title: "Operational Resilience", desc: "We don't just build software; we engineer unshakeable systems. Our mission is to ensure your business remains dominant regardless of market volatility or technical shifts." },
   { icon: <Cpu className="w-6 h-6" />, title: "Neural Architecture", desc: "Every deployment is built on custom reasoning chains. We move beyond generic LLMs to create sovereign intelligence that belongs solely to your organization." },
-  { icon: <Network className="w-6 h-6" />, title: "GCC Data Sovereignty", desc: "We are committed to UAE Federal Decree-Law No. 45. All intelligence layers are architected for G42/Azure UAE North residency, ensuring 100% regional compliance." },
+  { icon: <Network className="w-6 h-6" />, title: "GCC Data Sovereignty", desc: "Systems can be designed for UAE-region hosting, controlled access and documented data flows. Final compliance depends on the use case, providers and qualified legal review." },
   { icon: <Zap className="w-6 h-6" />, title: "Autonomous Yield", desc: "We engineer systems that operate 24/7. Our goal is to eliminate human latency in high-stakes acquisition, allowing your firm to scale at the speed of computation." },
 ];
 
@@ -229,7 +229,7 @@ export default function About() {
             </div>
 
             <div className="grid grid-cols-3 gap-4">
-              {[{ n: "150+", l: "GCC Clients" }, { n: "Sovereign", l: "Protocol" }, { n: "24/7", l: "Autonomous" }].map((s, i) => (
+              {[{ n: "UAE", l: "Regional Focus" }, { n: "Human-led", l: "AI Governance" }, { n: "Measured", l: "Implementation" }].map((s, i) => (
                 <div key={i} className="p-6 border border-white/5 rounded-3xl text-center bg-white/[0.01]">
                   <div className="text-2xl font-serif mb-1">{s.n}</div>
                   <div className="text-white/40 text-[9px] uppercase tracking-widest font-bold">{s.l}</div>

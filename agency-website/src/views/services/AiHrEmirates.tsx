@@ -226,9 +226,9 @@ export default function AiHrEmirates() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Agentic Finance", link: "/services/agentic-finance-compliance-automation-uae", desc: "Automate audits and compliance alongside your workforce management." },
-              { title: "SaaS Development", link: "/services/saas-development-specialist-uae", desc: "Build unshakeable internal platforms for secure HR operations." },
-              { title: "Logistics Resilience", link: "/services/ai-logistics-supply-chain-resilience", desc: "Optimize your field workforce and supply chain personnel tracking." }
+              { title: "Agentic Finance", link: "/services/agentic-finance-uae", desc: "Automate audits and compliance alongside your workforce management." },
+              { title: "SaaS Development", link: "/services", desc: "Build dependable internal platforms for secure HR operations." },
+              { title: "Logistics Resilience", link: "/services/logistics-resilience", desc: "Optimize your field workforce and supply chain personnel tracking." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

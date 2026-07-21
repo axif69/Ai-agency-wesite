@@ -345,11 +345,11 @@ export default function AiLeadGenDubai() {
       <section className="py-20 border-t border-white/5 bg-black">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center text-white/80 text-[11px] uppercase tracking-[0.2em] font-bold">
-            <Link href="/ai-marketing-agency-dubai" className="hover:text-white transition-colors">AI Marketing Agency Dubai</Link>
+            <Link href="/ai-marketing-dubai" className="hover:text-white transition-colors">AI Marketing Agency Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/ai-automation-agency-dubai" className="hover:text-white transition-colors">AI Automation Agency Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/services/ai-automation-chatbot-dubai" className="hover:text-white transition-colors">AI Solutions UAE</Link>
+            <Link href="/ai-chatbots-dubai" className="hover:text-white transition-colors">AI Solutions UAE</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/" className="hover:text-white transition-colors">Home Authority</Link>
           </div>

@@ -41,8 +41,8 @@ export default function SocialMedia() {
     "@type": "LocalBusiness",
     "name": "Asif Digital — Social Media Agency Dubai",
     "image": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format,compress&fm=webp&q=80&w=1200",
-    "@id": "https://www.asifdigital.agency/services/social-media-management-dubai-sharjah",
-    "url": "https://www.asifdigital.agency/services/social-media-management-dubai-sharjah",
+    "@id": "https://www.asifdigital.agency/services/social-media-management-dubai-uae",
+    "url": "https://www.asifdigital.agency/services/social-media-management-dubai-uae",
     "telephone": "+971500000000",
     "priceRange": "AED 2,500 - AED 15,000",
     "address": {
@@ -157,9 +157,9 @@ export default function SocialMedia() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Graphic Design", link: "/services/graphic-design-agency-uae", desc: "Expert visual content to fuel your social media storytelling." },
-              { title: "PPC Management", link: "/services/ppc-google-meta-ads-agency-dubai", desc: "Amplifying your organic reach with targeted paid social campaigns." },
-              { title: "Digital Marketing", link: "/services/digital-marketing-agency-dubai-sharjah", desc: "Holistic strategy across all social, paid, and organic digital channels." }
+              { title: "Graphic Design", link: "/services/graphic-design-agency-dubai-sharjah", desc: "Expert visual content to fuel your social media storytelling." },
+              { title: "PPC Management", link: "/services/ppc-google-ads-agency-dubai", desc: "Amplify organic reach with targeted paid social campaigns." },
+              { title: "Digital Marketing", link: "/ai-marketing-dubai", desc: "Holistic strategy across social, paid, and organic digital channels." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

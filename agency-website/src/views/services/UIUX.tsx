@@ -143,7 +143,7 @@ export default function UIUX() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Web Development", link: "/services/web-development-agency-dubai", desc: "Bring your high-fidelity designs to life with unshakeable code." },
+              { title: "Web Development", link: "/services/web-development-dubai-uae", desc: "Bring your high-fidelity designs to life with maintainable code." },
               { title: "Branding Strategy", link: "/services/branding-agency-dubai-sharjah", desc: "Build the visual identity that powers your product's UI." },
               { title: "Ecommerce UX", link: "/services/ecommerce-website-development-dubai", desc: "Specialized user journeys designed to eliminate checkout friction." }
             ].map((s, i) => (

@@ -74,7 +74,7 @@ export default function WebDesign() {
       {/* Stats */}
       <section className="px-6 md:px-12 py-16 border-t border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[{ n: "150+", l: "Websites Delivered" }, { n: "98%", l: "Client Satisfaction" }, { n: "3x", l: "Average Traffic Increase" }, { n: "72hr", l: "Avg. Response Time" }].map((s, i) => (
+          {[{ n: "UX", l: "Conversion Clarity" }, { n: "SEO", l: "Technical Foundation" }, { n: "CWV", l: "Performance Review" }, { n: "CMS", l: "Maintainable Content" }].map((s, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
               <div className="text-4xl font-serif mb-2">{s.n}</div>
               <div className="text-white/95 text-xs uppercase tracking-widest">{s.l}</div>
@@ -195,7 +195,7 @@ export default function WebDesign() {
       <section className="px-6 md:px-12 py-24 border-t border-white/5">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-serif mb-6">Ready to build a website that dominates?</h2>
-          <p className="text-white/50 text-lg font-light mb-10">Join 150+ UAE businesses who trusted Asif Digital to transform their digital presence.</p>
+          <p className="text-white/50 text-lg font-light mb-10">Build a faster, clearer digital presence around your business goals and customer journey.</p>
           <Link href="/contact" aria-label="Start Your Web Design Project with Asif Digital" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
             Start Your Project <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
           </Link>
@@ -214,7 +214,7 @@ export default function WebDesign() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: "SEO Agency", link: "/services/seo-agency-dubai-sharjah-uae", desc: "Ensure your new website ranks at the top of UAE search results." },
-              { title: "UI/UX Design", link: "/services/ui-ux-design-dubai", desc: "Deeper product strategy and interactive prototyping for complex apps." },
+              { title: "UI/UX Design", link: "/services/ui-ux-design-agency-dubai", desc: "Deeper product strategy and interactive prototyping for complex apps." },
               { title: "Ecommerce Solutions", link: "/services/ecommerce-website-development-dubai", desc: "Build high-converting online stores tailored for the GCC market." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">

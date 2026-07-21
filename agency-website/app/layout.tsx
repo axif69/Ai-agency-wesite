@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.asifdigital.agency'),
-  title: "AI Automation Agency Dubai | Asif Digital — AI Agents & Workflows UAE",
+  title: "AI Automation Agency Dubai | AI Agents & Workflows UAE",
   description: "Asif Digital is a Dubai-based AI automation agency helping UAE businesses automate workflows, generate leads, and scale with custom AI agents. Book a free consultation.",
   manifest: '/site.webmanifest',
   icons: {

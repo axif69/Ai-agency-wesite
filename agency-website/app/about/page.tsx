@@ -1,7 +1,7 @@
 import PageComponent from '../../src/views/About';
 
 export const metadata = {
-  title: "About Asif Digital | AI Automation & Digital Marketing Agency Dubai",
+  title: "About Asif Digital | AI Automation Agency UAE",
   description: "Meet the Asif Digital team and learn how our UAE agency delivers AI automation, websites, WhatsApp and CRM systems, SEO, AEO and measurable digital growth.",
   alternates: {
     canonical: "https://www.asifdigital.agency/about"

@@ -78,7 +78,7 @@ export default function Design() {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-t border-white/5">
-          {[{ n: "500+", l: "Design Projects Completed" }, { n: "48hr", l: "Standard Turnaround" }, { n: "100%", l: "Brand Consistency Guaranteed" }, { n: "3", l: "Revision Rounds Included" }].map((s, i) => (
+          {[{ n: "01", l: "Creative Brief" }, { n: "02", l: "Design System" }, { n: "03", l: "Review Cycle" }, { n: "04", l: "Production Assets" }].map((s, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
               <div className="text-4xl font-serif mb-2">{s.n}</div>
               <div className="text-white/40 text-xs uppercase tracking-widest">{s.l}</div>
@@ -145,9 +145,9 @@ export default function Design() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Branding", link: "/services/branding-agency-dubai", desc: "The strategic foundation for all your visual communication." },
+              { title: "Branding", link: "/services/branding-agency-dubai-sharjah", desc: "The strategic foundation for all your visual communication." },
               { title: "Web Design", link: "/services/creative-web-design-dubai", desc: "Award-winning digital experiences that reflect your brand design." },
-              { title: "Digital Marketing", link: "/services/digital-marketing-agency-dubai-sharjah", desc: "Using high-performance design to drive your marketing ROI." }
+              { title: "Digital Marketing", link: "/ai-marketing-dubai", desc: "Using high-performance design to support measurable marketing outcomes." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

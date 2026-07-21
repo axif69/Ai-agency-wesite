@@ -116,7 +116,7 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-20">
           <div className="lg:col-span-1">
             <h2 className="text-4xl md:text-5xl font-serif mb-6">Proven Aggregation</h2>
-            <p className="text-white/80 font-light text-lg">Our architectures have processed over AED 400M in revenue across the GCC territory.</p>
+            <p className="text-white/80 font-light text-lg">Our work connects digital experiences, automation, measurement and operational systems for GCC businesses.</p>
           </div>
           <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-12">
             <div>

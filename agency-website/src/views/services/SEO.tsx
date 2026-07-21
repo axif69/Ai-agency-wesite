@@ -60,7 +60,7 @@ export default function SEOPage() {
 
       <section className="px-6 md:px-12 py-16 border-t border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[{ n: "87%", l: "of Clients Reach Page 1" }, { n: "90 days", l: "Avg. Time to First Rankings" }, { n: "320%", l: "Avg Organic Traffic Growth" }, { n: "5+", l: "Years UAE SEO Experience" }].map((s, i) => (
+          {[{ n: "01", l: "Technical Audit" }, { n: "02", l: "Search Intent" }, { n: "03", l: "Content System" }, { n: "04", l: "Measured Iteration" }].map((s, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
               <div className="text-4xl font-serif mb-2">{s.n}</div>
               <div className="text-white/95 text-xs uppercase tracking-widest">{s.l}</div>
@@ -81,7 +81,7 @@ export default function SEOPage() {
                 <div className="text-white/95 mb-5" role="img" aria-label={`${p.title} Icon`}>{p.icon}</div>
                 <h3 className="text-xl font-bold mb-3">{p.title}</h3>
                 <p className="text-white/95 font-light leading-relaxed text-sm">
-            Dominate search rankings with the best SEO Agency in Dubai and Sharjah. Our data-driven search engine optimization strategies, technical audits, and high-quality backlink campaigns ensure your website reaches page 1 for the keywords your customers are actually searching.
+            Improve search visibility with structured SEO for Dubai and Sharjah. Our work combines technical audits, useful content, internal linking, measurement, and responsible authority building around the searches your customers actually use.
           </p>
               </motion.div>
             ))}
@@ -132,9 +132,9 @@ export default function SEOPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "SEO + AEO", link: "/services/seo-aeo-specialist-dubai", desc: "The future of search: optimizing for AI-driven answer engines." },
-              { title: "PPC Ads", link: "/services/ppc-google-meta-ads-agency-dubai", desc: "Instant traffic and leads while your organic authority builds." },
-              { title: "SaaS Dev", link: "/services/saas-development-specialist-uae", desc: "Build unshakeable platforms that search engines love to rank." }
+              { title: "SEO + AEO", link: "/services/seo-agency-dubai-sharjah-uae", desc: "Optimize for traditional search and AI-driven answer engines." },
+              { title: "PPC Ads", link: "/services/ppc-google-ads-agency-dubai", desc: "Generate paid traffic while your organic authority develops." },
+              { title: "SaaS Dev", link: "/services", desc: "Build technically sound platforms that search engines can crawl." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

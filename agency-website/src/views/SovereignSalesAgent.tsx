@@ -45,7 +45,7 @@ export default function SovereignSalesAgent() {
           />
 
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="text-white/60 text-sm max-w-2xl mx-auto mb-12">
-            50+ autonomous agents deployed across GCC enterprises and high-growth SMBs. AED 18M+ in client revenue generated. 14-day deployment. 30-day money-back guarantee. Join the companies ditching manual SDRs.
+            Build a governed outbound system around your ICP, approved data sources, CRM, messaging channels, and human review. Scope, timeline, and success criteria are agreed before implementation.
           </motion.p>
           
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1 }} className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0 justify-center z-10">
@@ -239,8 +239,8 @@ export default function SovereignSalesAgent() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <span className="micro-label block mb-4 text-[#0066FF]">Case Studies</span>
-            <h2 className="text-4xl md:text-6xl font-serif tracking-tight mb-6">Proven Results from <br/>50+ GCC Enterprises</h2>
-            <p className="text-white/60 text-lg">AED 18M+ in client revenue generated. 3.2x average Year 1 ROI. Here's how we did it.</p>
+            <h2 className="text-4xl md:text-6xl font-serif tracking-tight mb-6">Evidence Before <br/>Automation Claims</h2>
+            <p className="text-white/60 text-lg">Review the problem, architecture, measured signals, and limitations behind each implementation pattern. Some examples are anonymized; metrics are context-specific and are not forecasts or guarantees.</p>
           </div>
 
           <div className="space-y-12">
@@ -470,19 +470,19 @@ export default function SovereignSalesAgent() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-4xl md:text-6xl font-serif tracking-tight mb-6">Ready to Own Your <br/>Acquisition Infrastructure?</h2>
           <p className="text-white/60 text-lg mb-16 max-w-2xl mx-auto">
-            14 Days to Launch. Forever to Own. We've helped 50+ GCC enterprises deploy autonomous agents that hunt qualified leads 24/7, without the payroll tax.
+            Start with a scoped pilot, documented integrations, human approval points, and success criteria tied to your actual sales process.
           </p>
           
           <div className="bg-[#0a0a0a] border border-[#0066FF]/30 rounded-3xl p-8 md:p-12 text-left mb-16 shadow-[0_0_40px_rgba(0,102,255,0.05)]">
             <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#0066FF] mb-8 text-center">Sovereign Engine Commitment</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h4 className="flex items-center gap-2 text-white font-bold mb-2"><ShieldCheck className="w-5 h-5 text-green-400" /> 30-Day Money-Back Guarantee</h4>
-                <p className="text-xs text-white/60">Hit your lead benchmark or get a full refund.</p>
+                <h4 className="flex items-center gap-2 text-white font-bold mb-2"><ShieldCheck className="w-5 h-5 text-green-400" /> Written Success Criteria</h4>
+                <p className="text-xs text-white/60">Agree the pilot scope, measurement method, and review gates before work begins.</p>
               </div>
               <div>
-                <h4 className="flex items-center gap-2 text-white font-bold mb-2"><Clock className="w-5 h-5 text-green-400" /> 14-Day Deployment</h4>
-                <p className="text-xs text-white/60">Go-live guaranteed by day 14 (or we eat the delay).</p>
+                <h4 className="flex items-center gap-2 text-white font-bold mb-2"><Clock className="w-5 h-5 text-green-400" /> Scoped Delivery Plan</h4>
+                <p className="text-xs text-white/60">Timeline depends on integrations, data access, approvals, and compliance requirements.</p>
               </div>
               <div>
                 <h4 className="flex items-center gap-2 text-white font-bold mb-2"><UserCheck className="w-5 h-5 text-green-400" /> You Own Everything</h4>
@@ -573,10 +573,10 @@ export default function SovereignSalesAgent() {
           <div className="space-y-4">
             {[
               { q: "How is Sovereign different from HubSpot/traditional CRM?", a: "They're tools. We're infrastructure. HubSpot is software you rent and use manually. Sovereign is proprietary code we deploy that works autonomously. HubSpot is like buying a car; Sovereign is buying an autonomous taxi." },
-              { q: "How much will this actually cost? Is there a catch?", a: "No catch. Tier 2 costs AED 116,000 Year 1 (build + support). Compared to hiring 3 SDRs + SaaS (AED 230,000/yr). You save AED 502,000 over 3 years. Plus you OWN it. Still worried? 30-day money-back guarantee." },
-              { q: "What if it doesn't work? Do you have a guarantee?", a: "Yes. We set a specific lead benchmark for YOUR company. On day 30, if we haven't hit it, you get a full refund of the build fee. No questions asked. We only win when you win." },
+              { q: "How much will this actually cost? Is there a catch?", a: "Cost depends on data sources, CRM integration, messaging volume, governance requirements, and support. The proposal separates build, third-party usage, and ongoing support so you can compare it with your current process." },
+              { q: "What if it doesn't work? Do you have a guarantee?", a: "No responsible provider can guarantee revenue or a fixed number of qualified leads without evidence. We agree measurable pilot criteria, document assumptions, and review performance before expanding the system." },
               { q: "What happens to the agent after we deploy? Can you hold it hostage?", a: "You own it. Not us. Code is fully documented and deployed to YOUR cloud account. If you leave us tomorrow, the agent keeps working, data stays yours. Zero penalty or clawback." },
-              { q: "How many leads will we actually get? Can you guarantee a number?", a: "Yes. During the audit, we map your ICP, research market size, calculate OSINT limits, and set a guaranteed minimum based on historical reply rates (e.g., 20 qualified leads/month). If we miss, we refund." },
+              { q: "How many leads will we actually get? Can you guarantee a number?", a: "Lead volume depends on market size, data quality, offer strength, deliverability, channel rules, and sales follow-up. We model a range from available evidence and report actual results; we do not invent or guarantee a number." },
               { q: "Do we need to be tech-savvy to use this?", a: "No. You get a dashboard. You log in, see leads captured and meetings booked. We handle all the code, integrations, and optimizations. It's like hiring an SDR team that never asks for breaks." },
               { q: "What industries does this work for?", a: "B2B only. Works great for Real Estate, SaaS, Finance, Consulting, Tech, Recruiting. Doesn't work for B2C, E-commerce, or retail." },
               { q: "Can we pause or cancel if we want to?", a: "Yes. Anytime after 30 days. You can pause (keep agent ready for AED 1k/mo) or cancel completely (pay zero, take your agent and code with you)." }
@@ -607,10 +607,10 @@ export default function SovereignSalesAgent() {
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Trust Signals */}
           <div className="flex flex-wrap justify-center gap-8 mb-20 pb-10 border-b border-white/5 text-[10px] font-bold uppercase tracking-widest text-white/40">
-            <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> 50+ Autonomous Agents</div>
-            <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> AED 18M+ Client Revenue</div>
-            <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> 14-Day Guarantee</div>
-            <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Google & Meta Certified</div>
+            <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Human Approval Controls</div>
+            <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Measured Pilot Criteria</div>
+            <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Documented Integrations</div>
+            <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Client-Owned Data</div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20 text-center md:text-left">

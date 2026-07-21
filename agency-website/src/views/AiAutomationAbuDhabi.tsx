@@ -88,7 +88,7 @@ export default function AiAutomationAbuDhabi() {
           <div className="text-center mb-24">
             <span className="micro-label block mb-4">Technical Whitepaper</span>
             <h2 className="text-4xl md:text-7xl font-serif mb-8">Architectural Depth.</h2>
-            <p className="text-white/40 max-w-2xl mx-auto">We build on a stack of unshakeable, sovereign components designed for 99.99% operational continuity.</p>
+            <p className="text-white/40 max-w-2xl mx-auto">We design resilient systems with monitoring, recovery planning and deployment choices matched to the workload.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32">
@@ -305,7 +305,7 @@ export default function AiAutomationAbuDhabi() {
       <section className="py-20 border-t border-white/5 bg-black">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center text-white/80 text-[11px] uppercase tracking-[0.2em] font-bold text-center">
-            <Link href="/ai-marketing-agency-dubai" className="hover:text-white transition-colors">AI Marketing Agency Abu Dhabi</Link>
+            <Link href="/ai-marketing-dubai" className="hover:text-white transition-colors">AI Marketing Agency Abu Dhabi</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/ai-lead-generation-agency-dubai" className="hover:text-white transition-colors">AI Lead Generation Abu Dhabi</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />

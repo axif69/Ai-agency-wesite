@@ -31,7 +31,7 @@ const categories = [
       { title: "Enterprise Web Architecture", desc: "Premium, conversion-focused digital domains crafted for elite UAE brands. Every pixel is a calculated move toward market dominance.", features: ["Bespoke UI/UX", "GSAP Animations", "Core Web Vitals", "AEO-Ready"], link: "/services/web-design-dubai-sharjah", icon: <Monitor className="w-8 h-8" /> },
       { title: "Next-Gen Development", desc: "Scalable, high-performance web applications built on modern React and Next.js stacks with seamless Sovereign AI integrations.", features: ["React / Next.js", "AI Integration", "API Development", "Performance-First"], link: "/services/web-development-dubai-uae", icon: <Code className="w-8 h-8" /> },
       { title: "Headless Ecommerce", desc: "Powerful online stores for UAE businesses—Shopify, WooCommerce, or fully custom—with local payment gateways and conversion-optimized flows.", features: ["Shopify / WooCommerce", "Telr & PayFort", "Product Schema SEO", "Conversion-First"], link: "/services/ecommerce-website-development-dubai", icon: <ShoppingCart className="w-8 h-8" /> },
-      { title: "Sovereign Hosting", desc: "UAE-based managed hosting with NVMe SSD servers, 99.99% uptime SLA, and UAE-North data residency compliance.", features: ["NVMe SSD Servers", "99.99% Uptime SLA", "G42 Compliance", "Daily Backups"], link: "/services/web-hosting-uae", icon: <Server className="w-8 h-8" /> },
+      { title: "Managed Hosting", desc: "Regional hosting options with monitoring, backups, security controls, and documented provider commitments.", features: ["NVMe SSD Options", "Provider SLA Review", "Regional Hosting", "Backup Planning"], link: "/services/web-hosting-uae", icon: <Server className="w-8 h-8" /> },
     ]
   },
   {

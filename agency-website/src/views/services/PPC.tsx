@@ -44,8 +44,8 @@ export default function PPC() {
     "@type": "LocalBusiness",
     "name": "Asif Digital — PPC & Ads Agency Dubai",
     "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format,compress&fm=webp&q=80&w=1200",
-    "@id": "https://www.asifdigital.agency/services/ppc-google-meta-ads-agency-dubai",
-    "url": "https://www.asifdigital.agency/services/ppc-google-meta-ads-agency-dubai",
+    "@id": "https://www.asifdigital.agency/services/ppc-google-ads-agency-dubai",
+    "url": "https://www.asifdigital.agency/services/ppc-google-ads-agency-dubai",
     "telephone": "+971500000000",
     "priceRange": "AED 3,000 - AED 25,000",
     "address": {
@@ -204,9 +204,9 @@ export default function PPC() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "SEO Strategy", link: "/services/seo-aeo-specialist-dubai", desc: "Balance instant PPC traffic with long-term organic growth." },
-              { title: "Digital Marketing", link: "/services/digital-marketing-agency-dubai-sharjah", desc: "Multi-channel marketing strategies for maximum UAE brand reach." },
-              { title: "Social Media", link: "/services/social-media-management-dubai-sharjah", desc: "Build high-engagement communities to lower your retargeting costs." }
+              { title: "SEO Strategy", link: "/services/seo-agency-dubai-sharjah-uae", desc: "Balance instant PPC traffic with long-term organic growth." },
+              { title: "Digital Marketing", link: "/ai-marketing-dubai", desc: "Multi-channel marketing strategies for broader UAE brand reach." },
+              { title: "Social Media", link: "/services/social-media-management-dubai-uae", desc: "Build engaged communities that support your retargeting strategy." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

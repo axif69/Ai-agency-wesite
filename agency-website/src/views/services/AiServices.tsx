@@ -23,8 +23,8 @@ export default function AiServices() {
     "@type": "LocalBusiness",
     "name": "Asif Digital — AI Automation Dubai",
     "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format,compress&fm=webp&q=80&w=1200",
-    "@id": "https://www.asifdigital.agency/services/ai-automation-chatbot-development-dubai",
-    "url": "https://www.asifdigital.agency/services/ai-automation-chatbot-development-dubai",
+    "@id": "https://www.asifdigital.agency/ai-agents-dubai",
+    "url": "https://www.asifdigital.agency/ai-agents-dubai",
     "telephone": "+971500000000",
     "priceRange": "AED 5,000 - AED 50,000",
     "address": {
@@ -176,9 +176,9 @@ export default function AiServices() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "SaaS Development", link: "/services/saas-development-specialist-uae", desc: "Build the cloud-native backbone for your enterprise intelligence." },
+              { title: "SaaS Development", link: "/services", desc: "Build the cloud-native backbone for your enterprise intelligence." },
               { title: "Custom Software", link: "/services/custom-software-development-dubai", desc: "Tailored enterprise solutions built with the latest high-performance tech." },
-              { title: "Web Development", link: "/services/web-development-agency-dubai", desc: "World-class digital front-ends for your intelligent backend swarms." }
+              { title: "Web Development", link: "/services/web-development-dubai-uae", desc: "High-performance digital front-ends for your intelligent backend systems." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

@@ -151,9 +151,9 @@ export default function AgenticFinanceUAE() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Logistics AI", link: "/services/autonomous-logistics-supply-chain-uae", desc: "Automate supply chain rerouting alongside your financial swarms." },
-              { title: "SaaS Development", link: "/services/saas-development-specialist-uae", desc: "Build unshakeable cloud infrastructure to power your finance agents." },
-              { title: "AI HR & Workforce", link: "/services/ai-hr-emiratization-tracking-uae", desc: "Manage payroll and workforce tracking with intelligent agents." }
+              { title: "Logistics AI", link: "/services/logistics-resilience", desc: "Automate supply chain rerouting alongside your financial swarms." },
+              { title: "SaaS Development", link: "/services", desc: "Build dependable cloud infrastructure to power your finance agents." },
+              { title: "AI HR & Workforce", link: "/services/ai-hr-emirates", desc: "Manage payroll and workforce tracking with intelligent agents." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

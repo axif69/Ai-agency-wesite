@@ -179,9 +179,9 @@ export default function WebsiteSupport() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Web Hosting", link: "/services/web-hosting-dubai", desc: "The high-performance cloud foundation for your supported website." },
-              { title: "Web Development", link: "/services/web-development-agency-dubai", desc: "Building new features and specialized functions for your brand." },
-              { title: "SEO Strategy", link: "/services/seo-aeo-specialist-dubai", desc: "Ensuring your maintained site remains visible and high-ranking." }
+              { title: "Web Hosting", link: "/services/web-hosting-uae", desc: "The high-performance cloud foundation for your supported website." },
+              { title: "Web Development", link: "/services/web-development-dubai-uae", desc: "Building new features and specialized functions for your brand." },
+              { title: "SEO Strategy", link: "/services/seo-agency-dubai-sharjah-uae", desc: "Helping your maintained site remain technically sound and visible." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

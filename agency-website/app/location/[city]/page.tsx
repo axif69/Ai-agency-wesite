@@ -15,9 +15,13 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const location = uaeLocations.find((loc) => loc.slug === params.city) || uaeLocations[0];
+  const seoLocationName = location.name.match(/\(([^)]+)\)/)?.[1] || location.name;
   return {
-    title: `Digital Marketing, AI & Web Design in ${location.name} | Asif Digital`,
-    description: `Top-rated AI automation, SEO, and web design agency serving businesses in ${location.name}, ${location.emirate}. Scale your business with custom digital solutions today.`,
+    title: `AI, SEO & Web Design ${seoLocationName} | Asif Digital`,
+    description: `AI automation, SEO, and web design services for businesses in ${location.name}, ${location.emirate}. Explore practical digital solutions for your team.`,
+    alternates: {
+      canonical: `https://www.asifdigital.agency/location/${location.slug}`,
+    },
   };
 }
 
@@ -62,7 +66,7 @@ export default function LocationPage({ params }: Props) {
                 The digital landscape in {location.name} is fiercely competitive. To stand out, businesses need more than just a standard website—they need an intelligent, automated sales engine that runs 24/7 without human latency.
               </p>
               <p>
-                At Asif Digital, we specialize in building custom AI chatbots, highly-optimized Next.js web platforms, and data-driven SEO campaigns designed specifically for the {location.emirate} market. Whether you're a startup in {location.keyword} or an established enterprise, our scalable architecture guarantees ROI.
+                At Asif Digital, we build custom AI chatbots, optimized Next.js web platforms, and measurable SEO campaigns for the {location.emirate} market. Whether you are a startup in {location.keyword} or an established enterprise, the system is designed around your goals, data, and operating constraints.
               </p>
             </div>
             
@@ -86,7 +90,7 @@ export default function LocationPage({ params }: Props) {
             {[
               { title: "Web Design & Development", desc: `Custom Next.js and React applications built to load instantly and convert visitors across ${location.emirate}.` },
               { title: "Agentic AI Workflows", desc: "Automate your customer service and logistics with secure, local AI models built for the GCC market." },
-              { title: "Local SEO Domination", desc: `Rank #1 on Google maps and search results specifically for high-intent customers searching in ${location.name}.` }
+              { title: "Local SEO Visibility", desc: `Improve your eligibility and relevance for high-intent searches from customers in ${location.name}.` }
             ].map((feature, i) => (
               <div key={i} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/20 transition-all duration-500">
                 <h3 className="text-xl font-serif mb-3 text-white/90">{feature.title}</h3>

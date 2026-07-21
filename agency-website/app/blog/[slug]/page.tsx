@@ -12,6 +12,13 @@ type Props = {
   params: { slug: string };
 };
 
+function compactSeoTitle(title: string, maxLength = 64) {
+  if (title.length <= maxLength) return title;
+  const candidate = title.slice(0, maxLength - 1);
+  const boundary = candidate.lastIndexOf(' ');
+  return `${candidate.slice(0, boundary > 40 ? boundary : maxLength - 1)}…`;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = BLOG_POSTS.find((p) => p.slug === params.slug);
   if (!post) {
@@ -24,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   return {
-    title: `${post.title} | Asif Digital Blog`,
+    title: compactSeoTitle(post.title),
     description: post.excerpt || `${post.title}. Read the full article on Asif Digital.`,
     authors: [{ name: post.author, url: 'https://www.asifdigital.agency/about' }],
     openGraph: {

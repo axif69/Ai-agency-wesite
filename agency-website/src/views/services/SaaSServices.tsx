@@ -40,8 +40,8 @@ export default function SaaSServices() {
     "@type": "LocalBusiness",
     "name": "Asif Digital — SaaS Development Dubai",
     "image": "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format,compress&fm=webp&q=80&w=1200",
-    "@id": "https://www.asifdigital.agency/services/saas-development-specialist-uae",
-    "url": "https://www.asifdigital.agency/services/saas-development-specialist-uae",
+    "@id": "https://www.asifdigital.agency/services",
+    "url": "https://www.asifdigital.agency/services",
     "telephone": "+971500000000",
     "priceRange": "AED 15,000 - AED 150,000",
     "address": {
@@ -180,8 +180,8 @@ export default function SaaSServices() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: "Custom Software", link: "/services/custom-software-development-dubai", desc: "Build unshakeable enterprise solutions to power your cloud product." },
-              { title: "Web Development", link: "/services/web-development-agency-dubai", desc: "High-performance front-ends for your SaaS and mobile companions." },
-              { title: "AI Integration", link: "/services/ai-automation-chatbot-development-dubai", desc: "Incorporate intelligent agents and LLMs into your SaaS product." }
+              { title: "Web Development", link: "/services/web-development-dubai-uae", desc: "High-performance front-ends for your SaaS and mobile products." },
+              { title: "AI Integration", link: "/ai-agents-dubai", desc: "Incorporate intelligent agents and LLMs into your SaaS product." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

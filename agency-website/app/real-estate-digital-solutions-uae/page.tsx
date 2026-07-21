@@ -1,7 +1,7 @@
 import PageComponent from '../../src/views/services/RealEstateDigitalSolutionsUAE';
 
 export const metadata = {
-  title: "Real Estate Digital Solutions UAE | CRM, Websites & WhatsApp Automation",
+  title: "Real Estate Digital Solutions UAE | Asif Digital",
   description: "Real estate digital solutions in the UAE connecting property websites, lead capture, WhatsApp automation, CRM routing, and reporting systems.",
   alternates: {
     canonical: "https://www.asifdigital.agency/real-estate-digital-solutions-uae"

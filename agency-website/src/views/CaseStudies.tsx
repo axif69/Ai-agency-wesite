@@ -15,13 +15,16 @@ export default function CaseStudies() {
         <span className="micro-label block mb-4">Proven Results</span>
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8vw] font-serif leading-tight tracking-tight mb-8">Case Studies</h1>
         <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl">
-          Detailed technical case studies from real Dubai and Sharjah businesses—with real numbers, real challenges, and the sovereign strategies that produced extraordinary outcomes.
+          Detailed, anonymized implementation scenarios for Dubai and Sharjah businesses, showing the challenge, system design, measurement approach, and operating constraints.
+        </p>
+        <p className="mt-5 text-sm text-white/45 max-w-3xl">
+          Some scenarios are anonymized to protect commercial information. Metrics are context-specific and are not forecasts or guarantees for another business.
         </p>
       </motion.div>
 
       {/* Summary Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
-        {[{ n: "150+", l: "UAE Clients Served" }, { n: "340%", l: "Avg Revenue Growth" }, { n: "84%", l: "Avg CPA Reduction (PPC)" }, { n: "87%", l: "Clients on Page 1 Google" }].map((s, i) => (
+        {[{ n: "01", l: "Business Context" }, { n: "02", l: "System Architecture" }, { n: "03", l: "Measured Signals" }, { n: "04", l: "Lessons & Limits" }].map((s, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-6 border border-white/5 rounded-2xl text-center">
             <div className="text-3xl font-serif mb-2">{s.n}</div>
             <div className="text-white/70 text-xs uppercase tracking-widest">{s.l}</div>
