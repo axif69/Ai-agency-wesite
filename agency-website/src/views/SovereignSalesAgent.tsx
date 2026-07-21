@@ -8,7 +8,6 @@ import TiltCard from "../components/animations/TiltCard";
 import SpotlightCard from "../components/animations/SpotlightCard";
 import ParticleBackground from "../components/animations/ParticleBackground";
 import MagneticButton from "../components/animations/MagneticButton";
-import LazySection from "../components/LazySection";
 import { TextGenerateEffect } from "../components/animations/TextGenerateEffect";
 import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap, Workflow, Languages, Phone, CheckCircle2, Search, Crosshair, BarChart, Settings, Check, Clock, UserCheck, ShieldCheck } from "lucide-react";
 import { CASE_STUDIES } from "../data/caseStudyData";
@@ -65,7 +64,6 @@ export default function SovereignSalesAgent() {
         <HeroParticles />
       </section>
 
-      <LazySection className="contents" placeholderClassName="block min-h-[4200px] bg-[#050505]" rootMargin="300px">
       {/* ── 2. YOUR WEBSITE IS YOUR SALES INFRASTRUCTURE ── */}
       <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -639,7 +637,6 @@ export default function SovereignSalesAgent() {
           </div>
         </div>
       </footer>
-      </LazySection>
     </div>
   );
 }
