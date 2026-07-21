@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Layers, Globe, Zap, Sparkles, CheckCircle, Code } from "lucide-react";
+import { ArrowRight, Layers, Globe, Zap, Sparkles, CheckCircle, Code, MousePointer2, Gauge, Film, Box } from "lucide-react";
 
 const features = [
   { icon: <Sparkles className="w-6 h-6" />, title: "Award-Winning Visual Concept", desc: "Creative web design goes beyond beautiful—it is strategically arresting. We use editorial-grade typography, cinematic imagery, motion-driven storytelling, and interaction design that makes visitors feel the premium quality of your brand before they read a single word." },
@@ -14,6 +14,47 @@ const features = [
 ];
 
 const clientTypes = ["Luxury Real Estate (Dubai)", "Premium Hospitality & Hotels", "Fashion & Lifestyle Brands", "Architecture & Interior Design Studios", "Investment & Private Equity Firms", "Creative Agencies & Studios", "Luxury F&B Concepts", "Tech Startups & SaaS Products"];
+
+const showcaseTemplates = [
+  {
+    title: "Cinematic Brand Launch",
+    tag: "Luxury / Hospitality / Real Estate",
+    desc: "A high-impact homepage with editorial typography, full-screen visual scenes, soft parallax, launch storytelling, premium CTAs and mobile-first lead capture.",
+    details: ["Hero film frame", "Scroll chapter reveals", "Luxury proof blocks", "Lead-focused CTA flow"],
+  },
+  {
+    title: "Interactive Product Story",
+    tag: "SaaS / AI / Tech",
+    desc: "A modern product website where features unfold through scroll-triggered cards, animated interface mockups, workflow diagrams and conversion-focused comparison sections.",
+    details: ["Animated UI panels", "Feature sequencing", "Sticky product story", "Demo/request flow"],
+  },
+  {
+    title: "WebGL / 3D Experience",
+    tag: "Premium / Experimental",
+    desc: "A lightweight creative direction using Three.js/WebGL-style visuals, depth, particles, gradients and object movement while preserving SEO text and page speed.",
+    details: ["3D hero concept", "Motion-safe fallback", "GPU-conscious effects", "SEO-visible copy"],
+  },
+  {
+    title: "Magazine Editorial Website",
+    tag: "Consultancy / Founder Brand",
+    desc: "A sharp content-led site with oversized typography, case-study storytelling, proof-led sections, long-form landing pages and elegant micro-interactions.",
+    details: ["Editorial grid", "Authority sections", "Case study modules", "Article-ready structure"],
+  },
+];
+
+const motionStack = [
+  { icon: <Film className="w-5 h-5" />, title: "GSAP-style timelines", desc: "Sequenced reveals, pinned sections, smooth transitions and controlled scroll storytelling for premium pages." },
+  { icon: <Box className="w-5 h-5" />, title: "Three.js / WebGL concepts", desc: "3D-inspired hero scenes, particles, gradients and spatial interfaces where the brand needs a signature visual moment." },
+  { icon: <MousePointer2 className="w-5 h-5" />, title: "Micro-interactions", desc: "Cursor states, hover physics, magnetic buttons, card depth, menu transitions and small details that make the site feel expensive." },
+  { icon: <Gauge className="w-5 h-5" />, title: "Performance guardrails", desc: "Motion is planned with lazy loading, reduced-motion fallbacks, image compression and Core Web Vitals in mind." },
+];
+
+const processSteps = [
+  { step: "01", title: "Creative Direction", desc: "We define the visual world: typography, movement style, interaction tone, visual references, brand mood and conversion objective." },
+  { step: "02", title: "Motion Prototype", desc: "Instead of flat mockups only, we plan how the page should move: reveal timing, scroll logic, hover behaviour and responsive fallbacks." },
+  { step: "03", title: "Next.js Build", desc: "The design is developed with clean React/Next.js structure, SEO-visible content, reusable sections and fast-loading media." },
+  { step: "04", title: "QA + Launch", desc: "We test mobile, desktop, speed, accessibility, reduced motion, forms, WhatsApp CTAs, tracking and post-launch editability." },
+];
 
 const faqs = [
   { q: "What makes creative web design different from standard web design?", a: "Standard web design prioritises usability and conversion within established templates and conventions. Creative web design pushes the boundaries of what a website can feel like—using advanced animations, experimental layouts, immersive scroll experiences, and visual storytelling to create a work of digital art that also drives business results." },
@@ -55,6 +96,9 @@ export default function CreativeWebDesign() {
       <section className="px-6 md:px-12 py-24 bg-white/[0.02] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16"><span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Our Creative Capabilities</span><h2 className="text-4xl md:text-5xl font-serif max-w-2xl">Where Art Meets Conversion Science</h2></div>
+          <p className="text-white/55 font-light leading-relaxed max-w-3xl mb-12">
+            Modern creative web design is not just a pretty layout. It is a designed experience where motion, typography, interaction, speed, storytelling and conversion work together. We build premium motion websites in Dubai using the same thinking behind high-end SaaS launches, luxury real estate campaigns, hospitality experiences and founder-led authority brands.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
@@ -64,6 +108,98 @@ export default function CreativeWebDesign() {
                   {f.desc}
                 </p>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 py-28 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row justify-between gap-10 mb-16">
+            <div>
+              <span className="micro-label block mb-4">Showcase Directions</span>
+              <h2 className="text-4xl md:text-6xl font-serif max-w-3xl leading-tight">Modern website templates we can shape around your brand</h2>
+            </div>
+            <p className="text-white/50 font-light leading-relaxed max-w-md">
+              These are not copied templates. They are premium creative directions: reusable website concepts that give your project a faster start while still being custom-designed, branded and performance-aware.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {showcaseTemplates.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="group relative min-h-[340px] rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.015] overflow-hidden p-8"
+              >
+                <div className="absolute inset-x-8 top-8 h-28 rounded-3xl border border-white/10 bg-black/40 overflow-hidden">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.18),transparent_28%),linear-gradient(135deg,rgba(255,255,255,0.12),transparent_45%)]" />
+                  <div className="absolute bottom-4 left-4 right-4 h-2 rounded-full bg-white/10">
+                    <div className="h-full w-2/3 rounded-full bg-white/40 group-hover:w-full transition-all duration-700" />
+                  </div>
+                  <div className="absolute right-5 top-5 flex gap-2">
+                    <span className="w-3 h-3 rounded-full bg-white/40" />
+                    <span className="w-3 h-3 rounded-full bg-white/20" />
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                  </div>
+                </div>
+                <div className="pt-36">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/35 font-bold">{item.tag}</span>
+                  <h3 className="text-2xl md:text-3xl font-serif mt-4 mb-4">{item.title}</h3>
+                  <p className="text-white/55 font-light leading-relaxed mb-6">{item.desc}</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {item.details.map((detail) => (
+                      <div key={detail} className="text-xs text-white/50 flex items-center gap-2">
+                        <CheckCircle className="w-3 h-3 text-white/35" /> {detail}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 py-28 bg-white/[0.02] border-y border-white/5">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div>
+            <span className="micro-label block mb-4">Motion Website Stack</span>
+            <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-8">Motion that feels premium — not slow, noisy or gimmicky</h2>
+            <p className="text-white/55 font-light leading-relaxed mb-8">
+              The best modern websites use movement with restraint. Scroll reveals should guide attention. Micro-interactions should make the interface feel alive. 3D and WebGL should support the brand story, not hide the message from Google or punish mobile users.
+            </p>
+            <p className="text-white/55 font-light leading-relaxed">
+              We plan every motion layer with conversion, accessibility and speed in mind: reduced-motion support, mobile alternatives, lazy-loaded media, compressed assets, SEO-readable HTML and clear CTAs.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {motionStack.map((item, i) => (
+              <motion.div key={item.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="p-7 rounded-3xl border border-white/10 bg-black">
+                <div className="text-white/55 mb-5">{item.icon}</div>
+                <h3 className="font-bold mb-3">{item.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 py-28 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16">
+            <span className="micro-label block mb-4">Build Process</span>
+            <h2 className="text-4xl md:text-6xl font-serif max-w-3xl">From visual concept to live conversion system</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+            {processSteps.map((item) => (
+              <div key={item.step} className="p-7 rounded-3xl border border-white/10 bg-white/[0.02]">
+                <span className="text-white/25 text-sm font-bold tracking-widest">{item.step}</span>
+                <h3 className="text-xl font-serif mt-8 mb-4">{item.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed font-light">{item.desc}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -106,6 +242,21 @@ export default function CreativeWebDesign() {
           <h2 className="text-4xl md:text-6xl font-serif mb-6">Ready to be unforgettable?</h2>
           <p className="text-white/50 text-lg font-light mb-10">Let's create a digital experience your industry has never seen before.</p>
           <Link href="/contact" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">Start The Conversation <ArrowRight className="w-4 h-4" /></Link>
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 py-24 border-t border-white/5">
+        <div className="max-w-5xl mx-auto">
+          <span className="micro-label block mb-4">Questions Answered</span>
+          <h2 className="text-4xl md:text-5xl font-serif mb-12">Creative web design FAQs</h2>
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <div key={faq.q} className="p-7 rounded-2xl border border-white/10 bg-white/[0.02]">
+                <h3 className="font-bold mb-3">{faq.q}</h3>
+                <p className="text-white/50 font-light leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
       {/* Strategic Synergy Grid */}
