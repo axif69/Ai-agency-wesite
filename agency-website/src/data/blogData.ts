@@ -39,10 +39,10 @@ const researchSources = {
 const commercialBlogTopics: LongFormBlogTopic[] = [
   {
     slug: "ai-marketing-agency-dubai-guide-2026",
-    title: "AI Marketing Agency Dubai: A 2026 Guide to Strategy, Automation, SEO and Measurable Growth",
-    excerpt: "A detailed guide for UAE companies evaluating an AI marketing agency in Dubai, with research-backed digital-market context, practical buying criteria, measurement advice, and implementation steps.",
+    title: "AI Powered Marketing Agency in Dubai: A 2026 Guide to Strategy, Automation, SEO and Growth",
+    excerpt: "A detailed guide for UAE companies evaluating an AI powered marketing agency in Dubai, with research-backed digital-market context, practical buying criteria, measurement advice, and implementation steps.",
     category: "AI Marketing",
-    keyword: "ai marketing agency dubai",
+    keyword: "ai powered marketing agency in dubai",
     market: "Dubai and the wider UAE",
     serviceUrl: "/ai-marketing-dubai",
     buyer: "founders, marketing heads, real estate teams, clinics, consultancies and B2B service companies",

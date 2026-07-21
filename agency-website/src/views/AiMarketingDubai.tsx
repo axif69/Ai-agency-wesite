@@ -33,11 +33,11 @@ export default function AiMarketingDubai() {
             THE SOVEREIGN MARKETING PROTOCOL v4.0
           </span>
           <h1 className="text-5xl md:text-9xl font-serif tracking-tighter leading-[0.85] mb-12">
-            AI Marketing<br/>
-            <span className="text-white/60 italic font-light tracking-normal">Agency in Dubai.</span>
+            AI Powered<br/>
+            <span className="text-white/60 italic font-light tracking-normal">Marketing Agency in Dubai.</span>
           </h1>
           <p className="text-lg md:text-2xl text-white/50 font-light max-w-3xl mx-auto leading-relaxed mb-16">
-            Build a practical AI-assisted marketing system for SEO, paid media, content, WhatsApp follow-up, reporting and conversion tracking across Dubai and the UAE.
+            Asif Digital is an AI powered marketing agency in Dubai building practical systems for SEO, paid media, content, WhatsApp follow-up, reporting and conversion tracking across the UAE.
           </p>
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
             <Link href="/contact" className="bg-white text-black px-12 py-6 rounded-full font-bold uppercase tracking-widest text-[11px] hover:scale-105 transition-all shadow-[0_0_50px_rgba(255,255,255,0.2)]">
@@ -68,13 +68,13 @@ export default function AiMarketingDubai() {
           </div>
           <div className="space-y-12 text-white/70 font-light text-lg leading-relaxed">
             <p>
-              The Dubai market is no longer a standard digital territory. It is a competitive environment where search visibility, paid traffic, WhatsApp response speed and campaign measurement all need to work together. An AI marketing agency in Dubai should connect those parts into one operating system.
+              The Dubai market is no longer a standard digital territory. It is a competitive environment where search visibility, paid traffic, WhatsApp response speed and campaign measurement all need to work together. An <strong>AI powered marketing agency in Dubai</strong> should connect those parts into one operating system.
             </p>
             <p>
               In 2026, the UAE customer journey is fragmented across Google, Instagram, landing pages, WhatsApp threads and AI-generated answers. The goal is not to chase every channel. The goal is to build a clear system that captures intent, qualifies leads and shows which campaigns are actually moving pipeline.
             </p>
             <p>
-              At Asif Digital, we combine SEO, paid media, AI-assisted content, conversion tracking and automation. That makes the page stronger for buyers searching for an AI marketing agency Dubai, while keeping the message understandable and commercially useful.
+              At Asif Digital, we combine SEO, paid media, AI-assisted content, conversion tracking and automation. That makes the page stronger for buyers searching for an <strong>AI powered marketing agency in Dubai</strong>, <strong>AI marketing agency Dubai</strong>, or practical AI growth support for UAE companies.
             </p>
             <div className="p-8 border border-white/10 bg-white/[0.02] rounded-3xl mt-12">
               <h4 className="font-serif text-2xl mb-4 italic text-white/90">"The 2% Trap"</h4>
