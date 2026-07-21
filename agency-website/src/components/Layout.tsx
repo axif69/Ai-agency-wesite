@@ -93,7 +93,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="flex items-center gap-4">
           <span>{new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit' })} GST</span>
           <span className="text-white/20">|</span>
-          <Link href="/sovereign-dashboard" className="hover:text-white transition-colors">Command Access</Link>
+          <Link href="/contact" className="hover:text-white transition-colors">Project Intake</Link>
         </div>
       </div>
 
@@ -139,7 +139,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[350px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
                   <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col font-sans normal-case tracking-normal text-left p-6 space-y-2">
                     <Link href="/sovereign-sales-agent" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 italic">Sovereign Sales Agent (Autonomous B2B)</Link>
-                    <Link href="/sovereign-dashboard" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Command & Control Dashboard</Link>
                     <Link href="/arabic-ai-hub" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Arabic Intelligence Hub (Khaleeji NLP)</Link>
                     <Link href="/ai-real-estate-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 text-green-400">AI Real Estate UAE Hub</Link>
                     <Link href="/ai-real-estate-agencies-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 text-green-400">AI for Real Estate Agencies</Link>

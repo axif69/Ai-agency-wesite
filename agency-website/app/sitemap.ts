@@ -47,7 +47,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/web-hosting-uae",
     "/services/website-maintenance-support-dubai",
     "/services/whatsapp-automation-gcc",
-    "/sovereign-dashboard",
     "/sovereign-sales-agent",
     "/workflow-automation-uae"
   ];

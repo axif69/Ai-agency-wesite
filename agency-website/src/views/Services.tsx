@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-import { Code, Megaphone, PenTool, ArrowRight, Monitor, ShoppingCart, Server, HeadphonesIcon, Search, MousePointerClick, Share2, Bot, Palette, Image, Layers, Workflow, Languages, Target, Activity, Shield, Zap } from "lucide-react";
+import { Code, Megaphone, PenTool, ArrowRight, Monitor, ShoppingCart, Server, HeadphonesIcon, Search, MousePointerClick, Share2, Bot, Palette, Image, Layers, Workflow, Languages, Target, Shield, Zap } from "lucide-react";
 
 const categories = [
   {
@@ -11,7 +11,6 @@ const categories = [
     services: [
       { title: "Arabic AI Hub", desc: "Sovereign Khaleeji NLP and culturally-aligned Arabic intelligence for UAE government and enterprise. Beyond translation—neural alignment.", features: ["Khaleeji NLP", "Cultural Alignment", "Sovereign Compute", "Bilingual Swarms"], link: "/arabic-ai-hub", icon: <Languages className="w-8 h-8" /> },
       { title: "Sovereign Sales Agent", desc: "The ultimate B2B acquisition machine. Autonomous agents that hunt, qualify, and close high-ticket deals in the GCC with 25%+ reply rates.", features: ["Autonomous SDR", "OSINT Intelligence", "WhatsApp Closing", "24/7 Hunting"], link: "/sovereign-sales-agent", icon: <Target className="w-8 h-8" /> },
-      { title: "Sovereign Command Center", desc: "Live, transparent monitoring of your AI swarms. Real-time reasoning logs, ROI metrics, and regional infrastructure health tracking.", features: ["Live Reasoning Logs", "ROI Analytics", "System Health", "Audit Trails"], link: "/sovereign-dashboard", icon: <Activity className="w-8 h-8" /> },
       { title: "AI Automation Dubai", desc: "Enterprise-grade agentic workflows that decouple growth from headcount. Architecting the 'Brain' of your organization.", features: ["Cognitive Workflows", "Private LLMs", "Process Mapping", "48-Hour Impact"], link: "/ai-automation-agency-dubai", icon: <Workflow className="w-8 h-8" /> },
     ]
   },
