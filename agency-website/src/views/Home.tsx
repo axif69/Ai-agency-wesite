@@ -453,7 +453,7 @@ export default function Home() {
               Three focused services built to generate organic calls and bookings.
             </h2>
             <p className="text-white/60 text-sm md:text-base leading-relaxed">
-              We are not spreading the homepage across every possible service. The lead engine now points visitors toward three clear offers: AI automation agency Dubai, WhatsApp chatbot Dubai and web design company Dubai.
+              We help UAE businesses turn their website and WhatsApp enquiries into better follow-up, cleaner lead tracking and more booked conversations.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -493,6 +493,7 @@ export default function Home() {
               { title: "AI Automation Agency Dubai", href: "/ai-automation-agency-dubai", meta: "Leads, CRM, workflows" },
               { title: "AI Automation Agency Sharjah", href: "/ai-automation-sharjah", meta: "Sharjah local automation" },
               { title: "WhatsApp Chatbot Dubai", href: "/ai-chatbots-dubai", meta: "Lead capture and replies" },
+              { title: "WhatsApp Chatbot Sharjah", href: "/whatsapp-chatbot-sharjah", meta: "Sharjah chatbot leads" },
               { title: "Web Design Company Dubai", href: "/services/web-design-dubai-sharjah", meta: "Modern SEO websites" },
               { title: "Web Design Company Sharjah", href: "/web-design-sharjah", meta: "Local lead websites" },
               { title: "Free Growth Audit", href: "/free-growth-audit", meta: "Website, WhatsApp, AI review" }

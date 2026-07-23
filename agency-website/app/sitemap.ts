@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ai-automation-agency-dubai",
     "/ai-automation-sharjah",
     "/ai-chatbots-dubai",
+    "/whatsapp-chatbot-sharjah",
     "/ai-consulting-uae",
     "/ai-lead-generation-agency-dubai",
     "/ai-marketing-dubai",
