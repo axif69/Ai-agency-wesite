@@ -34,7 +34,51 @@ export default function Design() {
       
 
       {/* Hero Section */}
-      <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12 font-serif text-white tracking-tight leading-tight">
+      <section className="px-6 md:px-12 py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.12),transparent_36%),linear-gradient(to_bottom,#050505,#080808)]" />
+        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-14 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <span className="micro-label mb-6 block text-green-400">Graphic Design Dubai & Sharjah</span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-tight leading-[0.92]">
+              Brand visuals, pitch decks and marketing assets that look professional everywhere.
+            </h1>
+            <p className="mt-8 text-lg md:text-xl text-white/65 font-light leading-relaxed max-w-3xl">
+              Asif Digital creates graphic design systems for UAE businesses: social media creatives, company profiles, brochures, ad visuals, pitch decks and digital assets that support sales and brand trust.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 mt-10">
+              <Link href="/free-growth-audit" className="inline-flex h-12 items-center justify-center gap-3 rounded-full bg-white px-7 text-xs font-bold uppercase tracking-[0.18em] text-black transition hover:bg-emerald-100">
+                Book Free Design Audit <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/services/branding-agency-dubai-sharjah" className="inline-flex h-12 items-center justify-center gap-3 rounded-full border border-white/15 px-7 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white/10">
+                See Branding Service
+              </Link>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6"
+          >
+            <div className="grid grid-cols-2 gap-4">
+              {["Company Profile", "Social Creatives", "Pitch Deck", "Ad Visuals"].map((item, i) => (
+                <div key={item} className="aspect-[4/3] rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.12] to-green-400/[0.08] p-5 flex flex-col justify-between">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-green-300">0{i + 1}</span>
+                  <span className="font-serif text-xl leading-tight">{item}</span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-5 text-sm text-white/50">Example design asset system — built around your real brand, offer and campaign needs.</p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1541462608141-ad4d1f995502?auto=format,compress&fm=webp&q=75&w=1200)' }}
@@ -68,8 +112,8 @@ export default function Design() {
             Capture your audience's attention with the top Graphic Design Agency in Dubai and Sharjah. Our creative team delivers premium marketing materials, social media graphics, and print designs that elevate your brand and communicate your message effectively.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link href="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">
-              Get A Design Quote <ArrowRight className="w-4 h-4" />
+            <Link href="/free-growth-audit" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center gap-2">
+              Book Free Design Audit <ArrowRight className="w-4 h-4" />
             </Link>
             <Link href="/portfolio" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:border-white transition-colors">
               View Design Portfolio
