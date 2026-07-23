@@ -344,23 +344,23 @@ export default function Home() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80">
-              Dubai's Premier AI Automation & Digital Architects
+              AI Automation, WhatsApp Chatbots & Web Design in Dubai
             </span>
           </motion.div>
           
           <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="text-4xl sm:text-6xl md:text-7xl lg:text-[6vw] xl:text-[5.5vw] font-serif font-bold leading-[1.1] tracking-tight mb-4 max-w-6xl mx-auto drop-shadow-2xl">
-            Turn Your Digital Presence <br /><span className="italic text-white/70 tracking-normal pr-2">Into an AI Revenue Engine.</span>
+            Get More Leads From Your Website, <br /><span className="italic text-white/70 tracking-normal pr-2">WhatsApp & AI Automation.</span>
           </motion.h1>
           
           <TextGenerateEffect 
-            words="We build high-performance digital storefronts powered by intelligent AI agents. Capture leads, answer complex queries in English and Arabic, and book meetings on autopilot, 24/7."
+            words="Asif Digital helps UAE businesses build fast websites, WhatsApp chatbots and AI automation systems that capture enquiries, answer customers and turn traffic into booked calls."
             className="text-base md:text-lg lg:text-xl text-white/95 font-normal max-w-3xl mx-auto font-sans leading-relaxed mb-6 drop-shadow-md"
           />
           
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1 }} className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0 justify-center z-10">
             <MagneticButton>
-              <Link href="/contact" aria-label="Deploy My AI Agent" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer">
-                Deploy My AI Agent <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
+              <Link href="/free-growth-audit" aria-label="Book Free Growth Audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer">
+                Book Free Growth Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
               </Link>
             </MagneticButton>
             <MagneticButton>
@@ -418,17 +418,15 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-serif tracking-tight gsap-reveal">Choose what you need right now.</h2>
           </div>
           <p className="text-white/55 text-sm max-w-xl gsap-reveal">
-            If you came here with a specific intent, these paths get you to the right page faster than a full homepage scroll.
+            We are focusing the business around three practical services that UAE companies already search for and buy.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
-            { title: "Need More Leads", desc: "SEO, PPC, and AI sales capture.", href: "/ai-lead-generation-agency-dubai" },
-            { title: "Need a Better Website", desc: "Fast design, development, and support.", href: "/services/web-design-dubai-sharjah" },
-            { title: "Need AI for Real Estate", desc: "Property leads, tenant support, and workflows.", href: "/ai-real-estate-uae" },
-            { title: "Need WhatsApp Automation", desc: "Faster replies and lead qualification.", href: "/services/whatsapp-automation-gcc" },
-            { title: "Need AEO / GEO Visibility", desc: "Content built for search and answer engines.", href: "/services/seo-agency-dubai-sharjah-uae" }
+            { title: "AI Automation Agency Dubai", desc: "Automate lead routing, CRM updates, reporting and repetitive business workflows.", href: "/ai-automation-agency-dubai" },
+            { title: "WhatsApp Chatbot Dubai", desc: "Answer FAQs, qualify leads and send enquiries to you automatically on WhatsApp.", href: "/ai-chatbots-dubai" },
+            { title: "Web Design Company Dubai", desc: "Build a fast, trustworthy website that converts visitors into calls and bookings.", href: "/services/web-design-dubai-sharjah" }
           ].map((item, i) => (
             <Link
               key={i}
@@ -450,24 +448,19 @@ export default function Home() {
       <section className="px-6 md:px-12 py-20 border-y border-white/5 bg-black relative z-20" aria-labelledby="seo-cluster-heading">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-start">
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4">Search Authority</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4">Money Services</span>
             <h2 id="seo-cluster-heading" className="text-3xl md:text-5xl font-serif tracking-tight leading-tight mb-6">
-              AI automation agency in Dubai for search, sales and operations.
+              Three focused services built to generate organic calls and bookings.
             </h2>
             <p className="text-white/60 text-sm md:text-base leading-relaxed">
-              Asif Digital helps UAE companies turn websites, WhatsApp conversations, CRMs and content into connected AI systems. We focus on the keywords buyers actually use: AI automation agency Dubai, WhatsApp AI chatbot Dubai, AI real estate automation Dubai, AEO agency Dubai and Arabic AI chatbot UAE.
+              We are not spreading the homepage across every possible service. The lead engine now points visitors toward three clear offers: AI automation agency Dubai, WhatsApp chatbot Dubai and web design company Dubai.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { title: "AI Marketing Agency Dubai", desc: "SEO, paid media, content systems, conversion tracking and AI-assisted growth workflows for UAE companies.", href: "/ai-marketing-dubai" },
-              { title: "AI Automation Agency Dubai", desc: "Custom AI agents, business workflow automation, CRM routing and internal dashboards for UAE teams.", href: "/ai-automation-agency-dubai" },
-              { title: "AI Consulting Dubai", desc: "Workflow audits, AI strategy, chatbot planning, data readiness and practical implementation roadmaps.", href: "/ai-consulting-uae" },
-              { title: "WhatsApp Chatbot Dubai", desc: "Website and WhatsApp bots that answer FAQs, qualify leads, book calls and support Arabic-English conversations.", href: "/ai-chatbots-dubai" },
-              { title: "SEO Agency Dubai", desc: "Search visibility for Google rankings, AI Overviews, answer engines and entity-based recommendation systems.", href: "/services/seo-agency-dubai-sharjah-uae" },
-              { title: "Web Design Company Dubai", desc: "Fast, SEO-ready websites for service businesses, real estate teams, ecommerce brands and UAE companies.", href: "/services/web-design-dubai-sharjah" },
-              { title: "Real Estate Lead Generation Dubai", desc: "Landing pages, WhatsApp follow-up, CRM routing and AI-assisted sales workflows for property teams.", href: "/ai-lead-generation-agency-dubai" },
-              { title: "Real Estate CRM Dubai", desc: "Connected property websites, lead capture, WhatsApp automation, CRM routing and reporting systems.", href: "/real-estate-digital-solutions-uae" }
+              { title: "AI Automation Agency Dubai", desc: "Connect forms, WhatsApp, email, CRM and dashboards so your team stops losing leads in manual follow-up.", href: "/ai-automation-agency-dubai" },
+              { title: "WhatsApp Chatbot Dubai", desc: "A WhatsApp and website chatbot that answers questions, collects contact details and sends qualified enquiries to you.", href: "/ai-chatbots-dubai" },
+              { title: "Web Design Company Dubai", desc: "A fast, mobile-first website with clear service pages, proof, CTAs and tracking built for organic lead conversion.", href: "/services/web-design-dubai-sharjah" }
             ].map((item) => (
               <Link key={item.href} href={item.href} className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 hover:border-green-400/30 hover:bg-white/[0.04] transition-colors">
                 <h3 className="font-serif text-xl mb-3">{item.title}</h3>
@@ -648,7 +641,7 @@ export default function Home() {
                   Ready to deploy these capabilities in your business?
                 </h3>
               </div>
-              <Link href="/contact" className="inline-flex items-center justify-center gap-3 bg-white text-black py-4 px-6 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors w-full">
+              <Link href="/free-growth-audit" className="inline-flex items-center justify-center gap-3 bg-white text-black py-4 px-6 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors w-full">
                 Get a Free Quote <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -1151,7 +1144,7 @@ export default function Home() {
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <MagneticButton>
               <Link 
-                href="/contact"
+                href="/free-growth-audit"
                 className="bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs border border-white/20 hover:bg-black/80 transition-all flex items-center justify-center gap-3 shadow-2xl hover:scale-105 active:scale-95"
               >
                 Book My Free Strategy Call <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
@@ -1190,6 +1183,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 

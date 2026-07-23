@@ -1,8 +1,8 @@
 import Home from '../src/views/Home';
 
 export const metadata = {
-  title: "AI Automation Agency Dubai | AI, SEO, AEO & Chatbots",
-  description: "Asif Digital builds AI automation, WhatsApp chatbots, AEO/GEO search visibility, real estate CRM workflows and high-performance websites for Dubai and UAE businesses.",
+  title: "AI Automation, WhatsApp Chatbots & Web Design Dubai",
+  description: "Asif Digital builds AI automation systems, WhatsApp chatbots and high-performance websites for Dubai and UAE businesses that need more organic leads, calls and bookings.",
   alternates: {
     canonical: "https://www.asifdigital.agency"
   }
@@ -14,7 +14,7 @@ export default function Page() {
     "@type": ["Organization", "ProfessionalService"],
     "name": "Asif Digital",
     "alternateName": "Ai Automation & Web Development & Graphics design Services in Sharjah UAE",
-    "description": "AI Automation Agency offering AI agents, workflow automation, web development and digital marketing for UAE businesses",
+    "description": "AI automation, WhatsApp chatbot and web design company helping UAE businesses generate leads, calls and bookings",
     "url": "https://www.asifdigital.agency/",
     "telephone": "054 586 6094",
     "address": {

@@ -1,262 +1,184 @@
 "use client";
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 
-import { 
-  ArrowRight, Shield, Zap, Globe, Database, Cpu, Lock, 
-  MessageSquare, LayoutGrid, CheckCircle2, Bot, Languages, 
-  HelpCircle, Sparkles
-} from "lucide-react";
+import { motion } from "framer-motion";
 import Link from "next/link";
+import { ArrowRight, Bot, CheckCircle, Clock, Database, HelpCircle, Languages, MessageSquare, Phone, ShieldCheck, UserCheck, Zap } from "lucide-react";
+
+const useCases = [
+  "Real estate teams can qualify buyers, collect budget and location, send brochures, and book viewings.",
+  "Clinics and salons can answer service questions, collect patient details, and push users toward appointments.",
+  "Ecommerce brands can answer delivery, product, order and return questions without manual replies.",
+  "Service businesses can capture job details, area, urgency and contact information before a human calls.",
+];
+
+const features = [
+  { icon: <MessageSquare className="w-6 h-6" />, title: "Instant WhatsApp replies", desc: "Answer common questions immediately, even outside working hours, while keeping human handoff available." },
+  { icon: <UserCheck className="w-6 h-6" />, title: "Lead qualification", desc: "Collect name, phone, budget, location, service need and urgency before your team speaks to the prospect." },
+  { icon: <Phone className="w-6 h-6" />, title: "Appointment and call booking", desc: "Move serious prospects toward a call, viewing, consultation or appointment instead of leaving chats unfinished." },
+  { icon: <Database className="w-6 h-6" />, title: "CRM and sheet updates", desc: "Send qualified enquiries into HubSpot, Zoho, Google Sheets, email alerts or your internal workflow." },
+];
+
+const pricing = [
+  { title: "Basic WhatsApp lead bot", price: "From AED 1,500", desc: "FAQ replies, lead capture, notification and simple handoff." },
+  { title: "Business chatbot system", price: "AED 3,000-7,000+", desc: "WhatsApp flows, website bot, CRM updates, appointment routing and reporting." },
+  { title: "Custom AI chatbot", price: "Scoped after audit", desc: "Advanced AI answers trained on your content, multi-language support and custom integrations." },
+];
+
+const faqs = [
+  { q: "What is a WhatsApp chatbot in Dubai?", a: "It is an automated WhatsApp assistant for your business. It can answer FAQs, collect lead details, qualify prospects, share links or brochures, and alert your team when a human should take over." },
+  { q: "Can the chatbot speak Arabic and English?", a: "Yes. We can build English, Arabic or bilingual chatbot flows depending on your audience. For sensitive answers, we keep human approval and escalation rules." },
+  { q: "Can it connect with my CRM?", a: "Yes. We can connect WhatsApp enquiries to HubSpot, Zoho, Salesforce, Google Sheets, email notifications or a custom dashboard depending on your setup." },
+  { q: "How much does a WhatsApp chatbot cost in Dubai?", a: "A simple lead chatbot can start from around AED 1,500. More complete systems with CRM, appointment booking, bilingual flows and reporting cost more depending on the workflow." },
+  { q: "Will the bot replace my sales team?", a: "No. The best setup helps your team respond faster. The chatbot handles repetitive questions and data collection, then passes serious or complex enquiries to a human." },
+];
 
 export default function AiChatbotsDubai() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
-
-  const faqs = [
-    {
-      q: "What is the difference between a website chatbot and a WhatsApp chatbot in Dubai?",
-      a: "A website chatbot lives directly on your landing pages and handles web-based user queries, pricing FAQs, and support tickets. A WhatsApp chatbot in Dubai operates inside the WhatsApp Business API, allowing UAE customers to text your business directly, check order status, browse catalogues, and buy products."
-    },
-    {
-      q: "How do your chatbots support both Arabic and English?",
-      a: "Our chatbots are powered by advanced LLMs trained on local dialects. This ensures your arabic chatbot in dubai understands Khaleeji Arabic slang, business phrasing, and formatting, switching between English and Arabic dynamically."
-    },
-    {
-      q: "Do you integrate the chatbot with HubSpot or Salesforce CRMs?",
-      a: "Yes. Our chatbot development in the UAE includes direct integrations into major CRM systems like Salesforce, HubSpot, Zoho, and custom ERP databases to sync lead data automatically."
-    },
-    {
-      q: "What is the typical development cost for a custom AI chatbot in Dubai?",
-      a: "The cost depends on the workflow complexity and required integrations. We provide a custom quote for every chatbot development project in Dubai. Book your free AI consultation with Asif Digital for a personalized estimate."
-    },
-    {
-      q: "Do your chatbots support human-in-the-loop fallback?",
-      a: "Yes. If the AI chatbot encounters a highly complex query or a VIP lead in Dubai, it can flag the conversation and seamlessly hand it off to one of your human agents via email or CRM notifications."
-    }
-  ];
-
-  const chatbotSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "AI Chatbot Development Dubai",
-    "serviceType": "AI Chatbot Development & Multilingual Conversational Solutions",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Asif Digital Agency",
-      "url": "https://www.asifdigital.agency"
-    },
-    "areaServed": [
-      { "@type": "City", "name": "Dubai" },
-      { "@type": "City", "name": "Sharjah" },
-      { "@type": "Country", "name": "United Arab Emirates" }
-    ],
-    "description": "Custom AI chatbot development in Dubai, specializing in WhatsApp chatbots, website customer support bots, and bilingual English/Arabic setups."
-  };
-
   return (
-    <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(chatbotSchema) }}
-      />
-      
+    <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
+      <section className="relative overflow-hidden px-6 md:px-12 py-24 md:py-32">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.13),transparent_36%),linear-gradient(to_bottom,#050505,#080808)]" />
+        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-14 items-center">
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <span className="micro-label block mb-6 text-green-400">WhatsApp Chatbot Dubai</span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[0.92] tracking-tight mb-8">WhatsApp Chatbot Dubai.</h1>
+            <p className="text-lg md:text-xl text-white/65 font-light leading-relaxed max-w-3xl mb-10">
+              Turn WhatsApp messages into qualified leads, booked calls and cleaner CRM records. Asif Digital builds WhatsApp chatbots for Dubai and UAE businesses that need faster replies without losing human control.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/free-growth-audit" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/85 transition-colors inline-flex items-center justify-center gap-3">
+                Book Free Chatbot Audit <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/ai-automation-agency-dubai" className="border border-white/15 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:border-green-400/50 transition-colors inline-flex items-center justify-center gap-3">
+                See AI Automation
+              </Link>
+            </div>
+          </motion.div>
 
-      {/* Hero Section */}
-      <section className="min-h-[90vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#0a0a0a] to-[#050505]" />
-          <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:100px_100px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-white/[0.01] rounded-full blur-[150px]" />
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 md:p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-green-400/10 border border-green-400/20 flex items-center justify-center text-green-300"><Bot className="w-6 h-6" /></div>
+              <div>
+                <h2 className="font-serif text-2xl">Example chatbot flow</h2>
+                <p className="text-white/45 text-sm">Question → qualification → human handoff</p>
+              </div>
+            </div>
+            {["Customer sends WhatsApp message", "Bot answers common question", "Bot collects name and requirement", "Lead is tagged and saved", "Team receives handoff alert"].map((step, i) => (
+              <div key={step} className="flex items-center gap-3 rounded-2xl border border-white/8 bg-black/40 p-4 mb-3">
+                <span className="w-7 h-7 rounded-full bg-white text-black text-xs font-bold flex items-center justify-center">{i + 1}</span>
+                <span className="text-sm text-white/75">{step}</span>
+              </div>
+            ))}
+          </motion.div>
         </div>
-        
-        <motion.div style={{ opacity, scale }} className="max-w-6xl relative z-10">
-          <span className="micro-label block mb-8 text-white/30 tracking-[1em] uppercase text-[10px] font-bold">
-            Multilingual Conversational AI
-          </span>
-          <h1 className="text-5xl md:text-9xl font-serif tracking-tighter leading-[0.85] mb-12">
-            AI Chatbot<br/>
-            <span className="text-white/60 italic font-light tracking-normal">Development Dubai.</span>
-          </h1>
-          <p className="text-lg md:text-2xl text-white/50 font-light max-w-3xl mx-auto leading-relaxed mb-16">
-            Engage your customers instantly in English and Arabic. We offer bespoke <strong>AI chatbot development in Dubai</strong> to build high-performance website chatbots and WhatsApp bots for UAE businesses.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-            <Link href="/contact" className="bg-white text-black px-12 py-6 rounded-full font-bold uppercase tracking-widest text-[11px] hover:scale-105 transition-all shadow-[0_0_50px_rgba(255,255,255,0.2)]">
-              Book Your Free AI Consultation
-            </Link>
-          </div>
-        </motion.div>
       </section>
 
-      <section className="py-20 px-6 md:px-12 border-y border-white/5 bg-black">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.75fr_1.25fr] gap-10 items-start">
+      <section className="px-6 md:px-12 py-20 border-y border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12">
           <div>
-            <span className="micro-label block mb-4 text-green-400">Primary chatbot keywords</span>
-            <h2 className="text-3xl md:text-5xl font-serif leading-tight">
-              WhatsApp AI chatbot Dubai, website chatbot UAE and Arabic chatbot support in one build.
-            </h2>
+            <span className="micro-label block mb-4 text-green-400">The real problem</span>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-6">Most leads do not disappear. They wait too long for a reply.</h2>
+            <p className="text-white/55 leading-relaxed">Dubai buyers expect quick answers. A WhatsApp chatbot helps your business reply faster, collect useful details and move serious prospects to a human conversation.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              ["WhatsApp AI chatbot Dubai", "Qualify leads, answer service questions, send brochures and route customer details into your CRM."],
-              ["AI chatbot for website Dubai", "Engage visitors while they are reading your landing pages, pricing pages or service pages."],
-              ["Arabic chatbot UAE", "Support Arabic-English switching, Gulf phrasing, source-grounded replies and human escalation."],
-              ["CRM chatbot integration", "Connect HubSpot, Zoho, Salesforce, spreadsheets, email alerts or custom dashboards."]
-            ].map(([title, description]) => (
-              <div key={title} className="rounded-2xl border border-white/8 bg-white/[0.02] p-6">
-                <h3 className="font-serif text-xl mb-3">{title}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{description}</p>
+            {["24/7 first response", "Lead qualification", "Appointment routing", "CRM handoff"].map((item) => (
+              <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+                <CheckCircle className="w-5 h-5 text-green-400 mb-4" />
+                <p className="text-white/70">{item}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* WhatsApp Chatbot Section */}
-      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
-          <div className="sticky top-32">
-            <h2 className="text-4xl md:text-6xl font-serif mb-8 leading-tight">
-              WhatsApp Chatbots<br/>for UAE Business
-            </h2>
-            <div className="h-px w-20 bg-white/20 mb-8" />
-            <p className="text-white/40 text-sm uppercase tracking-widest font-bold mb-6">Channel Authority</p>
+      <section className="px-6 md:px-12 py-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mb-14">
+            <span className="micro-label block mb-4 text-green-400">What we build</span>
+            <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-6">Practical chatbot systems, not gimmicks.</h2>
+            <p className="text-white/55 leading-relaxed">The goal is simple: reduce missed enquiries, improve response time and give your team cleaner lead information.</p>
           </div>
-          <div className="space-y-12 text-white/70 font-light text-lg leading-relaxed">
-            <p>
-              In Dubai, relationships and fast communication are key. Deploying a custom <strong>whatsapp chatbot in dubai</strong> puts your brand directly into your customers' mobile messaging app, where they spend most of their time.
-            </p>
-            <p>
-              Our chatbot systems can automatically answer FAQs, qualify potential leads, send brochures, and book viewings or appointments. By automating these tasks, you capture and convert high-intent customers instantly in the UAE.
-            </p>
-            <p>
-              We hook up the WhatsApp Business API directly to your systems, ensuring fully compliant and secure messaging under UAE guidelines.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {features.map((item) => (
+              <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-8">
+                <div className="text-green-300 mb-6">{item.icon}</div>
+                <h3 className="text-2xl font-serif mb-4">{item.title}</h3>
+                <p className="text-white/55 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Website Support Chatbots */}
-      <section className="py-32 bg-white/[0.01] border-y border-white/5 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div>
-              <span className="micro-label block mb-6">Web Optimization</span>
-              <h2 className="text-4xl md:text-6xl font-serif mb-10 leading-tight">Website Chatbots for Support</h2>
-              <div className="space-y-8 text-white/50 font-light text-lg leading-relaxed">
-                <p>
-                  A standard website chatbot in Dubai keeps your sales and support desk active 24/7. When a user lands on your site, our custom AI chatbot engages them within 5 seconds, answering questions about your services, pricing, or locations.
-                </p>
-                <p>
-                  By using real-time retrieval-augmented generation (RAG), the bot answers queries based purely on your company documents, ensuring zero hallucinations and highly accurate customer support.
-                </p>
+      <section className="px-6 md:px-12 py-24 bg-white text-black rounded-[2.5rem] mx-4 md:mx-12">
+        <div className="max-w-7xl mx-auto">
+          <span className="text-[10px] uppercase tracking-[0.35em] font-bold text-black/45 block mb-4">UAE use cases</span>
+          <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-12">Built around how customers message businesses in Dubai.</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {useCases.map((item) => (
+              <div key={item} className="rounded-3xl border border-black/10 bg-black/[0.03] p-7">
+                <p className="text-black/65 leading-relaxed">{item}</p>
               </div>
-            </div>
-            <div className="p-10 border border-white/5 bg-black rounded-3xl">
-              <h3 className="text-2xl font-serif mb-8 flex items-center gap-3">
-                <Languages className="w-6 h-6 text-white/60" /> Multilingual Capabilities
-              </h3>
-              <p className="text-white/60 font-light leading-relaxed mb-6">
-                Our builds support native <strong>arabic chatbot dubai</strong> solutions alongside English, switching languages in real-time as the customer writes.
-              </p>
-              <div className="flex gap-4">
-                <span className="px-3 py-1.5 rounded-full border border-white/10 text-xs font-bold text-white/40">English Support</span>
-                <span className="px-3 py-1.5 rounded-full border border-white/10 text-xs font-bold text-white/40">Arabic (Khaleeji) Support</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Verticals Section */}
-      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="text-center mb-24">
-          <span className="micro-label block mb-4">Vertical Focus</span>
-          <h2 className="text-4xl md:text-6xl font-serif mb-8">Built for UAE Verticals.</h2>
-          <p className="text-white/40 max-w-2xl mx-auto">We provide tailored chatbot development in the UAE for specific sectors.</p>
+      <section className="px-6 md:px-12 py-24">
+        <div className="max-w-7xl mx-auto">
+          <span className="micro-label block mb-4 text-green-400">Cost and starting point</span>
+          <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-12">How much does a WhatsApp chatbot cost in Dubai?</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {pricing.map((item) => (
+              <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-8">
+                <h3 className="text-2xl font-serif mb-3">{item.title}</h3>
+                <p className="text-green-300 font-bold tracking-wide mb-5">{item.price}</p>
+                <p className="text-white/55 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="px-6 md:px-12 py-24 bg-black border-y border-white/5">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
-            { title: "Real Estate Chatbots", desc: "Automate real estate lead capture in Dubai. Capture investor budgets, share floor plans, and book property viewings instantly." },
-            { title: "Retail & E-commerce", desc: "Enable automated customer order tracking, handle shipping FAQs, and process shopping inquiries directly inside WhatsApp." },
-            { title: "Hospitality & Clinics", desc: "Manage bookings, confirm appointments, and send directions to clinics or hotels automatically in Dubai." }
-          ].map((item, i) => (
-            <div key={i} className="p-8 border border-white/5 bg-black rounded-3xl">
-              <h4 className="text-xl font-bold mb-4">{item.title}</h4>
-              <p className="text-sm text-white/40 leading-relaxed font-light">{item.desc}</p>
+            { icon: <Clock className="w-5 h-5" />, title: "Faster response", desc: "Reply before the lead goes to another business." },
+            { icon: <Languages className="w-5 h-5" />, title: "Arabic and English", desc: "Support bilingual enquiries with clear handoff rules." },
+            { icon: <ShieldCheck className="w-5 h-5" />, title: "Human control", desc: "Keep your team involved for sensitive or high-value chats." },
+          ].map((item) => (
+            <div key={item.title} className="rounded-3xl border border-white/10 bg-white/[0.02] p-7">
+              <div className="text-green-300 mb-5">{item.icon}</div>
+              <h3 className="text-xl font-serif mb-3">{item.title}</h3>
+              <p className="text-sm text-white/55 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Build Process */}
-      <section className="py-32 bg-white/[0.01] border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-24">
-            <span className="micro-label block mb-4">Our Methodology</span>
-            <h2 className="text-4xl md:text-6xl font-serif mb-8">Chatbot Build Process.</h2>
-            <p className="text-white/40 max-w-2xl mx-auto">From scoping to integration, we handle the entire build lifecycle in Dubai.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { step: "01", title: "Intake & Strategy", desc: "We define user intents, collect training documents, and establish connection scopes." },
-              { step: "02", title: "Prompt Engineering", desc: "We write instructions, set guardrails, and train LLMs to represent your UAE brand voice." },
-              { step: "03", title: "CRM Integration", desc: "We connect the chatbot to Salesforce, HubSpot, or custom databases for direct syncs." },
-              { step: "04", title: "Testing & Launch", desc: "We run quality checks, verify security compliance, and deploy live in Dubai." }
-            ].map((item, i) => (
-              <div key={i} className="p-8 border border-white/5 bg-black rounded-3xl">
-                <div className="text-3xl font-serif mb-4 opacity-30">{item.step}</div>
-                <h4 className="text-lg font-bold mb-3">{item.title}</h4>
-                <p className="text-xs text-white/40 leading-relaxed font-light">{item.desc}</p>
+      <section className="px-6 md:px-12 py-24">
+        <div className="max-w-4xl mx-auto">
+          <HelpCircle className="w-10 h-10 text-green-400 mb-6" />
+          <h2 className="text-4xl md:text-5xl font-serif mb-10">WhatsApp chatbot FAQs.</h2>
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <div key={faq.q} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+                <h3 className="font-bold mb-3">{faq.q}</h3>
+                <p className="text-white/55 leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-32 bg-black">
-        <div className="max-w-4xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-20">
-            <HelpCircle className="w-12 h-12 text-white/25 mx-auto mb-6" />
-            <h2 className="text-3xl md:text-5xl font-serif mb-4">Frequently Asked Questions</h2>
-            <p className="text-white/40">Answers to common questions about custom chatbot development in Dubai.</p>
-          </div>
-
-          <div className="space-y-6">
-            {faqs.map((faq, i) => (
-              <div key={i} className="p-8 border border-white/5 bg-white/[0.01] rounded-3xl">
-                <h4 className="text-lg font-bold mb-4 flex items-start gap-4">
-                  <span className="text-white/30 font-serif">Q.</span>
-                  {faq.q}
-                </h4>
-                <p className="text-sm text-white/40 leading-relaxed font-light pl-8 border-l border-white/10">
-                  {faq.a}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-40 px-6 md:px-12 text-center relative overflow-hidden border-t border-white/5 bg-[#080808]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_0%,transparent_70%)]" />
-        <div className="max-w-4xl mx-auto relative z-10">
-          <h2 className="text-4xl md:text-7xl font-serif mb-8">Deploy Your Custom Bot</h2>
-          <p className="text-white/50 font-light text-lg mb-12 max-w-xl mx-auto">
-            Book your free AI consultation with Asif Digital. Let us engineer a powerful website or WhatsApp chatbot for your Dubai business to boost your customer response times.
-          </p>
-          <Link href="/contact" className="bg-white text-black px-12 py-6 rounded-full font-bold uppercase tracking-widest text-[11px] hover:scale-105 transition-all shadow-[0_0_50px_rgba(255,255,255,0.2)]">
-            Book your free AI consultation with Asif Digital
-          </Link>
-        </div>
+      <section className="px-6 md:px-12 py-28 text-center bg-[#080808] border-t border-white/5">
+        <Zap className="w-10 h-10 text-green-400 mx-auto mb-8" />
+        <h2 className="text-5xl md:text-7xl font-serif leading-tight mb-8">Want WhatsApp to capture better leads?</h2>
+        <p className="text-white/55 text-lg leading-relaxed mb-10 max-w-3xl mx-auto">Send us your website and current WhatsApp process. We will suggest the first chatbot flow that can save time and protect more enquiries.</p>
+        <Link href="/free-growth-audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/85 transition-colors inline-flex items-center justify-center gap-3">
+          Book Free Chatbot Audit <ArrowRight className="w-4 h-4" />
+        </Link>
       </section>
     </div>
   );
 }
+

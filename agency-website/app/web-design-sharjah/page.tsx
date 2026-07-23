@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/services/WebDesignSharjah';
 
 export const metadata = {
-  title: "Web Design Company in Sharjah | Custom Website Design",
-  description: "Custom web design company in Sharjah. We build fast, mobile-friendly websites that explain your services and generate local inquiries.",
+  title: "Web Design Company Sharjah | SEO Websites for Local Leads",
+  description: "Web design company in Sharjah building fast, modern, SEO-ready websites with WhatsApp CTAs, lead forms and local service pages for UAE businesses.",
   alternates: {
     canonical: "https://www.asifdigital.agency/web-design-sharjah"
   },
   openGraph: {
-    title: "Web Design Company in Sharjah | Custom Website Design",
-    description: "Custom web design company in Sharjah. We build fast, mobile-friendly websites that explain your services and generate local inquiries.",
+    title: "Web Design Company Sharjah | SEO Websites for Local Leads",
+    description: "Web design company in Sharjah building fast, modern, SEO-ready websites with WhatsApp CTAs, lead forms and local service pages for UAE businesses.",
     url: "https://www.asifdigital.agency/web-design-sharjah",
     siteName: "Asif Digital",
     images: [
@@ -24,8 +24,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Web Design Company in Sharjah | Custom Website Design",
-    description: "Custom web design company in Sharjah. We build fast, mobile-friendly websites that explain your services and generate local inquiries.",
+    title: "Web Design Company Sharjah | SEO Websites for Local Leads",
+    description: "Web design company in Sharjah building fast, modern, SEO-ready websites with WhatsApp CTAs, lead forms and local service pages for UAE businesses.",
     images: ["https://www.asifdigital.agency/images/sharjah_web_design_hero.png"]
   }
 };

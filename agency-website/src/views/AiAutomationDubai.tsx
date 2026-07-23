@@ -1,344 +1,364 @@
 "use client";
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 
-import { 
-  ArrowRight, Shield, Zap, Globe, Database, Cog, Search, 
-  BarChart3, TrendingUp, Monitor, MessageSquare, 
-  Target, Cpu, Network, Lock, Sparkles, Languages,
-  Rocket, Layers, PieChart, Users, Building2, Workflow,
-  FileCode, Binary, Boxes, Fingerprint, HardDrive, Terminal
-} from "lucide-react";
+import { motion } from "framer-motion";
 import Link from "next/link";
+import {
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  Database,
+  FileText,
+  Mail,
+  MessageSquare,
+  Phone,
+  Shield,
+  Workflow,
+  Zap,
+} from "lucide-react";
+
+const problems = [
+  "Leads come from website forms, WhatsApp, Instagram, calls and email — but nobody follows up fast enough.",
+  "Your team copies the same customer details into spreadsheets, CRM, email and WhatsApp again and again.",
+  "Managers do not know which enquiries are new, pending, qualified, lost or waiting for action.",
+  "Customers ask the same questions every day and your staff waste time replying manually.",
+];
+
+const automations = [
+  {
+    icon: <MessageSquare className="w-6 h-6" />,
+    title: "Lead capture + WhatsApp follow-up",
+    desc: "When someone fills a form or messages you, the system captures the enquiry, asks basic qualification questions and alerts your team instantly.",
+  },
+  {
+    icon: <Database className="w-6 h-6" />,
+    title: "CRM routing and updates",
+    desc: "Send each lead to the right person with source, service interest, budget, language, phone number and next action already attached.",
+  },
+  {
+    icon: <Mail className="w-6 h-6" />,
+    title: "Email and document automation",
+    desc: "Generate confirmations, proposal drafts, intake summaries, quotation notes and follow-up reminders without manual copy-paste.",
+  },
+  {
+    icon: <FileText className="w-6 h-6" />,
+    title: "Reports and dashboards",
+    desc: "Create simple dashboards showing new leads, response time, follow-up status, source quality and bottlenecks.",
+  },
+];
+
+const localUseCases = [
+  "Real estate agencies that need faster portal, website and WhatsApp lead follow-up.",
+  "Clinics, salons and service businesses that want enquiries converted into booked appointments.",
+  "Ecommerce and trading companies that need order, quotation and customer support workflows.",
+  "Consultants and B2B teams that need CRM updates, reminders and pipeline visibility.",
+];
+
+const pricingSignals = [
+  {
+    title: "Starter workflow",
+    price: "From AED 1,500",
+    desc: "A simple lead capture, WhatsApp notification, Google Sheet or CRM update, and follow-up reminder flow.",
+  },
+  {
+    title: "Business automation system",
+    price: "AED 3,000-8,000+",
+    desc: "Multiple connected workflows across forms, WhatsApp, email, CRM, reports and team notifications.",
+  },
+  {
+    title: "Custom AI agent setup",
+    price: "Scoped after audit",
+    desc: "For advanced use cases such as customer intake, document summaries, sales qualification or internal operations.",
+  },
+];
+
+const exampleWorkflows = [
+  {
+    title: "Website enquiry to sales call",
+    steps: ["Form submitted", "Lead saved", "WhatsApp confirmation sent", "Team notified", "Follow-up task created"],
+  },
+  {
+    title: "WhatsApp FAQ to qualified lead",
+    steps: ["Customer asks question", "Bot answers", "Bot collects details", "Lead tagged", "Human takes over"],
+  },
+  {
+    title: "Daily manager report",
+    steps: ["CRM checked", "Open leads counted", "Slow replies flagged", "Summary generated", "Report sent"],
+  },
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Free workflow audit",
+    desc: "We look at how leads and tasks currently move through your business and identify the biggest manual bottleneck.",
+  },
+  {
+    step: "02",
+    title: "Simple automation plan",
+    desc: "You get a practical plan showing what should be automated first, what tools are needed and what result to expect.",
+  },
+  {
+    step: "03",
+    title: "Build and connect",
+    desc: "We connect forms, WhatsApp, email, CRM, sheets, dashboards or internal tools depending on your workflow.",
+  },
+  {
+    step: "04",
+    title: "Test and improve",
+    desc: "We test the flow with real scenarios, add human handoff rules and improve based on what your team actually uses.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What does an AI automation agency actually do?",
+    a: "We find repetitive work inside your business and build systems that handle it automatically. That can include lead capture, WhatsApp replies, CRM updates, follow-up reminders, reports, email drafts, customer intake and internal task routing.",
+  },
+  {
+    q: "Do I need a CRM before starting?",
+    a: "No. If you already have a CRM, we can connect it. If you do not, we can start with a simple workflow using forms, email, WhatsApp and Google Sheets, then move to CRM when the business is ready.",
+  },
+  {
+    q: "Will AI reply to customers without human control?",
+    a: "Only if you want that. For most businesses, we recommend a safe setup where AI answers common questions and collects details, while important or sensitive enquiries go to a human.",
+  },
+  {
+    q: "How much does AI automation cost in Dubai?",
+    a: "A small workflow can start from around AED 1,500, while a fuller business automation system with CRM, WhatsApp, reporting and multiple integrations can cost more depending on complexity. We normally start with a free workflow audit so the first build solves a real bottleneck.",
+  },
+  {
+    q: "How fast can we launch the first automation?",
+    a: "A simple lead capture or follow-up automation can usually be mapped and built quickly. More complex CRM, reporting or internal workflow systems need more planning and testing.",
+  },
+];
 
 export default function AiAutomationDubai() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
-
   return (
-    <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      
-
-      {/* Hero Section: The Industrial Authority */}
-      <section className="min-h-[90vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#0a0a0a] to-[#050505]" />
-          <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:100px_100px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-white/[0.01] rounded-full blur-[150px]" />
-        </div>
-        
-        <motion.div style={{ opacity, scale }} className="max-w-6xl relative z-10">
-          <span className="micro-label block mb-8 text-white/30 tracking-[1em] uppercase text-[10px] font-bold">
-            COGNITIVE OPERATING SYSTEMS v7.0
-          </span>
-          <h1 className="text-5xl md:text-9xl font-serif tracking-tighter leading-[0.85] mb-12">
-            AI Automation<br/>
-            <span className="text-white/60 italic font-light tracking-normal">Agency in Dubai.</span>
-          </h1>
-          <p className="text-lg md:text-2xl text-white/50 font-light max-w-3xl mx-auto leading-relaxed mb-16">
-            Build practical AI agents, workflow automation, CRM routing, WhatsApp follow-ups and reporting dashboards for UAE teams that need cleaner operations and faster customer response.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-            <Link href="/contact" className="bg-white text-black px-12 py-6 rounded-full font-bold uppercase tracking-widest text-[11px] hover:scale-105 transition-all shadow-[0_0_50px_rgba(255,255,255,0.2)]">
-              Schedule Operational Audit
-            </Link>
-            <div className="flex items-center gap-4 text-white/40 text-[10px] uppercase tracking-widest font-bold">
-              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-              Powering Business Continuity in the GCC
+    <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
+      <section className="relative overflow-hidden px-6 md:px-12 py-24 md:py-32">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.12),transparent_35%),linear-gradient(to_bottom,#050505,#080808)]" />
+        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-14 items-center">
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-green-400 block mb-6">
+              AI Automation Agency Dubai
+            </span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[0.92] tracking-tight mb-8">
+              AI Automation Agency Dubai.
+            </h1>
+            <p className="text-lg md:text-xl text-white/65 font-light leading-relaxed max-w-3xl mb-10">
+              Automate leads, CRM updates, WhatsApp replies and daily workflows. Asif Digital builds AI agents and business automation systems for UAE companies that want faster follow-up, practical reporting and fewer repetitive manual tasks.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/free-growth-audit" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/85 transition-colors inline-flex items-center justify-center gap-3">
+                Book Free Automation Audit <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/ai-chatbots-dubai" className="border border-white/15 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:border-green-400/50 transition-colors inline-flex items-center justify-center gap-3">
+                See WhatsApp Chatbots
+              </Link>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 md:p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-green-400/10 border border-green-400/20 flex items-center justify-center text-green-300">
+                <Workflow className="w-6 h-6" />
+              </div>
+              <div>
+                <h2 className="font-serif text-2xl">Example automation</h2>
+                <p className="text-white/45 text-sm">Website lead → WhatsApp → CRM → sales task</p>
+              </div>
+            </div>
+            <div className="space-y-3">
+              {["New enquiry received", "Customer details saved", "WhatsApp confirmation sent", "Sales owner notified", "Follow-up reminder created"].map((item, i) => (
+                <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/8 bg-black/40 p-4">
+                  <span className="w-7 h-7 rounded-full bg-white text-black text-xs font-bold flex items-center justify-center">{i + 1}</span>
+                  <span className="text-sm text-white/75">{item}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      <section className="py-20 px-6 md:px-12 border-y border-white/5 bg-black">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 items-start">
+      <section className="px-6 md:px-12 py-20 border-y border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12">
           <div>
-            <span className="micro-label block mb-4 text-green-400">Commercial search focus</span>
-            <h2 className="text-3xl md:text-5xl font-serif leading-tight">
-              Business process automation UAE, AI workflow automation Dubai and custom AI agents.
-            </h2>
+            <span className="micro-label block mb-4 text-green-400">The real problem</span>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-6">Most businesses do not need more tools. They need their tools to talk to each other.</h2>
+            <p className="text-white/55 leading-relaxed">
+              If leads are sitting in WhatsApp chats, emails, spreadsheets and missed calls, our AI automation agency in Dubai can help you respond faster without hiring more admin staff.
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              ["AI workflow automation Dubai", "Connect forms, WhatsApp, CRM, email, spreadsheets and dashboards into repeatable workflows."],
-              ["Custom AI agents UAE", "Build assistants for sales intake, internal knowledge, reporting, follow-up and operational triage."],
-              ["CRM routing automation", "Send each lead to the right team with budget, intent, channel, language and next-action context."],
-              ["Private business automation", "Choose hosting, logging, access controls and model providers according to your data requirements."]
-            ].map(([title, description]) => (
-              <Link key={title} href="/contact" className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 hover:border-white/20 transition-colors">
-                <h3 className="font-serif text-xl mb-3">{title}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{description}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Chapter 1: The Automation Imperative (400 Words) */}
-      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
-          <div className="sticky top-32">
-            <h2 className="text-4xl md:text-6xl font-serif mb-8 leading-tight">
-              Beyond RPA.<br/>Toward Agency.
-            </h2>
-            <div className="h-px w-20 bg-white/20 mb-8" />
-            <p className="text-white/40 text-sm uppercase tracking-widest font-bold mb-12">Pillar 01: Market Divergence</p>
-          </div>
-          <div className="space-y-12 text-white/70 font-light text-lg leading-relaxed">
-            <p>
-              In the Dubai enterprise landscape, "Efficiency" is no longer a luxury—it is a survival mandate. The era of simple Robotic Process Automation (RPA)—rules-based bots clicking buttons—is over. Today's market leaders are deploying <strong>Agentic AI</strong>: systems that don't just follow instructions, but reason through complex, unstructured challenges.
-            </p>
-            <p>
-              As the premier <strong>AI Automation Agency in Dubai</strong>, we help organizations transition from manual bottlenecks to autonomous engines. Whether it's automating multi-million dirham procurement chains or deploying private LLMs that ingest 20 years of corporate institutional knowledge, we build the "Brain" of your organization.
-            </p>
-            <p>
-              The UAE's <strong>Vision 2031</strong> and the <strong>Dubai Universal Blueprint for Artificial Intelligence</strong> set a high bar. Our role is to ensure your infrastructure is not just compliant, but globally competitive. We don't just "implement software"—we architect resilience.
-            </p>
-            <div className="p-8 border border-white/10 bg-white/[0.02] rounded-3xl mt-12 border-l-4 border-l-white/20">
-              <h4 className="font-serif text-2xl mb-4 italic text-white/90">The Productivity Arbitrage</h4>
-              <p className="text-sm text-white/50 italic">
-                A typical mid-level office employee in Dubai costs upwards of AED 25,000/month. An autonomous cognitive agent, once deployed, costs pennies per thousand tokens while operating at 100x the speed. This is the arbitrage we install.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Chapter 2: The Architecture of Intelligence (800 Words) */}
-      <section className="py-32 bg-white/[0.02] border-y border-white/5 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-24">
-            <span className="micro-label block mb-4">Technical Whitepaper</span>
-            <h2 className="text-4xl md:text-7xl font-serif mb-8">Architectural Depth.</h2>
-            <p className="text-white/40 max-w-2xl mx-auto">We design resilient systems with monitoring, recovery planning and deployment choices matched to the workload.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32">
-            {[
-              { icon: <Terminal className="w-6 h-6" />, title: "Custom LLM Fine-Tuning", desc: "We train models on your proprietary data—legal contracts, past project specs, customer transcripts—creating a model that 'speaks' your company's language and understands your P&L." },
-              { icon: <Binary className="w-6 h-6" />, title: "Vector Database Strategy", desc: "Implementation of Pinecone or Milvus clusters to give your AI agents long-term memory and RAG (Retrieval-Augmented Generation) capabilities." },
-              { icon: <HardDrive className="w-6 h-6" />, title: "On-Prem / Sovereign Cloud", desc: "Deployment on GCC-based infrastructure (Oracle Cloud Dubai / Azure UAE North) to ensure zero data egress and absolute privacy." },
-              { icon: <Fingerprint className="w-6 h-6" />, title: "Identity & Security (SSO)", desc: "Deep integration with Azure AD, Okta, and regional identity providers to ensure every AI action is authenticated and audited." }
-            ].map((item, i) => (
-              <div key={i} className="p-8 border border-white/5 bg-black rounded-3xl hover:border-white/20 transition-all group">
-                <div className="text-white/40 mb-6 group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
-                <h3 className="text-lg font-bold mb-4">{item.title}</h3>
-                <p className="text-xs text-white/40 leading-relaxed font-light">{item.desc}</p>
+            {problems.map((problem) => (
+              <div key={problem} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+                <CheckCircle className="w-5 h-5 text-green-400 mb-4" />
+                <p className="text-sm text-white/60 leading-relaxed">{problem}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Deep Technical Feature */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-             <div className="space-y-10">
-               <h3 className="text-3xl md:text-5xl font-serif leading-tight">Cognitive Workflow<br/>Engineering.</h3>
-               <p className="text-white/50 font-light leading-relaxed">
-                 Standard automation is linear (A {"->"} B). Cognitive workflows are non-linear. They involve an AI Agent analyzing a situation, deciding on the best tool to use, executing the action, and verifying the result.
-               </p>
-               <div className="space-y-4">
-                 {[
-                   { title: "Tool Use (Function Calling)", desc: "Our agents can read emails, query your SAP database, and generate PDF reports autonomously." },
-                   { title: "Self-Correction Loops", desc: "The system identifies its own errors and re-tries different strategies, ensuring 100% accuracy with zero human intervention." },
-                   { title: "Human-in-the-loop (HITL)", desc: "Seamless hand-offs to your team for high-level approvals, maintaining 100% control." }
-                 ].map((feat, i) => (
-                   <div key={i} className="flex gap-6 p-6 border border-white/5 bg-white/[0.01] rounded-2xl">
-                     <div className="h-2 w-2 rounded-full bg-white/40 mt-2 flex-shrink-0" />
-                     <div>
-                       <h5 className="font-bold mb-1">{feat.title}</h5>
-                       <p className="text-sm text-white/40 font-light">{feat.desc}</p>
-                     </div>
-                   </div>
-                 ))}
-               </div>
-             </div>
-             <div className="relative aspect-square">
-               <div className="absolute inset-0 bg-white/[0.02] rounded-full blur-[100px]" />
-               <div className="relative w-full h-full border border-white/10 rounded-[4rem] p-12 bg-black overflow-hidden group">
-                  <div className="h-full w-full flex flex-col justify-between">
-                     <div className="flex justify-between items-center">
-                        <Boxes className="w-8 h-8 text-white/20" />
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-white/20">Operational Stream: Active</span>
-                     </div>
-                     <div className="space-y-3">
-                        <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                           <motion.div 
-                             initial={{ width: "0%" }}
-                             whileInView={{ width: "80%" }}
-                             transition={{ duration: 2, repeat: Infinity }}
-                             className="h-full bg-white/20" 
-                           />
-                        </div>
-                        <div className="h-1.5 w-3/4 bg-white/5 rounded-full overflow-hidden">
-                           <motion.div 
-                             initial={{ width: "0%" }}
-                             whileInView={{ width: "60%" }}
-                             transition={{ duration: 1.5, delay: 0.5, repeat: Infinity }}
-                             className="h-full bg-white/10" 
-                           />
-                        </div>
-                     </div>
-                     <div className="p-6 bg-white/[0.03] border border-white/5 rounded-2xl">
-                        <code className="text-[10px] text-white/40 block mb-2">{">"} AI_AGENT: ANALYZING_PROCUREMENT_REQUEST</code>
-                        <code className="text-[10px] text-white/20 block">{">"} ACTION: CROSS_REFERENCE_VENDOR_LOG_v2.0</code>
-                     </div>
-                  </div>
-               </div>
-             </div>
+      <section className="px-6 md:px-12 py-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mb-14">
+            <span className="micro-label block mb-4 text-green-400">What we automate</span>
+            <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-6">Practical AI automation for UAE teams.</h2>
+            <p className="text-white/55 leading-relaxed">
+              We focus on useful workflows first — the kind that save time, protect leads and make follow-up easier.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {automations.map((item) => (
+              <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-8 hover:border-green-400/30 transition-colors">
+                <div className="text-green-300 mb-6">{item.icon}</div>
+                <h3 className="text-2xl font-serif mb-4">{item.title}</h3>
+                <p className="text-white/55 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Chapter 3: Industry Specifics (Dubai Focus) (600 Words) */}
-      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="text-center mb-32">
-          <span className="micro-label block mb-4">Vertical Specialization</span>
-          <h2 className="text-4xl md:text-6xl font-serif mb-8">Niche Mastery.</h2>
-          <p className="text-white/40 max-w-2xl mx-auto leading-relaxed">
-            We don't believe in "General AI." We build domain-specific automation for the industries that define the UAE's economic future.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-           {/* Logistics & Supply Chain */}
-           <div className="p-12 border border-white/5 bg-white/[0.01] rounded-[3rem] hover:bg-white/[0.02] transition-all group">
-             <Workflow className="w-12 h-12 mb-8 text-white/20 group-hover:text-white transition-colors" />
-             <h3 className="text-3xl font-serif mb-6">Logistics & Resilience</h3>
-             <p className="text-white/50 font-light leading-relaxed mb-10">
-               Dubai is the world's logistics hub. Our AI agents automate manifest analysis, predictive warehouse routing, and real-time response to Red Sea or global transit delays.
-             </p>
-             <div className="space-y-4 text-sm text-white/30 italic">
-               <p>“Automated 4,000+ monthly manifests for a JAFZA-based distributor, reducing processing time by 92%.”</p>
-             </div>
-           </div>
-
-           {/* Financial Services & Legal */}
-           <div className="p-12 border border-white/5 bg-white/[0.01] rounded-[3rem] hover:bg-white/[0.02] transition-all group">
-             <FileCode className="w-12 h-12 mb-8 text-white/20 group-hover:text-white transition-colors" />
-             <h3 className="text-3xl font-serif mb-6">Cognitive Compliance</h3>
-             <p className="text-white/50 font-light leading-relaxed mb-10">
-               Operating in DIFC or ADGM requires rigorous compliance. Our AI systems automate KYC/AML checks, legal document summarization, and regulatory gap analysis.
-             </p>
-             <div className="space-y-4 text-sm text-white/30 italic">
-               <p>“Reduced legal review cycles for a regional family office from 5 days to 4 minutes.”</p>
-             </div>
-           </div>
-
-           {/* Manufacturing & Industry 4.0 */}
-           <div className="p-12 border border-white/5 bg-white/[0.01] rounded-[3rem] hover:bg-white/[0.02] transition-all group">
-             <Terminal className="w-12 h-12 mb-8 text-white/20 group-hover:text-white transition-colors" />
-             <h3 className="text-3xl font-serif mb-6">Industrial AI</h3>
-             <p className="text-white/50 font-light leading-relaxed mb-10">
-               From predictive maintenance in Abu Dhabi's oil fields to automated QC in Dubai Industrial City, we bridge the gap between heavy hardware and agentic software.
-             </p>
-             <div className="space-y-4 text-sm text-white/30 italic">
-               <p>“Zero-downtime integration for a specialized glass manufacturer, resulting in 15% energy optimization.”</p>
-             </div>
-           </div>
-
-           {/* Government & Public Sector */}
-           <div className="p-12 border border-white/5 bg-white/[0.01] rounded-[3rem] hover:bg-white/[0.02] transition-all group">
-             <Shield className="w-12 h-12 mb-8 text-white/20 group-hover:text-white transition-colors" />
-             <h3 className="text-3xl font-serif mb-6">Smart Government</h3>
-             <p className="text-white/50 font-light leading-relaxed mb-10">
-               Aligned with the Dubai Digital Strategy. We develop private, secure AI assistants that improve citizen experience and internal civil service efficiency.
-             </p>
-             <div className="space-y-4 text-sm text-white/30 italic">
-               <p>“Architecting 100% data-sovereign chatbots for public-facing departments.”</p>
-             </div>
-           </div>
-        </div>
-      </section>
-
-      {/* Chapter 4: The 48-Hour Impact Protocol (300 Words) */}
-      <section className="py-32 bg-white text-black rounded-[4rem] mx-6 md:mx-12 overflow-hidden relative">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 py-24 text-center">
-           <h2 className="text-4xl md:text-7xl font-serif mb-10 leading-tight">Fast to Deploy.<br/>Impossible to Ignore.</h2>
-           <p className="text-xl font-light mb-16 max-w-3xl mx-auto opacity-60 italic">
-             We don't believe in 12-month consulting engagements. We believe in 48-hour "Impact Prototypes."
-           </p>
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
-              {[
-                { title: "Day 1: Cognitive Mapping", desc: "We sit with your team, identify the single most expensive manual bottleneck, and map the logic." },
-                { title: "Day 2: Prototype Sprint", desc: "Our engineers build the Agentic flow on your infrastructure using our pre-built Sovereign components." },
-                { title: "Day 3: Operational Launch", desc: "The agent is live. You see the ROI in real-time. We then scale the architecture across the department." }
-              ].map((step, i) => (
-                <div key={i} className="p-8 bg-black/5 rounded-3xl border border-black/10">
-                   <div className="text-5xl font-serif mb-6 opacity-20 italic">0{i+1}</div>
-                   <h4 className="text-xl font-bold mb-4">{step.title}</h4>
-                   <p className="text-sm opacity-60 leading-relaxed">{step.desc}</p>
-                </div>
-              ))}
-           </div>
-        </div>
-      </section>
-
-      {/* Chapter 5: Trust, Ethics & Law No. 45 (400 Words) */}
-      <section className="py-40 px-6 md:px-12 max-w-4xl mx-auto">
-        <div className="flex flex-col items-center text-center">
-          <Lock className="w-16 h-16 mb-12 text-white/20" />
-          <h2 className="text-4xl md:text-6xl font-serif mb-12 tracking-tight">Privacy as a Feature.</h2>
-          <div className="space-y-8 text-white/50 font-light text-lg leading-relaxed text-left">
-            <p>
-              In the AI era, your data is your moat. If you feed your proprietary processes into public AI models, you are giving away your competitive advantage.
-            </p>
-            <p>
-              As the leading <strong>AI Automation Agency in Dubai</strong>, we enforce a <strong>Zero-Public-Exposure</strong> policy. All models are hosted in private VPCs (Virtual Private Clouds) or on-premise. We ensure strict adherence to <strong>UAE Federal Decree-Law No. 45</strong>, ensuring that your automation journey is legal, ethical, and secure.
-            </p>
-            <p>
-              We provide full transparency through <strong>Explainable AI (XAI)</strong>. Every decision made by an autonomous agent is logged and traceable. You don't just get an answer; you get the reasoning behind it.
-            </p>
-          </div>
-          <div className="mt-16 p-1 bg-gradient-to-r from-white/10 to-transparent rounded-full px-8 py-3 text-[10px] uppercase tracking-[0.4em] font-bold text-white/40">
-            Sovereign Security Standard v2.0
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA: The Intake */}
-      <section className="py-40 px-6 md:px-12 text-center relative overflow-hidden border-t border-white/5 bg-[#080808]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_0%,transparent:70%)]" />
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto relative z-10"
-        >
-          <h2 className="text-5xl md:text-8xl font-serif tracking-tight mb-12">The Future is Autonomous.<br/><span className="text-white/40 italic font-light">Build it now.</span></h2>
-          <p className="text-white/50 font-light text-xl mb-16 max-w-2xl mx-auto leading-relaxed">
-            Stop waiting for the "next big update." Deploy your own private, sovereign intelligence today and decouple your growth from human overhead.
-          </p>
-          <div className="flex flex-col items-center gap-10">
-            <Link href="/contact" className="bg-white text-black px-16 py-8 rounded-full font-bold uppercase tracking-[0.3em] text-xs hover:scale-105 transition-all shadow-[0_0_80px_rgba(255,255,255,0.1)] active:scale-95">
-              Secure Operational Audit
-            </Link>
-            <div className="flex flex-col md:flex-row gap-8 text-[10px] uppercase tracking-[0.4em] font-bold text-white/20">
-              <span className="flex items-center gap-2 italic">
-                <Terminal className="w-3 h-3" /> Technical Intake: Khalid
-              </span>
-              <span className="flex items-center gap-2 italic">
-                <Globe className="w-3 h-3" /> UAE Registered Architecture
-              </span>
+      <section className="px-6 md:px-12 py-24 bg-white text-black rounded-[2.5rem] mx-4 md:mx-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12">
+            <div>
+              <span className="text-[10px] uppercase tracking-[0.35em] font-bold text-black/45 block mb-4">Example workflows</span>
+              <h2 className="text-4xl md:text-6xl font-serif leading-tight">Simple flows your team can understand.</h2>
             </div>
+            <p className="text-black/55 max-w-lg leading-relaxed">
+              Good automation should be easy to explain. If your team cannot understand the workflow, it will not use it properly.
+            </p>
           </div>
-        </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {exampleWorkflows.map((workflow) => (
+              <div key={workflow.title} className="rounded-3xl border border-black/10 bg-black/[0.03] p-7">
+                <h3 className="text-2xl font-serif mb-6">{workflow.title}</h3>
+                <div className="space-y-3">
+                  {workflow.steps.map((step, i) => (
+                    <div key={step} className="flex items-center gap-3">
+                      <span className="w-7 h-7 rounded-full bg-black text-white text-xs font-bold flex items-center justify-center">{i + 1}</span>
+                      <span className="text-sm text-black/65">{step}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
-      
-      {/* Footer Linking Swarm */}
-      <section className="py-20 border-t border-white/5 bg-black">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center text-white/80 text-[11px] uppercase tracking-[0.2em] font-bold text-center">
-            <Link href="/ai-marketing-dubai" className="hover:text-white transition-colors">AI Marketing Agency Dubai</Link>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/ai-lead-generation-agency-dubai" className="hover:text-white transition-colors">AI Lead Generation Dubai</Link>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/ai-real-estate-uae" className="hover:text-white transition-colors">AI Real Estate Dubai</Link>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/sovereign-sales-agent" className="hover:text-white transition-colors">B2B Sales AI</Link>
+
+      <section className="px-6 md:px-12 py-24 border-y border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 items-start">
+          <div>
+            <span className="micro-label block mb-4 text-green-400">Built for Dubai and UAE teams</span>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-6">Local businesses need automation that fits how enquiries actually arrive.</h2>
+            <p className="text-white/55 leading-relaxed">
+              In Dubai, customers often move between Google Search, your website, WhatsApp, phone calls and Instagram before they decide. We design automation around that real buying journey, not around complicated software your team will ignore.
+            </p>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {localUseCases.map((item) => (
+              <div key={item} className="rounded-3xl border border-white/10 bg-white/[0.02] p-7">
+                <CheckCircle className="w-5 h-5 text-green-400 mb-5" />
+                <p className="text-white/60 leading-relaxed">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 py-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mb-12">
+            <span className="micro-label block mb-4 text-green-400">Cost and starting point</span>
+            <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-6">How much does AI automation cost in Dubai?</h2>
+            <p className="text-white/55 leading-relaxed">
+              The honest answer is: it depends on how many tools, handoffs and approvals are involved. So we start with one useful workflow, prove it works, then expand only if it saves time or protects more leads.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {pricingSignals.map((item) => (
+              <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-8">
+                <h3 className="text-2xl font-serif mb-3">{item.title}</h3>
+                <p className="text-green-300 font-bold tracking-wide mb-5">{item.price}</p>
+                <p className="text-white/55 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 py-24">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12">
+          <div>
+            <span className="micro-label block mb-4 text-green-400">Our process</span>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-6">Start small. Prove value. Then scale.</h2>
+            <p className="text-white/55 leading-relaxed mb-8">
+              We do not start by selling a massive system. We start with one painful workflow and build from there.
+            </p>
+            <Link href="/free-growth-audit" className="inline-flex items-center gap-3 bg-white text-black px-7 py-4 rounded-full font-bold uppercase tracking-widest text-xs">
+              Request Free Audit <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {process.map((item) => (
+              <div key={item.step} className="rounded-3xl border border-white/10 bg-white/[0.02] p-7">
+                <span className="text-green-400 text-xs font-bold tracking-widest">{item.step}</span>
+                <h3 className="text-xl font-serif mt-5 mb-3">{item.title}</h3>
+                <p className="text-sm text-white/55 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 py-20 border-y border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+          {[
+            { icon: <Clock className="w-5 h-5" />, title: "Faster response", desc: "Reduce the delay between enquiry and first reply." },
+            { icon: <Shield className="w-5 h-5" />, title: "Human control", desc: "Keep approvals and human handoff where they matter." },
+            { icon: <Phone className="w-5 h-5" />, title: "More calls booked", desc: "Make it easier for serious prospects to reach you." },
+          ].map((item) => (
+            <div key={item.title} className="rounded-3xl border border-white/10 bg-white/[0.02] p-7">
+              <div className="text-green-300 mb-5">{item.icon}</div>
+              <h3 className="text-xl font-serif mb-3">{item.title}</h3>
+              <p className="text-sm text-white/55 leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 py-24">
+        <div className="max-w-4xl mx-auto">
+          <span className="micro-label block mb-4 text-green-400">FAQ</span>
+          <h2 className="text-4xl md:text-5xl font-serif mb-10">Questions business owners ask before automating.</h2>
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <div key={faq.q} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+                <h3 className="font-bold mb-3">{faq.q}</h3>
+                <p className="text-white/55 leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 py-28 text-center bg-[#080808] border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <Zap className="w-10 h-10 text-green-400 mx-auto mb-8" />
+          <h2 className="text-5xl md:text-7xl font-serif leading-tight mb-8">Want to know what your business should automate first?</h2>
+          <p className="text-white/55 text-lg leading-relaxed mb-10">
+            Send us your website and a short description of your current lead process. We will suggest the first automation that can save time or protect more enquiries.
+          </p>
+          <Link href="/free-growth-audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/85 transition-colors inline-flex items-center justify-center gap-3">
+            Book Free Automation Audit <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
     </div>
   );
 }
+
