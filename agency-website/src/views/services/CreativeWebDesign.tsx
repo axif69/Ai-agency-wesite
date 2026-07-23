@@ -69,11 +69,62 @@ const faqs = [
 
 export default function CreativeWebDesign() {
   return (
-    <div className="pt-20">
+    <div className="bg-[#050505] min-h-screen text-white pt-24">
       
 
       {/* Hero Section */}
-      <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12">
+      <section className="px-6 md:px-12 py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.12),transparent_36%),linear-gradient(to_bottom,#050505,#080808)]" />
+        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-14 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <span className="micro-label mb-6 block text-green-400">Creative Web Design Dubai</span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-tight leading-[0.92]">
+              Premium motion websites built to feel modern and convert.
+            </h1>
+            <p className="mt-8 text-lg md:text-xl text-white/65 font-light leading-relaxed max-w-3xl">
+              Asif Digital designs creative websites in Dubai with sharp typography, scroll storytelling, motion-ready sections, mobile performance, SEO-visible content and clear enquiry paths.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 mt-10">
+              <Link href="/free-growth-audit" className="inline-flex h-12 items-center justify-center gap-3 rounded-full bg-white px-7 text-xs font-bold uppercase tracking-[0.18em] text-black transition hover:bg-emerald-100">
+                Book Free Website Audit <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/services/web-design-dubai-sharjah" className="inline-flex h-12 items-center justify-center gap-3 rounded-full border border-white/15 px-7 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white/10">
+                See Web Design Service
+              </Link>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-5 md:p-6"
+          >
+            <div className="rounded-[1.5rem] overflow-hidden border border-white/10 bg-black">
+              <img
+                src="/images/showcase/corporate-website-mockup.png"
+                alt="Modern premium website mockup for creative web design in Dubai"
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
+            </div>
+            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              {["Motion-ready sections", "SEO-visible copy", "Mobile-first layout", "Clear booking CTA"].map((item) => (
+                <div key={item} className="rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white/65 flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400 shrink-0" />
+                  {item}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&q=75&w=1200)' }}
@@ -99,7 +150,7 @@ export default function CreativeWebDesign() {
 
       <section className="px-6 md:px-12 py-24 bg-white/[0.02] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16"><span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Our Creative Capabilities</span><h2 className="text-4xl md:text-5xl font-serif max-w-2xl">Where Art Meets Conversion Science</h2></div>
+          <div className="mb-16"><span className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Our Creative Capabilities</span><h2 className="text-4xl md:text-5xl font-serif max-w-2xl">Where creative design meets measurable conversion.</h2></div>
           <p className="text-white/55 font-light leading-relaxed max-w-3xl mb-12">
             Modern creative web design is not just a pretty layout. It is a designed experience where motion, typography, interaction, speed, storytelling and conversion work together. We build premium motion websites in Dubai using the same thinking behind high-end SaaS launches, luxury real estate campaigns, hospitality experiences and founder-led authority brands.
           </p>
@@ -252,7 +303,7 @@ export default function CreativeWebDesign() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-serif mb-6">Ready to be unforgettable?</h2>
           <p className="text-white/50 text-lg font-light mb-10">Let's create a digital experience your industry has never seen before.</p>
-          <Link href="/contact" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">Start The Conversation <ArrowRight className="w-4 h-4" /></Link>
+          <Link href="/free-growth-audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">Book Free Website Audit <ArrowRight className="w-4 h-4" /></Link>
         </div>
       </section>
 
