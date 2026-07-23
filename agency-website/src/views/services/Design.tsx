@@ -16,6 +16,13 @@ const services = [
 
 const tools = ["Adobe Illustrator", "Adobe InDesign", "Adobe Photoshop", "Figma", "After Effects", "Canva Pro (Templates)"];
 
+const heroAssets = [
+  { title: "Company Profile", label: "01", gradient: "from-emerald-300/20 via-white/10 to-slate-950", visual: "profile" },
+  { title: "Social Creatives", label: "02", gradient: "from-fuchsia-300/20 via-emerald-300/10 to-slate-950", visual: "social" },
+  { title: "Pitch Deck", label: "03", gradient: "from-sky-300/20 via-white/10 to-slate-950", visual: "deck" },
+  { title: "Ad Visuals", label: "04", gradient: "from-amber-300/20 via-emerald-300/10 to-slate-950", visual: "ad" },
+];
+
 export default function Design() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
@@ -66,10 +73,56 @@ export default function Design() {
             className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6"
           >
             <div className="grid grid-cols-2 gap-4">
-              {["Company Profile", "Social Creatives", "Pitch Deck", "Ad Visuals"].map((item, i) => (
-                <div key={item} className="aspect-[4/3] rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.12] to-green-400/[0.08] p-5 flex flex-col justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-green-300">0{i + 1}</span>
-                  <span className="font-serif text-xl leading-tight">{item}</span>
+              {heroAssets.map((asset) => (
+                <div key={asset.title} className={`group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br ${asset.gradient} p-5 shadow-2xl`}>
+                  <div className="absolute inset-0 opacity-70 bg-[radial-gradient(circle_at_20%_15%,rgba(255,255,255,0.35),transparent_22%),radial-gradient(circle_at_80%_80%,rgba(34,197,94,0.28),transparent_28%)]" />
+                  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full border border-white/20 bg-white/5 blur-[1px]" />
+                  <div className="absolute left-5 right-5 top-12 space-y-2">
+                    {asset.visual === "profile" && (
+                      <>
+                        <div className="h-5 w-24 rounded-full bg-white/80" />
+                        <div className="grid grid-cols-[1fr_0.6fr] gap-3 pt-2">
+                          <div className="space-y-2">
+                            <div className="h-2 rounded-full bg-white/40" />
+                            <div className="h-2 w-4/5 rounded-full bg-white/25" />
+                            <div className="mt-4 h-10 rounded-xl bg-emerald-300/25" />
+                          </div>
+                          <div className="rounded-xl bg-white/15" />
+                        </div>
+                      </>
+                    )}
+                    {asset.visual === "social" && (
+                      <div className="grid grid-cols-3 gap-2">
+                        <div className="h-16 rounded-xl bg-white/75" />
+                        <div className="h-20 rounded-xl bg-emerald-300/35" />
+                        <div className="h-14 rounded-xl bg-fuchsia-300/35" />
+                        <div className="col-span-3 h-3 rounded-full bg-white/35" />
+                        <div className="col-span-2 h-3 rounded-full bg-white/20" />
+                      </div>
+                    )}
+                    {asset.visual === "deck" && (
+                      <div className="relative h-24">
+                        <div className="absolute left-0 top-4 h-16 w-28 rotate-[-7deg] rounded-xl border border-white/15 bg-white/15" />
+                        <div className="absolute left-10 top-1 h-20 w-32 rounded-xl border border-white/20 bg-white/80" />
+                        <div className="absolute left-16 top-6 h-2 w-16 rounded-full bg-black/40" />
+                        <div className="absolute left-16 top-11 h-2 w-20 rounded-full bg-black/20" />
+                      </div>
+                    )}
+                    {asset.visual === "ad" && (
+                      <div className="rounded-2xl border border-white/15 bg-black/35 p-3">
+                        <div className="mb-3 h-8 rounded-xl bg-amber-200/70" />
+                        <div className="space-y-2">
+                          <div className="h-2 rounded-full bg-white/50" />
+                          <div className="h-2 w-2/3 rounded-full bg-white/25" />
+                        </div>
+                        <div className="mt-3 h-5 w-20 rounded-full bg-emerald-300/70" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="relative z-10 flex h-full flex-col justify-between">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-green-300">{asset.label}</span>
+                    <span className="font-serif text-xl leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">{asset.title}</span>
+                  </div>
                 </div>
               ))}
             </div>
