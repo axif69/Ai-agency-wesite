@@ -474,6 +474,45 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="px-6 md:px-12 py-16 bg-[#050505] border-b border-white/5 relative z-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
+            <div className="max-w-3xl">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-3">Dubai & Sharjah Service Pages</span>
+              <h2 className="text-3xl md:text-5xl font-serif tracking-tight leading-tight">
+                Local pages for the services UAE businesses search for.
+              </h2>
+            </div>
+            <p className="text-white/55 text-sm leading-relaxed max-w-xl">
+              Choose the exact service and location page. These pages explain the offer in plain language and route visitors to the free growth audit.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { title: "AI Automation Agency Dubai", href: "/ai-automation-agency-dubai", meta: "Leads, CRM, workflows" },
+              { title: "AI Automation Agency Sharjah", href: "/ai-automation-sharjah", meta: "Sharjah local automation" },
+              { title: "WhatsApp Chatbot Dubai", href: "/ai-chatbots-dubai", meta: "Lead capture and replies" },
+              { title: "Web Design Company Dubai", href: "/services/web-design-dubai-sharjah", meta: "Modern SEO websites" },
+              { title: "Web Design Company Sharjah", href: "/web-design-sharjah", meta: "Local lead websites" },
+              { title: "Free Growth Audit", href: "/free-growth-audit", meta: "Website, WhatsApp, AI review" }
+            ].map((page) => (
+              <Link
+                key={page.href}
+                href={page.href}
+                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:border-green-400/30 hover:bg-white/[0.05] transition-all"
+              >
+                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-green-400/80">{page.meta}</span>
+                <h3 className="mt-3 font-serif text-xl leading-tight">{page.title}</h3>
+                <span className="mt-5 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-white/40 group-hover:text-green-300">
+                  Open page <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="px-6 md:px-12 py-24 bg-[#080808] border-y border-white/5 relative z-20">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
