@@ -478,13 +478,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
             <div className="max-w-3xl">
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-3">Dubai & Sharjah Service Pages</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-3">Dubai & Sharjah Services</span>
               <h2 className="text-3xl md:text-5xl font-serif tracking-tight leading-tight">
-                Local pages for the services UAE businesses search for.
+                Find the right service for your business location.
               </h2>
             </div>
             <p className="text-white/55 text-sm leading-relaxed max-w-xl">
-              Choose the exact service and location page. These pages explain the offer in plain language and route visitors to the free growth audit.
+              Choose the service you need in Dubai or Sharjah, then book a free growth audit if you want help improving leads, follow-up or your website.
             </p>
           </div>
 
