@@ -264,97 +264,120 @@ const NEGATIVE_KEYWORDS = [
     'general trading', 'wholesale market'
 ];
 
+const splitList = (value: any): string[] =>
+    String(value || '').split(/[\n,;|]+/).map(k => k.trim().toLowerCase()).filter(Boolean);
+
+/**
+ * DYNAMIC COMPETITOR FILTERING GUARD (v2)
+ * Derives the active agency's OWN service categories from workspace settings
+ * (company_name, pitch_context, offer_angle, company_knowledge) plus any explicit
+ * COMPETITOR_EXCLUSIONS list, and returns the set of terms that mark a prospect as
+ * a COMPETITOR (a peer agency/lead-gen/web firm) — which we must never target.
+ *
+ * 100% dynamic: nothing here is hardcoded to a single sector/niche. If a workspace
+ * pivots (e.g. from "digital marketing" to "SaaS", "medical devices", "logistics"),
+ * the exclusions are re-derived automatically from the workspace brief.
+ */
+const deriveOwnServiceTerms = (settings?: any): string[] => {
+    const s = settings || {};
+    const ownServiceText = [
+        s.company_name, s.company_knowledge, s.COMPANY_KNOWLEDGE,
+        s.offer_angle, s.OFFER_ANGLE, s.pitch_context, s.PITCH_CONTEXT,
+        s.services, s.SERVICES, s.service_categories, s.SERVICE_CATEGORIES,
+        s.own_services, s.OWN_SERVICES
+    ].filter(Boolean).join('\n').toLowerCase();
+
+    // The agency's own categories ARE the competitor categories: any prospect whose
+    // metadata/tags/description matches what WE do is a peer/competitor, not a buyer.
+    // Pull the most salient service nouns (these typically repeat across the profile).
+    const freq = new Map<string, number>();
+    const words = ownServiceText.replace(/[^a-z0-9\s+]/gi, ' ').split(/\s+/).filter(w => w.length >= 4);
+    for (const w of words) freq.set(w, (freq.get(w) || 0) + 1);
+    const repeated = Array.from(freq.entries())
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 12)
+        .map(([w]) => w);
+
+    // Explicit competitor override from Dashboard (if the operator lists them).
+    const explicit = splitList(settings?.COMPETITOR_EXCLUSIONS || settings?.competitor_exclusions || settings?.COMPETITOR_NICHES);
+
+    // Service-category phrases we derive so a marketing/AI agency excludes competing
+    // marketing agencies / web design firms / lead-gen tools without locking a niche.
+    const derivedPhrases = [
+        ...(ownServiceText.includes('marketing') ? ['marketing agency', 'digital marketing agency', 'marketing firm', 'ad agency', 'marketing company', 'marketing studio'] : []),
+        ...(ownServiceText.includes('ai') || ownServiceText.includes('artificial intelligence') || ownServiceText.includes('automation') ? ['ai agency', 'ai company', 'artificial intelligence company', 'sales automation company', 'agent company'] : []),
+        ...(ownServiceText.includes('software') || ownServiceText.includes('development') || ownServiceText.includes('sdr') ? ['software development agency', 'software company', 'web development agency', 'app development agency', 'sdr agency', 'lead gen agency'] : []),
+        ...(ownServiceText.includes('design') || ownServiceText.includes('web') ? ['web design agency', 'digital design agency', 'web design company', 'website design agency'] : []),
+        ...(ownServiceText.includes('lead') || ownServiceText.includes('sales') ? ['lead generation agency', 'lead gen company', 'b2b lead generation', 'sales agency', 'sdr services'] : []),
+    ];
+
+    const all = [...new Set([...explicit, ...derivedPhrases, ...repeated])].filter(Boolean);
+    return all;
+};
+
+/** True if a prospect (name, snippet, tags, description) matches the dynamic competitor terms. */
+export const isCompetitorProspect = (name: string, text: string, terms: string[]): boolean => {
+    const haystack = `${name || ''} ${text || ''}`.toLowerCase();
+    return (terms || []).some(t => t && haystack.includes(t));
+};
+
+// Convenience loader used across search_service so the guard stays DRY.
+export const loadCompetitorTerms = async (settings?: any): Promise<string[]> => {
+    const src = settings || await import('./config_manager').then(m => m.loadSystemConfig()).catch(() => null);
+    return deriveOwnServiceTerms(src);
+};
+
 export const isRelevant = (text: string, settings?: any): boolean => {
     const lowerText = (text || '').toLowerCase();
     if (!lowerText || lowerText.length < 10) return false;
 
-    // ── STAGE 1: B2B POSITIVE SIGNALS (Weight: +10) ───────────────────────────
-    const positiveKeywords = [
-        // Tech & Digital
-        'marketing agency', 'digital agency', 'digital marketing', 'software development',
-        'it solutions', 'saas', 'cloud services', 'cybersecurity', 'erp solutions',
-        'app development', 'ai technology', 'data analytics', 'managed services', 'digital transformation', 'web design',
-        // Infrastructure & Real Estate
-        'real estate', 'brokerage', 'property management', 'fit out', 'interiors', 'fit-out', 'contracting', 'mep', 'facility management',
-        // Trade & Logistics
-        'logistics', 'supply chain', 'freight forwarding', '3pl', 'warehousing', 'industrial equipment', 'material handling',
-        // Corporate Services
-        'business setup', 'pro services', 'law firm', 'legal consultant', 'audit firm', 'accounting firm', 'tax advisory', 'management consultant',
-        // Defense & Industrial (High-Priority)
-        'defense', 'military', 'aerospace', 'security systems', 'industrial manufacturing',
-        'oil & gas', 'energy solutions', 'heavy equipment', 'defense electronics',
-        'surveillance', 'tactical gear', 'intelligence', 'aviation', 'naval', 'maritime',
-        'manufacturing', 'engineering', 'logistics', 'supply chain', 'freight forwarding'
-    ];
+    const s = settings || {};
 
-    // ── STAGE 2: CONSUMER NEGATIVE SIGNALS (Weight: -15) ──────────────────────
-    const negativeKeywords = [
-        'retail shop', 'fashion store', 'beauty salon', 'restaurant', 'gym',
-        'supermarket', 'hypermarket', 'grocery', 'clothing store'
-    ];
+    // ── DYNAMIC POSITIVE SIGNALS (Weight: +35) — from the workspace Targeting Brief ──
+    // REQUIRED_KEYWORDS is the authoritative buyer ICP list. NO sector is hardcoded here;
+    // if the operator pivots industries, these terms change with the dashboard settings.
+    const requiredList = splitList(s.required_keywords || s.REQUIRED_KEYWORDS);
+    const pitchWords = String(s.pitch_context || s.PITCH_CONTEXT || '')
+        .toLowerCase()
+        .split(/\s+/)
+        .map(w => w.replace(/[^a-z]/g, ''))
+        .filter(w => w.length > 5);
+
+    // Generic commercial indicators — NOT sector-specific, just "this is a business".
+    const corporateIndicators = [' llc', ' psc', ' pjsc', ' branch', ' group', ' international', ' solutions', ' services', ' fze', ' fzco', ' company', ' ltd', ' limited'];
 
     let score = 0;
-    positiveKeywords.forEach(k => { if (lowerText.includes(k)) score += 10; });
-    negativeKeywords.forEach(k => { if (lowerText.includes(k)) score -= 15; });
-
-    // User settings overrides
-    if (settings) {
-        // Parse required keywords from settings
-        const requiredStr = settings.required_keywords || settings.REQUIRED_KEYWORDS || '';
-        const requiredList = String(requiredStr)
-            .split(/[\n,;|]+/)
-            .map(k => k.trim().toLowerCase())
-            .filter(Boolean);
-
-        if (requiredList.length > 0) {
-            let matchedRequired = false;
-            requiredList.forEach(k => {
-                if (lowerText.includes(k)) {
-                    score += 35; // Strong priority boost
-                    matchedRequired = true;
-                }
-            });
-            // If user explicitly specified required target terms and the page has absolutely none of them, penalize
-            if (!matchedRequired) {
-                score -= 25;
-            }
+    let matchedRequired = false;
+    requiredList.forEach(k => {
+        if (k && lowerText.includes(k)) {
+            score += 35; // Strong priority boost for explicit ICP keywords
+            matchedRequired = true;
         }
-
-        // Parse negative keywords from settings
-        const negativeStr = settings.negative_keywords || settings.NEGATIVE_KEYWORDS || '';
-        const negativeList = String(negativeStr)
-            .split(/[\n,;|]+/)
-            .map(k => k.trim().toLowerCase())
-            .filter(Boolean);
-
-        negativeList.forEach(k => {
-            if (lowerText.includes(k)) {
-                score -= 40; // Decisive block penalty
-            }
-        });
-
-        // Add dynamic pitch keywords relevance boost
-        const pitch = String(settings.pitch_context || settings.PITCH_CONTEXT || '').toLowerCase();
-        if (pitch) {
-            const pitchWords = pitch.split(/\s+/).map(w => w.replace(/[^a-z]/g, '')).filter(w => w.length > 5);
-            let pitchMatchCount = 0;
-            pitchWords.forEach(w => {
-                if (lowerText.includes(w)) {
-                    pitchMatchCount++;
-                }
-            });
-            if (pitchMatchCount > 0) {
-                score += Math.min(pitchMatchCount * 3, 15);
-            }
-        }
+    });
+    // If a required list exists and none of it is present, penalize decisively.
+    if (requiredList.length > 0 && !matchedRequired) {
+        score -= 40;
+    }
+    // Pitch-context word boost (small, bounded)
+    if (pitchWords.length > 0) {
+        let pitchMatchCount = 0;
+        pitchWords.forEach(w => { if (lowerText.includes(w)) pitchMatchCount++; });
+        if (pitchMatchCount > 0) score += Math.min(pitchMatchCount * 3, 15);
     }
 
-    // Special Case: Educational/Medical are only negative if no B2B signal exists
-    const weakNegatives = ['hospital', 'clinic', 'pharmacy', 'school', 'university', 'academy'];
-    weakNegatives.forEach(k => { if (lowerText.includes(k)) score -= 3; });
+    // ── DYNAMIC NEGATIVE SIGNALS (Weight: -40) — from the workspace Dashboard ──
+    const negativeList = splitList(s.negative_keywords || s.NEGATIVE_KEYWORDS);
+    negativeList.forEach(k => {
+        if (k && lowerText.includes(k)) score -= 40; // Decisive block penalty
+    });
 
-    // Corporate indicators add a small boost
-    const corporateIndicators = [' llc', ' psc', ' pjsc', ' branch', ' group', ' international', ' solutions', ' services', ' fze', ' fzco'];
+    // DYNAMIC COMPETITOR GUARD: the active agency's own service categories are never relevant.
+    const cTerms = deriveOwnServiceTerms(s);
+    if (cTerms.length > 0 && isCompetitorProspect('', lowerText, cTerms)) {
+        return false;
+    }
+
+    // Generic commercial presence boost (works for any sector).
     corporateIndicators.forEach(k => { if (lowerText.includes(k)) score += 2; });
 
     return score > 8;
@@ -1743,8 +1766,19 @@ export const findDomainViaBing = async (companyName: string): Promise<string | n
 export const filterLeadsWithAI = async (leads: any[], settings: any): Promise<any[]> => {
     if (!leads || leads.length === 0) return [];
 
+    // DYNAMIC COMPETITOR FILTERING GUARD: derive the agency's OWN service categories
+    // from workspace settings and strip any prospect whose name/snippet/description
+    // matches those categories (a competing agency/web/lead-gen firm is never a buyer).
+    const competitorTerms = deriveOwnServiceTerms(settings);
+    const nonCompetitor = competitorTerms.length === 0
+        ? leads
+        : leads.filter(l => {
+            const probe = `${l.company_name || ''} ${l.snippet || l.description || ''} ${(l.tags || []).join(' ')}`;
+            return !isCompetitorProspect(l.company_name || '', probe, competitorTerms);
+        });
+
     // Basic heuristic filter to immediately drop obvious non-buyer platforms/directories
-    const basicFiltered = leads.filter(l => {
+    const basicFiltered = (nonCompetitor || []).filter(l => {
         const url = String(l.website || '').toLowerCase();
         const name = String(l.company_name || '').toLowerCase();
         const forbidden = /wikipedia|github|youtube|facebook|instagram|twitter|linkedin|google|bing|yahoo|duckduckgo|pinterest|tiktok|reddit|quora|yellowpages|yelp|indeed|glassdoor/i;
@@ -2180,7 +2214,7 @@ export type BuyerFitAssessment = {
     signals: string[];
 };
 
-export const assessEnterpriseBuyerFit = (companyName: string, aboutText: string, targetNiches: string[] = []): BuyerFitAssessment => {
+export const assessEnterpriseBuyerFit = (companyName: string, aboutText: string, targetNiches: string[] = [], competitorTerms: string[] = []): BuyerFitAssessment => {
     const haystack = `${companyName || ''} ${aboutText || ''}`.toLowerCase();
     const blockedSignals = [
         'wikipedia', 'dictionary', 'definition', 'news', 'magazine', 'stock market',
@@ -2195,20 +2229,22 @@ export const assessEnterpriseBuyerFit = (companyName: string, aboutText: string,
         return { qualified: false, score: 0, tier: 'excluded', reason: 'Informational, directory, or media entity.', signals: [] };
     }
 
+    // DYNAMIC COMPETITOR FILTERING GUARD: never qualify a peer agency whose own service
+    // categories match what the active workspace sells (marketing/web/lead-gen/AI firms).
+    const cTerms = Array.isArray(competitorTerms) ? competitorTerms : [];
+    if (cTerms.length > 0 && isCompetitorProspect(companyName, aboutText, cTerms)) {
+        return { qualified: false, score: 0, tier: 'excluded', reason: 'Competitor entity (matches active agency service categories).', signals: ['competitor'] };
+    }
+
     // Buyer-type alignment: does this company's business match the AI-sales-agent buyer profile?
-    // Defaults mirror the dashboard target niches + COMPANY_KNOWLEDGE buyer types; the configured
-    // targetNiches (from dashboard DYNAMIC_NICHES) are appended so targeting stays 100% dynamic.
-    const defaultFit = [
-        'digital marketing', 'marketing agency', 'software development', 'software company', 'it services',
-        'it solutions', 'fitout', 'fit out', 'interior fit', 'recruitment', 'staffing', 'headhunt',
-        'logistics', 'freight', 'shipping', 'cargo', 'real estate', 'property', 'brokerage', 'broker',
-        'law firm', 'legal', 'advocates', 'consulting', 'consultancy', 'contracting', 'construction',
-        'manufacturing', 'distribution', 'trading', 'retail', 'hotel', 'hospitality'
-    ];
+    // NO hardcoded sector list — the ONLY fit signals are the targetNiches configured in the
+    // workspace (dashboard DYNAMIC_NICHES / Targeting Brief). This keeps the engine multi-niche
+    // and prevents the agency's own service categories (e.g. "digital marketing", "software
+    // development") from ever qualifying a competitor as a buyer.
     const configuredNiches = Array.isArray(targetNiches) && targetNiches.length > 0
         ? targetNiches.map((n: string) => String(n || '').toLowerCase().trim()).filter(Boolean)
         : [];
-    const fitKeywords = [...defaultFit, ...configuredNiches];
+    const fitKeywords = configuredNiches;
     const matchedFit = fitKeywords.filter(kw => kw && haystack.includes(kw));
     const signals: string[] = [];
     if (matchedFit.length > 0) signals.push(`target-niche: ${matchedFit.slice(0, 3).join(', ')}`);
@@ -2249,8 +2285,10 @@ export const checkAIRelevance = async (companyName: string, aboutText: string): 
         const myNiche = config.pitch_context || "B2B Sales and AI Automation Services";
         const negativeKeywords = config.negative_keywords || config.NEGATIVE_KEYWORDS || "";
         const requiredKeywords = config.required_keywords || config.REQUIRED_KEYWORDS || "";
+        const competitorTerms = deriveOwnServiceTerms(config);
+        const competitorList = competitorTerms.length > 0 ? competitorTerms.join(', ') : '(none)';
 
-        const prompt = `You are an elite B2B Sales Research Analyst for ${myCompany}. 
+        const prompt = `You are an elite B2B Sales Research Analyst for ${myCompany}.
 Your goal is to QUALIFY only candidate buyer businesses matching the client's pitch context and target criteria.
 
 Target Client Company: "${myCompany}"
@@ -2259,6 +2297,7 @@ Knowledge Base & Target Criteria: "${config.company_knowledge || '(None)'}"
 Target Location: "${config.target_location || 'UAE'}"
 Required Target Keywords: "${requiredKeywords || '(None)'}"
 Negative Keywords / Strict Exclusions: "${negativeKeywords || '(None)'}"
+COMPETITOR SERVICE CATEGORIES (must be excluded — these match what we sell): "${competitorList}"
 
 Company Name to Evaluate: "${companyName}"
 Website Content: "${aboutText.slice(0, 2000)}"
@@ -2266,7 +2305,8 @@ Website Content: "${aboutText.slice(0, 2000)}"
 QUALIFICATION INSTRUCTIONS:
 1. Evaluate if this company is a valid target lead matching the user's Service Pitch Context, Target Location, Knowledge Base, and Required Target Keywords configured in their Dashboard settings.
 2. STRICT EXCLUSIONS: If the company matches any Negative Keywords / Strict Exclusions specified by the user, REJECT it immediately.
-3. Be fair and objective: score higher (>= 40) if the company aligns with the user's Pitch Context and Target Criteria; score lower (< 40) if it matches Negative Keywords or is unrelated to the user's intent.
+3. COMPETITOR EXCLUSION: If the company IS an agency/firm offering services listed under COMPETITOR SERVICE CATEGORIES (e.g. marketing agency, web design firm, lead-gen tool, software/AI agency), REJECT it — we never sell to competitors.
+4. Be fair and objective: score higher (>= 40) if the company aligns with the user's Pitch Context and Target Criteria; score lower (< 40) if it matches Negative Keywords or is unrelated to the user's intent.
 
 Reply with ONLY valid JSON: {"relevant": true/false, "score": 0-100, "reason": "concise explanation"}`;
 
@@ -2313,6 +2353,13 @@ export const aiPreFilterSearchResult = async (
             }
         }
 
+        // DYNAMIC COMPETITOR FILTERING GUARD: reject prospects whose metadata/tags/description
+        // match the active agency's OWN service categories (a competing agency is never a buyer).
+        const competitorTerms = deriveOwnServiceTerms(config);
+        if (competitorTerms.length > 0 && isCompetitorProspect(title, `${snippet} ${domain}`, competitorTerms)) {
+            return { passed: false, score: 0, reason: 'Competitor entity (matches active agency service categories).' };
+        }
+
         const prompt = `You are an AI B2B Lead Qualifier (Layer 1 Pre-Filter).
 Target Pitch Context: "${config.pitch_context || 'B2B Services & Products'}"
 Target Location: "${config.target_location || 'UAE'}"
@@ -2326,6 +2373,7 @@ INSTRUCTIONS:
 1. Is this candidate item a valid B2B company or commercial business with potential to buy our products/services?
 2. Give benefit of the doubt to growing B2B businesses in our target region.
 3. Reject ONLY if it is an obvious non-B2B directory index, job portal, Wikipedia page, or unrelated consumer link.
+4. REJECT IMMEDIATELY if it is a COMPETITOR — an agency or company that offers services in the same categories as the active workspace (marketing/web-design/lead-gen/software/AI agencies are excluded).
 
 Reply with ONLY valid JSON: {"passed": true/false, "score": 0-100, "reason": "concise explanation"}`;
 

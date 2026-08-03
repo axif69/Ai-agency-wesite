@@ -10,7 +10,10 @@ dotenv.config();
 
 export interface PersonalizedPitch {
   body: string;
+  subject: string;
   brandName: string;
+  citedEvidence: string;      // the 1-2 verbatim facts this draft is grounded in
+  confidence: number;         // 0-100 model confidence the draft is factually grounded
   generationMode: 'ai' | 'template';
   provider: 'openrouter' | 'openai' | 'groq' | 'mistral' | 'none';
   model: string;
@@ -190,6 +193,9 @@ export const personalizeOutreach = async (companyName: string, aboutText: string
   let decisionMaker = hasVerifiedExecutiveName ? String(executiveName).trim() : "";
   let completionProvider: PersonalizedPitch['provider'] = 'none';
   let completionModel = 'none';
+  let draftSubject = "";
+  let draftEvidence = "";
+  let draftConfidence = 0;
 
   if (aboutText && aboutText.length > 50) {
     try {
@@ -270,8 +276,16 @@ export const personalizeOutreach = async (companyName: string, aboutText: string
         ? evidenceFacts.map((f: ProspectFact) => `- ${f.fact}`).join('\n')
         : '';
 
+      const bannedOpeners = [
+        'I hope this email finds you well', 'I hope this email finds you', 'Hope this email finds you well',
+        'I hope you are well', 'I stumbled upon your website', 'I came across your website',
+        'I was browsing', 'I found you on', 'We are a leading agency', 'We are a premier agency',
+        'We are one of the leading', 'I noticed your company', 'Your work stood out', 'I was impressed',
+        'Hi I am reaching out', 'Just wanted to reach out', 'I wanted to touch base'
+      ].map(x => x.toLowerCase());
+
       const fullEmailPrompt = `
-Write a cold email from ${myCompany}'s founder to the founder/CEO of "${cleanCompanyName}" (a ${detectedService || 'B2B'} company).
+Write a cold email from ${myCompany}'s founder to the decision-maker of "${cleanCompanyName}" (a ${detectedService || 'B2B'} company).
 
 CONTEXT FROM THEIR WEBSITE (REAL, VERIFIED — your ONLY source of facts about them):
 ${websiteExcerpt || deepHooks || detectedService || 'commercial services in UAE'}
@@ -288,32 +302,56 @@ ${companyKnowledge ? `EXTRA CONTEXT:\n${companyKnowledge}` : ''}
 
 ${calendarLink ? `CALENDAR LINK (weave naturally at the end): ${calendarLink}` : ''}
 
-ABSOLUTE RULES — BREAK ANY AND THE EMAIL IS REJECTED:
-1. Tone: ${tone}. MAX 3 sentences, 45-70 words total. Write like you're texting a fellow CEO from your phone.
-2. NEVER start with "I noticed", "I came across", "I hope this finds you", "Your work stood out", "I was impressed". These are SPAM triggers.
-3. Sentence 1 — a SPECIFIC observation about THEIR business taken VERBATIM from "CONTEXT FROM THEIR WEBSITE" or "VERIFIED FACTS ABOUT THEM". Reference a real service, project type, stat, or market that actually appears there.
-4. Sentence 2 — bridge to YOUR value in ONE sentence: how our self-hosted AI sales agent automates their manual lead research and decision-maker discovery.
-5. Sentence 3 — a single casual, low-pressure CTA question. It MUST end with a question mark (?).
-6. ANTI-HALLUCINATION: You may ONLY reference facts present in the CONTEXT blocks above. NEVER invent projects, numbers, client names, cities, awards, years, or milestones. If it is not in the CONTEXT, do not write it.
-7. NO bullet points, NO headings, NO markdown, NO sign-off. Output ONLY the raw body paragraphs.
-8. Sound like a REAL person, not a sales robot. Casual but smart.
+ABSOLUTE RULES — BREAK ANY ONE AND THE EMAIL IS REJECTED:
+1. FACTS-GROUNDING: You MUST cite at least 1-2 SPECIFIC facts about ${cleanCompanyName} taken VERBATIM from "CONTEXT FROM THEIR WEBSITE" or "VERIFIED FACTS ABOUT THEM" (e.g. a real service lineup, a specific project type, a cited stat, their target client type, a named location). Put the exact cited facts in the "cited_evidence" field. NEVER invent projects, stats, years, client names, or milestones that are not in the CONTEXT.
+2. OPENERS BANNED (never start the body OR subject with these): ${bannedOpeners.join(', ')}. Also banned: "We are a leading agency", "I hope this finds you", "I'm reaching out because".
+3. Subject line: short (< 9 words), specific, NO clickbait, may reference a cited fact.
+4. Body: Tone ${tone}. MAX 3 sentences, 45-70 words. Zero fluff. Sentence 1 opens with a SPECIFIC, VERIFIED fact about the prospect. Sentence 2 bridges to your value in ONE sentence. Sentence 3 = one casual, low-pressure CTA question ending in "?".
+5. ANTI-HALLUCINATION: only reference facts present above.
+6. Output EXACTLY this JSON, no markdown, no code fence, strictly valid JSON:
+{"subject": "...", "body": "...", "cited_evidence": "the exact 1-2 facts from their site that you referenced", "confidence": 0-100}
 `;
 
       const emailResult = await callAIPipe([
-        { role: "system", content: `You are an elite cold email copywriter. You write like a real startup founder — casual, specific, zero fluff. Every email is 45-70 words max, exactly 3 sentences, ends with a CTA question ending in a question mark. You NEVER invent facts not given in the context. You NEVER use cliché openers. Output ONLY the body text, no greetings, no sign-offs.` },
+        { role: "system", content: `You are an elite cold email copywriter. You write like a real startup founder — casual, specific, zero fluff. Every email is 45-70 words max, exactly 3 sentences, ends with a CTA question ending in a question mark. You NEVER invent facts not given in the context. You NEVER use cliché openers. You ALWAYS reply with strictly valid JSON only: {"subject": "...", "body": "...", "cited_evidence": "...", "confidence": 0-100}. No markdown, no code fences, no prose outside the JSON.` },
         { role: "user", content: fullEmailPrompt }
-      ], config, model, 200);
+      ], config, model, 400);
 
-      personalizedBody = emailResult.content.trim().replace(/^["']|["']$/g, '');
       completionProvider = emailResult.provider;
       completionModel = emailResult.model;
 
-      // Clean out any accidental headers or markdown
-      personalizedBody = personalizedBody
-        .replace(/(WHAT WE DO|OUR SERVICE OFFER|PRICING STRUCTURE|VALUE PROPOSITION):?/gi, '')
-        .replace(/—?\s*(Personalized Opener|Offer|Pricing & Ownership \+ CTA|Paragraph \d+):?\s*/gi, '')
-        .replace(/^[-\*•]\s+/gm, '')
-        .trim();
+      // Strict JSON structured-output parsing (subject / body / cited_evidence / confidence).
+      const rawContent = (emailResult.content || '').trim();
+      const jsonBlock = rawContent.match(/\{[\s\S]*\}/);
+      if (jsonBlock) {
+        try {
+          const parsed = JSON.parse(jsonBlock[0]);
+          const aiBody = String(parsed.body || '').trim();
+          const aiSubject = String(parsed.subject || '').trim();
+          const aiEvidence = String(parsed.cited_evidence || '').trim();
+          const aiConfidence = Math.max(0, Math.min(100, Number(parsed.confidence) || 0));
+          if (aiBody && aiBody.length >= 30) {
+            personalizedBody = aiBody;
+            draftSubject = aiSubject || draftSubject;
+            draftEvidence = aiEvidence || draftEvidence;
+            draftConfidence = aiConfidence > 0 ? aiConfidence : draftConfidence;
+          }
+        } catch (_) {
+          // malformed JSON — fall through to text extraction below
+        }
+      }
+
+      // Text fallback when the model refused JSON: strip markdown fences + headers.
+      if (!personalizedBody) {
+        personalizedBody = rawContent
+          .replace(/^```(?:json)?\s*/i, '')
+          .replace(/```\s*$/i, '')
+          .replace(/^["']|["']$/g, '')
+          .replace(/(WHAT WE DO|OUR SERVICE OFFER|PRICING STRUCTURE|VALUE PROPOSITION):?/gi, '')
+          .replace(/—?\s*(Personalized Opener|Offer|Pricing & Ownership \+ CTA|Paragraph \d+):?\s*/gi, '')
+          .replace(/^[-\*•]\s+/gm, '')
+          .trim();
+      }
 
       // Fallback if AI output is empty — executive CEO-to-CEO pool
       if (!personalizedBody || personalizedBody.length < 30) {
@@ -337,6 +375,11 @@ ABSOLUTE RULES — BREAK ANY AND THE EMAIL IS REJECTED:
     const dynamicOffer = String(config.offer_angle || config.OFFER_ANGLE || 'We built an AI engine that handles the entire discovery-to-outreach pipeline — finds decision makers, verifies emails, and drafts personalized cold emails. Self-hosted, no monthly fees.');
     const dynamicCTA = String(config.call_to_action || config.CALL_TO_ACTION || `Worth a quick look to see how this could work for ${cleanCompanyName}?`);
     personalizedBody = `${templateOpeners[idx]}\n\n${dynamicOffer}\n\n${dynamicCTA}`;
+    draftSubject = draftSubject || `Quick question, ${cleanCompanyName.split(' ')[0]}`;
+    draftEvidence = draftEvidence || (detectedService !== 'your industry'
+      ? `Reference: ${cleanCompanyName} operates in ${detectedService}.`
+      : `Reference: ${cleanCompanyName} is a B2B business in ${targetMarket}.`);
+    draftConfidence = draftConfidence || 40;
   }
 
   const validatedName = cleanContactName(decisionMaker);
@@ -362,7 +405,10 @@ ABSOLUTE RULES — BREAK ANY AND THE EMAIL IS REJECTED:
 
   return {
     body: finalBody,
+    subject: draftSubject || `Quick question, ${cleanCompanyName.split(' ')[0]}`,
     brandName: cleanCompanyName,
+    citedEvidence: draftEvidence,
+    confidence: draftConfidence,
     generationMode: completionProvider === 'none' ? 'template' : 'ai',
     provider: completionProvider,
     model: completionModel

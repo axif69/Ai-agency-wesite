@@ -1,7 +1,7 @@
 import { db, initDB, upsertContact, extractDomain, queueContactForDeepHunt } from '../db.js';
 import { loadSystemConfig } from '../config_manager.js';
 import { enrichCompanyData } from '../email_discovery.js';
-import { assessEnterpriseBuyerFit } from '../search_service.js';
+import { assessEnterpriseBuyerFit, loadCompetitorTerms } from '../search_service.js';
 import { logToDashboard } from '../shared_utils.js';
 import { cleanContactName, normalizeEmailCandidate } from '../contact_validation.js';
 
@@ -137,7 +137,10 @@ async function runEnrichmentWorker() {
                         const safeEmail = enrichment.email ? normalizeEmailCandidate(enrichment.email) : null;
                         const hasEmail = Boolean(safeEmail);
                         // Genuine buyer-fit gate: only local + target-niche companies become draftable.
-                        const fit = assessEnterpriseBuyerFit(lead.company_name, enrichment.scrapedText || lead.about_summary || '', safeParseNiches(settings));
+                        // DYNAMIC COMPETITOR GUARD: pass the workspace's own service categories so a
+                        // competing agency/web-firm/lead-gen tool is never qualified as a buyer.
+                        const competitorTerms = await loadCompetitorTerms(settings);
+                        const fit = assessEnterpriseBuyerFit(lead.company_name, enrichment.scrapedText || lead.about_summary || '', safeParseNiches(settings), competitorTerms);
                         const isFit = fit.qualified;
                         const nextStatus = (hasEmail && isFit) ? 'ready' : 'no_email';
                         const fitNote = isFit

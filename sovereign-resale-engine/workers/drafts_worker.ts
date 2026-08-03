@@ -238,8 +238,33 @@ async function runDraftsWorker() {
           const hasBannedWord = blockedWords.some((w: string) => new RegExp(`\\b${w}\\b`, 'i').test(bodyForBannedCheck));
           const hasPersonalization = research.detectedServices.some((s: string) => personalization.body.toLowerCase().includes(s.toLowerCase())) || personalization.body.includes(companyName.split(' ')[0]);
 
-          const passesQualityGate = hasCTA && hasCalendar && wordCount >= 50 && wordCount <= 180 && !hasBannedWord;
-          const qualityScore = passesQualityGate && hasPersonalization ? 95 : passesQualityGate ? 80 : 60;
+          // STRICT 1:1 FACTUAL GROUNDING GATE: the AI MUST cite specific scraped evidence.
+          // A draft that carries no cited evidence (or the cited evidence appears nowhere in
+          // the actual site text) is treated as hallucinated and held for human review.
+          const citedEvidence = String(personalization.citedEvidence || '').trim();
+          const evidenceIsReal = citedEvidence.length > 0
+            ? citedEvidence
+                .toLowerCase()
+                .split(/[.;,]/)
+                .map((s: string) => s.trim())
+                .filter((s: string) => s.length > 12)
+                .some((s: string) => (research.scrapedText || '').toLowerCase().includes(s))
+            : false;
+
+          const bannedOpeners = [
+            'hope this email finds you well', 'i hope this email finds you', 'i stumbled upon your website',
+            'i came across your website', 'we are a leading agency', 'we are a premier agency',
+            'we are one of the leading', 'i noticed your company', 'your work stood out', 'i was impressed',
+            'i wanted to reach out', 'just wanted to reach out'
+          ];
+          const bodyLower = personalization.body.toLowerCase();
+          const hasBannedOpener = bannedOpeners.some((o: string) => bodyLower.startsWith(o) || bodyLower.includes(` ${o}`));
+
+          const passesQualityGate = hasCTA && hasCalendar && wordCount >= 50 && wordCount <= 180 && !hasBannedWord && !hasBannedOpener && evidenceIsReal;
+          const qualityScore = (evidenceIsReal && hasPersonalization && !hasBannedOpener && passesQualityGate) ? 95
+            : (evidenceIsReal && passesQualityGate) ? 85
+            : (evidenceIsReal) ? 70
+            : 55;
 
           const isAutoOutreach = String(
             settings.auto_outreach_enabled || settings.AUTO_OUTREACH_ENABLED || 'true'
@@ -248,12 +273,21 @@ async function runDraftsWorker() {
           const initialStatus = (isAutoOutreach && qualityScore >= 80) ? 'approved' : 'draft';
           const modelProv = `${personalization.provider}:${personalization.model}`;
 
-          // Dynamic subject line based on company category
+          // Structured subject line: prefer the AI\x27s evidence-grounded subject; fall back to a
+          // dynamic company-based subject only if the model returned none.
           const cleanedSubjectName = cleanCompanyName(companyName) || companyName.split(' ').slice(0, 3).join(' ');
-          const subjectTemplate = String(settings.subject_template || settings.SUBJECT_TEMPLATE || '').trim();
-          let subject = subjectTemplate 
-              ? subjectTemplate.replace(/\{company\}/gi, cleanedSubjectName).replace(/\{service\}/gi, servicesStr)
-              : `Quick question, ${cleanedSubjectName}`;
+          const subject = (personalization.subject && personalization.subject.trim().length > 3)
+            ? personalization.subject.trim()
+            : `Quick question, ${cleanedSubjectName}`;
+
+          // Persist the cited evidence + AI confidence so reviewers can audit grounding.
+          const validationWarnings = {
+            evidence_cited: citedEvidence,
+            evidence_grounded_in_site: evidenceIsReal,
+            ai_confidence: Number(personalization.confidence || 0),
+            banned_opener: hasBannedOpener,
+            word_count: wordCount,
+          };
 
           await new Promise<void>(res => {
             db.run(
@@ -261,8 +295,8 @@ async function runDraftsWorker() {
                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
               [
                 lead.id, email, subject, personalization.body,
-                JSON.stringify(evidenceFacts), 'v6.0-hyperpersonalized',
-                modelProv, qualityScore, '[]', initialStatus
+                JSON.stringify(evidenceFacts), 'v7.0-evidence-grounded',
+                modelProv, qualityScore, JSON.stringify(validationWarnings), initialStatus
               ],
               () => res()
             );

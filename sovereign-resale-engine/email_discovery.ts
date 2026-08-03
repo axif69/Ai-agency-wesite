@@ -8,7 +8,7 @@ import dns from 'dns/promises';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import { callAI } from './search_service';
-import { assessPersonName, isGenericMailbox, normalizeEmailCandidate, STRICT_TLD_TAIL, type EmailOwnershipStatus } from './contact_validation';
+import { assessPersonName, isGenericMailbox, normalizeEmailCandidate, personNamesMatch, personNameFromLinkedInUrl, type EmailOwnershipStatus } from './contact_validation';
 puppeteer.use(StealthPlugin());
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -58,10 +58,14 @@ const validateNameWithAI = async (name: string, title: string | null, companyNam
 };
 
 export const sanitizeAndValidateNameWithAI = async (rawName: string, title: string | null = null, companyName: string | null = null): Promise<{ valid: boolean; cleanName: string | null }> => {
-    const cleaned = String(rawName || '').trim();
+    // Brand-token sanitization: before ANY fast-path return, strip the company's own
+    // tokens from the name so "Vincitore Veer Vijay Doshi" becomes "Veer Vijay Doshi"
+    // and the brand is never persisted as part of a person's name.
+    const brandStripped = stripBrandTokensFromName(rawName, companyName);
+    let cleaned = String(brandStripped || rawName || '').trim();
     if (!cleaned || cleaned.length < 2) return { valid: false, cleanName: null };
     const cacheKey = `${cleaned.toLowerCase()}|${String(title || '').toLowerCase()}|${String(companyName || '').toLowerCase()}`;
-    
+
     // Fast path for clean 2-word names without company/department noise
     const pure = cleanContactName(cleaned);
     if (pure && !/\b(commercial|vehicles|division|department|fleet|operations|services|group|contracting|logistics|trading|holding|associates|technologies|systems)\b/i.test(cleaned)) {
@@ -726,10 +730,21 @@ const buildFreeDecisionContacts = async (
         // position>" to surface the actual exec + their LinkedIn (per the operator flow).
         if (!hasLinkedIn && c.job_title) {
             const byRole = await discoverExecutive(companyName, [c.job_title]);
-            if (byRole.linkedin) c.linkedin_url = byRole.linkedin;
-            if (byRole.name && (!c.full_name || c.full_name.toLowerCase().includes('designation'))) {
-                c.full_name = byRole.name;
-                c.person_identity_verified = Boolean(c.linkedin_url);
+            // IDENTITY GUARD: discoverExecutive returns { name, linkedin } — both drawn
+            // from the SAME search result, so they already belong to one profile. Only
+            // bind the LinkedIn when a name is present AND that name reconciles with the
+            // DM's scraped name. A role-aware search can return a DIFFERENT executive at
+            // the same company (e.g. Vincitore's 10 decision makers) — gluing that URL
+            // onto a different DM's name is the Vincitore mismatch we must prevent.
+            if (byRole.linkedin && byRole.name) {
+                const resolvedName = stripBrandTokensFromName(byRole.name, companyName) || byRole.name;
+                const nameAgrees = personNamesMatch(resolvedName, c.full_name);
+                if (nameAgrees) {
+                    c.linkedin_url = byRole.linkedin;
+                    c.person_identity_verified = true;
+                } else {
+                    console.log(`  ⚠️ [TIER 2a] DISCARDED LinkedIn ${byRole.linkedin} (${resolvedName}) — does not match DM ${c.full_name}`);
+                }
             }
         }
 
@@ -743,7 +758,19 @@ const buildFreeDecisionContacts = async (
             console.log(`  🔎 [TIER 2] OSINT hunt "${c.full_name}" (${c.job_title || '?'}) @ ${companyName} — current email: ${c.email || 'none'}`);
             const hunt = await huntPersonOSINT(c.full_name, companyName);
             if (hunt.email || hunt.linkedin) console.log(`  🔬 [TIER 2] hunt for ${c.full_name} -> email=${hunt.email || '-'} linkedin=${hunt.linkedin || '-'}`);
-            if (hunt.linkedin && !c.linkedin_url) c.linkedin_url = hunt.linkedin;
+            // IDENTITY GUARD: huntPersonOSINT returns the FIRST linkedin URL scraped from
+            // the DDG page — which may be ANY person's profile at the target company, not
+            // necessarily this DM. Derive a name from the URL and only accept it when it
+            // reconciles with the DM's scraped name (prevents cross-founder profile glue).
+            if (hunt.linkedin && !c.linkedin_url) {
+                const slugName = personNameFromLinkedInUrl(hunt.linkedin);
+                const huntNameAgrees = slugName ? personNamesMatch(slugName, c.full_name) : false;
+                if (huntNameAgrees) {
+                    c.linkedin_url = hunt.linkedin;
+                } else {
+                    console.log(`  ⚠️ [TIER 2] DISCARDED hunt LinkedIn ${hunt.linkedin} (slug ${slugName || '?'}) — does not match ${c.full_name}`);
+                }
+            }
             if (hunt.email) {
                 const probe = await probeMailbox(hunt.email);
                 const accepted = probe.syntaxValid && probe.domainValid && probe.mailboxAccepted && !probe.catchAll;
@@ -793,6 +820,27 @@ const companyMatchTokens = (value: string): string[] => {
         .replace(/[^a-z0-9]+/g, ' ')
         .split(/\s+/)
         .filter(token => token.length >= 4 && !stop.has(token));
+};
+
+/**
+ * Strips the company's own brand tokens out of a scraped executive name.
+ * The Vincitore bug: the scraper glued the brand onto the person's name, so a
+ * LinkedIn title looked like "Vincitore Veer Vijay Doshi" and that whole string
+ * was adopted as the DM's name. Remove brand tokens (word-boundary, non-legal,
+ * >=4 chars, not in the stop set) so "Vincitore Veer Vijay Doshi" -> "Veer Vijay Doshi".
+ * Returns the cleaned name, or the original if nothing brandy was present.
+ */
+const stripBrandTokensFromName = (name: string | null, companyName: string | null): string => {
+    const cleaned = String(name || '').trim();
+    if (!cleaned || !companyName) return cleaned;
+    const brandTokens = companyMatchTokens(companyName);
+    if (brandTokens.length === 0) return cleaned;
+    let out = cleaned;
+    for (const token of brandTokens) {
+        // Word-boundary replace, case-insensitive; drop the token anywhere it appears
+        out = out.replace(new RegExp(`\\b${token}\\b`, 'gi'), ' ');
+    }
+    return out.replace(/\s+/g, ' ').trim() || cleaned;
 };
 
 const linkedinResultMatchesCompany = (companyName: string, titleText: string, snippetText: string = ''): boolean => {
@@ -944,7 +992,11 @@ export const osintEmailSearch = async (companyName: string, domain: string): Pro
         
         const emails: string[] = res.data.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g) || [];
         const unique: string[] = Array.from(new Set(emails.map((e: string) => e.toLowerCase())));
-        const clean = unique.filter((e: string) => !e.includes('xxx') && !e.includes('example.com') && !e.includes('.png') && !e.includes('duckduckgo.com'));
+        // Strict TLD gate: normalizeEmailCandidate enforces the VALID_EMAIL_TLD allowlist,
+        // rejecting corrupted tails like .comuae / .comvie that STRICT_TLD_TAIL lets through.
+        const clean = unique
+            .filter((e: string) => !!normalizeEmailCandidate(e))
+            .filter((e: string) => !e.includes('xxx') && !e.includes('example.com') && !e.includes('.png') && !e.includes('duckduckgo.com'));
         
         const domainMatch = clean.find((e: string) => e.includes(domain.replace('www.', '')));
         if (domainMatch) {
@@ -976,7 +1028,10 @@ const huntPersonOSINT = async (personName: string, companyName: string): Promise
         });
         const text = String(res.data || '');
         const emails = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g) || [];
+        // Strict TLD gate: normalizeEmailCandidate enforces VALID_EMAIL_TLD allowlist so
+        // corrupted tails (.comuae/.comvie) never surface from the open-web hunt.
         const uniqueEmails = Array.from(new Set(emails.map((e: string) => e.toLowerCase())))
+            .filter((e: string) => !!normalizeEmailCandidate(e))
             .filter(e => !e.includes('xxx') && !e.includes('example.com') && !e.includes('.png') && !e.includes('duckduckgo.com') && !e.includes('wixpress.com'));
         const email = uniqueEmails.find(e => !/^(image|img|www|redirect|email)/.test(e)) || uniqueEmails[0] || null;
         const linkedinMatch = text.match(/https?:\/\/(?:www\.|[\w-]+\.)?linkedin\.com\/in\/[a-zA-Z0-9_\-%]+/g);
@@ -1203,7 +1258,7 @@ export const enrichCompanyData = async (companyName: string, domain: string): Pr
         // decision-maker record carries a working inbox instead of a blank "No email".
         const companyFallbackEmail = (() => {
             const candidates = Array.from(new Set(allEmails.map(e => e.email)))
-                .filter(e => e.includes('@') && e.split('@')[1].includes('.') && !forbiddenDomains.some(d => e.includes(d)))
+                .filter(e => normalizeEmailCandidate(e) && !forbiddenDomains.some(d => e.includes(d)))
                 .filter(e => {
                     if (e.match(/\.(png|jpg|jpeg|gif|svg|webp|ico|js|css|pdf)$/)) return false;
                     if (e.includes('%') || e.includes(' ') || e.includes('\t')) return false;
@@ -1266,7 +1321,10 @@ export const enrichCompanyData = async (companyName: string, domain: string): Pr
         const filteredEmails = Array.from(emailMap.keys()).filter(e => {
             if (!e.includes('@') || !e.split('@')[1].includes('.')) return false;
             // Reject corrupted TLD tails (.comvie, .comuae) at the collection choke point.
-            if (!STRICT_TLD_TAIL.test(e)) return false;
+            // STRICT_TLD_TAIL alone is INSUFFICIENT here: .comvie/.comuae end in an
+            // alphabetic run, so /\.[a-z]{2,24}$/ passes them. normalizeEmailCandidate
+            // also enforces the VALID_EMAIL_TLD allowlist, which rejects those tails.
+            if (!normalizeEmailCandidate(e)) return false;
             if (forbiddenDomains.some(d => e.includes(d))) return false;
             const emailDomain = e.split('@')[1].toLowerCase();
             const source = emailMap.get(e);

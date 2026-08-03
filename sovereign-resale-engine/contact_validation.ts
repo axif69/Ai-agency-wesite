@@ -123,6 +123,43 @@ export const cleanContactName = (rawName: unknown): string | null => {
  * Checks if an email address belongs to a consumer/free email provider.
  * Used by Drafts Worker to reject non-business emails.
  */
+/**
+ * Extracts a readable person-name token string from a LinkedIn public profile URL.
+ * Example: "https://ch.linkedin.com/in/veer-vijay-doshi-87a" -> "veer vijay doshi".
+ * Used to verify that a LinkedIn URL and a scraped full_name refer to the SAME
+ * profile before the two are ever bound together (identity mismatch guard).
+ */
+export const personNameFromLinkedInUrl = (url: unknown): string | null => {
+  const m = String(url || '').match(/linkedin\.com\/in\/([a-zA-Z0-9_\-%]+)/i);
+  if (!m) return null;
+  const slug = String(m[1]).replace(/[-_%]+/g, ' ').trim();
+  return slug || null;
+};
+
+const normalizeNameTokens = (value: unknown): string[] =>
+  String(value || '')
+    .toLowerCase()
+    .replace(/[^a-z\s]/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean);
+
+/**
+ * True when two person names plausibly refer to the same individual:
+ * exact match, or shared last name + at least one shared first-name token.
+ * This is the identity gate that rejects binding a scraped website name to a
+ * DIFFERENT founder's LinkedIn (the Vincitore mismatch).
+ */
+export const personNamesMatch = (a: unknown, b: unknown): boolean => {
+  const ta = normalizeNameTokens(a);
+  const tb = normalizeNameTokens(b);
+  if (ta.length < 1 || tb.length < 1) return false;
+  if (ta.join(' ') === tb.join(' ')) return true;
+  if (ta[ta.length - 1] !== tb[tb.length - 1]) return false; // last names must agree
+  const firstA = ta.slice(0, -1);
+  const firstB = tb.slice(0, -1);
+  return firstA.some((f) => firstB.includes(f));
+};
+
 export const isConsumerEmail = (email: unknown): boolean => {
     const normalized = normalizeEmailCandidate(email);
     if (!normalized) return false;
