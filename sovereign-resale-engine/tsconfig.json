@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["node"]
+  },
+  "include": [
+    "Dashboard.tsx",
+    "main.tsx",
+    "server.ts",
+    "worker.ts",
+    "db.ts",
+    "config_manager.ts",
+    "shared_utils.ts",
+    "search_service.ts",
+    "email_discovery.ts",
+    "personalizer.ts",
+    "gmail_service.ts",
+    "monitor_service.ts",
+    "imap_monitor.ts",
+    "verifier.ts",
+    "gmb_stealth.ts"
+  ],
+  "exclude": ["node_modules", "dist", ".code-review-graph"]
+}

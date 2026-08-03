@@ -1,0 +1,16 @@
+{
+  "name": "sovereign-cloudflare-license-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240729.0",
+    "typescript": "^5.7.2",
+    "wrangler": "^3.78.6"
+  }
+}

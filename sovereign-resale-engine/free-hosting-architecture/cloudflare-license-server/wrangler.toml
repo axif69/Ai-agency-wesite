@@ -1,0 +1,15 @@
+name = "sovereign-license-server"
+main = "src/index.ts"
+compatibility_date = "2026-07-07"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sovereign_license_db"
+database_id = "REPLACE_AFTER_CREATE"
+
+[[kv_namespaces]]
+binding = "LICENSE_KV"
+id = "REPLACE_AFTER_CREATE"
+
+[vars]
+APP_NAME = "Sovereign Sales Engine"

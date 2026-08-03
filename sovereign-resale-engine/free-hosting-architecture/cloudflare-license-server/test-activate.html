@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cloudflare License Test</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f7fb;
+        --card: #ffffff;
+        --text: #101828;
+        --muted: #667085;
+        --border: #d0d5dd;
+        --blue: #2563eb;
+        --blue-dark: #1d4ed8;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .wrap {
+        max-width: 860px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 10px 24px rgba(16, 24, 40, 0.06);
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+      }
+      p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      label {
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+        margin: 14px 0 8px;
+      }
+      input,
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 14px;
+        font-family: inherit;
+        background: #fff;
+      }
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+        font-family: Consolas, "Courier New", monospace;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
+      button {
+        border: 0;
+        border-radius: 10px;
+        background: var(--blue);
+        color: #fff;
+        padding: 12px 18px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      button:hover {
+        background: var(--blue-dark);
+      }
+      pre {
+        margin: 18px 0 0;
+        padding: 16px;
+        background: #0f172a;
+        color: #e2e8f0;
+        border-radius: 12px;
+        overflow: auto;
+        min-height: 160px;
+        white-space: pre-wrap;
+      }
+      .small {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+      @media (max-width: 720px) {
+        .row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>Cloudflare License Test</h1>
+        <p>
+          Open this file in Chrome, then click <b>Send Activate Request</b>.
+          This avoids the Cloudflare console and tester issues.
+        </p>
+
+        <label for="baseUrl">Worker base URL</label>
+        <input id="baseUrl" value="https://young-band-43c3.iautomationdevelopement.workers.dev" />
+
+        <div class="row">
+          <div>
+            <label for="activationKey">Activation key</label>
+            <input id="activationKey" value="SOV-TEST-0001" />
+          </div>
+          <div>
+            <label for="deviceHash">Device hash</label>
+            <input id="deviceHash" value="device-test-001" />
+          </div>
+        </div>
+
+        <label for="customerName">Customer name</label>
+        <input id="customerName" value="Test Customer" />
+
+        <label for="requestBody">Request body preview</label>
+        <textarea id="requestBody" readonly></textarea>
+
+        <div class="actions">
+          <button id="sendBtn">Send Activate Request</button>
+          <button id="healthBtn" type="button">Check Health</button>
+        </div>
+
+        <div class="small">Response</div>
+        <pre id="output">Waiting...</pre>
+      </div>
+    </div>
+
+    <script>
+      const baseUrlEl = document.getElementById("baseUrl");
+      const activationKeyEl = document.getElementById("activationKey");
+      const deviceHashEl = document.getElementById("deviceHash");
+      const customerNameEl = document.getElementById("customerName");
+      const requestBodyEl = document.getElementById("requestBody");
+      const outputEl = document.getElementById("output");
+      const sendBtn = document.getElementById("sendBtn");
+      const healthBtn = document.getElementById("healthBtn");
+
+      function bodyObject() {
+        return {
+          activation_key: activationKeyEl.value.trim(),
+          device_hash: deviceHashEl.value.trim(),
+          customer_name: customerNameEl.value.trim(),
+        };
+      }
+
+      function renderBodyPreview() {
+        requestBodyEl.value = JSON.stringify(bodyObject(), null, 2);
+      }
+
+      async function sendRequest(path, method = "POST") {
+        const url = baseUrlEl.value.trim().replace(/\/$/, "") + path;
+        const res = await fetch(url, {
+          method,
+          headers: { "Content-Type": "application/json" },
+          body: method === "GET" ? undefined : JSON.stringify(bodyObject()),
+        });
+        const text = await res.text();
+        outputEl.textContent = `STATUS: ${res.status}\nURL: ${url}\n\n${text}`;
+      }
+
+      sendBtn.addEventListener("click", async () => {
+        outputEl.textContent = "Sending...";
+        try {
+          await sendRequest("/api/license/activate", "POST");
+        } catch (err) {
+          outputEl.textContent = String(err);
+        }
+      });
+
+      healthBtn.addEventListener("click", async () => {
+        outputEl.textContent = "Checking health...";
+        try {
+          const url = baseUrlEl.value.trim().replace(/\/$/, "") + "/health";
+          const res = await fetch(url);
+          const text = await res.text();
+          outputEl.textContent = `STATUS: ${res.status}\nURL: ${url}\n\n${text}`;
+        } catch (err) {
+          outputEl.textContent = String(err);
+        }
+      });
+
+      [baseUrlEl, activationKeyEl, deviceHashEl, customerNameEl].forEach((el) =>
+        el.addEventListener("input", renderBodyPreview)
+      );
+
+      renderBodyPreview();
+    </script>
+  </body>
+</html>

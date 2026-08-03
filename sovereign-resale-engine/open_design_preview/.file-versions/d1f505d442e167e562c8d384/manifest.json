@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "fileName": "overview.html",
+  "entries": [
+    {
+      "id": "72332d16-04dc-47c9-927d-e13fe12b4e6e",
+      "fileName": "overview.html",
+      "version": 1,
+      "label": "Version 1",
+      "createdAt": 1784968854352,
+      "source": "ai",
+      "prompt": "[form answers — clarify-scope]\n- Target platform?: Responsive web (desktop & mobile) [value: responsive]\n- Start with which tab?: 📊 Overview (Executive Cockpit) [value: overview]\n- Include interactive elements (e.g., toggles, modals, hover animations)?: true",
+      "size": 4831,
+      "mime": "text/html; charset=utf-8",
+      "kind": "html",
+      "contentPath": "0001-72332d16-04dc-47c9-927d-e13fe12b4e6e.html",
+      "promptSource": "message"
+    },
+    {
+      "id": "908a9465-a951-4863-8252-8896cec3c876",
+      "fileName": "overview.html",
+      "version": 2,
+      "label": "Version 2",
+      "createdAt": 1784969153215,
+      "source": "ai",
+      "prompt": "Polish this design until it is ready to ship: check hierarchy, typography, spacing, responsive behavior, button states, empty/loading/error states, and accessibility; directly fix the most important issues.",
+      "size": 4401,
+      "mime": "text/html; charset=utf-8",
+      "kind": "html",
+      "contentPath": "0002-908a9465-a951-4863-8252-8896cec3c876.html",
+      "promptSource": "message"
+    }
+  ]
+}
