@@ -713,8 +713,12 @@ const buildFreeDecisionContacts = async (
     // Tier 2: OSINT hunt for a person-level email/LinkedIn. Tier 3: fall back to the
     // company's verified primary inbox + phone so no decision-maker row is left blank.
     for (const c of enriched) {
-        const hasEmail = Boolean(c.email && String(c.email).trim() !== '');
         const hasLinkedIn = Boolean(c.linkedin_url && String(c.linkedin_url).trim() !== '');
+        // Root-cause guard: buildContactProfile slotted a generic mailbox into EVERY DM
+        // (contact.email is often info@/email@/sales@), so the old `hasEmail` gate was
+        // true for every record and the published-email hunt never ran. Track "is there a
+        // REAL person-verified inbox yet" instead of "any non-empty string".
+        const alreadyVerifiedPerson = c.email_ownership_status === 'EMAIL_PERSON_OWNERSHIP_VERIFIED' || c.email_ownership_verified === true;
         if (!c.full_name) continue;
 
         // TIER 2a — Role-aware decision-maker discovery. If a person was found with a
@@ -729,21 +733,31 @@ const buildFreeDecisionContacts = async (
             }
         }
 
-        // TIER 2 — Published-email hunt. Even when a LinkedIn is already known, search
-        // the open web for a PUBLISHED email for this person ("Name" "Company" email)
-        // BEFORE falling back to guess patterns. Prefer a real published address.
-        if (!hasEmail && c.full_name) {
+        // TIER 2 — Published-email hunt (regated). The actual blocker: buildContactProfile
+        // pre-fills a scraped generic mailbox (info@/email@/sales@) into `c.email` for nearly
+        // every DM, so the old `!hasEmail` gate was ALWAYS false and this hunt NEVER ran —
+        // which is why the new pipeline produced 0 verified DMs. Now it runs whenever the DM
+        // does NOT yet hold a person-verified inbox (even if a generic mailbox is present),
+        // and SMTP-verifies a surfaced address so a real published first.last replaces it.
+        if (!alreadyVerifiedPerson && c.full_name) {
             const hunt = await huntPersonOSINT(c.full_name, companyName);
             if (hunt.linkedin && !c.linkedin_url) c.linkedin_url = hunt.linkedin;
             if (hunt.email) {
+                const probe = await probeMailbox(hunt.email);
+                const accepted = probe.syntaxValid && probe.domainValid && probe.mailboxAccepted && !probe.catchAll;
                 c.email = hunt.email;
                 c.email_source = 'google_osint_hunt';
-                c.email_ownership_status = 'EMAIL_PERSON_OWNERSHIP_UNVERIFIED';
-                c.email_verified = false;
-                c.person_identity_verified = Boolean(c.linkedin_url);
-                c.person_name_confidence = Math.max(c.person_name_confidence, 75);
+                c.email_mailbox_accepted = probe.mailboxAccepted;
+                c.email_verified = accepted;
+                c.person_identity_verified = Boolean(c.linkedin_url || accepted);
+                c.person_name_confidence = Math.max(c.person_name_confidence, 78);
+                c.email_syntax_valid = probe.syntaxValid;
+                c.email_domain_valid = probe.domainValid;
+                c.email_domain_catch_all = probe.catchAll;
+                c.email_ownership_status = accepted ? 'EMAIL_PERSON_OWNERSHIP_VERIFIED' : 'EMAIL_PERSON_OWNERSHIP_UNVERIFIED';
+                c.email_ownership_verified = accepted;
                 c.source = `${c.source}+google_osint_hunt`;
-                c.confidence_score = Math.min(c.confidence_score + 5, 92);
+                c.confidence_score = accepted ? Math.max(c.confidence_score, 92) : Math.min((c.confidence_score || 0) + 5, 92);
             }
         }
 
