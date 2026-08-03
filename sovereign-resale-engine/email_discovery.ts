@@ -715,12 +715,26 @@ const buildFreeDecisionContacts = async (
     for (const c of enriched) {
         const hasEmail = Boolean(c.email && String(c.email).trim() !== '');
         const hasLinkedIn = Boolean(c.linkedin_url && String(c.linkedin_url).trim() !== '');
-        if (hasEmail || !c.full_name || !c.job_title) continue;
+        if (!c.full_name) continue;
 
-        // TIER 2 — Google/OSINT hunt for this specific person.
-        if (!hasLinkedIn) {
+        // TIER 2a — Role-aware decision-maker discovery. If a person was found with a
+        // specific title on the site but no LinkedIn yet, Google "Company Name" "<their
+        // position>" to surface the actual exec + their LinkedIn (per the operator flow).
+        if (!hasLinkedIn && c.job_title) {
+            const byRole = await discoverExecutive(companyName, [c.job_title]);
+            if (byRole.linkedin) c.linkedin_url = byRole.linkedin;
+            if (byRole.name && (!c.full_name || c.full_name.toLowerCase().includes('designation'))) {
+                c.full_name = byRole.name;
+                c.person_identity_verified = Boolean(c.linkedin_url);
+            }
+        }
+
+        // TIER 2 — Published-email hunt. Even when a LinkedIn is already known, search
+        // the open web for a PUBLISHED email for this person ("Name" "Company" email)
+        // BEFORE falling back to guess patterns. Prefer a real published address.
+        if (!hasEmail && c.full_name) {
             const hunt = await huntPersonOSINT(c.full_name, companyName);
-            if (hunt.linkedin) c.linkedin_url = hunt.linkedin;
+            if (hunt.linkedin && !c.linkedin_url) c.linkedin_url = hunt.linkedin;
             if (hunt.email) {
                 c.email = hunt.email;
                 c.email_source = 'google_osint_hunt';
@@ -784,13 +798,18 @@ const extractMobile = (text: string): string | null => {
     return null;
 };
 
-const discoverExecutive = async (companyName: string): Promise<{name: string | null, linkedin: string | null}> => {
+const discoverExecutive = async (companyName: string, roles: string[] = []): Promise<{name: string | null, linkedin: string | null}> => {
     try {
         const cleanComp = companyName.replace(/\b(llc|l\.l\.c|fzco|fze|inc|corp|ltd|group|holding|holdings)\b/gi, '').trim();
+        // If a specific position is known from the website, search "Company" "<that position>";
+        // otherwise fall back to the generic C-level directive set.
+        const roleClause = roles.length
+            ? roles.map(r => `"${r}"`).join(' OR ')
+            : '"CEO" OR "Founder" OR "Managing Director" OR "Owner"';
         const queries = [
-            `site:linkedin.com/in/ "${cleanComp}" "CEO" OR "Founder" OR "Managing Director" OR "Owner"`,
-            `"CEO of ${cleanComp}" OR "Founder of ${cleanComp}" OR "Managing Director of ${cleanComp}" LinkedIn`,
-            `"${cleanComp}" CEO OR Founder OR "Managing Director" UAE LinkedIn`
+            `site:linkedin.com/in/ "${cleanComp}" ${roleClause}`,
+            `"${cleanComp}" ${roleClause} LinkedIn`,
+            `"${cleanComp}" ${roleClause} UAE LinkedIn`
         ];
         
         let name: string | null = null;
