@@ -740,7 +740,9 @@ const buildFreeDecisionContacts = async (
         // does NOT yet hold a person-verified inbox (even if a generic mailbox is present),
         // and SMTP-verifies a surfaced address so a real published first.last replaces it.
         if (!alreadyVerifiedPerson && c.full_name) {
+            console.log(`  🔎 [TIER 2] OSINT hunt "${c.full_name}" (${c.job_title || '?'}) @ ${companyName} — current email: ${c.email || 'none'}`);
             const hunt = await huntPersonOSINT(c.full_name, companyName);
+            if (hunt.email || hunt.linkedin) console.log(`  🔬 [TIER 2] hunt for ${c.full_name} -> email=${hunt.email || '-'} linkedin=${hunt.linkedin || '-'}`);
             if (hunt.linkedin && !c.linkedin_url) c.linkedin_url = hunt.linkedin;
             if (hunt.email) {
                 const probe = await probeMailbox(hunt.email);
