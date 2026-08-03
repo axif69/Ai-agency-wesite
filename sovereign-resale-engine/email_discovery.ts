@@ -509,17 +509,33 @@ const extractDecisionMakersFromText = (text: string, sourceUrl: string): Enriche
 
 const generateEmailGuesses = (fullName: string | null, domainPart: string): string[] => {
     if (!fullName || !domainPart) return [];
-    const parts = fullName.toLowerCase().replace(/[^a-z\s-]/g, '').split(/\s+/).filter(Boolean);
-    if (parts.length < 2) return [];
+    // Strip honorifics / roles / placeholder suffixes that get scraped into the name
+    // ("Dr.", "CEO", trailing "Designation") so patterns are generated from the real
+    // personal name — otherwise first.last@domain collapses to junk like mr@kumar.com.
+    const roleTokens = new Set(['mr','mrs','ms','miss','dr','sir','prof','ceo','coo','cfo','founder','owner','director','managing','partner','chairman','president','presiding','head','executive','chief','designation','lead','and','inc','llc','ltd','llp','fze','fzco','fz','group','general','assistant']);
+    let parts = fullName.toLowerCase().replace(/[^a-z\s-]/g, ' ').split(/\s+/).filter(Boolean);
+    while (parts.length && roleTokens.has(parts[0])) parts.shift();
+    if (parts.length && parts[parts.length - 1] === 'designation') parts.pop();
+
+    // Very short or no clear first+last (e.g. single initials) are not safe to pattern-build.
+    if (!parts.length) return [];
+    if (parts.length === 1 && parts[0].length < 2) return [];
+
     const first = parts[0];
     const last = parts[parts.length - 1];
     const firstInitial = first[0];
+
+    if (parts.length === 1) {
+        return Array.from(new Set([`${first}@${domainPart}`, `${first[0]}@${domainPart}`]));
+    }
+
     return Array.from(new Set([
         `${first}.${last}@${domainPart}`,
         `${first}@${domainPart}`,
         `${firstInitial}.${last}@${domainPart}`,
         `${firstInitial}${last}@${domainPart}`,
-        `${first}${last[0]}@${domainPart}`
+        `${first}${last[0]}@${domainPart}`,
+        `${last}.${first}@${domainPart}`
     ]));
 };
 
@@ -1314,6 +1330,41 @@ export const enrichCompanyData = async (companyName: string, domain: string): Pr
                     email_is_fallback: false,
                     ...ownershipFields
                 };
+            }
+
+            // Prefer a VERIFIED direct personal email (first.last@domain) for the top decision
+            // maker before falling back to a generic company mailbox (info@/sales@/contact@).
+            // Without this, executives with names but no scraped address sit on "COMPANY MAILBOX"
+            // even when a real first.last@company.com mailbox exists and accepts mail.
+            if (!bestDecisionEmail) {
+                const topDM = (decisionContacts || [])
+                    .slice()
+                    .sort((a: any, b: any) => Number(b.confidence_score || 0) - Number(a.confidence_score || 0))[0];
+                const dmName = topDM?.full_name || (execData as any)?.name || null;
+                if (dmName) {
+                    for (const guess of generateEmailGuesses(dmName, domainPart)) {
+                        if (await verifyEmailDomain(guess, true)) {
+                            console.log(`  🎯 Direct personal email verified: ${guess}`);
+                            return {
+                                companyName,
+                                email: guess,
+                                mobile_number,
+                                phone,
+                                contact_name: cleanPersonName(execData.name || '') || cleanPersonName(dmName) || null,
+                                linkedin_url: topDM?.linkedin_url || execData.linkedin,
+                                scrapedText: allText.slice(0, 5000),
+                                relevant: true,
+                                relevance_score: relevanceResult.score,
+                                contacts: decisionContacts,
+                                email_source: 'decision_maker',
+                                email_verified: true,
+                                email_is_fallback: false,
+                                email_ownership_status: 'EMAIL_PERSON_OWNERSHIP_VERIFIED',
+                                email_ownership_verified: true
+                            };
+                        }
+                    }
+                }
             }
 
             const fallbackPatterns = [`info@${domainPart}`, `sales@${domainPart}`, `contact@${domainPart}`];
