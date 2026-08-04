@@ -1419,6 +1419,12 @@ export default function SovereignDashboardV5_1() {
   };
 
   const sentLeads = prospects.filter(p => ['sent', 'followed_up', 'blocked_by_safety_mode'].includes(p.status)).sort((a, b) => new Date(b.last_contacted || b.added_at).getTime() - new Date(a.last_contacted || a.added_at).getTime());
+  // Denominator for Sector Concentration: leads that actually carry a real category.
+  const isCategorized = (p: any) => {
+    const cat = String(p?.category || '').trim();
+    return cat !== '' && !['n/a', 'none', 'unknown'].includes(cat.toLowerCase());
+  };
+  const categorizedLeadCount = (prospects || []).filter(isCategorized).length;
   const reviewDrafts = outreachDrafts.filter(draft => !draft.is_test_fixture && ['draft', 'approved', 'needs_review'].includes(draft.approval_status));
   const pendingDraftCount = reviewDrafts.filter(draft => draft.approval_status === 'draft').length;
   const allTargetLeads = prospects.filter(p => 
@@ -2149,24 +2155,61 @@ export default function SovereignDashboardV5_1() {
                   <div style={{ fontWeight: 800, fontSize: '1.2rem', color: TEXT_PRIMARY, letterSpacing: '-0.02em' }}>Sector Concentration</div>
                   <span style={{ fontSize: '0.72rem', fontWeight: 800, color: ACCENT, background: 'rgba(0, 113, 227, 0.08)', padding: '6px 12px', borderRadius: 999 }}>DYNAMIC DB</span>
                 </div>
-                <div style={{ fontSize: '0.8rem', color: TEXT_SECONDARY, marginBottom: 20, fontWeight: 500 }}>Live distribution of discovered business sectors across {prospects.length} total leads.</div>
+                <div style={{ fontSize: '0.8rem', color: TEXT_SECONDARY, marginBottom: 20, fontWeight: 500 }}>Live distribution of discovered business sectors across {categorizedLeadCount} categorized leads.</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                   {(() => {
-                    if (!prospects || prospects.length === 0) {
+                    // Only leads with a real, non-empty category count toward sector concentration.
+                    // Raw/un-enriched leads (category NULL/'') are excluded so percentages reflect
+                    // actual qualified-target dominance instead of being diluted by the full table.
+                    const categorized = (prospects || []).filter((p: any) => {
+                      const cat = String(p.category || '').trim();
+                      return cat !== '' && cat.toLowerCase() !== 'n/a' && cat.toLowerCase() !== 'none' && cat.toLowerCase() !== 'unknown';
+                    });
+                    if (categorized.length === 0) {
                       return (
                         <div style={{ padding: '2.5rem 1rem', textAlign: 'center', color: TEXT_SECONDARY, fontSize: '0.85rem', fontWeight: 600, background: '#F9F9FB', borderRadius: 16 }}>
-                          Awaiting lead discovery... (0 leads in database)
+                          Awaiting lead discovery... (0 categorized leads in database)
                         </div>
                       );
                     }
+                    // Canonical sector name so synonymous fragments group into one meaningful sector
+                    // (e.g. "Corporate Law Firms", "Law firms", "Legal Consultancy" -> "Legal Services").
+                    const sectorOf = (raw: string): string => {
+                      const t = String(raw || '')
+                        .toLowerCase()
+                        .replace(/\b(uae|dubai|abu dhabi|sharjah|qatar|saudi arabia|saudi|mena|gcc|middle east)\b/gi, ' ')
+                        .replace(/[^a-z0-9\s]/g, ' ')
+                        .replace(/\s+/g, ' ')
+                        .trim();
+                      if (!t) return 'Commercial Services';
+                      // Multi-word synonym collapse — grouped by commercial sector family.
+                      const g = (terms: RegExp, name: string): string | null => (terms.test(t) ? name : null);
+                      const sector =
+                        g(/\b(legal|law|advocat|attorney)\b/, 'Legal Services') ||
+                        g(/\b(real estate|property|brokerage|broker|developer|fit[ -]?out)\b/, 'Real Estate & Fit-Out') ||
+                        g(/\b(logistics|freight|shipping|cargo|forwarding|warehousing|3pl|customs|clearance)\b/, 'Logistics & Freight') ||
+                        g(/\b(recruit|staffing|headhunt|talent|hr )\b/, 'Recruitment & HR') ||
+                        g(/\b(construction|contracting|engineering|mep|building|maintenance|facility)\b/, 'Construction & Engineering') ||
+                        g(/\b(consult|advisory|strategy|management consultant)\b/, 'Consulting & Advisory') ||
+                        g(/\b(audit|accounting|tax|financial|finance|insurance|bank|investment)\b/, 'Financial Services') ||
+                        g(/\b(manufactur|factory|industrial|production|distribution|trading|wholesale)\b/, 'Manufacturing & Trading') ||
+                        g(/\b(healthcare|medical|clinic|dental|pharma|hospital|wellness)\b/, 'Healthcare') ||
+                        g(/\b(technology|software|it |digital|tech|cyber|cloud|data|saas)\b/, 'Technology & IT') ||
+                        g(/\b(marketing|advertis|seo|media|agency)\b/, 'Marketing & Media') ||
+                        g(/\b(security|surveillance|safety|defense|military)\b/, 'Security & Defense') ||
+                        g(/\b(hospitality|hotel|restaurant|tourism|travel|food)\b/, 'Hospitality & F&B') ||
+                        g(/\b(automotive|vehicles|cars|truck|fleet)\b/, 'Automotive') ||
+                        g(/\b(education|training|academy|school|university|institute)\b/, 'Education') ||
+                        g(/\b(government|public sector|ministry|municipality)\b/, 'Government & Public Sector') ||
+                        null;
+                      return sector || t.charAt(0).toUpperCase() + t.slice(1);
+                    };
                     const counts: Record<string, number> = {};
-                    for (const p of prospects) {
-                        const rawCat = String(p.category || 'Commercial Services').trim();
-                        const clean = rawCat.replace(/\b(uae|dubai|abu dhabi|qatar|saudi arabia)\b/gi, '').trim() || 'Commercial Services';
-                        const catName = clean.charAt(0).toUpperCase() + clean.slice(1);
-                        counts[catName] = (counts[catName] || 0) + 1;
+                    for (const p of categorized) {
+                      const sector = sectorOf(p.category);
+                      counts[sector] = (counts[sector] || 0) + 1;
                     }
-                    const total = prospects.length;
+                    const total = categorized.length; // denominator = categorized leads only
                     const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 5);
                     const colors = ['#0071E3', '#00d2ff', '#34c759', '#ff9500', '#af52de'];
 

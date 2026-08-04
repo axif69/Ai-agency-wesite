@@ -69,6 +69,9 @@ const NON_PERSON_TERMS = new Set([
   // Specific company-name fragments observed in audit
   'bayzat', 'casablanca', 'colab', 'cycl', 'gobuild', 'minifeel', 'odoo', 'oman',
   'petrofac', 'savtech', 'advertise', 'advertising',
+  // Social/platform words that are never part of a human name
+  'facebook', 'twitter', 'linkedin', 'instagram', 'youtube', 'whatsapp', 'google',
+  'pinterest', 'tiktok', 'snapchat', 'telegram', 'web', 'site', 'email', 'online',
 ]);
 
 const ROLE_ONLY_TERMS = new Set([
@@ -78,11 +81,211 @@ const ROLE_ONLY_TERMS = new Set([
   'assistant', 'vice', 'senior', 'managing', 'general', 'associate'
 ]);
 
+/**
+ * DYNAMIC ROLE & TITLE CLEANING (part of the name-disambiguation upgrade).
+ * Tokens that can precede a real person name as a ROLE/designation and must be
+ * stripped during NLP token parsing ("Founder Ashley Cadzow" -> "Ashley Cadzow",
+ * "Architect Omar Hussain" -> "Omar Hussain").
+ */
+const ROLE_PREFIX_TOKENS = new Set([
+  'ceo', 'coo', 'cfo', 'cto', 'founder', 'co-founder', 'cofounder', 'owner',
+  'director', 'managing', 'general', 'executive', 'president', 'chairman',
+  'chairwoman', 'head', 'vp', 'vice', 'principal', 'partner', 'manager',
+  'supervisor', 'lead', 'chief', 'assistant', 'senior', 'associate', 'architect',
+  'engineer', 'engineer-in-charge', 'eic', 'consultant', 'specialist', 'managerial',
+  'group', 'regional', 'area', 'department', 'divisional', 'operations', 'project',
+  'procurement', 'commercial', 'finance', 'marketing', 'sales', 'design', 'executive',
+  'technical', 'account', 'admin', 'administration', 'business', 'brand', 'hr',
+  'legal', 'quality', 'supply', 'logistics', 'facility', 'mep', 'electromechanical',
+  'arch', 'archt', 'md', 'mgr', 'ceo', 'gm', 'dm', 'agm', 'cfo', 'coo', 'cto'
+]);
+
+/**
+ * Department / section words that often get glued onto the END of a scraped name
+ * and must be dropped ("Ramez Hamdan Sales" -> "Ramez Hamdan", "... Legal").
+ */
+const DEPARTMENT_SUFFIX_TOKENS = new Set([
+  'legal', 'sales', 'marketing', 'hr', 'human', 'resources', 'finance', 'accounting',
+  'accounts', 'operations', 'procurement', 'logistics', 'engineering', 'technical',
+  'design', 'production', 'quality', 'administration', 'it', 'technology', 'customer',
+  'service', 'services', 'support', 'strategy', 'communications', 'pr', 'projects',
+  'commercial', 'title', 'department', 'division', 'team', 'unit', 'management',
+  'developer', 'business', 'digital', 'media', 'creative', 'content', 'acquisition',
+  'lawyer', 'attorney', 'advocate', 'counsel'
+]);
+
+/**
+ * GENERIC BUSINESS CATEGORY detection — names that are really a business type or
+ * offering, not a person ("Print Branding", "Skyline Builders", "Interior Design").
+ * Any candidate whose surviving tokens are ALL in this set is not a human name.
+ */
+const GENERIC_CATEGORY_TERMS = new Set([
+  'print', 'printing', 'brand', 'branding', 'advertising', 'marketing', 'digital',
+  'construction', 'contracting', 'building', 'builders', 'real', 'estate', 'estates',
+  'property', 'properties', 'logistics', 'freight', 'shipping', 'cargo', 'trading',
+  'recruitment', 'manpower', 'staffing', 'security', 'cleaning', 'maintenance',
+  'mep', 'electromechanical', 'electromech', 'electrical', 'mechanical', 'facility',
+  'management', 'development', 'interior', 'fit', 'fitout', 'out', 'design', 'media',
+  'landscaping', 'catering', 'food', 'beverage', 'architecture', 'architects',
+  'engineering', 'automotive', 'vehicles', 'vehicle', 'materials', 'supplies',
+  'packaging', 'textile', 'garments', 'furniture', 'joinery', 'steel', 'metal',
+  'aluminium', 'glass', 'paint', 'paints', 'chemical', 'plastic', 'plumbing',
+  'hvac', 'ac', 'accommodation', 'hospitality', 'tourism', 'travel', 'retail',
+  'wholesale', 'distribution', 'supply', 'supplier', 'consulting', 'consultancy',
+  'agency', 'services', 'solutions', 'systems', 'technologies', 'technology',
+  'industries', 'group', 'holding', 'holdings', 'ventures', 'capital', 'investment',
+  'insurance', 'banking', 'finance', 'education', 'training', 'healthcare', 'medical',
+  'clinical', 'dentist', 'dental', 'clinic', 'beauty', 'salon', 'spa', 'gym', 'fitness',
+  // Plural / variant forms of the above that appear glued onto scraped "names"
+  'interiors', 'studios', 'designs', 'contractors', 'developers', 'manufacturers',
+  'suppliers', 'technocrats', 'engineers',
+  // Hospitality / F&B brand words observed glued onto scraped "names"
+  'cafe', 'cafeteria', 'caf', 'coffee', 'bistro', 'restaurant', 'vibes', 'grill',
+  'grills', 'dessert', 'juice', 'shop', 'shops', 'store', 'stores', 'souq'
+]);
+
+/**
+ * Context cue words around a candidate inside the scraped site text. When the
+ * candidate appears near these, it is a portfolio/client/project/partner BRAND,
+ * not the company's executive — so it must be dropped.
+ */
+const PORTFOLIO_CLIENT_CONTEXT = /(portfolio|clients?|projects?|case\s+stud(?:y|ies)|our\s+work|references?|partners?|affiliates?|brands?|hotels?|resorts?|developments?|towers?|communities?|completed|delivered|key\s+projects?|featured\s+projects?|recent\s+projects?|previous\s+clients?|valued\s+clients?|trusted\s+by)/i;
+
+/**
+ * Person-title words whose presence near a candidate indicates it IS an executive
+ * (so the portfolio-context heuristic should NOT drop it).
+ */
+const PERSON_ROLE_CUES = /(ceo|chief|founder|co-founder|director|managing\s+director|general\s+manager|owner|president|chairman|partner|manager|head\s+of)/i;
+
+/**
+ * Company / brand-type suffix words glued to a scraped "name" that mark it as an
+ * entity rather than a person ("InterContinental Hotel", "... Resort & Spa").
+ */
+const ENTITY_SUFFIX_TERMS = /\b(?:hotels?|resorts?|spas?|towers?|malls?|centres?|centers?|plazas?|suites|executive\s+suites|development|developments|group|llc|l\.l\.c|fze|fzco|inc|corp|ltd|limited|co)\b/i;
+
+/**
+ * Dynamic role/title cleaning via NLP token parsing (Part 2b of the name upgrade).
+ * Strips a leading role/designation and a trailing department/section from a
+ * scraped candidate, leaving only the clean personal name tokens.
+ *   "Founder Ashley Cadzow"      -> "Ashley Cadzow"
+ *   "Architect Omar Hussain"     -> "Omar Hussain"
+ *   "Director Ramez Hamdan Legal"-> "Ramez Hamdan"
+ * Returns the cleaned name, or null if nothing human remains.
+ */
+export const stripRoleDepartmentTokens = (rawName: unknown): string | null => {
+  let name = String(rawName || '')
+    .replace(/[^A-Za-z\s.'-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!name) return null;
+
+  const tokens = name.split(/\s+/).filter(Boolean);
+  if (tokens.length === 0) return null;
+
+  // Strip leading role/designation tokens (single or multiple: "Managing Director X").
+  while (tokens.length > 1) {
+    const head = tokens[0].toLowerCase().replace(/[^a-z]/g, '');
+    const next = (tokens[1] || '').toLowerCase().replace(/[^a-z]/g, '');
+    // "managing director", "general manager", "vice president", "chief executive officer"
+    if (ROLE_PREFIX_TOKENS.has(head)) {
+      tokens.shift();
+      continue;
+    }
+    if (head === 'vice' && next === 'president') { tokens.shift(); continue; }
+    if (head === 'chief' && (next === 'executive' || next === 'operating' || next === 'technology' || next === 'financial' || next === 'marketing' || next === 'commercial')) { tokens.shift(); continue; }
+    if (head === 'general' && next === 'manager') { tokens.shift(); continue; }
+    if (head === 'managing' && next === 'director') { tokens.shift(); continue; }
+    if (head === 'co' && next === 'founder') { tokens.shift(); tokens.shift(); continue; }
+    break;
+  }
+
+  // Strip trailing department/section tokens.
+  while (tokens.length > 1) {
+    const tail = tokens[tokens.length - 1].toLowerCase().replace(/[^a-z]/g, '');
+    if (DEPARTMENT_SUFFIX_TOKENS.has(tail)) {
+      tokens.pop();
+      continue;
+    }
+    break;
+  }
+
+  const cleaned = tokens.join(' ').trim();
+  if (!cleaned || cleaned.length < 2) return null;
+  return cleaned;
+};
+
+/**
+ * Company Entity / Generic Category rejection (Part 2c). Returns true when the
+ * candidate name is really the target company's own name, or collapses entirely
+ * into generic business-category words ("Print Branding", "Skyline Builders").
+ */
+export const isCompanyEntityName = (rawName: unknown, companyName: unknown): boolean => {
+  const tokens = String(rawName || '').toLowerCase().replace(/[^a-z\s]/g, ' ').split(/\s+/).filter(Boolean);
+  if (tokens.length === 0) return true;
+
+  // Business-label detection: a real human name essentially never contains a generic
+  // business-category word as a component ("Skyline Builders", "Print Branding",
+  // "Ismail Intellect Cafe", "Art Interiors"). Reject the name when ANY significant
+  // token is a category/offering term — not just when every token is.
+  if (tokens.some(t => t.length >= 3 && GENERIC_CATEGORY_TERMS.has(t))) return true;
+
+  // Generic category collapse: every surviving token is a business term.
+  if (tokens.every(t => GENERIC_CATEGORY_TERMS.has(t))) return true;
+
+  // Entity suffix marker ("InterContinental Hotel") → not a person.
+  if (ENTITY_SUFFIX_TERMS.test(String(rawName || ''))) return true;
+
+  // Exact / near-exact overlap with the company's own name: when every non-generic
+  // token of the candidate is a company token, the candidate IS the entity (e.g.
+  // candidate "Skyline Builders" @ company "Skyline Builders").
+  const compTokens = String(companyName || '')
+    .toLowerCase().replace(/[^a-z\s]/g, ' ').split(/\s+/)
+    .filter(t => t.length >= 3 && !GENERIC_CATEGORY_TERMS.has(t));
+  if (compTokens.length >= 1) {
+    const personTokens = tokens.filter(t => t.length >= 3 && !GENERIC_CATEGORY_TERMS.has(t));
+    if (personTokens.length >= 1 && personTokens.every(t => compTokens.includes(t))) return true;
+  }
+  return false;
+};
+
+/**
+ * Portfolio / Client / Brand disambiguation (Part 2a). Cross-checks a candidate
+ * name against the scraped site content: when the name appears near portfolio,
+ * client, project, case-study, or partner cue words — and NOT near any person-role
+ * cue — it is a client/partner/hotel brand shown on the company's site, not the
+ * company's own executive. Returns true when the candidate must be dropped.
+ */
+export const isPortfolioClientBrand = (rawName: unknown, siteText: unknown): boolean => {
+  const name = String(rawName || '').trim();
+  const haystack = String(siteText || '');
+  if (!name || name.length < 2 || haystack.length < 20) return false;
+
+  const nameRe = new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+'), 'i');
+  if (!nameRe.test(haystack)) return false;
+
+  // Inspect a window around every occurrence for portfolio-vs-executive context.
+  let match: RegExpExecArray | null;
+  let portfolioHits = 0;
+  let execHits = 0;
+  const globalRe = new RegExp(nameRe.source, 'gi');
+  while ((match = globalRe.exec(haystack)) !== null) {
+    const start = Math.max(0, match.index - 120);
+    const end = Math.min(haystack.length, match.index + name.length + 140);
+    const windowText = haystack.slice(start, end);
+    if (PERSON_ROLE_CUES.test(windowText)) execHits++;
+    if (PORTFOLIO_CLIENT_CONTEXT.test(windowText)) portfolioHits++;
+    if (match.index >= haystack.length) break;
+  }
+  // Exec presence wins; otherwise portfolio/brand context drops the candidate.
+  if (execHits > 0 && execHits >= portfolioHits) return false;
+  return portfolioHits > 0;
+};
+
 /** Noise prefixes that web scrapers pick up before a real person name */
 const NAME_NOISE_PREFIXES = /^(?:team|view|our|meet|agents?|message|contact|linkedin|profile|about|by|author|posted|written|meet\s+the|from|the)\s+/i;
 
 /** Honorific title prefixes to strip */
-const TITLE_PREFIXES = /^(?:dr\.?|mr\.?|mrs\.?|ms\.?|eng\.?|engr\.?|prof\.?|sheikh|sir|dame|hon\.?|hh|h\.e\.?|h\.h\.?)\s+/i;
+const TITLE_PREFIXES = /^(?:dr\.?|mr\.?|mrs\.?|ms\.?|eng\.?|engr\.?|prof\.?|sheikh|shaikh|sir|dame|hon\.?|hh|h\.e\.?|h\.h\.?)\s+/i;
 
 /** Noise suffixes that get attached to names */
 const NAME_NOISE_SUFFIXES = /\s+(?:executive|professional|specialist|expert|consultant|leader|ambassador|delegate|representative|spokesman|spokesperson|correspondent)\s*$/i;
@@ -91,12 +294,17 @@ const NAME_NOISE_SUFFIXES = /\s+(?:executive|professional|specialist|expert|cons
  * Cleans and validates a contact name scraped from a website.
  * Returns a clean first name (for greetings) or null if the name is invalid.
  * This is the ONE function all workers must call before saving contact_name to DB.
+ *
+ * v2 — Dynamic name disambiguation:
+ *  - RFC leaves role/designation tokens ({"Founder X","Architect Y","X Legal"}),
+ *  - rejects company-entity / generic-category names ("Print Branding","Skyline Builders"),
+ *  - when companyName is supplied, rejects a name that IS the company's own entity.
  */
-export const cleanContactName = (rawName: unknown): string | null => {
+export const cleanContactName = (rawName: unknown, companyName: unknown = null): string | null => {
     let name = String(rawName || '').trim();
     if (!name || name.length < 2) return null;
 
-    // Strip noise prefixes and suffixes
+    // Strip noise prefixes and whitespace
     name = name.replace(NAME_NOISE_PREFIXES, '').trim();
     name = name.replace(NAME_NOISE_SUFFIXES, '').trim();
     name = name.replace(TITLE_PREFIXES, '').trim();
@@ -105,12 +313,23 @@ export const cleanContactName = (rawName: unknown): string | null => {
     name = name.replace(/&amp;/gi, '&').replace(/[^A-Za-z\s.'\-]/g, ' ').replace(/\s+/g, ' ').trim();
     if (!name || name.length < 2) return null;
 
-    // Strip leading department/industry noise tokens (e.g. "Commercial Vehicles Ramez Hamdan" -> "Ramez Hamdan")
+    // Strip leading department/industry noise tokens (e.g. "Commercial Vehicles Vines Hamdan" -> "Vines Hamdan")
     const words = name.split(/\s+/);
     while (words.length >= 3 && NON_PERSON_TERMS.has(words[0].toLowerCase())) {
       words.shift();
     }
     name = words.join(' ');
+    if (!name || name.length < 2) return null;
+
+    // v2 — dynamic role/title cleaning: drop leading designation + trailing department.
+    name = stripRoleDepartmentTokens(name) || name;
+    // A mid-string role can have exposed an honorific ("MD Mr. X" -> "Mr. X"); re-strip it.
+    name = name.replace(NAME_NOISE_PREFIXES, '').trim();
+    name = name.replace(TITLE_PREFIXES, '').trim();
+    if (!name || name.length < 2) return null;
+
+    // v2 — company-entity / generic-category rejection.
+    if (isCompanyEntityName(name, companyName)) return null;
 
     // Run full validation
     const assessment = assessPersonName(name);
@@ -132,7 +351,11 @@ export const cleanContactName = (rawName: unknown): string | null => {
 export const personNameFromLinkedInUrl = (url: unknown): string | null => {
   const m = String(url || '').match(/linkedin\.com\/in\/([a-zA-Z0-9_\-%]+)/i);
   if (!m) return null;
-  const slug = String(m[1]).replace(/[-_%]+/g, ' ').trim();
+  const slug = String(m[1])
+    .replace(/[-_%]+/g, ' ')
+    // Strip trailing LinkedIn profile id (e.g. "-87a", "1234") — not part of the name.
+    .replace(/\s*\d+[a-zA-Z]*\s*$/i, '')
+    .trim();
   return slug || null;
 };
 
@@ -143,21 +366,85 @@ const normalizeNameTokens = (value: unknown): string[] =>
     .split(/\s+/)
     .filter(Boolean);
 
+/** Names like "Abdul Kader" vs "Abdulkader" are the same person — collapse glued tokens. */
+const joinGluedTokens = (tokens: string[]): string => tokens.join(' ').replace(/\s+/g, '');
+
+/** Common personal middle-name fragments we ignore when comparing. */
+const NAME_NOISE = new Set(['al', 'el', 'ben', 'bin', 'abu', 'abdul', 'abd', 'de', 'del', 'van', 'von', 'ibn', 'haj', 'haji', 'syed', 'sayed']);
+
+/** Keep only significant name tokens (drop honorifics + common middle fragments). */
+const significantTokens = (value: unknown): string[] => {
+  const raw = String(value || '').toLowerCase();
+  // LinkedIn slugs use "-" between tokens; also strip trailing profile id like "-87a".
+  const cleaned = raw
+    .replace(/[-_%]/g, ' ')
+    .replace(/(\d+[a-z]*\s*)+$/i, '')
+    .replace(/[^a-z\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return cleaned.split(/\s+/).filter((t) => t.length >= 2 && !NAME_NOISE.has(t));
+};
+
 /**
- * True when two person names plausibly refer to the same individual:
- * exact match, or shared last name + at least one shared first-name token.
- * This is the identity gate that rejects binding a scraped website name to a
- * DIFFERENT founder's LinkedIn (the Vincitore mismatch).
+ * FUZZY PERSON-NAME MATCH (v2)
+ * True when two names plausibly refer to the same individual, tolerating:
+ *  - hyphen vs space ("Abdul-Kader" = "Abdul Kader"),
+ *  - glued middle names ("Abdulkader" = "Abdul Kader"),
+ *  - middle-name variations ("Niyaz Abdulkader" = "Niyaz Abdul Kader"),
+ *  - honorifics ("Mr", "Dr") and common fragments ("al", "bin").
+ * A match requires LAST-NAME agreement plus either a shared first-name token OR a
+ * strong overlap of the glued full name. This is the identity gate that binds a
+ * scraped website name to its LinkedIn profile WITHOUT dropping legitimate matches.
+ */
+/** Last names agree when they are equal, OR one is a suffix of the other (glued
+ *  middle-name variants: "Abdulkader" vs "Kader", "Abdul-Kader" vs "Kader"). */
+const lastNamesAgree = (lastA: string, lastB: string): boolean => {
+  if (lastA === lastB) return true;
+  if (lastA.length >= 4 && lastB.length >= 4) {
+    if (lastA.endsWith(lastB) || lastB.endsWith(lastA)) return true;
+  }
+  return false;
+};
+
+/**
+ * FUZZY PERSON-NAME MATCH (v3 — Token-Overlap)
+ * True when two names plausibly refer to the same individual, tolerating:
+ *  - hyphen vs space ("Abdul-Kader" = "Abdul Kader"),
+ *  - glued middle names ("Abdulkader" = "Abdul Kader"),
+ *  - dropped/extra middle names ("Niyaz Abdulkader" = "Niyaz Abdul Kader"),
+ *  - honorifics ("Mr", "Dr") and common fragments ("al", "bin", "abdul").
+ * Rule: last names must agree (equal or suffix-of), AND a first-name token is shared
+ * (or one side's single first name is contained in the other). This binds a scraped
+ * website name to its LinkedIn profile WITHOUT dropping legitimate fuzzy matches.
  */
 export const personNamesMatch = (a: unknown, b: unknown): boolean => {
-  const ta = normalizeNameTokens(a);
-  const tb = normalizeNameTokens(b);
+  const ta = significantTokens(a);
+  const tb = significantTokens(b);
   if (ta.length < 1 || tb.length < 1) return false;
-  if (ta.join(' ') === tb.join(' ')) return true;
-  if (ta[ta.length - 1] !== tb[tb.length - 1]) return false; // last names must agree
+
+  // Exact after normalization (handles duplicate tokens / slug noise).
+  if (joinGluedTokens(ta) === joinGluedTokens(tb)) return true;
+
+  const lastA = ta[ta.length - 1];
+  const lastB = tb[tb.length - 1];
+  // A shared last name is the anchor of person identity.
+  if (!lastNamesAgree(lastA, lastB)) return false;
+
   const firstA = ta.slice(0, -1);
   const firstB = tb.slice(0, -1);
-  return firstA.some((f) => firstB.includes(f));
+
+  // Any shared first-name token is enough (handles middle-name differences).
+  if (firstA.some((f) => firstB.includes(f))) return true;
+
+  // Single-first-name sides: containment in the other's glued first names
+  // ("Abdulkader" vs "Abdul Kader" -> "abdulkader" contained in "abdul kader").
+  const gluedFirstA = joinGluedTokens(firstA);
+  const gluedFirstB = joinGluedTokens(firstB);
+  if (firstA.length === 1 && gluedFirstB.includes(gluedFirstA)) return true;
+  if (firstB.length === 1 && gluedFirstA.includes(gluedFirstB)) return true;
+
+  // Single-token names on both sides sharing the (agreed) last name.
+  return ta.length === 1 && tb.length === 1;
 };
 
 export const isConsumerEmail = (email: unknown): boolean => {

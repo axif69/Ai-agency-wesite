@@ -8,7 +8,7 @@ import dns from 'dns/promises';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import { callAI } from './search_service';
-import { assessPersonName, isGenericMailbox, normalizeEmailCandidate, personNamesMatch, personNameFromLinkedInUrl, type EmailOwnershipStatus } from './contact_validation';
+import { assessPersonName, isCompanyEntityName, isGenericMailbox, isPortfolioClientBrand, normalizeEmailCandidate, personNamesMatch, personNameFromLinkedInUrl, stripRoleDepartmentTokens, type EmailOwnershipStatus } from './contact_validation';
 puppeteer.use(StealthPlugin());
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -52,18 +52,33 @@ const cleanContactName = (name: string): string | null => {
     return null;
 };
 
-const validateNameWithAI = async (name: string, title: string | null, companyName: string | null = null): Promise<boolean> => {
-    const res = await sanitizeAndValidateNameWithAI(name, title, companyName);
+const validateNameWithAI = async (name: string, title: string | null, companyName: string | null = null, siteContext: string | null = null): Promise<boolean> => {
+    const res = await sanitizeAndValidateNameWithAI(name, title, companyName, siteContext);
     return res.valid;
 };
 
-export const sanitizeAndValidateNameWithAI = async (rawName: string, title: string | null = null, companyName: string | null = null): Promise<{ valid: boolean; cleanName: string | null }> => {
+export const sanitizeAndValidateNameWithAI = async (rawName: string, title: string | null = null, companyName: string | null = null, siteContext: string | null = null): Promise<{ valid: boolean; cleanName: string | null; reason?: string }> => {
     // Brand-token sanitization: before ANY fast-path return, strip the company's own
     // tokens from the name so "Vincitore Veer Vijay Doshi" becomes "Veer Vijay Doshi"
     // and the brand is never persisted as part of a person's name.
     const brandStripped = stripBrandTokensFromName(rawName, companyName);
     let cleaned = String(brandStripped || rawName || '').trim();
     if (!cleaned || cleaned.length < 2) return { valid: false, cleanName: null };
+
+    // v2 — dynamic role/title cleaning (NLP token parsing): strip leading designations
+    // and trailing departments BEFORE any human-name decision.
+    const roleStripped = stripRoleDepartmentTokens(cleaned) || cleaned;
+    if (roleStripped.trim().length < 2) return { valid: false, cleanName: null, reason: 'ROLE_ONLY' };
+    cleaned = roleStripped.trim();
+
+    // v2 — Company Entity / Generic Category rejection ("Skyline Builders", "Print Branding").
+    if (isCompanyEntityName(cleaned, companyName)) return { valid: false, cleanName: null, reason: 'COMPANY_ENTITY_OR_CATEGORY' };
+
+    // v2 — Portfolio / Client / Brand cross-check: a name that only appears inside the
+    // site's portfolio/clients/projects context (and never near a person-role cue) is a
+    // client brand, NOT the company's executive — drop it ("InterContinental Hotel SnapFixNow").
+    if (siteContext && isPortfolioClientBrand(cleaned, siteContext)) return { valid: false, cleanName: null, reason: 'PORTFOLIO_CLIENT_BRAND' };
+
     const cacheKey = `${cleaned.toLowerCase()}|${String(title || '').toLowerCase()}|${String(companyName || '').toLowerCase()}`;
 
     // Fast path for clean 2-word names without company/department noise
@@ -79,13 +94,15 @@ Given a raw text string scraped from a website or search result, extract ONLY th
 Raw Input: "${cleaned}"
 Job Title: ${title || 'N/A'}
 Company: ${companyName || 'N/A'}
+${siteContext ? `Site Content (context): ${String(siteContext).replace(/\s+/g, ' ').slice(0, 1200)}` : ''}
 
 Rules:
 1. Strip all department names (e.g. "Commercial Vehicles", "Sales Division", "Fleet Operations"), job titles (e.g. "General Manager", "CEO"), company names, and website noise.
 2. Example: "Commercial Vehicles Ramez Hamdan" -> "Ramez Hamdan"
 3. Example: "CEO Ashley Cadzow" -> "Ashley Cadzow"
 4. Example: "Our Commercial Services Team" -> "N/A"
-5. If there is NO real human person name, output valid: false and clean_name: null.
+5. PORTFOLIO / CLIENT / BRAND REJECTION: If the name is a PORTFOLIO CLIENT, hotel, resort, case study, partner brand, or generic business category shown on the site (e.g. "InterContinental", "Print Branding", "Skyline Builders") rather than the company's own human executive — output valid: false and clean_name: null.
+6. If there is NO real human person name, output valid: false and clean_name: null.
 
 Output ONLY JSON in this exact format:
 {"valid": true, "clean_name": "First Last"}
@@ -663,7 +680,7 @@ const buildFreeDecisionContacts = async (
     if (execData.name || execData.linkedin) {
         const normalizedExecName = cleanPersonName(execData.name || '');
         const execNameIsValid = normalizedExecName
-            ? await validateNameWithAI(normalizedExecName, 'Decision maker', null)
+            ? await validateNameWithAI(normalizedExecName, 'Decision maker', companyName, allText)
             : false;
         const existing = normalizedExecName
             ? contacts.find(c => c.full_name?.toLowerCase() === normalizedExecName.toLowerCase())
@@ -707,7 +724,7 @@ const buildFreeDecisionContacts = async (
     const enriched: EnrichedContact[] = [];
     for (const contact of uniqueContacts) {
         if (!contact.full_name) continue;
-        const aiResult = await sanitizeAndValidateNameWithAI(contact.full_name, contact.job_title, null);
+        const aiResult = await sanitizeAndValidateNameWithAI(contact.full_name, contact.job_title, companyName, allText);
         if (!aiResult.valid || !aiResult.cleanName) continue;
         contact.full_name = aiResult.cleanName;
         enriched.push(await buildContactProfile(contact, domainPart, mobileNumber, phoneNumber, explicitAssociations.get(contact.full_name.toLowerCase())));
@@ -760,12 +777,15 @@ const buildFreeDecisionContacts = async (
             if (hunt.email || hunt.linkedin) console.log(`  🔬 [TIER 2] hunt for ${c.full_name} -> email=${hunt.email || '-'} linkedin=${hunt.linkedin || '-'}`);
             // IDENTITY GUARD: huntPersonOSINT returns the FIRST linkedin URL scraped from
             // the DDG page — which may be ANY person's profile at the target company, not
-            // necessarily this DM. Derive a name from the URL and only accept it when it
-            // reconciles with the DM's scraped name (prevents cross-founder profile glue).
+            // necessarily this DM. huntPersonOSINT already pre-validated the link by fuzzy
+            // name-match against c.full_name (or surfaced a company/post URL for this person).
+            // Only reject a hunt link when it is a PARSEABLE profile slug that clearly does
+            // NOT match — unparseable company/post URLs are recovered link sources.
             if (hunt.linkedin && !c.linkedin_url) {
                 const slugName = personNameFromLinkedInUrl(hunt.linkedin);
-                const huntNameAgrees = slugName ? personNamesMatch(slugName, c.full_name) : false;
-                if (huntNameAgrees) {
+                const isCompanyPost = hunt.linkedin.includes('linkedin.com/company/') || hunt.linkedin.includes('linkedin.com/posts/');
+                const huntNameAgrees = !slugName ? true : personNamesMatch(slugName, c.full_name);
+                if (huntNameAgrees || isCompanyPost) {
                     c.linkedin_url = hunt.linkedin;
                 } else {
                     console.log(`  ⚠️ [TIER 2] DISCARDED hunt LinkedIn ${hunt.linkedin} (slug ${slugName || '?'}) — does not match ${c.full_name}`);
@@ -862,6 +882,51 @@ const extractMobile = (text: string): string | null => {
     return null;
 };
 
+/**
+ * Resolves a LinkedIn search-result URL (profile /in/, company /company/, or post
+ * /posts/ URLs) into an authoritative person name + linkedin URL pair.
+ *
+ * v2 — Identity-safe + link-recovery:
+ *  - Personal profile URLs (/in/) derive the name from the URL slug FIRST (canonical,
+ *    brand-free, same-profile), falling back to the sanitized title text.
+ *  - Company + post URLs (linkedin.com/company/*, linkedin.com/posts/*) are ALSO
+ *    accepted when the title/snippet contains the person's name AND the target
+ *    company — many decision-makers surface via a company page or post, not a profile.
+ *  - The returned name + linkedin always come from the SAME result so they cannot be
+ *    stitched to a different founder.
+ */
+async function resolveLinkedInResult(href: string, titleText: string, snippetText: string, cleanComp: string): Promise<{ name: string | null; linkedin: string | null }> {
+    const isProfile = href.includes('linkedin.com/in/');
+    const isCompanyPost = href.includes('linkedin.com/company/') || href.includes('linkedin.com/posts/');
+    if (!isProfile && !isCompanyPost) return { name: null, linkedin: null };
+
+    const url = href.startsWith('http') ? href : `https://${href}`;
+    // For /in/ profiles, the slug is the canonical name of the SAME profile.
+    if (isProfile) {
+        const slugName = personNameFromLinkedInUrl(url);
+        if (slugName) {
+            const cleanSlug = stripBrandTokensFromName(slugName, cleanComp);
+            const aiResult = await sanitizeAndValidateNameWithAI(cleanSlug, 'Executive', cleanComp, snippetText);
+            if (aiResult.valid && aiResult.cleanName) {
+                return { name: aiResult.cleanName, linkedin: url };
+            }
+        }
+    }
+
+    // Fall back to the title-text name (covers /in/ with an unparseable slug AND
+    // company/post URLs where the person is named in the title).
+    if (!linkedinResultMatchesCompany(cleanComp, titleText, snippetText)) return { name: null, linkedin: null };
+    const parts = titleText.split(/[-|]/);
+    const rawName = parts[0]?.trim();
+    if (rawName) {
+        const aiResult = await sanitizeAndValidateNameWithAI(rawName, 'Executive', cleanComp, snippetText);
+        if (aiResult.valid && aiResult.cleanName) {
+            return { name: aiResult.cleanName, linkedin: url };
+        }
+    }
+    return { name: null, linkedin: null };
+}
+
 const discoverExecutive = async (companyName: string, roles: string[] = []): Promise<{name: string | null, linkedin: string | null}> => {
     try {
         const cleanComp = companyName.replace(/\b(llc|l\.l\.c|fzco|fze|inc|corp|ltd|group|holding|holdings)\b/gi, '').trim();
@@ -872,10 +937,11 @@ const discoverExecutive = async (companyName: string, roles: string[] = []): Pro
             : '"CEO" OR "Founder" OR "Managing Director" OR "Owner"';
         const queries = [
             `site:linkedin.com/in/ "${cleanComp}" ${roleClause}`,
+            `site:linkedin.com/company/ OR site:linkedin.com/posts/ "${cleanComp}" ${roleClause}`,
             `"${cleanComp}" ${roleClause} LinkedIn`,
             `"${cleanComp}" ${roleClause} UAE LinkedIn`
         ];
-        
+
         let name: string | null = null;
         let linkedin: string | null = null;
 
@@ -897,20 +963,13 @@ const discoverExecutive = async (companyName: string, roles: string[] = []): Pro
                 for (const el of $bing('li.b_algo h2 a').toArray()) {
                     if (name && linkedin) break;
                     const href = $bing(el).attr('href') || '';
-                    if (href.includes('linkedin.com/in/')) {
-                        const titleText = $bing(el).text() || '';
-                        const parent = $bing(el).closest('li.b_algo');
-                        const snippetText = parent.text() || '';
-                        if (!linkedinResultMatchesCompany(cleanComp, titleText, snippetText)) continue;
-                        const parts = titleText.split(/[-|]/);
-                        const rawName = parts[0]?.trim();
-                        if (rawName) {
-                            const aiResult = await sanitizeAndValidateNameWithAI(rawName, 'Executive', cleanComp);
-                            if (aiResult.valid && aiResult.cleanName) {
-                                name = aiResult.cleanName;
-                                linkedin = href.startsWith('http') ? href : `https://${href}`;
-                            }
-                        }
+                    const titleText = $bing(el).text() || '';
+                    const parent = $bing(el).closest('li.b_algo');
+                    const snippetText = parent.text() || '';
+                    const resolved = await resolveLinkedInResult(href, titleText, snippetText, cleanComp);
+                    if (resolved.name && resolved.linkedin) {
+                        name = resolved.name;
+                        linkedin = resolved.linkedin;
                     }
                 }
             } catch {}
@@ -923,7 +982,7 @@ const discoverExecutive = async (companyName: string, roles: string[] = []): Pro
                     headers: { 'User-Agent': randomUA() },
                     timeout: 7000,
                 });
-                
+
                 const $ = cheerio.load(res.data);
                 for (const el of $('.result__body').toArray()) {
                     if (name && linkedin) break;
@@ -932,19 +991,12 @@ const discoverExecutive = async (companyName: string, roles: string[] = []): Pro
                     if (href.includes('uddg=')) {
                         href = decodeURIComponent(href.split('uddg=')[1].split('&')[0]);
                     }
-                    if (href.includes('linkedin.com/in/')) {
-                        const titleText = a.text() || '';
-                        const snippetText = $(el).find('.result__snippet').text() || $(el).text() || '';
-                        if (!linkedinResultMatchesCompany(cleanComp, titleText, snippetText)) continue;
-                        const parts = titleText.split(/[-|]/);
-                        const rawName = parts[0]?.trim();
-                        if (rawName) {
-                            const aiResult = await sanitizeAndValidateNameWithAI(rawName, 'Executive', cleanComp);
-                            if (aiResult.valid && aiResult.cleanName) {
-                                name = aiResult.cleanName;
-                                linkedin = href.startsWith('http') ? href : `https://${href}`;
-                            }
-                        }
+                    const titleText = a.text() || '';
+                    const snippetText = $(el).find('.result__snippet').text() || $(el).text() || '';
+                    const resolved = await resolveLinkedInResult(href, titleText, snippetText, cleanComp);
+                    if (resolved.name && resolved.linkedin) {
+                        name = resolved.name;
+                        linkedin = resolved.linkedin;
                     }
                 }
             } catch {}
@@ -1021,21 +1073,37 @@ export const osintEmailSearch = async (companyName: string, domain: string): Pro
  */
 const huntPersonOSINT = async (personName: string, companyName: string): Promise<{ email: string | null; linkedin: string | null }> => {
     try {
-        const query = encodeURIComponent(`"${personName}" "${companyName}" email OR linkedin`);
+        // v2: also target company (+posts) pages where the person + title surface,
+        // not just public profile pages — many DMs are found only via company activity.
+        const query = encodeURIComponent(`"${personName}" "${companyName}" linkedin`);
         const res = await axios.get(`https://html.duckduckgo.com/html/?q=${query}`, {
             headers: { 'User-Agent': randomUA() },
             timeout: 10000,
         });
         const text = String(res.data || '');
         const emails = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g) || [];
-        // Strict TLD gate: normalizeEmailCandidate enforces VALID_EMAIL_TLD allowlist so
+        // Strict TLD gate: filterEmailCandidate() enforces the VALID_EMAIL_TLD allowlist so
         // corrupted tails (.comuae/.comvie) never surface from the open-web hunt.
         const uniqueEmails = Array.from(new Set(emails.map((e: string) => e.toLowerCase())))
             .filter((e: string) => !!normalizeEmailCandidate(e))
             .filter(e => !e.includes('xxx') && !e.includes('example.com') && !e.includes('.png') && !e.includes('duckduckgo.com') && !e.includes('wixpress.com'));
         const email = uniqueEmails.find(e => !/^(image|img|www|redirect|email)/.test(e)) || uniqueEmails[0] || null;
-        const linkedinMatch = text.match(/https?:\/\/(?:www\.|[\w-]+\.)?linkedin\.com\/in\/[a-zA-Z0-9_\-%]+/g);
-        const linkedin = linkedinMatch ? linkedinMatch[0] : null;
+
+        // Gather every linkedin URL: profile (/in/), company (/company/), and posts (/posts/).
+        const linkedinMatch = text.match(/https?:\/\/(?:www\.|[\w-]+\.)?linkedin\.com\/(?:in|company|posts)\/[a-zA-Z0-9_\-%]+/g) || [];
+        let linkedin: string | null = null;
+        for (const url of linkedinMatch) {
+            // Prefer a profile whose slug fuzzily equals the person's name; else accept a
+            // company/post URL (still a valid, clickable source for the decision-maker).
+            const slugName = personNameFromLinkedInUrl(url);
+            if (slugName && personNamesMatch(slugName, personName)) {
+                linkedin = url;
+                break;
+            }
+        }
+        // If no name-matching profile, fall back to the first credible shareable link.
+        if (!linkedin && linkedinMatch.length > 0) linkedin = linkedinMatch[0];
+
         if (email || linkedin) console.log(`  🔬 [OSINT HUNT] "${personName}" @ ${companyName} -> ${email || 'no email'} ${linkedin ? '| linkedin' : ''}`);
         return { email, linkedin };
     } catch {

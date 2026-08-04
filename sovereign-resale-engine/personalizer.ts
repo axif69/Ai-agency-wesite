@@ -39,6 +39,30 @@ CAPABILITIES:
 `;
 
 /**
+ * Enforces the DYNAMIC EXECUTIVE SUBJECT-LINE standard on whatever the model returns:
+ *   - drops any subject ending in "?" (a subject is a statement, never a quiz),
+ *   - collapses whitespace and hard-clips to ~5 words (executive brevity),
+ *   - rejects clickbait stat-question shapes ("500 projects in Dubai hotels?").
+ * Returns a clean subject string, or null if nothing usable survived.
+ */
+export const sanitizeSubjectLine = (raw: unknown): string | null => {
+  let subject = String(raw || '').trim();
+  if (!subject) return null;
+  // Kill trailing question marks and bare clickbait stat questions.
+  subject = subject.replace(/[?]+$/g, '').trim();
+  subject = subject.replace(/^\d+\s+[a-z].*\b(in|across|at)\b.*$/i, '').trim();
+  subject = subject.replace(/^"(.*)"$/, '$1').trim();
+  subject = subject.replace(/\s+/g, ' ').trim();
+  if (subject.length < 3) return null;
+  const words = subject.split(/\s+/);
+  if (words.length > 5) {
+    // Preserve a leading company/name token if present, else just clip.
+    subject = words.slice(0, 5).join(' ').replace(/[,\s]+$/, '');
+  }
+  return subject.replace(/[.,!]+$/, '').trim() || null;
+};
+
+/**
  * CORE AI PIPELINE (Multi-Provider + Fallback)
  * This function attempts to call Groq, then Mistral, then falls back to a safe template.
  */
@@ -237,7 +261,11 @@ export const personalizeOutreach = async (companyName: string, aboutText: string
       
       if (targetMatch && !targetMatch[1].includes('N/A')) targetMarket = targetMatch[1].trim();
 
-      if (hasVerifiedExecutiveName && nameMatch && !nameMatch[1].includes('N/A')) decisionMaker = nameMatch[1].trim();
+      // Prefer an already-verified human executive name; only adopt the extracted
+      // NAME when we had none (the scraped result may be the business/brand itself,
+      // e.g. "Al Ayan Real" from "Al Ayan Real Estate Broker", which would null the
+      // personal greeting). cleanContactName() is still the final arbiter below.
+      if (!hasVerifiedExecutiveName && nameMatch && !nameMatch[1].includes('N/A')) decisionMaker = nameMatch[1].trim();
 
       if (brandMatch) {
           const rawName = brandMatch[1].trim().replace(/[[\]".!,]/g, '');
@@ -262,7 +290,7 @@ export const personalizeOutreach = async (companyName: string, aboutText: string
           cleanCompanyName = companyName.split(/[\|\-]/)[0].trim().split(' ')[0].replace(/[,.!]+$/, '');
       }
 
-      const finalGreeting = decisionMaker ? `Hi ${decisionMaker},` : `Hi team at ${cleanCompanyName},`;
+      const finalGreeting = decisionMaker ? `Hi ${decisionMaker},` : `Hi ${cleanCompanyName} team,`;
 
       // Stage 2: User-Defined Blueprint Cold Email Copywriter (100% Dynamic from DB Settings)
       const pitchContext = String(config.pitch_context || config.PITCH_CONTEXT || "").trim();
@@ -285,7 +313,7 @@ export const personalizeOutreach = async (companyName: string, aboutText: string
       ].map(x => x.toLowerCase());
 
       const fullEmailPrompt = `
-Write a cold email from ${myCompany}'s founder to the decision-maker of "${cleanCompanyName}" (a ${detectedService || 'B2B'} company).
+Write a short, executive peer-to-peer cold email from ${myCompany}'s founder to the decision-maker of "${cleanCompanyName}" (a ${detectedService || 'B2B'} company). You are writing TO a peer CEO — not at a stranger, not at a company. Write like a busy founder talking to another founder: direct, specific, zero corporate fluff.
 
 CONTEXT FROM THEIR WEBSITE (REAL, VERIFIED — your ONLY source of facts about them):
 ${websiteExcerpt || deepHooks || detectedService || 'commercial services in UAE'}
@@ -303,17 +331,22 @@ ${companyKnowledge ? `EXTRA CONTEXT:\n${companyKnowledge}` : ''}
 ${calendarLink ? `CALENDAR LINK (weave naturally at the end): ${calendarLink}` : ''}
 
 ABSOLUTE RULES — BREAK ANY ONE AND THE EMAIL IS REJECTED:
-1. FACTS-GROUNDING: You MUST cite at least 1-2 SPECIFIC facts about ${cleanCompanyName} taken VERBATIM from "CONTEXT FROM THEIR WEBSITE" or "VERIFIED FACTS ABOUT THEM" (e.g. a real service lineup, a specific project type, a cited stat, their target client type, a named location). Put the exact cited facts in the "cited_evidence" field. NEVER invent projects, stats, years, client names, or milestones that are not in the CONTEXT.
-2. OPENERS BANNED (never start the body OR subject with these): ${bannedOpeners.join(', ')}. Also banned: "We are a leading agency", "I hope this finds you", "I'm reaching out because".
-3. Subject line: short (< 9 words), specific, NO clickbait, may reference a cited fact.
-4. Body: Tone ${tone}. MAX 3 sentences, 45-70 words. Zero fluff. Sentence 1 opens with a SPECIFIC, VERIFIED fact about the prospect. Sentence 2 bridges to your value in ONE sentence. Sentence 3 = one casual, low-pressure CTA question ending in "?".
-5. ANTI-HALLUCINATION: only reference facts present above.
-6. Output EXACTLY this JSON, no markdown, no code fence, strictly valid JSON:
+1. FACTS-GROUNDING: Cite at least 1-2 SPECIFIC facts about ${cleanCompanyName} taken VERBATIM from "CONTEXT FROM THEIR WEBSITE" or "VERIFIED FACTS ABOUT THEM" (e.g. a real service lineup, a specific project type, a cited stat, their target client type, a named location). Put the exact cited facts in the "cited_evidence" field. NEVER invent projects, stats, years, client names, or milestones that are not in the CONTEXT.
+2. NO GREETING IN THE BODY: do NOT write "Hi", "Dear", "Hello", or any salutation — the greeting is added separately. Start the body directly with the personalized hook.
+3. EXECUTIVE PEER TONE — exactly 3 sentences, a peer writing to a peer:
+   Sentence 1 (Contextual Hook): a direct, peer-level observation about their business or operational focus, DERIVED from their site evidence — name their real service line, project type, or market focus (e.g. "Noticed United Cargo's freight forwarding ops across the UAE..."). Never a stat dressed as a question.
+   Sentence 2 (Value Proposition): ONE brief, UNHYPED sentence on how we help similar founders solve lead-acquisition or operational bottlenecks. BAN corporate jargon like "our self-hosted AI Sales SDR Agent automates...", promotional claims, and fluff — say what the outcome is, not what the tool is.
+   Sentence 3 (Low-Friction CTA): a soft, 1-line question (e.g. "Would you be open to a brief 5-minute chat this week?").
+4. DYNAMIC SUBJECT LINE (2-4 WORDS, EXECUTIVE, NO CLICKBAIT): craft a short, natural subject that names the company or their focus, e.g. "Quick note re: ${cleanCompanyName}", "Scaling ${detectedService}", "[Topic] operations", or "${cleanCompanyName} outreach". NEVER write a clickbait stat question, NEVER end the subject with "?", NEVER append "?" to a raw scraped number (ban "500 projects in Dubai hotels?"). A subject is a statement, not a quiz.
+5. PLAIN TEXT ONLY: ban bullet points, lists, bold/markdown, headings, and corporate declarations ("We are a leading agency...", "best-in-class", "cutting-edge", "game-changer", "revolutionary", "synergy", "world-class").
+6. OPENERS BANNED anywhere: ${bannedOpeners.join(', ')}.
+7. ANTI-HALLUCINATION: only reference facts present above.
+8. Output EXACTLY this JSON, no markdown, no code fence, strictly valid JSON:
 {"subject": "...", "body": "...", "cited_evidence": "the exact 1-2 facts from their site that you referenced", "confidence": 0-100}
 `;
 
       const emailResult = await callAIPipe([
-        { role: "system", content: `You are an elite cold email copywriter. You write like a real startup founder — casual, specific, zero fluff. Every email is 45-70 words max, exactly 3 sentences, ends with a CTA question ending in a question mark. You NEVER invent facts not given in the context. You NEVER use cliché openers. You ALWAYS reply with strictly valid JSON only: {"subject": "...", "body": "...", "cited_evidence": "...", "confidence": 0-100}. No markdown, no code fences, no prose outside the JSON.` },
+        { role: "system", content: `You are an elite B2B cold-email writer who writes like a real founder writing to a peer CEO — direct, specific, zero corporate fluff. Plain text only. Exactly 3 sentences: (1) a peer-level context hook naming their real service/project, (2) a no-hype value sentence about the OUTCOME we produce, (3) one soft CTA question ending in "?". Subject: a short 2-4 word executive statement (e.g. "Quick note re: <Company>", "<Topic> operations") — NEVER a clickbait stat question, NEVER end the subject with "?", NEVER append "?" to a raw number. No greeting, no bullets, no marketing fluff, no corporate declarations, no tool-name jargon. 45-70 words total. You NEVER invent facts not given in the context. You ALWAYS reply with strictly valid JSON only: {"subject": "...", "body": "...", "cited_evidence": "...", "confidence": 0-100}. No markdown, no code fences, no prose outside the JSON.` },
         { role: "user", content: fullEmailPrompt }
       ], config, model, 400);
 
@@ -332,7 +365,8 @@ ABSOLUTE RULES — BREAK ANY ONE AND THE EMAIL IS REJECTED:
           const aiConfidence = Math.max(0, Math.min(100, Number(parsed.confidence) || 0));
           if (aiBody && aiBody.length >= 30) {
             personalizedBody = aiBody;
-            draftSubject = aiSubject || draftSubject;
+            const cleanSubject = sanitizeSubjectLine(aiSubject);
+            if (cleanSubject) draftSubject = cleanSubject;
             draftEvidence = aiEvidence || draftEvidence;
             draftConfidence = aiConfidence > 0 ? aiConfidence : draftConfidence;
           }
@@ -375,7 +409,7 @@ ABSOLUTE RULES — BREAK ANY ONE AND THE EMAIL IS REJECTED:
     const dynamicOffer = String(config.offer_angle || config.OFFER_ANGLE || 'We built an AI engine that handles the entire discovery-to-outreach pipeline — finds decision makers, verifies emails, and drafts personalized cold emails. Self-hosted, no monthly fees.');
     const dynamicCTA = String(config.call_to_action || config.CALL_TO_ACTION || `Worth a quick look to see how this could work for ${cleanCompanyName}?`);
     personalizedBody = `${templateOpeners[idx]}\n\n${dynamicOffer}\n\n${dynamicCTA}`;
-    draftSubject = draftSubject || `Quick question, ${cleanCompanyName.split(' ')[0]}`;
+    draftSubject = sanitizeSubjectLine(draftSubject) || `Quick note re: ${cleanCompanyName.split(' ').slice(0, 3).join(' ')}`;
     draftEvidence = draftEvidence || (detectedService !== 'your industry'
       ? `Reference: ${cleanCompanyName} operates in ${detectedService}.`
       : `Reference: ${cleanCompanyName} is a B2B business in ${targetMarket}.`);
@@ -383,7 +417,9 @@ ABSOLUTE RULES — BREAK ANY ONE AND THE EMAIL IS REJECTED:
   }
 
   const validatedName = cleanContactName(decisionMaker);
-  const cleanGreetingName = validatedName ? validatedName.split(' ')[0] : '';
+  let firstToken = validatedName ? validatedName.split(/\s+/)[0] : '';
+  // Drop trailing honorific punctuation ("Mr." -> "Mr", "E.V." -> "E.V").
+  firstToken = firstToken.replace(/[.,]+$/g, '').trim();
 
   // Smart CTA & Meeting Link Integration
   const meetingLink = config.meeting_link || config.calendar_url || config.CALENDLY_URL || "";
@@ -393,19 +429,28 @@ ABSOLUTE RULES — BREAK ANY ONE AND THE EMAIL IS REJECTED:
       // Preserve the CTA question mark — append the calendar link as a separate sentence.
       sanitizedBody = `${sanitizedBody.trim()}\n\nFeel free to pick a time directly on my calendar here: ${meetingLink}`;
   }
-  
-  // Ensure greeting is correctly prepended if missing
-  const greeting = cleanGreetingName ? `Hi ${cleanGreetingName},` : `Hi team at ${cleanCompanyName},`;
-  if (!sanitizedBody.toLowerCase().startsWith('hi ')) {
-      sanitizedBody = `${greeting}\n\n${sanitizedBody}`;
-  }
+
+  // ── MANDATORY PERSONAL SALUTATION ──
+  // ALWAYS address the decision-maker by first name when one exists; never fall back
+  // to "Hi there" / "Dear Team" if the contact name is present.
+  const greeting = firstToken
+    ? `Hi ${firstToken},`
+    : `Hi ${cleanCompanyName} team,`;
+
+  // Strip any greeting/hype the model may have written so OUR greeting is always the
+  // literal first line of the body.
+  sanitizedBody = sanitizedBody
+    .replace(/^(hi|hello|hey|dear|good\s+(morning|afternoon|evening))\b[^\n]*\n?/i, '')
+    .replace(/^["']|["']$/g, '')
+    .trim();
+  sanitizedBody = `${greeting}\n\n${sanitizedBody}`;
 
   const companyWebsite = config.company_url || config.COMPANY_URL || "";
   const finalBody = `${sanitizedBody}\n\nBest,\n${myRep}\n${myCompany}\n${companyWebsite}\n${config.phone || ""}`;
 
   return {
     body: finalBody,
-    subject: draftSubject || `Quick question, ${cleanCompanyName.split(' ')[0]}`,
+    subject: sanitizeSubjectLine(draftSubject) || `Quick note re: ${cleanCompanyName.split(' ').slice(0, 3).join(' ')}`,
     brandName: cleanCompanyName,
     citedEvidence: draftEvidence,
     confidence: draftConfidence,
@@ -424,7 +469,7 @@ export const generateFollowUp = async (companyName: string, model: string = 'lla
 
   const signature = `\n\nBest,\n\n${myRep}\n${myCompany}\n${config.phone || ""}\n${config.company_url || ""}\n${config.email || ""}`;
 
-  if (!groqKey) return `Hi team at ${companyName},\n\nJust following up on my previous email regarding ${offer}. Would you be open to a 5-minute chat?${signature}`;
+  if (!groqKey) return `Hi ${companyName} team,\n\nJust following up on my previous email regarding ${offer}. Would you be open to a 5-minute chat?${signature}`;
 
   try {
     const groq = new Groq({ apiKey: groqKey });
@@ -439,6 +484,6 @@ export const generateFollowUp = async (companyName: string, model: string = 'lla
     const body = (chat.choices[0].message.content || "").replace(/\*\*/g, '').replace(/\*/g, '').trim();
     return `${body}${signature}`;
   } catch {
-    return `Hi team at ${companyName},\n\nJust following up on my previous email regarding ${offer}. Would you be open to a 5-minute chat?${signature}`;
+    return `Hi ${companyName} team,\n\nJust following up on my previous email regarding ${offer}. Would you be open to a 5-minute chat?${signature}`;
   }
 };

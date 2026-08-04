@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import { db, initDB, getQueuedDeepHuntContacts } from '../db.js';
 import { loadSystemConfig } from '../config_manager.js';
 import { logToDashboard } from '../shared_utils.js';
-import { cleanContactName } from '../contact_validation.js';
+import { cleanContactName, isCompanyEntityName, isPortfolioClientBrand, normalizeEmailCandidate, personNameFromLinkedInUrl, personNamesMatch, stripRoleDepartmentTokens } from '../contact_validation.js';
 
 const delay = (ms: number) => new Promise(r => setTimeout(r, ms));
 
@@ -14,7 +14,10 @@ const delay = (ms: number) => new Promise(r => setTimeout(r, ms));
  */
 async function huntQueuedPerson(personName: string, companyName: string, domain: string): Promise<{ email: string | null; linkedin: string | null }> {
   try {
-    const query = encodeURIComponent(`"${personName}" "${companyName}" email OR linkedin`);
+    // v2: search for linkedin across profiles + company/post pages; fuzzy-match the
+    // slug against the person name so middle-name/hyphen variants ("Niyaz Abdul Kader"
+    // vs "Niyaz Abdulkader") still recover the link.
+    const query = encodeURIComponent(`"${personName}" "${companyName}" linkedin`);
     const res = await axios.get(`https://html.duckduckgo.com/html/?q=${query}`, {
       timeout: 10000,
       headers: {
@@ -26,10 +29,18 @@ async function huntQueuedPerson(personName: string, companyName: string, domain:
     const text = String(res.data || '');
     const emails = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g) || [];
     const uniqueEmails = Array.from(new Set(emails.map(e => e.toLowerCase())))
+      .filter(e => !!normalizeEmailCandidate(e))
       .filter(e => !e.includes('xxx') && !e.includes('example.com') && !e.includes('.png') && !e.includes('duckduckgo.com') && !e.includes('wixpress.com'));
     const email = uniqueEmails.find(e => !/^(image|img|www|redirect|email)/.test(e)) || uniqueEmails[0] || null;
-    const linkedinMatch = text.match(/https?:\/\/(?:www\.|[\w-]+\.)?linkedin\.com\/in\/[a-zA-Z0-9_\-%]+/g);
-    const linkedin = linkedinMatch ? linkedinMatch[0] : null;
+
+    const linkedinMatch = text.match(/https?:\/\/(?:www\.|[\w-]+\.)?linkedin\.com\/(?:in|company|posts)\/[a-zA-Z0-9_\-%]+/g) || [];
+    let linkedin: string | null = null;
+    for (const url of linkedinMatch) {
+      const slugName = personNameFromLinkedInUrl(url);
+      if (slugName && personNamesMatch(slugName, personName)) { linkedin = url; break; }
+    }
+    if (!linkedin && linkedinMatch.length > 0) linkedin = linkedinMatch[0]; // company/post fallback
+
     if (email || linkedin) console.log(`  🔬 [DEEP HUNT] "${personName}" @ ${companyName} -> ${email || 'no email'} ${linkedin ? '| linkedin' : ''}`);
     return { email, linkedin };
   } catch {
@@ -94,13 +105,17 @@ async function scrapeExecutiveName(website: string, companyName: string): Promis
                 const aiCheck = await callAIPipe([
                   {
                     role: "system",
-                    content: `You are a name validator. Given a raw scraped text candidate for a person's name, clean it and extract ONLY the person's real full name (First Last). Remove junk words like 'Linkedin', 'Contact', 'Profile', 'View', titles, or company names. If it is NOT a valid human name, return 'N/A'. Output ONLY the clean name or 'N/A'.`
+                    content: `You are a name validator. Given a raw scraped text candidate for a person's name, clean it and extract ONLY the person's real full name (First Last). Remove junk words like 'Linkedin', 'Contact', 'Profile', 'View', titles, or company names. IMPORTANT: If the candidate is a PORTFOLIO CLIENT, hotel, resort, case-study brand, partner brand, or generic business category (e.g. "InterContinental", "Print Branding", "Skyline Builders") rather than a real human executive of the company, return 'N/A'. Output ONLY the clean name or 'N/A'.`
                   },
                   { role: "user", content: `Raw Candidate: "${rawCandidate}"` }
                 ], config, 'llama-3.3-70b-versatile', 40);
 
-                const cleanName = aiCheck.content.trim().replace(/[[\]".!,]/g, '');
+                let cleanName = aiCheck.content.trim().replace(/[[\]".!,]/g, '');
                 if (cleanName && cleanName.toUpperCase() !== 'N/A' && cleanName.split(' ').length >= 1 && cleanName.length < 40) {
+                  // v2 — dynamic role/title cleaning + entity/category rejection.
+                  cleanName = stripRoleDepartmentTokens(cleanName) || cleanName;
+                  if (isCompanyEntityName(cleanName, companyName)) return null;
+                  if (isPortfolioClientBrand(cleanName, fullText)) return null;
                   let linkedin: string | null = null;
                   $('a[href*="linkedin.com/in/"]').each((_, el) => {
                     if (!linkedin) linkedin = $(el).attr('href') || null;
@@ -109,9 +124,12 @@ async function scrapeExecutiveName(website: string, companyName: string): Promis
                 }
               } catch (_) {
                 // Fallback to basic regex check if AI call fails
-                const cleanName = rawCandidate.replace(/^(linkedin|contact|name|executive|person)[:\s]+/i, '').trim();
+                let cleanName = rawCandidate.replace(/^(linkedin|contact|name|executive|person)[:\s]+/i, '').trim();
+                cleanName = stripRoleDepartmentTokens(cleanName) || cleanName;
                 const words = cleanName.split(' ');
-                if (words.length >= 2 && words.every(w => /^[A-Z][a-z]+$/.test(w))) {
+                if (words.length >= 2 && words.every(w => /^[A-Z][a-z]+$/.test(w))
+                    && !isCompanyEntityName(cleanName, companyName)
+                    && !isPortfolioClientBrand(cleanName, fullText)) {
                   let linkedin: string | null = null;
                   $('a[href*="linkedin.com/in/"]').each((_, el) => {
                     if (!linkedin) linkedin = $(el).attr('href') || null;
