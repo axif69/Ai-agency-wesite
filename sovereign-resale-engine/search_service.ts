@@ -410,6 +410,102 @@ const withTimeout = async <T>(task: Promise<T>, ms: number, fallback: T, label: 
     }
 };
 
+// ─────────────────────────────────────────────────────────────────────────────
+// PROVIDER-LEVEL NON-BLOCKING EXPONENTIAL BACKOFF
+// Each search provider (bing / yahoo / ddg / yellowpages / puppeteer) tracks its
+// own consecutive-failure streak. When a provider keeps returning 0 results or
+// erroring (the classic signature of a soft rate-limit / CAPTCHA wall — the
+// provider answers but with an empty result set instead of a hard 429), it is
+// put on an exponentially-growing cooldown. Discovery simply skips throttled
+// providers and answers from whichever are healthy — so one blocked provider
+// never back-hammers and never stalls the whole pipeline. Cooldowns expire on
+// their own and the provider is retried, so a genuine 429 burst self-heals.
+// "Non-blocking" means none of this ever awaits a timer or blocks the loop.
+// ─────────────────────────────────────────────────────────────────────────────
+const providerCooldowns = new Map<string, { retryAfter: number; failures: number }>();
+const BACKOFF_BASE_MS = 15000;      // 15s per failure step
+const BACKOFF_CAP_MS = 10 * 60 * 1000; // 10-minute hard ceiling
+
+/** Register a provider failure and schedule its retry-after window (exponential). */
+export const markProviderFailure = (provider: string): void => {
+    const cur = providerCooldowns.get(provider) || { retryAfter: 0, failures: 0 };
+    // Cap the exponent at 6 so the cooldown never grows past the 10-min ceiling.
+    const delay = Math.min(BACKOFF_BASE_MS * Math.pow(2, Math.min(cur.failures + 1, 6)), BACKOFF_CAP_MS);
+    providerCooldowns.set(provider, { retryAfter: Date.now() + delay, failures: cur.failures + 1 });
+};
+
+/** Register a provider success, clearing any cooldown it had earned. */
+export const markProviderSuccess = (provider: string): void => {
+    providerCooldowns.delete(provider);
+};
+
+/** True while this provider is still inside its retry-after window. */
+export const isProviderCoolingDown = (provider: string): boolean => {
+    const cur = providerCooldowns.get(provider);
+    if (!cur) return false;
+    if (Date.now() >= cur.retryAfter) {
+        providerCooldowns.delete(provider); // cooldown expired — let it back in
+        return false;
+    }
+    return true;
+};
+
+// Contextual sector verbs/qualifiers used to expand a base niche keyword into a
+// richer, randomised long-tail SERP pool so discovery keeps hitting fresh results
+// instead of re-scraping the same handful of deterministic variants.
+const QUERY_EXPANSION_VERBS = ['companies', 'firms', 'providers', 'agencies', 'suppliers', 'contractors', 'consultancies', 'specialists'];
+const QUERY_EXPANSION_QUALIFIERS = ['top', 'best', 'leading', 'established', 'professional', 'reliable', 'trusted', 'independent'];
+
+/**
+ * Expands a list of base sector keywords + locations into a large, SHUFFLED pool
+ * of long-tail SERP queries. Runs deterministically enough that query-history
+ * keys stay comparable, but the insertion order is shuffled every call so the
+ * rotation logic never settles into the same monotonous loop.
+ */
+export function expandAndShuffleQueries(baseKeywords: string[], locations: string[]): string[] {
+    const pool: string[] = [];
+    const locs = (Array.isArray(locations) && locations.length) ? locations : ['UAE'];
+
+    const shuf = <T>(arr: T[]): T[] => {
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor((Date.now() ^ Math.random() * 0xffffffff) % (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    };
+
+    for (const kw of baseKeywords) {
+        const k = String(kw || '').trim();
+        if (!k) continue;
+
+        // 1) Bare sector + location combos (never-identical ordering per call).
+        for (const loc of shuf(locs)) {
+            pool.push(`${k} ${loc}`);
+            pool.push(`${loc} ${k}`);
+            pool.push(`${k} ${loc} companies`);
+            pool.push(`best ${k} in ${loc}`);
+        }
+
+        // 2) Verb × qualifier long-tail grid.
+        for (const verb of shuf(QUERY_EXPANSION_VERBS)) {
+            pool.push(`${k} ${verb}`);
+            for (const q of shuf(QUERY_EXPANSION_QUALIFIERS)) {
+                pool.push(`${q} ${k} ${verb}`);
+            }
+        }
+
+        // 3) Locator long-tail combos with qualifiers.
+        for (const loc of shuf(locs)) {
+            pool.push(`${k} in ${loc}`);
+            pool.push(`${k} ${loc} ${QUERY_EXPANSION_VERBS[Math.floor(Math.random() * QUERY_EXPANSION_VERBS.length)]}`);
+            pool.push(`leading ${k} ${loc}`);
+        }
+    }
+
+    return shuf([...new Set(pool)]).filter(Boolean);
+}
+
 export const ddgSearch = async (query: string, offset: number = 0): Promise<string[]> => {
     const urls: string[] = [];
     try {
@@ -1832,15 +1928,36 @@ export const findLeadTargetsFast = async (query: string, pageOffset: number = 0)
     const discovered = new Map<string, any>();
 
     // Page 0 = first page (results 1-10), page 1 = second page (11-20), etc.
-    // Yellow Pages only on page 0 (no pagination support); Bing + DDG support offsets
+    // Yellow Pages only on page 0 (no pagination support); Bing + DDG support offsets.
+    // Providers sitting on an active cooldown (soft rate-limit / CAPTCHA wall) are
+    // skipped so discovery answers from healthy providers instead of hammering a
+    // blocked one — that throttling is what collapsed throughput to ~1 lead/hr.
+    const ypActive = pageOffset === 0 && !isProviderCoolingDown('yellowpages');
+    const bingActive = !isProviderCoolingDown('bing');
+    const yahooActive = !isProviderCoolingDown('yahoo');
+    const ddgActive = !isProviderCoolingDown('ddg');
+
     const [ypResults, bingUrls, yahooUrls, ddgUrls] = await Promise.all([
-        pageOffset === 0
+        ypActive
             ? withTimeout(yellowPagesSearch(query), 18000, [], 'Yellow Pages fast source')
             : Promise.resolve([]),
-        withTimeout(bingSearch(cleanSearchQuery(query), pageOffset), 15000, [], 'Bing fast source'),
-        withTimeout(yahooSearch(cleanSearchQuery(query), pageOffset), 25000, [], 'Yahoo fast source'),
-        withTimeout(ddgSearch(cleanSearchQuery(query), pageOffset), 25000, [], 'DDG fast source'),
+        bingActive
+            ? withTimeout(bingSearch(cleanSearchQuery(query), pageOffset), 15000, [], 'Bing fast source')
+            : Promise.resolve([]),
+        yahooActive
+            ? withTimeout(yahooSearch(cleanSearchQuery(query), pageOffset), 25000, [], 'Yahoo fast source')
+            : Promise.resolve([]),
+        ddgActive
+            ? withTimeout(ddgSearch(cleanSearchQuery(query), pageOffset), 25000, [], 'DDG fast source')
+            : Promise.resolve([]),
     ]);
+
+    // Feed the backoff tracker — a provider that answered empty is earning an
+    // exponential cooldown; one that returned results is healthy again.
+    if (ypActive) (ypResults.length > 0 ? markProviderSuccess : markProviderFailure)('yellowpages');
+    if (bingActive) (bingUrls.length > 0 ? markProviderSuccess : markProviderFailure)('bing');
+    if (yahooActive) (yahooUrls.length > 0 ? markProviderSuccess : markProviderFailure)('yahoo');
+    if (ddgActive) (ddgUrls.length > 0 ? markProviderSuccess : markProviderFailure)('ddg');
 
     trace.yellowpages = ypResults.length;
     trace.bing = bingUrls.length;

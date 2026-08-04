@@ -2,10 +2,9 @@ import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { db, initDB } from '../db.js';
 import { loadSystemConfig } from '../config_manager.js';
-import { personalizeOutreach } from '../personalizer.js';
+import { personalizeOutreach, containsJargon, nicheSubjectFallback } from '../personalizer.js';
 import { logToDashboard } from '../shared_utils.js';
 import { isConsumerEmail, isGenericMailbox, cleanContactName } from '../contact_validation.js';
-import { cleanCompanyName } from '../search_service.js';
 
 const delay = (ms: number) => new Promise(r => setTimeout(r, ms));
 
@@ -217,10 +216,19 @@ async function runDraftsWorker() {
           const negativeKeywordsRaw = String(settings.negative_keywords || settings.NEGATIVE_KEYWORDS || '').trim();
           const blockedWords = negativeKeywordsRaw ? negativeKeywordsRaw.split(/[\n,;|]+/).map((w: string) => w.trim()).filter(Boolean) : [];
 
-          const wordCount = personalization.body.split(/\s+/).length;
-          // Accept a real CTA: a question mark OR the booking link (LLM sometimes writes the link without a '?').
-          const hasCTA = personalization.body.includes('?') || (activeCalendarUrl ? personalization.body.includes(activeCalendarUrl) : false);
-          const hasCalendar = activeCalendarUrl ? personalization.body.includes(activeCalendarUrl) : true;
+          // Core pitch = everything before the signature block (greeting + 3 sentences).
+          const coreBody = String(personalization.body).split(/\n\s*Best,/i)[0] || personalization.body;
+          const wordCount = coreBody.split(/\s+/).length;
+          // Real CTA = a soft question mark. No booking link required — raw URLs are BANNED.
+          const hasCTA = coreBody.includes('?');
+          // NO RAW URLS anywhere in the body (Calendly, website, http/https/www links).
+          const noRawUrl = !/(https?:\/\/|www\.|calendly\.com)/i.test(personalization.body);
+          // ZERO SOFTWARE JARGON — the strict executive standard bans SDR/AI agents,
+          // lead hunting, automation, engines, and any mention of "the tool".
+          const noJargon = !containsJargon(coreBody);
+          // Max 3 sentences in the core pitch (hook → value → soft CTA).
+          const coreSentences = coreBody.split(/[.!?]+(?:\s+|$)/).filter((s: string) => s.trim().length > 2).length;
+          const atMostThreeSentences = coreSentences <= 3;
           // Negative keywords are meant to EXCLUDE prospect companies (dental clinics, digital
           // agencies, etc.) — never the sender's own signature. Strip our own identity (agency
           // name + booking link) out of the body before scanning, otherwise a keyword like
@@ -260,7 +268,7 @@ async function runDraftsWorker() {
           const bodyLower = personalization.body.toLowerCase();
           const hasBannedOpener = bannedOpeners.some((o: string) => bodyLower.startsWith(o) || bodyLower.includes(` ${o}`));
 
-          const passesQualityGate = hasCTA && hasCalendar && wordCount >= 50 && wordCount <= 180 && !hasBannedWord && !hasBannedOpener && evidenceIsReal;
+          const passesQualityGate = hasCTA && noRawUrl && noJargon && atMostThreeSentences && wordCount >= 30 && wordCount <= 110 && !hasBannedWord && !hasBannedOpener && evidenceIsReal;
           const qualityScore = (evidenceIsReal && hasPersonalization && !hasBannedOpener && passesQualityGate) ? 95
             : (evidenceIsReal && passesQualityGate) ? 85
             : (evidenceIsReal) ? 70
@@ -275,10 +283,12 @@ async function runDraftsWorker() {
 
           // Structured subject line: prefer the AI\x27s evidence-grounded subject; fall back to a
           // dynamic company-based subject only if the model returned none.
-          const cleanedSubjectName = cleanCompanyName(companyName) || companyName.split(' ').slice(0, 3).join(' ');
+          // Structured subject line: prefer the AI's dynamic subject; fall back to a
+          // NICHE-based subject ("fitout ops") only if the model returned none — never
+          // a generic "[Company] outreach" template.
           const subject = (personalization.subject && personalization.subject.trim().length > 3)
             ? personalization.subject.trim()
-            : `Quick question, ${cleanedSubjectName}`;
+            : nicheSubjectFallback(servicesStr, research.detectedClients);
 
           // Persist the cited evidence + AI confidence so reviewers can audit grounding.
           const validationWarnings = {
@@ -286,6 +296,10 @@ async function runDraftsWorker() {
             evidence_grounded_in_site: evidenceIsReal,
             ai_confidence: Number(personalization.confidence || 0),
             banned_opener: hasBannedOpener,
+            has_raw_url: !noRawUrl,
+            has_jargon: !noJargon,
+            sentence_count: coreSentences,
+            at_most_3_sentences: atMostThreeSentences,
             word_count: wordCount,
           };
 

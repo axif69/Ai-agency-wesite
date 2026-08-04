@@ -63,6 +63,80 @@ export const sanitizeSubjectLine = (raw: unknown): string | null => {
 };
 
 /**
+ * EMERGENCY subject fallback — only used when the LLM returns no usable subject.
+ * Built dynamically from the detected service niche ("fitout ops", "legal ops")
+ * instead of a company-name template ("[Company] outreach"), per the dynamic
+ * subject rule. Filler words are dropped so it stays 2-3 natural words.
+ */
+export const nicheSubjectFallback = (detectedService: string, targetMarket: string): string => {
+  const FILLER = new Set(['your', 'ideal', 'the', 'a', 'an', 'and', 'in', 'of', 'services', 'for', 'to', 'with', 'across']);
+  const src = (detectedService && detectedService !== 'your industry') ? detectedService : (targetMarket || '');
+  const words = String(src || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9 &-]/g, ' ')
+    .split(/\s+/)
+    .filter((w: string) => w && !FILLER.has(w))
+    .slice(0, 3);
+  return words.length ? `${words.join(' ')} ops` : 'executive outreach';
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// EXECUTIVE OUTREACH GUARDS — the strict 3-sentence CEO-to-CEO standard
+//
+// 1) ZERO TECHNICAL JARGON. The exact phrases below are the single source of
+//    truth for the ban. They are checked — NOT auto-removed (deleting noun
+//    phrases mangles grammar) — so any draft carrying one is routed to human
+//    review by the drafting quality gate instead of auto-sending.
+// 2) ZERO RAW URLS. No Calendly, website, or http/https links anywhere in the
+//    email body (the model is told this AND we strip any it ignores).
+// 3) MAX 3 SENTENCES in the core pitch (hook → value → soft CTA).
+// ─────────────────────────────────────────────────────────────────────────────
+// Ban ONLY the spammy buzzwords. The legitimate "AI sales engine" mechanism
+// language is ALLOWED — the dynamic copy is expected to describe it plainly.
+const BANNED_JARGON = [
+  'ai sales sdr agent', 'ai sdr agent', 'ai sales sdr', 'sales sdr agent', 'sdr agent',
+  'self-hosted', 'self hosted', 'ai lead hunting', 'lead hunting', 'lead-hunting',
+  'cold outreach engine', 'cold outreach bot', 'automated sdr', 'sales sdr',
+];
+
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/**
+ * True when the text contains any blocklisted software-jargon phrase.
+ * Exact-phrase matching on purpose: a legitimate outcome sentence like
+ * "without hiring expensive SDR teams" must NOT be flagged.
+ */
+export const containsJargon = (text: string): boolean => {
+  const t = String(text || '').toLowerCase();
+  return BANNED_JARGON.some(p => new RegExp(`\\b${escapeRegExp(p)}\\b`, 'i').test(t));
+};
+
+/**
+ * Post-generation sanitizer. Applied to the core pitch so that even if the model
+ * ignores the writing rules, the stored email has NO raw URLs and stays at 3
+ * sentences. Jargon is deliberately NOT auto-removed here (it would mangle the
+ * grammar) — it is flagged via containsJargon and the quality gate routes those
+ * drafts to human review.
+ */
+export const sanitizeExecutiveBody = (core: string): string => {
+  let s = String(core || '')
+    .trim()
+    .replace(/\*\*/g, '')                    // strip stray markdown bold
+    .replace(/https?:\/\/\S+/gi, ' ')         // drop raw http(s) links
+    .replace(/www\.\S+/gi, ' ')               // drop bare www links
+    .replace(/\bcalendly(?:\.[a-z]+)+\S*\b/gi, ' ') // drop Calendly mentions
+    .replace(/^(?:hi|hello|hey|dear|good\s+(?:morning|afternoon|evening))\b[^\n]*\n?/i, '') // drop ONLY a leading stray salutation
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+  // Cap the CORE at 3 sentences (the CTA is sentence 3, so keep hook + value + CTA).
+  const sentences = s.split(/(?<=[.!?])\s+/).filter((x: string) => x.trim());
+  if (sentences.length > 3) s = sentences.slice(0, 3).join(' ').trim();
+
+  return s;
+};
+
+/**
  * CORE AI PIPELINE (Multi-Provider + Fallback)
  * This function attempts to call Groq, then Mistral, then falls back to a safe template.
  */
@@ -296,7 +370,6 @@ export const personalizeOutreach = async (companyName: string, aboutText: string
       const pitchContext = String(config.pitch_context || config.PITCH_CONTEXT || "").trim();
       const companyKnowledge = String(config.company_knowledge || config.COMPANY_KNOWLEDGE || "").trim();
       const offerAngle = String(config.offer_angle || config.OFFER_ANGLE || "our services").trim();
-      const calendarLink = String(config.calendar_url || config.meeting_link || config.CALENDAR_URL || "").trim();
       // Ground the email in the REAL scraped site content + sourced facts so the model
       // references actual projects/services instead of inventing them.
       const websiteExcerpt = cleanText.replace(/\s+/g, ' ').trim().slice(0, 1800);
@@ -328,25 +401,24 @@ ${pitchContext || offerAngle || 'AI-powered sales automation'}
 
 ${companyKnowledge ? `EXTRA CONTEXT:\n${companyKnowledge}` : ''}
 
-${calendarLink ? `CALENDAR LINK (weave naturally at the end): ${calendarLink}` : ''}
-
 ABSOLUTE RULES — BREAK ANY ONE AND THE EMAIL IS REJECTED:
 1. FACTS-GROUNDING: Cite at least 1-2 SPECIFIC facts about ${cleanCompanyName} taken VERBATIM from "CONTEXT FROM THEIR WEBSITE" or "VERIFIED FACTS ABOUT THEM" (e.g. a real service lineup, a specific project type, a cited stat, their target client type, a named location). Put the exact cited facts in the "cited_evidence" field. NEVER invent projects, stats, years, client names, or milestones that are not in the CONTEXT.
 2. NO GREETING IN THE BODY: do NOT write "Hi", "Dear", "Hello", or any salutation — the greeting is added separately. Start the body directly with the personalized hook.
-3. EXECUTIVE PEER TONE — exactly 3 sentences, a peer writing to a peer:
+3. EXECUTIVE PEER TONE — exactly 3 sentences (under 65 words total), a peer writing to a peer:
    Sentence 1 (Contextual Hook): a direct, peer-level observation about their business or operational focus, DERIVED from their site evidence — name their real service line, project type, or market focus (e.g. "Noticed United Cargo's freight forwarding ops across the UAE..."). Never a stat dressed as a question.
-   Sentence 2 (Value Proposition): ONE brief, UNHYPED sentence on how we help similar founders solve lead-acquisition or operational bottlenecks. BAN corporate jargon like "our self-hosted AI Sales SDR Agent automates...", promotional claims, and fluff — say what the outcome is, not what the tool is.
-   Sentence 3 (Low-Friction CTA): a soft, 1-line question (e.g. "Would you be open to a brief 5-minute chat this week?").
-4. DYNAMIC SUBJECT LINE (2-4 WORDS, EXECUTIVE, NO CLICKBAIT): craft a short, natural subject that names the company or their focus, e.g. "Quick note re: ${cleanCompanyName}", "Scaling ${detectedService}", "[Topic] operations", or "${cleanCompanyName} outreach". NEVER write a clickbait stat question, NEVER end the subject with "?", NEVER append "?" to a raw scraped number (ban "500 projects in Dubai hotels?"). A subject is a statement, not a quiz.
+   Sentence 2 (Mechanism & Benefit): ONE clear, natural sentence that EXPLAINS THE MECHANISM plainly — our system discovers their target companies, extracts verified executive decision-maker contacts, and writes the personalized outreach draft automatically — cutting 15+ hours of manual prospecting weekly. State the 3-step flow confidently; it IS the value. BAN only spammy buzzwords ("self-hosted AI SDR agent", "cold outreach bot", "automated SDR") — otherwise describe the mechanism in plain business language.
+   Sentence 3 (Low-Friction CTA): a soft, 1-line question (e.g. "Open to a brief 5-minute chat next week?").
+4. DYNAMIC SUBJECT LINE (2-4 WORDS, EXECUTIVE, NO CLICKBAIT, NO COMPANY-NAME TEMPLATES): craft a UNIQUE, natural 2-4 word subject derived dynamically from THEIR specific niche, projects, or operational focus (e.g. "commercial freight / DFH", "dubai legal operations", "quick note re: fitout clients"). NEVER use a static template that repeats the company name or a fixed pattern ("[Company] outreach", "Quick note re: <Company>", "Scaling <service>") — every subject must be original to this company's actual operations. NEVER write a clickbait stat question, NEVER end the subject with "?", NEVER append "?" to a raw scraped number (ban "500 projects in Dubai hotels?"). A subject is a statement, not a quiz.
 5. PLAIN TEXT ONLY: ban bullet points, lists, bold/markdown, headings, and corporate declarations ("We are a leading agency...", "best-in-class", "cutting-edge", "game-changer", "revolutionary", "synergy", "world-class").
-6. OPENERS BANNED anywhere: ${bannedOpeners.join(', ')}.
-7. ANTI-HALLUCINATION: only reference facts present above.
-8. Output EXACTLY this JSON, no markdown, no code fence, strictly valid JSON:
+6. NO RAW URLS WHATSOEVER: never put a Calendly link, a website URL, or any http/https/www link anywhere in the email body. The CTA is a soft QUESTION only — never "book here" with a link. Sentence 3 is the CTA, no link required.
+7. OPENERS BANNED anywhere: ${bannedOpeners.join(', ')}.
+8. ANTI-HALLUCINATION: only reference facts present above.
+9. Output EXACTLY this JSON, no markdown, no code fence, strictly valid JSON:
 {"subject": "...", "body": "...", "cited_evidence": "the exact 1-2 facts from their site that you referenced", "confidence": 0-100}
 `;
 
       const emailResult = await callAIPipe([
-        { role: "system", content: `You are an elite B2B cold-email writer who writes like a real founder writing to a peer CEO — direct, specific, zero corporate fluff. Plain text only. Exactly 3 sentences: (1) a peer-level context hook naming their real service/project, (2) a no-hype value sentence about the OUTCOME we produce, (3) one soft CTA question ending in "?". Subject: a short 2-4 word executive statement (e.g. "Quick note re: <Company>", "<Topic> operations") — NEVER a clickbait stat question, NEVER end the subject with "?", NEVER append "?" to a raw number. No greeting, no bullets, no marketing fluff, no corporate declarations, no tool-name jargon. 45-70 words total. You NEVER invent facts not given in the context. You ALWAYS reply with strictly valid JSON only: {"subject": "...", "body": "...", "cited_evidence": "...", "confidence": 0-100}. No markdown, no code fences, no prose outside the JSON.` },
+        { role: "system", content: `You are an elite B2B Growth Specialist cold-email writer who writes like a real founder writing to a peer CEO — direct, specific, zero corporate fluff. Plain text only. Exactly 3 sentences (under 65 words total): (1) a peer-level context hook naming their real service/project, (2) ONE clear sentence that explains the MECHANISM — our AI sales engine discovers their target companies, extracts verified executive decision-makers, and writes the personalized outreach draft automatically, cutting 15+ hours of manual prospecting weekly, (3) one soft low-friction CTA question ending in "?". DYNAMIC SUBJECT: craft a UNIQUE 2-4 word natural executive subject derived from THEIR specific niche or operations (e.g. "dubai legal ops", "commercial freight focus") — NEVER the generic "[Company] outreach" pattern, NEVER a clickbait stat question, NEVER end the subject with "?", NEVER append "?" to a raw number. NO RAW URLS whatsoever — never a Calendly link, website link, or http/https/www link anywhere. No greeting, no bullets, no marketing fluff, no corporate declarations, no spammy buzzwords ("self-hosted AI SDR agent", "cold outreach bot", "automated SDR"). You NEVER invent facts not given in the context. You ALWAYS reply with strictly valid JSON only: {"subject": "...", "body": "...", "cited_evidence": "...", "confidence": 0-100}. No markdown, no code fences, no prose outside the JSON.` },
         { role: "user", content: fullEmailPrompt }
       ], config, model, 400);
 
@@ -389,7 +461,9 @@ ABSOLUTE RULES — BREAK ANY ONE AND THE EMAIL IS REJECTED:
 
       // Fallback if AI output is empty — executive CEO-to-CEO pool
       if (!personalizedBody || personalizedBody.length < 30) {
-          personalizedBody = `Most founders running ${detectedService || 'B2B'} companies in ${cleanCompanyName}'s space spend thousands on lead software or waste 20+ hours a week verifying contacts manually.\n\nWe custom-build self-hosted AI SDR engines that automatically discover decision-maker emails, verify active mailboxes, and draft personalized outreach — with zero monthly credit fees.\n\nOpen to a quick 2-minute video preview of how it runs for ${cleanCompanyName}?`;
+          // Executive 3-sentence fallback — peer hook → mechanism & benefit → soft CTA.
+          // Zero spammy buzzwords, zero raw URLs (per the dynamic writing rules).
+          personalizedBody = `Most ${detectedService || 'B2B'} founders in this market burn 15-20 hours a week on manual prospecting. Our AI sales engine discovers their target companies, extracts verified executive contacts, and writes the outreach draft automatically. Open to a brief 5-minute chat next week?`;
       }
     } catch (e: any) {
       console.error(`❌ [AI PIPE] Personalization Error: ${e.message}`);
@@ -399,17 +473,16 @@ ABSOLUTE RULES — BREAK ANY ONE AND THE EMAIL IS REJECTED:
   // Fallback Template if no aboutText — use varied opener
   if (!personalizedBody) {
     const templateOpeners = [
-      `Running a ${detectedService || 'B2B'} company in this market is brutal — most founders are still doing outreach manually or paying $500/mo for lead tools that send garbage.`,
-      `${detectedService || 'B2B services'} companies like ${cleanCompanyName} usually have one problem in common: the pipeline dries up the moment you stop manually prospecting.`,
-      `Most ${detectedService || 'service'} founders I talk to spend 15+ hours/week on lead research. That time should be closing deals, not Googling contacts.`,
-      `Here's what I keep hearing from ${detectedService || 'B2B'} founders: "We know who we want to sell to, but finding and reaching the right person takes forever."`,
-      `The ${detectedService || 'B2B'} space in UAE is getting crowded fast — the companies winning right now are the ones automating their client acquisition pipeline.`,
+      `${cleanCompanyName} clearly runs a serious ${detectedService || 'B2B'} operation — most founders in this space still handle their own prospecting.`,
+      `Running a ${detectedService || 'B2B'} company in this market usually means the founder personally chases every lead.`,
+      `Most ${detectedService || 'B2B'} founders I talk to lose 15-20 hours a week on manual list building and research.`,
     ];
     const idx = Math.abs(cleanCompanyName.charCodeAt(0) * 3 + cleanCompanyName.length) % templateOpeners.length;
-    const dynamicOffer = String(config.offer_angle || config.OFFER_ANGLE || 'We built an AI engine that handles the entire discovery-to-outreach pipeline — finds decision makers, verifies emails, and drafts personalized cold emails. Self-hosted, no monthly fees.');
-    const dynamicCTA = String(config.call_to_action || config.CALL_TO_ACTION || `Worth a quick look to see how this could work for ${cleanCompanyName}?`);
-    personalizedBody = `${templateOpeners[idx]}\n\n${dynamicOffer}\n\n${dynamicCTA}`;
-    draftSubject = sanitizeSubjectLine(draftSubject) || `Quick note re: ${cleanCompanyName.split(' ').slice(0, 3).join(' ')}`;
+    // Outcome-only framing: no tool names, no jargon, no raw URLs.
+    const dynamicOffer = String(config.offer_angle || config.OFFER_ANGLE || 'Our AI sales engine discovers target companies, verifies executive contacts, and writes each outreach draft automatically.');
+    const dynamicCTA = String(config.call_to_action || config.CALL_TO_ACTION || 'Open to a brief 5-minute chat next week?');
+    personalizedBody = `${templateOpeners[idx]} ${dynamicOffer} ${dynamicCTA}`;
+    draftSubject = sanitizeSubjectLine(draftSubject) || nicheSubjectFallback(detectedService, targetMarket);
     draftEvidence = draftEvidence || (detectedService !== 'your industry'
       ? `Reference: ${cleanCompanyName} operates in ${detectedService}.`
       : `Reference: ${cleanCompanyName} is a B2B business in ${targetMarket}.`);
@@ -421,14 +494,11 @@ ABSOLUTE RULES — BREAK ANY ONE AND THE EMAIL IS REJECTED:
   // Drop trailing honorific punctuation ("Mr." -> "Mr", "E.V." -> "E.V").
   firstToken = firstToken.replace(/[.,]+$/g, '').trim();
 
-  // Smart CTA & Meeting Link Integration
-  const meetingLink = config.meeting_link || config.calendar_url || config.CALENDLY_URL || "";
-  let sanitizedBody = personalizedBody.replace(/\*\*/g, '').replace(/\*/g, '').trim();
-
-  if (meetingLink && !sanitizedBody.includes(meetingLink)) {
-      // Preserve the CTA question mark — append the calendar link as a separate sentence.
-      sanitizedBody = `${sanitizedBody.trim()}\n\nFeel free to pick a time directly on my calendar here: ${meetingLink}`;
-  }
+  // ── EXECUTIVE SANITIZER ──
+  // Push the generated core through the strict guards: strip raw URLs, ban tech
+  // jargon, cap to 3 sentences. NO calendar-link injection — the CTA is a soft
+  // question only (per the "NO RAW URLS" writing rule).
+  let sanitizedBody = sanitizeExecutiveBody(personalizedBody);
 
   // ── MANDATORY PERSONAL SALUTATION ──
   // ALWAYS address the decision-maker by first name when one exists; never fall back
@@ -437,20 +507,18 @@ ABSOLUTE RULES — BREAK ANY ONE AND THE EMAIL IS REJECTED:
     ? `Hi ${firstToken},`
     : `Hi ${cleanCompanyName} team,`;
 
-  // Strip any greeting/hype the model may have written so OUR greeting is always the
-  // literal first line of the body.
   sanitizedBody = sanitizedBody
     .replace(/^(hi|hello|hey|dear|good\s+(morning|afternoon|evening))\b[^\n]*\n?/i, '')
     .replace(/^["']|["']$/g, '')
     .trim();
   sanitizedBody = `${greeting}\n\n${sanitizedBody}`;
 
-  const companyWebsite = config.company_url || config.COMPANY_URL || "";
-  const finalBody = `${sanitizedBody}\n\nBest,\n${myRep}\n${myCompany}\n${companyWebsite}\n${config.phone || ""}`;
+  // Executive signature — no raw website/Calendly URL (zero raw URLs anywhere).
+  const finalBody = `${sanitizedBody}\n\nBest,\n${myRep}\n${myCompany}\n${config.phone || ""}`.trim();
 
   return {
     body: finalBody,
-    subject: sanitizeSubjectLine(draftSubject) || `Quick note re: ${cleanCompanyName.split(' ').slice(0, 3).join(' ')}`,
+    subject: sanitizeSubjectLine(draftSubject) || nicheSubjectFallback(detectedService, targetMarket),
     brandName: cleanCompanyName,
     citedEvidence: draftEvidence,
     confidence: draftConfidence,

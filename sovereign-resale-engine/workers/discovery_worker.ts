@@ -1,7 +1,7 @@
 import { db, initDB } from '../db.js';
 import { loadSystemConfig } from '../config_manager.js';
 import { runGmbNinjaScan } from '../gmb_stealth.js';
-import { findLeadTargetsFast, cleanCompanyName, loadCompetitorTerms, isCompetitorProspect } from '../search_service.js';
+import { findLeadTargetsFast, cleanCompanyName, loadCompetitorTerms, isCompetitorProspect, expandAndShuffleQueries } from '../search_service.js';
 import { logToDashboard } from '../shared_utils.js';
 
 const delay = (ms: number) => new Promise(r => setTimeout(r, ms));
@@ -79,38 +79,12 @@ async function saveQueryHistory(history: Record<string, number>): Promise<void> 
  * (TARGET_LOCATION / DISCOVERY_LOCATIONS). NO industry or location is hardcoded here.
  */
 function generateQueryVariants(baseKeyword: string, locations: string[]): string[] {
-    const kw = baseKeyword.trim();
-    const locs = Array.isArray(locations) && locations.length > 0 ? locations : [];
-
-    const variants: string[] = [];
-    // Generic modifiers (location-agnostic) — always valid regardless of sector/location.
-    const generic = [
-        `${kw} companies`,
-        `top ${kw} firms`,
-        `${kw} agencies`,
-        `${kw} consultancies`,
-        `best ${kw}`,
-        `${kw} services`,
-        `${kw} providers`,
-        `leading ${kw}`,
-        `${kw} b2b`,
-        `${kw} SME`,
-        `established ${kw}`,
-        `${kw} startups`,
-    ];
-    for (const g of generic) variants.push(g);
-
-    // Location-tagged modifiers — every configured workspace location gets covered.
-    for (const loc of locs) {
-        const l = String(loc).trim();
-        if (!l) continue;
-        variants.push(`${kw} ${l}`);
-        variants.push(`${l} ${kw}`);
-        variants.push(`${kw} ${l} companies`);
-        variants.push(`best ${kw} in ${l}`);
-    }
-
-    return [...new Set(variants)].filter(Boolean);
+    // v3.1 — Delegate to the shared expansion engine in search_service.ts. This
+    // produces a much larger, SHUFFLED long-tail pool (sector × qualifier ×
+    // location combos) so discovery keeps hitting fresh SERPs instead of
+    // re-scraping the same handful of deterministic variants over and over
+    // (which is what caused 268 variants to go stale and return 0 new leads).
+    return expandAndShuffleQueries([baseKeyword], locations);
 }
 
 /**
@@ -131,6 +105,14 @@ async function selectNextQueryWithPageRotation(
         variants.forEach((v, i) => {
             allVariants.push({ key: `${kw}___variant_${i}`, baseKw: v });
         });
+    }
+
+    // Fisher-Yates shuffle before the "least-used" sort: ties in use-count then
+    // resolve to a DIFFERENT variant each rotation, so we never settle back into
+    // the same monotonous loop of a few stale variants.
+    for (let i = allVariants.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [allVariants[i], allVariants[j]] = [allVariants[j], allVariants[i]];
     }
 
     // Find the variant that's been used the LEAST pages (or not at all)
