@@ -26,25 +26,29 @@ if (typeof window !== "undefined") {
 const sovereignSolutions = [
   {
     title: "AI Automation Agency",
-    desc: "We build custom AI workflows that handle your repetitive daily tasks automatically, saving your team hundreds of hours a month.",
+    tag: "Workflows",
+    desc: "Practical automation for UAE teams: lead capture, CRM routing, follow-up reminders, reports, and repeat tasks handled cleanly.",
     icon: <Workflow className="w-6 h-6" role="img" aria-label="Workflow Icon" />,
     link: "/ai-automation-agency-dubai",
   },
   {
-    title: "Sovereign AI Marketing",
-    desc: "Smart marketing campaigns that get your business to the top of Google Maps and search results in the UAE.",
+    title: "AI Marketing & SEO",
+    tag: "Search growth",
+    desc: "Local SEO, useful content, landing pages, and AI-assisted campaign systems built to bring better enquiries from Dubai and Sharjah.",
     icon: <Zap className="w-6 h-6" role="img" aria-label="Marketing Flash Icon" />,
     link: "/ai-marketing-dubai",
   },
   {
-    title: "Autonomous Sales Swarms",
-    desc: "AI Chatbots that live on your website and WhatsApp, answering customer questions and booking sales 24/7 without ever taking a break.",
-    icon: <MessageSquare className="w-6 h-6" role="img" aria-label="Sales Swarm Icon" />,
+    title: "B2B Sales Automation",
+    tag: "Human-reviewed",
+    desc: "A reviewed B2B workflow that finds relevant UAE companies, helps identify decision-makers, prepares sourced drafts, and keeps replies organised.",
+    icon: <MessageSquare className="w-6 h-6" role="img" aria-label="B2B Sales Automation Icon" />,
     link: "/sovereign-sales-agent",
   },
   {
     title: "Arabic Intelligence Hub",
-    desc: "Our AI systems speak perfect Khaleeji Arabic and English, ensuring you never miss a lead from any part of the UAE market.",
+    tag: "Arabic support",
+    desc: "Arabic and English AI support for UAE websites, WhatsApp flows, FAQs, lead handling, and customer conversations.",
     icon: <Languages className="w-6 h-6" role="img" aria-label="Arabic Language Icon" />,
     link: "/arabic-ai-hub",
   }
@@ -52,16 +56,22 @@ const sovereignSolutions = [
 
 const realEstateSolutions = [
   {
-    title: "AI Real Estate UAE Hub",
-    desc: "A practical guide to how UAE property teams can use AI for enquiries, listings, support, and day-to-day operations.",
-    icon: <Globe className="w-6 h-6" role="img" aria-label="Real Estate Hub Icon" />,
-    link: "/ai-real-estate-uae",
+    title: "Real Estate AI WhatsApp Automation",
+    desc: "Sub-10s qualification, automated off-plan brochure delivery, voice note transcription, and instant broker pings.",
+    icon: <MessageSquare className="w-6 h-6" role="img" aria-label="WhatsApp AI Automation Icon" />,
+    link: "/real-estate/whatsapp-ai-automation",
   },
   {
-    title: "AI for Real Estate Agencies",
-    desc: "Dubai agency workflows for faster response times, better qualification, and cleaner CRM handoffs across every channel.",
-    icon: <MessageSquare className="w-6 h-6" role="img" aria-label="Agency Leads Icon" />,
-    link: "/ai-real-estate-agencies-dubai",
+    title: "Unified Real Estate AI Lead Dashboard",
+    desc: "Multi-channel source attribution (Meta, Google, Portals), live lead matrix, deal heat scoring, and broker reply co-pilot.",
+    icon: <Globe className="w-6 h-6" role="img" aria-label="AI Lead Dashboard Icon" />,
+    link: "/real-estate/ai-lead-dashboard",
+  },
+  {
+    title: "Real Estate AI Solutions Hub",
+    desc: "The complete UAE property intelligence stack connecting WhatsApp, CRM, lead scoring, and web search engine optimization.",
+    icon: <TrendingUp className="w-6 h-6" role="img" aria-label="Real Estate Hub Icon" />,
+    link: "/real-estate",
   },
   {
     title: "AI Property Management UAE",
@@ -74,12 +84,6 @@ const realEstateSolutions = [
     desc: "The connected website, portal, CRM, and WhatsApp foundation that powers real estate automation and lead flow.",
     icon: <Server className="w-6 h-6" role="img" aria-label="Digital Solutions Icon" />,
     link: "/real-estate-digital-solutions-uae",
-  },
-  {
-    title: "Lead Generation for Real Estate",
-    desc: "SEO, AEO, and conversion-focused lead capture built to bring in property enquiries that are worth following up.",
-    icon: <TrendingUp className="w-6 h-6" role="img" aria-label="Lead Generation Icon" />,
-    link: "/ai-lead-generation-agency-dubai",
   }
 ];
 
@@ -344,16 +348,16 @@ export default function Home() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80">
-              AI Automation, WhatsApp Chatbots & Web Design in Dubai
+              Websites, WhatsApp Assistants & AI Automation in the UAE
             </span>
           </motion.div>
           
           <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="text-4xl sm:text-6xl md:text-7xl lg:text-[6vw] xl:text-[5.5vw] font-serif font-bold leading-[1.1] tracking-tight mb-4 max-w-6xl mx-auto drop-shadow-2xl">
-            Get More Leads From Your Website, <br /><span className="italic text-white/70 tracking-normal pr-2">WhatsApp & AI Automation.</span>
+            Websites and AI Automation, <br /><span className="italic text-white/70 tracking-normal pr-2">Built to Turn Visitors Into Enquiries.</span>
           </motion.h1>
           
           <TextGenerateEffect 
-            words="Asif Digital helps UAE businesses build fast websites, WhatsApp chatbots and AI automation systems that capture enquiries, answer customers and turn traffic into booked calls."
+            words="Asif Digital Agency builds conversion-focused websites, WhatsApp assistants and follow-up systems for businesses in Dubai, Sharjah and across the UAE."
             className="text-base md:text-lg lg:text-xl text-white/95 font-normal max-w-3xl mx-auto font-sans leading-relaxed mb-6 drop-shadow-md"
           />
           
@@ -364,8 +368,8 @@ export default function Home() {
               </Link>
             </MagneticButton>
             <MagneticButton>
-              <div onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} aria-label="See the AI in Action" className="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all flex items-center justify-center gap-3 backdrop-blur-md cursor-pointer">
-                See the AI in Action <MessageSquare className="w-4 h-4" role="img" aria-label="Message icon" />
+              <div onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))} aria-label="See How It Works" className="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all flex items-center justify-center gap-3 backdrop-blur-md cursor-pointer">
+                See How It Works <MessageSquare className="w-4 h-4" role="img" aria-label="Message icon" />
               </div>
             </MagneticButton>
           </motion.div>
@@ -376,10 +380,10 @@ export default function Home() {
       {/* ── Trust Signals Bar ── */}
       <section className="py-8 bg-black border-y border-white/5 relative z-20">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-8 text-[10px] uppercase font-bold tracking-[0.2em] text-white/60">
-          <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-white/70" role="img" aria-label="Sovereignty Shield icon" /> 100% Data Security</div>
-          <div className="flex items-center gap-2"><Database className="w-4 h-4 text-white/70" role="img" aria-label="Database storage icon" /> Fast UAE Hosting</div>
-          <div className="flex items-center gap-2"><Brain className="w-4 h-4 text-white/70" role="img" aria-label="AI reasoning brain icon" /> AI Automation</div>
-          <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-white/70" role="img" aria-label="Global networking icon" /> Proven ROI</div>
+          <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-white/70" role="img" aria-label="Sovereignty Shield icon" /> No CMS Password Needed</div>
+          <div className="flex items-center gap-2"><Database className="w-4 h-4 text-white/70" role="img" aria-label="Database storage icon" /> Search-Friendly Build</div>
+          <div className="flex items-center gap-2"><Brain className="w-4 h-4 text-white/70" role="img" aria-label="AI reasoning brain icon" /> WhatsApp Follow-Up</div>
+          <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-white/70" role="img" aria-label="Global networking icon" /> Clear Audit First</div>
         </div>
       </section>
 
@@ -415,18 +419,18 @@ export default function Home() {
         <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-3 gsap-reveal">Start Here</span>
-            <h2 className="text-3xl md:text-4xl font-serif tracking-tight gsap-reveal">Choose what you need right now.</h2>
+            <h2 className="text-3xl md:text-4xl font-serif tracking-tight gsap-reveal">Pick the fastest path to more enquiries.</h2>
           </div>
           <p className="text-white/55 text-sm max-w-xl gsap-reveal">
-            We are focusing the business around three practical services that UAE companies already search for and buy.
+            Start with the service that fixes the biggest leak in your current lead flow: the website, the WhatsApp conversation, or the follow-up process after a lead arrives.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
-            { title: "AI Automation Agency Dubai", desc: "Automate lead routing, CRM updates, reporting and repetitive business workflows.", href: "/ai-automation-agency-dubai" },
-            { title: "WhatsApp Chatbot Dubai", desc: "Answer FAQs, qualify leads and send enquiries to you automatically on WhatsApp.", href: "/ai-chatbots-dubai" },
-            { title: "Web Design Company Dubai", desc: "Build a fast, trustworthy website that converts visitors into calls and bookings.", href: "/services/web-design-dubai-sharjah" }
+            { title: "AI Automation Agency Dubai", desc: "Connect enquiries, CRM updates, reports and repetitive admin tasks so leads do not disappear after the first message.", href: "/ai-automation-agency-dubai" },
+            { title: "WhatsApp Chatbot Dubai", desc: "Answer common questions, qualify customers and send lead details to your team before prospects go cold.", href: "/ai-chatbots-dubai" },
+            { title: "Web Design Company Dubai", desc: "Build a fast, trustworthy website that turns search traffic into calls, WhatsApp enquiries and booked audits.", href: "/services/web-design-dubai-sharjah" }
           ].map((item, i) => (
             <Link
               key={i}
@@ -448,19 +452,19 @@ export default function Home() {
       <section className="px-6 md:px-12 py-20 border-y border-white/5 bg-black relative z-20" aria-labelledby="seo-cluster-heading">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-start">
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4">Money Services</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4">Problems We Solve</span>
             <h2 id="seo-cluster-heading" className="text-3xl md:text-5xl font-serif tracking-tight leading-tight mb-6">
-              Three focused services built to generate organic calls and bookings.
+              Your website should help customers take the next step.
             </h2>
             <p className="text-white/60 text-sm md:text-base leading-relaxed">
-              We help UAE businesses turn their website and WhatsApp enquiries into better follow-up, cleaner lead tracking and more booked conversations.
+              Most UAE business websites fail because visitors do not know what to do next: no clear offer, no fast WhatsApp route, no useful form, and no follow-up system after the enquiry arrives.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { title: "AI Automation Agency Dubai", desc: "Connect forms, WhatsApp, email, CRM and dashboards so your team stops losing leads in manual follow-up.", href: "/ai-automation-agency-dubai" },
-              { title: "WhatsApp Chatbot Dubai", desc: "A WhatsApp and website chatbot that answers questions, collects contact details and sends qualified enquiries to you.", href: "/ai-chatbots-dubai" },
-              { title: "Web Design Company Dubai", desc: "A fast, mobile-first website with clear service pages, proof, CTAs and tracking built for organic lead conversion.", href: "/services/web-design-dubai-sharjah" }
+              { title: "AI Automation Agency Dubai", desc: "Connect forms, WhatsApp, email, CRM and dashboards so your team stops losing leads after the first message.", href: "/ai-automation-agency-dubai" },
+              { title: "WhatsApp Chatbot Dubai", desc: "Answer common customer questions, collect contact details and send qualified enquiries to your team.", href: "/ai-chatbots-dubai" },
+              { title: "Web Design Company Dubai", desc: "Fast service pages with simple wording, proof, FAQs, clear CTAs and tracking for organic lead conversion.", href: "/services/web-design-dubai-sharjah" }
             ].map((item) => (
               <Link key={item.href} href={item.href} className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 hover:border-green-400/30 hover:bg-white/[0.04] transition-colors">
                 <h3 className="font-serif text-xl mb-3">{item.title}</h3>
@@ -547,12 +551,12 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="why-now-text opacity-0">
             <h2 className="text-4xl md:text-6xl font-serif tracking-tight leading-[1.1] mb-10">
-              A standard website is a brochure. <br/><span className="italic text-white/70">You need an active employee.</span>
+              A good website should not just look nice. <br/><span className="italic text-white/70">It should start conversations.</span>
             </h2>
             <div className="space-y-6 text-white/80 font-normal xl:text-lg leading-relaxed">
-              <p>In the UAE, your customers are searching online at all hours. If your website is a static, slow-loading brochure, and your human sales team clocks out at 6 PM, you are losing money to your competitors every single night.</p>
+              <p>Most leads do not disappear because the business is bad. They disappear because the page is unclear, the WhatsApp button is buried, or nobody follows up fast enough.</p>
               <p className="text-white font-medium border-l-2 border-white pl-4 py-2">
-                We build Digital Storefronts powered by AI Employees. Our premium websites rank on Google to bring in traffic, while our integrated AI Chatbots talk to your customers in English and Arabic, answering questions and booking sales 24/7.
+                We build websites, WhatsApp assistants and simple automation flows that help visitors understand your offer, ask questions and send real enquiries to your team.
               </p>
             </div>
             <div className="mt-12 flex gap-8">
@@ -573,13 +577,13 @@ export default function Home() {
              
              <div className="relative z-10 space-y-8">
                 <div className="legacy-card p-6 border border-red-500/20 bg-red-500/5 rounded-xl opacity-0">
-                  <h4 className="text-red-400 font-bold text-xs uppercase tracking-widest mb-2">The Legacy Model</h4>
-                  <p className="text-white/80 font-normal text-sm">Static websites that don't sell, and human sales teams that sleep.</p>
+                  <h4 className="text-red-400 font-bold text-xs uppercase tracking-widest mb-2">The Broken Flow</h4>
+                  <p className="text-white/80 font-normal text-sm">Pretty websites with weak forms, unclear offers and slow follow-up.</p>
                 </div>
                 <div className="arrow-graphic flex justify-center opacity-0"><ArrowRight className="w-6 h-6 rotate-90 text-white/20" /></div>
                 <div className="automated-card p-6 border border-green-500/30 bg-green-500/10 rounded-xl opacity-0">
-                  <h4 className="text-green-400 font-bold text-xs uppercase tracking-widest mb-2">The Automated Model</h4>
-                  <p className="text-white/90 font-normal text-sm">High-speed websites staffed by AI Chatbots that close sales around the clock.</p>
+                  <h4 className="text-green-400 font-bold text-xs uppercase tracking-widest mb-2">The Better Flow</h4>
+                  <p className="text-white/90 font-normal text-sm">Clear landing pages, WhatsApp entry points and automation that routes enquiries to your team.</p>
                 </div>
              </div>
           </div>
@@ -594,10 +598,10 @@ export default function Home() {
           <div className="px-6 md:px-12 max-w-7xl mx-auto w-full mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-2 gsap-reveal">Our Services</span>
-              <h2 className="text-4xl md:text-6xl font-serif tracking-tight text-white gsap-reveal">Strategic Capabilities</h2>
+              <h2 className="text-4xl md:text-6xl font-serif tracking-tight text-white gsap-reveal">Services that support the lead flow</h2>
             </div>
             <p className="text-white/50 text-sm max-w-sm gsap-reveal">
-              Scroll down to explore our AI automation and foundational digital services designed for GCC market leaders.
+              Explore the practical pages behind the homepage offer: automation, WhatsApp assistants, real estate systems, web design and supporting digital services.
             </p>
           </div>
 
@@ -619,19 +623,20 @@ export default function Home() {
 
             {/* AI Solutions Panels */}
             {sovereignSolutions.map((sol, i) => (
-              <div key={i} className="w-[300px] md:w-[400px] h-[400px] md:h-[450px] rounded-3xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] p-8 md:p-10 flex flex-col justify-between flex-shrink-0 transition-all group backdrop-blur-sm">
-                <div className="flex justify-between items-start">
-                  <div className="p-4 rounded-2xl bg-green-500/10 text-green-400 group-hover:bg-green-500 group-hover:text-black transition-colors duration-300">
+              <div key={i} className="group relative w-[300px] md:w-[400px] h-[400px] md:h-[450px] overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.06),rgba(10,80,45,0.08),rgba(255,255,255,0.02))] p-8 md:p-10 flex flex-col justify-between flex-shrink-0 transition-all duration-300 hover:-translate-y-2 hover:border-green-400/30 hover:shadow-[0_30px_90px_rgba(0,255,130,0.08)] backdrop-blur-sm">
+                <div className="pointer-events-none absolute -right-20 -top-20 h-44 w-44 rounded-full bg-green-400/10 blur-3xl opacity-60 transition-opacity group-hover:opacity-100" />
+                <div className="relative z-10 flex justify-between items-start">
+                  <div className="p-4 rounded-2xl border border-green-400/15 bg-green-400/10 text-green-300 group-hover:bg-green-400 group-hover:text-black transition-colors duration-300">
                     {sol.icon}
                   </div>
-                  <span className="text-xs uppercase font-bold tracking-[0.2em] text-green-500/60">Sovereign AI</span>
+                  <span className="text-[10px] uppercase font-bold tracking-[0.22em] text-green-300/70">{sol.tag}</span>
                 </div>
-                <div>
+                <div className="relative z-10">
                   <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-green-400 transition-colors">{sol.title}</h3>
                   <p className="text-white/70 font-normal text-sm leading-relaxed">{sol.desc}</p>
                 </div>
-                <Link href={sol.link} aria-label={`Explore ${sol.title}`} className="inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-white/40 group-hover:text-white transition-colors pt-4 border-t border-white/5">
-                  Learn More <ArrowRight className="w-3.5 h-3.5" />
+                <Link href={sol.link} aria-label={`Explore ${sol.title}`} className="relative z-10 inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-white/45 group-hover:text-green-300 transition-colors pt-4 border-t border-white/10">
+                  Open Page <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             ))}
@@ -704,7 +709,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                quote: "Since deploying Asif Digital's Sales Agent on our new website, we capture leads at 2 AM and our booking rate increased by 314%. It's like having a top-performing salesperson who never sleeps.",
+                quote: "After Asif Digital rebuilt our enquiry flow and WhatsApp follow-up, our team stopped missing late-night leads and had a clearer system for booking calls.",
                 author: "Tariq Mahmood",
                 role: "Dubai Real Estate Director",
                 img: "https://randomuser.me/api/portraits/men/32.jpg"
@@ -748,14 +753,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Industries We Automate ── */}
+      {/* ── Where This Works Best ── */}
       <section className="relative z-20 py-32 px-6 md:px-12 bg-black border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4 gsap-reveal">Bespoke Solutions</span>
-            <h2 className="text-4xl md:text-6xl font-serif tracking-tight mb-6 gsap-reveal text-white">Industries We Automate</h2>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4 gsap-reveal">Selected Use Cases</span>
+            <h2 className="text-4xl md:text-6xl font-serif tracking-tight mb-6 gsap-reveal text-white">Where this works best</h2>
             <p className="text-white/60 text-lg font-light max-w-2xl mx-auto gsap-reveal">
-              We design custom AI workflows and high-speed software tailored to the unique operational demands of GCC businesses.
+              We focus on situations where missed enquiries, slow follow-up and unclear websites directly affect revenue.
             </p>
           </div>
 
@@ -764,7 +769,7 @@ export default function Home() {
               {
                 industry: "Real Estate & Property Development",
                 desc: "Qualify prospective buyers, automate brochure delivery via WhatsApp, sync lead profiles to Salesforce/HubSpot, and capture international inquiries 24/7.",
-                features: ["OSINT Prospect Mapping", "WhatsApp Brochure Bots", "Bilingual Lead Qualification"]
+                features: ["Lead Source Mapping", "WhatsApp FAQ Assistant", "Bilingual Lead Qualification"]
               },
               {
                 industry: "Professional Services (Legal & Consulting)",
@@ -773,8 +778,8 @@ export default function Home() {
               },
               {
                 industry: "E-commerce & Local Services",
-                desc: "Convert high-ticket traffic instantly. Standard websites lose after-hours leads; our automated stores use conversational agents to close sales around the clock.",
-                features: ["Instant Cart Recovery", "WhatsApp Sales Swarms", "Technician Dispatch Routing"]
+                desc: "Recover missed enquiries and follow-ups. We help online stores and service businesses answer questions, route requests and keep prospects moving instead of waiting.",
+                features: ["Instant Cart Recovery", "WhatsApp Follow-Up Flows", "Technician Dispatch Routing"]
               }
             ].map((item, i) => (
               <div key={i} className="p-8 rounded-3xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-500 flex flex-col justify-between h-full group hover:border-green-500/20">
@@ -832,9 +837,9 @@ export default function Home() {
       {/* ── 4. Intelligence Arbitrage ROI Calculator ── */}
       <section className="relative z-20 py-40 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5 bg-[#050505]">
         <div className="text-center mb-16">
-          <span className="micro-label block mb-4">Intelligence Arbitrage</span>
-          <h2 className="text-4xl md:text-6xl font-serif tracking-tight">Human vs. AI: <span className="italic text-white/40">Calculate Savings.</span></h2>
-          <p className="text-white/60 mt-4 max-w-2xl mx-auto font-normal">Compare the cost of hiring human sales and support staff vs. deploying an AI Chatbot directly onto your new website.</p>
+          <span className="micro-label block mb-4">Planning Estimate</span>
+          <h2 className="text-4xl md:text-6xl font-serif tracking-tight">Human vs. Automation: <span className="italic text-white/40">Plan the Savings.</span></h2>
+          <p className="text-white/60 mt-4 max-w-2xl mx-auto font-normal">Use this as a rough planning estimate, not a guarantee. It shows how a practical website or WhatsApp assistant can support follow-up without adding another full-time admin.</p>
         </div>
 
         <div className="max-w-4xl mx-auto bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-14 shadow-2xl">
@@ -865,7 +870,7 @@ export default function Home() {
              </div>
              
              <div className="roi-card-right p-6 rounded-2xl border border-green-500/20 bg-green-500/5 opacity-0">
-                <h4 className="text-[10px] uppercase tracking-widest text-green-500/80 font-bold mb-4">Our Solution: AI Chatbot on Your Website</h4>
+                <h4 className="text-[10px] uppercase tracking-widest text-green-500/80 font-bold mb-4">Our Solution: Website & WhatsApp Assistant</h4>
                 <div className="text-3xl font-serif text-white mb-2">AED {(totalAgentCost).toLocaleString()} <span className="text-sm font-sans text-white/40">/ yr</span></div>
                  <ul className="text-xs font-normal text-white/80 space-y-2 mt-4">
                   <li>• No visa costs, no housing allowance needed</li>
@@ -945,12 +950,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <span className="micro-label block mb-4 text-green-500/80">AI Chatbot for Your Website & WhatsApp</span>
+              <span className="micro-label block mb-4 text-green-500/80">Website & WhatsApp Assistant</span>
               <h2 className="text-4xl md:text-6xl font-serif tracking-tight leading-[1.05] mb-8">
-                Never Miss a<br /><span className="italic text-white/60">Customer Again.</span>
+                Make it easier for<br /><span className="italic text-white/60">customers to contact you.</span>
               </h2>
               <p className="text-white/80 font-normal leading-relaxed mb-10 text-lg max-w-xl">
-                Imagine having a smart assistant on your website and WhatsApp that answers every customer question in English and Arabic, collects their contact details, and books them into your calendar — automatically, 24 hours a day.
+                Add a practical assistant to your website and WhatsApp so visitors can ask common questions, share their contact details, and request a callback without waiting for someone on your team to reply manually.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-10">
                 {[
@@ -976,23 +981,64 @@ export default function Home() {
 
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="space-y-4">
               {[
-                { title: "Answers Customer Questions Instantly", desc: "Trained on your business, it knows your prices, services, and FAQs. Customers get answers in seconds — in English or Arabic." },
-                { title: "Works on WhatsApp Too", desc: "Customers can message your AI assistant on WhatsApp — the most popular app in the UAE — making it incredibly easy for them to reach you." },
-                { title: "Captures Every Lead Automatically", desc: "It collects customer names and phone numbers, then sends them straight to you so you never miss a potential sale." },
-                { title: "Books Appointments for You", desc: "It connects to your calendar and lets customers book consultations or service appointments automatically — no back-and-forth needed." },
+                { title: "Answers Customer Questions Fast", desc: "Trained on your business, it can explain services, pricing ranges, locations, FAQs and next steps in English or Arabic." },
+                { title: "Works on WhatsApp Too", desc: "Customers can message your assistant on WhatsApp, making it easier for UAE prospects to ask questions and continue the conversation." },
+                { title: "Captures Lead Details", desc: "It collects names, phone numbers, service interest and enquiry context, then sends the details to your team for follow-up." },
+                { title: "Helps With Appointment Requests", desc: "It can guide visitors toward a callback, consultation request or booking flow while keeping your team in control." },
               ].map((f, i) => (
                 <div key={i} className="flex gap-5 p-6 border border-white/5 bg-white/[0.02] rounded-2xl group hover:border-white/20 transition-all duration-500">
                   <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center text-green-400 font-serif font-bold text-sm">
                     0{i + 1}
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1 text-white">{f.title}</h4>
+                    <h4 className="text-lg md:text-xl font-semibold tracking-tight leading-tight mb-2 text-white">{f.title}</h4>
                     <p className="text-sm text-white/70 font-normal leading-relaxed">{f.desc}</p>
                   </div>
                 </div>
               ))}
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ── AI Sales Agent Feature ── */}
+      <section className="py-32 px-6 md:px-12 bg-black border-y border-white/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(0,255,127,0.10),transparent_35%),radial-gradient(circle_at_20%_80%,rgba(0,102,255,0.08),transparent_35%)] pointer-events-none" />
+        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-14 items-center">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <span className="micro-label block mb-4 text-green-500/80">AI Sales Agent for UAE Businesses</span>
+            <h2 className="text-4xl md:text-6xl font-serif tracking-tight leading-[1.05] mb-8">
+              Find better B2B leads and follow up without losing track.
+            </h2>
+            <p className="text-white/75 font-normal leading-relaxed text-lg mb-8 max-w-2xl">
+              Asif Digital&apos;s AI Sales Agent helps you discover UAE companies, find the right decision makers, prepare personalised outreach drafts, track replies, and keep every follow-up organised — with human approval before anything is sent.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/sovereign-sales-agent" className="inline-flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-green-300 transition-all">
+                View Sales Agent System <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/free-growth-audit" className="inline-flex items-center justify-center gap-3 border border-white/15 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] hover:border-green-400/60 hover:text-green-300 transition-all">
+                Book Free Audit
+              </Link>
+            </div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="rounded-[2rem] border border-green-400/20 bg-white/[0.03] p-6 md:p-8 shadow-[0_40px_120px_rgba(0,0,0,0.45)]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                ["01", "Find target companies", "Build a clean list of UAE businesses that match your service, location and ideal customer profile."],
+                ["02", "Qualify the best leads", "Use AI to sort companies by relevance, service need, website quality and business fit before outreach."],
+                ["03", "Find decision makers", "Identify likely owners, founders or managers so your message reaches the right person."],
+                ["04", "Draft follow-ups safely", "Prepare personalised email drafts for your approval so your team stays in control before anything is sent."],
+              ].map(([num, title, desc]) => (
+                <div key={title} className="group rounded-2xl border border-white/10 bg-black/40 p-5 hover:border-green-400/40 hover:bg-green-400/[0.04] transition-all duration-500">
+                  <div className="text-green-400 font-bold text-xs tracking-[0.25em] mb-8">{num}</div>
+                  <h3 className="font-serif text-2xl leading-tight text-white mb-3">{title}</h3>
+                  <p className="text-white/55 text-sm leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -1151,7 +1197,7 @@ export default function Home() {
         <div className="space-y-4">
           {[
             { q: "Do I need a new website to get an AI chatbot?", a: "No — we can install our AI chatbot on your existing website. However, if your current site is slow or outdated, we strongly recommend our full Web + AI package for the best results. A fast website combined with an AI chatbot is our most powerful offering." },
-            { q: "How does the AI chatbot actually work?", a: "We train it on your specific business information — your services, prices, FAQs, and location. It then sits on your website and WhatsApp, answering customer questions in English and Arabic, collecting their contact details, and booking appointments — all automatically." },
+            { q: "How does the website or WhatsApp assistant work?", a: "We train it on your business information — services, FAQs, location, qualification questions and preferred next steps. It can answer common questions, collect enquiry details and guide the customer toward a callback, WhatsApp conversation or booking request." },
             { q: "How much does a website and AI chatbot cost?", a: "Our packages range from AED 2,000 to AED 10,000 depending on the size of your website and how advanced the AI chatbot needs to be. Contact us for a free, no-obligation quote tailored to your business." },
             { q: "How long does it take to build my website?", a: "Most websites are ready to launch within 2 to 4 weeks from the day we agree on the design. The AI chatbot setup takes an additional 3 to 4 business days after the website is ready." },
             { q: "Will my website show up on Google?", a: "Yes — every website we build is fully optimised for Google from day one. We also offer monthly SEO packages that actively work to move your business up the Google rankings for the exact keywords your customers are searching." }
@@ -1176,10 +1222,10 @@ export default function Home() {
             <Phone className="w-8 h-8" role="img" aria-label="Phone icon" />
           </div>
           <motion.h2 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-5xl md:text-7xl font-serif tracking-tighter leading-tight mb-8">
-            Ready to Grow <span className="italic opacity-40">Your Business?</span>
+            Want More Website and WhatsApp <span className="italic opacity-40">Enquiries?</span>
           </motion.h2>
           <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-black/70 font-normal text-xl max-w-2xl mx-auto leading-relaxed mb-12">
-            Get a free strategy call with our team. We will look at your current website and digital presence and tell you exactly what needs to be improved — at no cost, with no obligation.
+            Book a free audit. We will review your website, WhatsApp follow-up and enquiry flow, then show the first practical fixes to improve calls and bookings.
           </motion.p>
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <MagneticButton>
@@ -1187,7 +1233,7 @@ export default function Home() {
                 href="/free-growth-audit"
                 className="bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs border border-white/20 hover:bg-black/80 transition-all flex items-center justify-center gap-3 shadow-2xl hover:scale-105 active:scale-95"
               >
-                Book My Free Strategy Call <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
+                Book Free Growth Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
               </Link>
             </MagneticButton>
             <MagneticButton>

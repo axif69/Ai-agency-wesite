@@ -1,32 +1,16 @@
-import PageComponent from '../../src/views/AiRealEstateAgenciesDubai';
+import PageComponent from '../../src/views/real-estate/AiLeadDashboard';
 
 export const metadata = {
-  title: "AI for Dubai Real Estate Agencies | WhatsApp & Lead Tech",
-  description: "Automate lead response and qualification for your Dubai real estate agency. Reply to property enquiries, qualify buyers and help book viewings through WhatsApp, with lead details sent to your preferred sales workflow.",
+  title: "Real Estate AI Lead Dashboard Dubai | Multi-Channel Attribution",
+  description: "Unified Real Estate Command Dashboard: Track Every Lead From Ad Click to Closed Deal. Multi-channel attribution (Meta, Google, TikTok, Bayut, Property Finder).",
   alternates: {
-    canonical: "https://www.asifdigital.agency/ai-real-estate-agencies-dubai"
+    canonical: "https://www.asifdigital.agency/real-estate/ai-lead-dashboard"
   },
   openGraph: {
-    title: "AI for Dubai Real Estate Agencies | WhatsApp & Lead Tech",
-    description: "Automate lead response and qualification for your Dubai real estate agency. Reply to property enquiries, qualify buyers and help book viewings through WhatsApp, with lead details sent to your preferred sales workflow.",
-    url: "https://www.asifdigital.agency/ai-real-estate-agencies-dubai",
+    title: "Real Estate AI Lead Dashboard Dubai",
+    description: "Unified Real Estate Command Dashboard: Track Every Lead From Ad Click to Closed Deal. Multi-channel attribution (Meta, Google, TikTok, Bayut, Property Finder).",
+    url: "https://www.asifdigital.agency/real-estate/ai-lead-dashboard",
     siteName: "Asif Digital",
-    images: [
-      {
-        url: "https://www.asifdigital.agency/images/ai_whatsapp_broker_chat.png",
-        width: 1200,
-        height: 630,
-        alt: "AI for Dubai Real Estate Agencies"
-      }
-    ],
-    locale: "en_US",
-    type: "website"
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "AI for Dubai Real Estate Agencies | WhatsApp & Lead Tech",
-    description: "Automate lead response and qualification for your Dubai real estate agency. Reply to property enquiries, qualify buyers and help book viewings through WhatsApp, with lead details sent to your preferred sales workflow.",
-    images: ["https://www.asifdigital.agency/images/ai_whatsapp_broker_chat.png"]
   }
 };
 

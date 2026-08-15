@@ -133,17 +133,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <span className="absolute bottom-2 left-0 w-0 h-[1px] bg-white transition-all duration-500 group-hover:w-full" />
               </Link>
               
-              
               {/* Sovereign AI Dropdown */}
               {link.name === "Sovereign AI" && (
                 <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[350px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
                   <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col font-sans normal-case tracking-normal text-left p-6 space-y-2">
                     <Link href="/sovereign-sales-agent" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 italic">Sovereign Sales Agent (Autonomous B2B)</Link>
                     <Link href="/arabic-ai-hub" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Arabic Intelligence Hub (Khaleeji NLP)</Link>
-                    <Link href="/ai-real-estate-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 text-green-400">AI Real Estate UAE Hub</Link>
-                    <Link href="/ai-real-estate-agencies-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 text-green-400">AI for Real Estate Agencies</Link>
+                    <Link href="/real-estate/whatsapp-ai-automation" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 text-emerald-400">Real Estate AI WhatsApp Automation</Link>
+                    <Link href="/real-estate/ai-lead-dashboard" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 text-emerald-400">Real Estate AI Lead Dashboard</Link>
+                    <Link href="/real-estate" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 text-emerald-400">Real Estate AI Pillar Hub</Link>
                     <Link href="/ai-property-management-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI Property Management UAE</Link>
-                    <Link href="/real-estate-digital-solutions-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 text-green-400">Real Estate Digital Solutions</Link>
+                    <Link href="/real-estate-digital-solutions-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5 text-emerald-400">Real Estate Digital Solutions</Link>
                     <Link href="/ai-automation-agency-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">AI Automation Agency (Enterprise)</Link>
                     <Link href="/ai-marketing-dubai" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Sovereign Marketing Swarms</Link>
                     <Link href="/services/agentic-finance-uae" className="text-white/95 hover:text-white transition-all text-[15px] font-medium block py-3 hover:pl-2 duration-200 border-b border-white/5">Agentic Finance & Compliance</Link>
@@ -222,10 +222,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     {isSovereignOpen && (
                       <div className="mt-4 space-y-3 text-lg text-white/70">
                         <Link href="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Sales Agent (B2B)</Link>
-                        <Link href="/ai-real-estate-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-green-400">AI Real Estate UAE Hub</Link>
-                        <Link href="/ai-real-estate-agencies-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-green-400">AI for Real Estate Agencies</Link>
+                        <Link href="/real-estate/whatsapp-ai-automation" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI WhatsApp Automation</Link>
+                        <Link href="/real-estate/ai-lead-dashboard" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI Lead Dashboard</Link>
+                        <Link href="/real-estate" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI Hub</Link>
                         <Link href="/ai-property-management-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI Property Management UAE</Link>
-                        <Link href="/real-estate-digital-solutions-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-green-400">Real Estate Digital Solutions</Link>
+                        <Link href="/real-estate-digital-solutions-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate Digital Solutions</Link>
                         <Link href="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Agentic Finance & Compliance</Link>
                         <Link href="/services/ai-hr-emirates" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI HR & Emiratization</Link>
                         <Link href="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">WhatsApp Automation</Link>
@@ -276,7 +277,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               ))}
             </nav>
           </div>
-        )}
+      )}
 
       <main
         id="main-content"

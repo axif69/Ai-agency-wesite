@@ -6,27 +6,39 @@ import { MessageSquare, X, Send, Bot, User, Loader2, Mic, MicOff, Volume2, Volum
 
 const SYSTEM_INSTRUCTION = `
 You are Khalid, the Lead AI Architect and Strategic Intake Agent for Asif Digital.
-Asif Digital is an elite, high-ticket Sovereign AI & Digital Transformation Firm led by Khalfan Obaid.
+Asif Digital Agency helps UAE businesses get more leads and faster follow-up using practical AI automation, WhatsApp chatbots, lead-capture websites, and the AI Sales Agent system.
 
-Primary Sovereign AI Pillars:
-1. Sovereign Sales Agent (B2B Autonomous Sales Swarms) - OUR FLAGSHIP SOLUTION.
-2. Command & Control Dashboard (Real-time Agentic Visibility)
-3. Arabic Intelligence Hub (Localized Khaleeji NLP Mastery)
-4. Agentic Finance & Compliance (UAE Law 45 Infrastructure)
-5. Web Design & Digital Marketing
-6. Real Estate Intelligence (UAE property leads, listings, tenant support, and operational workflows)
+Core Services:
+1. AI Sales Agent - practical B2B prospecting, decision-maker research, draft outreach, follow-up tracking, and sales workflow visibility.
+2. AI Automation Agency Dubai - workflows for lead routing, CRM updates, reporting, reminders, and internal operations.
+3. WhatsApp Chatbot Dubai - FAQ replies, lead qualification, enquiry capture, and handoff to human teams.
+4. Web Design Company Dubai / Sharjah - fast, SEO-ready, conversion-focused business websites.
+5. Real Estate Lead Generation Dubai - landing pages, WhatsApp follow-up, CRM routing, and AI-assisted lead qualification for property businesses.
+
+Correct AI Sales Agent Information:
+- The AI Sales Agent is a sales command center for UAE businesses, not a spam bot.
+- It helps discover relevant UAE companies, organize a master database, qualify targets with AI, identify decision-makers, prepare personalized outreach drafts, track replies in a Leads Inbox, and show analytics in a command center.
+- The system includes modules such as Master UAE Database, Discovery Engine, AI Qualified Targets, Verified Decision Makers, Review & Outreach, Leads Inbox, Analytics Command Center, and System Configuration.
+- Outreach is human-approved by default. The client can review, edit, approve, reject, or pause drafts before sending.
+- Email sending and automatic follow-ups can be disabled or controlled with safety settings, send caps, delay controls, SMTP setup, and manual approval.
+- It is useful for B2B companies, real estate teams, logistics firms, consultancies, agencies, and service businesses that need structured prospecting and follow-up.
+- Never describe it as illegal scraping, email blasting, guaranteed revenue, or fully autonomous spam. Explain it as a controlled AI-assisted sales workflow.
+- If asked about pricing, say pricing depends on scope. A lightweight pilot may start from AED 2,500 setup plus AED 499/month, but the exact quote should be confirmed after a demo/audit.
+- Best CTA for this product: "Book a free AI Sales Agent demo" or "See if an AI sales assistant makes sense for your business."
+- Relevant page: /sovereign-sales-agent
+- Contact: WhatsApp/phone +971 545866094, email hello@asifdigital.agency, booking link https://calendly.com/asifdigitalagency
 
 Your Personality & Mission:
-1. ACT LIKE A BRILLIANT, HUMAN CTO: You are highly intelligent, empathetic, and strategic. Do NOT sound like a standard robot. Use natural pacing.
-2. CRITICAL RULE - NO PRICING: NEVER, EVER quote a specific price (e.g., do not say "50,000 AED"). If asked about pricing, state that "Every Sovereign AI deployment is custom-architected based on your specific operational bottlenecks. We require a technical audit before scoping the investment."
-3. VALUE FIRST: Before asking questions, provide a highly specific, intelligent insight about how AI can solve their exact problem. Prove your expertise.
+1. Speak like a sharp but friendly UAE business consultant. Keep language simple, practical, and lead-focused.
+2. VALUE FIRST: Before asking questions, provide a specific insight about how AI, WhatsApp, websites, or the Sales Agent can solve their exact problem.
+3. Do not overuse futuristic words like sovereign, neural, swarms, protocol, or architecture unless the user asks about the product name.
 4. DYNAMIC PACING: Let the conversation flow naturally. Do not interrogate. 
 5. STRATEGIC BREVITY: Keep responses to 2-3 CONCISE sentences. Executives do not have time to read paragraphs.
 
 Discovery Goals (To achieve naturally over time, NOT all at once):
 - Identify their biggest operational bottleneck.
 - Help them realize the financial cost of this bottleneck.
-- Once value is established, politely request their WhatsApp number so Khalfan Obaid can review their "Sovereign Shield Blueprint."
+- Once value is established, politely suggest a free audit/demo and ask for WhatsApp, email, or the best contact method.
 
 Real Estate Focus:
 - If the user is asking about real estate, prioritize the four live pages: AI Real Estate UAE Hub, AI for Real Estate Agencies Dubai, AI Property Management UAE, and Real Estate Digital Solutions UAE.
@@ -50,8 +62,8 @@ export default function KhalidChatbot() {
   const [messages, setMessages] = useState<Message[]>([
     { 
       role: 'model', 
-      text: "I am Khalid, your Strategic AI Consultant. We are currently auditing GCC operations for Sovereign Resilience. Which Intelligence Pillar are we inspecting? I recommend the Sovereign Dashboard for real-time visibility.",
-      suggestions: ["Sovereign Dashboard", "Sovereign Sales Agent", "Arabic Intelligence Hub", "Finance AI", "Other Services"]
+      text: "I’m Khalid, the intake assistant for Asif Digital Agency. I can help you choose between a website, WhatsApp chatbot, AI automation, or the AI Sales Agent system for B2B prospecting and follow-up. What are you trying to improve first?",
+      suggestions: ["Website Leads", "WhatsApp Chatbot", "AI Automation", "AI Sales Agent", "Free Audit"]
     }
   ]);
   const [input, setInput] = useState('');
@@ -66,12 +78,13 @@ export default function KhalidChatbot() {
 
   // Initialize Speech Recognition & Voice Preloading
   useEffect(() => {
-    // Force voices to load
     const loadVoices = () => {
-      window.speechSynthesis.getVoices();
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.getVoices();
+      }
     };
     
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
       window.speechSynthesis.onvoiceschanged = loadVoices;
       loadVoices();
     }
@@ -96,26 +109,16 @@ export default function KhalidChatbot() {
   }, []);
 
   const speak = (text: string) => {
-    if (!isSpeaking || typeof window === 'undefined') return;
+    if (!isSpeaking || typeof window === 'undefined' || !window.speechSynthesis) return;
     
-    // Stop any current speech
     window.speechSynthesis.cancel();
     
     const utterance = new SpeechSynthesisUtterance(text);
-    
-    // Khalid should sound professional, strategic, and calm.
-    utterance.rate = 0.92; // Slightly slower for more human cadence
+    utterance.rate = 0.92;
     utterance.pitch = 1.0;
     utterance.volume = 1.0;
 
     const voices = window.speechSynthesis.getVoices();
-    
-    // Elite Human Voice Selection:
-    // 1. Microsoft Aria/Guy (Online/Natural) - Gold Standard
-    // 2. Any "Online (Natural)" voice
-    // 3. Any "Natural" voice
-    // 4. Google High-Quality English
-    // 5. en-GB (British Elite accent)
     
     const bestVoice = 
       voices.find(v => v.name.includes('Aria') && v.name.includes('Online')) || 
@@ -129,11 +132,6 @@ export default function KhalidChatbot() {
 
     if (bestVoice) {
       utterance.voice = bestVoice;
-      if (bestVoice.name.includes('Online') || bestVoice.name.includes('Natural')) {
-        console.log(`Khalid: Elite Neural Voice Activated - ${bestVoice.name}`);
-      } else {
-        console.log(`Khalid: Standard Voice Activated - ${bestVoice.name}. Tip: Use Microsoft Edge for the best Human voice experience.`);
-      }
     }
 
     window.speechSynthesis.speak(utterance);
@@ -213,7 +211,6 @@ export default function KhalidChatbot() {
         content: m.text
       }));
 
-      console.log("Khalid: Syncing with sovereign intelligence layers...");
       const response = await fetch(API_URL, {
         method: "POST",
         headers: { 
@@ -243,14 +240,12 @@ export default function KhalidChatbot() {
         suggestions: suggestions.length > 0 ? suggestions : getSmartSuggestions(cleanText)
       }]);
 
-      // Simple lead detection for WhatsApp numbers
       if (cleanText.toLowerCase().includes("whatsapp") || cleanText.toLowerCase().includes("number")) {
         setLeadData(prev => ({ ...prev, contact: userMessageContent }));
       }
     } catch (error: any) {
       console.error("Chatbot Error:", error);
       let errMsg = "Forgive me, my neural link is experiencing minor latency. Please try again.";
-      if (error.message === "GROQ_API_KEY_MISSING") errMsg = "Groq API key is missing. Please check your .env file.";
       setMessages(prev => [...prev, { role: 'assistant', text: errMsg }]);
     } finally {
       setIsLoading(false);
@@ -269,9 +264,6 @@ export default function KhalidChatbot() {
   const sendToWhatsApp = async () => {
     setIsSummarizing(true);
     try {
-      const groqKey = (process.env.NEXT_PUBLIC_GROQ_API_KEY || "").trim();
-      if (!groqKey) throw new Error("GROQ_API_KEY_MISSING");
-
       const history = messages
         .map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`)
         .join('\n');
@@ -291,17 +283,18 @@ export default function KhalidChatbot() {
         },
         body: JSON.stringify({
           model: "llama-3.1-8b-instant",
-          systemInstruction: "You are a lead generation assistant for an AI agency.",
+          systemInstruction: "You summarize website chatbot conversations for Asif Digital Agency. Capture the prospect name, business, service interest, contact details, pain point, timeline, and whether they asked about AI Sales Agent, WhatsApp chatbot, web design, AI automation, or real estate lead generation.",
           messages: [
             { role: "user", content: prompt }
           ]
         })
       });
 
-      if (!response.ok) throw new Error("Groq Summary Error");
-
-      const data = await response.json();
-      const summary = data.choices?.[0]?.message?.content || "No summary generated.";
+      let summary = "New Lead Enquiry";
+      if (response.ok) {
+        const data = await response.json();
+        summary = data.choices?.[0]?.message?.content || "No summary generated.";
+      }
       
       const phoneNumber = "971545866094";
       const text = encodeURIComponent(`*New Strategic Lead Summary*\n\n${summary}\n\n*Direct Contact:* ${leadData.contact || 'Provided in chat'}`);
@@ -322,7 +315,7 @@ export default function KhalidChatbot() {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
-        aria-label="Open Khalid Strategic AI Chatbot"
+        aria-label="Open Khalid AI Intake Chatbot"
         className={`fixed bottom-24 right-6 z-50 p-4 rounded-full bg-white text-black shadow-2xl hover:scale-110 transition-transform duration-300 ${isOpen ? 'hidden' : 'flex'}`}
       >
         <MessageSquare className="w-6 h-6" />
@@ -352,7 +345,7 @@ export default function KhalidChatbot() {
                 <button 
                   onClick={() => {
                     setIsSpeaking(!isSpeaking);
-                    if (isSpeaking) window.speechSynthesis.cancel();
+                    if (isSpeaking && typeof window !== 'undefined' && window.speechSynthesis) window.speechSynthesis.cancel();
                   }} 
                   className="p-2 hover:bg-white/10 rounded-full transition-colors"
                 >

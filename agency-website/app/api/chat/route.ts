@@ -5,17 +5,34 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { messages, systemInstruction, model } = body;
     
-    // Use standard server-side var or the public one the user accidentally set
+    // Check for Mistral API Key or Groq API Key
+    const mistralKey = process.env.MISTRAL_API_KEY || process.env.NEXT_PUBLIC_MISTRAL_API_KEY;
     const groqKey = process.env.GROQ_API_KEY || process.env.NEXT_PUBLIC_GROQ_API_KEY || process.env.VITE_GROQ_API_KEY;
 
-    if (!groqKey) {
-      return NextResponse.json({ error: { message: "GROQ_API_KEY_MISSING" } }, { status: 401 });
+    let apiKey = mistralKey || groqKey;
+    let isMistral = !!mistralKey || (apiKey ? apiKey.trim().startsWith("mistral") : false);
+
+    if (!apiKey || apiKey.trim() === "" || apiKey.includes("your_api_key")) {
+      return NextResponse.json({
+        choices: [
+          {
+            message: {
+              content: "I am Khalid, Asif Digital's AI Consultant. Notice: The server is missing a valid API key in `.env.local`. Please update `.env.local` with `MISTRAL_API_KEY` or `GROQ_API_KEY` to enable live AI responses!"
+            }
+          }
+        ]
+      });
     }
 
-    const API_URL = "https://api.groq.com/openai/v1/chat/completions";
+    const API_URL = isMistral
+      ? "https://api.mistral.ai/v1/chat/completions"
+      : "https://api.groq.com/openai/v1/chat/completions";
 
-    const groqMessages = [
-      { role: "system", content: systemInstruction },
+    const defaultModel = isMistral ? "mistral-small-latest" : "llama-3.3-70b-versatile";
+    const requestedModel = model || defaultModel;
+
+    const chatMessages = [
+      { role: "system", content: systemInstruction || "You are Khalid, AI Consultant for Asif Digital Agency in Dubai." },
       ...messages
     ];
 
@@ -23,11 +40,11 @@ export async function POST(req: Request) {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${groqKey.trim()}`
+        "Authorization": `Bearer ${apiKey.trim()}`
       },
       body: JSON.stringify({
-        model: model || "llama-3.3-70b-versatile",
-        messages: groqMessages,
+        model: requestedModel,
+        messages: chatMessages,
         temperature: 0.7,
         max_tokens: 1024
       })
@@ -39,8 +56,23 @@ export async function POST(req: Request) {
       try {
         err = JSON.parse(errText);
       } catch (e) {
-        err = { message: "Failed to parse Groq error", details: errText };
+        err = { message: "Failed to parse API error", details: errText };
       }
+
+      console.error("AI API Error:", response.status, err);
+
+      if (err?.error?.code === "invalid_api_key" || response.status === 401) {
+        return NextResponse.json({
+          choices: [
+            {
+              message: {
+                content: "I am Khalid, Asif Digital's AI Consultant. Notice: The configured API key in `.env.local` is invalid or expired. Please update `.env.local` with a fresh key to activate live chat!"
+              }
+            }
+          ]
+        });
+      }
+
       return NextResponse.json({ error: err.error || err }, { status: response.status });
     }
 
@@ -49,6 +81,14 @@ export async function POST(req: Request) {
 
   } catch (error: any) {
     console.error("Chat API Route Error:", error);
-    return NextResponse.json({ error: { message: error.message || "Internal Server Error" } }, { status: 500 });
+    return NextResponse.json({
+      choices: [
+        {
+          message: {
+            content: "I am Khalid, Asif Digital's AI Consultant. I encountered a minor server connectivity issue. How can I assist you with WhatsApp AI, web design, or sales automation today?"
+          }
+        }
+      ]
+    });
   }
 }
