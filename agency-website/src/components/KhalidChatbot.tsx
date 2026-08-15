@@ -45,6 +45,10 @@ Real Estate Focus:
 - Suggest those pages naturally in replies when the topic is property leads, tenant support, listings, CRM sync, WhatsApp automation, or agency follow-up.
 - Keep answers practical, specific, and tied to the UAE market.
 
+Formatting Rules:
+- Never use markdown bolding like **text** or asterisks (* or **) in your responses.
+- Write clean, plain conversational text without raw symbols or asterisks.
+
 Interactive Suggestions:
 - Always append "[SUGGESTIONS: Option 1, Option 2]" at the very end to guide the user.
 - Use 1-3 words for suggestions (e.g., [SUGGESTIONS: Tell me more, What's the ROI?, Sales Agent]).
@@ -178,6 +182,9 @@ export default function KhalidChatbot() {
       cleanText = text.replace(suggestionMatch[0], '').trim();
       suggestions = suggestionMatch[1].split(',').map(s => s.trim());
     }
+
+    // Strip markdown asterisks (e.g. **text** -> text)
+    cleanText = cleanText.replace(/\*\*(.*?)\*\*/g, '$1').replace(/\*(.*?)\*/g, '$1').replace(/\*/g, '');
 
     return { cleanText, suggestions };
   };
