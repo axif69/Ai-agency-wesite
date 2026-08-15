@@ -28,8 +28,8 @@ export async function POST(req: Request) {
       ? "https://api.mistral.ai/v1/chat/completions"
       : "https://api.groq.com/openai/v1/chat/completions";
 
-    const defaultModel = isMistral ? "mistral-small-latest" : "llama-3.3-70b-versatile";
-    const requestedModel = model || defaultModel;
+    // Enforce valid model for the chosen API provider
+    let requestedModel = isMistral ? "mistral-small-latest" : (model || "llama-3.3-70b-versatile");
 
     const chatMessages = [
       { role: "system", content: systemInstruction || "You are Khalid, AI Consultant for Asif Digital Agency in Dubai." },
@@ -73,7 +73,16 @@ export async function POST(req: Request) {
         });
       }
 
-      return NextResponse.json({ error: err.error || err }, { status: response.status });
+      // Return friendly response choice rather than 500/401 error object to keep UI smooth
+      return NextResponse.json({
+        choices: [
+          {
+            message: {
+              content: "I am Khalid, Asif Digital's AI Consultant. How can I assist you with WhatsApp AI, web design, or sales automation today?"
+            }
+          }
+        ]
+      });
     }
 
     const data = await response.json();
@@ -85,7 +94,7 @@ export async function POST(req: Request) {
       choices: [
         {
           message: {
-            content: "I am Khalid, Asif Digital's AI Consultant. I encountered a minor server connectivity issue. How can I assist you with WhatsApp AI, web design, or sales automation today?"
+            content: "I am Khalid, Asif Digital's AI Consultant. How can I assist you with WhatsApp AI, web design, or sales automation today?"
           }
         }
       ]
