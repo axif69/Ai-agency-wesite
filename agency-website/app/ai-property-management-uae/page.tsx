@@ -1,32 +1,10 @@
-import PageComponent from '../../src/views/services/AiPropertyManagementUAE';
+import PageComponent from '../../src/views/real-estate/PropertyManagementAiUae';
 
 export const metadata = {
-  title: "AI Property Management Automation | UAE Landlords",
-  description: "Automate rent reminders, tenant messages, and maintenance tickets in one workflow. AI assistance for UAE landlords and property management teams.",
+  title: "AI Property Management & Tenant Intake UAE | WhatsApp Maintenance & Ejari Bot",
+  description: "AI Property Management & Tenant Intake UAE: Automated WhatsApp maintenance ticket logging, Ejari renewal document checklists, and scheduled rent payment reminders. 100% UAE PDPL compliant.",
   alternates: {
-    canonical: "https://www.asifdigital.agency/ai-property-management-uae"
-  },
-  openGraph: {
-    title: "AI Property Management Automation | UAE Landlords",
-    description: "Automate rent reminders, tenant messages, and maintenance tickets in one workflow. AI assistance for UAE landlords and property management teams.",
-    url: "https://www.asifdigital.agency/ai-property-management-uae",
-    siteName: "Asif Digital",
-    images: [
-      {
-        url: "https://www.asifdigital.agency/images/ai_property_management_dashboard.png",
-        width: 1200,
-        height: 630,
-        alt: "AI Property Management Automation"
-      }
-    ],
-    locale: "en_US",
-    type: "website"
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "AI Property Management Automation | UAE Landlords",
-    description: "Automate rent reminders, tenant messages, and maintenance tickets in one workflow. AI assistance for UAE landlords and property management teams.",
-    images: ["https://www.asifdigital.agency/images/ai_property_management_dashboard.png"]
+    canonical: "https://www.asifdigital.agency/real-estate/property-management-ai-uae"
   }
 };
 
