@@ -24,24 +24,24 @@ const whatsappUrl = "https://wa.me/971545866094";
 
 const faqs = [
   {
+    q: "How to automate WhatsApp lead replies for a Dubai real estate agency?",
+    a: "Automating WhatsApp lead replies for a Dubai real estate agency requires integrating Meta WhatsApp Cloud API with your property portal webhooks (Bayut, Property Finder, Dubizzle) and Meta Ads. Asif Digital configures a 24/7 AI concierge pre-trained on your off-plan property inventory, developer payment plans (Sobha, Emaar, Danube, Binghatti), and preferred broker calendar schedules. Inbound inquiries receive a personalized, qualified reply within 6.2 seconds — complete with PDF brochure downloads, payment plan calculators, and instant broker alerts on WhatsApp.",
+  },
+  {
+    q: "How does automated off-plan brochure delivery work on WhatsApp in the UAE?",
+    a: "When a potential buyer asks about an off-plan project (e.g. Dubai Hills 2-bedroom), the AI instantly matches their budget and location criteria against your property database. Within 5 seconds, it sends the official developer PDF brochure, floor plans, 1% monthly payment schedule, and video walkthrough links directly inside the WhatsApp conversation, logging the download event into your CRM.",
+  },
+  {
     q: "Is Asif Digital's platform compliant with UAE data protection law?",
     a: "Yes. All lead data, conversation logs, and qualification records are stored in a private Supabase PostgreSQL database owned by your brokerage — not on Asif Digital's shared infrastructure. This architecture is designed to comply with the UAE Personal Data Protection Law (PDPL), which requires that personal data collected from UAE residents is handled under defined data processing agreements and stored in controlled environments. Unlike SaaS vendors that retain your client data on their servers, we deliver the codebase and database access to your organisation on completion.",
   },
   {
-    q: "How long does WhatsApp AI automation setup take for real estate agencies?",
-    a: "The standard implementation timeline is 7 to 14 working days from project kickoff to live deployment. This covers: Meta WhatsApp Cloud API registration and phone number verification, AI training on your specific developer portfolio and property inventory, Bayut and Property Finder webhook configuration and testing, CRM integration (HubSpot, PropSpace, Salesforce, or Zoho), agent handoff flow testing with your broker team, and Google Calendar sync configuration. Complex enterprise deployments with multiple property portals and CRM systems typically require 14 to 21 days.",
-  },
-  {
     q: "How does the AI handle audio voice notes sent by UAE buyers on WhatsApp?",
-    a: "Audio messages are routed through OpenAI Whisper, which transcribes them in real time. The transcript is then processed by the qualification engine to extract: property type preference, budget range, preferred area or development, timeline, and buyer vs investor intent. The AI continues the qualification conversation based on the extracted parameters — without waiting for a human to listen to the voice note first. This eliminates a common failure point in UAE property sales where agents are on viewings and cannot process audio messages for hours.",
-  },
-  {
-    q: "Can the AI calculate off-plan payment plans for Dubai developers?",
-    a: "Yes. The knowledge engine is pre-loaded with payment plan structures for major UAE developers including Sobha Realty, Danube Properties, Binghatti Developers, Emaar Properties, and others upon request. When a buyer asks about a specific project, the AI can provide: the booking deposit percentage, post-handover payment schedule, DLD fee eligibility, service charge estimates, and handover date projections. This data is updated during the onboarding phase and can be refreshed whenever a developer releases a new payment plan.",
+    a: "Audio messages are routed through OpenAI Whisper, which transcribes them in real time (supporting Khaleeji Arabic, English, Russian, and French). The transcript is then processed by the qualification engine to extract: property type preference, budget range, preferred area or development, timeline, and buyer vs investor intent. The AI continues the qualification conversation based on the extracted parameters — without waiting for a human to listen to the voice note first.",
   },
   {
     q: "What happens when a high-net-worth client requests a human broker?",
-    a: "The AI detects escalation signals — requests for callbacks, VIP property viewings, high-budget declarations above a defined threshold, or explicit requests to \"speak to someone.\" When triggered, it: (1) sends an instant WhatsApp alert to the assigned broker with the full conversation transcript, (2) generates a lead brief summarising budget, intent, and language, (3) provides three AI-suggested reply options for the broker's first message, and (4) optionally books a time slot into the broker's Google Calendar. The buyer receives a confirmation that a senior consultant will be in contact. The broker never enters a conversation cold.",
+    a: "The AI detects escalation signals — requests for callbacks, VIP property viewings, high-budget declarations above a defined threshold, or explicit requests to \"speak to someone.\" When triggered, it: (1) sends an instant WhatsApp alert to the assigned broker with the full conversation transcript, (2) generates a lead brief summarising budget, intent, and language, (3) provides three AI-suggested reply options for the broker's first message, and (4) optionally books a time slot into the broker's Google Calendar.",
   },
 ];
 

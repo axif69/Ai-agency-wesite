@@ -1,10 +1,23 @@
 import PageComponent from '../../../src/views/real-estate/AiLeadDashboard';
 
 export const metadata = {
-  title: "Real Estate AI Lead Dashboard & Attribution Agency Dubai | Asif Digital",
-  description: "Stop losing track of AED 50k–150k/month in ad spend. Get a custom-coded command dashboard: real-time lead attribution (Meta/Google/TikTok/Portals), pipeline tracking, HOT/WARM/COLD scoring, and interactive lead loss calculator.",
+  title: "Real Estate AI Lead Dashboard Dubai | Multi-Channel Attribution & Lead Decay Calculator",
+  description: "Unified Real Estate Command Dashboard Dubai: Multi-channel real estate lead attribution UAE (Meta, Google, Portals), Bayut Property Finder WhatsApp lead control panel, Dubai real estate CRM lead heat scoring, and real estate lead decay calculator Dubai.",
+  keywords: [
+    "Real Estate AI Lead Dashboard Dubai",
+    "Multi-Channel Real Estate Lead Attribution UAE",
+    "Dubai Real Estate CRM Lead Heat Scoring",
+    "Bayut Property Finder WhatsApp Lead Control Panel",
+    "Real Estate Lead Decay Calculator Dubai"
+  ],
   alternates: {
     canonical: "https://www.asifdigital.agency/real-estate/ai-lead-dashboard"
+  },
+  openGraph: {
+    title: "Real Estate AI Lead Dashboard Dubai | Multi-Channel Attribution & Lead Decay Calculator",
+    description: "Unified Real Estate Command Dashboard Dubai: Multi-channel real estate lead attribution UAE (Meta, Google, Portals), Bayut Property Finder WhatsApp lead control panel, and CRM heat scoring.",
+    url: "https://www.asifdigital.agency/real-estate/ai-lead-dashboard",
+    siteName: "Asif Digital Agency Dubai",
   }
 };
 

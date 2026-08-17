@@ -41,20 +41,24 @@ const calendlyUrl = "https://calendly.com/asifdigitalagency";
 
 const faqs = [
   {
+    q: "How does Dubai Real Estate CRM Lead Heat Scoring categorize buyers?",
+    a: "Dubai Real Estate CRM Lead Heat Scoring analyzes every incoming message, voice note, and requirement field to grade buyers instantly: HOT (Budget confirmed within inventory range, timeline under 90 days, viewing requested), WARM (Budget indicated, timeline 3-12 months, active engagement), and COLD (Budget below inventory threshold or non-responsive). Heat scores auto-update after every conversation turn in your Supabase CRM database.",
+  },
+  {
+    q: "How does the Bayut and Property Finder WhatsApp Lead Control Panel work?",
+    a: "The control panel connects direct API webhooks from Bayut, Property Finder, Dubizzle, Meta Ads, and Google Search into a single unified WhatsApp inbox. When an inquiry arrives from Bayut or Property Finder, the system logs the exact listing ID, property location, budget, and UTM parameters into your lead matrix within 0.85 seconds.",
+  },
+  {
     q: "How does the AI Lead Dashboard track attribution across Meta, Google, and portals like Bayut?",
-    a: "Every lead channel — Meta Ads, Google Search, TikTok campaigns, Bayut listings, Property Finder inquiries, and direct WhatsApp — is tagged using UTM parameters that fire at the moment of first contact. When a buyer clicks on a Meta ad and messages you on WhatsApp, the system captures: campaign name, ad set, creative version, and the timestamp of first contact. This event is pushed to Google Analytics 4 via a custom event and to the dashboard's attribution engine simultaneously. Meta Conversions API is implemented to pass offline events (Viewing Booked, Deal Closed) back to Meta — improving your campaign optimisation and reducing cost-per-qualified-lead over time. All data is stored in your private Supabase database, not in Meta's or Google's reporting tools alone.",
+    a: "Every lead channel — Meta Ads, Google Search, TikTok campaigns, Bayut listings, Property Finder inquiries, and direct WhatsApp — is tagged using UTM parameters that fire at the moment of first contact. When a buyer clicks on a Meta ad and messages you on WhatsApp, the system captures: campaign name, ad set, creative version, and the timestamp of first contact. This event is pushed to Google Analytics 4 via a custom event and to the dashboard's attribution engine simultaneously.",
   },
   {
     q: "What is the 1-Click Executive Reply Co-Pilot and how does it work?",
-    a: "When the AI hands a conversation to a human broker, the broker opens the WhatsApp dashboard and sees the full conversation transcript, the AI-generated lead brief, the heat score, and three ready-to-send reply options. Each option is generated from the buyer's conversation history and calibrated to a different sales approach: direct appointment close, investment return framing, or a high-touch VIP experience. The broker selects one option and sends it with a single tap — or edits it before sending. This reduces the cognitive load on brokers handling 10–30 simultaneous conversations, ensures consistent reply quality regardless of individual broker skill level, and keeps response times under 60 seconds even during human handover.",
-  },
-  {
-    q: "How are leads categorised into HOT, WARM, and COLD?",
-    a: "Heat scores are assigned by the qualification engine at the end of each conversation turn, based on a scoring matrix: HOT: Budget confirmed and within inventory range + timeline within 90 days + explicitly requested viewing or callback + no unresolved objections. WARM: Budget indicated but unconfirmed + timeline 3–12 months + engaged with property details but not yet requested viewing + language barrier resolved, further nurturing needed. COLD: Budget below minimum inventory threshold + timeline beyond 12 months + non-responsive after 3 AI messages + agent-only inquiry (other brokers testing the system). Heat scores update automatically after each new message in the conversation. A COLD lead can become HOT within a single exchange if a buyer provides new information.",
+    a: "When the AI hands a conversation to a human broker, the broker opens the WhatsApp dashboard and sees the full conversation transcript, the AI-generated lead brief, the heat score, and three ready-to-send reply options: Option A (Direct Close), Option B (Investment ROI), and Option C (VIP Presentation). The broker selects one option and sends it with a single tap.",
   },
   {
     q: "Can we export sanitised lead data for audit and reporting?",
-    a: "Yes. The 1-click CSV export generates a clean, structured file containing all lead fields in a format suitable for: external auditors, RERA compliance records, investor reporting, HubSpot or Salesforce import, and BI tool analysis (Power BI, Tableau, Google Looker Studio). The export is sanitised — personal identifiers are formatted consistently and phone numbers are masked where required by PDPL data minimisation principles. Export frequency can be automated on a daily, weekly, or monthly cadence via the dashboard scheduler.",
+    a: "Yes. The 1-click CSV export generates a clean, structured file containing all lead fields in a format suitable for external auditors, RERA compliance records, investor reporting, HubSpot or Salesforce import, and BI tool analysis (Power BI, Tableau, Google Looker Studio).",
   },
 ];
 
