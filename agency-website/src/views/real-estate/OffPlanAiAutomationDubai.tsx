@@ -240,8 +240,28 @@ export default function OffPlanAiAutomationDubaiView() {
               </span>
             </div>
 
-            {/* Interactive Sliders */}
+            {/* Interactive Sliders & Options */}
             <div className="space-y-4 text-xs font-sans">
+              {/* Down Payment % Selector */}
+              <div className="flex items-center justify-between">
+                <span className="text-white/70">Down Payment %:</span>
+                <div className="flex gap-1.5">
+                  {[10, 20, 30].map((pct) => (
+                    <button
+                      key={pct}
+                      onClick={() => setDownPaymentPct(pct)}
+                      className={`text-[10px] px-2.5 py-1 rounded-lg border font-mono transition-all ${
+                        downPaymentPct === pct
+                          ? "bg-emerald-400 text-black font-bold border-emerald-400"
+                          : "border-white/10 text-white/60 hover:border-white/30"
+                      }`}
+                    >
+                      {pct}%
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <div>
                 <div className="flex justify-between text-white/70 mb-1">
                   <span>Property Value (AED):</span>
