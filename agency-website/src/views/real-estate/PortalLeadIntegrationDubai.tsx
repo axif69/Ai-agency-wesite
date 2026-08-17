@@ -13,7 +13,9 @@ import {
   CheckCircle2,
   ChevronDown,
   Clock,
+  Code2,
   Database,
+  FileCode,
   Globe,
   Headphones,
   Layers,
@@ -50,6 +52,18 @@ const faqs = [
     a: "The control panel seamlessly syncs with all major real estate CRMs including PropSpace, Ruby CRM, Salesforce, HubSpot, Zoho CRM, Masterkey, and custom PostgreSQL databases. Leads, conversation briefs, and heat scores auto-sync bi-directionally in real time.",
   },
   {
+    q: "How does the system handle duplicate leads from multiple portals?",
+    a: "The control panel features automated deduplication rules based on phone number, email, and timestamp. If a buyer submits an inquiry on Property Finder and then 10 minutes later submits another inquiry for a different listing on Bayut, the system merges the interactions into a single buyer profile, updating their property preference history in your CRM.",
+  },
+  {
+    q: "What happens if a portal API or webhook experiences downtime?",
+    a: "Our architecture includes an automated webhook retry queue with exponential backoff. If a portal API endpoint is temporarily slow or down, the system queues incoming payloads and retries them automatically without losing a single lead payload or inquiry event.",
+  },
+  {
+    q: "Can the AI answer specific off-plan payment plan questions for Dubai developers?",
+    a: "Yes. The AI is pre-loaded with official payment plan structures for major UAE developers including Sobha Realty, Emaar, Danube, Binghatti, Nakheel, and Select Group. It can output 20% down payment amounts, 1% monthly installment schedules, and DLD fee estimates directly on WhatsApp.",
+  },
+  {
     q: "How long does implementation take for a Dubai real estate brokerage?",
     a: "Standard setup and live deployment take 7 to 10 working days. This includes Meta WhatsApp API registration, portal webhook connection (Bayut, Property Finder, Dubizzle), CRM pipeline integration, AI training on your property portfolio, and broker team onboarding.",
   },
@@ -58,6 +72,7 @@ const faqs = [
 export default function PortalLeadIntegrationDubaiView() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedPortal, setSelectedPortal] = useState<"all" | "bayut" | "pf" | "dubizzle">("all");
+  const [activeTab, setActiveTab] = useState<"comparison" | "payload" | "timeline">("comparison");
 
   const jsonLdService = {
     "@context": "https://schema.org",
@@ -87,6 +102,30 @@ export default function PortalLeadIntegrationDubaiView() {
     })),
   };
 
+  const jsonLdHowTo = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Automate Bayut & Property Finder Leads on WhatsApp",
+    description: "Step-by-step guide to connecting UAE property portal leads directly to WhatsApp and CRM in under 1 second.",
+    step: [
+      {
+        "@type": "HowToStep",
+        name: "Connect Webhook APIs",
+        text: "Configure direct webhooks from Bayut, Property Finder, and Dubizzle to fire incoming inquiry payloads to Supabase edge functions in < 0.85s.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Deploy 24/7 WhatsApp AI Concierge",
+        text: "Train the AI model on your property inventory, developer payment plans, and multi-language Khaleeji AR/EN/RU/FR prompts.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Auto-Sync with CRM & Dispatch Brokers",
+        text: "Sync lead profiles and heat scores into PropSpace or Zoho, sending instant broker alerts on WhatsApp for HOT qualified buyers.",
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-[#050505] text-white font-sans selection:bg-emerald-400/30">
       {/* Head JSON-LD Schemas */}
@@ -97,6 +136,10 @@ export default function PortalLeadIntegrationDubaiView() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdHowTo) }}
       />
 
       {/* ── 1. HERO SECTION ── */}
@@ -249,98 +292,117 @@ export default function PortalLeadIntegrationDubaiView() {
         </div>
       </section>
 
-      {/* ── 2. THE PORTAL LEAD DECAY PROBLEM IN DUBAI ── */}
-      <section className="py-20 px-6 md:px-12 border-b border-white/5">
+      {/* ── 2. COMPREHENSIVE COMPARISON MATRIX TABLE ── */}
+      <section className="py-20 px-6 md:px-12 border-b border-white/5 bg-white/[0.01]">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-14">
+          <div className="max-w-3xl mb-12">
             <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-emerald-400 block mb-3">
-              The Dubai Portal Bottleneck
+              Performance Benchmark
             </span>
             <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight">
-              Why 82% of Bayut &amp; Property Finder Leads Are Wasted in Shared Email Inboxes
+              Traditional Email Intake vs. Asif Digital Webhook Control Panel
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
-              <div className="text-emerald-400 font-mono text-3xl font-bold mb-3">01</div>
-              <h3 className="text-lg font-serif text-white mb-2">The 4-Hour Response Delay</h3>
-              <p className="text-sm text-white/70 font-light leading-relaxed">
-                When a buyer submits an inquiry on Property Finder or Bayut, email notifications sit in shared office inboxes until a receptionist forwards them to an available broker. By the time the broker calls, the buyer has already inquired with 3 competing agencies.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
-              <div className="text-emerald-400 font-mono text-3xl font-bold mb-3">02</div>
-              <h3 className="text-lg font-serif text-white mb-2">WhatsApp Channel Misalignment</h3>
-              <p className="text-sm text-white/70 font-light leading-relaxed">
-                Over 94% of UAE real estate buyers prefer communicating on WhatsApp rather than phone calls or emails. Sending manual emails to portal leads results in a sub-12% response rate, whereas instant WhatsApp greetings achieve a 89% response rate.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
-              <div className="text-emerald-400 font-mono text-3xl font-bold mb-3">03</div>
-              <h3 className="text-lg font-serif text-white mb-2">Zero Attribution Visibility</h3>
-              <p className="text-sm text-white/70 font-light leading-relaxed">
-                Without a unified webhook control panel, agency owners cannot verify which property listings on Bayut or Property Finder generate closed revenue versus low-quality leads, leading to wasted ad budgets.
-              </p>
-            </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm border-collapse font-sans">
+              <thead>
+                <tr className="border-b border-white/10 text-xs uppercase font-mono tracking-wider text-white/50">
+                  <th className="py-4 px-6">Metric / Capability</th>
+                  <th className="py-4 px-6">Traditional Email Intake</th>
+                  <th className="py-4 px-6">Manual WhatsApp Calling</th>
+                  <th className="py-4 px-6 text-emerald-400 bg-emerald-950/20 rounded-t-xl">Asif Digital Control Panel</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5 text-white/80">
+                <tr>
+                  <td className="py-4 px-6 font-semibold text-white">Average Speed-to-Lead SLA</td>
+                  <td className="py-4 px-6 text-red-400">3 to 6 Hours</td>
+                  <td className="py-4 px-6 text-yellow-400">30 to 90 Minutes</td>
+                  <td className="py-4 px-6 text-emerald-400 font-bold bg-emerald-950/20">&lt; 0.85 Seconds (Instant)</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 font-semibold text-white">After-Hours Inquiries (8PM-2AM)</td>
+                  <td className="py-4 px-6 text-red-400">Lost (Ignored until next morning)</td>
+                  <td className="py-4 px-6 text-red-400">Delayed (Brokers off-duty)</td>
+                  <td className="py-4 px-6 text-emerald-400 font-bold bg-emerald-950/20">24/7 AI Instant WhatsApp Engagement</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 font-semibold text-white">Audio Voice Note Handling</td>
+                  <td className="py-4 px-6 text-red-400">Unsupported</td>
+                  <td className="py-4 px-6 text-yellow-400">Manual listen &amp; reply</td>
+                  <td className="py-4 px-6 text-emerald-400 font-bold bg-emerald-950/20">OpenAI Whisper Real-Time AR/EN Transcription</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 font-semibold text-white">Multi-Channel Attribution</td>
+                  <td className="py-4 px-6 text-red-400">Manual guesswork</td>
+                  <td className="py-4 px-6 text-red-400">No source link</td>
+                  <td className="py-4 px-6 text-emerald-400 font-bold bg-emerald-950/20">Full UTM &amp; Listing Ref ID Tracking</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 font-semibold text-white">UAE Data Sovereignty &amp; PDPL</td>
+                  <td className="py-4 px-6 text-yellow-400">Stored in third-party mail servers</td>
+                  <td className="py-4 px-6 text-red-400">Stored on personal broker phones</td>
+                  <td className="py-4 px-6 text-emerald-400 font-bold bg-emerald-950/20 rounded-b-xl">Private Supabase DB Owned by Brokerage</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
-      {/* ── 3. TECHNICAL ARCHITECTURE & WEBHOOK PIPELINE ── */}
-      <section className="py-20 px-6 md:px-12 border-b border-white/5 bg-white/[0.01]">
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-14">
+      {/* ── 3. TECHNICAL DEEP DIVE: WEBHOOK PAYLOAD PARSING ── */}
+      <section className="py-20 px-6 md:px-12 border-b border-white/5">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
             <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-emerald-400 block mb-3">
-              Technical Architecture
+              Developer &amp; Technical Deep Dive
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight">
-              How Our Portal Control Panel Bridges Bayut &amp; Property Finder to WhatsApp
+            <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight mb-6">
+              How Our Edge Functions Parse Bayut &amp; Property Finder Webhook Payloads
             </h2>
+            <p className="text-base text-white/70 font-light leading-relaxed mb-6">
+              When a lead submits an inquiry on Bayut or Property Finder, their API sends an encrypted POST request to our Supabase Edge Function endpoint. The payload contains buyer contact details, listing reference IDs, community names, and budget parameters.
+            </p>
+            <div className="space-y-3 font-mono text-xs text-white/80">
+              <div className="flex items-center gap-2 text-emerald-400">
+                <CheckCircle2 className="w-4 h-4" /> Real-time JSON validation &amp; payload sanitization
+              </div>
+              <div className="flex items-center gap-2 text-emerald-400">
+                <CheckCircle2 className="w-4 h-4" /> Automatic phone number normalization to E.164 (+971)
+              </div>
+              <div className="flex items-center gap-2 text-emerald-400">
+                <CheckCircle2 className="w-4 h-4" /> Bi-directional sync with PropSpace, Zoho, or Salesforce
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl border border-white/10 bg-black/40">
-              <div className="w-10 h-10 rounded-full bg-emerald-400/10 text-emerald-400 flex items-center justify-center mb-4">
-                <Globe className="w-5 h-5" />
-              </div>
-              <h3 className="text-base font-semibold text-white mb-2">1. Webhook Capture</h3>
-              <p className="text-xs text-white/65 font-light leading-relaxed">
-                Direct API webhooks capture incoming inquiries from Bayut, Property Finder, Dubizzle, Meta Ads, and Google Search in &lt; 0.85s.
-              </p>
+          <div className="p-6 rounded-2xl border border-white/10 bg-black/90 font-mono text-xs overflow-x-auto text-emerald-300">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4 text-white/50 text-[10px]">
+              <span className="flex items-center gap-2"><FileCode className="w-4 h-4 text-emerald-400" /> webhook_handler.ts</span>
+              <span>HTTP 200 OK</span>
             </div>
-
-            <div className="p-6 rounded-2xl border border-white/10 bg-black/40">
-              <div className="w-10 h-10 rounded-full bg-emerald-400/10 text-emerald-400 flex items-center justify-center mb-4">
-                <Bot className="w-5 h-5" />
-              </div>
-              <h3 className="text-base font-semibold text-white mb-2">2. AI Qualification</h3>
-              <p className="text-xs text-white/65 font-light leading-relaxed">
-                AI greets the buyer on WhatsApp in English, Arabic, Russian, or French, extracting budget, timeline, and location intent.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl border border-white/10 bg-black/40">
-              <div className="w-10 h-10 rounded-full bg-emerald-400/10 text-emerald-400 flex items-center justify-center mb-4">
-                <Database className="w-5 h-5" />
-              </div>
-              <h3 className="text-base font-semibold text-white mb-2">3. CRM Auto-Sync</h3>
-              <p className="text-xs text-white/65 font-light leading-relaxed">
-                Lead data, listing reference IDs, and conversation transcripts auto-sync into PropSpace, Zoho, Salesforce, or Supabase.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl border border-white/10 bg-black/40">
-              <div className="w-10 h-10 rounded-full bg-emerald-400/10 text-emerald-400 flex items-center justify-center mb-4">
-                <Headphones className="w-5 h-5" />
-              </div>
-              <h3 className="text-base font-semibold text-white mb-2">4. Broker Dispatch</h3>
-              <p className="text-xs text-white/65 font-light leading-relaxed">
-                When a buyer qualifies as HOT, the control panel triggers an instant alert to the designated area broker with 3 AI reply options.
-              </p>
-            </div>
+            <pre className="leading-relaxed">
+{`// Supabase Edge Function Webhook Handler
+export async function handlePortalWebhook(req: Request) {
+  const payload = await req.json();
+  const { listing_id, buyer_phone, buyer_name, portal_source } = payload;
+  
+  // 1. Normalize Phone Number to UAE E.164
+  const cleanPhone = formatUAEPhone(buyer_phone);
+  
+  // 2. Fetch Property Specs from Inventory DB
+  const property = await getListingById(listing_id);
+  
+  // 3. Trigger WhatsApp AI Greeting in < 0.85s
+  await sendWhatsAppGreeting({
+    to: cleanPhone,
+    name: buyer_name,
+    property: property.title,
+    price: property.price
+  });
+}`}
+            </pre>
           </div>
         </div>
       </section>
@@ -349,7 +411,7 @@ export default function PortalLeadIntegrationDubaiView() {
       <section className="py-20 px-6 md:px-12 border-b border-white/5">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif text-white mb-10 text-center">
-            Frequently Asked Questions
+            Frequently Asked Technical &amp; Operational Questions
           </h2>
 
           <div className="space-y-4">
