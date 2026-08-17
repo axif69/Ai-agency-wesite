@@ -100,6 +100,30 @@ export default function AiLeadDashboardView() {
     })),
   };
 
+  const jsonLdHowTo = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Track Multi-Channel Real Estate Leads in Dubai",
+    description: "Step-by-step guide to measuring Meta, Google, and portal lead attribution across WhatsApp and CRM pipelines.",
+    step: [
+      {
+        "@type": "HowToStep",
+        name: "Tag Lead Channels",
+        text: "Attach UTM parameters to Meta Ads, Google PPC, Bayut, and Property Finder links for sub-second attribution tracking.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Score Lead Intent",
+        text: "Automatically grade incoming buyer inquiries into HOT, WARM, and COLD based on budget, area, and viewing timeline.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Enable Executive 1-Click Co-Pilot",
+        text: "Provide brokers with 3 pre-written AI suggestions to reply to qualified buyers in under 60 seconds.",
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-[#050505] text-white font-sans selection:bg-emerald-400/30">
       {/* Head JSON-LD Schemas */}
@@ -110,6 +134,10 @@ export default function AiLeadDashboardView() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdHowTo) }}
       />
 
       {/* ── 1. HERO SECTION ── */}

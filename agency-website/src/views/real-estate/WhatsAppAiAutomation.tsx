@@ -11,11 +11,23 @@ import {
   ChevronDown,
   Clock,
   Database,
+  FileText,
   Globe,
   Headphones,
+  HeartHandshake,
+  HelpCircle,
+  Layers,
+  LayoutDashboard,
+  LockKeyhole,
   MessageSquare,
   Mic,
+  PhoneCall,
+  Radio,
   ShieldCheck,
+  Sparkles,
+  TrendingUp,
+  UserCheck,
+  Users,
   Zap,
 } from "lucide-react";
 
@@ -32,16 +44,44 @@ const faqs = [
     a: "When a potential buyer asks about an off-plan project (e.g. Dubai Hills 2-bedroom), the AI instantly matches their budget and location criteria against your property database. Within 5 seconds, it sends the official developer PDF brochure, floor plans, 1% monthly payment schedule, and video walkthrough links directly inside the WhatsApp conversation, logging the download event into your CRM.",
   },
   {
-    q: "Is Asif Digital's platform compliant with UAE data protection law?",
-    a: "Yes. All lead data, conversation logs, and qualification records are stored in a private Supabase PostgreSQL database owned by your brokerage — not on Asif Digital's shared infrastructure. This architecture is designed to comply with the UAE Personal Data Protection Law (PDPL), which requires that personal data collected from UAE residents is handled under defined data processing agreements and stored in controlled environments. Unlike SaaS vendors that retain your client data on their servers, we deliver the codebase and database access to your organisation on completion.",
+    q: "How does the AI handle audio voice notes sent by UAE buyers on WhatsApp?",
+    a: "In the UAE market, property buyers frequently send audio voice notes on WhatsApp instead of typing text messages. Our AI automatically transcribes audio voice notes in real time (supporting Khaleeji Arabic, English, Russian, and French). It extracts buyer requirements (budget, preferred community, timeline) and continues the conversation smoothly without waiting for a human agent to listen to the audio file.",
   },
   {
-    q: "How does the AI handle audio voice notes sent by UAE buyers on WhatsApp?",
-    a: "Audio messages are routed through OpenAI Whisper, which transcribes them in real time (supporting Khaleeji Arabic, English, Russian, and French). The transcript is then processed by the qualification engine to extract: property type preference, budget range, preferred area or development, timeline, and buyer vs investor intent. The AI continues the qualification conversation based on the extracted parameters — without waiting for a human to listen to the voice note first.",
+    q: "Can the AI calculate off-plan payment plans for Dubai developers?",
+    a: "Yes. The knowledge engine is pre-loaded with official payment plan structures for major UAE developers including Sobha Realty, Danube Properties, Binghatti Developers, Emaar Properties, Nakheel, and Select Group. When a buyer asks about a specific project, the AI provides the booking deposit percentage, post-handover payment schedule, DLD fee eligibility, and 1% monthly payment calculations instantly on WhatsApp.",
   },
   {
     q: "What happens when a high-net-worth client requests a human broker?",
-    a: "The AI detects escalation signals — requests for callbacks, VIP property viewings, high-budget declarations above a defined threshold, or explicit requests to \"speak to someone.\" When triggered, it: (1) sends an instant WhatsApp alert to the assigned broker with the full conversation transcript, (2) generates a lead brief summarising budget, intent, and language, (3) provides three AI-suggested reply options for the broker's first message, and (4) optionally books a time slot into the broker's Google Calendar.",
+    a: "The AI detects escalation signals — requests for callbacks, VIP property viewings, high-budget declarations above a defined threshold, or explicit requests to speak to someone. When triggered, it: (1) sends an instant WhatsApp alert to the assigned area broker with the full conversation transcript, (2) generates a lead brief summarising budget, intent, and language, and (3) provides three AI-suggested reply options for the broker's first message.",
+  },
+  {
+    q: "Is Asif Digital's WhatsApp AI compliant with UAE data protection laws (PDPL)?",
+    a: "100% Yes. All lead records, conversation transcripts, and client data are stored in a private Supabase PostgreSQL database owned exclusively by your brokerage. We do not retain your data on shared third-party SaaS servers, ensuring complete compliance with the UAE Personal Data Protection Law (PDPL).",
+  },
+  {
+    q: "Which CRMs can connect with this WhatsApp AI system?",
+    a: "The system connects seamlessly with all major real estate CRMs used in the UAE, including PropSpace, Ruby CRM, Salesforce, HubSpot, Zoho CRM, Masterkey, and custom databases. Leads, conversation briefs, and heat scores auto-sync in real time.",
+  },
+  {
+    q: "Will our brokers find this tool easy to use?",
+    a: "Yes. Your brokers do not need to learn any complex new software. They continue using WhatsApp and your existing CRM. When a lead is qualified, the AI sends an alert to the broker's WhatsApp phone with a pre-formatted lead summary and 3 ready-to-send reply buttons.",
+  },
+  {
+    q: "What happens to inquiries received at night or on weekends?",
+    a: "Over 68% of property inquiries in Dubai arrive between 8:00 PM and 2:00 AM. Night inquiries receive an immediate sub-10 second WhatsApp reply, complete with property brochures, payment plan details, and a calendar booking link for a morning viewing.",
+  },
+  {
+    q: "How long does implementation take for our real estate brokerage?",
+    a: "Standard setup and live deployment take 7 to 10 working days. This includes Meta WhatsApp API registration, portal webhook connection (Bayut, Property Finder), CRM pipeline integration, AI training on your property portfolio, and broker team onboarding.",
+  },
+  {
+    q: "Can the AI handle multiple languages common in Dubai?",
+    a: "Yes. The AI is fluent in English, Khaleeji Arabic, Russian, French, and German. It automatically detects the buyer's language and responds naturally in that exact language.",
+  },
+  {
+    q: "How do we get started?",
+    a: "Click 'Book a Live Demo' or message us directly on WhatsApp at +971 54 586 6094 to schedule a free 1-on-1 automation audit for your agency.",
   },
 ];
 
@@ -76,6 +116,30 @@ export default function WhatsAppAiAutomationView() {
     })),
   };
 
+  const jsonLdHowTo = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Automate Real Estate WhatsApp Lead Replies in Dubai",
+    description: "Step-by-step guide to deploying a 24/7 AI WhatsApp concierge for Dubai property brokerages.",
+    step: [
+      {
+        "@type": "HowToStep",
+        name: "Connect WhatsApp Business API & Portals",
+        text: "Link Meta WhatsApp Cloud API with Bayut, Property Finder, Dubizzle, and Meta Ads webhooks in < 1 second.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Configure AI Inventory & Payment Calculators",
+        text: "Load off-plan project PDFs, floor plans, and 1% monthly payment plan rules into the AI knowledge base.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Enable Broker Alerts & CRM Auto-Sync",
+        text: "Sync qualified lead data into PropSpace or Zoho and send instant WhatsApp alerts to area brokers.",
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-[#050505] text-white font-sans selection:bg-emerald-400/30">
       {/* Head JSON-LD Schemas */}
@@ -87,28 +151,32 @@ export default function WhatsAppAiAutomationView() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdHowTo) }}
+      />
 
-      {/* ── 1. HERO SECTION (BIG HEADINGS ARE PURE WHITE/NEUTRAL) ── */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden px-6 md:px-12 pt-28 pb-16 border-b border-white/5">
+      {/* ── 1. HERO SECTION ── */}
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden px-6 md:px-12 pt-28 pb-16 border-b border-white/5">
         <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-emerald-400 block mb-4">
               Real Estate AI Automation Dubai
             </span>
 
-            {/* Big H1 - 100% Pure White */}
+            {/* H1 Title */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif tracking-tight leading-[1.05] text-white mb-6">
               Real Estate AI WhatsApp Automation Dubai
             </h1>
 
-            {/* Display Sub-headline - White and Soft Silver (Zero Green Headings) */}
+            {/* Display Sub-headline */}
             <p className="text-2xl md:text-3xl font-serif text-white/90 leading-tight mb-6">
               While Your Brokers Are Showing Properties, <br />
               <span className="text-white/70 italic font-normal">Our AI Is Qualifying the Next 50 Buyers on WhatsApp.</span>
             </p>
 
             <p className="text-base text-white/65 font-light leading-relaxed mb-8 max-w-2xl">
-              24/7 multilingual AI concierge that greets buyers in sub-10s, transcribes audio voice notes, calculates off-plan payment plans, and books qualified viewings directly into broker calendars.
+              24/7 multilingual AI concierge that greets property buyers in sub-10s, transcribes audio voice notes, calculates 1% monthly off-plan payment plans, delivers PDF brochures, and books qualified viewings directly into broker calendars.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -192,214 +260,154 @@ export default function WhatsAppAiAutomationView() {
         </div>
       </section>
 
-      {/* ── 2. SPEED-TO-LEAD ECONOMICS (WITH VISIBLE SOURCE ATTRIBUTION) ── */}
+      {/* ── 2. EXECUTIVE SUMMARY: SPEED-TO-LEAD ECONOMICS ── */}
       <section className="py-20 px-6 md:px-12 border-b border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12 max-w-3xl">
+          <div className="max-w-3xl mb-14">
             <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-emerald-400 block mb-3">
               Speed-to-Lead Economics
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight leading-tight text-white">
-              The Cost of Latency in Dubai Real Estate.
+            <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight mb-6">
+              Why Sub-10 Second WhatsApp Response Times Change Real Estate Brokerage Revenue
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-white/65 font-light">
-              In Dubai&apos;s 24/7 property market, response time is not a customer service metric — it is a revenue metric. Delaying a WhatsApp reply by even 30 minutes drops deal qualification rates by 85%.
+            <p className="text-base text-white/70 font-light leading-relaxed">
+              In Dubai&apos;s fast-paced property market, lead response speed is the single biggest factor determining whether an agency closes a deal or loses it to a competitor. When a serious buyer inquires about a villa or off-plan launch, they expect an immediate response.
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 flex flex-col justify-between">
-              <div>
-                <span className="text-[10px] font-mono text-white/40 uppercase block mb-1">78% Rule</span>
-                <div className="text-4xl font-serif font-bold text-white mb-2">78%</div>
-                <h3 className="font-serif text-xl text-white mb-3">First Responder Dominance</h3>
-                <p className="text-sm text-white/60 font-light leading-relaxed">
-                  78% of UAE property buyers close with the first brokerage that replies to their inquiry. Slower response time directly transfers commission to your competitors.
-                </p>
-              </div>
-              <span className="text-xs font-mono text-emerald-400 mt-6 pt-4 border-t border-white/5 block">
-                Source: InsideSales / PropPilot Mystery Shopper Study
-              </span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
+              <div className="text-emerald-400 font-mono text-4xl font-bold mb-4">78%</div>
+              <h3 className="text-lg font-serif text-white mb-2">Buy From First Responder</h3>
+              <p className="text-sm text-white/70 font-light leading-relaxed">
+                78% of property buyers in the UAE do business with the first agency that responds to their inquiry on WhatsApp. Responding in seconds secures the buyer before competitors even open the email.
+              </p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 flex flex-col justify-between">
-              <div>
-                <span className="text-[10px] font-mono text-white/40 uppercase block mb-1">21x Multiplier</span>
-                <div className="text-4xl font-serif font-bold text-white mb-2">21x</div>
-                <h3 className="font-serif text-xl text-white mb-3">5-Minute Qualification Window</h3>
-                <p className="text-sm text-white/60 font-light leading-relaxed">
-                  Leads contacted in under 5 minutes qualify at 21 times the rate of those reached after 30 minutes. AI WhatsApp automation is the only method to achieve this at volume.
-                </p>
-              </div>
-              <span className="text-xs font-mono text-emerald-400 mt-6 pt-4 border-t border-white/5 block">
-                Source: MIT / Lead Response Management Research
-              </span>
+            <div className="p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
+              <div className="text-emerald-400 font-mono text-4xl font-bold mb-4">68%</div>
+              <h3 className="text-lg font-serif text-white mb-2">After-Hours Inquiries</h3>
+              <p className="text-sm text-white/70 font-light leading-relaxed">
+                Over 68% of portal and ad inquiries arrive between 8:00 PM and 2:00 AM. 24/7 WhatsApp AI automation converts night inquiries into booked morning viewings while brokers sleep.
+              </p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 flex flex-col justify-between">
-              <div>
-                <span className="text-[10px] font-mono text-white/40 uppercase block mb-1">68% After-Hours</span>
-                <div className="text-4xl font-serif font-bold text-white mb-2">68%</div>
-                <h3 className="font-serif text-xl text-white mb-3">8PM — 2AM Traffic Peak</h3>
-                <p className="text-sm text-white/60 font-light leading-relaxed">
-                  68% of International property inquiries in Dubai arrive between 8PM and 2AM local time — after human brokers are offline. AI handles this shift without overtime.
-                </p>
-              </div>
-              <span className="text-xs font-mono text-emerald-400 mt-6 pt-4 border-t border-white/5 block">
-                Source: 2026 Dubai Real Estate Inquiry Data
-              </span>
+            <div className="p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
+              <div className="text-emerald-400 font-mono text-4xl font-bold mb-4">89%</div>
+              <h3 className="text-lg font-serif text-white mb-2">WhatsApp Engagement Rate</h3>
+              <p className="text-sm text-white/70 font-light leading-relaxed">
+                Emails achieve sub-12% open rates, whereas WhatsApp messages get an 89% response rate in the UAE market. WhatsApp is the primary business channel for property sales in Dubai.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 3. SYSTEM ARCHITECTURE (60-80 WORDS PER CARD MINIMUM) ── */}
-      <section className="py-24 px-6 md:px-12 border-b border-white/5">
+      {/* ── 3. SIMPLE 4-STEP PROCESS ── */}
+      <section className="py-20 px-6 md:px-12 border-b border-white/5 bg-white/[0.01]">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-14 max-w-3xl">
+          <div className="max-w-3xl mb-14">
             <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-emerald-400 block mb-3">
-              System Architecture
+              Simple 4-Step Process
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight leading-tight text-white">
-              Engineered for High-Ticket UAE Real Estate.
+            <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight mb-6">
+              How Our Real Estate WhatsApp AI System Works in 4 Simple Steps
             </h2>
+            <p className="text-base text-white/70 font-light leading-relaxed">
+              We built our WhatsApp AI system to be 100% effortless for your sales team. Here is how simple the process is for your brokerage:
+            </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                icon: Zap,
-                title: "Sub-10s Response SLA",
-                body: "Contextual, intelligent replies delivered to 10 seconds across all international time zones — UK, European, CIS, and GCC buyers included. Response latency is monitored in real time on your command dashboard. If any inbound lead exceeds the threshold, a red-badge alert fires to the team lead's WhatsApp instantly. Every second of delay costs qualification probability.",
-              },
-              {
-                icon: Globe,
-                title: "Khaleeji Arabic + 5 Languages",
-                body: "Native NLP fluency in Khaleeji Arabic (not just Modern Standard Arabic), English, Russian, French, and Mandarin — capturing the 40% of international property inquiries that arrive in non-English languages. Language detection is automatic. The AI switches within the same conversation when a buyer moves from Arabic to English mid-message — a behaviour common in UAE buyer-broker exchanges.",
-              },
-              {
-                icon: Headphones,
-                title: "OpenAI Whisper Audio Transcriber",
-                body: "Dubai property buyers frequently send voice notes explaining their requirements. Most WhatsApp automation tools cannot process audio — they wait for an agent to listen. Our system routes voice messages through OpenAI Whisper in real time, extracts budget, location preferences, and timeline parameters, and continues the qualification flow without any human involvement. Voice notes are no longer a bottleneck.",
-              },
-              {
-                icon: Database,
-                title: "Bayut & Property Finder Webhooks",
-                body: "When a buyer clicks \"WhatsApp\" on a Bayut or Property Finder listing, our webhook captures the inquiry within 5 seconds and fires a personalised AI response referencing the exact property — unit type, price range, and developer. No email parsing. No 2-minute processing delay. Direct API integration means the buyer receives an intelligent reply before they have scrolled to the next listing.",
-              },
-              {
-                icon: Clock,
-                title: "Off-Plan Payment Engine",
-                body: "Pre-loaded with developer inventory across Sobha Realty, Danube Properties, Binghatti Developers, and Emaar. The AI can answer complex off-plan payment queries instantly: 20% on booking, 1% monthly post-handover, DLD waiver eligibility, and service charge estimates. No manual lookup by a broker. No \"I'll get back to you.\" Buyers receive accurate financial answers within the first WhatsApp exchange.",
-              },
-              {
-                icon: Calendar,
-                title: "Human Handoff & Calendar Sync",
-                body: "When a buyer signals high intent — asking for a callback, a site visit, or a meeting with a senior broker — the AI immediately generates a qualification brief and alerts the right team member via WhatsApp. The brief contains: budget confirmed, property interest, timeline, language preference, and three AI-suggested reply options for the broker's first human message. Viewing slots sync directly to Google Calendar.",
-              },
-            ].map((card) => {
-              const Icon = card.icon;
-              return (
-                <div key={card.title} className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 hover:border-emerald-400/30 transition-all flex flex-col justify-between">
-                  <div>
-                    <Icon className="h-6 w-6 text-emerald-400 mb-4" />
-                    <h3 className="font-serif text-xl text-white mb-3">{card.title}</h3>
-                    <p className="text-sm text-white/65 font-light leading-relaxed">{card.body}</p>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="p-6 rounded-2xl border border-white/10 bg-black/40">
+              <div className="w-10 h-10 rounded-full bg-emerald-400/10 text-emerald-400 flex items-center justify-center mb-4 font-mono font-bold">
+                01
+              </div>
+              <h3 className="text-base font-semibold text-white mb-2">1. Instant Greeting (&lt; 10s)</h3>
+              <p className="text-xs text-white/65 font-light leading-relaxed">
+                When a buyer inquires on Bayut, Property Finder, or Meta Ads, the AI greets them on WhatsApp in under 10 seconds in their preferred language.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl border border-white/10 bg-black/40">
+              <div className="w-10 h-10 rounded-full bg-emerald-400/10 text-emerald-400 flex items-center justify-center mb-4 font-mono font-bold">
+                02
+              </div>
+              <h3 className="text-base font-semibold text-white mb-2">2. Buyer Qualification</h3>
+              <p className="text-xs text-white/65 font-light leading-relaxed">
+                The AI politely confirms budget, property interest, and viewing timeline, transcribing any audio voice notes sent by the buyer in real time.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl border border-white/10 bg-black/40">
+              <div className="w-10 h-10 rounded-full bg-emerald-400/10 text-emerald-400 flex items-center justify-center mb-4 font-mono font-bold">
+                03
+              </div>
+              <h3 className="text-base font-semibold text-white mb-2">3. Automated PDF Delivery</h3>
+              <p className="text-xs text-white/65 font-light leading-relaxed">
+                The AI automatically delivers official PDF property brochures, floor plans, and 1% monthly payment plan calculations directly in the chat.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl border border-white/10 bg-black/40">
+              <div className="w-10 h-10 rounded-full bg-emerald-400/10 text-emerald-400 flex items-center justify-center mb-4 font-mono font-bold">
+                04
+              </div>
+              <h3 className="text-base font-semibold text-white mb-2">4. Broker Handoff</h3>
+              <p className="text-xs text-white/65 font-light leading-relaxed">
+                When a buyer qualifies as serious, the system sends an alert to your area broker with a summary brief and 3 pre-written 1-click reply options.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── 4. COMPLIANCE & DATA SOVEREIGNTY ── */}
+      {/* ── 4. PERFORMANCE COMPARISON TABLE ── */}
       <section className="py-20 px-6 md:px-12 border-b border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
+          <div className="max-w-3xl mb-12">
             <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-emerald-400 block mb-3">
-              UAE PDPL & Official Meta API Governance
+              Performance Benchmark
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight leading-tight text-white mb-4">
-              Enterprise-Grade Compliance. Zero Ban Risk.
-            </h2>
-            <p className="text-base text-white/65 font-light leading-relaxed max-w-3xl">
-              Built exclusively on the Official Meta WhatsApp Cloud API and private database architecture in full compliance with UAE Personal Data Protection Law (PDPL).
-            </p>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2 text-sm font-mono text-white/70">
-            {[
-              "Official Meta WhatsApp Cloud API (Zero Ban Risk)",
-              "100% Private Supabase Database Ownership",
-              "UAE PDPL-Compliant Data Architecture",
-              "TDRA-Aligned Messaging Infrastructure",
-            ].map((badge) => (
-              <div key={badge} className="flex items-center gap-3 p-4 rounded-xl border border-white/10 bg-white/[0.02]">
-                <ShieldCheck className="h-5 w-5 text-emerald-400 shrink-0" />
-                <span>{badge}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 5. COMPARISON TABLE ── */}
-      <section className="py-24 px-6 md:px-12 border-b border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-14 max-w-3xl">
-            <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-emerald-400 block mb-3">
-              Competitive Matrix
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight leading-tight text-white">
-              Asif Digital vs. Offshore SaaS Vendors.
+            <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight">
+              Traditional Broker Manual Handling vs. Asif Digital WhatsApp AI Automation
             </h2>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.02]">
-            <table className="w-full text-left text-sm font-light">
-              <thead className="bg-white/[0.04] text-xs uppercase font-mono text-white/50 border-b border-white/10">
-                <tr>
-                  <th className="p-5">Feature</th>
-                  <th className="p-5">Offshore SaaS (BotSense / PropPilot)</th>
-                  <th className="p-5 text-emerald-400 font-bold">Asif Digital — Custom Platform</th>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm border-collapse font-sans">
+              <thead>
+                <tr className="border-b border-white/10 text-xs uppercase font-mono tracking-wider text-white/50">
+                  <th className="py-4 px-6">Capability</th>
+                  <th className="py-4 px-6">Manual Broker Process</th>
+                  <th className="py-4 px-6 text-emerald-400 bg-emerald-950/20 rounded-t-xl">Asif Digital WhatsApp AI</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/10 text-white/70">
+              <tbody className="divide-y divide-white/5 text-white/80">
                 <tr>
-                  <td className="p-5 font-serif text-white">Origin & Provider</td>
-                  <td className="p-5">Offshore SaaS (BotSense: Indore, India)</td>
-                  <td className="p-5 text-white font-semibold flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> UAE-Native Agency & Architecture
-                  </td>
+                  <td className="py-4 px-6 font-semibold text-white">Initial Response Time</td>
+                  <td className="py-4 px-6 text-red-400">30 minutes to 4 hours</td>
+                  <td className="py-4 px-6 text-emerald-400 font-bold bg-emerald-950/20">&lt; 10 Seconds (24/7 Instant)</td>
                 </tr>
                 <tr>
-                  <td className="p-5 font-serif text-white">UAE PDPL Compliance</td>
-                  <td className="p-5">Vendor servers in non-UAE jurisdictions</td>
-                  <td className="p-5 text-white font-semibold flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> Private Database Ownership (UAE PDPL)
-                  </td>
+                  <td className="py-4 px-6 font-semibold text-white">After-Hours Coverage (8PM-2AM)</td>
+                  <td className="py-4 px-6 text-red-400">Ignored until next morning</td>
+                  <td className="py-4 px-6 text-emerald-400 font-bold bg-emerald-950/20">24/7 Automated Qualification &amp; Booking</td>
                 </tr>
                 <tr>
-                  <td className="p-5 font-serif text-white">Code Ownership</td>
-                  <td className="p-5">Monthly SaaS subscription rental</td>
-                  <td className="p-5 text-white font-semibold flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> 100% Owned Next.js Codebase
-                  </td>
+                  <td className="py-4 px-6 font-semibold text-white">Voice Note Handling</td>
+                  <td className="py-4 px-6 text-yellow-400">Manual listen when free</td>
+                  <td className="py-4 px-6 text-emerald-400 font-bold bg-emerald-950/20">Real-Time OpenAI Whisper Transcription</td>
                 </tr>
                 <tr>
-                  <td className="p-5 font-serif text-white">Portal Integrations</td>
-                  <td className="p-5">Email parsing only (delays)</td>
-                  <td className="p-5 text-white font-semibold flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> Direct Bayut & Property Finder Webhooks
-                  </td>
+                  <td className="py-4 px-6 font-semibold text-white">Off-Plan Payment Calculations</td>
+                  <td className="py-4 px-6 text-yellow-400">Manual calculation</td>
+                  <td className="py-4 px-6 text-emerald-400 font-bold bg-emerald-950/20">Automated 1% Monthly Plan Calculation</td>
                 </tr>
                 <tr>
-                  <td className="p-5 font-serif text-white">Voice Note Intelligence</td>
-                  <td className="p-5">Not supported</td>
-                  <td className="p-5 text-white font-semibold flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> OpenAI Whisper Audio Transcription
-                  </td>
+                  <td className="py-4 px-6 font-semibold text-white">UAE Data Privacy &amp; PDPL</td>
+                  <td className="py-4 px-6 text-red-400">Stored on personal broker phones</td>
+                  <td className="py-4 px-6 text-emerald-400 font-bold bg-emerald-950/20 rounded-b-xl">Private Database Owned by Agency</td>
                 </tr>
               </tbody>
             </table>
@@ -407,70 +415,74 @@ export default function WhatsAppAiAutomationView() {
         </div>
       </section>
 
-      {/* ── 6. FAQ ── */}
-      <section className="py-24 px-6 md:px-12 border-b border-white/5">
+      {/* ── 5. FREQUENTLY ASKED QUESTIONS (FAQS) ── */}
+      <section className="py-20 px-6 md:px-12 border-b border-white/5">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-14 text-center">
-            <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-emerald-400 block mb-3">
-              Frequently Asked Questions
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight leading-tight text-white">
-              Real Estate WhatsApp AI FAQ.
-            </h2>
-          </div>
+          <h2 className="text-3xl md:text-4xl font-serif text-white mb-4 text-center">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-sm text-white/60 font-light text-center mb-12">
+            Everything real estate directors ask about our WhatsApp AI Automation system.
+          </p>
 
           <div className="space-y-4">
-            {faqs.map((faq, index) => {
-              const isOpen = openFaq === index;
-              return (
-                <div key={faq.q} className="rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden">
-                  <button
-                    type="button"
-                    onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="w-full flex items-center justify-between p-6 text-left"
-                  >
-                    <span className="font-serif text-lg text-white pr-4">{faq.q}</span>
-                    <ChevronDown className={`h-5 w-5 text-emerald-400 transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180" : ""}`} />
-                  </button>
-                  {isOpen && (
-                    <div className="px-6 pb-6 text-sm leading-relaxed text-white/60 font-light border-t border-white/5 pt-4">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+            {faqs.map((faq, idx) => (
+              <div
+                key={idx}
+                className="border border-white/10 rounded-2xl bg-white/[0.02] overflow-hidden transition-colors"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  className="w-full p-6 text-left flex justify-between items-center gap-4 text-base font-serif text-white hover:text-emerald-300"
+                >
+                  <span>{faq.q}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-white/40 transition-transform ${
+                      openFaq === idx ? "rotate-180 text-emerald-400" : ""
+                    }`}
+                  />
+                </button>
+                {openFaq === idx && (
+                  <div className="px-6 pb-6 text-sm text-white/70 font-light leading-relaxed border-t border-white/5 pt-4">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── 7. FINAL CTA ── */}
-      <section className="py-28 px-6 md:px-12">
-        <div className="max-w-5xl mx-auto rounded-[2.5rem] border border-white/10 bg-white/[0.02] p-10 md:p-16 text-center shadow-2xl">
+      {/* ── 6. FINAL HIGH-CONVERTING CTA SECTION ── */}
+      <section className="py-24 px-6 md:px-12 text-center bg-gradient-to-b from-black to-emerald-950/30">
+        <div className="max-w-4xl mx-auto">
           <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-emerald-400 block mb-4">
-            Urgent Growth Opportunity
+            Zero Lead Decay Guarantee
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif leading-tight text-white max-w-3xl mx-auto mb-6">
-            Stop Losing Property Buyers to Delayed Replies.
+          <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">
+            Ready to Automate Your Real Estate WhatsApp Lead Follow-Up?
           </h2>
-          <p className="text-base text-white/65 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-            Deploy an automated WhatsApp concierge trained on your property inventory and go live in 7 days.
+          <p className="text-lg text-white/70 font-light mb-10 max-w-2xl mx-auto">
+            Book a free 1-on-1 automation audit with Asif Digital. We will show you how to reduce response times to under 10 seconds and convert more inquiries into viewings.
           </p>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={calendlyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] inline-flex items-center justify-center gap-3 hover:bg-emerald-300 transition-colors shadow-lg"
+              className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs inline-flex items-center justify-center gap-3 hover:bg-emerald-300 transition-colors shadow-2xl"
             >
               Book a Live Demo <ArrowRight className="w-4 h-4" />
             </a>
-            <Link
-              href="/contact"
-              className="border border-white/15 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] inline-flex items-center justify-center hover:bg-white/5 transition-colors"
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-white/20 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs inline-flex items-center justify-center hover:bg-white/5 transition-colors"
             >
-              Contact Agency
-            </Link>
+              Speak With Strategist on WhatsApp
+            </a>
           </div>
         </div>
       </section>
