@@ -37,17 +37,18 @@ export default function WebHosting() {
 
   const hostingSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Asif Digital — Cloud Hosting Dubai",
+    "@type": "MarketingAgency",
+    "name": "Asif Digital: AI Automation, Web & Graphic Design",
     "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format,compress&fm=webp&q=80&w=1200",
     "@id": "https://www.asifdigital.agency/services/web-hosting-uae",
     "url": "https://www.asifdigital.agency/services/web-hosting-uae",
-    "telephone": "+971500000000",
+    "telephone": "+971545866094",
     "priceRange": "AED 99 - AED 2,500",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Dubai",
-      "addressRegion": "Dubai",
+      "streetAddress": "Muwaileh Commercial - Industrial Area",
+      "addressLocality": "Sharjah",
+      "addressRegion": "Sharjah",
       "addressCountry": "AE"
     },
     "openingHoursSpecification": [
@@ -59,8 +60,8 @@ export default function WebHosting() {
       }
     ],
     "areaServed": [
-      { "@type": "City", "name": "Dubai" },
       { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Dubai" },
       { "@type": "City", "name": "Abu Dhabi" },
       { "@type": "Country", "name": "United Arab Emirates" }
     ],
@@ -69,7 +70,10 @@ export default function WebHosting() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(hostingSchema) }}
+      />
       
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12 font-serif text-white tracking-tight leading-tight">

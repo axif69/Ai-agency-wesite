@@ -59,7 +59,7 @@ export default function AiChatbotsDubai() {
               <div className="w-12 h-12 rounded-2xl bg-green-400/10 border border-green-400/20 flex items-center justify-center text-green-300"><Bot className="w-6 h-6" /></div>
               <div>
                 <h2 className="font-serif text-2xl">Example chatbot flow</h2>
-                <p className="text-white/45 text-sm">Question → qualification → human handoff</p>
+                <p className="text-white/45 text-sm">Question to qualification to human handoff</p>
               </div>
             </div>
             {["Customer sends WhatsApp message", "Bot answers common question", "Bot collects name and requirement", "Lead is tagged and saved", "Team receives handoff alert"].map((step, i) => (

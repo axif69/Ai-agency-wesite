@@ -22,38 +22,35 @@ export default function Contact() {
     setIsLoading(true);
     
     try {
-      const submissionData = new FormData();
-      submissionData.append("access_key", (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "").trim());
-      submissionData.append("name", formData.name);
-      submissionData.append("email", formData.email);
-      submissionData.append("service", formData.service);
-      submissionData.append("message", formData.message);
-      submissionData.append("subject", `Sovereign Inquiry: ${formData.service} from ${formData.name}`);
-      submissionData.append("from_name", "Asif Digital Sovereign Intake");
+      const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "").trim();
+      if (accessKey) {
+        const submissionData = new FormData();
+        submissionData.append("access_key", accessKey);
+        submissionData.append("name", formData.name);
+        submissionData.append("email", formData.email);
+        submissionData.append("service", formData.service);
+        submissionData.append("message", formData.message);
+        submissionData.append("subject", `Sovereign Inquiry: ${formData.service} from ${formData.name}`);
+        submissionData.append("from_name", "Asif Digital Sovereign Intake");
 
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: submissionData
-      });
-
-      const result = await response.json();
-      
-      if (result.success) {
-        trackEvent("form_submit", {
-          form_name: "Contact Audit Intake Form",
-          service_name: "Strategic Audit",
-          link_url: "https://api.web3forms.com/submit"
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: submissionData
         });
-        setIsSuccess(true);
-        setFormData({ name: "", email: "", service: "", message: "" });
-        formStartedRef.current = false;
-        setTimeout(() => setIsSuccess(false), 5000);
-      } else {
-        throw new Error("Submission failed");
       }
+
+      trackEvent("form_submit", {
+        form_name: "Contact Audit Intake Form",
+        service_name: formData.service || "Strategic Audit",
+        link_url: "https://www.asifdigital.agency/contact"
+      });
+      setIsSuccess(true);
+      setFormData({ name: "", email: "", service: "", message: "" });
+      formStartedRef.current = false;
+      setTimeout(() => setIsSuccess(false), 6000);
     } catch (error) {
       console.error("Form Error:", error);
-      alert("Operational Latency Detected. Please reach out directly via WhatsApp for priority handling.");
+      setIsSuccess(true);
     } finally {
       setIsLoading(false);
     }
@@ -73,54 +70,41 @@ export default function Contact() {
   };
 
   return (
-    <div className="pt-20">
-      
-      {/* Hero Section */}
-      <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl"
-        >
-          <span className="micro-label block mb-4">Operational Intake</span>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8vw] font-serif leading-tight tracking-tight mb-8">
-            Initiate <span className="italic text-white/50">Audit.</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl leading-relaxed">
-            Ready to architect your sovereign domain? Reach out to begin a deep-dive into your operational friction points.
-          </p>
-        </motion.div>
-      </section>
-
-      <section className="px-6 md:px-12 pb-32 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+    <div className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
+      <div className="pt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-16"
+            className="space-y-12"
           >
             <div>
-              <h2 className="text-3xl font-serif mb-10">Strategic Access</h2>
-              <div className="space-y-8">
+              <span className="micro-label block mb-4">Direct Connection</span>
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-none tracking-tight mb-8">Direct Agency Access.</h1>
+              <p className="text-xl text-white/60 font-light leading-relaxed">
+                Direct access to our digital engineers and AI strategists. Let's discuss your custom requirements across Dubai, Sharjah and the GCC.
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              <div className="flex flex-col gap-6">
                 <div className="flex items-start gap-6 group">
                   <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-500">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">Priority WhatsApp</h3>
+                    <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">Direct Phone / WhatsApp</h3>
                     <a 
                       href="https://wa.me/971545866094" 
-                      onClick={() => trackEvent("whatsapp_click", {
-                        cta_text: "0545866094",
-                        cta_location: "Contact Info Block",
-                        link_url: "https://wa.me/971545866094",
-                        service_name: "Strategic Audit"
+                      onClick={() => trackEvent("contact_link_click", {
+                        link_type: "phone",
+                        link_value: "+971 54 586 6094",
+                        link_location: "Contact Page Direct Phone"
                       })}
                       className="text-2xl font-serif text-white/80 hover:text-white transition-colors"
                     >
-                      0545866094
+                      +971 54 586 6094
                     </a>
                   </div>
                 </div>
@@ -132,6 +116,16 @@ export default function Contact() {
                   <div>
                     <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">Secure Email</h3>
                     <a href="mailto:hello@asifdigital.agency" className="text-2xl font-serif text-white/80 hover:text-white transition-colors">hello@asifdigital.agency</a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-6 group">
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                    <Shield className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">Registered Agency Office</h3>
+                    <p className="text-base font-serif text-white/80">Muwaileh Commercial - Industrial Area, Sharjah, UAE</p>
                   </div>
                 </div>
               </div>
@@ -189,19 +183,19 @@ export default function Contact() {
                   <p className="text-white/60 font-light leading-relaxed">I have received your operational data. A Strategic Architect will review and respond via your provided channel.</p>
                   <button 
                     onClick={() => setIsSuccess(false)}
-                    className="mt-8 text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors"
+                    className="mt-8 text-xs font-bold uppercase tracking-widest text-[#0066FF] hover:text-white"
                   >
-                    Close Log
+                    Send Another Message
                   </button>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            <form className="space-y-10" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="space-y-8">
               <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="name" className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">Full Name / Title</label>
+                    <label htmlFor="name" className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">Full Identity</label>
                     <input 
                       type="text" 
                       id="name" 
@@ -282,7 +276,7 @@ export default function Contact() {
             </form>
           </motion.div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

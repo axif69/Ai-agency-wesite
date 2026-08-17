@@ -41,18 +41,18 @@ export default function PPC() {
 
   const ppcSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Asif Digital — PPC & Ads Agency Dubai",
+    "@type": "MarketingAgency",
+    "name": "Asif Digital: AI Automation, Web & Graphic Design",
     "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format,compress&fm=webp&q=80&w=1200",
     "@id": "https://www.asifdigital.agency/services/ppc-google-ads-agency-dubai",
     "url": "https://www.asifdigital.agency/services/ppc-google-ads-agency-dubai",
-    "telephone": "+971500000000",
+    "telephone": "+971545866094",
     "priceRange": "AED 3,000 - AED 25,000",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Dubai Design District",
-      "addressLocality": "Dubai",
-      "addressRegion": "Dubai",
+      "streetAddress": "Muwaileh Commercial - Industrial Area",
+      "addressLocality": "Sharjah",
+      "addressRegion": "Sharjah",
       "addressCountry": "AE"
     },
     "openingHoursSpecification": [
@@ -64,8 +64,8 @@ export default function PPC() {
       }
     ],
     "areaServed": [
-      { "@type": "City", "name": "Dubai" },
       { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Dubai" },
       { "@type": "City", "name": "Abu Dhabi" },
       { "@type": "Country", "name": "United Arab Emirates" }
     ],
@@ -74,7 +74,10 @@ export default function PPC() {
 
   return (
     <div ref={containerRef} className="pt-20">
-      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ppcSchema) }}
+      />
 
       <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
@@ -138,8 +141,8 @@ export default function PPC() {
                 <div className="text-white/95 mb-5" role="img" aria-label={`${f.title} Icon`}>{f.icon}</div>
                 <h3 className="text-lg font-bold mb-3">{f.title}</h3>
                 <p className="text-white/95 font-light leading-relaxed text-sm">
-            Drive immediate, high-quality traffic with the leading PPC & Google Ads Agency in Dubai. We manage highly targeted pay-per-click campaigns designed to lower your customer acquisition cost, maximize ROI, and dominate the top of Google search results.
-          </p>
+                  {f.desc}
+                </p>
               </motion.div>
             ))}
           </div>

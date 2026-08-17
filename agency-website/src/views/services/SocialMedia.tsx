@@ -38,17 +38,18 @@ export default function SocialMedia() {
 
   const socialSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Asif Digital — Social Media Agency Dubai",
+    "@type": "MarketingAgency",
+    "name": "Asif Digital: AI Automation, Web & Graphic Design",
     "image": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format,compress&fm=webp&q=80&w=1200",
     "@id": "https://www.asifdigital.agency/services/social-media-management-dubai-uae",
     "url": "https://www.asifdigital.agency/services/social-media-management-dubai-uae",
-    "telephone": "+971500000000",
+    "telephone": "+971545866094",
     "priceRange": "AED 2,500 - AED 15,000",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Dubai",
-      "addressRegion": "Dubai",
+      "streetAddress": "Muwaileh Commercial - Industrial Area",
+      "addressLocality": "Sharjah",
+      "addressRegion": "Sharjah",
       "addressCountry": "AE"
     },
     "openingHoursSpecification": [
@@ -56,12 +57,12 @@ export default function SocialMedia() {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         "opens": "09:00",
-        "closes": "21:00"
+        "closes": "18:00"
       }
     ],
     "areaServed": [
-      { "@type": "City", "name": "Dubai" },
       { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Dubai" },
       { "@type": "City", "name": "Abu Dhabi" },
       { "@type": "Country", "name": "United Arab Emirates" }
     ],
@@ -70,7 +71,10 @@ export default function SocialMedia() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(socialSchema) }}
+      />
       
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12 font-serif text-white tracking-tight leading-tight">

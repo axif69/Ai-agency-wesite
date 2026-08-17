@@ -20,19 +20,18 @@ export default function AiServices() {
 
   const serviceSchema = {
     "@context": "https://schema.org/",
-    "@type": "LocalBusiness",
-    "name": "Asif Digital — AI Automation Dubai",
+    "@type": "MarketingAgency",
+    "name": "Asif Digital: AI Automation, Web & Graphic Design",
     "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format,compress&fm=webp&q=80&w=1200",
     "@id": "https://www.asifdigital.agency/ai-agents-dubai",
     "url": "https://www.asifdigital.agency/ai-agents-dubai",
-    "telephone": "+971500000000",
+    "telephone": "+971545866094",
     "priceRange": "AED 5,000 - AED 50,000",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Business Bay",
-      "addressLocality": "Dubai",
-      "addressRegion": "Dubai",
-      "postalCode": "00000",
+      "streetAddress": "Muwaileh Commercial - Industrial Area",
+      "addressLocality": "Sharjah",
+      "addressRegion": "Sharjah",
       "addressCountry": "AE"
     },
     "openingHoursSpecification": [
@@ -44,8 +43,8 @@ export default function AiServices() {
       }
     ],
     "areaServed": [
-      { "@type": "City", "name": "Dubai" },
       { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Dubai" },
       { "@type": "City", "name": "Abu Dhabi" },
       { "@type": "Country", "name": "United Arab Emirates" }
     ],
@@ -69,7 +68,10 @@ export default function AiServices() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12">

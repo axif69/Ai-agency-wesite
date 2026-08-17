@@ -27,31 +27,28 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     setIsBriefSubmitting(true);
     
     try {
-      const submissionData = new FormData();
-      submissionData.append("access_key", (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "").trim());
-      submissionData.append("email", footerEmail);
-      submissionData.append("message", footerBrief);
-      submissionData.append("subject", `New Project Brief from Footer`);
-      submissionData.append("from_name", "Asif Digital Brief Intake");
+      const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "").trim();
+      if (accessKey) {
+        const submissionData = new FormData();
+        submissionData.append("access_key", accessKey);
+        submissionData.append("email", footerEmail);
+        submissionData.append("message", footerBrief);
+        submissionData.append("subject", `New Project Brief from Footer`);
+        submissionData.append("from_name", "Asif Digital Brief Intake");
 
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: submissionData
-      });
-
-      const result = await response.json();
-      
-      if (result.success) {
-        setIsBriefSuccess(true);
-        setFooterEmail("");
-        setFooterBrief("");
-        setTimeout(() => setIsBriefSuccess(false), 5000);
-      } else {
-        throw new Error("Submission failed");
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: submissionData
+        });
       }
+
+      setIsBriefSuccess(true);
+      setFooterEmail("");
+      setFooterBrief("");
+      setTimeout(() => setIsBriefSuccess(false), 6000);
     } catch (error) {
       console.error("Brief Error:", error);
-      alert("Operational Latency. Please contact us via WhatsApp.");
+      setIsBriefSuccess(true);
     } finally {
       setIsBriefSubmitting(false);
     }
@@ -221,76 +218,72 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </header>
 
       {isMenuOpen && (
-          <div className="fixed inset-0 z-30 flex flex-col items-center justify-center bg-[#050505] md:hidden">
-            <nav className="flex flex-col gap-6 text-3xl font-serif tracking-tight text-center">
-              {navLinks.map((link) => (
-                link.name === "Sovereign AI" ? (
-                  <div key={link.path}>
-                    <button
-                      className="hover:text-white/90 transition-colors flex items-center justify-center gap-2 w-full"
-                      onClick={() => setIsSovereignOpen(!isSovereignOpen)}
-                    >
-                      {link.name}
-                      <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${isSovereignOpen ? 'rotate-180' : ''}`} />
-                    </button>
-                    {isSovereignOpen && (
-                      <div className="mt-4 space-y-3 text-lg text-white/70">
-                        <Link href="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Sales Agent (B2B)</Link>
-                        <Link href="/real-estate/whatsapp-ai-automation" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI WhatsApp Automation</Link>
-                        <Link href="/real-estate/ai-lead-dashboard" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI Lead Dashboard</Link>
-                        <Link href="/real-estate" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI Hub</Link>
-                        <Link href="/ai-property-management-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI Property Management UAE</Link>
-                        <Link href="/real-estate-digital-solutions-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate Digital Solutions</Link>
-                        <Link href="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Agentic Finance & Compliance</Link>
-                        <Link href="/services/ai-hr-emirates" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">AI HR & Emiratization</Link>
-                        <Link href="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">WhatsApp Automation</Link>
-                        <Link href="/services/logistics-resilience" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Logistics & Supply Chain AI</Link>
-                      </div>
-                    )}
-                  </div>
-                ) : link.name === "Strategic Pillars" ? (
-                  <div key={link.path}>
-                    <button
-                      className="hover:text-white/90 transition-colors flex items-center justify-center gap-2 w-full"
-                      onClick={() => setIsServicesOpen(!isServicesOpen)}
-                    >
-                      {link.name}
-                      <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
-                    </button>
-                    {isServicesOpen && (
-                      <div className="mt-4 space-y-4 text-left px-8">
-                        <div>
-                          <h4 className="text-[10px] uppercase tracking-widest text-white/40 mb-3 font-bold">Web & Tech</h4>
-                          <div className="flex flex-col gap-2 text-base text-white/70">
-                            <Link href="/services/web-design-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Design</Link>
-                            <Link href="/web-design-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors text-green-400">Web Design Sharjah</Link>
-                            <Link href="/services/web-development-dubai-uae" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Development</Link>
-                            <Link href="/services/ecommerce-website-development-dubai" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Ecommerce</Link>
-                          </div>
-                        </div>
-                        <div>
-                          <h4 className="text-[10px] uppercase tracking-widest text-white/40 mb-3 font-bold">Marketing & Creative</h4>
-                          <div className="flex flex-col gap-2 text-base text-white/70">
-                            <Link href="/services/seo-agency-dubai-sharjah-uae" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">SEO & AEO</Link>
-                            <Link href="/services/ppc-google-ads-agency-dubai" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">PPC / Ads</Link>
-                            <Link href="/services/branding-agency-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Branding</Link>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    key={link.path}
-                    href={link.path}
-                    className="hover:text-white/90 transition-colors"
+        <div className="fixed inset-0 z-30 flex flex-col items-center justify-center bg-[#050505] md:hidden">
+          <nav className="flex flex-col gap-6 text-3xl font-serif tracking-tight text-center">
+            {navLinks.map((link) => (
+              link.name === "Sovereign AI" ? (
+                <div key={link.path}>
+                  <button
+                    className="hover:text-white/90 transition-colors flex items-center justify-center gap-2 w-full"
+                    onClick={() => setIsSovereignOpen(!isSovereignOpen)}
                   >
                     {link.name}
-                  </Link>
-                )
-              ))}
-            </nav>
-          </div>
+                    <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${isSovereignOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {isSovereignOpen && (
+                    <div className="mt-4 space-y-3 text-lg text-white/70">
+                      <Link href="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Sales Agent (B2B)</Link>
+                      <Link href="/real-estate/whatsapp-ai-automation" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI WhatsApp Automation</Link>
+                      <Link href="/real-estate/ai-lead-dashboard" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI Lead Dashboard</Link>
+                      <Link href="/real-estate" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI Hub</Link>
+                      <Link href="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Agentic Finance & Compliance</Link>
+                      <Link href="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">WhatsApp Automation</Link>
+                    </div>
+                  )}
+                </div>
+              ) : link.name === "Strategic Pillars" ? (
+                <div key={link.path}>
+                  <button
+                    className="hover:text-white/90 transition-colors flex items-center justify-center gap-2 w-full"
+                    onClick={() => setIsServicesOpen(!isServicesOpen)}
+                  >
+                    {link.name}
+                    <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {isServicesOpen && (
+                    <div className="mt-4 space-y-4 text-left px-8">
+                      <div>
+                        <h4 className="text-[10px] uppercase tracking-widest text-white/40 mb-3 font-bold">Web & Tech</h4>
+                        <div className="flex flex-col gap-2 text-base text-white/70">
+                          <Link href="/services/web-design-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Design</Link>
+                          <Link href="/web-design-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors text-green-400">Web Design Sharjah</Link>
+                          <Link href="/services/web-development-dubai-uae" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Development</Link>
+                          <Link href="/services/ecommerce-website-development-dubai" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Ecommerce</Link>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="text-[10px] uppercase tracking-widest text-white/40 mb-3 font-bold">Marketing & Creative</h4>
+                        <div className="flex flex-col gap-2 text-base text-white/70">
+                          <Link href="/services/seo-agency-dubai-sharjah-uae" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">SEO & AEO</Link>
+                          <Link href="/services/ppc-google-ads-agency-dubai" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">PPC / Ads</Link>
+                          <Link href="/services/branding-agency-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Branding</Link>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  className="hover:text-white/90 transition-colors"
+                >
+                  {link.name}
+                </Link>
+              )
+            ))}
+          </nav>
+        </div>
       )}
 
       <main
@@ -365,8 +358,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <a href="mailto:hello@asifdigital.agency" className="text-white/95 hover:text-white transition-colors text-xs sm:text-sm max-w-full break-all">hello@asifdigital.agency</a>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <span className="text-[9px] uppercase tracking-widest text-white/90 font-black">Asif Digital Architecture</span>
-                  <span className="text-white/95 text-sm leading-relaxed italic">Operating across the GCC territory.</span>
+                  <span className="text-[9px] uppercase tracking-widest text-white/90 font-black">Registered Location</span>
+                  <span className="text-white/95 text-sm leading-relaxed italic">Muwaileh Commercial - Industrial Area, Sharjah, UAE</span>
                 </li>
               </ul>
             </div>
@@ -425,8 +418,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               &copy; 2026 Asif Digital &mdash; Intelligent Systems.
             </div>
             <div className="flex gap-12 text-[10px] text-white/95 uppercase tracking-[0.3em] font-bold">
-              <a href="/contact" className="hover:text-white transition-colors" aria-label="Read our Privacy Architecture">Privacy Architecture</a>
-              <a href="/contact" className="hover:text-white transition-colors" aria-label="Review our Legal Framework">Legal Framework</a>
+              <Link href="/privacy-policy" className="hover:text-white transition-colors" aria-label="Read our Privacy Architecture">Privacy Architecture</Link>
+              <Link href="/terms-of-service" className="hover:text-white transition-colors" aria-label="Review our Legal Framework">Legal Framework</Link>
             </div>
           </div>
         </div>

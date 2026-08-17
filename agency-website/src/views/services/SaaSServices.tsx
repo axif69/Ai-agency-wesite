@@ -37,17 +37,18 @@ export default function SaaSServices() {
 
   const saasSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Asif Digital — SaaS Development Dubai",
+    "@type": "MarketingAgency",
+    "name": "Asif Digital: AI Automation, Web & Graphic Design",
     "image": "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format,compress&fm=webp&q=80&w=1200",
     "@id": "https://www.asifdigital.agency/services",
     "url": "https://www.asifdigital.agency/services",
-    "telephone": "+971500000000",
+    "telephone": "+971545866094",
     "priceRange": "AED 15,000 - AED 150,000",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Dubai",
-      "addressRegion": "Dubai",
+      "streetAddress": "Muwaileh Commercial - Industrial Area",
+      "addressLocality": "Sharjah",
+      "addressRegion": "Sharjah",
       "addressCountry": "AE"
     },
     "openingHoursSpecification": [
@@ -59,8 +60,8 @@ export default function SaaSServices() {
       }
     ],
     "areaServed": [
-      { "@type": "City", "name": "Dubai" },
       { "@type": "City", "name": "Sharjah" },
+      { "@type": "City", "name": "Dubai" },
       { "@type": "City", "name": "Abu Dhabi" },
       { "@type": "Country", "name": "United Arab Emirates" }
     ],
@@ -69,7 +70,10 @@ export default function SaaSServices() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(saasSchema) }}
+      />
       
       {/* Hero Section */}
       <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12 font-serif text-white tracking-tight leading-tight">
@@ -82,8 +86,8 @@ export default function SaaSServices() {
           <motion.div style={{ y, opacity }} className="max-w-4xl">
             <span className="micro-label block mb-4 text-white/60">Dubai & Sharjah Innovation</span>
             <h1 className="text-4xl md:text-7xl">
-            SaaS Development <br/><span className="italic text-white/40">Specialist UAE.</span>
-          </h1>
+              SaaS Development <br/><span className="italic text-white/40">Specialist UAE.</span>
+            </h1>
           </motion.div>
         </div>
         {/* Hidden SEO Image */}

@@ -18,8 +18,8 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.asifdigital.agency'),
-  title: "AI Automation Agency Dubai | AI Agents & Workflows UAE",
-  description: "Asif Digital is a Dubai-based AI automation agency helping UAE businesses automate workflows, generate leads, and scale with custom AI agents. Book a free consultation.",
+  title: "Asif Digital | AI Automation, Web & Graphic Design Dubai & Sharjah",
+  description: "Asif Digital is a premier UAE AI automation, web & graphic design agency helping businesses automate workflows, generate leads, and scale with custom AI agents and sovereign systems.",
   manifest: '/site.webmanifest',
   icons: {
     icon: [
@@ -30,6 +30,28 @@ export const metadata: Metadata = {
     ],
     shortcut: '/favicon.ico',
     apple: [{ url: '/apple-touch-icon.png', type: 'image/png', sizes: '180x180' }],
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://www.asifdigital.agency',
+    siteName: 'Asif Digital: AI Automation, Web & Graphic Design',
+    title: 'Asif Digital | AI Automation, Web & Graphic Design Dubai & Sharjah',
+    description: 'Premier AI Automation, Custom Web Development & Graphic Design Agency in Dubai and Sharjah. 24/7 AI agents, WhatsApp workflows, and lead attribution systems.',
+    images: [
+      {
+        url: 'https://www.asifdigital.agency/icon-512.png',
+        width: 512,
+        height: 512,
+        alt: 'Asif Digital Logo',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Asif Digital | AI Automation, Web & Graphic Design',
+    description: 'Premier AI Automation, Custom Web Development & Graphic Design Agency in Dubai and Sharjah.',
+    images: ['https://www.asifdigital.agency/icon-512.png'],
   },
 };
 
@@ -54,8 +76,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              "name": "Asif Digital: AI Automation, Web & Custom Software Agency",
+              "@type": "MarketingAgency",
+              "name": "Asif Digital: AI Automation, Web & Graphic Design",
+              "alternateName": "Asif Digital Agency",
               "image": "https://www.asifdigital.agency/icon-512.png",
               "logo": "https://www.asifdigital.agency/icon-512.png",
               "url": "https://www.asifdigital.agency",
@@ -63,7 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "priceRange": "$$$",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Muwaileh Commercial",
+                "streetAddress": "Muwaileh Commercial - Industrial Area",
                 "addressLocality": "Sharjah",
                 "addressRegion": "Sharjah",
                 "addressCountry": "AE"
@@ -73,9 +96,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 "latitude": 25.3218,
                 "longitude": 55.4564
               },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "reviewCount": "8",
+                "bestRating": "5"
+              },
               "areaServed": [
-                "Dubai",
                 "Sharjah",
+                "Dubai",
                 "Abu Dhabi",
                 "United Arab Emirates",
                 "GCC"
