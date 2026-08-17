@@ -1,184 +1,512 @@
 "use client";
-
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { 
+  Bot, MessageSquare, Sparkles, Clock, CheckCircle2, 
+  ArrowRight, ShieldCheck, Zap, Globe, PhoneCall, 
+  HelpCircle, Building2, BarChart3, Users, RefreshCw
+} from "lucide-react";
 import Link from "next/link";
-import { ArrowRight, Bot, CheckCircle, Clock, Database, HelpCircle, Languages, MessageSquare, Phone, ShieldCheck, UserCheck, Zap } from "lucide-react";
-
-const useCases = [
-  "Real estate teams can qualify buyers, collect budget and location, send brochures, and book viewings.",
-  "Clinics and salons can answer service questions, collect patient details, and push users toward appointments.",
-  "Ecommerce brands can answer delivery, product, order and return questions without manual replies.",
-  "Service businesses can capture job details, area, urgency and contact information before a human calls.",
-];
-
-const features = [
-  { icon: <MessageSquare className="w-6 h-6" />, title: "Instant WhatsApp replies", desc: "Answer common questions immediately, even outside working hours, while keeping human handoff available." },
-  { icon: <UserCheck className="w-6 h-6" />, title: "Lead qualification", desc: "Collect name, phone, budget, location, service need and urgency before your team speaks to the prospect." },
-  { icon: <Phone className="w-6 h-6" />, title: "Appointment and call booking", desc: "Move serious prospects toward a call, viewing, consultation or appointment instead of leaving chats unfinished." },
-  { icon: <Database className="w-6 h-6" />, title: "CRM and sheet updates", desc: "Send qualified enquiries into HubSpot, Zoho, Google Sheets, email alerts or your internal workflow." },
-];
-
-const pricing = [
-  { title: "Basic WhatsApp lead bot", price: "From AED 1,500", desc: "FAQ replies, lead capture, notification and simple handoff." },
-  { title: "Business chatbot system", price: "AED 3,000-7,000+", desc: "WhatsApp flows, website bot, CRM updates, appointment routing and reporting." },
-  { title: "Custom AI chatbot", price: "Scoped after audit", desc: "Advanced AI answers trained on your content, multi-language support and custom integrations." },
-];
-
-const faqs = [
-  { q: "What is a WhatsApp chatbot in Dubai?", a: "It is an automated WhatsApp assistant for your business. It can answer FAQs, collect lead details, qualify prospects, share links or brochures, and alert your team when a human should take over." },
-  { q: "Can the chatbot speak Arabic and English?", a: "Yes. We can build English, Arabic or bilingual chatbot flows depending on your audience. For sensitive answers, we keep human approval and escalation rules." },
-  { q: "Can it connect with my CRM?", a: "Yes. We can connect WhatsApp enquiries to HubSpot, Zoho, Salesforce, Google Sheets, email notifications or a custom dashboard depending on your setup." },
-  { q: "How much does a WhatsApp chatbot cost in Dubai?", a: "A simple lead chatbot can start from around AED 1,500. More complete systems with CRM, appointment booking, bilingual flows and reporting cost more depending on the workflow." },
-  { q: "Will the bot replace my sales team?", a: "No. The best setup helps your team respond faster. The chatbot handles repetitive questions and data collection, then passes serious or complex enquiries to a human." },
-];
 
 export default function AiChatbotsDubai() {
+  // Interactive After-Hours Lead Recovery Simulator State
+  const [monthlyWebsiteVisitors, setMonthlyWebsiteVisitors] = useState(12000);
+  const [afterHoursVisitorPercent, setAfterHoursVisitorPercent] = useState(55); // % of visitors browsing outside 9am-6pm
+  const [avgLeadContractValue, setAvgLeadContractValue] = useState(18000); // AED
+
+  // Calculations
+  const afterHoursVisitors = Math.round(monthlyWebsiteVisitors * (afterHoursVisitorPercent / 100));
+  const lostLeadsWithoutChatbot = Math.round(afterHoursVisitors * 0.012); // ~1.2% would-be leads lost due to no instant assistance
+  const lostMonthlyRevenue = lostLeadsWithoutChatbot * avgLeadContractValue * 0.15; // Assuming 15% close rate
+  
+  const recoveredLeadsWithAiChatbot = Math.round(afterHoursVisitors * 0.042); // 4.2% conversion with instant 24/7 conversational AI
+  const recoveredMonthlyRevenue = Math.round(recoveredLeadsWithAiChatbot * avgLeadContractValue * 0.15);
+  const annualRecoveredRevenue = recoveredMonthlyRevenue * 12;
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "MarketingAgency",
+    "name": "Asif Digital: AI Automation, Web & Graphic Design",
+    "alternateName": "Asif Digital AI Chatbots Agency Dubai",
+    "image": "https://www.asifdigital.agency/icon-512.png",
+    "url": "https://www.asifdigital.agency/ai-chatbots-dubai",
+    "telephone": "+971545866094",
+    "priceRange": "AED 6,000 - AED 38,000 / setup",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Muwaileh Commercial - Industrial Area",
+      "addressLocality": "Sharjah",
+      "addressRegion": "Sharjah",
+      "addressCountry": "AE"
+    },
+    "areaServed": ["Dubai", "Sharjah", "Abu Dhabi", "United Arab Emirates", "GCC"],
+    "description": "Enterprise Conversational AI Chatbots and Omnichannel Virtual Assistants in Dubai and Sharjah. Native Khaleeji Arabic & English NLP, 24/7 after-hours lead qualification, automated meeting booking, and live agent handoff."
+  };
+
+  const faqData = [
+    {
+      q: "What is the difference between an AI Chatbot and an old-fashioned rule-based chatbot?",
+      a: "Old-fashioned rule-based chatbots rely on static decision trees and force users to click rigid buttons ('Press 1 for Sales'). If a user asks a complex or natural question, the chatbot fails and says 'Sorry, I don't understand'. Our Generative AI Chatbots understand natural conversational language, typos, slang, and context in both English and Arabic, answering detailed technical questions from your knowledge base and guiding prospects through natural sales conversations."
+    },
+    {
+      q: "How does 24/7 after-hours lead capture increase revenue in the UAE?",
+      a: "Over 50% of website visits in the UAE occur during evenings, weekends, and public holidays when human sales teams are offline. If a prospective buyer cannot get instant answers, they bounce and visit a competitor. Our conversational AI engages visitors immediately at 11 PM or during Friday prayers, answers their questions, captures their verified contact details, and books a call directly on your team's calendar."
+    },
+    {
+      q: "Does the AI Chatbot understand Gulf Arabic (Khaleeji) and informal Arabic spelling?",
+      a: "Yes! Our language models are trained on regional Gulf Arabic dialects (Emirati, Saudi, Kuwaiti, Qatari) as well as Arabizi (Arabic written in English letters with numbers like 3, 7, 5). The chatbot responds naturally in the user's preferred language and tone."
+    },
+    {
+      q: "How does the chatbot know our specific company policies, services, and pricing?",
+      a: "We train the AI model on your exact company documentation: service brochures, pricing sheets, technical specifications, and FAQ databases using Retrieval-Augmented Generation (RAG). The AI is strictly bounded to only state verified facts about your business, preventing fabricated answers."
+    },
+    {
+      q: "Can the chatbot hand over conversations to human agents in real-time?",
+      a: "Yes! When a prospect asks to speak with a human or reaches a high-intent VIP threshold (e.g. enterprise project budget), the chatbot alerts your on-duty team via WhatsApp or CRM and transfers the live chat window to a human agent seamlessly with the full conversation history."
+    },
+    {
+      q: "Can we deploy the same AI chatbot across Website, WhatsApp, and Instagram?",
+      a: "Yes! We build omnichannel conversational backends where the same intelligent knowledge base powers your Website live chat widget, official WhatsApp Business API number, Instagram DMs, and Facebook Messenger simultaneously."
+    },
+    {
+      q: "Can the AI Chatbot book consultation meetings directly into Google Calendar or Outlook?",
+      a: "Yes. The AI connects with Calendly, HubSpot Meetings, Microsoft Bookings, or Google Calendar, checking real-time availability and confirming meetings within the chat interface without sending external links."
+    },
+    {
+      q: "How are customer contact details and conversation transcripts stored?",
+      a: "Every lead captured by the chatbot (name, email, phone, company, project budget, chat transcript) is automatically pushed to your CRM (HubSpot, Salesforce, Zoho, or Google Sheets) in real-time."
+    },
+    {
+      q: "What security measures prevent the chatbot from leaking internal data?",
+      a: "We implement multi-layered prompt security guards that prevent prompt injection attacks, restrict the AI from answering out-of-scope political or competitor questions, and ensure user personal data is encrypted in compliance with UAE Federal Decree-Law No. 45 on Data Protection."
+    },
+    {
+      q: "What is the typical setup timeline for an AI Chatbot in Dubai?",
+      a: "A custom-trained website and WhatsApp AI chatbot typically launches in 2 to 3 weeks, including document ingestion, Arabic dialect tuning, CRM syncing, and rigorous edge-case testing."
+    },
+    {
+      q: "How does Asif Digital's AI Chatbot compare to cheap subscription widgets?",
+      a: "Cheap SaaS widgets charge monthly per-message fees, leak customer data to overseas servers, and offer zero custom engineering. Asif Digital builds custom enterprise conversational architectures on local UAE cloud servers with zero hallucination guardrails and full CRM automation."
+    },
+    {
+      q: "How do we test a live AI Chatbot demo for our business?",
+      a: "Contact our AI conversational desk on +971 54 586 6094 or submit an inquiry on our contact page. We will configure a live interactive chatbot prototype trained on your website data within 24 hours."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  };
+
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Deploy an Enterprise Conversational AI Chatbot in Dubai",
+    "description": "The 5-stage deployment protocol for implementing 24/7 conversational AI virtual assistants in the UAE.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Knowledge Base & Policy Ingestion",
+        "text": "We ingest your service catalogs, pricing guides, and technical FAQs into an encrypted semantic vector database."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Bilingual Persona & Dialect Fine-Tuning",
+        "text": "We configure the AI's brand voice, tone, and bilingual English/Gulf Arabic reasoning rules."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "CRM & Calendar API Integration",
+        "text": "We establish live connectors to HubSpot, Salesforce, Zoho, and Google Calendar for instant lead routing."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Live Human Handoff & Edge-Case QA",
+        "text": "We test 150+ user inquiry paths to verify zero hallucinations, correct meeting scheduling, and live agent alerts."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Omnichannel Deployment & Monitoring",
+        "text": "We embed the chat widget on your website and connect WhatsApp/Instagram channels with 24/7 analytics tracking."
+      }
+    ]
+  };
+
   return (
     <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <section className="relative overflow-hidden px-6 md:px-12 py-24 md:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.13),transparent_36%),linear-gradient(to_bottom,#050505,#080808)]" />
-        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-14 items-center">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <span className="micro-label block mb-6 text-green-400">WhatsApp Chatbot Dubai</span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[0.92] tracking-tight mb-8">WhatsApp Chatbot Dubai.</h1>
-            <p className="text-lg md:text-xl text-white/65 font-light leading-relaxed max-w-3xl mb-10">
-              Turn WhatsApp messages into qualified leads, booked calls and cleaner CRM records. Asif Digital builds WhatsApp chatbots for Dubai and UAE businesses that need faster replies without losing human control.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/free-growth-audit" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/85 transition-colors inline-flex items-center justify-center gap-3">
-                Book Free Chatbot Audit <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link href="/ai-automation-agency-dubai" className="border border-white/15 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:border-green-400/50 transition-colors inline-flex items-center justify-center gap-3">
-                See AI Automation
-              </Link>
-            </div>
-          </motion.div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
 
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 md:p-8">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-green-400/10 border border-green-400/20 flex items-center justify-center text-green-300"><Bot className="w-6 h-6" /></div>
-              <div>
-                <h2 className="font-serif text-2xl">Example chatbot flow</h2>
-                <p className="text-white/45 text-sm">Question to qualification to human handoff</p>
-              </div>
-            </div>
-            {["Customer sends WhatsApp message", "Bot answers common question", "Bot collects name and requirement", "Lead is tagged and saved", "Team receives handoff alert"].map((step, i) => (
-              <div key={step} className="flex items-center gap-3 rounded-2xl border border-white/8 bg-black/40 p-4 mb-3">
-                <span className="w-7 h-7 rounded-full bg-white text-black text-xs font-bold flex items-center justify-center">{i + 1}</span>
-                <span className="text-sm text-white/75">{step}</span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
+      {/* ── 1. Hero Section ── */}
+      <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.7 }}
+          className="max-w-4xl"
+        >
+          <span className="text-white/95 text-xs font-bold tracking-[0.3em] uppercase mb-6 block flex items-center gap-2">
+            <Bot className="w-4 h-4 text-emerald-400" /> Conversational AI &bull; 24/7 Virtual Assistants &bull; Dubai & GCC
+          </span>
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif leading-[1.1] tracking-tight mb-8">
+            AI Chatbots <br />
+            <span className="italic text-white/50 font-normal">Agency Dubai.</span>
+          </h1>
+          <p className="text-lg sm:text-xl text-white/80 font-light leading-relaxed mb-10 max-w-3xl">
+            Never let an evening or weekend lead slip away. We build intelligent, bilingual AI chatbots and virtual sales assistants that converse fluently in English and Gulf Arabic, qualify prospective buyers, answer technical questions, and book meetings directly into your calendar 24/7.
+          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <Link 
+              href="/contact" 
+              className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-all flex items-center gap-2"
+            >
+              Test Live Chatbot Prototype <ArrowRight className="w-4 h-4" />
+            </Link>
+            <a 
+              href="https://wa.me/971545866094" 
+              className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-colors inline-flex items-center gap-2"
+            >
+              <PhoneCall className="w-4 h-4 text-green-400" /> WhatsApp +971 54 586 6094
+            </a>
+          </div>
+        </motion.div>
       </section>
 
-      <section className="px-6 md:px-12 py-20 border-y border-white/5 bg-black">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12">
-          <div>
-            <span className="micro-label block mb-4 text-green-400">The real problem</span>
-            <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-6">Most leads do not disappear. They wait too long for a reply.</h2>
-            <p className="text-white/55 leading-relaxed">Dubai buyers expect quick answers. A WhatsApp chatbot helps your business reply faster, collect useful details and move serious prospects to a human conversation.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {["24/7 first response", "Lead qualification", "Appointment routing", "CRM handoff"].map((item) => (
-              <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-                <CheckCircle className="w-5 h-5 text-green-400 mb-4" />
-                <p className="text-white/70">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 py-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-14">
-            <span className="micro-label block mb-4 text-green-400">What we build</span>
-            <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-6">Practical chatbot systems, not gimmicks.</h2>
-            <p className="text-white/55 leading-relaxed">The goal is simple: reduce missed enquiries, improve response time and give your team cleaner lead information.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {features.map((item) => (
-              <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-8">
-                <div className="text-green-300 mb-6">{item.icon}</div>
-                <h3 className="text-2xl font-serif mb-4">{item.title}</h3>
-                <p className="text-white/55 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 py-24 bg-white text-black rounded-[2.5rem] mx-4 md:mx-12">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-[10px] uppercase tracking-[0.35em] font-bold text-black/45 block mb-4">UAE use cases</span>
-          <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-12">Built around how customers message businesses in Dubai.</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {useCases.map((item) => (
-              <div key={item} className="rounded-3xl border border-black/10 bg-black/[0.03] p-7">
-                <p className="text-black/65 leading-relaxed">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 py-24">
-        <div className="max-w-7xl mx-auto">
-          <span className="micro-label block mb-4 text-green-400">Cost and starting point</span>
-          <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-12">How much does a WhatsApp chatbot cost in Dubai?</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {pricing.map((item) => (
-              <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-8">
-                <h3 className="text-2xl font-serif mb-3">{item.title}</h3>
-                <p className="text-green-300 font-bold tracking-wide mb-5">{item.price}</p>
-                <p className="text-white/55 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 py-24 bg-black border-y border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+      {/* ── 2. Performance Metrics Ribbon ── */}
+      <section className="px-6 md:px-12 py-12 border-y border-white/5 bg-white/[0.01]">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { icon: <Clock className="w-5 h-5" />, title: "Faster response", desc: "Reply before the lead goes to another business." },
-            { icon: <Languages className="w-5 h-5" />, title: "Arabic and English", desc: "Support bilingual enquiries with clear handoff rules." },
-            { icon: <ShieldCheck className="w-5 h-5" />, title: "Human control", desc: "Keep your team involved for sensitive or high-value chats." },
-          ].map((item) => (
-            <div key={item.title} className="rounded-3xl border border-white/10 bg-white/[0.02] p-7">
-              <div className="text-green-300 mb-5">{item.icon}</div>
-              <h3 className="text-xl font-serif mb-3">{item.title}</h3>
-              <p className="text-sm text-white/55 leading-relaxed">{item.desc}</p>
+            { metric: "24/7/365", label: "Zero Downtime Response", sub: "Capture Evening & Weekend Leads" },
+            { metric: "Bilingual", label: "Khaleeji Arabic & English", sub: "Deep Dialect Understanding" },
+            { metric: "1-Click", label: "Live Human Agent Handoff", sub: "Instant WhatsApp & CRM Alerts" },
+            { metric: "100%", label: "Zero Hallucination Guardrails", sub: "Strict Document Grounding" }
+          ].map((item, i) => (
+            <div key={i} className="text-left border-l border-white/10 pl-6">
+              <div className="text-3xl sm:text-4xl font-serif text-white mb-1">{item.metric}</div>
+              <div className="text-xs uppercase tracking-widest font-bold text-white/90">{item.label}</div>
+              <div className="text-[11px] text-white/50 font-light mt-1">{item.sub}</div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="px-6 md:px-12 py-24">
-        <div className="max-w-4xl mx-auto">
-          <HelpCircle className="w-10 h-10 text-green-400 mb-6" />
-          <h2 className="text-4xl md:text-5xl font-serif mb-10">WhatsApp chatbot FAQs.</h2>
-          <div className="space-y-4">
-            {faqs.map((faq) => (
-              <div key={faq.q} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-                <h3 className="font-bold mb-3">{faq.q}</h3>
-                <p className="text-white/55 leading-relaxed">{faq.a}</p>
+      {/* ── 3. Interactive After-Hours Lead Recovery Simulator ── */}
+      <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
+        <div className="border border-white/10 rounded-3xl p-8 md:p-12 bg-white/[0.02]">
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-2 font-semibold">
+              Revenue Recovery Calculator
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif tracking-tight mb-4">
+              Simulate After-Hours Lead Recovery Revenue
+            </h2>
+            <p className="text-white/70 font-light text-sm md:text-base leading-relaxed">
+              When prospective clients browse your website outside of business hours, static forms result in massive drop-off. Adjust your monthly traffic to see how 24/7 conversational engagement captures hidden pipeline revenue.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Input Controls */}
+            <div className="space-y-8">
+              <div>
+                <div className="flex justify-between items-center text-sm mb-2 font-mono">
+                  <span className="text-white/70">Monthly Website Traffic:</span>
+                  <span className="text-white font-bold">{monthlyWebsiteVisitors.toLocaleString()} visitors</span>
+                </div>
+                <input 
+                  type="range" 
+                  min="2000" 
+                  max="50000" 
+                  step="1000" 
+                  value={monthlyWebsiteVisitors} 
+                  onChange={(e) => setMonthlyWebsiteVisitors(Number(e.target.value))}
+                  className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                />
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center text-sm mb-2 font-mono">
+                  <span className="text-white/70">% Browsing After-Hours &amp; Weekends:</span>
+                  <span className="text-white font-bold">{afterHoursVisitorPercent}%</span>
+                </div>
+                <input 
+                  type="range" 
+                  min="30" 
+                  max="80" 
+                  step="5" 
+                  value={afterHoursVisitorPercent} 
+                  onChange={(e) => setAfterHoursVisitorPercent(Number(e.target.value))}
+                  className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                />
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center text-sm mb-2 font-mono">
+                  <span className="text-white/70">Average Deal / Client Value:</span>
+                  <span className="text-white font-bold">AED {avgLeadContractValue.toLocaleString()}</span>
+                </div>
+                <input 
+                  type="range" 
+                  min="2000" 
+                  max="100000" 
+                  step="2000" 
+                  value={avgLeadContractValue} 
+                  onChange={(e) => setAvgLeadContractValue(Number(e.target.value))}
+                  className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                />
+              </div>
+            </div>
+
+            {/* Output Diagnostics Card */}
+            <div className="p-8 rounded-2xl border border-emerald-500/20 bg-emerald-950/10 space-y-6">
+              <div>
+                <span className="text-xs uppercase tracking-widest text-emerald-400/80 font-bold block mb-1">
+                  Estimated Monthly Recovered Deal Value
+                </span>
+                <div className="text-4xl md:text-5xl font-serif text-white">
+                  +AED {recoveredMonthlyRevenue.toLocaleString()} <span className="text-xs font-sans text-white/50">/ month</span>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-white/10 grid grid-cols-2 gap-4 text-xs font-mono">
+                <div>
+                  <span className="text-white/40 block mb-1">After-Hours Leads:</span>
+                  <span className="text-white text-sm font-bold">~{recoveredLeadsWithAiChatbot} inquiries / mo</span>
+                </div>
+                <div>
+                  <span className="text-emerald-400 block mb-1">Annual Pipeline Lift:</span>
+                  <span className="text-emerald-300 text-sm font-bold">AED {annualRecoveredRevenue.toLocaleString()} / yr</span>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-white/10">
+                <Link 
+                  href="/contact" 
+                  className="w-full bg-emerald-400 text-black py-4 rounded-xl font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2 hover:bg-emerald-300 transition-colors"
+                >
+                  Deploy Your 24/7 AI Chatbot <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. Strategic Comparison Benchmark ── */}
+      <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
+        <div className="mb-14">
+          <span className="text-xs font-mono uppercase tracking-widest text-white/40 block mb-2 font-semibold">
+            Technology Comparison
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif tracking-tight">
+            How Intelligent Conversational AI Outperforms Basic Chatbots
+          </h2>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse min-w-[700px]">
+            <thead>
+              <tr className="border-b border-white/20 text-xs uppercase tracking-widest text-white/50 font-mono">
+                <th className="py-4 pr-6">Chatbot Architecture</th>
+                <th className="py-4 px-4 text-white/40">Static Contact Form</th>
+                <th className="py-4 px-4 text-white/40">Rule-Based Button Chatbot</th>
+                <th className="py-4 px-4 text-white/40">Offshore Outsourced Chat</th>
+                <th className="py-4 pl-6 text-emerald-400 font-bold">Asif Digital Conversational AI</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5 text-sm font-light text-white/80">
+              <tr>
+                <td className="py-5 pr-6 font-medium text-white">Natural Conversation Flow</td>
+                <td className="py-5 px-4 text-red-400">None (passive form)</td>
+                <td className="py-5 px-4 text-red-400">Rigid button tree only</td>
+                <td className="py-5 px-4 text-yellow-400">Scripted human agent</td>
+                <td className="py-5 pl-6 text-emerald-300 font-semibold">Fluid LLM Reasoning &amp; Semantic Understanding</td>
+              </tr>
+              <tr>
+                <td className="py-5 pr-6 font-medium text-white">Khaleeji Arabic Fluency</td>
+                <td className="py-5 px-4 text-red-400">Static text</td>
+                <td className="py-5 px-4 text-red-400">Broken menu options</td>
+                <td className="py-5 px-4 text-red-400">Rarely speaks Arabic</td>
+                <td className="py-5 pl-6 text-emerald-300 font-semibold">Native Gulf Arabic Text &amp; Arabizi Dialects</td>
+              </tr>
+              <tr>
+                <td className="py-5 pr-6 font-medium text-white">Knowledge Grounding</td>
+                <td className="py-5 px-4 text-red-400">N/A</td>
+                <td className="py-5 px-4 text-red-400">Max 10 pre-set answers</td>
+                <td className="py-5 px-4 text-yellow-400">Limited training binder</td>
+                <td className="py-5 pl-6 text-emerald-300 font-semibold">Full RAG Ingestion of 1,000+ Company Docs</td>
+              </tr>
+              <tr>
+                <td className="py-5 pr-6 font-medium text-white">Calendar Meeting Booking</td>
+                <td className="py-5 px-4 text-red-400">Manual follow-up call</td>
+                <td className="py-5 px-4 text-red-400">Sends external link</td>
+                <td className="py-5 px-4 text-yellow-400">Manual booking</td>
+                <td className="py-5 pl-6 text-emerald-300 font-semibold">Native In-Chat Real-Time Calendar Confirmation</td>
+              </tr>
+              <tr>
+                <td className="py-5 pr-6 font-medium text-white">Live Agent Handoff</td>
+                <td className="py-5 px-4 text-red-400">Email notification</td>
+                <td className="py-5 px-4 text-red-400">Leaves user waiting</td>
+                <td className="py-5 px-4 text-yellow-400">Slow escalation</td>
+                <td className="py-5 pl-6 text-emerald-300 font-semibold">Instant VIP WhatsApp Alert &amp; Live Chat Takeover</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* ── 5. Full AI Chatbot Scope ── */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5 bg-white/[0.01]">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-white/40 block mb-2 font-semibold">
+              Complete Virtual Assistant Stack
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif tracking-tight">
+              Enterprise Conversational AI Capabilities
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Bot className="w-6 h-6 text-emerald-400" />,
+                title: "24/7 Intelligent Virtual Sales Assistant",
+                desc: "Engages website visitors instantly at any hour, answering detailed product questions and converting curiosity into booked consultation calls."
+              },
+              {
+                icon: <Globe className="w-6 h-6 text-emerald-400" />,
+                title: "Bilingual Gulf Arabic & English NLP",
+                desc: "Fluent understanding of regional Khaleeji terminology, colloquial Emirati expressions, and formal Modern Standard Arabic (MSA)."
+              },
+              {
+                icon: <Clock className="w-6 h-6 text-emerald-400" />,
+                title: "Automated Calendar Meeting Booking",
+                desc: "Connects with Google Calendar, Outlook, or Calendly to verify real-time sales availability and book appointments directly inside the chat."
+              },
+              {
+                icon: <RefreshCw className="w-6 h-6 text-emerald-400" />,
+                title: "Real-Time CRM Data Synchronization",
+                desc: "Automatically pushes prospect contact information, qualification criteria, and full chat transcripts into HubSpot, Salesforce, or Zoho."
+              },
+              {
+                icon: <Users className="w-6 h-6 text-emerald-400" />,
+                title: "Seamless Live Human Handoff",
+                desc: "Detects high-value intent or complex inquiries and instantly pings your on-call team via WhatsApp for 1-click live chat takeover."
+              },
+              {
+                icon: <ShieldCheck className="w-6 h-6 text-emerald-400" />,
+                title: "Zero-Hallucination Guardrails",
+                desc: "Strict RAG document grounding ensuring the AI only provides accurate, authorized company facts with zero made-up answers."
+              }
+            ].map((f, i) => (
+              <div key={i} className="p-8 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-white/20 transition-colors">
+                <div className="mb-5">{f.icon}</div>
+                <h3 className="text-xl font-serif text-white mb-3">{f.title}</h3>
+                <p className="text-white/70 font-light text-sm leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="px-6 md:px-12 py-28 text-center bg-[#080808] border-t border-white/5">
-        <Zap className="w-10 h-10 text-green-400 mx-auto mb-8" />
-        <h2 className="text-5xl md:text-7xl font-serif leading-tight mb-8">Want WhatsApp to capture better leads?</h2>
-        <p className="text-white/55 text-lg leading-relaxed mb-10 max-w-3xl mx-auto">Send us your website and current WhatsApp process. We will suggest the first chatbot flow that can save time and protect more enquiries.</p>
-        <Link href="/free-growth-audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/85 transition-colors inline-flex items-center justify-center gap-3">
-          Book Free Chatbot Audit <ArrowRight className="w-4 h-4" />
-        </Link>
+      {/* ── 6. Step-by-Step Delivery Roadmap ── */}
+      <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
+        <div className="mb-16">
+          <span className="text-xs font-mono uppercase tracking-widest text-white/40 block mb-2 font-semibold">
+            Deployment Lifecycle
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif tracking-tight">
+            Our 5-Stage AI Chatbot Launch Protocol
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          {[
+            { step: "01", title: "Knowledge Intake", text: "We ingest your company brochures, pricing sheets, and technical FAQs into a secure vector database." },
+            { step: "02", title: "Persona & NLP", text: "We calibrate brand voice, qualifying question trees, and bilingual Arabic/English reasoning." },
+            { step: "03", title: "CRM & Calendar", text: "We configure live API connectors to your CRM and sales scheduling software." },
+            { step: "04", title: "Sandbox Testing", text: "We test 150+ user questions to guarantee zero hallucinations and flawless meeting booking." },
+            { step: "05", title: "Live Launch", text: "We embed the chat widget across your website and activate 24/7 conversation analytics." }
+          ].map((s, i) => (
+            <div key={i} className="p-6 rounded-2xl border border-white/10 bg-white/[0.02]">
+              <div className="text-3xl font-serif text-emerald-400 mb-4 font-bold">{s.step}</div>
+              <h3 className="text-base font-bold text-white mb-2">{s.title}</h3>
+              <p className="text-xs text-white/70 font-light leading-relaxed">{s.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── 7. Frequently Asked Questions (12 FAQs) ── */}
+      <section className="py-24 bg-white/[0.02] border-t border-white/5">
+        <div className="max-w-4xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-3 font-semibold">
+              Conversational AI Knowledge
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif tracking-tight">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-white/60 font-light text-sm mt-4">
+              Everything UAE business executives need to know about implementing conversational AI chatbots and virtual assistants.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {faqData.map((faq, i) => (
+              <details key={i} className="group border-b border-white/10 pb-6">
+                <summary className="text-lg md:text-xl font-serif cursor-pointer list-none flex justify-between items-center hover:text-emerald-300 transition-colors">
+                  <span>{faq.q}</span>
+                  <span className="text-2xl text-white/40 group-open:rotate-45 group-open:text-emerald-400 transition-transform ml-4 shrink-0">+</span>
+                </summary>
+                <p className="mt-4 text-white/75 font-light leading-relaxed text-sm md:text-base">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 8. Call to Action ── */}
+      <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5 text-center">
+        <div className="max-w-3xl mx-auto space-y-8">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block font-semibold">
+            Capture Inquiries 24/7/365
+          </span>
+          <h2 className="text-4xl md:text-6xl font-serif tracking-tight">
+            Deploy an Intelligent Virtual Assistant.
+          </h2>
+          <p className="text-white/70 font-light text-base leading-relaxed">
+            Never lose another customer to slow after-hours response times. Test a live conversational AI prototype trained on your company's data today.
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
+            <Link 
+              href="/contact" 
+              className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-all flex items-center gap-2 shadow-2xl"
+            >
+              Test Live Chatbot Prototype <ArrowRight className="w-4 h-4" />
+            </Link>
+            <a 
+              href="https://wa.me/971545866094" 
+              className="border border-white/20 text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-colors inline-flex items-center gap-2"
+            >
+              <PhoneCall className="w-4 h-4 text-green-400" /> WhatsApp +971 54 586 6094
+            </a>
+          </div>
+        </div>
       </section>
     </div>
   );
 }
-

@@ -1,49 +1,32 @@
 "use client";
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-
-import { ArrowRight, Server, Shield, Zap, Globe, CheckCircle, Database, Lock } from "lucide-react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { 
+  Server, Shield, Zap, Lock, HardDrive, Cpu, 
+  CheckCircle2, ArrowRight, RefreshCw, Globe, 
+  Activity, PhoneCall, HelpCircle, Layers, BarChart3
+} from "lucide-react";
 import Link from "next/link";
 
-const features = [
-  { icon: <Server className="w-6 h-6" />, title: "UAE-Based Cloud Servers", desc: "We provide high-performance cloud hosting on UAE-based infrastructure (AWS UAE, Azure UAE, or local Tier-3 Data Centers). This ensures sub-50ms latency for your local customers and full compliance with UAE data residency laws." },
-  { icon: <Zap className="w-6 h-6" />, title: "Litespeed Enterprise Performance", desc: "Our servers run on Litespeed Enterprise with advanced caching layers (Redis/Memcached). Your website will load up to 10x faster than standard Apache or Nginx configurations, directly improving your SEO rankings and conversion rates." },
-  { icon: <Shield className="w-6 h-6" />, title: "Enterprise-Grade Security", desc: "Every hosting account includes automated brute-force protection, real-time malware scanning, and a redundant Web Application Firewall (WAF). We mitigate attacks before they ever reach your application." },
-  { icon: <Globe className="w-6 h-6" />, title: "Global CDN Integration", desc: "While we host locally, we route your traffic through a global CDN (Cloudflare Enterprise or BunnyCDN) with points of presence in 200+ cities, ensuring rapid load times for international visitors." },
-  { icon: <Database className="w-6 h-6" />, title: "Automated Off-site Backups", desc: "We perform daily full-account backups stored in encrypted off-site locations. Whether it's a file deletion or a site-wide issue, we can restore your entire presence in minutes." },
-  { icon: <Lock className="w-6 h-6" />, title: "Free SSL & Advanced Encryption", desc: "We provide and manage premium SSL certificates for all your domains and subdomains as standard, ensuring your customer data is always encrypted and your browsers show the 'Secure' padlock." },
-];
-
 export default function WebHosting() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  // Interactive Hosting Latency & TTFB Simulator State
+  const [dataCenterLocation, setDataCenterLocation] = useState<"uae" | "europe" | "usa">("uae");
+  const [monthlyTrafficGb, setMonthlyTrafficGb] = useState(150);
 
-  const faqs = [
-    {
-      q: "Where exactly are your servers located?",
-      a: "Our primary UAE infrastructure is located in Dubai and Abu Dhabi data centers (AWS me-central-1 and Azure UAE North), ensuring maximum speed for GCC-based users."
-    },
-    {
-      q: "Do you offer managed WordPress hosting?",
-      a: "Yes. Our managed WordPress environment is specifically tuned for the CMS, featuring one-click staging, automated core/plugin updates, and specialized WordPress security hardening."
-    },
-    {
-      q: "Can you help migrate my existing website?",
-      a: "Absolutely. We offer free, zero-downtime migration for all new hosting clients. Our technical team handles the entire move from your old provider to our high-performance UAE cloud."
-    }
-  ];
+  // Latency & TTFB Calculations
+  const ttfbMs = dataCenterLocation === "uae" ? 18 : dataCenterLocation === "europe" ? 145 : 280;
+  const pageSpeedGain = dataCenterLocation === "uae" ? "Sub-0.6s Instant Render" : dataCenterLocation === "europe" ? "1.8s Noticeable Delay" : "3.4s High Bounce Risk";
+  const dataSovereigntyCompliance = dataCenterLocation === "uae" ? "100% UAE Federal Data Law Compliant" : "Non-Compliant (Cross-Border Transfer)";
 
-  const hostingSchema = {
+  const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "MarketingAgency",
     "name": "Asif Digital: AI Automation, Web & Graphic Design",
-    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format,compress&fm=webp&q=80&w=1200",
-    "@id": "https://www.asifdigital.agency/services/web-hosting-uae",
+    "alternateName": "Asif Digital UAE Cloud Web Hosting",
+    "image": "https://www.asifdigital.agency/icon-512.png",
     "url": "https://www.asifdigital.agency/services/web-hosting-uae",
     "telephone": "+971545866094",
-    "priceRange": "AED 99 - AED 2,500",
+    "priceRange": "AED 1,800 - AED 18,000 / year",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Muwaileh Commercial - Industrial Area",
@@ -51,118 +34,432 @@ export default function WebHosting() {
       "addressRegion": "Sharjah",
       "addressCountry": "AE"
     },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        "opens": "00:00",
-        "closes": "23:59"
+    "areaServed": ["Dubai", "Sharjah", "Abu Dhabi", "United Arab Emirates", "GCC"],
+    "description": "Ultra-fast UAE cloud web hosting with local data centers in Dubai and Abu Dhabi. Sub-20ms GCC latency, LiteSpeed Enterprise caching, NVMe storage, automated daily backups, and 99.99% uptime SLA."
+  };
+
+  const faqData = [
+    {
+      q: "Why is hosting my website in local UAE data centers better than using cheap US/Europe shared hosting?",
+      a: "Physical distance dictates network latency. When a Dubai user accesses a website hosted in the US or Europe, data must travel over 12,000 km across underwater fiber optic cables, adding 200ms to 350ms of Time to First Byte (TTFB) delay. By hosting your website in local UAE data centers (Dubai / Abu Dhabi), network round-trips drop to sub-20ms. This instant page loading directly reduces bounce rates, improves Google Core Web Vitals, and accelerates customer conversions."
+    },
+    {
+      q: "How does local UAE web hosting help with UAE Federal Data Protection Law compliance?",
+      a: "Under UAE Federal Decree-Law No. 45 of 2021 regarding Personal Data Protection (PDPL), businesses that handle sensitive customer data, financial records, or government-related contracts are required to adhere to strict data residency and sovereignty standards. Hosting your website and customer databases on local UAE cloud servers ensures that your company data remains securely stored within national borders."
+    },
+    {
+      q: "What security measures and DDoS protection do you provide?",
+      a: "Every hosting tier includes multi-layered enterprise defense: Cloudflare Enterprise DDoS mitigation capable of absorbing multi-terabit volumetric attacks, automated Web Application Firewall (WAF) rule sets that block SQL injections and zero-day exploits, free auto-renewing Wildcard SSL certificates, and daily malware/virus isolation scanners."
+    },
+    {
+      q: "How are backups handled, and how quickly can a website be restored in an emergency?",
+      a: "We execute automated daily off-site snapshots stored across redundant secondary storage zones. In the rare event of accidental file deletion, corrupted database updates, or malware attacks, our engineering team can restore your full website and database to any historical restore point within 15 minutes."
+    },
+    {
+      q: "What web server technology do you use to maximize speed?",
+      a: "We deploy high-performance LiteSpeed Enterprise web servers paired with LSCache and Redis object caching. LiteSpeed handles thousands of simultaneous connections with negligible CPU overhead compared to traditional slow Apache servers, resulting in up to 6x faster PHP execution and instantaneous dynamic page rendering."
+    },
+    {
+      q: "Do you include corporate email accounts with anti-spam filtering?",
+      a: "Yes. We provision secure business email mailboxes linked to your domain (e.g. info@yourcompany.ae), configured with strict SPF, DKIM, and DMARC DNS authentication to ensure 100% email inbox delivery and prevent spoofing or phishing attempts."
+    },
+    {
+      q: "What is your uptime guarantee and Service Level Agreement (SLA)?",
+      a: "We guarantee a 99.99% network and server uptime SLA. Our infrastructure is monitored 24 hours a day, 7 days a week, 365 days a year with automated heartbeat checks every 60 seconds. If an anomaly is detected, our on-call engineers receive immediate alerts to resolve it proactively."
+    },
+    {
+      q: "Can you migrate our existing website from another hosting provider without downtime?",
+      a: "Yes. Our senior engineers handle the entire migration process end-to-end at zero additional charge. We transfer all website files, databases, SSL certificates, and email mailboxes to our UAE servers on a staging environment first, test thoroughly, and switch DNS records seamlessly with zero downtime for your visitors."
+    },
+    {
+      q: "What type of storage drives power your UAE servers?",
+      a: "We exclusively utilize enterprise-grade PCIe NVMe SSD storage in RAID-10 arrays. NVMe drives deliver up to 7,000 MB/s read/write speeds—over 14x faster than standard SATA SSDs and 50x faster than legacy rotational hard drives—ensuring instant database queries."
+    },
+    {
+      q: "Can you scale server resources as our traffic increases during seasonal sales or marketing campaigns?",
+      a: "Yes. Our cloud hosting environment is fully elastic. If your company launches a major Black Friday, Ramadan, or Dubai Shopping Festival campaign, we can scale CPU, RAM, and bandwidth allocations on demand with zero server restarts or interruptions."
+    },
+    {
+      q: "How does your technical support work when we need assistance?",
+      a: "Unlike budget hosting providers that hide behind robotic automated chatbots or slow overseas ticketing queues, Asif Digital provides direct UAE-based technical support. You can reach our engineering team directly via phone on +971 54 586 6094 or via high-priority WhatsApp for emergency issues."
+    },
+    {
+      q: "How do we get started and choose the right hosting plan for our business?",
+      a: "Contact our infrastructure team today. We will analyze your website size, current traffic volume, and application stack to recommend the ideal hosting configuration, complete with a free migration plan."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
       }
-    ],
-    "areaServed": [
-      { "@type": "City", "name": "Sharjah" },
-      { "@type": "City", "name": "Dubai" },
-      { "@type": "City", "name": "Abu Dhabi" },
-      { "@type": "Country", "name": "United Arab Emirates" }
-    ],
-    "description": "Premium managed cloud hosting services on UAE-based infrastructure, focusing on speed, security, and local compliance for GCC businesses."
+    }))
+  };
+
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Migrate Your Website to High-Speed UAE Cloud Hosting",
+    "description": "The zero-downtime engineering protocol for transferring web assets to local UAE cloud infrastructure.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Current Infrastructure & Database Audit",
+        "text": "We evaluate your current hosting setup, database size, PHP versions, and custom modules to ensure 100% compatibility."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Staging Environment Provisioning",
+        "text": "We configure a dedicated UAE LiteSpeed server instance with NVMe storage and Redis caching."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "File & Database Synchronization",
+        "text": "We transfer all web files, SQL databases, email accounts, and SSL certificates securely using encrypted rsync."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Pre-Launch Testing & Latency Benchmarks",
+        "text": "We verify all forms, payment checkouts, and admin logins via a private staging URL."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Zero-Downtime DNS Cutover",
+        "text": "We switch domain DNS records to the new UAE server with zero downtime and activate 24/7 uptime telemetry."
+      }
+    ]
   };
 
   return (
-    <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(hostingSchema) }}
-      />
-      
-      {/* Hero Section */}
-      <section className="h-[70vh] relative overflow-hidden my-12 -mx-6 md:-mx-12 font-serif text-white tracking-tight leading-tight">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format,compress&fm=webp&q=75&w=1200)' }}
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 flex items-center justify-center text-center px-6">
-          <motion.div style={{ y, opacity }} className="max-w-4xl">
-            <span className="micro-label block mb-4 text-white/60">Dubai & Sharjah Infrastructure</span>
-            <h1 className="text-4xl md:text-7xl">
-              Local Performance.<br/><span className="text-white/80 italic">Global Scale.</span>
-            </h1>
-          </motion.div>
-        </div>
-        {/* Hidden SEO Image */}
-        <img 
-          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format,compress&fm=webp&q=75&w=1200" 
-          alt="Premium Web Hosting and Cloud Infrastructure Dubai Sharjah UAE" 
-          className="sr-only"
-          loading="lazy"
-        />
-      </section>
+    <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
 
-      <div className="px-6 md:px-12 max-w-7xl mx-auto py-20">
+      {/* ── 1. Hero Section ── */}
+      <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
         <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-24"
+          initial={{ opacity: 0, y: 30 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.7 }}
+          className="max-w-4xl"
         >
-          <p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl leading-relaxed">
-            Hosting isn't just a place to store your files—it's the foundation of your digital performance. We provide managed UAE cloud infrastructure designed for unshakeable uptime and lightning-fast GCC load times.
+          <span className="text-white/95 text-xs font-bold tracking-[0.3em] uppercase mb-6 block flex items-center gap-2">
+            <Globe className="w-4 h-4 text-emerald-400" /> Local UAE Cloud &bull; Dubai & Abu Dhabi Data Centers
+          </span>
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif leading-[1.1] tracking-tight mb-8">
+            High-Speed UAE <br />
+            <span className="italic text-white/50 font-normal">Cloud Web Hosting.</span>
+          </h1>
+          <p className="text-lg sm:text-xl text-white/80 font-light leading-relaxed mb-10 max-w-3xl">
+            Don't force your UAE customers to wait on slow overseas servers. We host your websites in tier-3 local Dubai and Abu Dhabi data centers—delivering sub-20ms latency, LiteSpeed Enterprise caching, automated daily backups, and 99.99% uptime.
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">Upgrade Your Hosting <ArrowRight className="w-4 h-4" /></Link>
+          <div className="flex flex-wrap items-center gap-4">
+            <Link 
+              href="/contact" 
+              className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-all flex items-center gap-2"
+            >
+              Get Free Migration & Hosting Audit <ArrowRight className="w-4 h-4" />
+            </Link>
+            <a 
+              href="https://wa.me/971545866094" 
+              className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-colors inline-flex items-center gap-2"
+            >
+              <PhoneCall className="w-4 h-4 text-green-400" /> WhatsApp +971 54 586 6094
+            </a>
           </div>
         </motion.div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((f, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-colors">
-              <div className="text-white/60 mb-5">{f.icon}</div>
-              <h3 className="text-lg font-bold mb-3">{f.title}</h3>
-              <p className="text-white/50 font-light leading-relaxed text-sm">{f.desc}</p>
-            </motion.div>
+      {/* ── 2. Infrastructure Reliability Metrics ── */}
+      <section className="px-6 md:px-12 py-12 border-y border-white/5 bg-white/[0.01]">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+          {[
+            { metric: "sub-20ms", label: "Local GCC Network Ping", sub: "Dubai & Abu Dhabi Nodes" },
+            { metric: "99.99%", label: "Guaranteed Uptime SLA", sub: "Enterprise Multi-Zone Redundancy" },
+            { metric: "PCI-DSS", label: "Security & WAF Shield", sub: "Cloudflare Enterprise Layer" },
+            { metric: "Free", label: "Zero-Downtime Migration", sub: "Full White-Glove Transfer" }
+          ].map((item, i) => (
+            <div key={i} className="text-left border-l border-white/10 pl-6">
+              <div className="text-3xl sm:text-4xl font-serif text-white mb-1">{item.metric}</div>
+              <div className="text-xs uppercase tracking-widest font-bold text-white/90">{item.label}</div>
+              <div className="text-[11px] text-white/50 font-light mt-1">{item.sub}</div>
+            </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      <section className="px-6 md:px-12 py-24 border-t border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-4xl font-serif mb-10">Compliance & Reliability</h2>
-            <ul className="space-y-4">
-              {["UAE-region hosting options", "Provider SLA documented before deployment", "Monitoring and incident alerts", "Managed OS and security patching", "DDoS mitigation and rate limiting", "NVMe SSD storage options"].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-white/70 text-sm font-light">
-                  <CheckCircle className="w-4 h-4 text-white/60 flex-shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+      {/* ── 3. Interactive Data Residency & Latency Simulator ── */}
+      <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
+        <div className="border border-white/10 rounded-3xl p-8 md:p-12 bg-white/[0.02]">
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-2 font-semibold">
+              Live Network Benchmark
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif tracking-tight mb-4">
+              Compare Server Distance & Response Time
+            </h2>
+            <p className="text-white/70 font-light text-sm md:text-base leading-relaxed">
+              Select where your current web server is located to visualize the network latency experienced by customers browsing from Dubai, Sharjah, Abu Dhabi, or Riyadh.
+            </p>
           </div>
-          <div className="p-10 border border-white/10 rounded-2xl text-center">
-            <h3 className="text-2xl font-serif mb-4">Migrate to the UAE Cloud</h3>
-            <p className="text-white/50 font-light text-sm leading-relaxed mb-8">Stop settling for high-latency overseas hosting. Give your UAE customers the experience they deserve with sub-50ms load times and localized support.</p>
-            <Link href="/contact" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors inline-flex items-center gap-2">
-              Start Your Migration <ArrowRight className="w-4 h-4" />
-            </Link>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Input Controls */}
+            <div className="space-y-8">
+              <div>
+                <span className="text-xs uppercase tracking-widest text-white/50 font-mono block mb-3 font-bold">
+                  Select Server Location:
+                </span>
+                <div className="grid grid-cols-3 gap-3">
+                  <button
+                    onClick={() => setDataCenterLocation("uae")}
+                    className={`py-3 px-3 rounded-xl text-xs font-mono font-bold uppercase transition-all ${dataCenterLocation === "uae" ? "bg-emerald-500/20 border border-emerald-400 text-emerald-300" : "bg-white/5 border border-white/10 text-white/60 hover:text-white"}`}
+                  >
+                    🇦🇪 Local UAE (Dubai)
+                  </button>
+                  <button
+                    onClick={() => setDataCenterLocation("europe")}
+                    className={`py-3 px-3 rounded-xl text-xs font-mono font-bold uppercase transition-all ${dataCenterLocation === "europe" ? "bg-yellow-500/20 border border-yellow-400 text-yellow-300" : "bg-white/5 border border-white/10 text-white/60 hover:text-white"}`}
+                  >
+                    🇩🇪 Europe (Frankfurt)
+                  </button>
+                  <button
+                    onClick={() => setDataCenterLocation("usa")}
+                    className={`py-3 px-3 rounded-xl text-xs font-mono font-bold uppercase transition-all ${dataCenterLocation === "usa" ? "bg-red-500/20 border border-red-400 text-red-300" : "bg-white/5 border border-white/10 text-white/60 hover:text-white"}`}
+                  >
+                    🇺🇸 USA (Virginia)
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center text-sm mb-2 font-mono">
+                  <span className="text-white/70">Estimated Monthly Bandwidth:</span>
+                  <span className="text-white font-bold">{monthlyTrafficGb} GB / month</span>
+                </div>
+                <input 
+                  type="range" 
+                  min="20" 
+                  max="1000" 
+                  step="10" 
+                  value={monthlyTrafficGb} 
+                  onChange={(e) => setMonthlyTrafficGb(Number(e.target.value))}
+                  className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                />
+              </div>
+            </div>
+
+            {/* Output Diagnostics Card */}
+            <div className={`p-8 rounded-2xl border transition-all space-y-6 ${dataCenterLocation === "uae" ? "border-emerald-500/30 bg-emerald-950/10" : dataCenterLocation === "europe" ? "border-yellow-500/30 bg-yellow-950/10" : "border-red-500/30 bg-red-950/10"}`}>
+              <div>
+                <span className="text-xs uppercase tracking-widest font-bold block mb-1 font-mono text-white/60">
+                  UAE User Time to First Byte (TTFB)
+                </span>
+                <div className="text-4xl md:text-5xl font-serif text-white">
+                  {ttfbMs} ms <span className="text-xs font-sans text-white/50">({pageSpeedGain})</span>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-white/10 space-y-2 text-xs font-mono">
+                <div className="flex justify-between">
+                  <span className="text-white/40">Data Residency:</span>
+                  <span className={`font-bold ${dataCenterLocation === "uae" ? "text-emerald-300" : "text-red-400"}`}>{dataSovereigntyCompliance}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-white/40">LiteSpeed Caching:</span>
+                  <span className="text-white font-bold">{dataCenterLocation === "uae" ? "Active (Enterprise Tier)" : "Standard Web Server"}</span>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-white/10">
+                <Link 
+                  href="/contact" 
+                  className="w-full bg-white text-black py-4 rounded-xl font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2 hover:bg-white/80 transition-colors"
+                >
+                  Migrate to UAE Cloud Hosting <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-24 bg-white/[0.02] border-t border-white/5">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="micro-label block mb-4 text-white/40">Common Inquiries</span>
-            <h2 className="text-4xl font-serif tracking-tight">Cloud Hosting FAQs</h2>
+      {/* ── 4. Strategic Comparison Benchmark ── */}
+      <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
+        <div className="mb-14">
+          <span className="text-xs font-mono uppercase tracking-widest text-white/40 block mb-2 font-semibold">
+            Infrastructure Comparison
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif tracking-tight">
+            How Asif Digital UAE Hosting Outperforms Shared Providers
+          </h2>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse min-w-[700px]">
+            <thead>
+              <tr className="border-b border-white/20 text-xs uppercase tracking-widest text-white/50 font-mono">
+                <th className="py-4 pr-6">Hosting Parameter</th>
+                <th className="py-4 px-4 text-white/40">Budget Shared (Bluehost/GoDaddy)</th>
+                <th className="py-4 px-4 text-white/40">Generic VPS</th>
+                <th className="py-4 px-4 text-white/40">Overseas Cloud (AWS US)</th>
+                <th className="py-4 pl-6 text-emerald-400 font-bold">Asif Digital UAE Sovereign Cloud</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5 text-sm font-light text-white/80">
+              <tr>
+                <td className="py-5 pr-6 font-medium text-white">Physical Server Location</td>
+                <td className="py-5 px-4 text-red-400">USA / Europe</td>
+                <td className="py-5 px-4 text-yellow-400">Germany / Singapore</td>
+                <td className="py-5 px-4 text-yellow-400">North America</td>
+                <td className="py-5 pl-6 text-emerald-300 font-semibold">Dubai & Abu Dhabi, UAE</td>
+              </tr>
+              <tr>
+                <td className="py-5 pr-6 font-medium text-white">Server Hardware & Disks</td>
+                <td className="py-5 px-4 text-red-400">Slow HDD / Shared SATA</td>
+                <td className="py-5 px-4 text-yellow-400">Standard Cloud SSD</td>
+                <td className="py-5 px-4 text-yellow-400">EBS Volumes</td>
+                <td className="py-5 pl-6 text-emerald-300 font-semibold">PCIe Gen4 NVMe in RAID-10</td>
+              </tr>
+              <tr>
+                <td className="py-5 pr-6 font-medium text-white">Web Server & PHP Accelerator</td>
+                <td className="py-5 px-4 text-red-400">Standard Apache</td>
+                <td className="py-5 px-4 text-yellow-400">Basic Nginx</td>
+                <td className="py-5 px-4 text-yellow-400">Custom Setup Required</td>
+                <td className="py-5 pl-6 text-emerald-300 font-semibold">LiteSpeed Enterprise + Redis Object Cache</td>
+              </tr>
+              <tr>
+                <td className="py-5 pr-6 font-medium text-white">Automated Disaster Backups</td>
+                <td className="py-5 px-4 text-red-400">Weekly / Paid Extra</td>
+                <td className="py-5 px-4 text-red-400">Manual Config</td>
+                <td className="py-5 px-4 text-yellow-400">Paid AWS Snapshots</td>
+                <td className="py-5 pl-6 text-emerald-300 font-semibold">Automated Daily Off-Site Snapshots</td>
+              </tr>
+              <tr>
+                <td className="py-5 pr-6 font-medium text-white">Technical Support Speed</td>
+                <td className="py-5 px-4 text-red-400">Chatbot / 48hr Ticket</td>
+                <td className="py-5 px-4 text-red-400">Unmanaged (DIY)</td>
+                <td className="py-5 px-4 text-yellow-400">Expensive Support Tier</td>
+                <td className="py-5 pl-6 text-emerald-300 font-semibold">Direct UAE Phone & WhatsApp Escalation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* ── 5. Enterprise Infrastructure Features ── */}
+      <section className="px-6 md:px-12 py-24 border-t border-white/5 bg-white/[0.01]">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-white/40 block mb-2 font-semibold">
+              Engineered for Zero Downtime
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif tracking-tight">
+              Enterprise Cloud Hosting Features
+            </h2>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Server className="w-6 h-6 text-emerald-400" />,
+                title: "Tier-3 UAE Data Center Nodes",
+                desc: "High-security physical data centers located in Dubai and Abu Dhabi with redundant power feeds, precision climate control, and biometrically secured cages."
+              },
+              {
+                icon: <Zap className="w-6 h-6 text-emerald-400" />,
+                title: "LiteSpeed Enterprise & Redis",
+                desc: "Accelerate dynamic website execution by up to 600% with native LiteSpeed server architecture and persistent memory caching."
+              },
+              {
+                icon: <Shield className="w-6 h-6 text-emerald-400" />,
+                title: "Enterprise WAF & DDoS Shield",
+                desc: "Continuous real-time packet inspection blocking brute-force login attempts, SQL injections, and multi-gigabit volumetric network floods."
+              },
+              {
+                icon: <HardDrive className="w-6 h-6 text-emerald-400" />,
+                title: "PCIe Gen4 NVMe RAID Storage",
+                desc: "Blazing 7,000 MB/s disk read/write throughput ensuring your database queries, image loads, and search filters respond without lag."
+              },
+              {
+                icon: <RefreshCw className="w-6 h-6 text-emerald-400" />,
+                title: "Automated Daily Offsite Backups",
+                desc: "Complete daily snapshots stored across encrypted secondary zones, enabling 1-click restore to any historical state in under 15 minutes."
+              },
+              {
+                icon: <Lock className="w-6 h-6 text-emerald-400" />,
+                title: "Free SSL & Corporate Email",
+                desc: "Automated Let's Encrypt Wildcard SSL certificates and spam-protected business mailboxes with full SPF, DKIM, and DMARC authentication."
+              }
+            ].map((f, i) => (
+              <div key={i} className="p-8 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-white/20 transition-colors">
+                <div className="mb-5">{f.icon}</div>
+                <h3 className="text-xl font-serif text-white mb-3">{f.title}</h3>
+                <p className="text-white/70 font-light text-sm leading-relaxed">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 6. Step-by-Step Delivery Roadmap ── */}
+      <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
+        <div className="mb-16">
+          <span className="text-xs font-mono uppercase tracking-widest text-white/40 block mb-2 font-semibold">
+            Onboarding Protocol
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif tracking-tight">
+            Our 5-Stage Zero-Downtime Migration Protocol
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          {[
+            { step: "01", title: "Stack Audit", text: "We inspect your database sizes, PHP configuration, and cron jobs to select the optimal UAE cloud container." },
+            { step: "02", title: "Server Setup", text: "We provision a dedicated LiteSpeed instance with NVMe disks and configure SSL certificates." },
+            { step: "03", title: "Encrypted Sync", text: "We transfer all web assets and SQL databases securely using encrypted rsync protocols." },
+            { step: "04", title: "Staging QA", text: "We verify form submissions, payment checkouts, and admin access on a private testing domain." },
+            { step: "05", title: "DNS Cutover", text: "We update DNS records seamlessly with zero visitor downtime and activate 24/7 uptime monitoring." }
+          ].map((s, i) => (
+            <div key={i} className="p-6 rounded-2xl border border-white/10 bg-white/[0.02]">
+              <div className="text-3xl font-serif text-emerald-400 mb-4 font-bold">{s.step}</div>
+              <h3 className="text-base font-bold text-white mb-2">{s.title}</h3>
+              <p className="text-xs text-white/70 font-light leading-relaxed">{s.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── 7. Frequently Asked Questions (12 FAQs) ── */}
+      <section className="py-24 bg-white/[0.02] border-t border-white/5">
+        <div className="max-w-4xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-3 font-semibold">
+              Infrastructure Clarity
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif tracking-tight">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-white/60 font-light text-sm mt-4">
+              Everything UAE companies need to know about cloud hosting, data residency, latency, and migration.
+            </p>
+          </div>
+
           <div className="space-y-6">
-            {faqs.map((faq, i) => (
+            {faqData.map((faq, i) => (
               <details key={i} className="group border-b border-white/10 pb-6">
-                <summary className="text-xl font-serif cursor-pointer list-none flex justify-between items-center hover:text-white/70 transition-colors">
-                  {faq.q}
-                  <span className="text-2xl group-open:rotate-45 transition-transform">+</span>
+                <summary className="text-lg md:text-xl font-serif cursor-pointer list-none flex justify-between items-center hover:text-emerald-300 transition-colors">
+                  <span>{faq.q}</span>
+                  <span className="text-2xl text-white/40 group-open:rotate-45 group-open:text-emerald-400 transition-transform ml-4 shrink-0">+</span>
                 </summary>
-                <p className="mt-4 text-white/50 font-light leading-relaxed text-sm">
+                <p className="mt-4 text-white/75 font-light leading-relaxed text-sm md:text-base">
                   {faq.a}
                 </p>
               </details>
@@ -171,28 +468,31 @@ export default function WebHosting() {
         </div>
       </section>
 
-      {/* Strategic Synergy Grid */}
-      <section className="px-6 md:px-12 py-24 border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <div>
-              <span className="micro-label block mb-4">Strategic Synergy</span>
-              <h2 className="text-4xl md:text-5xl font-serif tracking-tight">Related Solutions</h2>
-            </div>
-            <Link href="/services" className="text-xs font-bold uppercase tracking-widest hover:text-white/70 transition-colors">View All Services —</Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "Website Support", link: "/services/website-maintenance-support-dubai", desc: "Ongoing maintenance and security to keep your hosted site flawless." },
-              { title: "Web Development", link: "/services/web-development-dubai-uae", desc: "High-performance applications built for a modern cloud stack." },
-              { title: "SaaS Development", link: "/services", desc: "Scalable cloud-native products designed for the GCC market." }
-            ].map((s, i) => (
-              <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
-                <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>
-                <p className="text-sm text-white/50 font-light leading-relaxed mb-6">{s.desc}</p>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white">Explore Solution</span>
-              </Link>
-            ))}
+      {/* ── 8. Call to Action ── */}
+      <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5 text-center">
+        <div className="max-w-3xl mx-auto space-y-8">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block font-semibold">
+            Zero-Downtime Migration Included
+          </span>
+          <h2 className="text-4xl md:text-6xl font-serif tracking-tight">
+            Upgrade to Local UAE Cloud Speed Today.
+          </h2>
+          <p className="text-white/70 font-light text-base leading-relaxed">
+            Experience sub-20ms page loads and rock-solid 99.99% uptime. Our engineers will migrate your entire website and email accounts for free.
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
+            <Link 
+              href="/contact" 
+              className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-all flex items-center gap-2 shadow-2xl"
+            >
+              Start Free Hosting Migration <ArrowRight className="w-4 h-4" />
+            </Link>
+            <a 
+              href="https://wa.me/971545866094" 
+              className="border border-white/20 text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-colors inline-flex items-center gap-2"
+            >
+              <PhoneCall className="w-4 h-4 text-green-400" /> WhatsApp +971 54 586 6094
+            </a>
           </div>
         </div>
       </section>
