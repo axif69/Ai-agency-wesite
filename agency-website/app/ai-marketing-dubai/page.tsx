@@ -1,10 +1,17 @@
 import PageComponent from '../../src/views/AiMarketingDubai';
 
 export const metadata = {
-  title: "AI Powered Marketing Agency in Dubai | SEO, Ads & Automation",
-  description: "AI powered marketing agency in Dubai for UAE businesses using SEO, paid media, WhatsApp automation, lead capture, conversion tracking and AI-assisted content systems.",
+  title: "AI Powered Marketing Agency in Dubai | AI Marketing, Ads & SEO UAE",
+  description: "Leading AI powered marketing agency in Dubai and UAE. Supercharge your business growth with AI-driven performance ads, autonomous SEO, Perplexity AEO citation, and revenue attribution.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-marketing-dubai"
+  },
+  openGraph: {
+    title: "AI Powered Marketing Agency in Dubai | AI Marketing, Ads & SEO UAE",
+    description: "Enterprise AI marketing agency in Dubai. Data-driven performance marketing, automated SEO, and predictive lead acquisition.",
+    url: "https://www.asifdigital.agency/ai-marketing-dubai",
+    siteName: "Asif Digital: AI Automation, Web & Graphic Design",
+    type: "website"
   }
 };
 

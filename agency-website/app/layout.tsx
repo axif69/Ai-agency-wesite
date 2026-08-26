@@ -67,7 +67,50 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-DKTWMYPBV7');
+              gtag('config', 'G-DKTWMYPBV7', {
+                send_page_view: true
+              });
+
+              // Automated GA4 Lead Gen Key Event Tracking
+              if (typeof window !== 'undefined') {
+                document.addEventListener('click', function(e) {
+                  var target = e.target.closest('a');
+                  if (!target) return;
+                  var href = target.getAttribute('href') || '';
+                  
+                  // WhatsApp Lead Conversion
+                  if (href.includes('wa.me') || href.includes('whatsapp.com')) {
+                    gtag('event', 'generate_lead', {
+                      event_category: 'Lead',
+                      event_label: 'WhatsApp Click',
+                      value: 1.0,
+                      currency: 'AED',
+                      link_url: href
+                    });
+                  }
+                  
+                  // Direct Phone Call Conversion
+                  if (href.startsWith('tel:')) {
+                    gtag('event', 'contact', {
+                      event_category: 'Contact',
+                      event_label: 'Phone Call Click',
+                      value: 1.0,
+                      currency: 'AED',
+                      link_url: href
+                    });
+                  }
+                }, true);
+
+                // Contact Form Submission Conversion
+                document.addEventListener('submit', function(e) {
+                  gtag('event', 'generate_lead', {
+                    event_category: 'Lead',
+                    event_label: 'Contact Form Submission',
+                    value: 1.0,
+                    currency: 'AED'
+                  });
+                }, true);
+              }
             `,
           }}
         />
