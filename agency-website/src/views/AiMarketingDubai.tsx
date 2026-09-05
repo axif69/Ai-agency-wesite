@@ -1,383 +1,624 @@
 "use client";
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 
-import { 
-  ArrowRight, Shield, Zap, Globe, Database, Cog, Search, 
-  BarChart3, TrendingUp, Monitor, MessageSquare, 
-  Target, Cpu, Network, Lock, Sparkles, Languages,
-  Rocket, Layers, PieChart, Users, Building2
-} from "lucide-react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
+import { 
+  ArrowRight, Check, CheckCircle2, ChevronDown, 
+  HelpCircle, Layers, MessageSquare, 
+  Shield, Sparkles, Target, Zap, 
+  BarChart3, Calculator, TrendingUp, Cpu, 
+  Database, RefreshCw, PhoneCall, ExternalLink
+} from "lucide-react";
 
 export default function AiMarketingDubai() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+  // Interactive Ad Spend Waste Calculator State
+  const [adSpend, setAdSpend] = useState<number>(25000);
+  const [responseTime, setResponseTime] = useState<string>("1-4 hours");
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // Dynamic calculations based on UAE market benchmarks
+  const metrics = useMemo(() => {
+    // Response time decay penalty
+    let decayFactor = 0.25; // default for 1-4 hours
+    if (responseTime === "under-5-mins") decayFactor = 0.05;
+    else if (responseTime === "15-60-mins") decayFactor = 0.15;
+    else if (responseTime === "same-day") decayFactor = 0.40;
+    else if (responseTime === "next-day") decayFactor = 0.60;
+
+    const estimatedWastedSpend = Math.round(adSpend * decayFactor);
+    const potentialQualifiedLift = Math.round((adSpend * 0.35) / 180); // Estimated additional qualified leads
+    const projectedCostReduction = Math.round(decayFactor * 60);
+
+    return {
+      wasted: estimatedWastedSpend,
+      leadLift: potentialQualifiedLift,
+      cplReduction: projectedCostReduction
+    };
+  }, [adSpend, responseTime]);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
 
   return (
-    <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
+    <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30 font-sans">
       
-
-      {/* Hero Section: The Authority Hook */}
-      <section className="min-h-[90vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">
+      {/* ── 1. Hero Section ── */}
+      <section className="min-h-[85vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
-          <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-white/[0.02] rounded-full blur-[150px]" />
+          <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:36px_36px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.03] rounded-full blur-[140px]" />
         </div>
-        
-        <motion.div style={{ opacity, scale }} className="max-w-6xl relative z-10">
-          <span className="micro-label block mb-8 text-white/30 tracking-[0.8em] uppercase text-[10px] font-bold">
-            THE SOVEREIGN MARKETING PROTOCOL v4.0
-          </span>
-          <h1 className="text-5xl md:text-9xl font-serif tracking-tighter leading-[0.85] mb-12">
-            AI Powered<br/>
-            <span className="text-white/60 italic font-light tracking-normal">Marketing Agency in Dubai.</span>
+
+        <div className="max-w-5xl relative z-10 mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] text-xs font-mono uppercase tracking-widest text-white/70 mb-8">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            AI Performance Marketing & Lead Automation • Dubai & UAE
+          </div>
+          
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif tracking-tight leading-[1.05] mb-8">
+            AI Marketing & Lead Generation <br />
+            <span className="text-white/60 italic font-light">Agency in Dubai</span>
           </h1>
-          <p className="text-lg md:text-2xl text-white/50 font-light max-w-3xl mx-auto leading-relaxed mb-16">
-            Asif Digital is an AI powered marketing agency in Dubai building practical systems for SEO, paid media, content, WhatsApp follow-up, reporting and conversion tracking across the UAE.
+
+          <p className="text-lg md:text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed mb-12">
+            We replace fragmented ad retainers with closed-loop growth systems: predictive Google & Meta ads, sub-minute WhatsApp qualification, CRM lead scoring, and verifiable revenue attribution.
           </p>
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-            <Link href="/contact" className="bg-white text-black px-12 py-6 rounded-full font-bold uppercase tracking-widest text-[11px] hover:scale-105 transition-all shadow-[0_0_50px_rgba(255,255,255,0.2)]">
-              Initiate Enterprise Audit
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link 
+              href="/contact" 
+              className="w-full sm:w-auto bg-white text-black px-10 py-5 rounded-full font-semibold uppercase tracking-wider text-xs hover:bg-white/90 transition-all shadow-[0_0_40px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2"
+            >
+              Book Strategic Consultation <ArrowRight className="w-4 h-4" />
             </Link>
-            <div className="flex items-center gap-4 text-white/40 text-[10px] uppercase tracking-widest font-bold">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              Active Deployments in DIFC & Business Bay
+            <Link 
+              href="/free-growth-audit" 
+              className="w-full sm:w-auto border border-white/20 hover:border-white/40 bg-white/[0.02] text-white px-8 py-5 rounded-full font-semibold uppercase tracking-wider text-xs transition-all flex items-center justify-center gap-2"
+            >
+              Request Performance Audit
+            </Link>
+          </div>
+
+          <div className="mt-14 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6 text-left max-w-4xl mx-auto">
+            <div>
+              <div className="text-2xl font-serif font-bold text-white">&lt; 30s</div>
+              <div className="text-xs text-white/50 font-light mt-1">WhatsApp Lead Intake</div>
+            </div>
+            <div>
+              <div className="text-2xl font-serif font-bold text-white">Closed-Loop</div>
+              <div className="text-xs text-white/50 font-light mt-1">CRM Revenue Attribution</div>
+            </div>
+            <div>
+              <div className="text-2xl font-serif font-bold text-white">Multivariate</div>
+              <div className="text-xs text-white/50 font-light mt-1">Algorithmic Ad Testing</div>
+            </div>
+            <div>
+              <div className="text-2xl font-serif font-bold text-white">100% UAE</div>
+              <div className="text-xs text-white/50 font-light mt-1">Bilingual Arabic & English</div>
             </div>
           </div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-20">
-          <div className="w-[1px] h-20 bg-gradient-to-b from-white to-transparent" />
         </div>
       </section>
 
-      {/* Chapter 1: The UAE Market Divergence (300 Words Depth) */}
-      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
-          <div className="sticky top-32">
-            <h2 className="text-4xl md:text-6xl font-serif mb-8 leading-tight">
-              The End of<br/>Legacy Advertising.
-            </h2>
-            <div className="h-px w-20 bg-white/20 mb-8" />
-            <p className="text-white/40 text-sm uppercase tracking-widest font-bold mb-12">Pillar 01: Market Divergence</p>
+      {/* ── 2. Direct Answer Block (AEO / GEO Entity Citability) ── */}
+      <section className="py-16 px-6 md:px-12 max-w-5xl mx-auto">
+        <div className="p-8 md:p-10 border border-white/15 bg-white/[0.02] rounded-3xl relative overflow-hidden">
+          <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-emerald-400 font-mono mb-4">
+            <Sparkles className="w-4 h-4" />
+            System Overview & Executive Definition
           </div>
-          <div className="space-y-12 text-white/70 font-light text-lg leading-relaxed">
-            <p>
-              The Dubai market is no longer a standard digital territory. It is a competitive environment where search visibility, paid traffic, WhatsApp response speed and campaign measurement all need to work together. An <strong>AI powered marketing agency in Dubai</strong> should connect those parts into one operating system.
+          <h2 className="text-2xl md:text-3xl font-serif mb-4 text-white">
+            What is an AI Marketing Agency?
+          </h2>
+          <p className="text-white/80 font-light text-base md:text-lg leading-relaxed mb-6">
+            In the UAE market, an <strong>AI marketing agency</strong> integrates predictive advertising management (Google Ads, Meta Ads, TikTok) with immediate WhatsApp conversational qualification, automated CRM pipeline scoring, and closed-loop revenue attribution. 
+          </p>
+          <p className="text-white/70 font-light text-sm md:text-base leading-relaxed">
+            Unlike traditional digital marketing agencies that manually tweak ad bids once a week and report vanity impressions, an AI marketing growth system connects your front-end ad spend directly to back-end closed deals. When an ad generates a click, AI handles instant qualification, filters spam, pushes scored leads to your sales reps, and sends verified deal revenue back to ad algorithms to continuously lower Customer Acquisition Cost (CAC).
+          </p>
+        </div>
+      </section>
+
+      {/* ── 3. Traditional Agency vs. Asif Digital AI System ── */}
+      <section className="py-24 px-6 md:px-12 max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="text-xs uppercase tracking-widest text-white/40 font-mono block mb-3">
+            Comparative Performance Analysis
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif">
+            Traditional Agency Retainer vs. AI Performance System
+          </h2>
+          <p className="text-white/60 font-light max-w-2xl mx-auto mt-4 text-sm md:text-base">
+            Why high-growth UAE businesses in real estate, professional services, and B2B are transitioning from manual agency retainers to automated growth systems.
+          </p>
+        </div>
+
+        <div className="overflow-x-auto border border-white/10 rounded-3xl bg-white/[0.01]">
+          <table className="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr className="border-b border-white/10 bg-white/[0.03]">
+                <th className="py-5 px-6 font-semibold text-white/60 font-mono text-xs uppercase">Evaluation Dimension</th>
+                <th className="py-5 px-6 font-semibold text-red-400/80 font-mono text-xs uppercase">Traditional Dubai Agency</th>
+                <th className="py-5 px-6 font-semibold text-emerald-400 font-mono text-xs uppercase">Asif Digital AI Growth System</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5 font-light text-white/80">
+              <tr>
+                <td className="py-5 px-6 font-medium text-white">Lead Follow-Up Speed</td>
+                <td className="py-5 px-6 text-white/50">4 to 24 hours (manual sales desk forwarding)</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Instant &lt; 30 seconds via WhatsApp Cloud API</td>
+              </tr>
+              <tr>
+                <td className="py-5 px-6 font-medium text-white">Campaign Bid Optimization</td>
+                <td className="py-5 px-6 text-white/50">Manual weekly or bi-weekly manual bid adjustments</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Continuous algorithmic budget reallocation 24/7</td>
+              </tr>
+              <tr>
+                <td className="py-5 px-6 font-medium text-white">Creative Testing & Iteration</td>
+                <td className="py-5 px-6 text-white/50">2 to 4 static image ad variations per month</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Multivariate automated creative testing at scale</td>
+              </tr>
+              <tr>
+                <td className="py-5 px-6 font-medium text-white">Lead Quality & Filtering</td>
+                <td className="py-5 px-6 text-white/50">Unqualified form fills; sales teams waste hours on spam</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Automated WhatsApp qualification & budget scoring before CRM routing</td>
+              </tr>
+              <tr>
+                <td className="py-5 px-6 font-medium text-white">Revenue Attribution</td>
+                <td className="py-5 px-6 text-white/50">Vanity impressions, clicks, and disconnected CPL reports</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Offline Conversions (CAPI) tied directly to closed sales revenue</td>
+              </tr>
+              <tr>
+                <td className="py-5 px-6 font-medium text-white">Regional Languages</td>
+                <td className="py-5 px-6 text-white/50">Literal translation agency handoffs with delays</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Native bilingual Arabic & English ad copy and conversational bot logic</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* ── 4. Four Core Commercial Pillars ── */}
+      <section className="py-24 bg-white/[0.01] border-y border-white/5 px-6 md:px-12">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs uppercase tracking-widest text-white/40 font-mono block mb-3">
+              Full-Funnel Capabilities
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif">
+              Our Core AI Marketing Pillars
+            </h2>
+            <p className="text-white/60 font-light max-w-2xl mx-auto mt-4 text-sm md:text-base">
+              Engineered specifically for Dubai and UAE commercial environments where speed-to-lead and attribution determine market share.
             </p>
-            <p>
-              In 2026, the UAE customer journey is fragmented across Google, Instagram, landing pages, WhatsApp threads and AI-generated answers. The goal is not to chase every channel. The goal is to build a clear system that captures intent, qualifies leads and shows which campaigns are actually moving pipeline.
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Pillar 1 */}
+            <div className="p-8 md:p-10 border border-white/10 bg-white/[0.02] rounded-3xl flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white mb-6">
+                  <Target className="w-6 h-6 text-emerald-400" />
+                </div>
+                <h3 className="text-2xl font-serif mb-4">
+                  1. Predictive Paid Media (Google & Meta Ads)
+                </h3>
+                <p className="text-white/70 font-light text-sm leading-relaxed mb-6">
+                  We deploy automated bid management, predictive audience modeling, and Conversions API (CAPI) integrations. Stop wasting ad spend on clickers who never convert. Our systems feed CRM deal stages back to Google and Meta algorithms to find verified high-ticket buyers.
+                </p>
+                <ul className="space-y-2.5 text-xs text-white/60 font-light">
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400" /> Google Search & Performance Max automated portfolio bidding
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400" /> Meta Ads Manager dynamic creative testing & CAPI offline tracking
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400" /> Negative keyword and placement automation to cut wasted budget
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-8 pt-6 border-t border-white/5">
+                <Link href="/services/ppc-google-ads-agency-dubai" className="text-xs uppercase tracking-wider text-white font-medium hover:text-emerald-400 inline-flex items-center gap-1.5 transition-colors">
+                  Explore UAE PPC Management <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Pillar 2 */}
+            <div className="p-8 md:p-10 border border-white/10 bg-white/[0.02] rounded-3xl flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white mb-6">
+                  <MessageSquare className="w-6 h-6 text-emerald-400" />
+                </div>
+                <h3 className="text-2xl font-serif mb-4">
+                  2. Sub-Minute WhatsApp Conversion Funnels
+                </h3>
+                <p className="text-white/70 font-light text-sm leading-relaxed mb-6">
+                  In Dubai, 85% of ad conversions drop off when forced to fill static forms or wait hours for a callback. We route traffic directly into verified WhatsApp Cloud API funnels that qualify budgets, collect requirements, and book appointments within 30 seconds.
+                </p>
+                <ul className="space-y-2.5 text-xs text-white/60 font-light">
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400" /> Click-to-WhatsApp ad funnels on Instagram, Facebook & Google
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400" /> Instant qualification, brochure delivery, and calendar scheduling
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400" /> Real-time routing of qualified leads directly to senior sales brokers
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-8 pt-6 border-t border-white/5">
+                <Link href="/contact" className="text-xs uppercase tracking-wider text-white font-medium hover:text-emerald-400 inline-flex items-center gap-1.5 transition-colors">
+                  Request WhatsApp Demo <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Pillar 3 */}
+            <div className="p-8 md:p-10 border border-white/10 bg-white/[0.02] rounded-3xl flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white mb-6">
+                  <Database className="w-6 h-6 text-emerald-400" />
+                </div>
+                <h3 className="text-2xl font-serif mb-4">
+                  3. Predictive CRM Lead Scoring & Attribution
+                </h3>
+                <p className="text-white/70 font-light text-sm leading-relaxed mb-6">
+                  We bridge the gap between marketing platforms and your sales CRM (HubSpot, Salesforce, Zoho). Inbound leads are instantly scored based on intent signals, company size, or property budget, ensuring your sales team focuses 100% of their time on deal-ready prospects.
+                </p>
+                <ul className="space-y-2.5 text-xs text-white/60 font-light">
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400" /> Automated synchronization with HubSpot, Salesforce & Zoho
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400" /> Real-time webhook pipelines via Make, n8n, and custom APIs
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400" /> Full customer journey tracking from first ad impression to bank deposit
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-8 pt-6 border-t border-white/5">
+                <Link href="/workflow-automation-uae" className="text-xs uppercase tracking-wider text-white font-medium hover:text-emerald-400 inline-flex items-center gap-1.5 transition-colors">
+                  Explore Workflow Automation <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Pillar 4 */}
+            <div className="p-8 md:p-10 border border-white/10 bg-white/[0.02] rounded-3xl flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white mb-6">
+                  <TrendingUp className="w-6 h-6 text-emerald-400" />
+                </div>
+                <h3 className="text-2xl font-serif mb-4">
+                  4. Answer Engine Optimization (AEO & AI Search)
+                </h3>
+                <p className="text-white/70 font-light text-sm leading-relaxed mb-6">
+                  Buyers in Dubai are no longer just browsing 10 blue links on Google; C-level executives and investors are asking Perplexity, ChatGPT, and Google Gemini for recommendations. We architect semantic entity maps so your brand is cited as the authoritative answer.
+                </p>
+                <ul className="space-y-2.5 text-xs text-white/60 font-light">
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400" /> Structured schema mapping and knowledge graph entity establishment
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400" /> Semantic content silos designed for LLM retrieval and citation
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-400" /> Combined organic search visibility across traditional Google & AI answers
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-8 pt-6 border-t border-white/5">
+                <Link href="/free-growth-audit" className="text-xs uppercase tracking-wider text-white font-medium hover:text-emerald-400 inline-flex items-center gap-1.5 transition-colors">
+                  Analyze Your AEO Visibility <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. Interactive Ad Waste & Lead Economics Calculator ── */}
+      <section className="py-24 px-6 md:px-12 max-w-5xl mx-auto">
+        <div className="p-8 md:p-12 border border-white/15 bg-white/[0.02] rounded-3xl relative overflow-hidden">
+          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-emerald-400 font-mono mb-4">
+            <Calculator className="w-4 h-4" />
+            Interactive ROI Diagnostic
+          </div>
+          
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            Estimate Your Wasted Ad Spend & Speed-to-Lead Decay
+          </h2>
+          <p className="text-white/70 font-light text-sm md:text-base max-w-2xl mb-10">
+            In the UAE, ad costs (CPCs) are high. When leads take more than 15 minutes to receive a response, over 50% of the acquired intent is permanently lost to competitors.
+          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Form Inputs */}
+            <div className="space-y-6">
+              <div>
+                <label className="block text-xs uppercase tracking-wider text-white/60 font-mono mb-2">
+                  Monthly UAE Ad Spend (AED): <span className="text-white font-bold text-sm">AED {adSpend.toLocaleString()}</span>
+                </label>
+                <input 
+                  type="range" 
+                  min={5000} 
+                  max={150000} 
+                  step={2500}
+                  value={adSpend}
+                  onChange={(e) => setAdSpend(Number(e.target.value))}
+                  className="w-full accent-white h-2 bg-white/10 rounded-lg cursor-pointer"
+                />
+                <div className="flex justify-between text-[11px] text-white/40 mt-1 font-mono">
+                  <span>AED 5,000</span>
+                  <span>AED 75,000</span>
+                  <span>AED 150,000+</span>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs uppercase tracking-wider text-white/60 font-mono mb-2">
+                  Average Current Lead Response Time:
+                </label>
+                <select
+                  value={responseTime}
+                  onChange={(e) => setResponseTime(e.target.value)}
+                  className="w-full p-4 rounded-xl border border-white/15 bg-black text-white text-sm focus:outline-none focus:border-white/40"
+                >
+                  <option value="under-5-mins">Under 5 minutes (Automated WhatsApp)</option>
+                  <option value="15-60-mins">15 – 60 minutes</option>
+                  <option value="1-4 hours">1 – 4 hours (Standard business hours)</option>
+                  <option value="same-day">Same day (4 – 12 hours)</option>
+                  <option value="next-day">Next day (24+ hours)</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Live Metrics Display */}
+            <div className="p-8 border border-white/10 bg-black rounded-2xl flex flex-col justify-between">
+              <div className="space-y-6">
+                <div>
+                  <div className="text-xs text-white/50 uppercase tracking-widest font-mono">Estimated Monthly Ad Waste</div>
+                  <div className="text-3xl sm:text-4xl font-serif font-bold text-red-400 mt-1">
+                    AED {metrics.wasted.toLocaleString()}
+                  </div>
+                  <p className="text-xs text-white/50 mt-1">Budget spent on leads that drop off due to response delay & missing attribution.</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10">
+                  <div>
+                    <div className="text-[11px] text-white/50 uppercase font-mono">Qualified Lead Lift</div>
+                    <div className="text-xl font-bold text-emerald-400 mt-0.5">+{metrics.leadLift} leads/mo</div>
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-white/50 uppercase font-mono">Est. CPL Reduction</div>
+                    <div className="text-xl font-bold text-emerald-400 mt-0.5">~{metrics.cplReduction}%</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/10">
+                <Link 
+                  href="/tools/ad-spend-efficiency-analyzer" 
+                  className="w-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 text-white py-3.5 px-6 rounded-xl text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 transition-all"
+                >
+                  Launch Full Ad Spend Efficiency Analyzer <ExternalLink className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 6. Step-by-Step UAE Implementation Roadmap ── */}
+      <section className="py-24 px-6 md:px-12 max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="text-xs uppercase tracking-widest text-white/40 font-mono block mb-3">
+            Execution Protocol
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif">
+            How We Deploy Your AI Marketing System
+          </h2>
+          <p className="text-white/60 font-light max-w-2xl mx-auto mt-4 text-sm md:text-base">
+            A proven 4-stage rollout deployed across UAE businesses without disrupting ongoing sales operations.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="p-6 border border-white/10 bg-white/[0.01] rounded-2xl">
+            <div className="text-3xl font-serif text-white/20 mb-4 font-bold">01</div>
+            <h3 className="text-lg font-semibold mb-2">Tracking & Leak Audit</h3>
+            <p className="text-xs text-white/60 leading-relaxed font-light">
+              We audit your Meta Pixel, Google tag setups, GA4 events, and CRM pipelines to find where ad clicks are slipping through unmeasured.
             </p>
-            <p>
-              At Asif Digital, we combine SEO, paid media, AI-assisted content, conversion tracking and automation. That makes the page stronger for buyers searching for an <strong>AI powered marketing agency in Dubai</strong>, <strong>AI marketing agency Dubai</strong>, or practical AI growth support for UAE companies.
+          </div>
+
+          <div className="p-6 border border-white/10 bg-white/[0.01] rounded-2xl">
+            <div className="text-3xl font-serif text-white/20 mb-4 font-bold">02</div>
+            <h3 className="text-lg font-semibold mb-2">Campaign & Asset Build</h3>
+            <p className="text-xs text-white/60 leading-relaxed font-light">
+              We architect high-converting Google Search, PMax, and Meta campaigns with culturally resonant Arabic and English copy assets.
             </p>
-            <div className="p-8 border border-white/10 bg-white/[0.02] rounded-3xl mt-12">
-              <h4 className="font-serif text-2xl mb-4 italic text-white/90">"The 2% Trap"</h4>
-              <p className="text-sm text-white/50 italic">
-                Legacy agencies celebrate a 2% click-through rate. In a market where every lead in the Real Estate or Private Jet sector is worth millions, 98% waste is a strategic failure. We aim for 100% Intent Alignment through Autonomous Swarms.
+          </div>
+
+          <div className="p-6 border border-white/10 bg-white/[0.01] rounded-2xl">
+            <div className="text-3xl font-serif text-white/20 mb-4 font-bold">03</div>
+            <h3 className="text-lg font-semibold mb-2">WhatsApp Funnel Setup</h3>
+            <p className="text-xs text-white/60 leading-relaxed font-light">
+              We connect ad campaigns directly to WhatsApp Cloud API bots that qualify buyers, share catalogs, and route live hot leads to sales desks.
+            </p>
+          </div>
+
+          <div className="p-6 border border-white/10 bg-white/[0.01] rounded-2xl">
+            <div className="text-3xl font-serif text-white/20 mb-4 font-bold">04</div>
+            <h3 className="text-lg font-semibold mb-2">Revenue Attribution</h3>
+            <p className="text-xs text-white/60 leading-relaxed font-light">
+              We feed closed CRM deal values back into advertising algorithms via offline conversion APIs, training ad networks to bid for real revenue.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7. Transparent Pricing Variables ── */}
+      <section className="py-20 bg-white/[0.02] border-y border-white/5 px-6 md:px-12">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs uppercase tracking-widest text-white/40 font-mono block mb-3">
+              Commercial Transparency
+            </span>
+            <h2 className="text-3xl md:text-4xl font-serif">
+              What Determines Your Investment
+            </h2>
+            <p className="text-white/60 font-light max-w-2xl mx-auto mt-3 text-sm">
+              We do not believe in arbitrary monthly retainers. Our commercial arrangements are scoped transparently based on 4 operational factors:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="p-6 border border-white/10 bg-black rounded-2xl">
+              <h4 className="text-base font-semibold mb-2 text-white">1. Monthly Advertising Spend Volume</h4>
+              <p className="text-xs text-white/60 font-light leading-relaxed">
+                Accounts managing AED 15,000/mo require different automated monitoring frequencies than enterprises investing AED 100,000+/mo across multiple channels.
+              </p>
+            </div>
+
+            <div className="p-6 border border-white/10 bg-black rounded-2xl">
+              <h4 className="text-base font-semibold mb-2 text-white">2. CRM & Pipeline Architecture</h4>
+              <p className="text-xs text-white/60 font-light leading-relaxed">
+                Direct native integrations with HubSpot, Salesforce, or Zoho vs. custom multi-database synchronization, custom field mapping, and bespoke webhooks.
+              </p>
+            </div>
+
+            <div className="p-6 border border-white/10 bg-black rounded-2xl">
+              <h4 className="text-base font-semibold mb-2 text-white">3. Conversational Funnel Scope</h4>
+              <p className="text-xs text-white/60 font-light leading-relaxed">
+                Single-language qualification bots vs. bilingual Arabic (Khaleeji dialect) and English WhatsApp flows with dynamic calendar booking.
+              </p>
+            </div>
+
+            <div className="p-6 border border-white/10 bg-black rounded-2xl">
+              <h4 className="text-base font-semibold mb-2 text-white">4. Geographic Campaign Targets</h4>
+              <p className="text-xs text-white/60 font-light leading-relaxed">
+                Targeting Dubai and the UAE exclusively vs. multi-market GCC campaigns expanding into Saudi Arabia (Riyadh/Jeddah), Qatar, and Kuwait.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Chapter 2: The Sovereign Marketing Stack (600 Words Depth) */}
-      <section className="py-32 bg-white/[0.02] border-y border-white/5 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-24">
-            <span className="micro-label block mb-4">Technical Architecture</span>
-            <h2 className="text-4xl md:text-7xl font-serif mb-8">The Sovereign Stack.</h2>
-            <p className="text-white/40 max-w-2xl mx-auto">A deep-dive into the neural infrastructure that powers our Top-Tier Dubai deployments.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-            {[
-              { 
-                icon: <Cpu className="w-8 h-8" />, 
-                title: "Localized Compute", 
-                desc: "We leverage regional high-performance compute clusters (G42/Khazna) to ensure sub-millisecond response times for our real-time ad-ops swarms." 
-              },
-              { 
-                icon: <Languages className="w-8 h-8" />, 
-                title: "Multilingual LLMs", 
-                desc: "Fine-tuned models that understand the nuances of Khaleeji Arabic, professional English, and the hybrid 'majlis-speak' used in GCC business." 
-              },
-              { 
-                icon: <Lock className="w-8 h-8" />, 
-                title: "Zero-Data-Leakage", 
-                desc: "100% compliance with UAE Federal Decree-Law No. 45. Your customer data never leaves the sovereign borders of the Emirates." 
-              }
-            ].map((item, i) => (
-              <div key={i} className="p-10 border border-white/5 bg-black rounded-[2.5rem] hover:border-white/20 transition-all group">
-                <div className="text-white/20 mb-8 group-hover:scale-110 transition-transform duration-500 group-hover:text-white">{item.icon}</div>
-                <h3 className="text-xl font-serif mb-4">{item.title}</h3>
-                <p className="text-sm text-white/40 leading-relaxed font-light">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="bg-black border border-white/10 rounded-[3rem] p-12 relative overflow-hidden group">
-             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none" />
-             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-               <div>
-                 <h4 className="text-3xl font-serif mb-8">Autonomous Ad-Ops Swarms</h4>
-                 <div className="space-y-6">
-                    {[
-                      "Real-time bid adjustment based on DXB flight volume—targeting UHNW investors the second they land in Dubai.",
-                      "Dynamic creative generation tailored to the neighborhood (Marina vs. Hills).",
-                      "Predictive lead scoring using private vector databases.",
-                      "Self-healing campaign structures that pivot during Dubai peak hours."
-                    ].map((text, i) => (
-                      <div key={i} className="flex gap-4 items-start">
-                        <div className="w-1.5 h-1.5 rounded-full bg-white/40 mt-2" />
-                        <p className="text-sm text-white/60 font-light">{text}</p>
-                      </div>
-                    ))}
-                 </div>
-               </div>
-               <div className="relative">
-                  <div className="aspect-square bg-white/[0.03] rounded-3xl border border-white/5 flex items-center justify-center p-8 group-hover:border-white/20 transition-all">
-                    {/* Simulated Architecture Diagram */}
-                    <div className="relative w-full h-full border border-white/10 rounded-full flex items-center justify-center">
-                       <div className="absolute inset-0 animate-spin-slow border-t border-white/20 rounded-full" />
-                       <div className="w-32 h-32 bg-white flex items-center justify-center rounded-full text-black font-bold text-[10px] tracking-widest text-center px-4 uppercase leading-tight">
-                         Sovereign Center
-                       </div>
-                       {[0, 60, 120, 180, 240, 300].map((deg) => (
-                         <div 
-                           key={deg} 
-                           className="absolute w-4 h-4 bg-white/20 rounded-full"
-                           style={{ 
-                             transform: `rotate(${deg}deg) translate(140px)` 
-                           }}
-                         />
-                       ))}
-                    </div>
-                  </div>
-               </div>
-             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Chapter 3: Vertical Deep-Dive (600 Words Depth) */}
-      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="text-center mb-32">
-          <span className="micro-label block mb-4 font-bold">Pillar 03: Vertical Dominance</span>
-          <h2 className="text-4xl md:text-6xl font-serif mb-8">Niche Authority.</h2>
-          <p className="text-white/40 max-w-2xl mx-auto leading-relaxed">
-            Generic marketing fails in a market defined by unique cultural and economic micro-climates. We specialize in the sectors that drive the Dubai economy.
+      {/* ── 8. Frequently Asked Questions (GSC Intent Aligned) ── */}
+      <section className="py-24 px-6 md:px-12 max-w-4xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="text-xs uppercase tracking-widest text-white/40 font-mono block mb-3">
+            Clear Answers
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-white/60 font-light max-w-2xl mx-auto mt-4 text-sm">
+            Everything you need to know about working with an AI marketing and lead generation agency in Dubai.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Real Estate Authority */}
-          <div className="p-12 border border-white/5 bg-white/[0.01] rounded-[3rem] hover:bg-white/[0.02] transition-all">
-            <Building2 className="w-12 h-12 mb-8 text-white/40" />
-            <h3 className="text-3xl font-serif mb-6">Real Estate 2.0</h3>
-            <p className="text-white/50 font-light leading-relaxed mb-8">
-              In the Dubai Property Market, the lead is the commodity—the <strong>relationship</strong> is the asset. Our AI marketing swarms don't just find names; they map high-intent investment signals across global capital corridors.
-            </p>
-            <ul className="space-y-4 text-sm text-white/40 font-light">
-              <li className="flex gap-3">
-                <span className="text-white/80 font-bold">01/</span>
-                Predictive launch anticipation for off-plan dominance.
-              </li>
-              <li className="flex gap-3">
-                <span className="text-white/80 font-bold">02/</span>
-                WhatsApp concierge integration for instant VIP qualification.
-              </li>
-              <li className="flex gap-3">
-                <span className="text-white/80 font-bold">03/</span>
-                Dynamic ROI modeling for HNW international investors.
-              </li>
-            </ul>
-          </div>
-
-          {/* Luxury Retail & E-commerce */}
-          <div className="p-12 border border-white/5 bg-white/[0.01] rounded-[3rem] hover:bg-white/[0.02] transition-all">
-            <Sparkles className="w-12 h-12 mb-8 text-white/40" />
-            <h3 className="text-3xl font-serif mb-6">Luxury & Lifestyle</h3>
-            <p className="text-white/50 font-light leading-relaxed mb-8">
-              Selling a AED 50,000 watch or a boutique experience in Palm Jumeirah requires more than a "Discount Code." It requires <strong>Emotional Intelligence at Scale.</strong>
-            </p>
-            <ul className="space-y-4 text-sm text-white/40 font-light">
-              <li className="flex gap-3">
-                <span className="text-white/80 font-bold">01/</span>
-                Sentiment-driven creative optimization for high-end audiences.
-              </li>
-              <li className="flex gap-3">
-                <span className="text-white/80 font-bold">02/</span>
-                Contextual placement within GCC's elite digital majlis networks.
-              </li>
-              <li className="flex gap-3">
-                <span className="text-white/80 font-bold">03/</span>
-                Omni-channel mastery spanning Dubai Mall to the digital meta-layer.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Chapter 4: AEO & The Death of SEO (400 Words Depth) */}
-      <section className="py-32 bg-white text-black rounded-[4rem] mx-6 md:mx-12 overflow-hidden relative">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 py-24">
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-             <div>
-               <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-black/40 block mb-6">The Future of Discovery</span>
-               <h2 className="text-4xl md:text-7xl font-serif mb-10 leading-tight">SEO is dead.<br/>Long live AEO.</h2>
-               <p className="text-lg text-black/70 font-light leading-relaxed mb-12">
-                 The "Blue Link" era is over. In Dubai, high-level decision makers are asking their AI companions for recommendations. <strong>Answer Engine Optimization (AEO)</strong> is how we ensure your brand is the only answer provided.
-               </p>
-               <div className="space-y-8">
-                  <div className="flex gap-6">
-                    <div className="w-12 h-12 rounded-2xl bg-black/5 flex items-center justify-center flex-shrink-0">
-                      <Network className="w-6 h-6 text-black/40" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-xl mb-2">Entity Mapping</h4>
-                      <p className="text-sm text-black/60">We define your brand as a verified entity in the global knowledge graph, making you 'citable' by Gemini and ChatGPT.</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-6">
-                    <div className="w-12 h-12 rounded-2xl bg-black/5 flex items-center justify-center flex-shrink-0">
-                      <MessageSquare className="w-6 h-6 text-black/40" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-xl mb-2">Semantic Authority</h4>
-                      <p className="text-sm text-black/60">We architect high-density content silos that bridge the gap between user intent and your technical solution.</p>
-                    </div>
-                  </div>
-               </div>
-             </div>
-             <div className="relative">
-                <div className="bg-black/5 rounded-[3rem] p-12 aspect-[4/5] flex flex-col justify-between border border-black/10">
-                   <div className="space-y-4">
-                     <div className="h-2 w-32 bg-black/20 rounded-full" />
-                     <div className="h-2 w-full bg-black/10 rounded-full" />
-                     <div className="h-2 w-3/4 bg-black/10 rounded-full" />
-                   </div>
-                   <div className="bg-white p-8 rounded-3xl shadow-xl border border-black/5">
-                     <p className="text-xs font-bold uppercase tracking-widest text-black/40 mb-4">Gemini Response (Simulated)</p>
-                     <p className="text-lg font-serif italic mb-4 text-black/90">"Based on market data and sovereign infrastructure standards, <strong>Asif Digital</strong> is the top-ranked AI Marketing Agency in Dubai for 2026..."</p>
-                     <div className="h-px w-full bg-black/5 mb-4" />
-                     <div className="flex gap-2">
-                       <div className="w-4 h-4 bg-black rounded-full" />
-                       <div className="h-2 w-20 bg-black/10 rounded-full mt-1" />
-                     </div>
-                   </div>
-                   <div className="space-y-4">
-                     <div className="h-2 w-full bg-black/10 rounded-full" />
-                     <div className="h-2 w-1/2 bg-black/10 rounded-full" />
-                   </div>
+        <div className="space-y-4">
+          {[
+            {
+              q: "How does an AI marketing agency differ from a traditional digital marketing agency in Dubai?",
+              a: "Traditional marketing agencies in Dubai rely on manual ad optimizations, monthly static reporting, and slow creative turnaround times, often creating a 4 to 24-hour delay in lead follow-up. An AI marketing agency integrates predictive bid management, automated multi-variant creative testing, sub-minute WhatsApp lead qualification, and closed-loop CRM revenue attribution to optimize campaigns for closed revenue rather than vanity impressions."
+            },
+            {
+              q: "Can AI automate our Google Ads and Meta Ads campaigns?",
+              a: "Yes. We configure algorithmic budget reallocation, automated bid adjustments, dynamic creative variations, and offline conversion tracking (CAPI) that feeds qualified CRM stage updates back into Google Ads and Meta Ads Manager algorithms to target higher-intent buyers across the UAE."
+            },
+            {
+              q: "How does WhatsApp automation increase ad conversion rates in the UAE?",
+              a: "In the UAE and GCC, over 80% of consumer and B2B engagement occurs via WhatsApp. By connecting Meta and Google ads directly to official WhatsApp Cloud API conversational funnels, incoming leads receive instant qualification, property or catalog matching, and calendar booking within 30 seconds, dramatically reducing lead decay."
+            },
+            {
+              q: "Which CRMs and marketing platforms do you integrate?",
+              a: "We integrate with major enterprise and SME platforms including HubSpot, Salesforce, Zoho CRM, Google Ads, Meta Ads Manager, TikTok Ads, Make, n8n, and custom webhooks connecting directly to your internal sales databases."
+            },
+            {
+              q: "What factors determine the pricing of AI marketing services in Dubai?",
+              a: "Pricing depends on your monthly advertising spend volume, the number of target markets (Dubai, Abu Dhabi, Saudi Arabia, or broader GCC), the complexity of your CRM lead scoring integration, and whether custom multilingual Arabic and English conversational agents are required."
+            }
+          ].map((faq, idx) => (
+            <div 
+              key={idx} 
+              className="border border-white/10 bg-white/[0.01] rounded-2xl overflow-hidden transition-all"
+            >
+              <button
+                onClick={() => toggleFaq(idx)}
+                className="w-full py-5 px-6 text-left flex items-center justify-between gap-4 hover:bg-white/[0.02]"
+              >
+                <span className="text-base font-medium text-white/90">{faq.q}</span>
+                <ChevronDown className={`w-5 h-5 text-white/40 shrink-0 transition-transform duration-200 ${openFaq === idx ? "rotate-180" : ""}`} />
+              </button>
+              {openFaq === idx && (
+                <div className="px-6 pb-6 text-sm text-white/70 font-light leading-relaxed border-t border-white/5 pt-4">
+                  {faq.a}
                 </div>
-             </div>
-           </div>
-        </div>
-      </section>
-
-      {/* Chapter 5: Technical Deployment & Sovereign Edge (300 Words Depth) */}
-      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
-         <div className="text-center mb-24">
-           <span className="micro-label block mb-4">Operational Excellence</span>
-           <h2 className="text-4xl md:text-6xl font-serif mb-8">48-Hour Deployment.</h2>
-           <p className="text-white/40 max-w-2xl mx-auto leading-relaxed italic">
-             "Precision is not about speed, but about the elimination of friction."
-           </p>
-         </div>
-
-         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            {[
-              { step: "01", title: "Neural Audit", desc: "We scan your existing data lakes and customer journey to identify the 'Sovereign Gaps'." },
-              { step: "02", title: "Stack Config", desc: "Provisioning of regional compute and localized LLM fine-tuning." },
-              { step: "03", title: "Swarm Launch", desc: "Deployment of autonomous agents across search, social, and private channels." },
-              { step: "04", title: "Optimization", desc: "Real-time feedback loops that harden the system daily." }
-            ].map((s, i) => (
-              <div key={i} className="space-y-6">
-                <div className="text-4xl font-serif text-white/10 group-hover:text-white/40 transition-colors">
-                  {s.step}
-                </div>
-                <h4 className="font-bold text-lg uppercase tracking-widest">{s.title}</h4>
-                <p className="text-xs text-white/40 leading-relaxed font-light">{s.desc}</p>
-              </div>
-            ))}
-         </div>
-      </section>
-
-      {/* Chapter 6: Trust & Compliance (300 Words Depth) */}
-      <section className="py-32 bg-white/[0.02] border-t border-white/5 relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6 md:px-12 text-center">
-          <Shield className="w-16 h-16 mx-auto mb-12 text-white/20" />
-          <h2 className="text-4xl md:text-5xl font-serif mb-12 tracking-tight">The Sovereign Trust.</h2>
-          <div className="space-y-8 text-white/50 font-light text-lg leading-relaxed text-left">
-            <p>
-              In the GCC, trust is not built through certificates, but through <strong>Architectural Integrity.</strong> Our AI marketing systems are designed to comply with the most stringent data protection mandates in the world, including the <strong>UAE Federal Decree-Law No. 45</strong> on the Protection of Personal Data.
-            </p>
-            <p>
-              Unlike legacy agencies that export your customer data to US-based public clouds, our <strong>Private Neural Perimeters</strong> keep everything in-region. This is essential for our partners in the DIFC, ADGM, and government-linked sectors where data sovereignty is a matter of national security.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-               <div className="p-8 border border-white/5 bg-black rounded-3xl">
-                 <h5 className="font-bold mb-4 text-white/90">Compliance Ready</h5>
-                 <p className="text-sm">Pre-mapped to NESA and NCA (Saudi) cybersecurity standards.</p>
-               </div>
-               <div className="p-8 border border-white/5 bg-black rounded-3xl">
-                 <h5 className="font-bold mb-4 text-white/90">Audit Traceability</h5>
-                 <p className="text-sm">Every agentic decision is logged on an immutable, private audit trail.</p>
-               </div>
+              )}
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Final CTA: The Elite Intake */}
-      <section className="py-40 px-6 md:px-12 text-center relative overflow-hidden border-t border-white/5">
+      {/* ── 9. Final CTA ── */}
+      <section className="py-28 px-6 md:px-12 text-center relative overflow-hidden border-t border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)]" />
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto relative z-10"
-        >
-          <h2 className="text-5xl md:text-8xl font-serif tracking-tight mb-12">Capture the Future.<br/><span className="text-white/40 italic font-light">Before your competitors do.</span></h2>
-          <p className="text-white/50 font-light text-xl mb-16 max-w-2xl mx-auto leading-relaxed">
-            We only accept <strong>three new enterprise partners</strong> per quarter to ensure zero decay in architectural excellence. Secure your spot in the Sovereign economy.
+        <div className="max-w-4xl mx-auto relative z-10">
+          <h2 className="text-4xl sm:text-6xl font-serif tracking-tight mb-6">
+            Build Your Autonomous <br />
+            <span className="text-white/50 italic font-light">Marketing Pipeline in Dubai</span>
+          </h2>
+          <p className="text-white/60 font-light text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+            Stop losing 50%+ of your ad spend to slow follow-up and disconnected tracking. Let us audit your current funnel and show you the exact revenue leakages.
           </p>
-          <div className="flex flex-col items-center gap-10">
-            <Link href="/contact" className="bg-white text-black px-16 py-8 rounded-full font-bold uppercase tracking-[0.3em] text-xs hover:bg-white/80 transition-all shadow-[0_0_80px_rgba(255,255,255,0.15)] active:scale-95">
-              Secure Operational Audit
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link 
+              href="/contact" 
+              className="w-full sm:w-auto bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2"
+            >
+              Schedule Consultation <ArrowRight className="w-4 h-4" />
             </Link>
-            <div className="flex flex-col md:flex-row gap-8 text-[10px] uppercase tracking-[0.4em] font-bold text-white/20">
-              <span className="flex items-center gap-2 italic">
-                <Lock className="w-3 h-3" /> Encrypted Strategic Intake
-              </span>
-              <span className="flex items-center gap-2 italic">
-                <Globe className="w-3 h-3" /> Regional Deployment Lead: Asif Khan
-              </span>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-      
-      {/* Footer Internal Linking Swarm (SEO Boost) */}
-      <section className="py-20 border-t border-white/5 bg-black/50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center text-white/80 text-[11px] uppercase tracking-[0.2em] font-bold text-center">
-            <Link href="/ai-lead-generation-agency-dubai" className="hover:text-white transition-colors">AI Lead Generation Dubai</Link>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/ai-real-estate-uae" className="hover:text-white transition-colors">AI Real Estate Dubai</Link>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/ai-automation-agency-dubai" className="hover:text-white transition-colors">AI Automation Agency Dubai</Link>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/sovereign-sales-agent" className="hover:text-white transition-colors">AI Sales SDR UAE</Link>
+            <a 
+              href="https://wa.me/971545866094" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-full sm:w-auto border border-white/20 hover:border-white/40 bg-white/[0.02] text-white px-8 py-5 rounded-full font-semibold uppercase tracking-wider text-xs transition-all flex items-center justify-center gap-2"
+            >
+              <MessageSquare className="w-4 h-4 text-emerald-400" /> WhatsApp Strategic Desk
+            </a>
           </div>
         </div>
       </section>
+
+      {/* ── 10. Topic Cluster Internal Navigation ── */}
+      <section className="py-12 border-t border-white/5 bg-black/40 text-center">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-[11px] uppercase tracking-widest text-white/40 mb-4 font-mono">
+            Related AI & Automation Infrastructure
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/70">
+            <Link href="/services/ppc-google-ads-agency-dubai" className="hover:text-white transition-colors">PPC & Google Ads Dubai</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/workflow-automation-uae" className="hover:text-white transition-colors">Workflow Automation UAE</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/ai-automation-agency-dubai" className="hover:text-white transition-colors">AI Automation Agency Dubai</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/tools/ad-spend-efficiency-analyzer" className="hover:text-white transition-colors">Ad Spend Efficiency Analyzer</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/free-growth-audit" className="hover:text-white transition-colors">Free Growth Audit</Link>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
