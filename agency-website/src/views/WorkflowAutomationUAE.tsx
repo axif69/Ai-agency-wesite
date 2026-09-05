@@ -488,7 +488,7 @@ export default function WorkflowAutomationUAE() {
             },
             {
               q: "Do you support self-hosted n8n instances within the UAE?",
-              a: "Yes. For organizations subject to UAE Federal Decree-Law No. 45 or enterprise data governance policies, we deploy and configure self-hosted n8n instances on local cloud infrastructure, ensuring no confidential commercial data leaves UAE territory."
+              a: "Yes. We configure self-hosted or dedicated n8n instances designed with UAE PDPL-aligned data handling, role-based access controls, customer-owned credentials, and optional UAE-region hosting where required by client governance policy."
             },
             {
               q: "Can you automate document processing for Free Zone logistics and trading?",
