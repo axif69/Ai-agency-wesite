@@ -122,19 +122,19 @@ export default function RealEstateDigitalSolutionsUAE() {
             Property Infrastructure Setup
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif leading-[1.15] tracking-tight mb-6">
-            Real Estate CRM Dubai <br className="hidden md:inline" />
-            <span className="italic text-white/50 font-light tracking-normal">and Digital Solutions UAE</span>
+            Real Estate Digital Solutions <br className="hidden md:inline" />
+            <span className="italic text-white/50 font-light tracking-normal">for UAE Agencies &amp; Developers</span>
           </h1>
           <p className="text-[17px] md:text-[18px] leading-[1.7] text-white/90 max-w-3xl mx-auto mb-8 font-sans font-light">
-            Asif Digital builds real estate CRM and digital solutions in Dubai for agencies, developers, and property teams that need connected websites, lead capture, WhatsApp automation, CRM routing, and reporting systems.
+            Asif Digital builds real estate digital solutions in the UAE for agencies, developers, and property teams that need high-speed property search websites, lead routing, portal integrations, and connected digital infrastructure.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <a 
-              href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20discuss%20automating%20tenant%20and%20maintenance%20requests." 
+              href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20discuss%20real%20estate%20digital%20solutions%20for%20our%20agency." 
               target="_blank" 
               rel="noopener noreferrer" 
-              onClick={() => handleCTA("WhatsApp Discussion", "Hero CTA", "consultation", "https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20discuss%20automating%20tenant%20and%20maintenance%20requests.")}
+              onClick={() => handleCTA("WhatsApp Discussion", "Hero CTA", "consultation", "https://wa.me/971545866094")}
               className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[13px] hover:bg-white/80 transition-all flex items-center gap-3 shadow-2xl h-[52px] font-sans"
             >
               WhatsApp Us <MessageSquare className="w-4 h-4 text-black" />
@@ -149,20 +149,28 @@ export default function RealEstateDigitalSolutionsUAE() {
           </div>
 
           <div className="flex flex-wrap justify-center items-center gap-6 text-[13px] text-white/70 tracking-wider font-mono">
-            <span>✓ UAE CONTACT NUMBER</span>
-            <span>✓ INTEGRATES PROPERTY WEBSITES</span>
-            <span>✓ CUSTOM CRM CONFIGURATIONS</span>
+            <span>✓ UAE DIGITAL INFRASTRUCTURE</span>
+            <span>✓ CUSTOM AGENCY WEBSITES</span>
+            <span>✓ PORTAL INTEGRATIONS</span>
           </div>
         </motion.div>
       </section>
 
       <section className="px-6 md:px-12 py-10 max-w-5xl mx-auto">
-        <div className="p-8 md:p-10 border border-green-500/20 bg-green-500/[0.035] rounded-3xl">
-          <span className="text-green-400 text-[13px] font-bold uppercase tracking-[0.2em] font-mono block mb-4">Real Estate CRM Dubai</span>
-          <h2 className="text-2xl md:text-4xl font-serif mb-5">A CRM setup built around property enquiries, brokers and follow-up.</h2>
-          <p className="text-[17px] text-white/75 leading-[1.7] font-light">
-            We configure real estate CRM workflows for Dubai teams that need to capture enquiries from websites, portals, WhatsApp and campaigns, then assign each lead by location, budget, property type, source and broker availability.
-          </p>
+        <div className="p-8 md:p-10 border border-emerald-500/20 bg-emerald-500/[0.035] rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div className="max-w-2xl">
+            <span className="text-emerald-400 text-[13px] font-bold uppercase tracking-[0.2em] font-mono block mb-2">Dedicated CRM Architecture</span>
+            <h2 className="text-2xl md:text-3xl font-serif mb-3 text-white">Looking specifically for a Dubai Real Estate CRM?</h2>
+            <p className="text-[16px] text-white/75 leading-[1.7] font-light">
+              Explore our dedicated Dubai real estate CRM setup for speed-to-lead automation, portal lead capture (Bayut &amp; Property Finder), and agent routing SLAs.
+            </p>
+          </div>
+          <Link
+            href="/real-estate-crm-dubai"
+            className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-emerald-400 text-black font-bold uppercase tracking-widest text-xs hover:bg-emerald-300 transition-colors shadow-lg"
+          >
+            Explore Real Estate CRM <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
 

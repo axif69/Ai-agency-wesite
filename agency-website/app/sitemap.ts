@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/real-estate/broker-ai-copilot-dubai",
     "/real-estate/ai-roi-calculator-dubai",
     "/real-estate-digital-solutions-uae",
+    "/real-estate-crm-dubai",
     "/web-design-sharjah",
     "/arabic-ai-hub",
     "/blog",

@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/services/RealEstateDigitalSolutionsUAE';
 
 export const metadata = {
-  title: "Real Estate Digital Solutions UAE | Real Estate CRM & WhatsApp AI Dubai",
-  description: "End-to-end real estate digital solutions and CRM in Dubai & UAE. High-speed property portals, automated WhatsApp lead routing, Bayut/Property Finder sync & ROI dashboards.",
+  title: "Real Estate Digital Solutions UAE | Agency Websites, Portals & Tech Infrastructure",
+  description: "End-to-end real estate digital solutions in the UAE. Custom property search websites, portal lead capture, digital transformation, and brokerage technology infrastructure.",
   alternates: {
     canonical: "https://www.asifdigital.agency/real-estate-digital-solutions-uae"
   },
   openGraph: {
-    title: "Real Estate Digital Solutions UAE | Real Estate CRM & WhatsApp AI Dubai",
-    description: "Real estate digital solutions and CRM in Dubai and the UAE connecting property portals, lead capture, WhatsApp automation, CRM routing, and reporting systems.",
+    title: "Real Estate Digital Solutions UAE | Agency Websites, Portals & Tech Infrastructure",
+    description: "Real estate digital solutions in Dubai and the UAE connecting custom property websites, portal lead capture, agency technology infrastructure, and reporting systems.",
     url: "https://www.asifdigital.agency/real-estate-digital-solutions-uae",
     siteName: "Asif Digital: AI Automation, Web & Graphic Design",
     images: [
@@ -24,8 +24,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Real Estate Digital Solutions UAE | Real Estate CRM & WhatsApp AI Dubai",
-    description: "End-to-end real estate digital solutions and CRM in Dubai & UAE.",
+    title: "Real Estate Digital Solutions UAE | Agency Websites, Portals & Tech Infrastructure",
+    description: "End-to-end real estate digital solutions in the UAE. Custom property websites, digital transformation, and agency tech infrastructure.",
     images: ["https://www.asifdigital.agency/images/dubai_real_estate_ai_dashboard.png"]
   }
 };
