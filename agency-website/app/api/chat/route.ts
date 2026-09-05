@@ -27,7 +27,7 @@ export async function POST(req: Request) {
         name: "Groq",
         url: "https://api.groq.com/openai/v1/chat/completions",
         key: groqKey,
-        model: "llama-3.3-70b-versatile",
+        model: "qwen/qwen3.8-27b",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${groqKey}`
