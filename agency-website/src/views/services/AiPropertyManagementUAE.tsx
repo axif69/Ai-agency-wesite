@@ -325,13 +325,25 @@ export default function AiPropertyManagementUAE() {
             <div className="p-6 border border-white/5 bg-black rounded-xl">
               <h3 className="font-bold text-white mb-2 font-sans">WhatsApp Maintenance Intake</h3>
               <p className="text-xs text-white/70 leading-relaxed font-sans font-light">
-                Collects property codes, issue descriptions, and photographs from tenants, organizing them in one file.
+                Collects property codes, issue descriptions, and photographs from tenants, organizing them in one structured record.
               </p>
             </div>
             <div className="p-6 border border-white/5 bg-black rounded-xl">
               <h3 className="font-bold text-white mb-2 font-sans">Automatic Rent Alerts</h3>
               <p className="text-xs text-white/70 leading-relaxed font-sans font-light">
-                Sends friendly pre-expiry reminders and bank details via WhatsApp or email prior to rental payment dates.
+                Sends friendly pre-expiry reminders and payment milestones via WhatsApp or email prior to rental payment dates.
+              </p>
+            </div>
+            <div className="p-6 border border-white/5 bg-black rounded-xl">
+              <h3 className="font-bold text-white mb-2 font-sans">Lease &amp; Tenancy Workflow Automation</h3>
+              <p className="text-xs text-white/70 leading-relaxed font-sans font-light">
+                Organizes renewal timelines, standard tenancy document checklists, and tenant intake data for staff review and approval.
+              </p>
+            </div>
+            <div className="p-6 border border-white/5 bg-black rounded-xl">
+              <h3 className="font-bold text-white mb-2 font-sans">Centralized Operations Dashboard</h3>
+              <p className="text-xs text-white/70 leading-relaxed font-sans font-light">
+                Triage open maintenance tickets, pending tenant inquiries, and upcoming contract milestones in one unified staff interface.
               </p>
             </div>
           </div>

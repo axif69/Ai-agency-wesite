@@ -1115,7 +1115,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Conclusion</h2>
       <p>AI property management in the UAE is not about removing the people who keep buildings and tenant relationships functioning. It is about reducing avoidable communication friction so your team can operate with better visibility and less repetitive admin.</p>
 
-      <p>If your current process lives across chat threads, spreadsheets, and staff memory, <a href="/contact" class="text-white hover:underline">Asif Digital can help design a property-management workflow</a> that feels practical, controlled, and genuinely useful.</p>
+      <p>If your current process lives across chat threads, spreadsheets, and staff memory, explore our dedicated <a href="/ai-property-management-uae" class="text-white font-semibold underline hover:text-emerald-400">AI property management solutions in the UAE</a> or <a href="/contact" class="text-white hover:underline">contact our operations team</a> to design a workflow that feels practical, controlled, and genuinely useful.</p>
     `
   },
   {
