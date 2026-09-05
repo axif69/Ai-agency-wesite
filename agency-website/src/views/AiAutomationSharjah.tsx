@@ -30,11 +30,43 @@ const automations = [
   }
 ];
 
-const useCases = [
-  "Trading and industrial suppliers in Sharjah who receive quote requests from contractors and B2B buyers.",
-  "Clinics, salons and service businesses that need faster appointment replies and reminders.",
-  "Real estate, maintenance and home-service companies handling many WhatsApp enquiries every week.",
-  "Consultants, training centres and professional service firms that need cleaner lead qualification."
+const sharjahWorkflows = [
+  {
+    hub: "SAIF Zone Logistics & Freight",
+    badge: "Sharjah Airport International Free Zone",
+    desc: "Built for freight forwarders, customs brokers, and 3PL warehouses managing continuous quotation inquiries.",
+    steps: [
+      "Inbound quotation inquiry received via email (PDF/packing list) or WhatsApp.",
+      "AI document extraction parses cargo weight, volume, container type, and destination.",
+      "Custom CRM pipeline logs shipment parameters and estimates baseline clearance fee.",
+      "Instant bilingual WhatsApp acknowledgment sent to the shipper in under 60 seconds.",
+      "Dispatch task automatically assigned to warehouse operations with an SLA timer."
+    ]
+  },
+  {
+    hub: "Hamriyah Free Zone Industrial & B2B Trading",
+    badge: "HFZA Industrial & Manufacturing",
+    desc: "Designed for building materials, machinery, and wholesale distributors handling contractor RFQs.",
+    steps: [
+      "Contractor or procurement manager submits bulk RFQ via web portal or WhatsApp.",
+      "AI matches item descriptions against internal inventory catalogs and SKU pricing tables.",
+      "Automated quotation draft created with volume discounts for manager approval.",
+      "Approved quotation dispatched via WhatsApp and email with formal commercial invoice draft.",
+      "Automated 48-hour check-in reminds buyer and alerts sales rep if quotation is pending."
+    ]
+  },
+  {
+    hub: "Sharjah Real Estate & Property Developers",
+    badge: "Aljada, Muwaileh & Tilal City",
+    desc: "Engineered for Sharjah brokerage firms and sales centers receiving portal and social ad leads.",
+    steps: [
+      "Buyer inquiry arrives from Bayut, Property Finder, website, or Meta ad campaigns.",
+      "Interactive WhatsApp assistant qualifies budget, preferred community, and investment timeline.",
+      "Lead scoring algorithm prioritizes ready buyers and routes directly to available property consultants.",
+      "CRM deal created with community tags (Aljada, Muwaileh Commercial, Al Zahia, Tilal City).",
+      "Automated manager notification triggers if lead is not contacted within 15 minutes."
+    ]
+  }
 ];
 
 const faqs = [
@@ -128,16 +160,48 @@ export default function AiAutomationSharjah() {
       </section>
 
       <section className="px-6 md:px-12 py-20 bg-white text-black rounded-[2rem] mx-4 md:mx-10">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-[0.8fr_1.2fr] gap-10">
-          <div>
-            <p className="micro-label text-black/50 mb-4">Local use cases</p>
-            <h2 className="text-4xl md:text-5xl font-serif leading-tight">Built for real Sharjah business operations.</h2>
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mb-12">
+            <p className="micro-label text-black/50 mb-4">Sharjah Operational Workflows</p>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+              Engineered for Sharjah industrial zones, trading hubs, and developers.
+            </h2>
+            <p className="mt-4 text-black/70 text-base leading-relaxed">
+              Standard SaaS tools are rarely pre-configured for how business is conducted in Sharjah. We build automated operational bridges directly connecting inbound customer requests, WhatsApp communications, and back-office task fulfillment.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {useCases.map((item) => (
-              <div key={item} className="rounded-2xl border border-black/10 bg-black/[0.03] p-5">
-                <CheckCircle2 className="w-5 h-5 mb-4" />
-                <p className="text-black/70 leading-relaxed">{item}</p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {sharjahWorkflows.map((flow) => (
+              <div key={flow.hub} className="rounded-2xl border border-black/10 bg-black/[0.02] p-7 flex flex-col justify-between">
+                <div>
+                  <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full mb-4">
+                    {flow.badge}
+                  </span>
+                  <h3 className="text-2xl font-serif font-bold mb-3 text-black">{flow.hub}</h3>
+                  <p className="text-sm text-black/70 mb-6 leading-relaxed">{flow.desc}</p>
+                  
+                  <div className="space-y-3 pt-4 border-t border-black/10">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-black/50 font-bold block mb-2">Operational Automation Flow</span>
+                    {flow.steps.map((step, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        <span className="w-5 h-5 rounded-full bg-black/10 text-black font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                          {idx + 1}
+                        </span>
+                        <p className="text-xs text-black/80 leading-relaxed font-sans">{step}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-black/10">
+                  <Link
+                    href="/free-growth-audit"
+                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 hover:text-emerald-950 transition-colors"
+                  >
+                    Deploy This Workflow <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

@@ -140,6 +140,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       <Link href="/sovereign-sales-agent" className="text-white/95 hover:text-white transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5 italic">Sovereign Sales Agent (B2B)</Link>
                       <Link href="/arabic-ai-hub" className="text-white/95 hover:text-white transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Arabic Intelligence Hub (Khaleeji)</Link>
                       <Link href="/ai-automation-agency-dubai" className="text-white/95 hover:text-white transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Automation Agency (Enterprise)</Link>
+                      <Link href="/ai-automation-sharjah" className="text-white/95 hover:text-emerald-400 transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Automation Agency (Sharjah)</Link>
                       <Link href="/ai-marketing-dubai" className="text-white/95 hover:text-white transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Sovereign Marketing Swarms</Link>
                       <Link href="/services/agentic-finance-uae" className="text-white/95 hover:text-white transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Agentic Finance &amp; Compliance</Link>
                       <Link href="/services/whatsapp-automation-gcc" className="text-white/95 hover:text-white transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200">WhatsApp Business Automation</Link>
@@ -257,6 +258,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <div className="flex flex-col gap-2 text-base text-white/70">
                           <Link href="/services/web-design-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Design</Link>
                           <Link href="/web-design-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors text-green-400">Web Design Sharjah</Link>
+                          <Link href="/ai-automation-sharjah" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors text-emerald-400">AI Automation Sharjah</Link>
                           <Link href="/services/web-development-dubai-uae" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Web Development</Link>
                           <Link href="/services/ecommerce-website-development-dubai" onClick={() => setIsMenuOpen(false)} className="hover:text-white transition-colors">Ecommerce</Link>
                         </div>
@@ -360,6 +362,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <li className="flex flex-col gap-2">
                   <span className="text-[9px] uppercase tracking-widest text-white/90 font-black">Registered Location</span>
                   <span className="text-white/95 text-sm leading-relaxed italic">Muwaileh Commercial - Industrial Area, Sharjah, UAE</span>
+                  <Link href="/ai-automation-sharjah" className="text-[11px] font-mono text-emerald-400/90 hover:underline inline-flex items-center gap-1.5 mt-0.5">
+                    Sharjah AI Automation Team →
+                  </Link>
                 </li>
               </ul>
             </div>
