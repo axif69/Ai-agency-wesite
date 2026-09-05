@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ai-consulting-uae",
     "/ai-lead-generation-agency-dubai",
     "/ai-marketing-dubai",
+    "/ai-seo-agency-dubai",
     "/ai-real-estate-uae",
     "/ai-real-estate-agencies-dubai",
     "/ai-property-management-uae",
