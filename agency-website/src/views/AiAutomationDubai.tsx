@@ -353,9 +353,32 @@ export default function AiAutomationDubai() {
           <p className="text-white/55 text-lg leading-relaxed mb-10">
             Send us your website and a short description of your current lead process. We will suggest the first automation that can save time or protect more enquiries.
           </p>
-          <Link href="/free-growth-audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/85 transition-colors inline-flex items-center justify-center gap-3">
-            Book Free Automation Audit <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link href="/free-growth-audit" className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/85 transition-colors inline-flex items-center justify-center gap-3">
+              Book Free Automation Audit <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link href="/workflow-automation-uae" className="border border-white/20 text-white px-8 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:border-green-400/50 transition-colors inline-flex items-center justify-center gap-3">
+              Explore Systems Integration & Workflows
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Topic Cluster Navigation ── */}
+      <section className="py-12 border-t border-white/5 bg-black/40 text-center">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-[11px] uppercase tracking-widest text-white/40 mb-4 font-mono">
+            Explore Related Automation Infrastructure
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/70">
+            <Link href="/workflow-automation-uae" className="hover:text-white transition-colors text-green-400 font-medium">Workflow Automation UAE (Operational Hub)</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/ai-marketing-dubai" className="hover:text-white transition-colors">AI Marketing Agency Dubai</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/ai-real-estate-agencies-dubai" className="hover:text-white transition-colors">Real Estate Agencies AI</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/ai-chatbots-dubai" className="hover:text-white transition-colors">WhatsApp Chatbots Dubai</Link>
+          </div>
         </div>
       </section>
     </div>
