@@ -18,7 +18,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Please provide a valid name, email and consent." }, { status: 400 });
     }
 
-    const accessKey = process.env.WEB3FORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "3fcd0399-3b92-41b4-b3f4-1d8160e70686";
     if (!accessKey) return NextResponse.json({ error: "Report delivery is temporarily unavailable." }, { status: 503 });
 
     const formData = new FormData();
@@ -32,9 +32,16 @@ export async function POST(request: Request) {
     formData.append("subject", `${tool} lead from ${name}`);
     formData.append("from_name", "Asif Digital Free Tools");
 
-    const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
+    const response = await fetch("https://api.web3forms.com/submit", { 
+      method: "POST", 
+      headers: {
+        "Origin": "https://www.asifdigital.agency",
+        "Referer": "https://www.asifdigital.agency/tools"
+      },
+      body: formData 
+    });
     const result = await response.json();
-    if (!result.success) throw new Error("Web3Forms rejected the submission");
+    if (!result.success) throw new Error("Web3Forms rejected the submission: " + JSON.stringify(result));
 
     return NextResponse.json({ success: true });
   } catch (error) {
