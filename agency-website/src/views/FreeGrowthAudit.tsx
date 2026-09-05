@@ -46,25 +46,28 @@ export default function FreeGrowthAudit() {
     const message = String(data.get("message") || "");
 
     try {
-      const response = await fetch("/api/tools/send-report", {
+      const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "3fcd0399-3b92-41b4-b3f4-1d8160e70686").trim();
+      const formData = new FormData();
+      formData.append("access_key", accessKey);
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("phone", phone || "Not provided");
+      formData.append("company", website || "Not provided");
+      formData.append("service", service);
+      formData.append("subject", `Free Growth Audit Request: ${name} (${service})`);
+      formData.append("from_name", "Asif Digital Growth Audit");
+      formData.append("message", [
+        `Main service needed: ${service}`,
+        `Website URL: ${website}`,
+        `Problem/bottleneck: ${message || "Not specified"}`
+      ].join("\n\n"));
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          company: website,
-          tool: "Free Growth Audit",
-          consent: true,
-          summary: [
-            `Main service needed: ${service}`,
-            `Website URL: ${website}`,
-            `Current problem: ${message}`,
-          ].join("\n\n"),
-        }),
+        body: formData,
       });
-      const result = await response.json();
-      if (!result.success) throw new Error("Submission failed");
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.success) throw new Error(result?.message || "Submission failed");
       
       trackEvent("form_submit", {
         form_name: "Free Growth Audit Intake Form",

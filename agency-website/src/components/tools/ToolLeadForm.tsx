@@ -13,7 +13,7 @@ export default function ToolLeadForm({ tool, summary, heading = "Want a Human Re
     event.preventDefault();
     setState("loading");
     try {
-      const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "").trim();
+      const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "3fcd0399-3b92-41b4-b3f4-1d8160e70686").trim();
       if (!accessKey) throw new Error("Form delivery is not configured");
 
       const response = await fetch("https://api.web3forms.com/submit", {
