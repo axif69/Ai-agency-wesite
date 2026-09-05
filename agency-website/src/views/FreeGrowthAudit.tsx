@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle, Loader2, MessageSquare, Search, Send, Workflow, Zap } from "lucide-react";
+import { trackEvent } from "../utils/analytics";
 
 const reviewItems = [
   "Website clarity, speed and conversion flow",
@@ -64,6 +65,13 @@ export default function FreeGrowthAudit() {
       });
       const result = await response.json();
       if (!result.success) throw new Error("Submission failed");
+      
+      trackEvent("form_submit", {
+        form_name: "Free Growth Audit Intake Form",
+        service_name: service || "Growth Audit",
+        link_url: "https://www.asifdigital.agency/free-growth-audit"
+      });
+
       setStatus("success");
       form.reset();
     } catch {
