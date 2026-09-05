@@ -59,7 +59,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/website-maintenance-support-dubai",
     "/services/whatsapp-automation-gcc",
     "/sovereign-sales-agent",
-    "/workflow-automation-uae"
+    "/workflow-automation-uae",
+    "/hospitality-ai-automation-uae"
   ];
 
   const staticUrls = routes.map((route) => {

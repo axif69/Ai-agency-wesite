@@ -281,6 +281,16 @@ export default function WorkflowAutomationUAE() {
                 <div className="text-white/80 font-light">Concierge manager authorizes VIP complimentary amenities or suite modifications.</div>
               </div>
             </div>
+
+            <div className="mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <span className="text-xs text-white/60">Looking for end-to-end luxury hotel concierge &amp; PMS automation?</span>
+              <Link
+                href="/hospitality-ai-automation-uae"
+                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-400 hover:text-emerald-300 transition-colors"
+              >
+                Explore Dedicated Hospitality AI Systems <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
 
           {/* Workflow 4 */}
@@ -568,6 +578,8 @@ export default function WorkflowAutomationUAE() {
             <Link href="/ai-marketing-dubai" className="hover:text-white transition-colors">AI Marketing Agency Dubai</Link>
             <span className="text-white/20">•</span>
             <Link href="/real-estate" className="hover:text-white transition-colors">Real Estate AI Hub</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/hospitality-ai-automation-uae" className="hover:text-white transition-colors text-emerald-400 font-medium">Hospitality AI Automation UAE</Link>
             <span className="text-white/20">•</span>
             <Link href="/free-growth-audit" className="hover:text-white transition-colors">Free Growth Audit</Link>
           </div>
