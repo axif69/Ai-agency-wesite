@@ -1037,7 +1037,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Property management teams in the UAE are often buried under repeated communication rather than complex strategy. Tenants ask similar questions, maintenance updates arrive without enough information, renewal timelines get chased manually, and rent reminder work repeats every month. AI can help here, but only if it is implemented as an operations system rather than a sales gimmick.</p>
 
       <h2>What AI property management actually covers</h2>
-      <p>AI property management usually refers to systems that help intake, organize, summarize, route, and remind. It does not mean the software becomes the landlord, the accountant, or the legal decision-maker.</p>
+      <p>AI property management usually refers to systems that help intake, organize, summarize, route, and remind. It does not mean the software becomes the landlord, the accountant, or the legal decision-maker. If your property management team wants to automate tenant communication, leasing workflows and operational follow-ups, explore our <a href="/ai-property-management-uae" class="text-white font-semibold underline hover:text-emerald-400">AI property management solutions for UAE companies</a>.</p>
 
       <p>The most practical UAE use cases are:</p>
       <ul>
@@ -1115,7 +1115,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Conclusion</h2>
       <p>AI property management in the UAE is not about removing the people who keep buildings and tenant relationships functioning. It is about reducing avoidable communication friction so your team can operate with better visibility and less repetitive admin.</p>
 
-      <p>If your current process lives across chat threads, spreadsheets, and staff memory, explore our dedicated <a href="/ai-property-management-uae" class="text-white font-semibold underline hover:text-emerald-400">AI property management solutions in the UAE</a> or <a href="/contact" class="text-white hover:underline">contact our operations team</a> to design a workflow that feels practical, controlled, and genuinely useful.</p>
+      <p>If your current process lives across chat threads, spreadsheets, and staff memory, explore our dedicated <a href="/ai-property-management-uae" class="text-white font-semibold underline hover:text-emerald-400">AI property management solutions for UAE companies</a> or <a href="/contact" class="text-white hover:underline">contact our operations team</a> to design a workflow that feels practical, controlled, and genuinely useful.</p>
     `
   },
   {
