@@ -135,8 +135,8 @@ export default function AiPropertyManagementUAE() {
       desc: "Institutional landlords and residential operators seeking high tenant retention, swift maintenance resolution, and SLA adherence."
     },
     {
-      title: "Portfolio Landlords (10+ Units)",
-      desc: "Private asset owners who require structured oversight of rent collections, tenancy expiries, and vendor jobs across multiple buildings."
+      title: "Portfolio Landlords",
+      desc: "Private asset owners who require structured oversight of rent collections, tenancy expiries, and vendor jobs across multiple properties."
     },
     {
       title: "Facility & Operations Teams",
@@ -147,7 +147,7 @@ export default function AiPropertyManagementUAE() {
   const faqs = [
     {
       q: "Can the AI resolve legal disputes or issue eviction notices?",
-      a: "No. The system strictly assists communication intake, triage, and task tracking. All legal notices, lease terminations, tenancy disputes, and rental tribunal matters remain 100% under the manual authorization and execution of your licensed property management team."
+      a: "No. The system strictly assists communication intake, triage, and task tracking. All legal notices, lease terminations, tenancy disputes, and rental tribunal matters remain strictly under the manual authorization and execution of your licensed property management team."
     },
     {
       q: "How does the system integrate with our existing property software or CRM?",
@@ -155,7 +155,7 @@ export default function AiPropertyManagementUAE() {
     },
     {
       q: "Is tenant communication and personal data protected under UAE regulations?",
-      a: "Yes. All data storage, webhook relays, and message logs comply with the UAE Federal Decree-Law No. 45 of 2021 on Personal Data Protection (UAE PDPL). Client records remain encrypted, with dedicated server deployment options available for enterprise operators."
+      a: "Yes. Our systems are designed with UAE PDPL-aligned data handling, access controls, and customer-owned credentials. Client records remain encrypted, with dedicated private server deployment options available for enterprise operators."
     },
     {
       q: "Does this replace our property managers or maintenance coordinators?",
@@ -163,7 +163,7 @@ export default function AiPropertyManagementUAE() {
     },
     {
       q: "How long does implementation take?",
-      a: "A typical property management workflow automation deploys in 2 to 4 weeks. This includes workflow audit, conversational logic design, API/webhook connection, team training, and 30 days of active post-launch optimization."
+      a: "Typical deployments take 2–4 weeks for straightforward workflows; complex PMS/CRM integrations can require longer. This includes workflow audit, conversational logic design, API/webhook connection, team training, and 30 days of active post-launch optimization."
     }
   ];
 
@@ -629,7 +629,7 @@ export default function AiPropertyManagementUAE() {
               <span className="text-xs font-mono text-emerald-400 font-bold block mb-3">Requirement</span>
               <h3 className="text-lg font-bold text-white mb-2 font-sans">Minimum Operational Scale</h3>
               <p className="text-sm text-white/70 leading-relaxed font-light">
-                Best suited for teams managing at least 10–15 units or handling more than 50 tenant touchpoints per month.
+                Best suited for multi-property landlords and operations teams handling recurring tenant inquiries and maintenance coordination.
               </p>
             </div>
           </div>
@@ -642,10 +642,10 @@ export default function AiPropertyManagementUAE() {
           <div>
             <span className="text-[12px] font-mono uppercase tracking-widest text-emerald-400 font-bold block mb-3">Rollout Methodology</span>
             <h2 className="text-3xl md:text-5xl font-serif tracking-tight leading-tight mb-6">
-              2 to 4-Week Implementation
+              Deployment Timeline
             </h2>
             <p className="text-base text-white/75 leading-relaxed font-light mb-8">
-              We deploy systems methodically to ensure zero disruption to existing tenants and staff workflows.
+              Typical deployments take 2–4 weeks for straightforward workflows; complex PMS/CRM integrations can require longer. We deploy systems methodically to ensure zero disruption to existing tenants and staff workflows.
             </p>
             <div className="space-y-4">
               {[
