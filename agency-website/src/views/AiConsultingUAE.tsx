@@ -186,6 +186,29 @@ export default function AiConsultingUAE() {
         </div>
       </section>
 
+      {/* Arabic & Regional AI Advisory Bridge Card */}
+      <section className="px-6 md:px-12 py-12 max-w-5xl mx-auto">
+        <div className="p-8 border border-emerald-400/20 bg-emerald-950/10 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div className="max-w-2xl">
+            <span className="text-emerald-400 text-xs font-mono uppercase tracking-widest block mb-2 font-semibold">
+              Bilingual Arabic &amp; GCC AI Solutions
+            </span>
+            <h3 className="text-xl md:text-2xl font-serif text-white mb-2">
+              Looking for Arabic NLP or Bilingual Enterprise Workflows?
+            </h3>
+            <p className="text-sm text-white/70 font-light leading-relaxed">
+              We engineer custom Modern Standard Arabic and Gulf-dialect AI conversational agents, smart real estate triage, and CRM automation tailored for UAE and GCC operations.
+            </p>
+          </div>
+          <Link
+            href="/arabic-ai-hub"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-emerald-400 text-black text-xs uppercase tracking-wider font-bold hover:bg-emerald-300 transition-colors"
+          >
+            Explore Arabic AI Hub <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-32 bg-white/[0.01] border-t border-white/5">
         <div className="max-w-4xl mx-auto px-6 md:px-12">
@@ -222,6 +245,26 @@ export default function AiConsultingUAE() {
           <Link href="/contact" className="bg-white text-black px-12 py-6 rounded-full font-bold uppercase tracking-widest text-[11px] hover:scale-105 transition-all shadow-[0_0_50px_rgba(255,255,255,0.2)]">
             Book your free AI consultation with Asif Digital
           </Link>
+        </div>
+      </section>
+
+      {/* Cluster Footer Links */}
+      <section className="py-12 border-t border-white/5 bg-black text-center">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-[11px] uppercase tracking-widest text-white/40 mb-4 font-mono">
+            Enterprise Advisory &amp; Regional Solutions
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/70">
+            <Link href="/ai-consulting-uae" className="hover:text-white transition-colors text-white font-medium">AI Consulting UAE</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/arabic-ai-hub" className="hover:text-white transition-colors text-emerald-400">Arabic AI Hub (Bilingual AI)</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/workflow-automation-uae" className="hover:text-white transition-colors">Workflow Automation UAE</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/ai-automation-agency-dubai" className="hover:text-white transition-colors">AI Automation Agency Dubai</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/services/whatsapp-automation-gcc" className="hover:text-white transition-colors">WhatsApp Automation GCC</Link>
+          </div>
         </div>
       </section>
     </div>

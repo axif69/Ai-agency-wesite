@@ -359,7 +359,15 @@ export default function WhatsAppAutomationGCC() {
               {
                 icon: <Globe className="w-6 h-6 text-emerald-400" />,
                 title: "Bilingual Arabic & English Routing",
-                desc: "Automated language detection and natural NLP routing supporting English and Arabic text inquiries and voice note transcriptions."
+                desc: (
+                  <span>
+                    Automated language detection and natural NLP routing supporting English and Arabic inquiries. Explore our dedicated{" "}
+                    <Link href="/arabic-ai-hub" className="text-emerald-400 underline underline-offset-2 hover:text-emerald-300">
+                      Arabic AI Hub
+                    </Link>{" "}
+                    for regional dialect capabilities.
+                  </span>
+                )
               },
               {
                 icon: <Users className="w-6 h-6 text-emerald-400" />,
@@ -500,6 +508,8 @@ export default function WhatsAppAutomationGCC() {
             <Link href="/ai-automation-agency-dubai" className="hover:text-white transition-colors">AI Automation Agency Dubai</Link>
             <span className="text-white/20">•</span>
             <Link href="/real-estate/whatsapp-ai-automation" className="hover:text-white transition-colors">Real Estate WhatsApp AI</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/arabic-ai-hub" className="hover:text-white transition-colors">Arabic AI Hub (Bilingual AI)</Link>
           </div>
         </div>
       </section>
