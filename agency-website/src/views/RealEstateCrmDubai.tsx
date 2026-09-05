@@ -111,7 +111,7 @@ export default function RealEstateCrmDubai() {
     {
       workflow: "Deal & Viewing Tracking",
       manual: "Managers must hold weekly interrogations to find out if viewings took place or if clients were lost.",
-      automated: "Structured deal stages (Inquiry ➔ Qualified ➔ Viewing Booked ➔ Offer ➔ Form F ➔ DLD Transfer) log client milestones automatically."
+      automated: "Structured deal stages (Inquiry ➔ Qualified ➔ Viewing Booked ➔ Offer ➔ Form F Milestone ➔ DLD Settlement Tracking) track agency transaction milestones automatically."
     },
     {
       workflow: "Commission & Milestone Splits",
@@ -159,6 +159,10 @@ export default function RealEstateCrmDubai() {
     {
       q: "What is the typical deployment timeline?",
       a: "Typical deployments take 2 to 4 weeks for core lead capture, WhatsApp qualification, and agent routing workflows. Complex multi-branch brokerages or extensive historical data migrations can require longer."
+    },
+    {
+      q: "Does the CRM submit documents directly to the Dubai Land Department (DLD)?",
+      a: "No. The CRM provides internal workflow and milestone tracking for your agency—tracking Form F signing dates, NOC follow-ups, trustee appointment schedules, and commission splits. Official conveyancing, legal contracts, and property registrations are handled directly by your licensed brokers and official DLD Trustee offices."
     }
   ];
 
@@ -197,7 +201,7 @@ export default function RealEstateCrmDubai() {
             <span className="italic text-white/60 font-light tracking-normal">for Dubai Agencies</span>
           </h1>
           <p className="text-[17px] md:text-[19px] leading-[1.7] text-white/80 max-w-3xl mx-auto mb-10 font-sans font-light">
-            Connect Bayut, Property Finder, and campaign leads into an automated intake pipeline. Trigger instant WhatsApp qualification, enforce agent response SLAs, and track deals from viewing to DLD commission payout.
+            Connect Bayut, Property Finder, and campaign leads into an automated intake pipeline. Trigger instant WhatsApp qualification, enforce agent response SLAs, and track agency deal milestones from viewing through to DLD trustee appointments and commission payouts.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
@@ -236,7 +240,7 @@ export default function RealEstateCrmDubai() {
           </div>
           <h2 className="text-2xl md:text-3xl font-serif mb-4 text-white">What is a Real Estate CRM for Dubai Agencies?</h2>
           <p className="text-[17px] md:text-[18px] leading-[1.75] text-white/95 font-sans font-light mb-6">
-            A Dubai real estate CRM connects incoming property portal and campaign leads into an automated intake pipeline, triggering instant WhatsApp first contact, qualifying buyer budgets and areas, and routing verified opportunities to agents under strict SLA rules while tracking deals through to DLD transfer and commission payouts.
+            A Dubai real estate CRM connects incoming property portal and campaign leads into an automated intake pipeline, triggering instant WhatsApp first contact, qualifying buyer budgets and areas, and routing verified opportunities to agents under strict SLA rules while tracking internal deal milestones through Form F negotiations, DLD trustee appointments, and commission payouts (the CRM tracks internal agency deal stages; all formal legal filings and registrations remain handled by licensed brokers and government trustee offices).
           </p>
           <p className="text-[15px] md:text-[16px] leading-[1.7] text-white/75 font-sans font-light">
             Asif Digital engineers these operational CRM systems for Dubai brokerages and sales teams to eliminate lead decay, stop manual spreadsheet tracking, and ensure every buyer inquiry receives immediate, professional attention.
@@ -384,9 +388,9 @@ export default function RealEstateCrmDubai() {
                   <DollarSign className="w-5 h-5" />
                 </div>
                 <span className="text-xs font-mono text-emerald-400 font-bold block mb-1 uppercase">Stage 06</span>
-                <h3 className="text-xl font-serif font-bold mb-3">Commission &amp; DLD Settlement</h3>
+                <h3 className="text-xl font-serif font-bold mb-3">Commission &amp; Settlement Tracking</h3>
                 <p className="text-sm text-white/70 leading-relaxed font-light mb-4">
-                  Tracks DLD Trustee appointment dates, NOC collections, developer commission milestone disbursements, and internal agent commission split percentages.
+                  Tracks internal agency milestones including DLD Trustee appointment dates, NOC collection progress, developer commission tranches, and agent splits (the system tracks operational deal milestones; official property registrations and legal conveyancing are completed through Dubai Land Department trustee centers).
                 </p>
               </div>
               <div className="text-xs text-white/50 font-mono pt-4 border-t border-white/10">

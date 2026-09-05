@@ -11,7 +11,7 @@ import {
   TrendingUp, TrendingDown, ThumbsUp, ThumbsDown, RefreshCw,
   Bell, XCircle, Activity as ActivityIcon, Image, Shield, User, Key
 } from 'lucide-react';
-import { websiteHostname } from './contact_validation';
+import { websiteHostname } from './server/contact_validation';
 const whatsappUrl = (phone: string) => {
   const digits = String(phone || '').replace(/\D/g, '');
   return digits.length >= 7 ? `https://wa.me/${digits}` : null;
@@ -289,6 +289,8 @@ export default function SovereignDashboardV5_1() {
   const [draftEdits, setDraftEdits] = useState<Record<number, { subject: string; text_body: string }>>({});
   const [userRole, setUserRole] = useState<'owner' | 'sales_rep'>('owner');
   const [generatingAiReply, setGeneratingAiReply] = useState<number | null>(null);
+  const [sendingReplyId, setSendingReplyId] = useState<number | null>(null);
+  const [replySendStatus, setReplySendStatus] = useState<Record<number, { type: 'success' | 'error'; message: string }>>({});
   const [sendingDigest, setSendingDigest] = useState(false);
   const [testingWhatsapp, setTestingWhatsapp] = useState(false);
   const [editingEmail, setEditingEmail] = useState<{[id: number]: string}>({});
@@ -3773,6 +3775,38 @@ export default function SovereignDashboardV5_1() {
                                         placeholder="e.g. Just following up on my previous message regarding our AI sales infrastructure for UAE companies..."
                                     />
                                 </div>
+                                <div>
+                                    <label style={{ fontSize: '0.8rem', color: TEXT_SECONDARY, textTransform: 'uppercase', fontWeight: 800, marginBottom: 12, display: 'block' }}>Unsubscribe Phrases</label>
+                                    <textarea
+                                        value={config.UNSUBSCRIBE_PHRASES || ''}
+                                        onChange={e => setConfig({...config, UNSUBSCRIBE_PHRASES: e.target.value})}
+                                        onBlur={e => saveSettings({ UNSUBSCRIBE_PHRASES: e.target.value })}
+                                        rows={3}
+                                        style={{ width: '100%', padding: '16px 20px', borderRadius: 14, background: '#F5F5F7', border: '1px solid rgba(0,0,0,0.05)', color: TEXT_PRIMARY, fontWeight: 600, outline: 'none', boxSizing: 'border-box' }}
+                                        placeholder="One phrase per line. Replies containing a configured phrase are suppressed immediately."
+                                    />
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16 }}>
+                                    {[
+                                        ['RETENTION_REPLIES_DAYS', 'Dismissed Replies'],
+                                        ['RETENTION_DELIVERY_EVENTS_DAYS', 'Delivery Events'],
+                                        ['RETENTION_DELIVERY_ATTEMPTS_DAYS', 'Delivery Attempts'],
+                                    ].map(([key, label]) => (
+                                        <div key={key}>
+                                            <label style={{ fontSize: '0.8rem', color: TEXT_SECONDARY, textTransform: 'uppercase', fontWeight: 800, marginBottom: 12, display: 'block' }}>{label} Retention (Days)</label>
+                                            <input type="number" min="1" value={config[key] || 365}
+                                                onChange={e => setConfig({...config, [key]: parseInt(e.target.value) || 365})}
+                                                onBlur={e => saveSettings({ [key]: parseInt(e.target.value) || 365 })}
+                                                style={{ width: '100%', padding: '16px 20px', borderRadius: 14, background: '#F5F5F7', border: '1px solid rgba(0,0,0,0.05)', color: TEXT_PRIMARY, fontWeight: 600, outline: 'none', boxSizing: 'border-box' }} />
+                                        </div>
+                                    ))}
+                                </div>
+                                <div style={{ width: '260px' }}>
+                                    <label style={{ fontSize: '0.8rem', color: TEXT_SECONDARY, textTransform: 'uppercase', fontWeight: 800, marginBottom: 12, display: 'block' }}>DKIM Selector</label>
+                                    <input value={config.DKIM_SELECTOR || ''} onChange={e => setConfig({...config, DKIM_SELECTOR: e.target.value})}
+                                        onBlur={e => saveSettings({ DKIM_SELECTOR: e.target.value.trim() })} placeholder="Hostinger selector from DNS"
+                                        style={{ width: '100%', padding: '16px 20px', borderRadius: 14, background: '#F5F5F7', border: '1px solid rgba(0,0,0,0.05)', color: TEXT_PRIMARY, fontWeight: 600, outline: 'none', boxSizing: 'border-box' }} />
+                                </div>
                             </div>
                         </GlassCard>
 
@@ -3821,9 +3855,40 @@ export default function SovereignDashboardV5_1() {
                                         type="number"
                                         min="1"
                                         max="1000"
-                                        value={config.daily_limit || 150} 
-                                        onChange={e => setConfig({...config, daily_limit: parseInt(e.target.value) || 150})} 
-                                        onBlur={e => saveSettings({ daily_limit: parseInt(e.target.value) || 150 })} 
+                                        value={config.daily_limit || config.DAILY_SENT_LIMIT || 10} 
+                                        onChange={e => setConfig({...config, daily_limit: parseInt(e.target.value) || 10, DAILY_SENT_LIMIT: parseInt(e.target.value) || 10})} 
+                                        onBlur={e => saveSettings({ daily_limit: parseInt(e.target.value) || 10, DAILY_SENT_LIMIT: parseInt(e.target.value) || 10 })} 
+                                        style={{ width: '100%', padding: '16px 20px', borderRadius: 14, background: '#F5F5F7', border: '1px solid rgba(0,0,0,0.05)', color: TEXT_PRIMARY, fontWeight: 600, outline: 'none', boxSizing: 'border-box' }} 
+                                    />
+                                </div>
+                                <div style={{ minWidth: '140px' }}>
+                                    <label style={{ fontSize: '0.8rem', color: TEXT_SECONDARY, textTransform: 'uppercase', fontWeight: 800, marginBottom: 12, display: 'block' }}>Send Window Start</label>
+                                    <input 
+                                        type="time"
+                                        value={config.send_window_start || config.SEND_WINDOW_START || '08:30'} 
+                                        onChange={e => setConfig({...config, send_window_start: e.target.value, SEND_WINDOW_START: e.target.value})} 
+                                        onBlur={e => saveSettings({ send_window_start: e.target.value, SEND_WINDOW_START: e.target.value })} 
+                                        style={{ width: '100%', padding: '16px 20px', borderRadius: 14, background: '#F5F5F7', border: '1px solid rgba(0,0,0,0.05)', color: TEXT_PRIMARY, fontWeight: 600, outline: 'none', boxSizing: 'border-box' }} 
+                                    />
+                                </div>
+                                <div style={{ minWidth: '140px' }}>
+                                    <label style={{ fontSize: '0.8rem', color: TEXT_SECONDARY, textTransform: 'uppercase', fontWeight: 800, marginBottom: 12, display: 'block' }}>Send Window End</label>
+                                    <input 
+                                        type="time"
+                                        value={config.send_window_end || config.SEND_WINDOW_END || '18:00'} 
+                                        onChange={e => setConfig({...config, send_window_end: e.target.value, SEND_WINDOW_END: e.target.value})} 
+                                        onBlur={e => saveSettings({ send_window_end: e.target.value, SEND_WINDOW_END: e.target.value })} 
+                                        style={{ width: '100%', padding: '16px 20px', borderRadius: 14, background: '#F5F5F7', border: '1px solid rgba(0,0,0,0.05)', color: TEXT_PRIMARY, fontWeight: 600, outline: 'none', boxSizing: 'border-box' }} 
+                                    />
+                                </div>
+                                <div style={{ minWidth: '180px' }}>
+                                    <label style={{ fontSize: '0.8rem', color: TEXT_SECONDARY, textTransform: 'uppercase', fontWeight: 800, marginBottom: 12, display: 'block' }}>Send Window Timezone</label>
+                                    <input 
+                                        type="text"
+                                        placeholder="Asia/Dubai"
+                                        value={config.target_timezone || config.TARGET_TIMEZONE || 'Asia/Dubai'} 
+                                        onChange={e => setConfig({...config, target_timezone: e.target.value, TARGET_TIMEZONE: e.target.value})} 
+                                        onBlur={e => saveSettings({ target_timezone: e.target.value, TARGET_TIMEZONE: e.target.value })} 
                                         style={{ width: '100%', padding: '16px 20px', borderRadius: 14, background: '#F5F5F7', border: '1px solid rgba(0,0,0,0.05)', color: TEXT_PRIMARY, fontWeight: 600, outline: 'none', boxSizing: 'border-box' }} 
                                     />
                                 </div>
@@ -4366,7 +4431,7 @@ export default function SovereignDashboardV5_1() {
                                     </td>
                                     <td style={{ padding: '16px', verticalAlign: 'top' }}><StatusBadge status={row.status || 'read'} sentiment={row.sentiment} /></td>
                                     <td style={{ padding: '16px', verticalAlign: 'top', width: '50%' }}>
-                                      <div style={{ fontSize: '0.9rem', color: TEXT_PRIMARY, fontWeight: 600, background: '#F5F5F7', padding: '12px 16px', borderRadius: 12, marginBottom: 12, lineHeight: 1.5 }}>{row.body}</div>
+                                      <div style={{ fontSize: '0.85rem', color: TEXT_PRIMARY, fontWeight: 500, background: '#F8F9FA', padding: '10px 14px', borderRadius: 10, marginBottom: 10, lineHeight: 1.5, maxHeight: '140px', overflowY: 'auto', border: '1px solid rgba(0,0,0,0.06)', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{row.body}</div>
                                       
                                       {/* 🤖 AI REPLY CO-PILOT CARD */}
                                       <div style={{ background: 'rgba(0, 113, 227, 0.04)', border: '1px solid rgba(0, 113, 227, 0.15)', borderRadius: 14, padding: 14 }}>
@@ -4400,6 +4465,9 @@ export default function SovereignDashboardV5_1() {
                                             />
                                             <button 
                                               onClick={async () => {
+                                                if (sendingReplyId !== null) return;
+                                                setSendingReplyId(row.id);
+                                                setReplySendStatus(prev => ({ ...prev, [row.id]: undefined as any }));
                                                 try {
                                                   const res = await fetch(`${API_BASE}/replies/${row.id}/approve`, {
                                                     method: 'POST',
@@ -4407,15 +4475,29 @@ export default function SovereignDashboardV5_1() {
                                                     body: JSON.stringify({ edited_reply: draftEdits[row.id].text_body })
                                                   });
                                                   const data = await res.json();
-                                                  if (data.success) {
-                                                    addLog(`✅ Response dispatched to ${row.from_email}!`, 'success');
-                                                    refreshData();
+                                                  if (!res.ok || !data.success) {
+                                                    throw new Error(data.error || `Request failed (${res.status})`);
                                                   }
-                                                } catch (e: any) { addLog(`❌ Send Error: ${e.message}`, 'err'); }
+                                                  addLog(`✅ Response dispatched to ${row.from_email}!`, 'success');
+                                                  setReplySendStatus(prev => ({ ...prev, [row.id]: { type: 'success', message: `Sent successfully to ${row.from_email}` } }));
+                                                  refreshData();
+                                                } catch (e: any) {
+                                                  const message = e?.message || 'Unknown send error';
+                                                  addLog(`❌ Send Error: ${message}`, 'err');
+                                                  setReplySendStatus(prev => ({ ...prev, [row.id]: { type: 'error', message: `Not sent: ${message}` } }));
+                                                } finally {
+                                                  setSendingReplyId(null);
+                                                }
                                               }}
-                                              style={{ marginTop: 8, border: 'none', background: '#22C55E', color: '#fff', padding: '8px 18px', borderRadius: 8, fontWeight: 900, fontSize: '0.8rem', cursor: 'pointer' }}>
-                                              ✓ SEND RESPONSE NOW
+                                              disabled={sendingReplyId !== null}
+                                              style={{ marginTop: 8, border: 'none', background: sendingReplyId === row.id ? '#86EFAC' : '#22C55E', color: '#fff', padding: '8px 18px', borderRadius: 8, fontWeight: 900, fontSize: '0.8rem', cursor: sendingReplyId !== null ? 'wait' : 'pointer', opacity: sendingReplyId !== null && sendingReplyId !== row.id ? 0.55 : 1 }}>
+                                              {sendingReplyId === row.id ? 'SENDING RESPONSE...' : '✓ SEND RESPONSE NOW'}
                                             </button>
+                                            {replySendStatus[row.id] && (
+                                              <div style={{ marginTop: 8, padding: '8px 10px', borderRadius: 8, fontSize: '0.78rem', fontWeight: 800, color: replySendStatus[row.id].type === 'success' ? '#166534' : '#B91C1C', background: replySendStatus[row.id].type === 'success' ? '#DCFCE7' : '#FEE2E2' }}>
+                                                {replySendStatus[row.id].type === 'success' ? '✓ ' : '⚠ '}{replySendStatus[row.id].message}
+                                            </div>
+                                            )}
                                           </div>
                                         )}
                                       </div>

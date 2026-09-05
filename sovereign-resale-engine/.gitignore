@@ -18,6 +18,7 @@ sovereign_v5.db
 dashboard.*.log
 server.*.log
 worker.*.log
+.runtime/
 live-session.*.log
 
 # Build & Dist
