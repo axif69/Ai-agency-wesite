@@ -66,13 +66,13 @@ const pillars: Pillar[] = [
   {
     number: "03",
     title: "Technical SEO & Semantic Knowledge Graph",
-    subtitle: "Machine-Readable Architecture & Sub-Second Performance",
+    subtitle: "Machine-Readable Architecture & Performance Engineering",
     description:
-      "Clean crawl topologies, sub-second Core Web Vitals on Next.js, and multi-layered JSON-LD schema networks that give search crawlers zero ambiguity regarding your service taxonomy.",
+      "Clean crawl topologies, performance-focused Next.js architecture, and multi-layered JSON-LD schema networks that give search crawlers clear entity definitions regarding your service taxonomy.",
     capabilities: [
       "Full JSON-LD structured data (ProfessionalService, Breadcrumbs, FAQs, Services)",
-      "Strict canonical discipline eliminating duplicate and parameterized crawl waste",
-      "Sub-second Largest Contentful Paint (LCP) and 100% crawl accessibility",
+      "Strict canonical discipline supporting a clean crawl architecture",
+      "Fast Largest Contentful Paint (LCP) and accessible mobile rendering",
       "Sitemap priority engineering and clean URL routing architecture",
     ],
   },
@@ -81,7 +81,7 @@ const pillars: Pillar[] = [
     title: "Search Intent Architecture & Semantic Silos",
     subtitle: "Clean Intent Demarcation & Internal Link Topology",
     description:
-      "Organizing every page into precise intent tiers—informational guides, commercial service hubs, and product features—connected through contextual bridge links without orphan pages.",
+      "Organizing every page into precise intent tiers—informational guides, commercial service hubs, and product features—connected through contextual bridge links with orphan-page prevention and internal-link auditing.",
     capabilities: [
       "Strict intent mapping preventing informational-commercial keyword dilution",
       "Contextual topic silos connecting high-ranking guides to conversion hubs",
@@ -227,7 +227,7 @@ export default function AiSeoAgencyDubai() {
             <span className="text-emerald-400 font-mono text-xs uppercase block mb-1 font-semibold">
               The Dubai Market Reality
             </span>
-            In high-competition UAE sectors like real estate, corporate services, luxury hospitality, and technology, over 35% of commercial search journeys now interact with AI-generated summaries before reaching traditional organic listings. Organizations lacking structured entity data, direct answer formats, and clear topical silos become invisible in AI-generated answers.
+            In high-competition UAE sectors like real estate, corporate services, luxury hospitality, and technology, an increasing share of commercial search journeys now surface AI-generated summaries alongside traditional organic listings. Organizations lacking structured entity data, direct answer formats, and clear topical silos face reduced visibility in conversational answers.
           </div>
         </div>
       </section>
@@ -358,8 +358,8 @@ export default function AiSeoAgencyDubai() {
                 { label: "Valid JSON-LD Schema (Organization, Service, FAQ)", checked: hasSchema, setter: setHasSchema },
                 { label: "Direct Answer Summaries (< 60 words) for Core Topics", checked: hasDirectAnswers, setter: setHasDirectAnswers },
                 { label: "Brand Entity Mentions & Verified Co-Citations", checked: hasEntityGraph, setter: setHasEntityGraph },
-                { label: "Sub-Second Mobile Load Speed (< 1.2s LCP)", checked: hasSpeedBelowOneSec, setter: setHasSpeedBelowOneSec },
-                { label: "Semantic Topic Clusters with Zero Orphan Pages", checked: hasClusterSilos, setter: setHasClusterSilos },
+                { label: "Performance-Focused Mobile Architecture (< 1.5s LCP)", checked: hasSpeedBelowOneSec, setter: setHasSpeedBelowOneSec },
+                { label: "Semantic Topic Clusters with Orphan-Page Auditing", checked: hasClusterSilos, setter: setHasClusterSilos },
               ].map((item, i) => (
                 <label
                   key={i}
