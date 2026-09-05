@@ -512,7 +512,8 @@ export default function AiMarketingDubai() {
       </section>
 
       {/* ── 7B. Intent Bridge: AI SEO & Search Visibility ── */}
-      <section className="py-8 px-6 md:px-12 max-w-5xl mx-auto">
+      {/* ── 7.5 Specialized AI Channels Bridge Cards ── */}
+      <section className="py-8 px-6 md:px-12 max-w-5xl mx-auto space-y-6">
         <div className="p-8 md:p-10 border border-emerald-400/20 bg-emerald-950/10 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="max-w-2xl">
             <span className="text-emerald-400 text-xs font-mono uppercase tracking-widest block mb-2 font-semibold">
@@ -530,6 +531,26 @@ export default function AiMarketingDubai() {
             className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-emerald-400 text-black text-xs uppercase tracking-wider font-bold hover:bg-emerald-300 transition-colors"
           >
             Explore AI SEO Agency Dubai <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        <div className="p-8 md:p-10 border border-emerald-400/20 bg-emerald-950/10 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div className="max-w-2xl">
+            <span className="text-emerald-400 text-xs font-mono uppercase tracking-widest block mb-2 font-semibold">
+              Algorithmic Paid Media &amp; Performance Marketing
+            </span>
+            <h3 className="text-xl md:text-2xl font-serif text-white mb-2">
+              Looking specifically for AI PPC &amp; Paid Media Automation?
+            </h3>
+            <p className="text-sm text-white/70 font-light leading-relaxed">
+              Explore our dedicated AI PPC performance desk for Google Search and Performance Max algorithmic bidding, Meta Advantage+ creative rotation, server-side CAPI tracking, and closed-loop CRM revenue attribution.
+            </p>
+          </div>
+          <Link
+            href="/ai-ppc-agency-dubai"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-emerald-400 text-black text-xs uppercase tracking-wider font-bold hover:bg-emerald-300 transition-colors"
+          >
+            Explore AI PPC Agency Dubai <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </section>
@@ -629,7 +650,9 @@ export default function AiMarketingDubai() {
             Related AI & Automation Infrastructure
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/70">
-            <Link href="/services/ppc-google-ads-agency-dubai" className="hover:text-white transition-colors">PPC & Google Ads Dubai</Link>
+            <Link href="/ai-ppc-agency-dubai" className="hover:text-white transition-colors text-emerald-400 font-medium">AI PPC Agency Dubai</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/services/ppc-google-ads-agency-dubai" className="hover:text-white transition-colors">Traditional PPC Services</Link>
             <span className="text-white/20">•</span>
             <Link href="/ai-seo-agency-dubai" className="hover:text-white transition-colors text-emerald-400 font-medium">AI SEO Agency Dubai</Link>
             <span className="text-white/20">•</span>

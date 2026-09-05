@@ -524,6 +524,13 @@ export default function PPC() {
               <PhoneCall className="w-4 h-4 text-green-400" /> WhatsApp +971 54 586 6094
             </a>
           </div>
+
+          <div className="pt-8 border-t border-white/10 flex flex-wrap justify-center items-center gap-4 text-xs text-white/50 font-mono">
+            <span>Looking for AI-assisted bidding, server-side CAPI &amp; CRM revenue attribution?</span>
+            <Link href="/ai-ppc-agency-dubai" className="text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center gap-1">
+              Explore Dedicated AI PPC Agency Desk <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
         </div>
       </section>
     </div>

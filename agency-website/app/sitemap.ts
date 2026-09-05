@@ -60,7 +60,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/whatsapp-automation-gcc",
     "/sovereign-sales-agent",
     "/workflow-automation-uae",
-    "/hospitality-ai-automation-uae"
+    "/hospitality-ai-automation-uae",
+    "/ai-ppc-agency-dubai"
   ];
 
   const staticUrls = routes.map((route) => {

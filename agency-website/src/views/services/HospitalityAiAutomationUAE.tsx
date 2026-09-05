@@ -54,7 +54,7 @@ const workflows: WorkflowModule[] = [
   },
   {
     number: "02",
-    title: "Direct Reservation & OTA Commission Protection",
+    title: "Direct Booking Conversion Workflows",
     subtitle: "Direct Booking Capture & Upsell Workflows",
     description:
       "Intercepting room inquiries and off-peak booking requests with instant room type options, direct booking links, and customized upgrade packages to reduce 15-25% OTA commission bleed.",

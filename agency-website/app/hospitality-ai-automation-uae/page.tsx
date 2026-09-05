@@ -2,7 +2,7 @@ import PageComponent from '../../src/views/services/HospitalityAiAutomationUAE';
 
 export const metadata = {
   title: "Hospitality AI Automation UAE | Hotel & Resort AI Concierge Systems",
-  description: "Hospitality AI & hotel workflow automation in the UAE. 24/7 multilingual WhatsApp concierge, PMS integration, direct reservation recovery, and service dispatch.",
+  description: "Hospitality AI & hotel workflow automation in the UAE. 24/7 multilingual WhatsApp concierge, PMS integration, direct booking conversion workflows, and service dispatch.",
   alternates: {
     canonical: "https://www.asifdigital.agency/hospitality-ai-automation-uae"
   },
@@ -32,7 +32,7 @@ const serviceSchema = {
     { "@type": "Country", name: "United Arab Emirates" }
   ],
   url: "https://www.asifdigital.agency/hospitality-ai-automation-uae",
-  description: "Enterprise hospitality AI workflow automation for UAE luxury hotels, resorts, and serviced apartments: 24/7 WhatsApp concierge, PMS integration, direct reservation capture, and housekeeping dispatch."
+  description: "Enterprise hospitality AI workflow automation for UAE luxury hotels, resorts, and serviced apartments: 24/7 WhatsApp concierge, PMS integration, direct booking conversion workflows, and housekeeping dispatch."
 };
 
 const breadcrumbSchema = {
