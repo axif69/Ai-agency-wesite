@@ -130,23 +130,34 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <span className="absolute bottom-2 left-0 w-0 h-[1px] bg-white transition-all duration-500 group-hover:w-full" />
               </Link>
               
-              {/* Sovereign AI Dropdown - 2-Column Mega Menu */}
+              {/* Sovereign AI Dropdown - 3-Column Mega Menu */}
               {link.name === "Sovereign AI" && (
-                <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[680px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
-                  <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.9)] overflow-hidden font-sans normal-case tracking-normal text-left p-6 grid grid-cols-2 gap-6">
-                    {/* Left Column: Enterprise & Core AI */}
-                    <div className="space-y-1.5 border-r border-white/10 pr-6">
+                <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[960px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
+                  <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.9)] overflow-hidden font-sans normal-case tracking-normal text-left p-6 grid grid-cols-3 gap-6">
+                    {/* Column 1: Enterprise & Industry AI */}
+                    <div className="space-y-1.5 border-r border-white/10 pr-5">
                       <span className="text-[10px] uppercase font-mono tracking-widest text-white/40 block mb-2 font-semibold">Enterprise &amp; Core AI</span>
-                      <Link href="/sovereign-sales-agent" className="text-white/95 hover:text-white transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5 italic">Sovereign Sales Agent (B2B)</Link>
-                      <Link href="/arabic-ai-hub" className="text-white/95 hover:text-white transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Arabic Intelligence Hub (Khaleeji)</Link>
-                      <Link href="/ai-automation-agency-dubai" className="text-white/95 hover:text-white transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Automation Agency (Enterprise)</Link>
-                      <Link href="/ai-automation-sharjah" className="text-white/95 hover:text-emerald-400 transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Automation Agency (Sharjah)</Link>
-                      <Link href="/ai-marketing-dubai" className="text-white/95 hover:text-white transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Sovereign Marketing Swarms</Link>
-                      <Link href="/services/agentic-finance-uae" className="text-white/95 hover:text-white transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Agentic Finance &amp; Compliance</Link>
-                      <Link href="/services/whatsapp-automation-gcc" className="text-white/95 hover:text-white transition-all text-[14px] font-medium block py-2 hover:pl-1.5 duration-200">WhatsApp Business Automation</Link>
+                      <Link href="/sovereign-sales-agent" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5 italic">Sovereign Sales Agent (B2B)</Link>
+                      <Link href="/arabic-ai-hub" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Arabic Intelligence Hub (Khaleeji)</Link>
+                      <Link href="/hospitality-ai-automation-uae" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Hospitality AI Automation UAE 🏨</Link>
+                      <Link href="/ai-automation-agency-dubai" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI Automation Agency (Enterprise)</Link>
+                      <Link href="/ai-automation-sharjah" className="text-white/95 hover:text-emerald-400 transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI Automation Agency (Sharjah)</Link>
+                      <Link href="/services/agentic-finance-uae" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Agentic Finance &amp; Compliance</Link>
+                      <Link href="/services/whatsapp-automation-gcc" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200">WhatsApp Business Automation</Link>
                     </div>
 
-                    {/* Right Column: Real Estate AI Suite */}
+                    {/* Column 2: AI Growth & Media Systems */}
+                    <div className="space-y-1.5 border-r border-white/10 pr-5">
+                      <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 block mb-2 font-semibold">AI Growth &amp; Performance</span>
+                      <Link href="/ai-ppc-agency-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI PPC Agency Dubai 📈</Link>
+                      <Link href="/ai-seo-agency-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI SEO &amp; AEO Agency Dubai ⚡</Link>
+                      <Link href="/ai-marketing-dubai" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Sovereign Marketing Swarms</Link>
+                      <Link href="/workflow-automation-uae" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Workflow Automation UAE</Link>
+                      <Link href="/tools/ad-spend-efficiency-analyzer" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Ad Spend Efficiency Diagnostic</Link>
+                      <Link href="/free-growth-audit" className="text-white/95 hover:text-emerald-400 transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200">Free AI Growth Audit</Link>
+                    </div>
+
+                    {/* Column 3: Real Estate AI Suite */}
                     <div className="space-y-1.5">
                       <div className="flex justify-between items-center mb-2">
                         <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 block font-semibold">Real Estate AI Suite 🏢</span>
@@ -166,47 +177,49 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
               {/* Mega Menu Dropdown - isolated from blend mode */}
               {link.name === "Strategic Pillars" && (
-                <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[920px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
+                <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[940px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
                   <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex font-sans normal-case tracking-normal text-left">
                     
                     {/* Web Column */}
-                    <div className="w-[37%] bg-[#111111] p-10 border-r border-white/5">
-                      <h3 className="text-white/95 text-[11px] font-bold uppercase tracking-[0.25em] mb-8 flex items-center gap-2">
-                        <Code className="w-4 h-4" role="img" aria-label="Code Icon" /> Web
+                    <div className="w-[34%] bg-[#111111] p-8 border-r border-white/5">
+                      <h3 className="text-white/95 text-[11px] font-bold uppercase tracking-[0.25em] mb-6 flex items-center gap-2">
+                        <Code className="w-4 h-4" role="img" aria-label="Code Icon" /> Web &amp; Systems
                       </h3>
-                      <ul className="space-y-5">
-                        <li><Link href="/services/web-design-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Design</Link></li>
-                        <li><Link href="/web-design-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200 font-semibold text-green-400">Web Design Sharjah</Link></li>
-                        <li><Link href="/services/web-development-dubai-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Development</Link></li>
-                        <li><Link href="/services/ecommerce-website-development-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Ecommerce Websites</Link></li>
-                        <li><Link href="/services/web-hosting-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Hosting</Link></li>
-                        <li><Link href="/services/website-maintenance-support-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Website Support</Link></li>
+                      <ul className="space-y-4">
+                        <li><Link href="/services/web-design-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">Web Design</Link></li>
+                        <li><Link href="/web-design-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200 font-semibold text-green-400">Web Design Sharjah</Link></li>
+                        <li><Link href="/services/web-development-dubai-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">Web Development</Link></li>
+                        <li><Link href="/services/ecommerce-website-development-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">Ecommerce Websites</Link></li>
+                        <li><Link href="/services/web-hosting-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">Web Hosting</Link></li>
+                        <li><Link href="/services/website-maintenance-support-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">Website Support</Link></li>
                       </ul>
                     </div>
                     
                     {/* Digital Marketing Column */}
-                    <div className="w-[33%] bg-[#0c0c0c] p-10 border-r border-white/5">
-                      <h3 className="text-white/95 text-[11px] font-bold uppercase tracking-[0.25em] mb-8 flex items-center gap-2">
-                        <Megaphone className="w-4 h-4" role="img" aria-label="Megaphone Icon" /> Digital Marketing
+                    <div className="w-[36%] bg-[#0c0c0c] p-8 border-r border-white/5">
+                      <h3 className="text-white/95 text-[11px] font-bold uppercase tracking-[0.25em] mb-6 flex items-center gap-2">
+                        <Megaphone className="w-4 h-4" role="img" aria-label="Megaphone Icon" /> AI &amp; Performance Media
                       </h3>
-                      <ul className="space-y-5">
-                        <li><Link href="/services/seo-agency-dubai-sharjah-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">SEO</Link></li>
-                        <li><Link href="/services/ppc-google-ads-agency-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">PPC</Link></li>
-                        <li><Link href="/services/social-media-management-dubai-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Social Media</Link></li>
-                        <li><Link href="/ai-chatbots-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">AI</Link></li>
+                      <ul className="space-y-4">
+                        <li><Link href="/ai-ppc-agency-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-sm font-semibold block py-0.5 hover:pl-2 duration-200">AI PPC Agency Dubai</Link></li>
+                        <li><Link href="/ai-seo-agency-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-sm font-semibold block py-0.5 hover:pl-2 duration-200">AI SEO &amp; AEO Agency</Link></li>
+                        <li><Link href="/services/ppc-google-ads-agency-dubai" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">Traditional PPC Ads</Link></li>
+                        <li><Link href="/services/seo-agency-dubai-sharjah-uae" className="text-white/80 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">Traditional SEO</Link></li>
+                        <li><Link href="/services/social-media-management-dubai-uae" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">Social Media Management</Link></li>
+                        <li><Link href="/ai-chatbots-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">AI Chatbots Dubai</Link></li>
                       </ul>
                     </div>
 
                     {/* Creative Column */}
-                    <div className="w-[30%] bg-[#111111] p-10">
-                      <h3 className="text-white/95 text-[11px] font-bold uppercase tracking-[0.25em] mb-8 flex items-center gap-2">
-                        <PenTool className="w-4 h-4" role="img" aria-label="Pen Tool Icon" /> Creative
+                    <div className="w-[30%] bg-[#111111] p-8">
+                      <h3 className="text-white/95 text-[11px] font-bold uppercase tracking-[0.25em] mb-6 flex items-center gap-2">
+                        <PenTool className="w-4 h-4" role="img" aria-label="Pen Tool Icon" /> Creative &amp; Brand
                       </h3>
-                      <ul className="space-y-5">
-                        <li><Link href="/services/branding-agency-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Branding</Link></li>
-                        <li><Link href="/services/graphic-design-agency-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Design</Link></li>
-                        <li><Link href="/services/ui-ux-design-agency-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">UI/UX</Link></li>
-                        <li><Link href="/services/creative-web-design-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-1 hover:pl-2 duration-200">Web Design</Link></li>
+                      <ul className="space-y-4">
+                        <li><Link href="/services/branding-agency-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">Branding</Link></li>
+                        <li><Link href="/services/graphic-design-agency-dubai-sharjah" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">Design</Link></li>
+                        <li><Link href="/services/ui-ux-design-agency-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">UI/UX</Link></li>
+                        <li><Link href="/services/creative-web-design-dubai" className="text-white/95 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-2 duration-200">Web Design</Link></li>
                       </ul>
                     </div>
 
@@ -234,10 +247,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   {isSovereignOpen && (
                     <div className="mt-4 space-y-3 text-lg text-white/70">
                       <Link href="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Sales Agent (B2B)</Link>
+                      <Link href="/hospitality-ai-automation-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400">Hospitality AI Automation UAE 🏨</Link>
+                      <Link href="/ai-ppc-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400">AI PPC Agency Dubai 📈</Link>
+                      <Link href="/ai-seo-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400">AI SEO &amp; AEO Agency Dubai ⚡</Link>
+                      <Link href="/arabic-ai-hub" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Arabic Intelligence Hub</Link>
                       <Link href="/real-estate/whatsapp-ai-automation" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI WhatsApp Automation</Link>
                       <Link href="/real-estate/ai-lead-dashboard" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI Lead Dashboard</Link>
                       <Link href="/real-estate" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI Hub</Link>
-                      <Link href="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Agentic Finance & Compliance</Link>
+                      <Link href="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Agentic Finance &amp; Compliance</Link>
                       <Link href="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">WhatsApp Automation</Link>
                     </div>
                   )}

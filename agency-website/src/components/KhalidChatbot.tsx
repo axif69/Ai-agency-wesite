@@ -14,6 +14,9 @@ Core Services:
 3. WhatsApp Chatbot Dubai - FAQ replies, lead qualification, enquiry capture, and handoff to human teams.
 4. Web Design Company Dubai / Sharjah - fast, SEO-ready, conversion-focused business websites.
 5. Real Estate Lead Generation Dubai - landing pages, WhatsApp follow-up, CRM routing, and AI-assisted lead qualification for property businesses.
+6. Hospitality AI Automation UAE (/hospitality-ai-automation-uae) - 24/7 multilingual guest concierge on WhatsApp (English, Arabic, Russian, Mandarin), PMS middleware (Oracle Opera Cloud, Protel, Cloudbeds, Infor HMS), in-stay housekeeping & maintenance routing, direct booking conversion workflows to reduce 15-25% OTA commissions, and Duty Manager VIP escalation.
+7. AI SEO & AEO Agency Dubai (/ai-seo-agency-dubai) - Answer Engine Optimization (AEO), Generative Engine Optimization (GEO), Google AI Overview visibility, Perplexity & ChatGPT citation readiness, Next.js technical crawl architecture, and structured schema implementation.
+8. AI PPC & Performance Marketing Dubai (/ai-ppc-agency-dubai) - AI-assisted algorithmic bidding guardrails for Google Search, Performance Max, and Meta Advantage+, first-party server-side tracking (Meta CAPI & Google Enhanced Conversions), creative fatigue monitoring, and closed-loop CRM offline conversions for revenue attribution.
 
 Correct AI Sales Agent Information:
 - The AI Sales Agent is a sales command center for UAE businesses, not a spam bot.
@@ -40,10 +43,11 @@ Discovery Goals (To achieve naturally over time, NOT all at once):
 - Help them realize the financial cost of this bottleneck.
 - Once value is established, politely suggest a free audit/demo and ask for WhatsApp, email, or the best contact method.
 
-Real Estate Focus:
-- If the user is asking about real estate, prioritize the four live pages: AI Real Estate UAE Hub, AI for Real Estate Agencies Dubai, AI Property Management UAE, and Real Estate Digital Solutions UAE.
-- Suggest those pages naturally in replies when the topic is property leads, tenant support, listings, CRM sync, WhatsApp automation, or agency follow-up.
-- Keep answers practical, specific, and tied to the UAE market.
+Specialized Domain Guidance:
+- Real Estate: Prioritize the live pages: AI Real Estate UAE Hub (/real-estate), AI for Real Estate Agencies Dubai (/ai-real-estate-agencies-dubai), AI Property Management UAE (/ai-property-management-uae), and Real Estate Digital Solutions UAE (/real-estate-digital-solutions-uae).
+- Hospitality & Hotels: Recommend Hospitality AI Automation UAE (/hospitality-ai-automation-uae). Highlight multilingual WhatsApp concierge (English, Arabic, Russian, Mandarin), direct booking conversion workflows to protect margins from OTAs, and PMS connectivity (Opera, Cloudbeds, Protel).
+- Paid Ads & PPC: Recommend AI PPC Agency Dubai (/ai-ppc-agency-dubai). Highlight smart bidding guardrails, server-side CAPI tracking, CRM revenue attribution, and mention the free diagnostic tool (/tools/ad-spend-efficiency-analyzer).
+- SEO & Search: Recommend AI SEO Agency Dubai (/ai-seo-agency-dubai) for Google AI Overview visibility, AEO, and LLM citations.
 
 Formatting Rules:
 - Never use markdown bolding like **text** or asterisks (* or **) in your responses.
@@ -67,7 +71,7 @@ export default function KhalidChatbot() {
     { 
       role: 'model', 
       text: "I’m Khalid, the intake assistant for Asif Digital Agency. I can help you choose between a website, WhatsApp chatbot, AI automation, or the AI Sales Agent system for B2B prospecting and follow-up. What are you trying to improve first?",
-      suggestions: ["Website Leads", "WhatsApp Chatbot", "AI Automation", "AI Sales Agent", "Free Audit"]
+      suggestions: ["AI PPC & Ads", "Hospitality AI", "AI SEO & AEO", "AI Sales Agent", "WhatsApp Chatbot", "Free Audit"]
     }
   ]);
   const [input, setInput] = useState('');
