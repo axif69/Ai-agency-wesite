@@ -55,15 +55,15 @@ const reviewPillars = [
   {
     icon: <Zap className="w-5 h-5 text-green-400" />,
     title: "Missed Automation Opportunities",
-    desc: "We identify quick-win automations that can immediately reclaim team labor hours, accelerate response velocity, and reduce manual human error."
+    desc: "We identify practical automation opportunities that may reduce repetitive manual work, improve response speed, and make follow-up more consistent."
   }
 ];
 
 const deliverables = [
   {
     icon: <FileText className="w-5 h-5 text-green-400" />,
-    title: "1-Page Executive Scorecard",
-    desc: "A concise executive breakdown scoring your operational maturity across lead responsiveness, automation coverage, and tech debt."
+    title: "Concise Executive Summary",
+    desc: "A clear breakdown of observed workflow gaps, lead-response friction, automation opportunities, and technical constraints."
   },
   {
     icon: <Layers className="w-5 h-5 text-green-400" />,
@@ -149,8 +149,8 @@ const ethicalGuardrails = [
 
 const faqs = [
   {
-    q: "Is this growth and automation audit truly 100% free?",
-    a: "Yes. There is zero financial cost, no credit card required, and no obligation to hire us. We offer this diagnostic review to demonstrate our technical engineering depth to UAE business leaders."
+    q: "Is this growth and automation audit free?",
+    a: "Yes. There is no payment or credit card required for the initial diagnostic review, and there is no obligation to hire us afterward."
   },
   {
     q: "How long does it take to receive our audit deliverable?",
@@ -246,7 +246,7 @@ export default function FreeGrowthAudit() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1.5 text-xs font-mono text-green-400 mb-6">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>TECHNICAL DIAGNOSTIC & OPERATIONAL AUDIT</span>
+              <span>DIAGNOSTIC AUDIT & READINESS REVIEW</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif leading-[1.05] tracking-tight mb-6">
@@ -254,7 +254,7 @@ export default function FreeGrowthAudit() {
             </h1>
 
             <p className="text-base sm:text-lg text-white/70 font-light leading-relaxed mb-8 max-w-2xl">
-              Identify the operational bottlenecks, lead leakage, and manual handoffs slowing down your business. We provide an impartial, engineering-led review of your customer journeys, CRM architecture, and automation readiness.
+              Identify the workflow bottlenecks, lead leakage, and manual handoffs slowing down your business. We review your public funnel, submitted context, CRM process, and automation readiness so you can see the next practical steps clearly.
             </p>
 
             {/* Value Badges */}
@@ -265,7 +265,7 @@ export default function FreeGrowthAudit() {
               </div>
               <div className="flex items-center gap-2.5 p-3 rounded-xl border border-white/5 bg-white/[0.02]">
                 <Clock className="w-4 h-4 text-green-400 shrink-0" />
-                <span className="text-xs text-white/80 font-medium">2–3 Business Day Delivery</span>
+                <span className="text-xs text-white/80 font-medium">Typical 2-3 Business Day Review</span>
               </div>
               <div className="flex items-center gap-2.5 p-3 rounded-xl border border-white/5 bg-white/[0.02]">
                 <FileText className="w-4 h-4 text-green-400 shrink-0" />
@@ -273,7 +273,7 @@ export default function FreeGrowthAudit() {
               </div>
               <div className="flex items-center gap-2.5 p-3 rounded-xl border border-white/5 bg-white/[0.02]">
                 <Lock className="w-4 h-4 text-green-400 shrink-0" />
-                <span className="text-xs text-white/80 font-medium">UAE PDPL Confidentiality</span>
+                <span className="text-xs text-white/80 font-medium">Handled Confidentially</span>
               </div>
             </div>
 
@@ -293,7 +293,7 @@ export default function FreeGrowthAudit() {
             <div className="mb-6">
               <h2 className="font-serif text-2xl text-white mb-2">Request Your Diagnostic Review</h2>
               <p className="text-white/60 text-xs sm:text-sm">
-                Complete the operational intake below. Our engineering team will review your workflow and prepare your action plan.
+                Complete the operational intake below. We will review your workflow context and prepare practical recommendations.
               </p>
             </div>
 
@@ -388,7 +388,7 @@ export default function FreeGrowthAudit() {
                 <div className="p-4 rounded-xl border border-green-500/30 bg-green-500/10 text-green-300 text-xs leading-relaxed flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
                   <span>
-                    <strong>Audit request successfully received.</strong> Our technical team will review your submission and provide your diagnostic scorecard within 2–3 business days.
+                    <strong>Audit request successfully received.</strong> We will review your submission and aim to provide your diagnostic recommendations within 2-3 business days.
                   </span>
                 </div>
               )}
@@ -419,7 +419,7 @@ export default function FreeGrowthAudit() {
               </button>
 
               <p className="text-[11px] text-white/40 text-center">
-                Confidentiality guaranteed. Reviewed manually under UAE Personal Data Protection Law (PDPL).
+                Your submitted details are used only to prepare this review and are handled with care.
               </p>
             </form>
           </div>
@@ -434,7 +434,7 @@ export default function FreeGrowthAudit() {
             What We Review: The 6 Diagnostic Pillars
           </h2>
           <p className="text-sm sm:text-base text-white/60 font-light leading-relaxed">
-            Most businesses do not have a single fatal flaw. Instead, customer attrition and wasted payroll stem from small, compounding friction points across tools, handoffs, and delayed follow-ups.
+            Most businesses do not have one single issue. Customer drop-off often comes from small, compounding friction points across tools, handoffs, and delayed follow-ups.
           </p>
         </div>
 
@@ -459,9 +459,9 @@ export default function FreeGrowthAudit() {
             <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-white mb-4">
               What You Receive Upon Delivery
             </h2>
-            <p className="text-sm sm:text-base text-white/60 font-light leading-relaxed">
-              We do not provide vague 50-page templates filled with generic fluff. You receive a concise, actionable briefing document prepared specifically for your operating context.
-            </p>
+          <p className="text-sm sm:text-base text-white/60 font-light leading-relaxed">
+              We keep the output concise and practical. You receive a focused briefing prepared around the business context you submit and the public customer journey we can inspect.
+          </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -488,7 +488,7 @@ export default function FreeGrowthAudit() {
             How the Review Works
           </h2>
           <p className="text-sm sm:text-base text-white/60 font-light leading-relaxed">
-            A frictionless, non-intrusive technical triage that requires minimal time commitment from your leadership team.
+            A low-friction technical triage that avoids sensitive system access and keeps the review focused on practical next steps.
           </p>
         </div>
 
@@ -519,7 +519,7 @@ export default function FreeGrowthAudit() {
               <span>Who This Audit Is Designed For</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-serif text-white mb-6">
-              Built for Operating UAE Businesses
+              Built for Active UAE Businesses
             </h2>
             <div className="space-y-4">
               {targetAudiences.map((item) => (
@@ -561,7 +561,7 @@ export default function FreeGrowthAudit() {
             What We Do Not Promise
           </h2>
           <p className="text-sm sm:text-base text-white/60 font-light leading-relaxed">
-            The UAE technology market is saturated with exaggerated marketing claims. We operate with strict engineering transparency and zero hype.
+            This is a diagnostic review, not a guaranteed outcome pitch. We keep the recommendations practical, evidence-based, and clear about assumptions.
           </p>
         </div>
 

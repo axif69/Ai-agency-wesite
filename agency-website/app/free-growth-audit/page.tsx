@@ -34,7 +34,7 @@ export default function Page() {
           "@type": "AdministrativeArea",
           "name": "Dubai, UAE"
         },
-        "description": "Comprehensive diagnostic review of enterprise workflow bottlenecks, CRM lead-flow leakage, and AI automation opportunities for UAE businesses.",
+        "description": "Diagnostic review of workflow bottlenecks, CRM lead-flow gaps, funnel friction, and AI automation opportunities for UAE businesses.",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -63,10 +63,10 @@ export default function Page() {
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Is this growth and automation audit really free?",
+            "name": "Is this growth and automation audit free?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, 100% free with zero financial obligation. It is our introductory technical evaluation to demonstrate our architectural rigor to operating companies in the UAE."
+              "text": "Yes. There is no payment or credit card required for the initial diagnostic review, and there is no obligation to hire us afterward."
             }
           },
           {
@@ -74,7 +74,7 @@ export default function Page() {
             "name": "How long does it take to receive our audit deliverable?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Audits are typically completed within 2 to 3 business days. Because reviews are conducted manually by automation architects rather than automated scraping tools, we evaluate your actual workflow bottlenecks carefully."
+              "text": "Audits are typically completed within 2 to 3 business days. Reviews are prepared manually from your submitted context and the public customer journey we can inspect."
             }
           },
           {
@@ -87,10 +87,10 @@ export default function Page() {
           },
           {
             "@type": "Question",
-            "name": "How is our business data protected under UAE law?",
+            "name": "How are our submitted details handled?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "All submitted operational details are treated with strict confidentiality in compliance with UAE Federal Decree-Law No. 45 of 2021 on Personal Data Protection (UAE PDPL). Information is used strictly for diagnostic review."
+              "text": "Submitted details are used to prepare the diagnostic review and are handled with care. We do not ask for admin passwords, database credentials, or private customer records for this audit."
             }
           }
         ]
