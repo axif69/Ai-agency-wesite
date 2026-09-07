@@ -906,8 +906,8 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {CASE_STUDIES.slice(0, 3).map((study, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {CASE_STUDIES.slice(0, 2).map((study, i) => (
               <motion.div 
                 key={i} 
                 initial={{ opacity: 0, y: 30 }} 

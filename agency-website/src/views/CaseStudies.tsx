@@ -15,14 +15,12 @@ import {
   Check, 
   AlertCircle
 } from "lucide-react";
-import { CASE_STUDIES } from "../data/caseStudyData";
+import { CASE_STUDIES, CaseStudy } from "../data/caseStudyData";
 
 const CATEGORIES = [
   "All Showcases",
-  "Multi-Agent Systems",
-  "B2B Lead Intelligence",
-  "Web & Local Infrastructure",
-  "Workflow & CRM Automation"
+  "Delivered Client Systems",
+  "Internal Technology Architecture"
 ] as const;
 
 type Category = typeof CATEGORIES[number];
@@ -32,17 +30,11 @@ export default function CaseStudies() {
 
   const filteredStudies = CASE_STUDIES.filter((study) => {
     if (selectedCategory === "All Showcases") return true;
-    if (selectedCategory === "Multi-Agent Systems") {
-      return study.id === "global-exhibition-mas" || study.id === "governed-sales-engine";
+    if (selectedCategory === "Delivered Client Systems") {
+      return study.classification === "Delivered Client Implementation";
     }
-    if (selectedCategory === "B2B Lead Intelligence") {
-      return study.id === "uae-construction-advisory" || study.id === "global-exhibition-mas";
-    }
-    if (selectedCategory === "Web & Local Infrastructure") {
-      return study.id === "sharjah-dining-infrastructure";
-    }
-    if (selectedCategory === "Workflow & CRM Automation") {
-      return study.id === "governed-sales-engine" || study.id === "real-estate-portal-crm";
+    if (selectedCategory === "Internal Technology Architecture") {
+      return study.classification === "Internal Asif Digital Technology";
     }
     return true;
   });
@@ -85,7 +77,7 @@ export default function CaseStudies() {
             </p>
             <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs font-mono text-white/60">
               <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-green-400" /> Level A: Repository Code & State Machines</span>
-              <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-green-400" /> Level B: Local SQLite Runtime Evidence</span>
+              <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-green-400" /> Level B: Production Database Runtime Records</span>
               <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-green-400" /> Zero Unverified Synthetic Claims</span>
             </div>
           </div>
@@ -137,7 +129,7 @@ export default function CaseStudies() {
                 </div>
               </div>
 
-              {/* Title & Entity */}
+              {/* Title & Context */}
               <div className="mb-8">
                 <span className="text-xs font-mono text-white/50 block mb-2">
                   Client / Context: {study.client}
@@ -156,6 +148,27 @@ export default function CaseStudies() {
                   ))}
                 </div>
               </div>
+
+              {/* Real System Visual / Screenshot */}
+              {study.img && (
+                <div className="mb-10 rounded-xl overflow-hidden border border-white/10 bg-black/60 shadow-2xl">
+                  <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.03]">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/40" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
+                    <span className="text-[11px] font-mono text-white/40 ml-2">
+                      Verified System Interface &bull; Anonymized Telemetry View
+                    </span>
+                  </div>
+                  <div className="p-2 sm:p-4 flex items-center justify-center bg-[#070707]">
+                    <img 
+                      src={study.img} 
+                      alt={study.title} 
+                      className="w-full max-h-[460px] object-contain rounded-lg"
+                    />
+                  </div>
+                </div>
+              )}
 
               {/* 4-Pillar Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
