@@ -36,7 +36,7 @@ export default function AiLeadGenDubai() {
     },
     {
       q: "How do you prevent outbound emails from landing in spam?",
-      a: "Deliverability is the foundation of outbound sales. We deploy isolated secondary domains configured with strict DNS authentication protocols (SPF, DKIM, DMARC, and custom tracking domains). We implement gradual automated mailbox warmup schedules, throttle daily sending volumes to conservative limits, conduct continuous spam score audits, and dynamically vary message phrasing so emails are never flagged as repetitive automated blasts by Google Workspace or Microsoft 365 filters."
+      a: "Deliverability is the foundation of outbound sales. We deploy dedicated outbound sending infrastructure configured with strict DNS authentication protocols (SPF, DKIM, DMARC, and custom tracking domains). We implement proactive domain reputation management, platform-policy-aligned outreach, conservative daily sending caps, continuous deliverability audits, and dynamic message phrasing to maintain strong sender reputation."
     },
     {
       q: "Can AI lead generation book meetings automatically without human intervention?",
@@ -167,7 +167,7 @@ export default function AiLeadGenDubai() {
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-white/40 text-[11px] uppercase tracking-widest font-mono">
             <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Ground-Truth Public OSINT</span>
             <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Multi-Touch Cold Email &amp; LinkedIn</span>
-            <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> UAE PDPL Aligned Workflows</span>
+            <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> UAE PDPL-Aligned Data Handling</span>
           </div>
         </motion.div>
       </section>
@@ -189,7 +189,7 @@ export default function AiLeadGenDubai() {
             </div>
           </div>
           <p className="text-[16px] md:text-[17px] text-white/80 leading-relaxed font-light pl-0 md:pl-14">
-            An <strong>AI lead generation agency in Dubai</strong> designs, builds, and manages automated B2B acquisition engines that unite Ideal Customer Profile (ICP) intelligence, verified corporate intent triggers, multi-channel outreach sequences (Email, LinkedIn, WhatsApp), and CRM qualification. Rather than purchasing static, decaying lead databases or deploying indiscriminate spam blasts, AI lead generation leverages machine-speed intelligence to research target accounts, verify executive contacts, and initiate relevant, compliance-aware business dialogues that empower human sales teams to close high-value deals.
+            An <strong>AI lead generation agency in Dubai</strong> designs, builds, and manages automated B2B acquisition engines that unite Ideal Customer Profile (ICP) intelligence, behavioral and firmographic intent signals, multi-channel outreach sequences (Email, LinkedIn, WhatsApp), and CRM qualification. Rather than purchasing static, decaying lead databases or deploying indiscriminate spam blasts, AI lead generation leverages machine-speed intelligence to research target accounts, verify executive contacts, and initiate relevant, compliance-aware business dialogues that empower human sales teams to close high-value deals.
           </p>
         </div>
       </section>
@@ -202,7 +202,7 @@ export default function AiLeadGenDubai() {
               Pillar 01: Market Reality
             </span>
             <h2 className="text-3xl md:text-5xl font-serif mb-6 leading-tight">
-              The 2% Reply Rate Trap in the GCC.
+              The Low-Reply-Rate Trap in the GCC.
             </h2>
             <div className="h-px w-16 bg-emerald-500/40 mb-6" />
             <p className="text-white/50 text-sm font-light leading-relaxed">
@@ -278,13 +278,13 @@ export default function AiLeadGenDubai() {
                 step: "02",
                 title: "Account Research & Multi-Source Contact Enrichment",
                 desc: "For each identified account, our research workflows aggregate publicly available business data (corporate filings, press announcements, corporate websites, and professional social profiles). We resolve verified direct business email addresses, direct phone extensions, and verify MX records in real time to guarantee near-zero bounce rates.",
-                tags: ["Public OSINT", "SMTP Ping Verification", "Dossier Synthesis"]
+                tags: ["Public OSINT", "Email Validation & Deliverability Checks", "Dossier Synthesis"]
               },
               {
                 step: "03",
                 title: "Personalized Multi-Channel Touchpoints",
-                desc: "We deploy isolated secondary sending domains with dedicated warmup schedules to preserve your primary corporate domain. AI models synthesize account-specific value propositions that cite real business context. Sequences run across coordinated channels—custom email cadences, LinkedIn relationship touchpoints, and verified WhatsApp business follow-ups.",
-                tags: ["Secondary Domain Infra", "Contextual Snippets", "Warmup Cadence"]
+                desc: "We engineer dedicated outbound sending infrastructure with domain reputation management and platform-policy-aligned outreach to safeguard your primary domain. AI models synthesize account-specific value propositions that cite real business context. Sequences run across coordinated channels—custom email cadences, LinkedIn relationship touchpoints, and verified WhatsApp business follow-ups.",
+                tags: ["Dedicated Infrastructure", "Reputation Management", "Platform Policy Alignment"]
               },
               {
                 step: "04",
@@ -486,7 +486,7 @@ export default function AiLeadGenDubai() {
                 In the UAE and broader Gulf region, email functions as the ledger of record, but <strong>WhatsApp is where relationships and rapid decisions materialize</strong>. B2B acquisition engines that omit professional messaging forfeit massive conversion momentum.
               </p>
               <p>
-                We architect consent-aware, policy-compliant WhatsApp engagement layers for business communications. Operating through verified Meta Business API credentials, our conversational intake agents field inbound inquiries, answer preliminary questions, confirm meeting times, and route warm leads directly to your team.
+                We architect strictly consent-aware, opt-in verified, and Meta-policy-aligned WhatsApp engagement layers for business communications. Operating through verified Meta Business API credentials, our conversational intake agents field inbound inquiries, answer preliminary questions, confirm meeting times, and route warm leads directly to your team.
               </p>
               
               <div className="grid grid-cols-2 gap-4 pt-4">
@@ -657,7 +657,7 @@ export default function AiLeadGenDubai() {
           <div className="p-8 border border-white/5 bg-black rounded-2xl">
             <div className="flex items-center gap-3 mb-4">
               <Lock className="w-5 h-5 text-emerald-400" />
-              <h3 className="text-base font-semibold text-white">UAE PDPL Alignment</h3>
+              <h3 className="text-base font-semibold text-white">UAE PDPL-Aligned Data Handling</h3>
             </div>
             <p className="text-xs text-white/65 leading-relaxed font-light">
               Architected around UAE Federal Decree-Law No. 45 on Personal Data Protection. We handle public corporate data, respect opt-out preferences instantly, and maintain clean audit trails for client contact interactions.
@@ -667,10 +667,10 @@ export default function AiLeadGenDubai() {
           <div className="p-8 border border-white/5 bg-black rounded-2xl">
             <div className="flex items-center gap-3 mb-4">
               <Network className="w-5 h-5 text-emerald-400" />
-              <h3 className="text-base font-semibold text-white">Domain &amp; Infrastructure Isolation</h3>
+              <h3 className="text-base font-semibold text-white">Sending-Domain Reputation Protection</h3>
             </div>
             <p className="text-xs text-white/65 leading-relaxed font-light">
-              Outbound sequences are never dispatched from your primary corporate email domain. We configure isolated secondary domains with dedicated SPF, DKIM, DMARC, and custom tracking protocols to eliminate deliverability risk.
+              Outbound sequences are never dispatched from your primary corporate email domain. We configure dedicated outbound sending infrastructure with strict SPF, DKIM, DMARC protocols and proactive reputation management to protect your sender standing.
             </p>
           </div>
 
@@ -694,10 +694,10 @@ export default function AiLeadGenDubai() {
               EXECUTION TIMELINE
             </span>
             <h2 className="text-3xl md:text-5xl font-serif mb-4">
-              4-Week Pipeline Deployment.
+              Typical 4-Week Pipeline Deployment.
             </h2>
             <p className="text-white/50 text-sm font-light">
-              A structured, measurable roadmap to bringing your automated B2B acquisition engine online.
+              An indicative 4-week execution framework for technical configuration, data calibration, and launch. Timelines may vary based on integration complexity.
             </p>
           </div>
 
