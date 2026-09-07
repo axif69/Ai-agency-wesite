@@ -41,28 +41,28 @@ export default function AiAgentsDubai() {
 
   const faqs = [
     {
-      q: "What is the fundamental difference between a standard chatbot and an AI agent?",
-      a: "A standard chatbot operates primarily as a conversational interface: it matches user inputs against predefined scripts or generates conversational text responses. An enterprise AI agent possesses agency: it evaluates multi-step objectives, selects and calls external tools and APIs, maintains operational context across multiple sessions, and executes controlled business actions within bounded permission scopes under human-governed approval gates."
+      q: "What is the practical difference between a basic chatbot and an AI agent?",
+      a: "A basic chatbot only answers questions using pre-written answers or generic text. An AI agent has the ability to take bounded actions across your business software: querying your CRM, looking up inventory in your ERP, preparing email or proposal drafts, and alerting your team for final approval before anything is sent."
     },
     {
-      q: "Can AI agents execute actions in our internal software (CRM, ERP, database)?",
-      a: "Yes, provided the software exposes secure APIs, webhooks, or database interfaces. Our architectures use type-safe tool calling schemas to query records, draft communications, and trigger system updates. Crucially, high-risk or irreversible mutations (such as financial transactions or bulk data deletions) can be gated behind explicit human review before execution."
+      q: "Can AI agents connect directly to our existing CRM or ERP software?",
+      a: "Yes, provided your software provides secure APIs or database access. We build connectors for common platforms including HubSpot, Salesforce, Zoho, Microsoft Dynamics, SAP, and custom PostgreSQL/SQL databases. High-risk actions like financial transactions always require human sign-off."
     },
     {
-      q: "How do you prevent an AI agent from making unauthorized actions or errors in production?",
-      a: "Production agent safety requires multiple layers: strict tool permission boundaries (least-privilege API tokens), schema-validated inputs, prompt-injection risk controls, and mandatory human-in-the-loop approval gates for sensitive actions. Furthermore, structured state transitions and defined fallback paths ensure that when an unexpected output or API failure occurs, the system safely halts and escalates to a human operator."
+      q: "How do you ensure an AI agent doesn't make mistakes or take unauthorized actions?",
+      a: "Every agent is built with strict operational boundaries: read-only access where appropriate, input validation to prevent manipulation, and mandatory human approval checkpoints for sensitive tasks (such as sending formal quotes or modifying customer records). The agent prepares the work; your team retains final approval."
     },
     {
-      q: "What is multi-agent orchestration and when is it required?",
-      a: "Multi-agent orchestration is a pattern where complex workflows are decomposed across multiple specialized agents rather than relying on a single monolithic prompt. Each agent possesses bounded responsibilities and distinct tool permissions (e.g., one agent performs read-only research, another performs financial analysis, and a third prepares system drafts). Orchestration coordinates their state transitions and data passing."
+      q: "When should a business use a single agent versus a multi-agent system?",
+      a: "A single agent is best for focused, linear tasks such as customer enquiry intake or reading invoices. A multi-agent system is recommended when a workflow has distinct stages that require separated security permissions—for example, one agent conducts research with read-only access, another drafts proposals, and a third checks the output against defined business rules before human review."
     },
     {
-      q: "How is corporate data secured during AI agent execution?",
-      a: "We architect agent solutions with strict data governance aligned with UAE Federal Decree-Law No. 45 (PDPL). Data handling protocols ensure that client credentials never reside in LLM prompts, model training on customer data is disabled via enterprise API agreements, and deployments can be hosted on regional private cloud environments (such as Azure UAE North or AWS Middle East) to satisfy data residency requirements."
+      q: "How is company data protected during AI agent workflows?",
+      a: "We design agent workflows with strict data privacy controls. Client credentials never live in model prompts, model training on customer data is disabled via enterprise API agreements, and deployment can be designed around UAE data-residency, private-cloud and governance requirements depending on the organization's infrastructure and compliance needs."
     },
     {
-      q: "How long does it typically take to deploy a custom AI agent in Dubai?",
-      a: "An indicative deployment follows a 4-week execution framework: Week 1 focuses on workflow mapping, state transition design, and security scoping; Week 2 on tool schema engineering and sandboxed prototyping; Week 3 on multi-agent orchestration, CRM/ERP connectivity, and approval gates; and Week 4 on supervised pilot testing, observability configuration, and staff training. Timelines vary based on API readiness."
+      q: "What does a typical deployment timeline look like?",
+      a: "A standard deployment follows a structured 4-week framework: Week 1 focuses on workflow mapping and security scoping; Week 2 on API tool schemas and sandboxed testing; Week 3 on CRM/ERP integration and approval checkpoints; and Week 4 on supervised pilot rollout and staff training."
     }
   ];
 
@@ -134,55 +134,55 @@ export default function AiAgentsDubai() {
         }}
       />
 
-      {/* ── Hero Section ── */}
-      <section className="min-h-[85vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">
+      {/* ── Hero Section (80% Business Language / 20% Credibility) ── */}
+      <section className="min-h-[80vh] flex flex-col items-center justify-center relative overflow-hidden px-6 md:px-12 text-center">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
           <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:36px_36px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] bg-blue-500/[0.03] rounded-full blur-[160px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-blue-500/[0.03] rounded-full blur-[160px]" />
         </div>
         
         <motion.div style={{ opacity, scale }} className="max-w-5xl relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] mb-8">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-blue-400" />
             <span className="text-[11px] font-mono tracking-widest uppercase text-white/70 font-semibold">
-              ENTERPRISE AGENTIC SYSTEMS
+              AI AGENTS FOR UAE BUSINESSES
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif tracking-tight leading-[1.05] mb-8">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif tracking-tight leading-[1.08] mb-8">
             Custom AI Agents &amp; <br className="hidden sm:inline" />
             <span className="text-white/70 italic font-light">Multi-Agent Systems in Dubai.</span>
           </h1>
 
-          <p className="text-base sm:text-xl md:text-2xl text-white/60 font-light max-w-3xl mx-auto leading-relaxed mb-12">
-            Engineering tool-calling AI agents, multi-agent orchestration, and controlled workflow execution for UAE organizations—grounded in memory architectures, enterprise integrations, and human approval gates.
+          <p className="text-base sm:text-xl md:text-2xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed mb-10">
+            Build custom AI agents that handle repetitive business tasks—qualifying incoming enquiries, checking information, preparing drafts, updating your CRM, and sending work to your team for approval.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14">
             <Link 
               href="/contact" 
-              className="w-full sm:w-auto bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-[11px] hover:bg-white/90 hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+              className="w-full sm:w-auto bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-[11px] hover:bg-white/90 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)]"
             >
-              Request Architecture Consultation
+              Discuss Your Automation Use Case
             </Link>
-            <Link 
-              href="/sovereign-sales-agent" 
+            <a 
+              href="#workflows" 
               className="w-full sm:w-auto border border-white/20 text-white/90 hover:text-white hover:border-white/50 px-8 py-5 rounded-full font-medium uppercase tracking-widest text-[11px] transition-all flex items-center justify-center gap-2 bg-white/[0.02]"
             >
-              Explore Sales Agent System <ArrowRight className="w-4 h-4" />
-            </Link>
+              Explore Example Workflows <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-white/40 text-[11px] uppercase tracking-widest font-mono">
-            <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-blue-400" /> Bounded Tool Permissions</span>
-            <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-blue-400" /> Human Approval Gates</span>
-            <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-blue-400" /> UAE PDPL-Aligned Data Handling</span>
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-white/60 text-xs font-sans">
+            <span className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Your Team Retains Final Approval</span>
+            <span className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Connects With Your Existing CRM &amp; Tools</span>
+            <span className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Deployment Options for Data-Residency &amp; Security Requirements</span>
           </div>
         </motion.div>
       </section>
 
-      {/* ── Direct Answer / Definition Block (Featured Snippet Optimized) ── */}
+      {/* ── Direct Answer / Executive Definition Block ── */}
       <section className="py-12 px-6 md:px-12 max-w-5xl mx-auto">
         <div className="p-8 md:p-10 border border-white/10 bg-white/[0.02] rounded-3xl relative overflow-hidden">
           <div className="flex items-start gap-4 mb-4">
@@ -191,30 +191,119 @@ export default function AiAgentsDubai() {
             </div>
             <div>
               <span className="text-[10px] font-mono uppercase tracking-widest text-blue-400 font-semibold block mb-1">
-                EXECUTIVE SUMMARY &amp; DEFINITION
+                BUSINESS EXPLANATION
               </span>
               <h2 className="text-xl md:text-2xl font-serif font-semibold text-white">
-                What is an Enterprise AI Agent?
+                What is an AI Agent? (In Plain Business Terms)
               </h2>
             </div>
           </div>
-          <p className="text-[16px] md:text-[17px] text-white/80 leading-relaxed font-light pl-0 md:pl-14">
-            An <strong>enterprise AI agent</strong> is an autonomous software system powered by large language models that reasons through multi-step objectives, queries external APIs and databases via structured tool calling, maintains contextual state across interactions, and executes controlled business workflows under human-governed approval gates. Unlike static rules-based chatbots or simple question-answering interfaces, production AI agents take bounded operational actions across enterprise environments—such as reconciling ERP records, researching target accounts, drafting customer communications, and triaging support tickets.
-          </p>
+          <div className="text-[16px] md:text-[17px] text-white/80 leading-relaxed font-light pl-0 md:pl-14 space-y-3">
+            <p>
+              A standard chatbot only answers customer questions using pre-written text. An <strong>AI Agent</strong> can actually take action across your business tools.
+            </p>
+            <p>
+              For example, when a prospective client submits an enquiry, an agent can check availability in your scheduling system, look up inventory or pricing in your database, draft a personalized proposal, and notify your sales manager on WhatsApp for final sign-off.
+            </p>
+            <p className="text-white/60 text-sm">
+              It acts like a digital team member handling the tedious research and preparation before a human makes the decision.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* ── Core Section: One AI Agent vs. Multi-Agent System ── */}
+      {/* ── Section: Example AI Agent Workflows ── */}
+      <section id="workflows" className="py-24 px-6 md:px-12 max-w-6xl mx-auto border-t border-white/5">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-400 block mb-3 font-semibold">
+            PRACTICAL AUTOMATION SCENARIOS
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif mb-4">
+            Example AI Agent Workflows.
+          </h2>
+          <p className="text-white/60 text-sm md:text-base font-light">
+            Illustrative scenarios showing how custom AI agents handle repeatable operational tasks for UAE teams.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="p-8 md:p-10 border border-white/10 bg-black rounded-3xl hover:border-white/20 transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6">
+              <Target className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl md:text-2xl font-serif font-semibold text-white mb-3">
+              Sales &amp; Inquiry Triage Agent
+            </h3>
+            <p className="text-sm text-white/70 leading-relaxed font-light mb-6">
+              Reads incoming WhatsApp and web enquiries, confirms budget and requirements, logs contact records in your CRM (HubSpot, Salesforce, or Zoho), and alerts the right sales specialist with a ready briefing.
+            </p>
+            <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
+              <span>Business Benefit:</span>
+              <span className="text-white/60">Zero dropped leads, instant initial reply, clean CRM records</span>
+            </div>
+          </div>
+
+          <div className="p-8 md:p-10 border border-white/10 bg-black rounded-3xl hover:border-white/20 transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6">
+              <FileText className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl md:text-2xl font-serif font-semibold text-white mb-3">
+              Document &amp; Invoice Assistant
+            </h3>
+            <p className="text-sm text-white/70 leading-relaxed font-light mb-6">
+              Reads incoming supplier invoices or contracts, matches extracted invoice details against purchase-order records and routes exceptions for staff review.
+            </p>
+            <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
+              <span>Business Benefit:</span>
+              <span className="text-white/60">Hours of manual data entry saved; human staff approves payments</span>
+            </div>
+          </div>
+
+          <div className="p-8 md:p-10 border border-white/10 bg-black rounded-3xl hover:border-white/20 transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6">
+              <MessageSquare className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl md:text-2xl font-serif font-semibold text-white mb-3">
+              Customer Operations Agent
+            </h3>
+            <p className="text-sm text-white/70 leading-relaxed font-light mb-6">
+              Answers multi-step client questions by looking up live order or inventory status, scheduling appointments, and preparing support tickets with full context for senior agents.
+            </p>
+            <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
+              <span>Business Benefit:</span>
+              <span className="text-white/60">Fast resolution for common requests; complex cases escalated</span>
+            </div>
+          </div>
+
+          <div className="p-8 md:p-10 border border-white/10 bg-black rounded-3xl hover:border-white/20 transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6">
+              <Search className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl md:text-2xl font-serif font-semibold text-white mb-3">
+              Research &amp; Briefing Agent
+            </h3>
+            <p className="text-sm text-white/70 leading-relaxed font-light mb-6">
+              Compiles market pricing, competitor updates, or regulatory notices into concise executive briefings for senior leadership before major decisions or client meetings.
+            </p>
+            <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
+              <span>Business Benefit:</span>
+              <span className="text-white/60">Saves senior staff research hours; grounded in verified sources</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section: Single Agent vs. Multi-Agent Systems ── */}
       <section className="py-24 px-6 md:px-12 max-w-6xl mx-auto border-t border-white/5">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-400 block mb-3 font-semibold">
-            ARCHITECTURAL SELECTION CRITERIA
+            PRACTICAL SELECTION CRITERIA
           </span>
           <h2 className="text-3xl md:text-5xl font-serif mb-4">
-            One AI Agent vs. Multi-Agent System: Which Architecture Do You Need?
+            Single AI Agent vs. Multi-Agent Systems: Which Does Your Business Need?
           </h2>
           <p className="text-white/60 text-sm md:text-base font-light">
-            More agents are not automatically better; architecture should match workflow complexity, permissions, and reliability requirements.
+            We do not overcomplicate systems. We choose the simplest architecture that gets the job done reliably.
           </p>
         </div>
 
@@ -225,24 +314,24 @@ export default function AiAgentsDubai() {
               <h3 className="text-xl font-serif font-semibold text-white">When a Single Agent is Sufficient</h3>
             </div>
             <p className="text-xs text-white/50 font-light mb-6">
-              Best suited for bounded, predictable workflows with focused scope and low coordination overhead.
+              Best for focused, linear workflows with clear scope and low coordination overhead.
             </p>
             <ul className="space-y-3 text-xs text-white/70 font-light">
               <li className="flex items-start gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span><strong>Linear, bounded workflows:</strong> A single process with a clear beginning, middle, and end (e.g., FAQ customer intake or parsing inbound invoices).</span>
+                <span><strong>Linear, bounded tasks:</strong> A single process with defined steps (e.g. customer intake or parsing standard invoices).</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span><strong>Few API endpoints:</strong> Operates against 1 to 3 well-defined tools without competing parameter sets.</span>
+                <span><strong>Few software connections:</strong> Operates across 1 to 3 tools without complex inter-departmental handoffs.</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span><strong>Unified permission scope:</strong> All required actions fall under a single security credential boundary.</span>
+                <span><strong>Unified security permissions:</strong> All required actions fall under a single user role or credential.</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span><strong>Straightforward evaluation:</strong> Easy to test, benchmark, and monitor without inter-agent latency or state drift.</span>
+                <span><strong>Faster deployment:</strong> Simple to test, monitor, and maintain with fast implementation times.</span>
               </li>
             </ul>
           </div>
@@ -253,45 +342,45 @@ export default function AiAgentsDubai() {
               <h3 className="text-xl font-serif font-semibold text-white">When Multi-Agent Orchestration is Justified</h3>
             </div>
             <p className="text-xs text-white/50 font-light mb-6">
-              Required when separation of concerns, tool permissions, or multi-stage reasoning demand specialized workers.
+              Recommended when complex workflows require separated responsibilities and different security credentials.
             </p>
             <ul className="space-y-3 text-xs text-white/70 font-light">
               <li className="flex items-start gap-2.5">
                 <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
-                <span><strong>Divergent permission boundaries:</strong> A researcher agent only requires read permissions, while a transactional agent requires specific write credentials with audit gates.</span>
+                <span><strong>Separated security roles:</strong> A researcher agent operates with read-only access, while another prepares draft records with audit checkpoints.</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
-                <span><strong>Multi-stage pipelines:</strong> Complex workflows structured as Research → Synthesis → Risk Analysis → Draft → Approval.</span>
+                <span><strong>Multi-stage pipelines:</strong> Complex workflows structured as Research → Synthesis → a third checks the output against defined business rules before human review.</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
-                <span><strong>Modular maintainability:</strong> Changes to one sub-agent's prompt or tools do not destabilize the entire system.</span>
+                <span><strong>Modular maintenance:</strong> Updates to one sub-agent prompt or tool do not break the rest of the operational flow.</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
-                <span><strong>Governance &amp; observability:</strong> Clear visibility into which agent produced which intermediate output before human sign-off.</span>
+                <span><strong>Clear governance:</strong> Full visibility into which agent drafted which piece of information before final approval.</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 text-center text-xs text-white/50 font-mono">
-          Pragmatic Engineering Principle: Start with a single bounded agent; only introduce multi-agent orchestration when security boundaries or task complexity strictly require it.
+          Pragmatic Principle: Start with a single bounded agent; only introduce multi-agent orchestration when workflow complexity or security boundaries strictly require it.
         </div>
       </section>
 
-      {/* ── Section 2: The 5 Technical Pillars ── */}
+      {/* ── Section: For Technical Teams (20% Engineering Depth) ── */}
       <section className="py-28 bg-white/[0.015] border-y border-white/5 px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-400 block mb-3 font-semibold">
-              TECHNICAL SPECIFICATION
+              TECHNICAL SPECIFICATION FOR CTOS &amp; ENGINEERING TEAMS
             </span>
             <h2 className="text-3xl md:text-5xl font-serif mb-6">
-              The 5 Pillars of Enterprise Agent Architecture.
+              Architecture &amp; Governance Specifications.
             </h2>
-            <p className="text-white/50 text-sm md:text-base font-light">
+            <p className="text-white/60 text-sm md:text-base font-light">
               How our engineering team designs robust, predictable agentic systems for enterprise production.
             </p>
           </div>
@@ -353,98 +442,17 @@ export default function AiAgentsDubai() {
         </div>
       </section>
 
-      {/* ── Section 3: Specialized Enterprise Agent Roles ── */}
-      <section className="py-28 px-6 md:px-12 max-w-6xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-white/40 block mb-3 font-semibold">
-            DOMAIN-SPECIFIC IMPLEMENTATIONS
-          </span>
-          <h2 className="text-3xl md:text-5xl font-serif mb-6">
-            Specialized Enterprise Agent Roles.
-          </h2>
-          <p className="text-white/50 text-sm md:text-base font-light">
-            Engineered around realistic operational responsibilities across commercial verticals in Dubai and the UAE.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-8 md:p-10 border border-white/5 bg-black rounded-3xl hover:border-white/20 transition-all">
-            <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-blue-400 mb-6">
-              <Workflow className="w-6 h-6" />
-            </div>
-            <h3 className="text-xl md:text-2xl font-serif font-semibold text-white mb-3">
-              Operations &amp; Logistics Agents
-            </h3>
-            <p className="text-sm text-white/60 leading-relaxed font-light mb-6">
-              Assist warehouse, supply chain, and fleet operations across JAFZA, KIZAD, and Dubai industrial clusters. Agents query ERP inventory, track shipment milestones via carrier APIs, flag delivery discrepancies, and draft customer status updates.
-            </p>
-            <div className="flex items-center gap-2 text-[11px] font-mono text-blue-400">
-              <span>Key Capabilities:</span>
-              <span className="text-white/50">ERP query tools, delivery tracking, discrepancy triage</span>
-            </div>
-          </div>
-
-          <div className="p-8 md:p-10 border border-white/5 bg-black rounded-3xl hover:border-white/20 transition-all">
-            <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-blue-400 mb-6">
-              <Target className="w-6 h-6" />
-            </div>
-            <h3 className="text-xl md:text-2xl font-serif font-semibold text-white mb-3">
-              Sales Intelligence &amp; Research Agents
-            </h3>
-            <p className="text-sm text-white/60 leading-relaxed font-light mb-6">
-              Synthesize public company signals, executive announcements, and industry news into structured dossiers for Account Executives before discovery calls. Agents enrich CRM contact records and draft tailored outreach for human sales review.
-            </p>
-            <div className="flex items-center gap-2 text-[11px] font-mono text-blue-400">
-              <span>Key Capabilities:</span>
-              <span className="text-white/50">Dossier generation, CRM contact enrichment, draft generation</span>
-            </div>
-          </div>
-
-          <div className="p-8 md:p-10 border border-white/5 bg-black rounded-3xl hover:border-white/20 transition-all">
-            <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-blue-400 mb-6">
-              <MessageSquare className="w-6 h-6" />
-            </div>
-            <h3 className="text-xl md:text-2xl font-serif font-semibold text-white mb-3">
-              Customer Support &amp; Tier-2 Triage Agents
-            </h3>
-            <p className="text-sm text-white/60 leading-relaxed font-light mb-6">
-              Field inbound customer inquiries across WhatsApp, email, and web chat. Agents verify customer identity against CRM records, answer complex policy questions via RAG, open support tickets, and escalate complex issues directly to the appropriate team.
-            </p>
-            <div className="flex items-center gap-2 text-[11px] font-mono text-blue-400">
-              <span>Key Capabilities:</span>
-              <span className="text-white/50">Identity verification, ticket creation, human escalation</span>
-            </div>
-          </div>
-
-          <div className="p-8 md:p-10 border border-white/5 bg-black rounded-3xl hover:border-white/20 transition-all">
-            <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-blue-400 mb-6">
-              <FileText className="w-6 h-6" />
-            </div>
-            <h3 className="text-xl md:text-2xl font-serif font-semibold text-white mb-3">
-              Document Intelligence &amp; Review Agents
-            </h3>
-            <p className="text-sm text-white/60 leading-relaxed font-light mb-6">
-              Provide policy and document review assistance by extracting key contract clauses, cross-referencing internal operational guidelines, and escalating flagged non-standard terms to internal legal and procurement officers in English and Arabic.
-            </p>
-            <div className="flex items-center gap-2 text-[11px] font-mono text-blue-400">
-              <span>Key Capabilities:</span>
-              <span className="text-white/50">Clause extraction, guideline cross-referencing, review escalation</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Section 4: Tool Permission & Approval Architecture ── */}
-      <section className="py-28 bg-white/[0.015] border-y border-white/5 px-6 md:px-12">
+      {/* ── Section: Security & Human Approval Gate Progression ── */}
+      <section className="py-28 bg-black px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-400 block mb-3 font-semibold">
-              SECURITY &amp; CONTROL
+              HUMAN-IN-THE-LOOP CONTROLS
             </span>
             <h2 className="text-3xl md:text-5xl font-serif mb-4">
               Tool Permission &amp; Approval Architecture.
             </h2>
-            <p className="text-white/50 text-sm font-light">
+            <p className="text-white/60 text-sm font-light">
               Protecting corporate assets by establishing strict operational boundaries between automated intelligence and transactional execution.
             </p>
           </div>
@@ -498,77 +506,18 @@ export default function AiAgentsDubai() {
         </div>
       </section>
 
-      {/* ── Section 5: Comparison Table - Wrapper vs. Production Agent System ── */}
-      <section className="py-28 px-6 md:px-12 max-w-6xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-white/40 block mb-3 font-semibold">
-            METHODOLOGY COMPARISON
-          </span>
-          <h2 className="text-3xl md:text-5xl font-serif mb-4">
-            Simple LLM Wrapper vs. Production Agent System.
-          </h2>
-          <p className="text-white/50 text-sm font-light">
-            Understanding the engineering divide between experimental chatbots and enterprise-grade agentic architectures.
-          </p>
-        </div>
-
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse text-left text-sm font-light">
-            <thead>
-              <tr className="border-b border-white/10 text-white/40 font-mono text-[11px] uppercase tracking-wider">
-                <th className="py-4 px-6">Evaluation Dimension</th>
-                <th className="py-4 px-6 text-white/60">Generic LLM Wrapper / Basic Bot</th>
-                <th className="py-4 px-6 text-blue-400 bg-blue-500/[0.04] rounded-t-2xl">Asif Digital Enterprise Agent Architecture</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-white/5 text-white/75">
-              <tr>
-                <td className="py-5 px-6 font-medium text-white">Execution Model</td>
-                <td className="py-5 px-6 text-white/60">Single-prompt text generation; no tool calling or state awareness</td>
-                <td className="py-5 px-6 text-white/90 bg-blue-500/[0.04]">Controlled workflow routing with structured state transitions &amp; sub-agent delegation</td>
-              </tr>
-              <tr>
-                <td className="py-5 px-6 font-medium text-white">Tool &amp; API Permissions</td>
-                <td className="py-5 px-6 text-white/60">None or unvalidated raw webhooks prone to injection</td>
-                <td className="py-5 px-6 text-white/90 bg-blue-500/[0.04]">Type-safe JSON schemas, parameter validation &amp; bounded least-privilege tokens</td>
-              </tr>
-              <tr>
-                <td className="py-5 px-6 font-medium text-white">Context &amp; Memory Structure</td>
-                <td className="py-5 px-6 text-white/60">Truncated conversational window; forgets data upon session reset</td>
-                <td className="py-5 px-6 text-white/90 bg-blue-500/[0.04]">Three-tier architecture: session state, persistent relational memory &amp; RAG search</td>
-              </tr>
-              <tr>
-                <td className="py-5 px-6 font-medium text-white">Failure Recovery &amp; Retries</td>
-                <td className="py-5 px-6 text-white/60">Silent failure or repetitive hallucinations when APIs error</td>
-                <td className="py-5 px-6 text-white/90 bg-blue-500/[0.04]">Defined retry/fallback paths, exponential backoff &amp; graceful human escalation</td>
-              </tr>
-              <tr>
-                <td className="py-5 px-6 font-medium text-white">Governance &amp; Human Gates</td>
-                <td className="py-5 px-6 text-white/60">Zero approval mechanisms; unmonitored text dispatches</td>
-                <td className="py-5 px-6 text-white/90 bg-blue-500/[0.04]">Enforced Read → Analyze → Draft → Human Approval → Execute progression</td>
-              </tr>
-              <tr>
-                <td className="py-5 px-6 font-medium text-white">Enterprise Systems Connectivity</td>
-                <td className="py-5 px-6 text-white/60">Isolated standalone chat widgets with no back-office ties</td>
-                <td className="py-5 px-6 text-white/90 bg-blue-500/[0.04]">Direct bidirectional integration with CRM, ERP, databases &amp; WhatsApp Cloud API</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      {/* ── Section 6: Enterprise Integrations ── */}
+      {/* ── Section: Connected Ecosystem & Data Residency ── */}
       <section className="py-24 bg-white/[0.015] border-y border-white/5 px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-white/40 block mb-3 font-semibold">
-              CONNECTED ECOSYSTEM
+              CONNECTED ECOSYSTEM &amp; INFRASTRUCTURE
             </span>
             <h2 className="text-3xl md:text-5xl font-serif mb-4">
               Enterprise Systems &amp; Data Integration.
             </h2>
             <p className="text-white/60 text-sm font-light">
-              Common integrations depend on API availability, permissions, and the client's existing environment.
+              Common integrations depend on API availability, permissions, and your organization's existing environment.
             </p>
           </div>
 
@@ -585,7 +534,7 @@ export default function AiAgentsDubai() {
               <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest block mb-2 font-semibold">ERP &amp; DATABASES</span>
               <h4 className="text-base font-medium text-white mb-2">Back-Office &amp; Data</h4>
               <p className="text-xs text-white/60 leading-relaxed font-light">
-                Interfacing with SAP, Oracle NetSuite, PostgreSQL, or SQL Server environments for inventory and financial record lookup.
+                Interfacing with SAP, Oracle NetSuite, PostgreSQL, or SQL Server environments for inventory and operational records.
               </p>
             </div>
 
@@ -593,15 +542,15 @@ export default function AiAgentsDubai() {
               <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest block mb-2 font-semibold">MESSAGING CHANNELS</span>
               <h4 className="text-base font-medium text-white mb-2">Omnichannel Touchpoints</h4>
               <p className="text-xs text-white/60 leading-relaxed font-light">
-                Verified Meta WhatsApp Business Cloud API, corporate email (Exchange / Google Workspace), Slack, and Microsoft Teams.
+                WhatsApp Business Platform, corporate email (Google Workspace / Microsoft 365), Slack, and Microsoft Teams.
               </p>
             </div>
 
             <div className="p-6 border border-white/10 bg-black rounded-2xl">
-              <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest block mb-2 font-semibold">CLOUD HOSTING</span>
-              <h4 className="text-base font-medium text-white mb-2">Regional Tenancy</h4>
+              <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest block mb-2 font-semibold">DATA RESIDENCY</span>
+              <h4 className="text-base font-medium text-white mb-2">Data Residency &amp; Private Deployment Options</h4>
               <p className="text-xs text-white/60 leading-relaxed font-light">
-                Deployable on Azure UAE North, AWS Middle East, or isolated private virtual private clouds for regional data handling compliance.
+                Deployment can be designed around UAE data-residency, private-cloud and governance requirements depending on the organization's infrastructure and compliance needs.
               </p>
             </div>
           </div>
@@ -612,7 +561,7 @@ export default function AiAgentsDubai() {
         </div>
       </section>
 
-      {/* ── Section 7: Illustrative Scope & Efficiency Estimator ── */}
+      {/* ── Section: Illustrative Scope & Capacity Estimator ── */}
       <section className="py-28 px-6 md:px-12 max-w-5xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-400 block mb-3 font-semibold">
@@ -621,7 +570,7 @@ export default function AiAgentsDubai() {
           <h2 className="text-3xl md:text-5xl font-serif mb-4">
             Agentic Scope &amp; Capacity Estimator.
           </h2>
-          <p className="text-white/50 text-sm font-light">
+          <p className="text-white/60 text-sm font-light">
             Model addressable manual workload and evaluate likely architectural tier based on workflow parameters.
           </p>
         </div>
@@ -719,12 +668,12 @@ export default function AiAgentsDubai() {
           </div>
 
           <p className="text-[11px] text-white/40 italic mt-8 text-center border-t border-white/5 pt-4">
-            *Disclaimer: Illustrative model only. Actual efficiency depends on workflow design, API availability, data quality, adoption, and exception rates.
+            *Disclaimer: Illustrative model only. Actual capacity recovery depends on workflow design, API availability, data quality, and exception rates.
           </p>
         </div>
       </section>
 
-      {/* ── Section 8: Indicative Implementation Roadmap ── */}
+      {/* ── Section: Typical 4-Week Deployment Framework ── */}
       <section className="py-28 bg-white/[0.015] border-y border-white/5 px-6 md:px-12">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -734,8 +683,8 @@ export default function AiAgentsDubai() {
             <h2 className="text-3xl md:text-5xl font-serif mb-4">
               Typical 4-Week Deployment Framework.
             </h2>
-            <p className="text-white/50 text-sm font-light">
-              An indicative 4-week engineering methodology for technical scoping, development, and supervised rollout.
+            <p className="text-white/60 text-sm font-light">
+              A structured engineering methodology for technical scoping, development, and supervised rollout.
             </p>
           </div>
 
@@ -775,17 +724,17 @@ export default function AiAgentsDubai() {
         </div>
       </section>
 
-      {/* ── Section 9: Frequently Asked Questions ── */}
+      {/* ── Section: Frequently Asked Questions ── */}
       <section className="py-28 px-6 md:px-12 max-w-4xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-white/40 block mb-3 font-semibold">
-            TECHNICAL ANSWERS
+            PRACTICAL CLARIFICATIONS
           </span>
           <h2 className="text-3xl md:text-5xl font-serif mb-4">
             Frequently Asked Questions.
           </h2>
-          <p className="text-white/50 text-sm font-light">
-            Clear technical answers regarding custom AI agents and multi-agent system architecture in Dubai.
+          <p className="text-white/60 text-sm font-light">
+            Clear answers regarding custom AI agents and multi-agent system architecture for UAE companies.
           </p>
         </div>
 
@@ -818,7 +767,7 @@ export default function AiAgentsDubai() {
         </div>
       </section>
 
-      {/* ── Section 10: Strategic Ecosystem & Related Intelligence ── */}
+      {/* ── Section: Strategic Ecosystem & Related Intelligence ── */}
       <section className="py-24 bg-white/[0.015] border-t border-white/5 px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
@@ -843,12 +792,12 @@ export default function AiAgentsDubai() {
               href="/sovereign-sales-agent" 
               className="p-8 border border-white/5 bg-black rounded-3xl hover:border-white/20 transition-all group"
             >
-              <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest block mb-4">Autonomous Sales</span>
+              <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest block mb-4">B2B Outreach</span>
               <h3 className="text-xl font-serif text-white mb-3 group-hover:text-blue-300 transition-colors">
                 Sovereign Sales Agent
               </h3>
               <p className="text-xs text-white/60 leading-relaxed font-light">
-                Enterprise command center for B2B target discovery, AI qualification, draft outreach, and lead inbox workflows.
+                Enterprise command center for B2B target discovery, prospect research, draft outreach, and review queues.
               </p>
             </Link>
 
@@ -861,7 +810,7 @@ export default function AiAgentsDubai() {
                 Workflow Automation UAE
               </h3>
               <p className="text-xs text-white/60 leading-relaxed font-light">
-                Connect your CRM, ERP, and operational messaging to eliminate manual administrative data entry.
+                Connect your CRM, ERP, and operational messaging to reduce repetitive manual administrative data entry.
               </p>
             </Link>
 
@@ -874,14 +823,14 @@ export default function AiAgentsDubai() {
                 AI Consulting UAE
               </h3>
               <p className="text-xs text-white/60 leading-relaxed font-light">
-                Strategic readiness audits, architecture evaluation, and working PoC validation for UAE enterprise leaders.
+                Strategic readiness audits, architecture evaluation, and working automation validation for UAE business leaders.
               </p>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── Section 11: Final Call to Action ── */}
+      {/* ── Section: Final Call to Action ── */}
       <section className="py-32 px-6 md:px-12 text-center relative overflow-hidden border-t border-white/5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.03)_0%,transparent_70%)]" />
         <div className="max-w-3xl mx-auto relative z-10">
@@ -914,7 +863,7 @@ export default function AiAgentsDubai() {
         </div>
       </section>
 
-      {/* ── Section 12: Contextual Internal Links Swarm ── */}
+      {/* ── Section: Contextual Internal Links Swarm ── */}
       <section className="py-12 border-t border-white/5 bg-black">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 justify-center text-white/50 text-xs font-mono">
