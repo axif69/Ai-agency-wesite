@@ -151,8 +151,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     {/* Column 2: AI Growth & Media Systems */}
                     <div className="space-y-1.5 border-r border-white/10 pr-5">
                       <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 block mb-2 font-semibold">AI Growth &amp; Performance</span>
-                      <Link href="/ai-ppc-agency-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI PPC Agency Dubai 📈</Link>
-                      <Link href="/ai-seo-agency-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI SEO &amp; AEO Agency Dubai ⚡</Link>
+                      <Link href="/ai-lead-generation-agency-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI Lead Generation Dubai 🎯</Link>
+                      <Link href="/ai-ppc-agency-dubai" className="text-white/95 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI PPC Agency Dubai 📈</Link>
+                      <Link href="/ai-seo-agency-dubai" className="text-white/95 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI SEO &amp; AEO Agency Dubai ⚡</Link>
                       <Link href="/ai-marketing-dubai" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Sovereign Marketing Swarms</Link>
                       <Link href="/workflow-automation-uae" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Workflow Automation UAE</Link>
                       <Link href="/tools/ad-spend-efficiency-analyzer" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Ad Spend Efficiency Diagnostic</Link>
@@ -249,6 +250,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   {isSovereignOpen && (
                     <div className="mt-4 space-y-3 text-lg text-white/70">
                       <Link href="/ai-consulting-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400 font-semibold">AI Consulting UAE (Strategy &amp; Audits) 🏛️</Link>
+                      <Link href="/ai-lead-generation-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400 font-semibold">AI Lead Generation Dubai 🎯</Link>
                       <Link href="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Sales Agent (B2B)</Link>
                       <Link href="/hospitality-ai-automation-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400">Hospitality AI Automation UAE 🏨</Link>
                       <Link href="/ai-ppc-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400">AI PPC Agency Dubai 📈</Link>
