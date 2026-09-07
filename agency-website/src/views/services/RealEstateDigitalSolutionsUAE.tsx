@@ -187,10 +187,10 @@ export default function RealEstateDigitalSolutionsUAE() {
           <div className="p-6 border border-white/10 bg-white/[0.02] rounded-2xl flex flex-col justify-between">
             <div>
               <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono font-bold flex items-center justify-center text-xs mb-4">05</div>
-              <h3 className="font-bold text-white text-sm mb-2">Enterprise CRM</h3>
-              <p className="text-white/60 text-xs leading-relaxed">Lead qualification, broker routing, and WhatsApp speed-to-lead follow-up.</p>
+              <h3 className="font-bold text-white text-sm mb-2">Data Gateway &amp; CRM Bridge</h3>
+              <p className="text-white/60 text-xs leading-relaxed">Secure webhook pipelines bridging web inquiries directly into your agency CRM.</p>
             </div>
-            <div className="text-emerald-400 text-xs font-mono mt-4">Sales Operations Hub</div>
+            <div className="text-emerald-400 text-xs font-mono mt-4">API Handover Point</div>
           </div>
         </div>
       </section>

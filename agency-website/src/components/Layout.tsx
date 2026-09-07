@@ -167,13 +167,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 block font-semibold">Real Estate AI Suite 🏢</span>
                         <Link href="/real-estate" className="text-[10px] font-mono text-emerald-300 hover:underline">View Hub →</Link>
                       </div>
+                      <Link href="/real-estate" className="text-white/95 hover:text-emerald-300 transition-all text-[13px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Real Estate AI UAE (Pillar Hub) 🏢</Link>
+                      <Link href="/real-estate-crm-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Real Estate CRM Dubai (Portals &amp; Routing) ⚡</Link>
+                      <Link href="/ai-real-estate-agencies-dubai" className="text-white/90 hover:text-emerald-300 transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI for Real Estate Agencies Dubai</Link>
+                      <Link href="/ai-property-management-uae" className="text-white/90 hover:text-emerald-300 transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI Property Management UAE</Link>
+                      <Link href="/real-estate-digital-solutions-uae" className="text-white/90 hover:text-emerald-300 transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Brokerage Web &amp; Portal Infrastructure</Link>
                       <Link href="/real-estate/whatsapp-ai-automation" className="text-white/90 hover:text-emerald-300 transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">WhatsApp AI Automation Dubai</Link>
                       <Link href="/real-estate/ai-lead-dashboard" className="text-white/90 hover:text-emerald-300 transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI Lead Dashboard &amp; Attribution</Link>
-                      <Link href="/real-estate/portal-lead-integration-dubai" className="text-white/90 hover:text-emerald-300 transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Bayut &amp; Property Finder Panel</Link>
-                      <Link href="/real-estate/off-plan-ai-automation-dubai" className="text-white/90 hover:text-emerald-300 transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI Off-Plan Matcher &amp; 1% Plan</Link>
-                      <Link href="/real-estate/broker-ai-copilot-dubai" className="text-white/90 hover:text-emerald-300 transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Broker 1-Click AI Co-Pilot &amp; SLA</Link>
-                      <Link href="/real-estate/property-management-ai-uae" className="text-white/90 hover:text-emerald-300 transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI Property Management &amp; Tenant Intake</Link>
-                      <Link href="/real-estate/ai-roi-calculator-dubai" className="text-white/90 hover:text-emerald-300 transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200">Real Estate Lead Decay &amp; ROI Calculator</Link>
+                      <Link href="/real-estate/portal-lead-integration-dubai" className="text-white/90 hover:text-emerald-300 transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200">Bayut &amp; Property Finder Panel</Link>
                     </div>
                   </div>
                 </div>
@@ -258,10 +259,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       <Link href="/ai-ppc-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400">AI PPC Agency Dubai 📈</Link>
                       <Link href="/ai-automation-abu-dhabi" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-blue-400 font-semibold">AI Automation Abu Dhabi</Link>
                       <Link href="/ai-seo-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400">AI SEO &amp; AEO Agency Dubai ⚡</Link>
-                      <Link href="/arabic-ai-hub" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Arabic Intelligence Hub</Link>
-                      <Link href="/real-estate/whatsapp-ai-automation" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI WhatsApp Automation</Link>
-                      <Link href="/real-estate/ai-lead-dashboard" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI Lead Dashboard</Link>
-                      <Link href="/real-estate" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400">Real Estate AI Hub</Link>
+                      <Link href="/real-estate" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400 font-semibold">Real Estate AI UAE (Pillar Hub) 🏢</Link>
+                      <Link href="/real-estate-crm-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-emerald-400 font-semibold">Real Estate CRM Dubai ⚡</Link>
+                      <Link href="/ai-real-estate-agencies-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-white/90">AI for Real Estate Agencies Dubai</Link>
+                      <Link href="/ai-property-management-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-white/90">AI Property Management UAE</Link>
+                      <Link href="/real-estate/whatsapp-ai-automation" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-white/70">Real Estate AI WhatsApp Automation</Link>
+                      <Link href="/real-estate/ai-lead-dashboard" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors text-white/70">Real Estate AI Lead Dashboard</Link>
                       <Link href="/services/agentic-finance-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Agentic Finance &amp; Compliance</Link>
                       <Link href="/services/whatsapp-automation-gcc" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">WhatsApp Automation</Link>
                     </div>

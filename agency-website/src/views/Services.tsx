@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-import { Code, Megaphone, PenTool, ArrowRight, Monitor, ShoppingCart, Server, HeadphonesIcon, Search, MousePointerClick, Share2, Bot, Palette, Image, Layers, Workflow, Languages, Target, Shield, Zap } from "lucide-react";
+import { Code, Megaphone, PenTool, ArrowRight, Monitor, ShoppingCart, Server, HeadphonesIcon, Search, MousePointerClick, Share2, Bot, Palette, Image, Layers, Workflow, Languages, Target, Shield, Zap, Database } from "lucide-react";
 
 const categories = [
   {
@@ -18,10 +18,11 @@ const categories = [
     name: "Real Estate Intelligence",
     icon: <Shield className="w-5 h-5" />,
     services: [
-      { title: "AI Real Estate UAE Hub", desc: "A practical hub for UAE property teams looking to understand where AI actually helps across leads, listings, support, and operations.", features: ["Lead Handling", "Listings", "Operations", "AEO Ready"], link: "/ai-real-estate-uae", icon: <Bot className="w-8 h-8" /> },
+      { title: "AI Real Estate UAE Hub", desc: "A practical hub for UAE property teams looking to understand where AI actually helps across leads, listings, support, and operations.", features: ["Lead Handling", "Listings", "Operations", "AEO Ready"], link: "/real-estate", icon: <Bot className="w-8 h-8" /> },
       { title: "AI for Real Estate Agencies", desc: "Dubai agency workflows for faster response times, better qualification, and cleaner CRM handoffs across every channel.", features: ["24/7 Intake", "Lead Qualification", "CRM Sync", "Viewing Support"], link: "/ai-real-estate-agencies-dubai", icon: <Workflow className="w-8 h-8" /> },
+      { title: "Real Estate CRM Dubai", desc: "Specialized CRM pipelines, Bayut & Property Finder portal lead capture, automated broker routing, and deal tracking.", features: ["Portal Integration", "Broker Routing", "WhatsApp Alerts", "Deal Tracking"], link: "/real-estate-crm-dubai", icon: <Database className="w-8 h-8" /> },
       { title: "AI Property Management UAE", desc: "Tenant communication, renewals, maintenance intake, and operational reminders designed for property management teams.", features: ["Tenant Support", "Maintenance Intake", "Renewals", "Reminders"], link: "/ai-property-management-uae", icon: <HeadphonesIcon className="w-8 h-8" /> },
-      { title: "Real Estate Digital Solutions", desc: "The connected website, portal, CRM, and WhatsApp foundation that powers real estate automation and lead flow.", features: ["Websites", "Integrations", "CRM", "WhatsApp"], link: "/real-estate-digital-solutions-uae", icon: <Code className="w-8 h-8" /> },
+      { title: "Real Estate Digital Solutions", desc: "The connected website, portal, CRM, and WhatsApp foundation that powers real estate automation and lead flow.", features: ["Websites", "Integrations", "Listing Feeds", "Infrastructure"], link: "/real-estate-digital-solutions-uae", icon: <Code className="w-8 h-8" /> },
     ]
   },
   {

@@ -1258,7 +1258,7 @@ export default function Home() {
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/ai-chatbots-dubai" className="hover:text-white transition-colors">WhatsApp AI Chatbot Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/ai-real-estate-uae" className="hover:text-white transition-colors">AI Real Estate Automation Dubai</Link>
+            <Link href="/real-estate" className="hover:text-white transition-colors">AI Real Estate Automation Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/arabic-ai-hub" className="hover:text-white transition-colors">Arabic AI Chatbot UAE</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
