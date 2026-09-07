@@ -61,7 +61,7 @@ export default function AiAutomationAbuDhabi() {
       { "@type": "AdministrativeArea", "name": "Abu Dhabi Global Market (ADGM)" },
       { "@type": "Country", "name": "United Arab Emirates" }
     ],
-    "description": "Enterprise AI automation and systems integration in Abu Dhabi. We engineer ADGM-compliant workflows, energy & industrial process automation, and ERP integrations."
+    "description": "Enterprise AI automation and systems integration in Abu Dhabi for regulated finance, energy, industrial and logistics operations, with ERP, CRM and private-cloud deployment options."
   };
 
   const faqSchema = {
@@ -176,7 +176,7 @@ export default function AiAutomationAbuDhabi() {
 
           <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs text-white/40 font-mono">
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-blue-400" /> ADGM &amp; Institutional Governance
+              <Check className="w-4 h-4 text-blue-400" /> Workflows for Regulated ADGM Environments
             </span>
             <span className="flex items-center gap-2">
               <Check className="w-4 h-4 text-blue-400" /> Dedicated VPC &amp; Isolated Hosting
@@ -226,11 +226,11 @@ export default function AiAutomationAbuDhabi() {
         <div className="space-y-8">
           {[
             {
-              sector: "Financial Services & ADGM",
+              sector: "Financial Services & Regulated ADGM Contexts",
               title: "Investor Onboarding & Compliance Extraction",
               icon: <Landmark className="w-6 h-6 text-emerald-400" />,
               input: "Multipage corporate registry filings, passport scans, UBO declarations & proof of address (PDF / scanned images).",
-              layer: "Bilingual OCR extraction, entity resolution, sanctions list cross-referencing & risk scoring matrix.",
+              layer: "Bilingual OCR extraction, entity resolution, sanctions screening support & risk scoring assistance.",
               system: "Core banking CRM, compliance audit repository & internal deal room pipeline.",
               approval: "Senior Compliance Officer reviews flagged discrepancies and executes 1-click verification before account provisioning."
             },
@@ -238,8 +238,8 @@ export default function AiAutomationAbuDhabi() {
               sector: "Energy, Utilities & Industrial Operations",
               title: "Field Incident & Telemetry Anomaly Triage",
               icon: <Factory className="w-6 h-6 text-amber-400" />,
-              input: "Daily site technician logs, handwritten maintenance reports & SCADA alarm telemetry alerts.",
-              layer: "Arabic/English technical text normalization, severity classification & failure pattern clustering.",
+              input: "Daily site technician logs, maintenance reports & SCADA telemetry/alarm logs (telemetry/log triage and decision support only, not autonomous control of industrial systems).",
+              layer: "Arabic/English technical text normalization, severity classification & maintenance pattern clustering for decision support.",
               system: "Enterprise Asset Management (SAP PM / IBM Maximo) & preventative maintenance schedules.",
               approval: "Operations Engineering Lead authorizes parts procurement and technician dispatch directly from mobile briefing."
             },
@@ -248,8 +248,8 @@ export default function AiAutomationAbuDhabi() {
               title: "Customs Declarations & Bill of Lading Processing",
               icon: <Plane className="w-6 h-6 text-blue-400" />,
               input: "Inbound commercial invoices, multilingual packing lists, certificates of origin & carrier airway bills.",
-              layer: "Line-item extraction, automated Harmonized System (HS) tariff code prediction & currency conversion.",
-              system: "Customs brokerage portal, freight ERP & warehouse inventory management system.",
+              layer: "Line-item extraction, currency conversion & HS code suggestion and classification assistance for licensed broker review.",
+              system: "Customs documentation review workflows, freight ERP & warehouse inventory management systems (customs preparation and broker handoff, not direct customs-portal execution).",
               approval: "Licensed Customs Broker validates duty calculations and signs off on export/import filing submission."
             },
             {
@@ -266,7 +266,7 @@ export default function AiAutomationAbuDhabi() {
               title: "Bilingual Enterprise Inquiry Triage & Routing",
               icon: <Users className="w-6 h-6 text-cyan-400" />,
               input: "High-volume correspondence via secure web portals, corporate email & verified WhatsApp Business API.",
-              layer: "Dialect-aware Arabic (Khaleeji / Modern Standard) & English intent parsing, entitlement verification.",
+              layer: "Arabic and English intent routing and classification, entitlement verification.",
               system: "Enterprise CRM (Microsoft Dynamics 365 / Salesforce) & department service queue.",
               approval: "Department Case Specialist reviews synthesized response draft and context summary before client transmission."
             }
