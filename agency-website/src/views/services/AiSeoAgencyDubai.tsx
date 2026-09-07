@@ -182,7 +182,7 @@ export default function AiSeoAgencyDubai() {
           </h1>
 
           <p className="text-lg sm:text-xl text-white/75 font-light leading-relaxed mb-8 max-w-3xl">
-            We engineer advanced Answer Engine Optimization (AEO), Generative Engine Optimization (GEO), and semantic entity architecture for UAE enterprises—ensuring your brand dominates Google search, AI Overviews, and conversational engines like ChatGPT and Perplexity.
+            Search is changing. Buyers no longer just click blue links—they read direct AI answers on Google, ChatGPT, and Perplexity. We structure your website’s content, technical foundation and data markup so search engines and AI assistants can more clearly understand your services and evaluate your business as a relevant source.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -198,15 +198,15 @@ export default function AiSeoAgencyDubai() {
               rel="noopener noreferrer"
               className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-xs inline-flex items-center gap-2 hover:bg-white/5 transition-colors"
             >
-              <MessageSquare className="w-4 h-4 text-emerald-400" /> WhatsApp Strategic Desk
+              <MessageSquare className="w-4 h-4 text-emerald-400" /> Discuss Your SEO Goals on WhatsApp
             </a>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 text-[11px] text-white/50 tracking-wider font-mono mt-10">
-            <span>✓ ANSWER ENGINE OPTIMIZATION</span>
-            <span>✓ LLM CITATION READINESS</span>
-            <span>✓ ENTITY GRAPH MAPPING</span>
-            <span>✓ ZERO RANKING GIMMICKS</span>
+            <span>✓ GOOGLE AI OVERVIEW READINESS</span>
+            <span>✓ CHATGPT &amp; PERPLEXITY CITATION READINESS</span>
+            <span>✓ STRUCTURED ENTITY &amp; SCHEMA ARCHITECTURE</span>
+            <span>✓ TRANSPARENT, ZERO-GIMMICK METHODOLOGY</span>
           </div>
         </div>
       </section>
@@ -220,14 +220,17 @@ export default function AiSeoAgencyDubai() {
           <h2 className="text-2xl md:text-4xl font-serif mb-6 text-white">
             What is AI SEO &amp; Answer Engine Optimization?
           </h2>
+          <p className="text-white/80 font-light text-base md:text-lg leading-relaxed mb-4">
+            Traditional SEO has largely focused on earning visibility in search-result listings. AI search adds another layer: systems must also understand your services, expertise and factual relationships well enough to use them when constructing answers.
+          </p>
           <p className="text-white/80 font-light text-base md:text-lg leading-relaxed mb-6">
-            <strong>AI SEO</strong> represents the evolution of search engine optimization from keyword-focused page rankings to machine-comprehensible entity positioning. It combines <strong>Answer Engine Optimization (AEO)</strong>—formatting content as structured, direct answers eligible for Google AI Overviews—with <strong>Generative Engine Optimization (GEO)</strong>, which establishes brand authority, factual citations, and semantic co-occurrences so conversational LLMs (ChatGPT, Gemini, Perplexity) actively reference your enterprise.
+            We structure your website into concise direct answers, verified comparison tables, and machine-readable data markup. This improves the clarity and structure AI search systems can use when evaluating your business for relevant answers and citations.
           </p>
           <div className="p-6 rounded-2xl border border-white/10 bg-black/50 text-sm text-white/70 leading-relaxed font-light">
             <span className="text-emerald-400 font-mono text-xs uppercase block mb-1 font-semibold">
               The Dubai Market Reality
             </span>
-            In high-competition UAE sectors like real estate, corporate services, luxury hospitality, and technology, an increasing share of commercial search journeys now surface AI-generated summaries alongside traditional organic listings. Organizations lacking structured entity data, direct answer formats, and clear topical silos face reduced visibility in conversational answers.
+            In competitive UAE sectors—such as commercial real estate, corporate services, healthcare, and B2B technology—buyers increasingly have access to conversational AI tools when researching vendors, alongside traditional search. Clear service descriptions, direct answers and structured data can make it easier for search and AI systems to interpret a business accurately than vague, unstructured marketing copy.
           </div>
         </div>
       </section>
@@ -262,9 +265,9 @@ export default function AiSeoAgencyDubai() {
                 <td className="py-5 px-6 text-emerald-300 font-normal">Google AI Overviews, Perplexity, ChatGPT Search, Gemini</td>
               </tr>
               <tr>
-                <td className="py-5 px-6 font-medium text-white">Optimization Philosophy</td>
-                <td className="py-5 px-6 text-white/50">Keyword density, meta tags, and high-volume link blasts</td>
-                <td className="py-5 px-6 text-emerald-300 font-normal">Entity graph nodes, direct answer blocks, semantic schema</td>
+                <td className="py-5 px-6 font-medium text-white">Optimization Focus</td>
+                <td className="py-5 px-6 text-white/50">Keyword repetition, meta tags, and unfocused directory blasts</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Direct concise answer blocks, verified schema markup, and clear company entity data</td>
               </tr>
               <tr>
                 <td className="py-5 px-6 font-medium text-white">Content Strategy</td>
@@ -274,7 +277,7 @@ export default function AiSeoAgencyDubai() {
               <tr>
                 <td className="py-5 px-6 font-medium text-white">Technical Architecture</td>
                 <td className="py-5 px-6 text-white/50">Slow CMS templates, basic sitemaps, missing schemas</td>
-                <td className="py-5 px-6 text-emerald-300 font-normal">Sub-second Next.js headless performance, nested JSON-LD graphs</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">High-speed Next.js architecture, clean mobile crawl paths, and nested JSON-LD schema networks</td>
               </tr>
               <tr>
                 <td className="py-5 px-6 font-medium text-white">Reporting &amp; Measurement</td>
@@ -385,10 +388,10 @@ export default function AiSeoAgencyDubai() {
               </div>
               <p className="text-xs text-white/60 font-light max-w-xs mx-auto leading-relaxed">
                 {aeoScore >= 80
-                  ? "Strong foundation. Eligible for advanced Answer Engine extraction and conversational citations."
+                  ? "Strong structural foundation for AI-search discovery and machine-readable answers."
                   : aeoScore >= 50
-                  ? "Moderate baseline. Missing key direct-answer blocks or entity signals required for AI Overviews."
-                  : "Critical deficit. At risk of becoming invisible as conversational engines displace traditional blue links."}
+                  ? "Moderate foundation. Direct-answer content, entity clarity or structured data could be strengthened."
+                  : "Needs structural modernization. Important content and entity signals may be difficult for search and AI systems to interpret consistently."}
               </p>
               <div className="pt-4 border-t border-white/10">
                 <Link

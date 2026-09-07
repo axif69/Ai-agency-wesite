@@ -117,7 +117,7 @@ export default function AiConsultingUAE() {
         "name": "How does your advisory address UAE PDPL data protection and privacy?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Our technical architectures are designed around UAE PDPL-aligned data handling, access controls, vendor assessment, cross-border data considerations, and client-specific residency requirements. We help clients establish private VPC boundaries, pseudonymization layers, and local residency deployments when needed."
+          "text": "Our technical architectures are designed around UAE PDPL-aligned data handling, access controls, vendor assessment, cross-border data considerations, and client-specific residency requirements. We help clients evaluate VPC boundaries, pseudonymization layers, and local hosting options. This is a technical governance assessment, not legal certification."
         }
       },
       {
@@ -125,7 +125,7 @@ export default function AiConsultingUAE() {
         "name": "What is the primary difference between strategy-first advisory and implementation-led AI consulting?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Traditional strategy-first advisory typically ends with slide decks and high-level recommendations. Implementation-led AI consulting delivers code-backed technical specifications, API schemas, working proof-of-concept sandboxes, and engineering oversight through production rollout."
+          "text": "Traditional strategy-first advisory typically ends with slide decks and high-level recommendations. Implementation-led AI consulting delivers concrete architecture blueprints, vendor evaluations, and optional working proof-of-concept prototypes to test key workflows before wider implementation."
         }
       },
       {
@@ -184,7 +184,7 @@ export default function AiConsultingUAE() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/60 font-light max-w-3xl mx-auto leading-relaxed mb-12">
-            Moving UAE organizations from exploratory concepts to verified production workflows. We deliver comprehensive AI readiness audits, vendor evaluations, build-vs-buy modeling, and deployment roadmaps engineered for operational resilience and compliance.
+            Cut through the hype. We help UAE organizations identify where AI and automation could reduce repetitive work, improve response times or simplify internal processes, compare software vendors and build-vs-buy options using transparent technical and commercial criteria, and design secure implementation roadmaps before committing capital.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
@@ -207,10 +207,10 @@ export default function AiConsultingUAE() {
               <Check className="w-4 h-4 text-emerald-400" /> Vendor-Neutral Architecture
             </span>
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-emerald-400" /> UAE PDPL-Aligned Governance
+              <Check className="w-4 h-4 text-emerald-400" /> Technical Governance Assessment
             </span>
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-emerald-400" /> Working PoC Validation
+              <Check className="w-4 h-4 text-emerald-400" /> Optional PoC Scoping
             </span>
           </div>
         </div>
@@ -226,13 +226,76 @@ export default function AiConsultingUAE() {
           <h2 className="text-2xl md:text-3xl font-serif text-white mb-6">
             What Does Implementation-Led AI Consulting Deliver in the UAE?
           </h2>
-          <div className="space-y-4 text-base md:text-lg text-white/75 font-light leading-relaxed">
+          <div className="space-y-4 text-base md:text-lg text-white/75 font-light leading-relaxed mb-8">
             <p>
-              In the UAE’s rapidly modernizing enterprise landscape, AI consulting bridges the gap between high-level executive ambition and operational software reality. Rather than issuing speculative advisory slides, implementation-led consulting audits an organization’s existing data hygiene, quantifies manual process bottlenecks, and evaluates model architectures for real-world viability.
+              In the UAE’s enterprise environment, AI advisory should bridge the gap between executive strategy and everyday operational reality. Rather than theoretical slide decks, implementation-led consulting audits existing workflows, evaluates vendor models for real-world viability, and designs clear execution roadmaps.
             </p>
-            <p>
-              The engagement establishes clear Total Cost of Ownership (TCO) models across proprietary APIs and open-weights models, designs security perimeters aligned with the UAE Personal Data Protection Law (PDPL), and builds verified Proofs of Concept (PoCs) before full-scale engineering handoff.
-            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10">
+              <h3 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
+                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                Workflow &amp; Bottleneck Assessment
+              </h3>
+              <p className="text-xs text-white/60 font-light leading-relaxed">
+                Detailed mapping of manual handoffs, repetitive documentation, and operational delays to pinpoint high-potential areas for automation.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10">
+              <h3 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
+                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                Business Case &amp; Opportunity Prioritization
+              </h3>
+              <p className="text-xs text-white/60 font-light leading-relaxed">
+                A prioritized assessment based on expected effort, operational value, implementation complexity and measurable business impact.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10">
+              <h3 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
+                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                Build vs. Buy Evaluation
+              </h3>
+              <p className="text-xs text-white/60 font-light leading-relaxed">
+                Objective analysis comparing existing SaaS solutions against custom API integrations and private open-weights deployments.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10">
+              <h3 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
+                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                Data Handling &amp; Governance Assessment
+              </h3>
+              <p className="text-xs text-white/60 font-light leading-relaxed">
+                Map data flows, access requirements, vendor handling practices, cross-border considerations and client-specific residency requirements with UAE PDPL-aligned principles. This is a technical governance assessment, not legal certification.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10">
+              <h3 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
+                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                Optional Proof of Concept (PoC)
+              </h3>
+              <p className="text-xs text-white/60 font-light leading-relaxed">
+                Where useful, a limited prototype can be scoped to test a high-priority workflow before wider implementation.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10">
+              <h3 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
+                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                Implementation Roadmap &amp; Vendor Scoping
+              </h3>
+              <p className="text-xs text-white/60 font-light leading-relaxed">
+                Clear system architecture specifications, integration timelines, and technical runbooks ready for internal developers or scoped partners.
+              </p>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-xl bg-black/50 border border-white/10 text-xs text-white/60 font-mono">
+            <strong className="text-white/80">Scope Boundary:</strong> Consulting can cover workflow assessment, vendor evaluation, architecture and implementation planning. A PoC or production build is included only where specifically scoped.
           </div>
         </div>
       </section>
@@ -282,26 +345,26 @@ export default function AiConsultingUAE() {
             },
             {
               step: "Phase 03",
-              title: "Proof of Concept (PoC)",
+              title: "Optional Proof of Concept (PoC)",
               icon: <Cpu className="w-6 h-6 text-purple-400" />,
               points: [
-                "Controlled sandbox prototype deployment",
-                "Real-world data testing with synthetic guardrails",
+                "Where useful, a limited prototype is scoped",
+                "Controlled sandbox testing on a priority workflow",
                 "Prompt engineering & context window optimization",
-                "Hallucination mitigation & accuracy benchmarking",
-                "Executive & technical stakeholder sign-off"
+                "Model latency & accuracy benchmarking",
+                "Executive & technical stakeholder review"
               ]
             },
             {
               step: "Phase 04",
-              title: "Deployment & Adoption",
+              title: "Implementation Roadmap & Adoption Guidance",
               icon: <Workflow className="w-6 h-6 text-amber-400" />,
               points: [
-                "CI/CD pipeline and integration handoff",
-                "Monitoring, observability & fallback logging",
-                "Technical documentation and runbooks",
-                "Employee workflow enablement & prompt training",
-                "Post-launch triage & governance structure"
+                "System architecture blueprints & API schemas",
+                "Technical documentation and developer runbooks",
+                "Employee workflow enablement & prompt guidelines",
+                "Clear boundary handoff to internal IT or scoped engineering",
+                "Ongoing governance & technical review checkpoints"
               ]
             }
           ].map((pillar, i) => (
@@ -361,7 +424,7 @@ export default function AiConsultingUAE() {
                 {
                   metric: "Deliverables",
                   trad: "High-level slide decks and conceptual frameworks",
-                  impl: "Production architecture blueprints, API specifications & runnable prototypes"
+                  impl: "System architecture blueprints, API specifications & optional prototype validation"
                 },
                 {
                   metric: "Technical Validation",
@@ -371,7 +434,7 @@ export default function AiConsultingUAE() {
                 {
                   metric: "PoC Involvement",
                   trad: "Delegated to third-party subcontractors or left to internal teams",
-                  impl: "Directly designed, built, and stress-tested in controlled environments"
+                  impl: "Where scoped, directly designed and tested in a controlled sandbox before wide deployment"
                 },
                 {
                   metric: "Vendor Neutrality",
@@ -386,12 +449,12 @@ export default function AiConsultingUAE() {
                 {
                   metric: "ROI Measurement",
                   trad: "Vague enterprise efficiency ratios based on global case studies",
-                  impl: "Quantified labor hours saved, pipeline acceleration & unit operational cost tracking"
+                  impl: "Prioritized assessment of operational effort, task duration, and business impact"
                 },
                 {
                   metric: "Deployment Support",
-                  trad: "No production engineering support or live triage",
-                  impl: "Active observability setup, fallback logging design & rollout monitoring"
+                  trad: "No integration architecture or technical runbooks",
+                  impl: "Detailed technical runbooks and architecture handoff; full production build scoped as needed"
                 }
               ].map((row, i) => (
                 <tr key={i} className="hover:bg-white/[0.01]">
@@ -415,7 +478,7 @@ export default function AiConsultingUAE() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-xs font-mono mb-6">
-              <Shield className="w-3.5 h-3.5" /> UAE Regulatory Alignment
+              <Shield className="w-3.5 h-3.5" /> Technical Governance Assessment
             </div>
             <h2 className="text-3xl md:text-5xl font-serif mb-6 leading-tight">
               Enterprise Governance &amp; Data Residency
@@ -425,7 +488,7 @@ export default function AiConsultingUAE() {
                 Our engagements deliver an <strong>AI architecture designed around UAE PDPL-aligned data handling, access controls, vendor assessment, cross-border data considerations, and client-specific residency requirements.</strong>
               </p>
               <p>
-                We recognize that healthcare, financial services, legal, and public sector organizations have distinct regulatory parameters. We structure clear separation between non-sensitive workflow data and private corporate knowledge bases.
+                We map data flows, access requirements, vendor handling practices, and cross-border considerations. This is a technical governance assessment, not legal certification.
               </p>
             </div>
 
@@ -725,11 +788,11 @@ export default function AiConsultingUAE() {
             },
             {
               q: "How does your advisory address UAE PDPL data protection and privacy?",
-              a: "Our technical architectures are designed around UAE PDPL-aligned data handling, access controls, vendor assessment, cross-border data considerations, and client-specific residency requirements. We help clients establish private VPC boundaries, pseudonymization layers, and local residency deployments when needed."
+              a: "Our technical architectures are designed around UAE PDPL-aligned data handling, access controls, vendor assessment, cross-border data considerations, and client-specific residency requirements. We help clients evaluate VPC boundaries, pseudonymization layers, and local hosting options. This is a technical governance assessment, not legal certification."
             },
             {
               q: "What is the primary difference between strategy-first advisory and implementation-led AI consulting?",
-              a: "Traditional strategy-first advisory typically ends with slide decks and high-level recommendations. Implementation-led AI consulting delivers code-backed technical specifications, API schemas, working proof-of-concept sandboxes, and engineering oversight through production rollout."
+              a: "Traditional strategy-first advisory typically ends with slide decks and high-level recommendations. Implementation-led AI consulting delivers concrete architecture blueprints, vendor evaluations, and optional working proof-of-concept prototypes to test key workflows before wider implementation."
             },
             {
               q: "What typical timelines apply to an enterprise AI consulting engagement?",
