@@ -51,9 +51,9 @@ const nextConfig = {
       
       // Cannibalization Fixes & Direct URL Convergence
       { source: '/ai-for-real-estate-agencies-dubai', destination: '/ai-real-estate-agencies-dubai', permanent: true },
-      { source: '/ai-for-real-estate-uae', destination: '/real-estate/whatsapp-ai-automation', permanent: true },
+      { source: '/ai-for-real-estate-uae', destination: '/real-estate', permanent: true },
       { source: '/ai-real-estate-agency-dubai', destination: '/ai-real-estate-agencies-dubai', permanent: true },
-      { source: '/ai-real-estate-uae', destination: '/real-estate/whatsapp-ai-automation', permanent: true },
+      { source: '/ai-real-estate-uae', destination: '/real-estate', permanent: true },
       { source: '/services/ai-property-management-uae', destination: '/ai-property-management-uae', permanent: true },
       { source: '/real-estate/property-management-ai-uae', destination: '/ai-property-management-uae', permanent: true },
       { source: '/services/real-estate-digital-solutions-uae', destination: '/real-estate-digital-solutions-uae', permanent: true },
