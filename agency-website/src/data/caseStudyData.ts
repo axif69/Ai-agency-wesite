@@ -1,163 +1,138 @@
-export const CASE_STUDIES = [
+export interface CaseStudy {
+  id: string;
+  client: string;
+  classification: "Prototype / Proof of Concept" | "Lead Intelligence & B2B PoC" | "Public Website Project" | "Internal Asif Digital Technology" | "Architecture Framework";
+  industry: string;
+  location: string;
+  title: string;
+  tags: string[];
+  challenge: string;
+  architecture: string;
+  delivered: string;
+  safeguards: string;
+  outcomes: string;
+  results: string[];
+  serviceLink: string;
+  serviceLinkLabel: string;
+  desc?: string;
+  img?: string;
+  highlights?: string[];
+}
+
+export const CASE_STUDIES: CaseStudy[] = [
   {
-    client: "Illustrative Scenario — Property Development Group",
-    industry: "Real Estate",
-    location: "Dubai",
-    scale: "50+ agents | AED 500M+ annual revenue",
-    tags: ["Real Estate", "AI Automation", "Salesforce"],
-    challenge: "Our sales team spent 70% of time on cold call prospecting. Close rate on outreach: 1.8%. We needed a new system.",
-    solution: [
-      "Real estate prospect identification (OSINT)",
-      "Automated outreach (personalized)",
-      "Calendar booking automation",
-      "Lead nurturing sequences",
-      "Integration with Salesforce"
-    ],
-    metrics: {
-      before: [
-        { label: "Lead Cost", value: "AED 2,500" },
-        { label: "Prospects/Month", value: "45" },
-        { label: "Reply Rate", value: "2.3%" },
-        { label: "Sales Cycle", value: "45 days" },
-      ],
-      after: [
-        { label: "Lead Cost", value: "AED 680" },
-        { label: "Prospects/Month", value: "180 (4x)" },
-        { label: "Reply Rate", value: "8.9%" },
-        { label: "Sales Cycle", value: "19 days" },
-      ]
-    },
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
-    desc: "Developed a premium property listing site with an embedded AI Swarm that qualifies renters vs. buyers.",
-    results: ["120+ Qualified Leads generated in 30 days", "Reduced Cost-Per-Lead by 60%", "Automated property brochure dispatch via WhatsApp"],
-    quote: "We went from SDRs wasting time on cold calls to an agent that hunts qualified prospects. Sales team can now focus on closing. The agent handles the heavy lifting.",
-    author: "VP Sales, Dubai Real Estate Group",
-    highlights: [
-      "Deployment: 14 days",
-      "Year 1 Impact: AED 24M+ in closed deals",
-      "ROI: 28x"
-    ]
-  },
-  {
-    client: "Illustrative Scenario — Enterprise Software Provider",
-    industry: "B2B SaaS",
-    location: "Dubai",
-    scale: "20 sales reps | AED 50M+ ARR",
-    tags: ["B2B SaaS", "Lead Generation", "Next.js"],
-    challenge: "Sales team spent 60% on prospecting. We couldn't scale without doubling headcount (which we couldn't afford).",
-    solution: [
-      "Competitor company identification",
-      "Decision-maker mapping (CTOs, VP Engineering)",
-      "Tech stack analysis (personalization)",
-      "Automated cold email outreach",
-      "Segment-based qualification scoring"
-    ],
-    metrics: {
-      before: [
-        { label: "Prospects/Month", value: "200" },
-        { label: "Qualified Leads", value: "12" },
-        { label: "Cost Per Lead", value: "AED 1,800" },
-        { label: "Rep Prospecting %", value: "60%" },
-      ],
-      after: [
-        { label: "Prospects/Month", value: "800 (4x)" },
-        { label: "Qualified Leads", value: "40 (3.3x)" },
-        { label: "Cost Per Lead", value: "AED 400" },
-        { label: "Rep Prospecting %", value: "10%" },
-      ]
-    },
-    img: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
-    desc: "Built a lightning-fast Next.js website integrated with a Sovereign Sales Agent trained on enterprise data.",
-    results: ["42 New Product Demos booked automatically", "Saved sales team 15+ hours per week", "Ranked #1 for core keywords in 4 weeks"],
-    quote: "The agent freed our sales reps from manual prospecting. Now they focus 90% on closing. We scaled pipeline 3x without hiring SDRs.",
-    author: "VP Sales, Enterprise SaaS Co.",
-    highlights: [
-      "Deployment: 14 days",
-      "Year 1 Impact: AED 2.8M+ in new pipeline",
-      "ROI: 35x"
-    ]
-  },
-  {
-    client: "Illustrative Scenario — Corporate Law & Consulting",
-    industry: "B2B Consulting",
-    location: "Abu Dhabi",
-    scale: "35 consultants | AED 80M+ ARR",
-    tags: ["Consulting", "3D WebGL", "AI Agent"],
-    challenge: "Partners were relying entirely on referrals. We had zero predictable outbound acquisition infrastructure.",
-    solution: [
-      "Market mapping for specific legal needs",
-      "Executive-level LinkedIn outreach",
-      "Automated consultation booking",
-      "Content-driven lead nurturing",
-      "Integration with Hubspot"
-    ],
-    metrics: {
-      before: [
-        { label: "Outbound Leads", value: "0" },
-        { label: "Meetings/Month", value: "4" },
-        { label: "Referral Reliance", value: "100%" },
-        { label: "Sales Cycle", value: "90 days" },
-      ],
-      after: [
-        { label: "Outbound Leads", value: "18" },
-        { label: "Meetings/Month", value: "22 (5.5x)" },
-        { label: "Referral Reliance", value: "40%" },
-        { label: "Sales Cycle", value: "42 days" },
-      ]
-    },
-    img: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=1000&auto=format&fit=crop",
-    desc: "Replaced a generic contact form with an interactive 3D WebGL booking experience and an AI agent.",
-    results: ["314% Increase in High-Ticket Bookings", "Zero missed leads after 6 PM", "Automated AED 45,000 in quotes in Month 1"],
-    quote: "It completely removed the feast-or-famine cycle from our firm. We now have a predictable pipeline of high-net-worth corporate clients.",
-    author: "Managing Partner, Consulting Firm",
-    highlights: [
-      "Deployment: 14 days",
-      "Year 1 Impact: AED 8.2M+ in new retainers",
-      "ROI: 14x"
-    ]
-  },
-  {
-    client: "Illustrative Scenario — Specialized Local Services",
-    industry: "High-Ticket SMB",
-    location: "Sharjah",
-    scale: "15 employees | AED 5M+ ARR",
-    tags: ["Local Services", "WhatsApp AI", "Automation"],
-    challenge: "We were losing leads to competitors because we couldn't answer queries instantly or after hours.",
-    solution: [
-      "Website & WhatsApp unified agent",
-      "24/7 bilingual Arabic/English support",
-      "Automated quoting based on customer inputs",
-      "Direct calendar integration for site visits",
-      "Lead routing to field technicians"
-    ],
-    metrics: {
-      before: [
-        { label: "After-hours Leads", value: "0" },
-        { label: "Response Time", value: "4 hours" },
-        { label: "Booking Rate", value: "12%" },
-        { label: "Admin Time", value: "30 hrs/wk" },
-      ],
-      after: [
-        { label: "After-hours Leads", value: "45/mo" },
-        { label: "Response Time", value: "Instant" },
-        { label: "Booking Rate", value: "38%" },
-        { label: "Admin Time", value: "2 hrs/wk" },
-      ]
-    },
-    img: "https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=1000&auto=format&fit=crop",
-    desc: "Implemented a unified Website & WhatsApp conversational AI to handle quote calculations and technician bookings.",
-    title: "24/7 WhatsApp AI Assistant Closes AED 1.4M in Local Services",
+    id: "global-exhibition-mas",
+    client: "Global Trade Show & B2B Exhibition Organizer",
+    classification: "Prototype / Proof of Concept",
+    industry: "Defense, Aerospace & Global Trade Exhibitions",
+    location: "UAE & International",
+    title: "Global B2B Exhibition Intelligence Multi-Agent System",
+    tags: ["Multi-Agent Systems", "Playwright", "Apollo OSINT", "SQLite"],
+    challenge: "Event management teams researching international defense trade expos spend extensive manual hours parsing unstructured exhibitor directories and hunting for relevant C-suite points of contact.",
+    architecture: "Autonomous 5-worker state machine (Orchestrator, Profiler, Judge, Executive Hunter, Ghostwriter) orchestrated via Node.js, Better-SQLite3, and Apollo APIs.",
+    delivered: "Engineered a headless profiling engine that extracts exhibitor profiles, filters non-relevant entities, queries decision-maker OSINT, and logs execution across 6,700+ system trace events.",
+    safeguards: "Built-in rate limiting, local SQLite state isolation, and consent-gated discovery queues.",
+    outcomes: "Centralized exhibitor intelligence; replaced manual prospect hunting with automated multi-agent triage; tested across 738 seed entries and multi-expo research queues.",
     results: [
-      "AED 1.4M+ in captured sales in Year 1",
-      "Setup completed in 7 days",
-      "Admin workload reduced by 28 hours per week"
+      "Automated multi-agent extraction pipeline replacing manual directory lookups",
+      "Centralized SQLite state machine tested across 738 seed entries",
+      "6,700+ execution trace events logged with full lead provenance"
     ],
-    quote: "As a smaller business, we can't afford a massive sales team. This agent gave us the firepower of a massive enterprise on a small business budget.",
-    author: "Owner, Specialized Services",
-    highlights: [
-      "Deployment: 7 days (Tier 1)",
-      "Year 1 Impact: AED 1.4M+ in captured sales",
-      "ROI: 22x"
-    ]
+    serviceLink: "/ai-agents-dubai",
+    serviceLinkLabel: "Explore Custom AI Agents",
+    desc: "Autonomous 5-worker multi-agent system designed for automated discovery and structured profiling of international trade show exhibitors.",
+    img: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    id: "uae-construction-advisory",
+    client: "UAE Construction Commercial Consultancy (D&A Consult)",
+    classification: "Lead Intelligence & B2B PoC",
+    industry: "Construction Commercial Management & Quantity Surveying",
+    location: "Dubai & Northern Emirates, UAE",
+    title: "UAE Construction Commercial Advisory Intelligence Pipeline",
+    tags: ["Construction QS", "Groq Llama 3.3", "B2B Intelligence", "SQLite"],
+    challenge: "Specialized construction consultancies struggle to reach relevant project developers and main contractors using generic marketing, which fails to address technical contractual risks like variation disputes and cost overruns.",
+    architecture: "Node.js and TypeScript discovery pipeline backed by SQLite, leveraging Groq (Llama 3.3 70B) for domain-specific context drafting and Cheerio/Playwright for company extraction.",
+    delivered: "Constructed an intelligence repository mapping 132 UAE-focused contractors and developers with 320 extracted contacts, pairing it with domain-specific LLM context drafting managed through a custom dashboard.",
+    safeguards: "Zero-hardcoded dynamic configuration, MX domain verification, and 100% human-in-the-loop review.",
+    outcomes: "Replaced indiscriminate outbound with high-relevance, engineering-specific positioning; unified contractor contact extraction; saved leadership hours on manual firmographic research.",
+    results: [
+      "UAE-focused intelligence database mapping 132 contractors and developers",
+      "320 extracted contacts with domain MX validation",
+      "Contextual LLM personalizer referencing BOQs, variations, and FIDIC dispute mitigation"
+    ],
+    serviceLink: "/ai-lead-generation-agency-dubai",
+    serviceLinkLabel: "Explore B2B Lead Systems",
+    desc: "UAE-focused contractor and developer intelligence pipeline with contextual LLM drafting for quantity surveying and commercial claims.",
+    img: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f8?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    id: "sharjah-dining-infrastructure",
+    client: "Nimir's Pizzeria",
+    classification: "Public Website Project",
+    industry: "Food & Beverage / Local Hospitality",
+    location: "Muwaileh Commercial, Sharjah, UAE",
+    title: "Sharjah Restaurant Digital Ordering & Local Search Infrastructure",
+    tags: ["Mobile Architecture", "Local SEO", "Talabat Integration", "Schema.org"],
+    challenge: "Local dining establishments often suffer from slow, generic website templates that create friction on mobile devices when customers try to view menus, call, or order.",
+    architecture: "Framework-free semantic HTML5, high-performance CSS3, and Schema.org LocalBusiness structured JSON-LD data.",
+    delivered: "Built a lightweight mobile-first digital storefront with instant click-to-call integration (06 534 5442), direct Talabat delivery portal routing, and search-optimized local business markup.",
+    safeguards: "Zero bloated third-party trackers, clean accessibility compliance, and mobile responsive tap targets.",
+    outcomes: "Providing a lightweight, mobile-first ordering and local search experience for Sharjah diners.",
+    results: [
+      "Frictionless mobile navigation drawer with direct tap-to-call ordering",
+      "Seamless delivery aggregation pathways via direct Talabat integration",
+      "Schema.org LocalBusiness structured data targeting Muwaileh & Sharjah search intent"
+    ],
+    serviceLink: "/web-design-sharjah",
+    serviceLinkLabel: "Explore Web Design Sharjah",
+    desc: "Lightweight mobile-first digital storefront with direct telephone ordering, Talabat integration, and LocalBusiness schema markup.",
+    img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    id: "governed-sales-engine",
+    client: "Asif Digital Internal & Client Deployment Architecture",
+    classification: "Internal Asif Digital Technology",
+    industry: "Enterprise B2B Operations & Outbound Workflow Automation",
+    location: "UAE & GCC",
+    title: "Governed Multi-Worker AI Outbound Architecture",
+    tags: ["Multi-Worker MAS", "Human-in-the-Loop", "Sender Safety", "Electron"],
+    challenge: "Uncontrolled automated outbound software risks domain blacklisting, dispatches inaccurate hallucinated messaging, and lacks essential human oversight.",
+    architecture: "Multi-worker agent system using TypeScript, SQLite, Groq reasoning models, and an Electron-based operational desktop console.",
+    delivered: "Engineered mandatory human-in-the-loop (HITL) approval gates, automated MX domain validation, and randomized 3–5 minute delivery pacing to enforce sender-reputation safeguards.",
+    safeguards: "The workflow requires explicit human approval before any message can be dispatched; emergency shutoff triggers; automated MX pre-flight checks.",
+    outcomes: "Shifted outbound operations from high-volume automated spam to precision, human-reviewed B2B engagement with complete audit trails.",
+    results: [
+      "Mandatory human-in-the-loop (HITL) review requiring explicit approval before dispatch",
+      "Configurable 3–5 minute delivery pacing and automated MX domain pre-checks",
+      "Sentiment-scoring reply monitor that automatically pauses outreach upon human response"
+    ],
+    serviceLink: "/workflow-automation-uae",
+    serviceLinkLabel: "Explore Workflow Automation",
+    desc: "Governed 5-worker multi-agent architecture with mandatory human review, MX validation, and pacing safeguards.",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    id: "real-estate-portal-crm",
+    client: "UAE Real Estate Brokerage Suite",
+    classification: "Architecture Framework",
+    industry: "Real Estate & Brokerage Operations",
+    location: "Dubai & UAE",
+    title: "Real Estate Portal Webhook & CRM Routing Architecture",
+    tags: ["Portal Webhooks", "CRM Sync", "WhatsApp Alerts", "Next.js API"],
+    challenge: "Brokerages frequently experience inquiry drop-off when leads from major property portals sit in unmonitored email inboxes or require manual spreadsheet imports.",
+    architecture: "Serverless API webhook endpoints, CRM REST synchronization (HubSpot, Bitrix24, Salesforce), and automated notification triggers.",
+    delivered: "Designed an event-driven architecture that ingests portal inquiries automatically via webhooks, formats lead context, and initiates immediate agent notification pathways while synchronizing central CRM pipelines.",
+    safeguards: "Payload schema validation, duplicate deduplication logic, and failover logging.",
+    outcomes: "Reducing reliance on manual spreadsheet imports through automated webhook-to-CRM routing.",
+    results: [
+      "Event-driven webhook endpoints capturing inquiries directly from portals and ad forms",
+      "Immediate WhatsApp and SMS notification pathways alerting on-duty agents",
+      "Structured two-way CRM field mapping for lead source, budget, and property preferences"
+    ],
+    serviceLink: "/real-estate-crm-dubai",
+    serviceLinkLabel: "Explore Real Estate CRM",
+    desc: "Event-driven webhook ingestion architecture connecting real estate portals to central CRMs and WhatsApp alert pathways.",
+    img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop"
   }
 ];

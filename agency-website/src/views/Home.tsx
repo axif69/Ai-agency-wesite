@@ -930,7 +930,7 @@ export default function Home() {
                         <TrendingUp className="w-3 h-3 mt-0.5 text-green-500" />
                         <span>{res}</span>
                       </div>
-                    )) : study.highlights.slice(0,2).map((hl, j) => (
+                    )) : (study.highlights || []).slice(0, 2).map((hl, j) => (
                       <div key={j} className="flex items-start gap-3 text-xs text-green-400 font-bold">
                         <TrendingUp className="w-3 h-3 mt-0.5 text-green-500" />
                         <span>{hl}</span>
