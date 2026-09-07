@@ -138,6 +138,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <div className="space-y-1.5 border-r border-white/10 pr-5">
                       <span className="text-[10px] uppercase font-mono tracking-widest text-white/40 block mb-2 font-semibold">Enterprise &amp; Core AI</span>
                       <Link href="/ai-consulting-uae" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">AI Consulting UAE (Strategy &amp; Audits) 🏛️</Link>
+                      <Link href="/ai-agents-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Custom AI Agents Dubai 🤖</Link>
                       <Link href="/sovereign-sales-agent" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5 italic">Sovereign Sales Agent (B2B)</Link>
                       <Link href="/arabic-ai-hub" className="text-white/95 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Arabic Intelligence Hub (Khaleeji)</Link>
                       <Link href="/hospitality-ai-automation-uae" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">Hospitality AI Automation UAE 🏨</Link>
@@ -250,6 +251,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   {isSovereignOpen && (
                     <div className="mt-4 space-y-3 text-lg text-white/70">
                       <Link href="/ai-consulting-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400 font-semibold">AI Consulting UAE (Strategy &amp; Audits) 🏛️</Link>
+                      <Link href="/ai-agents-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400 font-semibold">Custom AI Agents Dubai 🤖</Link>
                       <Link href="/ai-lead-generation-agency-dubai" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400 font-semibold">AI Lead Generation Dubai 🎯</Link>
                       <Link href="/sovereign-sales-agent" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-white transition-colors">Sovereign Sales Agent (B2B)</Link>
                       <Link href="/hospitality-ai-automation-uae" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-emerald-300 transition-colors text-emerald-400">Hospitality AI Automation UAE 🏨</Link>
