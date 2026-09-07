@@ -382,7 +382,7 @@ export default function RealEstatePillarHubView() {
             Operational Velocity in Dubai&apos;s High-Volume Property Sector
           </h2>
           <p className="text-sm md:text-base text-white/75 font-light leading-relaxed">
-            With transaction volumes exceeding AED 760 Billion across Dubai and the northern emirates, property inquiries arrive across diverse, fragmented channels: WhatsApp, portal forms, Meta advertisements, and direct web searches. High-net-worth buyers from the GCC, Europe, and international markets demand rapid, accurate property data.
+            UAE real estate is a large, transaction-heavy market with complex brokerage, developer, leasing and property-operations workflows. Property inquiries arrive across diverse, fragmented channels: WhatsApp, portal forms, Meta advertisements, and direct web searches. High-net-worth buyers from the GCC, Europe, and international markets demand rapid, accurate property data.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
             <div className="p-5 rounded-2xl border border-white/5 bg-black/40 space-y-2">
