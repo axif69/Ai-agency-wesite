@@ -58,7 +58,7 @@ const nextConfig = {
       { source: '/real-estate/property-management-ai-uae', destination: '/ai-property-management-uae', permanent: true },
       { source: '/services/real-estate-digital-solutions-uae', destination: '/real-estate-digital-solutions-uae', permanent: true },
       { source: '/services/web-design-sharjah', destination: '/web-design-sharjah', permanent: true },
-      { source: '/services/web-design-dubai-sharjah', destination: '/web-design-sharjah', permanent: true },
+      { source: '/services/web-design-dubai-sharjah', destination: '/services/web-design-dubai', permanent: true },
       { source: '/services/creative-web-design-dubai', destination: '/services/web-development-dubai-uae', permanent: true },
     ];
   }

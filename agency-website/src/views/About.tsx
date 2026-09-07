@@ -51,7 +51,7 @@ const capabilities = [
     icon: <Code2 className="w-6 h-6" />,
     title: "Web Design & Development",
     desc: "Fast, search-ready websites designed to explain your offer, establish trust, and turn qualified visitors into real business enquiries.",
-    link: "/services/web-design-dubai-sharjah",
+    link: "/services/web-design-dubai",
     linkLabel: "Explore web services"
   },
   {

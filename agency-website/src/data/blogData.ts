@@ -134,7 +134,7 @@ const commercialBlogTopics: LongFormBlogTopic[] = [
     category: "Web Design",
     keyword: "web design company dubai",
     market: "Dubai and UAE businesses redesigning websites",
-    serviceUrl: "/services/web-design-dubai-sharjah",
+    serviceUrl: "/services/web-design-dubai",
     buyer: "companies that need a website to generate trust, enquiries and measurable business outcomes",
     problem: "many websites look premium but load slowly, rank poorly, explain services vaguely and fail to capture useful lead context",
     deliverables: ["website strategy", "wireframes and UX flows", "SEO-ready architecture", "mobile performance work", "conversion copy", "forms and WhatsApp CTAs", "analytics and event setup"],
@@ -673,7 +673,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <h2>What to build first</h2>
       <p>Start with the highest-friction customer journey. A clinic might begin with service discovery and appointment routing. A real estate company might begin with property enquiry qualification. A B2B firm might begin with use-case selection and consultation booking. Build one journey, establish a baseline, and measure it before adding more intelligence.</p>
-      <p>Use the <a href="/tools/ai-website-grader" class="text-white hover:underline">free AI Website Grader</a> to inspect Lighthouse evidence and public-page signals, then review Asif Digital's <a href="/services/web-design-dubai-sharjah" class="text-white hover:underline">web design and development approach for Dubai and Sharjah</a>.</p>
+      <p>Use the <a href="/tools/ai-website-grader" class="text-white hover:underline">free AI Website Grader</a> to inspect Lighthouse evidence and public-page signals, then review Asif Digital's <a href="/services/web-design-dubai" class="text-white hover:underline">web design and development approach in Dubai</a>.</p>
 
       <h2>Sources and methodology</h2>
       <p>The performance section uses Google's current <a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">Core Web Vitals guidance</a>. The search section follows Google Search Central's <a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide" target="_blank" rel="noopener noreferrer">generative AI optimization guidance</a>. These sources define technical foundations; the commercial evaluation framework is Asif Digital's implementation methodology.</p>

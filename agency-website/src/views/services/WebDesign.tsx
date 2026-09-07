@@ -49,21 +49,54 @@ const faqs = [
   { q: "Will the website be SEO friendly?", a: "Yes. We build the foundation with metadata, clean headings, fast loading, schema, sitemap, internal links and service copy that helps Google understand what you offer and where you serve." },
   { q: "Can you add WhatsApp and lead forms?", a: "Yes. We can add WhatsApp buttons, lead forms, booking CTAs, email notifications and tracking so the website is built for enquiries, not just design." },
   { q: "Can I update the website later?", a: "Yes. Depending on your needs, we can connect a CMS or keep the website simple and maintain updates for you." },
+  { q: "Do you offer website redesign services in Dubai?", a: "Yes. If your existing website is outdated, slow, or failing to generate qualified inquiries, we completely re-architect the user experience, mobile performance, messaging, and SEO technical structure." },
 ];
 
 export default function WebDesign() {
   const [zoomedShowcase, setZoomedShowcase] = useState<(typeof showcase)[number] | null>(null);
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Web Design Company Dubai",
+    "description": "Custom business web design and website redesign services in Dubai. We engineer fast, conversion-focused B2B websites with WhatsApp lead routing, modern UI/UX, and technical SEO foundations.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Asif Digital",
+      "url": "https://www.asifdigital.agency"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Dubai"
+    },
+    "url": "https://www.asifdigital.agency/services/web-design-dubai"
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  };
+
   return (
     <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section className="relative overflow-hidden px-6 md:px-12 py-24 md:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_34%),linear-gradient(to_bottom,#050505,#080808)]" />
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-14 items-center">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <span className="micro-label block mb-6 text-green-400">Web Design Company Dubai</span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[0.92] tracking-tight mb-8">Web Design Company Dubai.</h1>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[0.92] tracking-tight mb-8">Web Design Company in Dubai</h1>
             <p className="text-lg md:text-xl text-white/65 font-light leading-relaxed max-w-3xl mb-10">
-              Build a fast, clear and modern website that turns visitors into calls, WhatsApp enquiries and booked consultations. Asif Digital designs conversion-focused websites for Dubai and UAE businesses.
+              Build a fast, clear and modern website that turns visitors into calls, WhatsApp inquiries and booked consultations. We engineer conversion-focused custom business websites and strategic website redesigns for Dubai enterprises.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/free-growth-audit" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/85 transition-colors inline-flex items-center justify-center gap-3">
@@ -73,6 +106,9 @@ export default function WebDesign() {
                 Add WhatsApp Chatbot
               </Link>
             </div>
+            <p className="mt-6 text-xs text-white/40 font-light">
+              Looking for web design in Sharjah? View our <Link href="/web-design-sharjah" className="text-white/70 hover:text-white underline underline-offset-4">Sharjah web design service</Link>.
+            </p>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 md:p-8">

@@ -52,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/seo-agency-dubai-sharjah-uae",
     "/services/social-media-management-dubai-uae",
     "/services/ui-ux-design-agency-dubai",
-    "/services/web-design-dubai-sharjah",
+    "/services/web-design-dubai",
     "/services/web-development-dubai-uae",
     "/services/web-hosting-uae",
     "/services/website-maintenance-support-dubai",

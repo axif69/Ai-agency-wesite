@@ -430,7 +430,7 @@ export default function Home() {
           {[
             { title: "AI Automation Agency Dubai", desc: "Connect enquiries, CRM updates, reports and repetitive admin tasks so leads do not disappear after the first message.", href: "/ai-automation-agency-dubai" },
             { title: "WhatsApp Chatbot Dubai", desc: "Answer common questions, qualify customers and send lead details to your team before prospects go cold.", href: "/ai-chatbots-dubai" },
-            { title: "Web Design Company Dubai", desc: "Build a fast, trustworthy website that turns search traffic into calls, WhatsApp enquiries and booked audits.", href: "/services/web-design-dubai-sharjah" }
+            { title: "Web Design Company Dubai", desc: "Build a fast, trustworthy website that turns search traffic into calls, WhatsApp enquiries and booked audits.", href: "/services/web-design-dubai" }
           ].map((item, i) => (
             <Link
               key={i}
@@ -464,7 +464,7 @@ export default function Home() {
             {[
               { title: "AI Automation Agency Dubai", desc: "Connect forms, WhatsApp, email, CRM and dashboards so your team stops losing leads after the first message.", href: "/ai-automation-agency-dubai" },
               { title: "WhatsApp Chatbot Dubai", desc: "Answer common customer questions, collect contact details and send qualified enquiries to your team.", href: "/ai-chatbots-dubai" },
-              { title: "Web Design Company Dubai", desc: "Fast service pages with simple wording, proof, FAQs, clear CTAs and tracking for organic lead conversion.", href: "/services/web-design-dubai-sharjah" }
+              { title: "Web Design Company Dubai", desc: "Fast service pages with simple wording, proof, FAQs, clear CTAs and tracking for organic lead conversion.", href: "/services/web-design-dubai" }
             ].map((item) => (
               <Link key={item.href} href={item.href} className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 hover:border-green-400/30 hover:bg-white/[0.04] transition-colors">
                 <h3 className="font-serif text-xl mb-3">{item.title}</h3>
@@ -498,7 +498,7 @@ export default function Home() {
               { title: "AI Automation Agency Sharjah", href: "/ai-automation-sharjah", meta: "Sharjah local automation" },
               { title: "WhatsApp Chatbot Dubai", href: "/ai-chatbots-dubai", meta: "Lead capture and replies" },
               { title: "WhatsApp Chatbot Sharjah", href: "/whatsapp-chatbot-sharjah", meta: "Sharjah chatbot leads" },
-              { title: "Web Design Company Dubai", href: "/services/web-design-dubai-sharjah", meta: "Modern SEO websites" },
+              { title: "Web Design Company Dubai", href: "/services/web-design-dubai", meta: "Modern SEO websites" },
               { title: "Web Design Company Sharjah", href: "/web-design-sharjah", meta: "Local lead websites" },
               { title: "Free Growth Audit", href: "/free-growth-audit", meta: "Website, WhatsApp, AI review" }
             ].map((page) => (
@@ -1252,7 +1252,7 @@ export default function Home() {
       <section className="py-20 border-t border-white/5 bg-black">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center text-white/80 text-[11px] uppercase tracking-[0.2em] font-bold text-center">
-            <Link href="/services/web-design-dubai-sharjah" className="hover:text-white transition-colors">Web Design Dubai</Link>
+            <Link href="/services/web-design-dubai" className="hover:text-white transition-colors">Web Design Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/services/seo-agency-dubai-sharjah-uae" className="hover:text-white transition-colors">SEO Agency Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />

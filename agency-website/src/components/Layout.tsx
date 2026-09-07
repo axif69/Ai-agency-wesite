@@ -206,7 +206,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <Code className="w-4 h-4 text-emerald-400" role="img" aria-label="Code Icon" /> Web &amp; Systems
                       </h3>
                       <ul className="space-y-4">
-                        <li><Link href="/services/web-design-dubai-sharjah" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Web Design</Link></li>
+                        <li><Link href="/services/web-design-dubai" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Web Design Dubai</Link></li>
                         <li><Link href="/web-design-sharjah" className="text-emerald-400 hover:text-emerald-300 transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Web Design Sharjah</Link></li>
                         <li><Link href="/services/web-development-dubai-uae" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Web Development</Link></li>
                         <li><Link href="/services/ecommerce-website-development-dubai" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Ecommerce Websites</Link></li>
@@ -444,8 +444,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </button>
                 {openMobileAccordion === "pillars" && (
                   <div className="pl-3 py-2 space-y-1 border-l border-emerald-500/30 ml-2">
-                    <Link href="/services/web-design-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      Web Design
+                    <Link href="/services/web-design-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
+                      Web Design Dubai
                     </Link>
                     <Link href="/web-design-sharjah" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-emerald-400 hover:text-emerald-300 transition-colors font-medium">
                       Web Design Sharjah
