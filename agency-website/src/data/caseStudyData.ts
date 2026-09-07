@@ -91,7 +91,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: "governed-sales-engine",
-    client: "Asif Digital Internal & Client Deployment Architecture",
+    client: "Asif Digital Internal Technology Architecture",
     classification: "Internal Asif Digital Technology",
     industry: "Enterprise B2B Operations & Outbound Workflow Automation",
     location: "UAE & GCC",
@@ -121,13 +121,13 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Real Estate Portal Webhook & CRM Routing Architecture",
     tags: ["Portal Webhooks", "CRM Sync", "WhatsApp Alerts", "Next.js API"],
     challenge: "Brokerages frequently experience inquiry drop-off when leads from major property portals sit in unmonitored email inboxes or require manual spreadsheet imports.",
-    architecture: "Serverless API webhook endpoints, CRM REST synchronization (HubSpot, Bitrix24, Salesforce), and automated notification triggers.",
-    delivered: "Designed an event-driven architecture that ingests portal inquiries automatically via webhooks, formats lead context, and initiates immediate agent notification pathways while synchronizing central CRM pipelines.",
+    architecture: "Serverless API webhook endpoints, CRM REST synchronization (HubSpot, Bitrix24, Salesforce), and automated WhatsApp/SMS notification triggers upon webhook intake.",
+    delivered: "Designed an event-driven architecture that ingests portal inquiries automatically via webhooks, formats lead context, and initiates automated notification pathways while synchronizing central CRM pipelines.",
     safeguards: "Payload schema validation, duplicate deduplication logic, and failover logging.",
     outcomes: "Reducing reliance on manual spreadsheet imports through automated webhook-to-CRM routing.",
     results: [
       "Event-driven webhook endpoints capturing inquiries directly from portals and ad forms",
-      "Immediate WhatsApp and SMS notification pathways alerting on-duty agents",
+      "Automated WhatsApp and SMS notification triggers upon webhook intake alerting on-duty agents",
       "Structured two-way CRM field mapping for lead source, budget, and property preferences"
     ],
     serviceLink: "/real-estate-crm-dubai",
