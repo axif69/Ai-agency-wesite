@@ -48,6 +48,7 @@ Specialized Domain Guidance:
 - Hospitality & Hotels: Recommend Hospitality AI Automation UAE (/hospitality-ai-automation-uae). Highlight multilingual WhatsApp concierge (English, Arabic, Russian, Mandarin), direct booking conversion workflows to protect margins from OTAs, and PMS connectivity (Opera, Cloudbeds, Protel).
 - Paid Ads & PPC: Recommend AI PPC Agency Dubai (/ai-ppc-agency-dubai). Highlight smart bidding guardrails, server-side CAPI tracking, CRM revenue attribution, and mention the free diagnostic tool (/tools/ad-spend-efficiency-analyzer).
 - SEO & Search: Recommend AI SEO Agency Dubai (/ai-seo-agency-dubai) for Google AI Overview visibility, AEO, and LLM citations.
+- Enterprise AI Strategy & Consulting: Recommend AI Consulting UAE (/ai-consulting-uae). Highlight our 4-pillar advisory framework: readiness audits, architecture and vendor evaluation (build vs buy), working PoC validation, and UAE PDPL-aligned data governance.
 
 Formatting Rules:
 - Never use markdown bolding like **text** or asterisks (* or **) in your responses.
@@ -71,7 +72,7 @@ export default function KhalidChatbot() {
     { 
       role: 'model', 
       text: "I’m Khalid, the intake assistant for Asif Digital Agency. I can help you choose between a website, WhatsApp chatbot, AI automation, or the AI Sales Agent system for B2B prospecting and follow-up. What are you trying to improve first?",
-      suggestions: ["AI PPC & Ads", "Hospitality AI", "AI SEO & AEO", "AI Sales Agent", "WhatsApp Chatbot", "Free Audit"]
+      suggestions: ["AI Consulting", "AI PPC & Ads", "Hospitality AI", "AI SEO & AEO", "Sales Agent", "Free Audit"]
     }
   ]);
   const [input, setInput] = useState('');

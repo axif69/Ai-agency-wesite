@@ -169,7 +169,12 @@ const StatusBadge = ({ status, sentiment }: { status: string; sentiment?: string
     if (s === 'ready' || s === 'priority_ready' || s === 'queued') { bg = 'rgba(0, 113, 227, 0.12)'; color = ACCENT; label = 'QUEUED'; }
     if (s === 'blocked_by_safety_mode') { bg = 'rgba(255, 159, 10, 0.12)'; color = '#c65d00'; label = 'BLOCKED BY SAFETY MODE'; }
     if (s === 'new') { bg = 'rgba(0, 0, 0, 0.05)'; color = TEXT_SECONDARY; label = 'PENDING'; }
-    if (s === 'no_email') { bg = 'rgba(255, 159, 10, 0.12)'; color = '#f56300'; label = 'REFUSED'; }
+    if (s === 'no_email' || s === 'missing_email') { bg = 'rgba(255, 159, 10, 0.12)'; color = '#f56300'; label = 'MISSING EMAIL'; }
+    if (s === 'generic_email') { bg = 'rgba(255, 159, 10, 0.12)'; color = '#c65d00'; label = 'GENERIC EMAIL'; }
+    if (s === 'consumer_email') { bg = 'rgba(255, 59, 48, 0.12)'; color = '#ff3b30'; label = 'CONSUMER EMAIL'; }
+    if (s === 'buyer_fit_failed') { bg = 'rgba(0, 0, 0, 0.05)'; color = TEXT_SECONDARY; label = 'BUYER FIT FAILED'; }
+    if (s === 'qualified_phone_only') { bg = 'rgba(52, 199, 89, 0.12)'; color = '#28a745'; label = 'PHONE ONLY'; }
+    if (s === 'needs_recheck') { bg = 'rgba(0, 113, 227, 0.12)'; color = ACCENT; label = 'NEEDS RECHECK'; }
     if (s.includes('error') || s.includes('fail')) { bg = 'rgba(255, 59, 48, 0.12)'; color = '#ff3b30'; label = 'ERROR'; }
 
     const sentimentBadge = () => {
@@ -241,6 +246,10 @@ export default function SovereignDashboardV5_1() {
     failed: 0,
     dailyCap: 150,
     speed: 'standard'
+  });
+  const [systemStats, setSystemStats] = useState<any>({
+    decision_makers: 0,
+    decision_contacts: 0
   });
   const [contacts, setContacts] = useState<any[]>([]);
   const [license, setLicense] = useState<any>({ activated: false, status: 'inactive' });
@@ -318,7 +327,7 @@ export default function SovereignDashboardV5_1() {
     EMAIL_USER: '',
     GMAIL_APP_PASS: '',
     OPENROUTER_API_KEY: '',
-    OPENROUTER_MODEL: 'openai/gpt-4o-mini',
+    OPENROUTER_MODEL: 'openrouter/free',
     OPENAI_API_KEY: '',
     OPENAI_MODEL: 'gpt-4o-mini',
     GROQ_API_KEY: '',
@@ -675,6 +684,7 @@ export default function SovereignDashboardV5_1() {
     await safeJson<any[]>('/analytics', (data) => Array.isArray(data) && setAnalytics(data));
     await safeJson<any[]>('/replies', (data) => Array.isArray(data) && setReplies(data));
     await safeJson<any[]>('/outreach-drafts', (data) => Array.isArray(data) && setOutreachDrafts(data));
+    await safeJson<any>('/stats', (data) => data && typeof data === 'object' && setSystemStats(data));
     await safeJson<any>('/auto-outreach-stats', setAutoStats);
 
     const fetchedLogs = await safeJson<any[]>('/logs');
@@ -730,11 +740,19 @@ export default function SovereignDashboardV5_1() {
     } catch (e) { addLog("❌ Settings Sync Error.", 'err'); }
   };
 
-  const testLlmConnection = async (provider: 'openrouter' | 'openai' | 'groq' | 'mistral' | 'apollo' | 'hunter') => {
-    const apiKey = provider === 'openrouter' ? config.OPENROUTER_API_KEY : provider === 'openai' ? config.OPENAI_API_KEY : provider === 'groq' ? config.GROQ_API_KEY : provider === 'mistral' ? config.MISTRAL_API_KEY : provider === 'apollo' ? config.APOLLO_API_KEY : config.HUNTER_API_KEY;
-    const providerLabel = provider === 'openrouter' ? 'OpenRouter' : provider === 'openai' ? 'OpenAI' : provider === 'groq' ? 'Groq' : provider === 'mistral' ? 'Mistral' : provider === 'apollo' ? 'Apollo.io' : 'Hunter.io';
+  const testLlmConnection = async (provider: 'openrouter' | 'openai' | 'groq' | 'mistral' | 'custom' | 'apollo' | 'hunter') => {
+    const apiKey = provider === 'openrouter' ? config.OPENROUTER_API_KEY : provider === 'openai' ? config.OPENAI_API_KEY : provider === 'groq' ? config.GROQ_API_KEY : provider === 'mistral' ? config.MISTRAL_API_KEY : provider === 'custom' ? (config.CUSTOM_AI_API_KEY || '') : provider === 'apollo' ? config.APOLLO_API_KEY : config.HUNTER_API_KEY;
+    const providerLabel = provider === 'openrouter' ? 'OpenRouter' : provider === 'openai' ? 'OpenAI' : provider === 'groq' ? 'Groq' : provider === 'mistral' ? 'Mistral' : provider === 'custom' ? 'Custom AI' : provider === 'apollo' ? 'Apollo.io' : 'Hunter.io';
 
-    if (!apiKey) {
+    if (provider === 'custom' && !String(config.CUSTOM_AI_BASE_URL || '').trim()) {
+      setLlmTestState((prev) => ({
+        ...prev,
+        [provider]: { loading: false, ok: false, message: 'Enter custom base URL first.' }
+      }));
+      return;
+    }
+
+    if (provider !== 'custom' && !apiKey) {
       setLlmTestState((prev) => ({
         ...prev,
         [provider]: { loading: false, ok: false, message: 'Enter API key first.' }
@@ -750,13 +768,15 @@ export default function SovereignDashboardV5_1() {
     try {
       const healthyBase = await resolveHealthyApiBase();
       const keySetting = provider === 'openrouter'
-        ? { OPENROUTER_API_KEY: apiKey, OPENROUTER_MODEL: config.OPENROUTER_MODEL || 'openai/gpt-4o-mini' }
+        ? { OPENROUTER_API_KEY: apiKey, OPENROUTER_MODEL: config.OPENROUTER_MODEL || 'openrouter/free' }
         : provider === 'openai'
           ? { OPENAI_API_KEY: apiKey, OPENAI_MODEL: config.OPENAI_MODEL || 'gpt-4o-mini' }
           : provider === 'groq'
             ? { GROQ_API_KEY: apiKey }
             : provider === 'mistral'
               ? { MISTRAL_API_KEY: apiKey }
+              : provider === 'custom'
+                ? { CUSTOM_AI_API_KEY: apiKey, custom_ai_api_key: apiKey, CUSTOM_AI_BASE_URL: config.CUSTOM_AI_BASE_URL || '', custom_ai_base_url: config.CUSTOM_AI_BASE_URL || '', CUSTOM_AI_MODEL: config.model || 'local-model', custom_ai_model: config.model || 'local-model' }
               : provider === 'apollo'
                 ? { APOLLO_API_KEY: apiKey }
                 : { HUNTER_API_KEY: apiKey };
@@ -768,7 +788,12 @@ export default function SovereignDashboardV5_1() {
       const res = await fetch(`${healthyBase}/settings/test-llm`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ provider, apiKey, model: provider === 'openrouter' ? config.OPENROUTER_MODEL : provider === 'openai' ? config.OPENAI_MODEL : undefined })
+        body: JSON.stringify({
+          provider,
+          apiKey,
+          model: provider === 'openrouter' ? config.OPENROUTER_MODEL : provider === 'openai' ? config.OPENAI_MODEL : provider === 'custom' ? config.model : undefined,
+          baseUrl: provider === 'custom' ? config.CUSTOM_AI_BASE_URL : undefined
+        })
       });
 
       const data = await res.json().catch(() => ({}));
@@ -1791,7 +1816,7 @@ export default function SovereignDashboardV5_1() {
               { id: 'dashboard', label: 'Overview', icon: LayoutDashboard, count: 0 },
               { id: 'all', label: 'Discovered Companies', icon: Database, count: prospects.length },
               { id: 'prospects', label: 'AI Qualified Targets', icon: Search, count: discoveryLeads.length },
-              { id: 'contacts', label: 'Verified Decision Makers', icon: Users, count: contacts.length },
+              { id: 'contacts', label: 'Verified Decision Makers', icon: Users, count: Number(systemStats.decision_makers || 0) },
               { id: 'bulk', label: 'Bulk Import', icon: FileText, count: 0 },
               { id: 'sent', label: 'Review & Outreach', icon: Mail, count: pendingDraftCount },
               { id: 'replies', label: 'Inbox', icon: MessageSquare, count: (replies?.length || 0) },
@@ -2035,7 +2060,7 @@ export default function SovereignDashboardV5_1() {
                     <Users size={18} />
                   </div>
                 </div>
-                <div style={{ fontSize: '3.6rem', fontWeight: 800, color: '#16a34a', letterSpacing: '-0.05em', lineHeight: 1 }}>{contacts.length}</div>
+                <div style={{ fontSize: '3.6rem', fontWeight: 800, color: '#16a34a', letterSpacing: '-0.05em', lineHeight: 1 }}>{Number(systemStats.decision_makers || 0)}</div>
                 <div style={{ fontSize: '0.8rem', color: TEXT_SECONDARY, marginTop: 12, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }}>
                   <span style={{ color: '#16a34a', fontWeight: 800 }}>REAL</span> Decision Makers w/ Contact Channel
                 </div>
@@ -3919,9 +3944,9 @@ export default function SovereignDashboardV5_1() {
                                                 const defaultModels: Record<string, string> = {
                                                     groq: 'llama-3.3-70b-versatile',
                                                     openai: 'gpt-4o-mini',
-                                                    openrouter: 'openai/gpt-4o-mini',
+                                                    openrouter: 'openrouter/free',
                                                     mistral: 'mistral-large-latest',
-                                                    custom: 'llama3'
+                                                    custom: 'opencode/gemini-3-flash'
                                                 };
                                                 const model = defaultModels[provider] || 'llama-3.3-70b-versatile';
                                                 setConfig({ ...config, primary_ai_provider: provider, model });
@@ -3958,7 +3983,7 @@ export default function SovereignDashboardV5_1() {
                                                 (config.primary_ai_provider || 'groq') === 'openai' ? (config.OPENAI_API_KEY || config.openai_api_key || '') :
                                                 (config.primary_ai_provider || 'groq') === 'openrouter' ? (config.OPENROUTER_API_KEY || config.openrouter_api_key || '') :
                                                 (config.primary_ai_provider || 'groq') === 'mistral' ? (config.MISTRAL_API_KEY || config.mistral_api_key || '') :
-                                                (config.CUSTOM_AI_API_KEY || '')
+                                                (config.CUSTOM_AI_API_KEY || config.custom_ai_api_key || '')
                                             } 
                                             onChange={e => {
                                                 const val = e.target.value;
@@ -3970,7 +3995,8 @@ export default function SovereignDashboardV5_1() {
                                                     mistral: 'mistral_api_key',
                                                     custom: 'CUSTOM_AI_API_KEY'
                                                 };
-                                                setConfig({ ...config, [keyMap[prov]]: val, [keyMap[prov].toUpperCase()]: val });
+                                                const customAlias = prov === 'custom' ? { custom_ai_api_key: val } : {};
+                                                setConfig({ ...config, [keyMap[prov]]: val, [keyMap[prov].toUpperCase()]: val, ...customAlias });
                                             }} 
                                             onBlur={e => {
                                                 const val = e.target.value;
@@ -3982,7 +4008,8 @@ export default function SovereignDashboardV5_1() {
                                                     mistral: 'mistral_api_key',
                                                     custom: 'CUSTOM_AI_API_KEY'
                                                 };
-                                                saveSettings({ [keyMap[prov]]: val, [keyMap[prov].toUpperCase()]: val });
+                                                const customAlias = prov === 'custom' ? { custom_ai_api_key: val } : {};
+                                                saveSettings({ [keyMap[prov]]: val, [keyMap[prov].toUpperCase()]: val, ...customAlias });
                                             }} 
                                             style={{ flex: 1, width: '100%', padding: '16px 20px', borderRadius: 14, background: '#F5F5F7', border: '1px solid rgba(0,0,0,0.05)', color: TEXT_PRIMARY, fontWeight: 600, outline: 'none', boxSizing: 'border-box' as const }} 
                                         />
@@ -4007,7 +4034,7 @@ export default function SovereignDashboardV5_1() {
                                         <input 
                                             value={config.CUSTOM_AI_BASE_URL || ''} 
                                             onChange={e => setConfig({...config, CUSTOM_AI_BASE_URL: e.target.value})} 
-                                            onBlur={e => saveSettings({ CUSTOM_AI_BASE_URL: e.target.value })} 
+                                            onBlur={e => saveSettings({ CUSTOM_AI_BASE_URL: e.target.value, custom_ai_base_url: e.target.value })} 
                                             style={{ width: '100%', padding: '16px 20px', borderRadius: 14, background: '#F5F5F7', border: '1px solid rgba(0,0,0,0.05)', color: TEXT_PRIMARY, fontWeight: 600, outline: 'none', boxSizing: 'border-box' as const }} 
                                             placeholder="http://localhost:11434/v1" 
                                         />
