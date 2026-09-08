@@ -600,17 +600,17 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="why-now-graphic relative aspect-square rounded-[2rem] overflow-hidden border border-white/10 bg-[#0a0a0a] p-10 flex flex-col justify-center opacity-0">
+          <div className="why-now-graphic relative min-h-[460px] md:aspect-square rounded-[2rem] overflow-hidden border border-white/10 bg-[#0a0a0a] p-6 sm:p-8 md:p-10 flex flex-col justify-center opacity-0">
              {showDecor ? <ParticleBackground /> : null}
              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)] opacity-20 z-[1]" />
              
-             <div className="relative z-10 space-y-8">
-                <div className="legacy-card p-6 border border-red-500/20 bg-red-500/5 rounded-xl opacity-0">
+             <div className="relative z-10 space-y-4 sm:space-y-6 md:space-y-8 my-auto">
+                <div className="legacy-card p-5 sm:p-6 border border-red-500/20 bg-red-500/5 hover:border-red-500/40 hover:bg-red-500/10 hover:shadow-[0_0_30px_rgba(239,68,68,0.15)] rounded-xl opacity-0 transition-all duration-300 cursor-default">
                   <h4 className="text-red-400 font-bold text-xs uppercase tracking-widest mb-2">The Broken Flow</h4>
                   <p className="text-white/80 font-normal text-sm">Pretty websites with weak forms, unclear offers and slow follow-up.</p>
                 </div>
                 <div className="arrow-graphic flex justify-center opacity-0"><ArrowRight className="w-6 h-6 rotate-90 text-white/20" /></div>
-                <div className="automated-card p-6 border border-green-500/30 bg-green-500/10 rounded-xl opacity-0">
+                <div className="automated-card p-5 sm:p-6 border border-green-500/30 bg-green-500/10 hover:border-green-500/50 hover:bg-green-500/15 hover:shadow-[0_0_30px_rgba(34,197,94,0.2)] rounded-xl opacity-0 transition-all duration-300 cursor-default">
                   <h4 className="text-green-400 font-bold text-xs uppercase tracking-widest mb-2">The Better Flow</h4>
                   <p className="text-white/90 font-normal text-sm">Clear landing pages, WhatsApp entry points and automation that routes enquiries to your team.</p>
                 </div>

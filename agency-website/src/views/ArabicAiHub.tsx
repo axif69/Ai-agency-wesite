@@ -351,7 +351,7 @@ export default function ArabicAiHub() {
             return (
               <div
                 key={p.id}
-                className="p-8 rounded-3xl border border-white/10 bg-white/[0.02] hover:border-emerald-400/30 transition-all flex flex-col justify-between group"
+                className="p-8 rounded-3xl border border-white/10 bg-white/[0.02] hover:border-emerald-400/40 hover:bg-white/[0.04] hover:shadow-[0_0_35px_rgba(16,185,129,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
@@ -441,7 +441,7 @@ export default function ArabicAiHub() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {linguisticPrinciples.map((item, idx) => (
-            <div key={idx} className="p-7 rounded-2xl border border-white/10 bg-white/[0.015]">
+            <div key={idx} className="p-7 rounded-2xl border border-white/10 bg-white/[0.015] hover:border-emerald-400/40 hover:bg-white/[0.03] hover:shadow-[0_0_35px_rgba(16,185,129,0.15)] hover:-translate-y-1 transition-all duration-300 group">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-xs font-mono text-emerald-400">0{idx + 1}</span>
                 <span className="text-base font-serif text-emerald-300" dir="rtl" lang="ar">
@@ -510,8 +510,8 @@ export default function ArabicAiHub() {
                 descAr: "إمكانية الاستضافة السحابية داخل الإمارات وفقاً لمتطلبات الحوكمة المؤسسية.",
               },
             ].map((card, i) => (
-              <div key={i} className="p-6 rounded-2xl border border-white/10 bg-black">
-                <h4 className="font-semibold text-white text-sm mb-1">{card.titleEn}</h4>
+              <div key={i} className="p-6 rounded-2xl border border-white/10 bg-black hover:border-emerald-400/40 hover:bg-white/[0.03] hover:shadow-[0_0_35px_rgba(16,185,129,0.15)] hover:-translate-y-1 transition-all duration-300 cursor-default group">
+                <h4 className="font-semibold text-white text-sm mb-1 group-hover:text-emerald-300 transition-colors">{card.titleEn}</h4>
                 <h5 className="font-serif text-emerald-400 text-xs mb-2 text-right" dir="rtl" lang="ar">
                   {card.titleAr}
                 </h5>
