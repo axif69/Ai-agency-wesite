@@ -86,54 +86,56 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#050505] text-white selection:bg-green-500/30 overflow-x-hidden font-sans">
+    <div className="flex flex-col min-h-screen bg-[#050505] text-white selection:bg-green-500/30 font-sans">
       <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-black focus:px-6 focus:py-3 focus:rounded-full focus:font-bold">
         Skip to Content
       </a>
       <WhatsAppButton />
       <KhalidChatbot />
 
-      {/* Sovereign Status Bar */}
-      <div className="bg-[#0a0a0a] border-b border-white/5 py-2 px-6 md:px-12 flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.2em] text-white/40 z-30 relative">
-        <div className="flex items-center gap-4">
-          <span className="flex items-center gap-1.5 text-green-500/80">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" /> Sovereign Network: Active
-          </span>
-          <span className="hidden sm:inline text-white/20">|</span>
-          <span className="hidden sm:inline italic">Dubai Node: DXB-PRIME</span>
+      <header className="fixed top-0 left-0 right-0 z-50 w-full bg-[#050505]/90 backdrop-blur-md border-b border-white/10 transition-colors">
+        {/* Sovereign Status Bar */}
+        <div className="hidden sm:flex bg-[#0a0a0a]/80 border-b border-white/5 py-1.5 px-6 md:px-12 justify-between items-center text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1.5 text-green-500/80">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" /> Sovereign Network: Active
+            </span>
+            <span className="text-white/20">|</span>
+            <span className="italic">Dubai Node: DXB-PRIME</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span>{new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit' })} GST</span>
+            <span className="text-white/20">|</span>
+            <Link href="/contact" className="hover:text-white transition-colors">Project Intake</Link>
+          </div>
         </div>
-        <div className="flex items-center gap-4">
-          <span>{new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit' })} GST</span>
-          <span className="text-white/20">|</span>
-          <Link href="/contact" className="hover:text-white transition-colors">Project Intake</Link>
-        </div>
-      </div>
 
-      <header className="sticky top-0 z-40 w-full flex items-center justify-between px-6 py-4 md:px-12 bg-[#050505]/90 backdrop-blur-md border-b border-white/10 transition-colors">
-        <Link href="/" aria-label="Asif Digital Home" className="flex items-center gap-2.5 shrink-0">
-          <Image
-            src="/images/asif-digital-ad-mark.png"
-            alt=""
-            width={36}
-            height={36}
-            priority
-            className="w-8 h-8 sm:w-9 sm:h-9 object-contain shrink-0"
-          />
-          <span className="text-[20px] sm:text-[23px] leading-none font-serif font-bold tracking-tight text-white">
-            Asif Digital.
-          </span>
-        </Link>
-        
-        <button
-          className="md:hidden z-50 p-2 text-white/80 hover:text-white transition-colors"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-expanded={isMenuOpen}
-          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-        >
-          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Main Navigation Bar */}
+        <div className="flex items-center justify-between px-6 py-3.5 md:px-12">
+          <Link href="/" aria-label="Asif Digital Home" className="flex items-center gap-2.5 shrink-0">
+            <Image
+              src="/images/asif-digital-ad-mark.png"
+              alt=""
+              width={36}
+              height={36}
+              priority
+              className="w-8 h-8 sm:w-9 sm:h-9 object-contain shrink-0"
+            />
+            <span className="text-[20px] sm:text-[23px] leading-none font-serif font-bold tracking-tight text-white">
+              Asif Digital.
+            </span>
+          </Link>
+          
+          <button
+            className="md:hidden z-50 p-2 text-white/80 hover:text-white transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
 
-        <nav className="hidden md:flex items-center gap-5 lg:gap-7 text-[11px] lg:text-[12px] font-semibold uppercase tracking-[0.16em]">
+          <nav className="hidden md:flex items-center gap-5 lg:gap-7 text-[11px] lg:text-[12px] font-semibold uppercase tracking-[0.16em]">
           {navLinks.map((link) => (
             <div key={link.path} className="relative group">
               <Link
@@ -249,6 +251,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           ))}
         </nav>
+        </div>
       </header>
 
       {/* Dedicated Mobile Navigation Drawer (Zero Emojis, Single-Open Accordions, Min 44-48px Touch Targets) */}

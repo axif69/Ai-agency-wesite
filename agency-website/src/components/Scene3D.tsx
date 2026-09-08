@@ -95,23 +95,43 @@ function MainBlob() {
 
 export default function Scene3D() {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [inHeroZone, setInHeroZone] = useState(true);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
     checkMobile();
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+    const motionListener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mediaQuery.addEventListener("change", motionListener);
+
+    const handleScroll = () => {
+      const nearTop = window.scrollY < 2200;
+      setInHeroZone((prev) => (prev !== nearTop ? nearTop : prev));
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+
+    return () => {
+      mediaQuery.removeEventListener("change", motionListener);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
-  if (isMobile === null || isMobile) {
+  if (isMobile === null || isMobile || prefersReducedMotion || !inHeroZone) {
     return null;
   }
 
   return (
     <div className="fixed inset-0 z-0 pointer-events-none opacity-60">
-      <Canvas dpr={[1, 2]}>
+      <Canvas dpr={[1, 1.5]} gl={{ powerPreference: "low-power" }}>
         <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={40} />
         <ambientLight intensity={0.2} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={2} color="#ffffff" />
@@ -119,7 +139,7 @@ export default function Scene3D() {
         
         <FloatingElements />
         
-        <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={0.5} />
+        <Stars radius={100} depth={50} count={1200} factor={4} saturation={0} fade speed={0.5} />
       </Canvas>
     </div>
   );

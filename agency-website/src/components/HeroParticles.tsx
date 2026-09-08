@@ -1,9 +1,11 @@
 "use client";
-import { useRef, useMemo, useEffect } from 'react';
+import { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const ParticleSwarm = () => {
+const _tempVec = new THREE.Vector3();
+
+const ParticleSwarm = ({ isVisible }: { isVisible: boolean }) => {
   const pointsRef = useRef<THREE.Points>(null);
   const { viewport } = useThree();
   const mousePos = useRef({ x: 0, y: 0 });
@@ -13,11 +15,11 @@ const ParticleSwarm = () => {
       mousePos.current.x = (e.clientX / window.innerWidth) * 2 - 1;
       mousePos.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
     };
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
   
-  const particleCount = 6000;
+  const particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 1500 : 4000;
   
   // Generate random positions and colors for particles
   const [positions, colors, basePositions] = useMemo(() => {
@@ -66,10 +68,10 @@ const ParticleSwarm = () => {
     }
     
     return [pos, col, base];
-  }, []);
+  }, [particleCount]);
 
   useFrame((state) => {
-    if (!pointsRef.current) return;
+    if (!isVisible || !pointsRef.current) return;
     
     // Slow rotation
     pointsRef.current.rotation.y = state.clock.elapsedTime * 0.05;
@@ -94,13 +96,12 @@ const ParticleSwarm = () => {
       const by = basePositions[i3 + 1];
       const bz = basePositions[i3 + 2];
       
-      // Calculate world position of this particle after rotation
-      const vec = new THREE.Vector3(bx, by, bz);
-      vec.applyEuler(pointsRef.current.rotation);
+      // Calculate world position reusing single module-level Vector3 (Zero GC allocation)
+      _tempVec.set(bx, by, bz).applyEuler(pointsRef.current.rotation);
       
       // Distance from mouse to particle
-      const dx = targetX - vec.x;
-      const dy = targetY - vec.y;
+      const dx = targetX - _tempVec.x;
+      const dy = targetY - _tempVec.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       
       // Decreased repulsion range and force by ~20%
@@ -154,11 +155,41 @@ const ParticleSwarm = () => {
 };
 
 export default function HeroParticles() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    
+    const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mediaQuery.addEventListener('change', listener);
+    return () => mediaQuery.removeEventListener('change', listener);
+  }, []);
+
+  useEffect(() => {
+    if (!containerRef.current || typeof IntersectionObserver === 'undefined') return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  if (prefersReducedMotion) return null;
+
   return (
-    <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 12], fov: 60 }}>
-        <ParticleSwarm />
-      </Canvas>
+    <div ref={containerRef} className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+      {isVisible && (
+        <Canvas camera={{ position: [0, 0, 12], fov: 60 }} gl={{ powerPreference: 'low-power' }}>
+          <ParticleSwarm isVisible={isVisible} />
+        </Canvas>
+      )}
     </div>
   );
 }

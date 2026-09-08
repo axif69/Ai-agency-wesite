@@ -180,14 +180,33 @@ select.tool-field optgroup {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Smooth Scroll & Sticky Header Offset */
+:root {
+  --header-height: 4.25rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --header-height: 5.75rem;
+  }
+}
+
+html, body {
+  overflow-x: clip;
+  max-width: 100vw;
+}
+
+/* Smooth Scroll & Fixed Header Clearance */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: var(--header-height);
 }
 
 [id] {
-  scroll-margin-top: 5.5rem;
+  scroll-margin-top: var(--header-height);
+}
+
+.pt-header {
+  padding-top: var(--header-height);
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -155,16 +155,7 @@ const PLATFORM_BRANDS = [
   { name: "Microsoft Azure", mark: "AZ" }
 ];
 
-export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [showDecor, setShowDecor] = useState(false);
-  const [isCompactViewport, setIsCompactViewport] = useState(false);
-
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  // ROI Calculator State
+function RoiCalculator() {
   const [employees, setEmployees] = useState(5);
   const humanCostPerYear = 120000; // AED per average employee (salary + visa)
   const agentCostPerYear = 15000; // Average AI Software yearly cost
@@ -173,12 +164,70 @@ export default function Home() {
   const totalAgentCost = employees * agentCostPerYear;
   const totalSavings = totalHumanCost - totalAgentCost;
 
+  return (
+    <div className="max-w-4xl mx-auto bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-14 shadow-2xl">
+      <div className="mb-10">
+        <div className="flex justify-between items-end mb-4">
+          <label htmlFor="roi-employees" className="text-xs uppercase tracking-widest font-bold text-white/60">Number of Customer Support/Sales Staff</label>
+          <span className="text-3xl font-serif text-white">{employees}</span>
+        </div>
+        <input 
+          id="roi-employees"
+          type="range" 
+          min="1" max="50" 
+          value={employees} 
+          onChange={(e) => setEmployees(parseInt(e.target.value))}
+          className="w-full h-1 bg-white/20 rounded-lg appearance-none cursor-pointer accent-white"
+        />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <div className="roi-card-left p-6 rounded-2xl border border-red-500/20 bg-red-500/5">
+          <h4 className="text-[10px] uppercase tracking-widest text-red-500/80 font-bold mb-4">Current Human Overhead</h4>
+          <div className="text-3xl font-serif text-white mb-2">AED {(totalHumanCost).toLocaleString()} <span className="text-sm font-sans text-white/40">/ yr</span></div>
+          <ul className="text-xs font-normal text-white/60 space-y-2 mt-4">
+            <li>• Salaries & UAE Visa Fees</li>
+            <li>• Office Space & Allowances</li>
+            <li>• Only available 8 hours a day</li>
+          </ul>
+        </div>
+         
+        <div className="roi-card-right p-6 rounded-2xl border border-green-500/20 bg-green-500/5">
+          <h4 className="text-[10px] uppercase tracking-widest text-green-500/80 font-bold mb-4">Our Solution: Website & WhatsApp Assistant</h4>
+          <div className="text-3xl font-serif text-white mb-2">AED {(totalAgentCost).toLocaleString()} <span className="text-sm font-sans text-white/40">/ yr</span></div>
+          <ul className="text-xs font-normal text-white/80 space-y-2 mt-4">
+            <li>• No visa costs, no housing allowance needed</li>
+            <li>• Answers customers 24 hours a day, 7 days a week</li>
+            <li>• Handles unlimited conversations at once</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="roi-savings-container text-center pt-8 border-t border-white/10">
+        <div className="text-[12px] uppercase tracking-widest text-white/60 font-bold mb-2">You Could Save Every Year</div>
+        <div id="roi-savings-value" className="text-5xl md:text-7xl font-serif text-green-400">AED {(totalSavings).toLocaleString()}</div>
+        <p className="text-white/40 text-sm mt-4 font-normal">Based on average UAE staff costs. Book a free call to see your exact numbers.</p>
+      </div>
+    </div>
+  );
+}
+
+export default function Home() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
+  const [showDecor, setShowDecor] = useState(false);
+  const [isCompactViewport, setIsCompactViewport] = useState(false);
+
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     const updateViewport = () => setIsCompactViewport(window.innerWidth < 768);
     updateViewport();
-    const timer = window.setTimeout(() => setShowDecor(true), 1200);
-    window.addEventListener("resize", updateViewport);
+    const timer = window.setTimeout(() => setShowDecor(true), 800);
+    window.addEventListener("resize", updateViewport, { passive: true });
     return () => {
       window.clearTimeout(timer);
       window.removeEventListener("resize", updateViewport);
@@ -186,21 +235,21 @@ export default function Home() {
   }, []);
 
   useGSAP(() => {
-    // Reveal animations for headings/paragraphs
+    // Reveal animations for headings/paragraphs with once: true to prevent re-triggering during scroll
     const reveals = gsap.utils.toArray(".gsap-reveal");
     reveals.forEach((elem: any) => {
       gsap.fromTo(
         elem,
-        { y: 50, opacity: 0 },
+        { y: 40, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
+          duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
             trigger: elem,
             start: "top 85%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );
@@ -209,15 +258,16 @@ export default function Home() {
     // Why Now section GSAP animations
     gsap.fromTo(
       ".why-now-text",
-      { x: -50, opacity: 0 },
+      { x: -40, opacity: 0 },
       {
         x: 0,
         opacity: 1,
-        duration: 1.2,
+        duration: 0.8,
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".why-now-text",
           start: "top 80%",
+          once: true,
         },
       }
     );
@@ -226,19 +276,20 @@ export default function Home() {
       scrollTrigger: {
         trigger: ".why-now-graphic",
         start: "top 75%",
+        once: true,
       },
     });
 
     whyNowTl.fromTo(
       ".why-now-graphic",
-      { scale: 0.95, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.8, ease: "power2.out" }
+      { scale: 0.96, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.6, ease: "power2.out" }
     )
     .fromTo(
       ".legacy-card",
-      { x: -50, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-      "-=0.4"
+      { x: -30, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
+      "-=0.3"
     )
     .fromTo(
       ".arrow-graphic",
@@ -248,65 +299,68 @@ export default function Home() {
     )
     .fromTo(
       ".automated-card",
-      { x: 50, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+      { x: 30, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
       "-=0.3"
     );
 
-    // ROI Calculator animations
+    // ROI Calculator animations with once: true
     gsap.fromTo(
       ".roi-card-left",
-      { x: -50, opacity: 0 },
+      { x: -30, opacity: 0 },
       {
         x: 0,
         opacity: 1,
-        duration: 1,
+        duration: 0.7,
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".roi-card-left",
           start: "top 85%",
+          once: true,
         },
       }
     );
 
     gsap.fromTo(
       ".roi-card-right",
-      { x: 50, opacity: 0 },
+      { x: 30, opacity: 0 },
       {
         x: 0,
         opacity: 1,
-        duration: 1,
+        duration: 0.7,
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".roi-card-right",
           start: "top 85%",
+          once: true,
         },
       }
     );
 
     gsap.fromTo(
       ".roi-savings-container",
-      { y: 30, opacity: 0 },
+      { y: 20, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 1,
-        ease: "back.out(1.5)",
+        duration: 0.7,
+        ease: "back.out(1.3)",
         scrollTrigger: {
           trigger: ".roi-savings-container",
           start: "top 90%",
+          once: true,
         },
       }
     );
   }, { dependencies: [] });
 
   return (
-    <div ref={containerRef} className="relative bg-[#050505] overflow-hidden">
+    <div ref={containerRef} className="relative bg-[#050505]">
       {/* 3D Interactive Background */}
       {showDecor && !isCompactViewport ? <Scene3D /> : null}
       
       {/* ── 1. The "Authority" Hero Section ── */}
-      <section className="relative min-h-[calc(100svh-5rem)] flex flex-col items-center justify-center overflow-hidden px-6 py-12 md:py-16">
+      <section ref={heroRef} className="relative min-h-[calc(100svh-var(--header-height,5.75rem))] flex flex-col items-center justify-center overflow-hidden px-6 pt-24 pb-12 sm:pt-28 md:pt-36 md:pb-16">
         <motion.div style={{ y, opacity }} className="relative z-10 text-center flex flex-col items-center w-full">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="mb-3 flex items-center justify-center gap-3">
             <span className="flex h-2 w-2 relative">
@@ -818,50 +872,7 @@ export default function Home() {
           <p className="text-white/60 mt-4 max-w-2xl mx-auto font-normal">Use this as a rough planning estimate, not a guarantee. It shows how a practical website or WhatsApp assistant can support follow-up without adding another full-time admin.</p>
         </div>
 
-        <div className="max-w-4xl mx-auto bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-14 shadow-2xl">
-            <div className="mb-10">
-            <div className="flex justify-between items-end mb-4">
-              <label htmlFor="roi-employees" className="text-xs uppercase tracking-widest font-bold text-white/60">Number of Customer Support/Sales Staff</label>
-              <span className="text-3xl font-serif text-white">{employees}</span>
-            </div>
-            <input 
-              id="roi-employees"
-              type="range" 
-              min="1" max="50" 
-              value={employees} 
-              onChange={(e) => setEmployees(parseInt(e.target.value))}
-              className="w-full h-1 bg-white/20 rounded-lg appearance-none cursor-pointer accent-white"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-             <div className="roi-card-left p-6 rounded-2xl border border-red-500/20 bg-red-500/5 opacity-0">
-                <h4 className="text-[10px] uppercase tracking-widest text-red-500/80 font-bold mb-4">Current Human Overhead</h4>
-                <div className="text-3xl font-serif text-white mb-2">AED {(totalHumanCost).toLocaleString()} <span className="text-sm font-sans text-white/40">/ yr</span></div>
-                <ul className="text-xs font-normal text-white/60 space-y-2 mt-4">
-                  <li>• Salaries & UAE Visa Fees</li>
-                  <li>• Office Space & Allowances</li>
-                  <li>• Only available 8 hours a day</li>
-                </ul>
-             </div>
-             
-             <div className="roi-card-right p-6 rounded-2xl border border-green-500/20 bg-green-500/5 opacity-0">
-                <h4 className="text-[10px] uppercase tracking-widest text-green-500/80 font-bold mb-4">Our Solution: Website & WhatsApp Assistant</h4>
-                <div className="text-3xl font-serif text-white mb-2">AED {(totalAgentCost).toLocaleString()} <span className="text-sm font-sans text-white/40">/ yr</span></div>
-                 <ul className="text-xs font-normal text-white/80 space-y-2 mt-4">
-                  <li>• No visa costs, no housing allowance needed</li>
-                  <li>• Answers customers 24 hours a day, 7 days a week</li>
-                  <li>• Handles unlimited conversations at once</li>
-                </ul>
-             </div>
-          </div>
-
-          <div className="roi-savings-container text-center pt-8 border-t border-white/10 opacity-0">
-            <div className="text-[12px] uppercase tracking-widest text-white/60 font-bold mb-2">You Could Save Every Year</div>
-            <div id="roi-savings-value" className="text-5xl md:text-7xl font-serif text-green-400">AED {(totalSavings).toLocaleString()}</div>
-            <p className="text-white/40 text-sm mt-4 font-normal">Based on average UAE staff costs. Book a free call to see your exact numbers.</p>
-          </div>
-        </div>
+        <RoiCalculator />
       </section>
       
       {/* ── Case Studies ── */}
