@@ -179,7 +179,7 @@ const commercialBlogTopics: LongFormBlogTopic[] = [
     category: "Real Estate CRM",
     keyword: "real estate crm dubai",
     market: "Dubai real estate agencies and property teams",
-    serviceUrl: "/real-estate/ai-lead-dashboard",
+    serviceUrl: "/real-estate-crm-dubai",
     buyer: "agency owners and sales managers who need control over enquiries, follow-up, agent performance and property inventory",
     problem: "property teams lose money when leads sit in WhatsApp chats, spreadsheets or individual phones instead of a shared CRM process",
     deliverables: ["CRM fields and pipeline design", "lead-source tracking", "agent routing", "WhatsApp context capture", "listing workflow status", "follow-up reminders", "management dashboard"],
@@ -719,6 +719,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Define what the assistant may answer, which templates or policies apply, when a person takes over, and how the outcome returns to the CRM. Review Asif Digital's <a href="/services/whatsapp-automation-gcc" class="text-white hover:underline">WhatsApp automation service</a> for the implementation layer.</p>
 
       <h2>Lead routing rules that prevent leakage</h2>
+      <p>High-velocity sectors like UAE real estate face significant lead decay if portal and campaign enquiries sit unassigned. Integrating automated <a href="/real-estate-crm-dubai" class="text-white font-semibold underline hover:text-emerald-400">portal lead routing and distribution</a> rules into your CRM ensures buyer enquiries from Bayut, Property Finder, and social ads are routed to available agents within seconds rather than hours.</p>
       <ul>
         <li>Route by customer need before routing by salesperson preference.</li>
         <li>Use capacity and response-time rules so leads do not wait in an unavailable owner's queue.</li>
@@ -983,7 +984,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>WhatsApp is where many Dubai deals become real. AI can help collect structure inside a channel that is usually messy by default. Instead of a loose message history, the agency can capture intent, area, budget, and property type in a reusable format.</p>
 
       <h3>CRM data cleanup and enrichment</h3>
-      <p>AI is also useful after the lead arrives. It can standardize fields, flag missing information, summarize conversations, and reduce the amount of manual CRM housekeeping that agents avoid.</p>
+      <p>AI is also useful after the lead arrives. It can standardize fields, flag missing information, summarize conversations, and reduce the amount of manual CRM housekeeping that agents avoid. When connected to structured <a href="/real-estate-crm-dubai" class="text-white font-semibold underline hover:text-emerald-400">broker pipeline management</a>, agents receive pre-qualified lead briefs with budget and community preferences already logged.</p>
 
       <h2>What an authoritative AI setup for agencies should include</h2>
       <ul>
@@ -1178,7 +1179,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Whether a lead comes from a landing page, WhatsApp, a portal, or social traffic, the business needs a consistent way to capture source, intent, location, budget, timeline, and ownership.</p>
 
       <h3>3. CRM hygiene</h3>
-      <p>Many businesses think they have a CRM problem when they really have a process problem. A CRM only works when the information entering it is structured and the team can rely on it.</p>
+      <p>Many businesses think they have a CRM problem when they really have a process problem. A CRM only works when the information entering it is structured and the team can rely on it. For brokerages managing multiple agents and high portal volume, establishing a dedicated <a href="/real-estate-crm-dubai" class="text-white font-semibold underline hover:text-emerald-400">real estate CRM architecture</a> ensures lead distribution, WhatsApp conversation logging, and pipeline stages remain unified.</p>
 
       <h3>4. Communication workflow</h3>
       <p>Real estate businesses in the UAE often depend heavily on WhatsApp, direct calls, and fast reply expectations. Your digital system has to reflect that reality instead of assuming every user wants a long email chain.</p>
