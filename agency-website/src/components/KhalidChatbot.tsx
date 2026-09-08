@@ -332,9 +332,9 @@ export default function KhalidChatbot() {
       <button
         onClick={() => setIsOpen(true)}
         aria-label="Open Khalid AI Intake Chatbot"
-        className={`fixed bottom-24 right-6 z-50 p-4 rounded-full bg-white text-black shadow-2xl hover:scale-110 transition-transform duration-300 ${isOpen ? 'hidden' : 'flex'}`}
+        className={`fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] right-4 sm:bottom-24 sm:right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-black shadow-2xl hover:scale-105 transition-all duration-300 items-center justify-center ${isOpen ? 'hidden' : 'flex'}`}
       >
-        <MessageSquare className="w-6 h-6" />
+        <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
       {/* Chat Window */}
@@ -344,7 +344,7 @@ export default function KhalidChatbot() {
             initial={{ opacity: 0, y: 100, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.9 }}
-            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[400px] h-[calc(100vh-5rem)] max-h-[600px] bg-[#0a0a0a] border border-white/10 rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-2 right-2 sm:bottom-6 sm:right-6 z-[70] w-[calc(100vw-1rem)] sm:w-[400px] h-[calc(100vh-3.5rem)] max-h-[600px] bg-[#0a0a0a] border border-white/10 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="p-6 border-b border-white/10 bg-white/5 flex items-center justify-between">

@@ -299,7 +299,7 @@ export default function AiAgentsDubai() {
           <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-400 block mb-3 font-semibold">
             PRACTICAL SELECTION CRITERIA
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif tracking-tight leading-tight mb-4">
             Single AI Agent vs. Multi-Agent Systems: Which Does Your Business Need?
           </h2>
           <p className="text-white/60 text-sm md:text-base font-light">
@@ -308,57 +308,51 @@ export default function AiAgentsDubai() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-          <div className="p-8 md:p-10 border border-white/10 bg-black rounded-3xl relative overflow-hidden">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/80 font-mono text-sm font-bold">1</div>
-              <h3 className="text-xl font-serif font-semibold text-white">When a Single Agent is Sufficient</h3>
-            </div>
-            <p className="text-xs text-white/50 font-light mb-6">
+          <div className="p-6 sm:p-8 md:p-10 border border-white/10 bg-black rounded-3xl relative overflow-hidden">
+            <h3 className="text-xl sm:text-2xl font-serif font-semibold text-white mb-3">When a Single Agent is Sufficient</h3>
+            <p className="text-sm text-white/60 font-light mb-6 leading-relaxed">
               Best for focused, linear workflows with clear scope and low coordination overhead.
             </p>
-            <ul className="space-y-3 text-xs text-white/70 font-light">
+            <ul className="space-y-3.5 text-sm text-white/75 font-light leading-relaxed">
               <li className="flex items-start gap-2.5">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
                 <span><strong>Linear, bounded tasks:</strong> A single process with defined steps (e.g. customer intake or parsing standard invoices).</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
                 <span><strong>Few software connections:</strong> Operates across 1 to 3 tools without complex inter-departmental handoffs.</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
                 <span><strong>Unified security permissions:</strong> All required actions fall under a single user role or credential.</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
                 <span><strong>Faster deployment:</strong> Simple to test, monitor, and maintain with fast implementation times.</span>
               </li>
             </ul>
           </div>
 
-          <div className="p-8 md:p-10 border border-blue-500/20 bg-blue-500/[0.02] rounded-3xl relative overflow-hidden">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm font-bold">M</div>
-              <h3 className="text-xl font-serif font-semibold text-white">When Multi-Agent Orchestration is Justified</h3>
-            </div>
-            <p className="text-xs text-white/50 font-light mb-6">
+          <div className="p-6 sm:p-8 md:p-10 border border-blue-500/20 bg-blue-500/[0.02] rounded-3xl relative overflow-hidden">
+            <h3 className="text-xl sm:text-2xl font-serif font-semibold text-white mb-3">When Multi-Agent Orchestration is Justified</h3>
+            <p className="text-sm text-white/60 font-light mb-6 leading-relaxed">
               Recommended when complex workflows require separated responsibilities and different security credentials.
             </p>
-            <ul className="space-y-3 text-xs text-white/70 font-light">
+            <ul className="space-y-3.5 text-sm text-white/75 font-light leading-relaxed">
               <li className="flex items-start gap-2.5">
-                <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                <Check className="w-4 h-4 text-blue-400 shrink-0 mt-1" />
                 <span><strong>Separated security roles:</strong> A researcher agent operates with read-only access, while another prepares draft records with audit checkpoints.</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                <Check className="w-4 h-4 text-blue-400 shrink-0 mt-1" />
                 <span><strong>Multi-stage pipelines:</strong> Complex workflows structured as Research → Synthesis → a third checks the output against defined business rules before human review.</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                <Check className="w-4 h-4 text-blue-400 shrink-0 mt-1" />
                 <span><strong>Modular maintenance:</strong> Updates to one sub-agent prompt or tool do not break the rest of the operational flow.</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                <Check className="w-4 h-4 text-blue-400 shrink-0 mt-1" />
                 <span><strong>Clear governance:</strong> Full visibility into which agent drafted which piece of information before final approval.</span>
               </li>
             </ul>

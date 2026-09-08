@@ -94,7 +94,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <KhalidChatbot />
 
       {/* Sovereign Status Bar */}
-      <div className="bg-[#0a0a0a] border-b border-white/5 py-2 px-6 md:px-12 flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.2em] text-white/40 z-[60] relative">
+      <div className="bg-[#0a0a0a] border-b border-white/5 py-2 px-6 md:px-12 flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.2em] text-white/40 z-30 relative">
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1.5 text-green-500/80">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" /> Sovereign Network: Active
@@ -109,7 +109,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </div>
 
-      <header className="fixed top-9 left-0 right-0 z-40 flex items-center justify-between px-6 py-6 md:px-12">
+      <header className="sticky top-0 z-40 w-full flex items-center justify-between px-6 py-4 md:px-12 bg-[#050505]/90 backdrop-blur-md border-b border-white/10 transition-colors">
         <Link href="/" aria-label="Asif Digital Home" className="flex items-center gap-2.5 shrink-0">
           <Image
             src="/images/asif-digital-ad-mark.png"
@@ -119,13 +119,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             priority
             className="w-8 h-8 sm:w-9 sm:h-9 object-contain shrink-0"
           />
-          <span className="text-[20px] sm:text-[23px] leading-none font-serif font-bold tracking-tight mix-blend-difference">
+          <span className="text-[20px] sm:text-[23px] leading-none font-serif font-bold tracking-tight text-white">
             Asif Digital.
           </span>
         </Link>
         
         <button
-          className="md:hidden z-50 p-2 mix-blend-difference"
+          className="md:hidden z-50 p-2 text-white/80 hover:text-white transition-colors"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
@@ -133,16 +133,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
 
-        <nav className="hidden md:flex gap-5 lg:gap-7 text-[11px] lg:text-[12px] font-semibold uppercase tracking-[0.16em]">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-7 text-[11px] lg:text-[12px] font-semibold uppercase tracking-[0.16em]">
           {navLinks.map((link) => (
             <div key={link.path} className="relative group">
               <Link
                 href={link.path}
                 aria-label={`Navigate to ${link.name}`}
-                className="relative hover:text-white transition-colors py-4 inline-block mix-blend-difference"
+                className="relative text-white/75 hover:text-white transition-colors py-3 inline-block"
               >
                 {link.name}
-                <span className="absolute bottom-2 left-0 w-0 h-[1px] bg-white transition-all duration-500 group-hover:w-full" />
+                <span className="absolute bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
               </Link>
               
               {/* Sovereign AI Dropdown - 3-Column Curated Mega Menu */}
@@ -527,7 +527,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <main
         id="main-content"
         key={pathname}
-        className="pt-24 min-h-screen outline-none"
+        className="min-h-screen outline-none"
       >
         <Suspense fallback={<div className="min-h-[40vh]" />}>
           {children}

@@ -268,31 +268,33 @@ export default function Services() {
                   whileInView={{ opacity: 1, y: 0 }} 
                   viewport={{ once: true, margin: "-30px" }} 
                   transition={{ delay: i * 0.06 }} 
-                  className="p-8 md:p-10 border border-white/10 rounded-3xl bg-white/[0.015] hover:bg-white/[0.035] hover:border-white/20 transition-all duration-500 group flex flex-col relative overflow-hidden"
+                  className="p-6 sm:p-8 md:p-10 border border-white/10 rounded-3xl bg-white/[0.015] hover:bg-white/[0.035] hover:border-white/20 transition-all duration-500 group flex flex-col justify-between h-full relative overflow-hidden"
                 >
-                  <div className="mb-6 text-white/30 group-hover:text-white/80 transition-colors">
-                    {service.icon}
-                  </div>
-                  
-                  <h3 className="text-2xl font-serif mb-3 text-white group-hover:translate-x-1 transition-transform duration-300">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-white/60 font-light leading-relaxed mb-6 flex-grow text-sm">
-                    {service.desc}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {service.features.map((f, j) => (
-                      <span key={j} className="px-2.5 py-1 rounded-full border border-white/10 text-[10px] font-mono uppercase tracking-wider text-white/50">
-                        {f}
-                      </span>
-                    ))}
+                  <div>
+                    <div className="mb-6 text-white/30 group-hover:text-white/80 transition-colors">
+                      {service.icon}
+                    </div>
+                    
+                    <h3 className="text-2xl font-serif mb-3 text-white group-hover:translate-x-1 transition-transform duration-300">
+                      {service.title}
+                    </h3>
+                    
+                    <p className="text-white/60 font-light leading-relaxed mb-6 text-sm">
+                      {service.desc}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {service.features.map((f, j) => (
+                        <span key={j} className="px-2.5 py-1 rounded-full border border-white/10 text-[10px] font-mono uppercase tracking-wider text-white/50">
+                          {f}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   <Link 
                     href={service.link} 
-                    className="inline-flex items-center justify-between w-full pt-4 border-t border-white/10 uppercase tracking-[0.15em] text-[11px] font-bold text-white/80 hover:text-white transition-colors"
+                    className="inline-flex items-center justify-between w-full pt-4 border-t border-white/10 uppercase tracking-[0.15em] text-[11px] font-bold text-white/80 hover:text-white transition-colors mt-auto"
                   >
                     <span>{service.ctaText}</span>
                     <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />

@@ -157,8 +157,6 @@ const PLATFORM_BRANDS = [
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const horizontalScrollRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLDivElement>(null);
   const [showDecor, setShowDecor] = useState(false);
   const [isCompactViewport, setIsCompactViewport] = useState(false);
 
@@ -300,38 +298,6 @@ export default function Home() {
         },
       }
     );
-
-    // Horizontal Scroll Trigger for Services Section
-    const scrollEl = horizontalScrollRef.current;
-    const triggerEl = triggerRef.current;
-    if (scrollEl && triggerEl) {
-      const getScrollAmount = () => {
-        let scrollWidth = scrollEl.scrollWidth;
-        let windowWidth = window.innerWidth;
-        return -(scrollWidth - windowWidth);
-      };
-
-      const tween = gsap.fromTo(
-        scrollEl,
-        { x: 0 },
-        {
-          x: getScrollAmount,
-          ease: "none",
-          scrollTrigger: {
-            trigger: triggerEl,
-            pin: true,
-            scrub: 1,
-            start: "top top",
-            end: () => `+=${scrollEl.scrollWidth - window.innerWidth}`,
-            invalidateOnRefresh: true,
-          }
-        }
-      );
-
-      return () => {
-        tween.kill();
-      };
-    }
   }, { dependencies: [] });
 
   return (
@@ -340,8 +306,8 @@ export default function Home() {
       {showDecor && !isCompactViewport ? <Scene3D /> : null}
       
       {/* ── 1. The "Authority" Hero Section ── */}
-      <section className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden px-6 pt-24 sm:pt-0">
-        <motion.div style={{ y, opacity }} className="relative z-10 text-center flex flex-col items-center -mt-24 md:-mt-36 w-full">
+      <section className="relative min-h-[calc(100svh-5rem)] flex flex-col items-center justify-center overflow-hidden px-6 py-12 md:py-16">
+        <motion.div style={{ y, opacity }} className="relative z-10 text-center flex flex-col items-center w-full">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="mb-3 flex items-center justify-center gap-3">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -416,7 +382,7 @@ export default function Home() {
       </section>
 
       <section className="px-6 md:px-12 py-16 max-w-7xl mx-auto">
-        <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div className="mb-8 flex flex-col md:flex-row items-start justify-between gap-6">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-3 gsap-reveal">Start Here</span>
             <h2 className="text-3xl md:text-4xl font-serif tracking-tight gsap-reveal">Pick the fastest path to more enquiries.</h2>
@@ -435,11 +401,13 @@ export default function Home() {
             <Link
               key={i}
               href={item.href}
-              className="group relative block p-6 rounded-[1.75rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] hover:border-green-500/30 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition-all duration-300 ease-out flex flex-col min-h-[190px] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400/60"
+              className="group relative block p-6 rounded-[1.75rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] hover:border-green-500/30 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition-all duration-300 ease-out flex flex-col justify-between h-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400/60"
             >
               <span className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-green-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-green-400 mb-4">{item.title}</span>
-              <p className="text-white/65 text-sm leading-relaxed flex-grow">{item.desc}</p>
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-green-400 mb-4 block">{item.title}</span>
+                <p className="text-white/65 text-sm leading-relaxed">{item.desc}</p>
+              </div>
               <div className="mt-6 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 group-hover:text-green-300 transition-colors">
                 Open Path <ArrowRight className="w-4 h-4" />
               </div>
@@ -466,10 +434,12 @@ export default function Home() {
               { title: "WhatsApp Chatbot Dubai", desc: "Answer common customer questions, collect contact details and send qualified enquiries to your team.", href: "/ai-chatbots-dubai" },
               { title: "Web Design Company Dubai", desc: "Fast service pages with simple wording, proof, FAQs, clear CTAs and tracking for organic lead conversion.", href: "/services/web-design-dubai" }
             ].map((item) => (
-              <Link key={item.href} href={item.href} className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 hover:border-green-400/30 hover:bg-white/[0.04] transition-colors">
-                <h3 className="font-serif text-xl mb-3">{item.title}</h3>
-                <p className="text-sm text-white/52 leading-relaxed mb-5">{item.desc}</p>
-                <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-green-400">
+              <Link key={item.href} href={item.href} className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 hover:border-green-400/30 hover:bg-white/[0.04] transition-colors flex flex-col justify-between h-full">
+                <div>
+                  <h3 className="font-serif text-xl mb-3">{item.title}</h3>
+                  <p className="text-sm text-white/52 leading-relaxed mb-5">{item.desc}</p>
+                </div>
+                <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-green-400 mt-auto">
                   View page <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </Link>
@@ -480,7 +450,7 @@ export default function Home() {
 
       <section className="px-6 md:px-12 py-16 bg-[#050505] border-b border-white/5 relative z-20">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-6 mb-8">
             <div className="max-w-3xl">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-3">Dubai & Sharjah Services</span>
               <h2 className="text-3xl md:text-5xl font-serif tracking-tight leading-tight">
@@ -505,10 +475,12 @@ export default function Home() {
               <Link
                 key={page.href}
                 href={page.href}
-                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:border-green-400/30 hover:bg-white/[0.05] transition-all"
+                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:border-green-400/30 hover:bg-white/[0.05] transition-all flex flex-col justify-between h-full"
               >
-                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-green-400/80">{page.meta}</span>
-                <h3 className="mt-3 font-serif text-xl leading-tight">{page.title}</h3>
+                <div>
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-green-400/80">{page.meta}</span>
+                  <h3 className="mt-3 font-serif text-xl leading-tight">{page.title}</h3>
+                </div>
                 <span className="mt-5 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-white/40 group-hover:text-green-300">
                   Open page <ArrowRight className="w-3.5 h-3.5" />
                 </span>
@@ -520,7 +492,7 @@ export default function Home() {
 
       <section className="px-6 md:px-12 py-24 bg-[#080808] border-y border-white/5 relative z-20">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-6 mb-12">
             <div className="max-w-3xl">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-3">Free AI Growth Tools</span>
               <h2 className="text-4xl md:text-6xl font-serif tracking-tight">Diagnose before you invest.</h2>
@@ -536,10 +508,12 @@ export default function Home() {
               { title: "Marketing Strategy Generator", desc: "Build a UAE/GCC 90-day plan around your commercial goals.", href: "/tools/ai-marketing-strategy-generator", icon: <BrainCircuit className="w-6 h-6" />, meta: "Channel mix + roadmap" },
               { title: "Ad Spend Efficiency Analyzer", desc: "Calculate CPL, CPA, ROAS and break-even economics.", href: "/tools/ad-spend-efficiency-analyzer", icon: <BarChart3 className="w-6 h-6" />, meta: "Transparent formulas" },
             ].map((tool) => (
-              <Link key={tool.href} href={tool.href} className="group rounded-[2rem] border border-white/10 bg-black p-7 md:p-8 hover:border-green-400/30 hover:-translate-y-1 transition-all duration-300">
-                <div className="w-12 h-12 rounded-2xl bg-green-400/10 text-green-400 flex items-center justify-center">{tool.icon}</div>
-                <h3 className="mt-8 text-2xl font-serif group-hover:text-green-300 transition-colors">{tool.title}</h3>
-                <p className="mt-4 text-sm text-white/50 leading-relaxed min-h-[66px]">{tool.desc}</p>
+              <Link key={tool.href} href={tool.href} className="group rounded-[2rem] border border-white/10 bg-black p-7 md:p-8 hover:border-green-400/30 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-green-400/10 text-green-400 flex items-center justify-center">{tool.icon}</div>
+                  <h3 className="mt-8 text-2xl font-serif group-hover:text-green-300 transition-colors">{tool.title}</h3>
+                  <p className="mt-4 text-sm text-white/50 leading-relaxed">{tool.desc}</p>
+                </div>
                 <div className="mt-7 pt-5 border-t border-white/5 flex items-center justify-between gap-4"><span className="text-[10px] uppercase tracking-widest text-white/35">{tool.meta}</span><ArrowRight className="w-4 h-4 text-green-400 group-hover:translate-x-1 transition-transform" /></div>
               </Link>
             ))}
@@ -590,12 +564,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 3. Horizontal Scroll Services Section ── */}
-      <section ref={triggerRef} className="relative min-h-screen bg-[#080808] border-y border-white/5 flex flex-col justify-center overflow-hidden">
+      {/* ── 3. Services Showcase Section ── */}
+      <section className="relative py-24 bg-[#080808] border-y border-white/5 overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-[150px] pointer-events-none opacity-50" />
         
-        <div className="w-full flex flex-col justify-center relative z-10">
-          <div className="px-6 md:px-12 max-w-7xl mx-auto w-full mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-2 gsap-reveal">Our Services</span>
               <h2 className="text-4xl md:text-6xl font-serif tracking-tight text-white gsap-reveal">Services that support the lead flow</h2>
@@ -605,55 +579,55 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Horizontal scroll container */}
-          <div ref={horizontalScrollRef} data-cursor="drag" className="flex gap-8 px-6 md:px-12 w-max flex-nowrap pb-12">
-            
-            {/* Introductory Panel */}
-            <div className="w-[300px] md:w-[450px] h-[400px] md:h-[450px] rounded-3xl border border-white/10 bg-white/[0.01] p-10 flex flex-col justify-between flex-shrink-0 backdrop-blur-sm">
-              <div>
-                <span className="text-[10px] uppercase font-bold text-white/40 tracking-[0.2em]">Asif Digital</span>
-                <h3 className="text-2xl md:text-3xl font-serif text-white mt-4 leading-snug">
-                  We build the high-speed foundation, and power it with intelligent automation.
-                </h3>
-              </div>
-              <div className="text-xs uppercase font-bold tracking-widest text-green-500 flex items-center gap-2">
-                Scroll to Explore <ArrowRight className="w-4 h-4 animate-pulse" />
-              </div>
+          {/* Introductory Highlight */}
+          <div className="mb-8 rounded-3xl border border-white/10 bg-white/[0.02] p-8 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 backdrop-blur-sm">
+            <div className="max-w-2xl">
+              <span className="text-[10px] uppercase font-bold text-white/40 tracking-[0.2em] block mb-2">Asif Digital</span>
+              <h3 className="text-2xl md:text-3xl font-serif text-white leading-snug">
+                We build the high-speed foundation, and power it with intelligent automation.
+              </h3>
             </div>
+            <Link href="/services" className="inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-green-400 hover:text-green-300 transition-colors shrink-0">
+              View All Services <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
 
+          {/* Responsive Solution Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* AI Solutions Panels */}
             {sovereignSolutions.map((sol, i) => (
-              <div key={i} className="group relative w-[300px] md:w-[400px] h-[400px] md:h-[450px] overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.06),rgba(10,80,45,0.08),rgba(255,255,255,0.02))] p-8 md:p-10 flex flex-col justify-between flex-shrink-0 transition-all duration-300 hover:-translate-y-2 hover:border-green-400/30 hover:shadow-[0_30px_90px_rgba(0,255,130,0.08)] backdrop-blur-sm">
+              <div key={i} className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.06),rgba(10,80,45,0.08),rgba(255,255,255,0.02))] p-7 md:p-8 flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1 hover:border-green-400/30 hover:shadow-[0_20px_60px_rgba(0,255,130,0.06)] backdrop-blur-sm">
                 <div className="pointer-events-none absolute -right-20 -top-20 h-44 w-44 rounded-full bg-green-400/10 blur-3xl opacity-60 transition-opacity group-hover:opacity-100" />
-                <div className="relative z-10 flex justify-between items-start">
-                  <div className="p-4 rounded-2xl border border-green-400/15 bg-green-400/10 text-green-300 group-hover:bg-green-400 group-hover:text-black transition-colors duration-300">
-                    {sol.icon}
+                <div>
+                  <div className="relative z-10 flex justify-between items-start mb-6">
+                    <div className="p-3.5 rounded-2xl border border-green-400/15 bg-green-400/10 text-green-300 group-hover:bg-green-400 group-hover:text-black transition-colors duration-300">
+                      {sol.icon}
+                    </div>
+                    <span className="text-[10px] uppercase font-bold tracking-[0.22em] text-green-300/70">{sol.tag}</span>
                   </div>
-                  <span className="text-[10px] uppercase font-bold tracking-[0.22em] text-green-300/70">{sol.tag}</span>
+                  <h3 className="text-xl sm:text-2xl font-serif text-white mb-3 group-hover:text-green-400 transition-colors">{sol.title}</h3>
+                  <p className="text-white/70 font-normal text-sm leading-relaxed mb-6">{sol.desc}</p>
                 </div>
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-green-400 transition-colors">{sol.title}</h3>
-                  <p className="text-white/70 font-normal text-sm leading-relaxed">{sol.desc}</p>
-                </div>
-                <Link href={sol.link} aria-label={`Explore ${sol.title}`} className="relative z-10 inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-white/45 group-hover:text-green-300 transition-colors pt-4 border-t border-white/10">
+                <Link href={sol.link} aria-label={`Explore ${sol.title}`} className="relative z-10 inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-white/45 group-hover:text-green-300 transition-colors pt-4 border-t border-white/10 mt-auto">
                   Open Page <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             ))}
 
+            {/* Real Estate Solutions */}
             {realEstateSolutions.map((sol, i) => (
-              <div key={`re-${i}`} className="w-[300px] md:w-[400px] h-[400px] md:h-[450px] rounded-3xl border border-green-500/10 bg-gradient-to-b from-white/[0.03] to-white/[0.015] hover:bg-white/[0.06] hover:border-green-500/25 p-8 md:p-10 flex flex-col justify-between flex-shrink-0 transition-all group backdrop-blur-sm">
-                <div className="flex justify-between items-start">
-                  <div className="p-4 rounded-2xl bg-green-500/10 text-green-400 group-hover:bg-green-500 group-hover:text-black transition-colors duration-300">
-                    {sol.icon}
-                  </div>
-                  <span className="text-xs uppercase font-bold tracking-[0.2em] text-green-500/60">Real Estate</span>
-                </div>
+              <div key={`re-${i}`} className="rounded-3xl border border-green-500/10 bg-gradient-to-b from-white/[0.03] to-white/[0.015] hover:bg-white/[0.06] hover:border-green-500/25 p-7 md:p-8 flex flex-col justify-between h-full transition-all group backdrop-blur-sm">
                 <div>
-                  <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-green-300 transition-colors">{sol.title}</h3>
-                  <p className="text-white/70 font-normal text-sm leading-relaxed">{sol.desc}</p>
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="p-3.5 rounded-2xl bg-green-500/10 text-green-400 group-hover:bg-green-500 group-hover:text-black transition-colors duration-300">
+                      {sol.icon}
+                    </div>
+                    <span className="text-xs uppercase font-bold tracking-[0.2em] text-green-500/60">Real Estate</span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-serif text-white mb-3 group-hover:text-green-300 transition-colors">{sol.title}</h3>
+                  <p className="text-white/70 font-normal text-sm leading-relaxed mb-6">{sol.desc}</p>
                 </div>
-                <Link href={sol.link} aria-label={`Explore ${sol.title}`} className="inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-white/40 group-hover:text-green-300 transition-colors pt-4 border-t border-white/5">
+                <Link href={sol.link} aria-label={`Explore ${sol.title}`} className="inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-white/40 group-hover:text-green-300 transition-colors pt-4 border-t border-white/5 mt-auto">
                   Learn More <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -661,36 +635,38 @@ export default function Home() {
 
             {/* Core Infrastructure Panels */}
             {foundationalServices.map((sol, i) => (
-              <div key={i} className="w-[300px] md:w-[400px] h-[400px] md:h-[450px] rounded-3xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] p-8 md:p-10 flex flex-col justify-between flex-shrink-0 transition-all group backdrop-blur-sm">
-                <div className="flex justify-between items-start">
-                  <div className="p-4 rounded-2xl bg-white/5 text-white/50 group-hover:bg-white group-hover:text-black transition-colors duration-300">
-                    {sol.icon}
-                  </div>
-                  <span className="text-xs uppercase font-bold tracking-[0.2em] text-white/30">Infrastructure</span>
-                </div>
+              <div key={`inf-${i}`} className="rounded-3xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] p-7 md:p-8 flex flex-col justify-between h-full transition-all group backdrop-blur-sm">
                 <div>
-                  <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-green-400 transition-colors">{sol.title}</h3>
-                  <p className="text-white/65 font-normal text-sm leading-relaxed">{sol.desc}</p>
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="p-3.5 rounded-2xl bg-white/5 text-white/50 group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                      {sol.icon}
+                    </div>
+                    <span className="text-xs uppercase font-bold tracking-[0.2em] text-white/30">Infrastructure</span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-serif text-white mb-3 group-hover:text-green-400 transition-colors">{sol.title}</h3>
+                  <p className="text-white/65 font-normal text-sm leading-relaxed mb-6">{sol.desc}</p>
                 </div>
-                <Link href={sol.link} aria-label={`Explore ${sol.title}`} className="inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-white/30 group-hover:text-white transition-colors pt-4 border-t border-white/5">
+                <Link href={sol.link} aria-label={`Explore ${sol.title}`} className="inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-white/30 group-hover:text-white transition-colors pt-4 border-t border-white/5 mt-auto">
                   Learn More <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             ))}
 
             {/* Closing / Contact Panel */}
-            <div className="w-[300px] md:w-[400px] h-[400px] md:h-[450px] rounded-3xl border border-green-500/20 bg-green-500/5 p-8 md:p-10 flex flex-col justify-between flex-shrink-0 backdrop-blur-sm">
+            <div className="rounded-3xl border border-green-500/20 bg-green-500/5 p-7 md:p-8 flex flex-col justify-between h-full backdrop-blur-sm">
               <div>
-                <span className="text-[10px] uppercase font-bold text-green-400 tracking-[0.2em]">Next Step</span>
-                <h3 className="text-2xl md:text-3xl font-serif text-white mt-4 leading-snug">
+                <span className="text-[10px] uppercase font-bold text-green-400 tracking-[0.2em] block mb-2">Next Step</span>
+                <h3 className="text-2xl font-serif text-white mb-3 leading-snug">
                   Ready to deploy these capabilities in your business?
                 </h3>
+                <p className="text-white/60 text-sm leading-relaxed mb-6">
+                  Tell us what you want to improve, and we will share practical, grounded recommendations.
+                </p>
               </div>
-              <Link href="/free-growth-audit" className="inline-flex items-center justify-center gap-3 bg-white text-black py-4 px-6 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors w-full">
-                Get a Free Quote <ArrowRight className="w-4 h-4" />
+              <Link href="/free-growth-audit" className="inline-flex items-center justify-center gap-3 bg-white text-black py-4 px-6 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors w-full mt-auto">
+                Request Free Audit <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-
           </div>
         </div>
       </section>

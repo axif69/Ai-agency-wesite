@@ -180,9 +180,19 @@ select.tool-field optgroup {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Smooth Scroll */
+/* Smooth Scroll & Sticky Header Offset */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .parallax-container {
