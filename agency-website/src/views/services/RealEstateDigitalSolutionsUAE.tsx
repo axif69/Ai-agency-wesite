@@ -113,8 +113,23 @@ export default function RealEstateDigitalSolutionsUAE() {
             <span>✓ NEXT.JS HEADLESS BROKERAGE SITES</span>
             <span>✓ BAYUT &amp; PROPERTY FINDER XML FEEDS</span>
             <span>✓ OFF-PLAN DEVELOPER API HUBS</span>
-            <span>✓ 100% CODEBASE OWNERSHIP</span>
+            <span>✓ FULL CODEBASE &amp; REPOSITORY HANDOVER</span>
           </div>
+        </div>
+      </section>
+
+      {/* ── Top Intent Bridge: De-Confliction with Real Estate CRM ── */}
+      <section className="px-6 md:px-12 pt-6 pb-2 max-w-5xl mx-auto">
+        <div className="p-4 md:p-5 border border-emerald-500/20 bg-emerald-500/[0.03] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-white/70">
+          <div>
+            <strong className="text-white font-medium">Looking for Real Estate CRM &amp; Broker Pipeline Automation?</strong> This page covers web portals, listing XML feeds, and headless search architecture. For broker lead distribution, agent speed-to-lead, and WhatsApp CRM pipelines, visit our dedicated CRM asset.
+          </div>
+          <Link
+            href="/real-estate-crm-dubai"
+            className="shrink-0 font-mono text-[11px] font-semibold text-emerald-400 hover:text-emerald-300 uppercase tracking-wider flex items-center gap-1"
+          >
+            Real Estate CRM Dubai <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </section>
 
@@ -187,8 +202,8 @@ export default function RealEstateDigitalSolutionsUAE() {
           <div className="p-6 border border-white/10 bg-white/[0.02] rounded-2xl flex flex-col justify-between">
             <div>
               <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono font-bold flex items-center justify-center text-xs mb-4">05</div>
-              <h3 className="font-bold text-white text-sm mb-2">Data Gateway &amp; CRM Bridge</h3>
-              <p className="text-white/60 text-xs leading-relaxed">Secure webhook pipelines bridging web inquiries directly into your agency CRM.</p>
+              <h3 className="font-bold text-white text-sm mb-2">Data Gateway &amp; Enterprise Database Webhooks</h3>
+              <p className="text-white/60 text-xs leading-relaxed">Secure webhook pipelines routing verified web inquiries into your operational lead repository or sales software.</p>
             </div>
             <div className="text-emerald-400 text-xs font-mono mt-4">API Handover Point</div>
           </div>
@@ -337,14 +352,14 @@ export default function RealEstateDigitalSolutionsUAE() {
       <section className="px-6 md:px-12 py-6 max-w-5xl mx-auto">
         <div className="p-6 md:p-8 border border-white/10 bg-white/[0.02] rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <div className="text-white font-semibold text-base mb-1">Need direct portal lead capture into your CRM?</div>
-            <p className="text-white/60 text-sm font-light">Explore our automated lead ingestion tunnels for Bayut and Property Finder email/webhook feeds.</p>
+            <div className="text-white font-semibold text-base mb-1">Need dedicated portal lead distribution and broker pipeline management?</div>
+            <p className="text-white/60 text-sm font-light">Explore our automated lead ingestion tunnels and broker routing workflows for Bayut and Property Finder leads.</p>
           </div>
           <Link
-            href="/real-estate/portal-lead-integration-dubai"
+            href="/real-estate-crm-dubai"
             className="shrink-0 text-xs uppercase tracking-wider font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5"
           >
-            Portal Lead Integration <ArrowRight className="w-3.5 h-3.5" />
+            Real Estate CRM Dubai <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </section>

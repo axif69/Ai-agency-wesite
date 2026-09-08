@@ -14,6 +14,7 @@ export interface CaseStudy {
   results: string[];
   serviceLink: string;
   serviceLinkLabel: string;
+  relatedLinks?: { href: string; label: string }[];
   desc?: string;
   img?: string;
   highlights?: string[];
@@ -38,8 +39,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       "12 booking records: 11 confirmed consultations (9 London, 1 Dubai, 1 video consultation) and 1 pending approval.",
       "190 WhatsApp messages exchanged across 31 active conversations with 1-click human takeover control"
     ],
-    serviceLink: "/ai-agents-dubai",
-    serviceLinkLabel: "Explore Custom AI Concierges",
+    serviceLink: "/real-estate",
+    serviceLinkLabel: "Explore Real Estate AI Hub",
+    relatedLinks: [
+      { href: "/real-estate-crm-dubai", label: "Dubai Real Estate CRM" }
+    ],
     desc: "Full-stack luxury real estate AI operating system connecting Meta & Google Ads to an automated WhatsApp concierge and live executive CRM.",
     img: "/images/dubai_real_estate_ai_dashboard.webp"
   },
@@ -61,8 +65,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Configurable 3–5 minute delivery pacing and automated MX domain pre-checks",
       "Sentiment-scoring reply monitor that automatically pauses outreach upon human response"
     ],
-    serviceLink: "/workflow-automation-uae",
-    serviceLinkLabel: "Explore Workflow Automation",
+    serviceLink: "/ai-lead-generation-agency-dubai",
+    serviceLinkLabel: "AI Lead Generation Agency",
+    relatedLinks: [
+      { href: "/workflow-automation-uae", label: "Workflow Automation UAE" }
+    ],
     desc: "Governed 5-worker multi-agent architecture with mandatory human review, MX validation, and pacing safeguards.",
     img: "/images/sovereign/dashboard-command.webp"
   }

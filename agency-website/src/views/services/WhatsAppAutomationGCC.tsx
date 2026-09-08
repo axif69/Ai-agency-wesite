@@ -11,21 +11,16 @@ import Link from "next/link";
 import { trackEvent } from "../../utils/analytics";
 
 export default function WhatsAppAutomationGCC() {
-  // Interactive Speed-to-Lead & WhatsApp Conversion Simulator State
+  // Interactive Operational Inquiry & Response Assumption Modeler State
   const [monthlyInboundInquiries, setMonthlyInboundInquiries] = useState(800);
-  const [currentResponseTimeHours, setCurrentResponseTimeHours] = useState(4); // hours to first human reply
-  const [averageDealSize, setAverageDealSize] = useState(8500); // AED
+  const [staffMinutesPerInquiry, setStaffMinutesPerInquiry] = useState(10); // minutes per inquiry
+  const [routineInquiryPercent, setRoutineInquiryPercent] = useState(65); // % of routine/FAQ inquiries
 
   // Calculations
-  const currentLeadConversionRate = currentResponseTimeHours > 6 ? 1.5 : currentResponseTimeHours > 2 ? 3.0 : currentResponseTimeHours > 0.5 ? 5.5 : 9.0;
-  const currentConvertedDeals = Math.round(monthlyInboundInquiries * (currentLeadConversionRate / 100));
-  const currentMonthlyRevenue = currentConvertedDeals * averageDealSize;
-
-  const automatedConversionRate = 12.5; // Sub-30s instant WhatsApp AI qualifying & booking
-  const automatedConvertedDeals = Math.round(monthlyInboundInquiries * (automatedConversionRate / 100));
-  const automatedMonthlyRevenue = automatedConvertedDeals * averageDealSize;
-  const monthlyRevenueLift = Math.max(0, automatedMonthlyRevenue - currentMonthlyRevenue);
-  const annualRevenueLift = monthlyRevenueLift * 12;
+  const routineInquiries = Math.round(monthlyInboundInquiries * (routineInquiryPercent / 100));
+  const complexInquiries = monthlyInboundInquiries - routineInquiries;
+  const totalHandlingHours = Math.round((monthlyInboundInquiries * staffMinutesPerInquiry) / 60);
+  const routineHandlingHours = Math.round((routineInquiries * staffMinutesPerInquiry) / 60);
 
   const handleCTA = (ctaText: string, ctaLocation: string, type: "whatsapp" | "consultation") => {
     trackEvent(type === "whatsapp" ? "whatsapp_click" : "consultation_click", {
@@ -158,7 +153,7 @@ export default function WhatsAppAutomationGCC() {
       <section className="px-6 md:px-12 py-12 border-y border-white/5 bg-white/[0.01]">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { metric: "Sub-30s", label: "Speed-to-Lead Response", sub: "Instant Inbound Engagement" },
+            { metric: "Automated", label: "Speed-to-Lead Intake", sub: "Prompt Inbound Triage" },
             { metric: "Bilingual", label: "Arabic & English NLP", sub: "Text & Audio Transcriptions" },
             { metric: "2-Way", label: "CRM & ERP Sync", sub: "HubSpot, Salesforce, Zoho" },
             { metric: "Official", label: "Meta Cloud API", sub: "Enterprise Platform Standards" }
@@ -172,18 +167,18 @@ export default function WhatsAppAutomationGCC() {
         </div>
       </section>
 
-      {/* ── 5. Interactive WhatsApp Speed-to-Lead Simulator ── */}
+      {/* ── 5. Interactive Operational Inquiry & Response Assumption Modeler ── */}
       <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
         <div className="border border-white/10 rounded-3xl p-8 md:p-12 bg-white/[0.02]">
           <div className="max-w-3xl mb-10">
             <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-2 font-semibold">
-              Conversion Decay Simulator
+              Operational Workload Modeler
             </span>
             <h2 className="text-3xl md:text-5xl font-serif tracking-tight mb-4">
-              Calculate the Impact of Sub-Minute Speed-to-Lead
+              Model Inbound Inquiry Distribution &amp; Response Capacity
             </h2>
             <p className="text-white/70 font-light text-sm md:text-base leading-relaxed">
-              When a prospective buyer contacts your business on WhatsApp, response latency directly impacts conversion. Adjust your parameters below to evaluate the revenue difference.
+              When prospective clients contact your business on WhatsApp, inquiry volume and response routing determine your team&apos;s operational load. Adjust your operational assumptions below to evaluate how routine inquiry triage affects team capacity.
             </p>
           </div>
 
@@ -193,7 +188,7 @@ export default function WhatsAppAutomationGCC() {
               <div>
                 <div className="flex justify-between items-center text-sm mb-2 font-mono">
                   <span className="text-white/70">Monthly Inbound Inquiries (All Channels):</span>
-                  <span className="text-white font-bold">{monthlyInboundInquiries} leads / month</span>
+                  <span className="text-white font-bold">{monthlyInboundInquiries} inquiries / month</span>
                 </div>
                 <input 
                   type="range" 
@@ -208,32 +203,32 @@ export default function WhatsAppAutomationGCC() {
 
               <div>
                 <div className="flex justify-between items-center text-sm mb-2 font-mono">
-                  <span className="text-white/70">Current Average First Response Delay:</span>
-                  <span className="text-white font-bold">{currentResponseTimeHours} hours</span>
+                  <span className="text-white/70">Average Staff Handling Time per Manual Inquiry:</span>
+                  <span className="text-white font-bold">{staffMinutesPerInquiry} minutes</span>
                 </div>
                 <input 
                   type="range" 
-                  min="0.25" 
-                  max="12" 
-                  step="0.25" 
-                  value={currentResponseTimeHours} 
-                  onChange={(e) => setCurrentResponseTimeHours(Number(e.target.value))}
+                  min="2" 
+                  max="30" 
+                  step="1" 
+                  value={staffMinutesPerInquiry} 
+                  onChange={(e) => setStaffMinutesPerInquiry(Number(e.target.value))}
                   className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
                 />
               </div>
 
               <div>
                 <div className="flex justify-between items-center text-sm mb-2 font-mono">
-                  <span className="text-white/70">Average Deal / Customer Lifetime Value:</span>
-                  <span className="text-white font-bold">AED {averageDealSize.toLocaleString()}</span>
+                  <span className="text-white/70">Estimated Routine / Repeat FAQ Inquiries:</span>
+                  <span className="text-white font-bold">{routineInquiryPercent}% ({routineInquiries} inquiries)</span>
                 </div>
                 <input 
                   type="range" 
-                  min="1000" 
-                  max="50000" 
-                  step="1000" 
-                  value={averageDealSize} 
-                  onChange={(e) => setAverageDealSize(Number(e.target.value))}
+                  min="30" 
+                  max="90" 
+                  step="5" 
+                  value={routineInquiryPercent} 
+                  onChange={(e) => setRoutineInquiryPercent(Number(e.target.value))}
                   className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
                 />
               </div>
@@ -243,33 +238,36 @@ export default function WhatsAppAutomationGCC() {
             <div className="p-8 rounded-2xl border border-emerald-500/20 bg-emerald-950/10 space-y-6">
               <div>
                 <span className="text-xs uppercase tracking-widest text-emerald-400/80 font-bold block mb-1">
-                  Estimated Monthly Revenue Expansion
+                  Estimated Routine Triage Workload
                 </span>
                 <div className="text-4xl md:text-5xl font-serif text-white">
-                  +AED {monthlyRevenueLift.toLocaleString()} <span className="text-xs font-sans text-white/50">/ month</span>
+                  {routineHandlingHours} hrs <span className="text-xs font-sans text-white/50">/ month on routine FAQs</span>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-white/10 grid grid-cols-2 gap-4 text-xs font-mono">
                 <div>
-                  <span className="text-white/40 block mb-1">Current Closed Deals:</span>
-                  <span className="text-white text-sm font-bold">{currentConvertedDeals} deals / mo</span>
+                  <span className="text-emerald-400 block mb-1">Routine Inquiries (Automated Triage Candidates):</span>
+                  <span className="text-white text-sm font-bold">{routineInquiries} inquiries / mo</span>
                 </div>
                 <div>
-                  <span className="text-emerald-400 block mb-1">With Automated Qualification:</span>
-                  <span className="text-emerald-300 text-sm font-bold">{automatedConvertedDeals} deals / mo</span>
+                  <span className="text-blue-400 block mb-1">High-Touch Inquiries (Direct Human Escalation):</span>
+                  <span className="text-white text-sm font-bold">{complexInquiries} inquiries / mo</span>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-white/10">
-                <span className="text-xs text-white/60 block mb-3 font-light">
-                  Annual Growth Potential: <strong className="text-white font-bold">+AED {annualRevenueLift.toLocaleString()} / year</strong>
+                <span className="text-xs text-white/60 block mb-3 font-light leading-relaxed">
+                  Total Monthly Inbound Handling: <strong className="text-white font-bold">{totalHandlingHours} hours across team</strong>
                 </span>
+                <p className="text-[11px] text-white/45 font-light leading-relaxed mb-4">
+                  Illustrative Operational Model: This diagnostic models inquiry distribution and potential staff handling capacity based on your selected operational assumptions. Actual inquiry triage rates, resolution times, and team workflow efficiency depend on inquiry complexity, agent availability, and system integration depth.
+                </p>
                 <Link 
                   href="/contact" 
                   className="w-full bg-emerald-400 text-black py-4 rounded-xl font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2 hover:bg-emerald-300 transition-colors"
                 >
-                  Schedule Your WhatsApp Infrastructure Build <ArrowRight className="w-4 h-4" />
+                  Schedule Your WhatsApp Systems Audit <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>

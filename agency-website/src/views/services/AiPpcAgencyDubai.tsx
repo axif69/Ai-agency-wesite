@@ -10,22 +10,17 @@ import {
 import Link from "next/link";
 
 export default function AiPpcAgencyDubai() {
-  // Interactive Paid Media Budget Allocation & Lead Quality Modeler
-  const [monthlyBudget, setMonthlyBudget] = useState(20000); // AED
-  const [estCpc, setEstCpc] = useState(5.5); // AED
-  const [landingConvRate, setLandingConvRate] = useState(4.0); // %
-  const [crmQualificationRate, setCrmQualificationRate] = useState(35); // %
-  const [salesCloseRate, setSalesCloseRate] = useState(20); // %
-  const [avgDealSize, setAvgDealSize] = useState(35000); // AED
+  // Interactive Paid Media Tracking & Lead Quality Diagnostic State
+  const [monthlyAdLeads, setMonthlyAdLeads] = useState(250);
+  const [invalidLeadPercent, setInvalidLeadPercent] = useState(25); // % junk, spam, or invalid traffic
+  const [usableIdentifierPercent, setUsableIdentifierPercent] = useState(70); // % with valid email/phone
+  const [crmQualifiedPercent, setCrmQualifiedPercent] = useState(35); // % reaching sales-qualified stage
 
   // Calculations
-  const estClicks = estCpc > 0 ? Math.round(monthlyBudget / estCpc) : 0;
-  const rawLeads = Math.round(estClicks * (landingConvRate / 100));
-  const qualifiedLeads = Math.round(rawLeads * (crmQualificationRate / 100));
-  const estCostPerQualifiedLead = qualifiedLeads > 0 ? Math.round(monthlyBudget / qualifiedLeads) : 0;
-  const closedDeals = Math.round(qualifiedLeads * (salesCloseRate / 100));
-  const estimatedRevenue = closedDeals * avgDealSize;
-  const modeledROAS = monthlyBudget > 0 ? (estimatedRevenue / monthlyBudget).toFixed(1) : "0";
+  const invalidLeads = Math.round(monthlyAdLeads * (invalidLeadPercent / 100));
+  const validLeads = Math.max(0, monthlyAdLeads - invalidLeads);
+  const leadsWithIdentifiers = Math.round(validLeads * (usableIdentifierPercent / 100));
+  const crmQualifiedLeads = Math.round(validLeads * (crmQualifiedPercent / 100));
 
   const pillars = [
     {
@@ -150,7 +145,7 @@ export default function AiPpcAgencyDubai() {
           </div>
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif leading-[1.1] tracking-tight mb-8">
             AI PPC &amp; Performance <br />
-            <span className="italic text-white/50 font-normal">Marketing Agency in Dubai.</span>
+            <span className="italic text-white/50 font-normal">Marketing Agency in Dubai</span>
           </h1>
           <p className="text-lg sm:text-xl text-white/80 font-light leading-relaxed mb-10 max-w-3xl">
             Scale revenue—not just ad spend. We engineer AI-assisted Google Search, Performance Max, and Meta campaigns powered by server-side tracking, creative fatigue monitoring, and closed-loop CRM feedback to lower acquisition costs across the UAE.
@@ -216,18 +211,18 @@ export default function AiPpcAgencyDubai() {
         </div>
       </section>
 
-      {/* ── 4. Interactive Budget Allocation & Lead Quality Modeler ── */}
+      {/* ── 4. Interactive Paid Media Tracking & Lead Quality Diagnostic ── */}
       <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
         <div className="border border-white/10 rounded-3xl p-8 md:p-12 bg-white/[0.02]">
           <div className="max-w-3xl mb-10">
             <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-2 font-semibold flex items-center gap-2">
-              <Sliders className="w-4 h-4" /> Live Paid Media Modeler
+              <Sliders className="w-4 h-4" /> Tracking &amp; Lead Quality Diagnostic
             </span>
             <h2 className="text-3xl md:text-5xl font-serif tracking-tight mb-4">
-              Model Lead Quality, Cost per Qualified Lead &amp; ROAS
+              Audit Paid Media Signal Hygiene &amp; CRM Readiness
             </h2>
             <p className="text-white/70 font-light text-sm md:text-base leading-relaxed">
-              Standard ad calculators only measure raw clicks. Use this modeler to forecast how first-party signal calibration and CRM qualification rates impact your actual cost per sales-qualified lead (SQL) and net revenue.
+              Algorithmic bidding in Google Ads and Meta Advantage+ relies on clean conversion data. Use this diagnostic to assess how lead validation, first-party data capture, and CRM qualification stages prepare your paid campaigns for server-side tracking and offline conversion optimization.
             </p>
           </div>
 
@@ -236,98 +231,64 @@ export default function AiPpcAgencyDubai() {
             <div className="space-y-6">
               <div>
                 <div className="flex justify-between items-center text-sm mb-2 font-mono">
-                  <span className="text-white/70">Monthly Media Budget:</span>
-                  <span className="text-white font-bold">AED {monthlyBudget.toLocaleString()}</span>
+                  <span className="text-white/70">Monthly Inbound Ad Leads (All Paid Channels):</span>
+                  <span className="text-white font-bold">{monthlyAdLeads} leads / month</span>
                 </div>
                 <input
                   type="range"
-                  min="5000"
-                  max="150000"
-                  step="2500"
-                  value={monthlyBudget}
-                  onChange={(e) => setMonthlyBudget(Number(e.target.value))}
+                  min="50"
+                  max="2000"
+                  step="25"
+                  value={monthlyAdLeads}
+                  onChange={(e) => setMonthlyAdLeads(Number(e.target.value))}
                   className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <div className="flex justify-between items-center text-xs mb-2 font-mono">
-                    <span className="text-white/70">Est. CPC:</span>
-                    <span className="text-white font-bold">AED {estCpc.toFixed(2)}</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="2.0"
-                    max="18.0"
-                    step="0.5"
-                    value={estCpc}
-                    onChange={(e) => setEstCpc(Number(e.target.value))}
-                    className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
-                  />
-                </div>
-                <div>
-                  <div className="flex justify-between items-center text-xs mb-2 font-mono">
-                    <span className="text-white/70">Page Conv. Rate:</span>
-                    <span className="text-white font-bold">{landingConvRate}%</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="1.5"
-                    max="8.0"
-                    step="0.5"
-                    value={landingConvRate}
-                    onChange={(e) => setLandingConvRate(Number(e.target.value))}
-                    className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <div className="flex justify-between items-center text-xs mb-2 font-mono">
-                    <span className="text-white/70">CRM Qualification Rate:</span>
-                    <span className="text-emerald-400 font-bold">{crmQualificationRate}%</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="15"
-                    max="70"
-                    step="5"
-                    value={crmQualificationRate}
-                    onChange={(e) => setCrmQualificationRate(Number(e.target.value))}
-                    className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
-                  />
-                </div>
-                <div>
-                  <div className="flex justify-between items-center text-xs mb-2 font-mono">
-                    <span className="text-white/70">Sales Close Rate:</span>
-                    <span className="text-white font-bold">{salesCloseRate}%</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="5"
-                    max="40"
-                    step="5"
-                    value={salesCloseRate}
-                    onChange={(e) => setSalesCloseRate(Number(e.target.value))}
-                    className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
-                  />
-                </div>
-              </div>
-
               <div>
-                <div className="flex justify-between items-center text-sm mb-2 font-mono">
-                  <span className="text-white/70">Average Client / Deal Value:</span>
-                  <span className="text-white font-bold">AED {avgDealSize.toLocaleString()}</span>
+                <div className="flex justify-between items-center text-xs mb-2 font-mono">
+                  <span className="text-white/70">Estimated Invalid / Bot / Spam Inquiries:</span>
+                  <span className="text-amber-400 font-bold">{invalidLeadPercent}% ({invalidLeads} leads)</span>
                 </div>
                 <input
                   type="range"
-                  min="5000"
-                  max="200000"
-                  step="5000"
-                  value={avgDealSize}
-                  onChange={(e) => setAvgDealSize(Number(e.target.value))}
+                  min="5"
+                  max="60"
+                  step="5"
+                  value={invalidLeadPercent}
+                  onChange={(e) => setInvalidLeadPercent(Number(e.target.value))}
+                  className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                />
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center text-xs mb-2 font-mono">
+                  <span className="text-white/70">Leads with Usable First-Party Identifiers (Phone/Email):</span>
+                  <span className="text-emerald-400 font-bold">{usableIdentifierPercent}% ({leadsWithIdentifiers} leads)</span>
+                </div>
+                <input
+                  type="range"
+                  min="40"
+                  max="95"
+                  step="5"
+                  value={usableIdentifierPercent}
+                  onChange={(e) => setUsableIdentifierPercent(Number(e.target.value))}
+                  className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                />
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center text-xs mb-2 font-mono">
+                  <span className="text-white/70">Leads Reaching CRM Sales-Qualified Stage:</span>
+                  <span className="text-blue-400 font-bold">{crmQualifiedPercent}% ({crmQualifiedLeads} SQLs)</span>
+                </div>
+                <input
+                  type="range"
+                  min="10"
+                  max="70"
+                  step="5"
+                  value={crmQualifiedPercent}
+                  onChange={(e) => setCrmQualifiedPercent(Number(e.target.value))}
                   className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
                 />
               </div>
@@ -337,31 +298,31 @@ export default function AiPpcAgencyDubai() {
             <div className="p-8 rounded-2xl border border-emerald-500/20 bg-emerald-950/10 space-y-6">
               <div>
                 <span className="text-xs uppercase tracking-widest text-emerald-400/90 font-mono font-bold block mb-1">
-                  Modeled Sales-Qualified Leads (SQLs)
+                  Usable First-Party Records for Offline/CAPI Sync
                 </span>
                 <div className="text-4xl md:text-5xl font-serif text-white">
-                  {qualifiedLeads} SQLs <span className="text-xs font-sans text-white/50">(@ ~AED {estCostPerQualifiedLead} / qualified lead)</span>
+                  {leadsWithIdentifiers} <span className="text-xs font-sans text-white/50">verified records / month</span>
                 </div>
-                <div className="text-xs text-white/50 mt-1 font-light">
-                  From {rawLeads} raw inquiries ({estClicks.toLocaleString()} estimated ad clicks)
+                <div className="text-xs text-white/50 mt-1 font-light leading-relaxed">
+                  Clean lead records formatted with verified contact parameters for server-side CAPI event dispatch or offline conversion imports.
                 </div>
               </div>
 
               <div className="pt-4 border-t border-white/10 grid grid-cols-2 gap-4 text-xs font-mono">
                 <div>
-                  <span className="text-white/40 block mb-1">Estimated Closed Deals:</span>
-                  <span className="text-white text-sm font-bold">{closedDeals} deals</span>
+                  <span className="text-blue-400 block mb-1">Current CRM Pipeline SQLs:</span>
+                  <span className="text-white text-sm font-bold">{crmQualifiedLeads} qualified leads</span>
                 </div>
                 <div>
-                  <span className="text-emerald-400 block mb-1">Projected Revenue:</span>
-                  <span className="text-emerald-300 text-sm font-bold">AED {estimatedRevenue.toLocaleString()}</span>
+                  <span className="text-amber-400 block mb-1">Filtered Low-Quality Volume:</span>
+                  <span className="text-white text-sm font-bold">{invalidLeads} invalid inquiries</span>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-white/10">
-                <span className="text-xs text-white/70 block mb-3 font-light">
-                  Projected Return on Ad Spend: <strong className="text-emerald-400 font-bold">{modeledROAS}x ROAS</strong>
-                </span>
+                <p className="text-[11px] text-white/45 font-light leading-relaxed mb-4">
+                  Diagnostic Note: This tool models lead hygiene and tracking readiness based on user-entered parameters. Platform-side match rates (Meta Event Match Quality, Google Enhanced Conversions) and algorithmic bidding performance depend on ad platform infrastructure, user consent, and signal freshness, and cannot be predetermined by static estimates.
+                </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
                     href="/contact"

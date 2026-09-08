@@ -246,7 +246,7 @@ export default function CaseStudies() {
                   </ul>
                 </div>
 
-                <div className="shrink-0 pt-2 lg:pt-0">
+                <div className="shrink-0 pt-2 lg:pt-0 flex flex-wrap items-center gap-3">
                   <Link
                     href={study.serviceLink}
                     className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/20 text-xs font-mono uppercase tracking-wider text-white hover:bg-white hover:text-black transition-all"
@@ -254,6 +254,16 @@ export default function CaseStudies() {
                     <span>{study.serviceLinkLabel}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
+                  {study.relatedLinks?.map((rel, rIdx) => (
+                    <Link
+                      key={rIdx}
+                      href={rel.href}
+                      className="inline-flex items-center gap-2 px-4 py-3 rounded-full border border-white/10 text-xs font-mono uppercase tracking-wider text-white/70 hover:text-white hover:border-white/30 transition-all"
+                    >
+                      <span>{rel.label}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  ))}
                 </div>
               </div>
             </motion.div>

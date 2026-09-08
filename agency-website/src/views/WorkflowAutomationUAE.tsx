@@ -95,8 +95,8 @@ export default function WorkflowAutomationUAE() {
               <div className="text-xs text-white/50 font-light mt-1">Human-in-the-Loop Reviews</div>
             </div>
             <div>
-              <div className="text-2xl font-serif font-bold text-white">UAE Sovereign</div>
-              <div className="text-xs text-white/50 font-light mt-1">Federal Decree-Law No. 45</div>
+              <div className="text-2xl font-serif font-bold text-white">Data Protection</div>
+              <div className="text-xs text-white/50 font-light mt-1">Role-Based Scopes & Audit Trails</div>
             </div>
           </div>
         </div>

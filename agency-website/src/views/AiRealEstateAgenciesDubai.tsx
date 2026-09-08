@@ -62,7 +62,7 @@ export default function AiRealEstateAgenciesDubai() {
         </h1>
 
         <p className="text-lg md:text-xl leading-relaxed text-white/80 max-w-3xl mx-auto mb-10 font-sans font-light">
-          We engineer end-to-end AI infrastructure for Dubai brokerage firms: automated portal lead intake, sub-minute WhatsApp qualification, intelligent broker routing, and continuous CRM synchronization.
+          We engineer end-to-end AI infrastructure for Dubai brokerage firms: automated portal lead intake, automated conversational WhatsApp qualification, intelligent broker routing, and continuous CRM synchronization.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -111,7 +111,7 @@ export default function AiRealEstateAgenciesDubai() {
             In the UAE property market, an <strong>AI system for real estate agencies</strong> acts as an automated operational backbone connecting your advertising campaigns and property portal leads directly to your sales floor. 
           </p>
           <p className="text-sm md:text-base leading-relaxed text-white/70 font-sans font-light">
-            When an overseas investor or local buyer registers interest on Property Finder, Bayut, Meta, or your website, the AI system initiates an interactive WhatsApp conversation within 30 seconds. It verifies budget range, financing status (cash vs. mortgage), purchase timeline, and preferred communities (e.g. Palm Jumeirah, Dubai Marina, Dubai Hills). Once verified, the lead receives relevant project brochures, and a fully structured dossier is pushed directly to the specific community broker's phone and CRM.
+            When an overseas investor or local buyer registers interest on Property Finder, Bayut, Meta, or your website, the AI system initiates automated conversational qualification after the lead trigger is received. It verifies budget range, financing status (cash vs. mortgage), purchase timeline, and preferred communities (e.g. Palm Jumeirah, Dubai Marina, Dubai Hills). Once verified, the lead receives relevant project brochures, and a fully structured dossier is pushed directly to the specific community broker's phone and CRM.
           </p>
         </div>
       </section>
@@ -123,7 +123,7 @@ export default function AiRealEstateAgenciesDubai() {
             Operational Comparison
           </span>
           <h2 className="text-3xl md:text-5xl font-serif">
-            Traditional Brokerage Operations vs. AI-Powered Agency System
+            Traditional Manual Brokerage Follow-Up vs. Automated Agency Workflow Infrastructure
           </h2>
           <p className="text-white/60 font-light max-w-2xl mx-auto mt-4 text-sm md:text-base">
             Where Dubai agencies lose deals today and how intelligent automation fixes the pipeline leakage.
@@ -135,20 +135,20 @@ export default function AiRealEstateAgenciesDubai() {
             <thead>
               <tr className="border-b border-white/10 bg-white/[0.03]">
                 <th className="py-5 px-6 font-semibold text-white/60 font-mono text-xs uppercase">Operational Process</th>
-                <th className="py-5 px-6 font-semibold text-red-400/80 font-mono text-xs uppercase">Manual Agency Operations</th>
-                <th className="py-5 px-6 font-semibold text-emerald-400 font-mono text-xs uppercase">Asif Digital AI Agency System</th>
+                <th className="py-5 px-6 font-semibold text-red-400/80 font-mono text-xs uppercase">Traditional Manual Brokerage Follow-Up</th>
+                <th className="py-5 px-6 font-semibold text-emerald-400 font-mono text-xs uppercase">Automated Agency Workflow Infrastructure</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5 font-light text-white/80">
               <tr>
                 <td className="py-5 px-6 font-medium text-white">First Response Time</td>
                 <td className="py-5 px-6 text-white/50">2 to 6 hours (often next morning for late-night inquiries)</td>
-                <td className="py-5 px-6 text-emerald-300 font-normal">Instant &lt; 30 seconds 24/7 on WhatsApp</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Automated conversational reply upon trigger reception</td>
               </tr>
               <tr>
                 <td className="py-5 px-6 font-medium text-white">Portal Lead Processing</td>
                 <td className="py-5 px-6 text-white/50">Manual copy-paste from Bayut / Property Finder emails</td>
-                <td className="py-5 px-6 text-emerald-300 font-normal">Instant webhook parsing, deduplication, and automated greeting</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Webhook parsing, deduplication, and automated greeting</td>
               </tr>
               <tr>
                 <td className="py-5 px-6 font-medium text-white">Buyer Qualification</td>

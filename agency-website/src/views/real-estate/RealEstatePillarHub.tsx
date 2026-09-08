@@ -191,10 +191,10 @@ export default function RealEstatePillarHubView() {
                 <ArrowUpRight className="w-5 h-5 opacity-50 group-hover:opacity-100 transition-opacity" />
               </h3>
               <p className="text-sm text-white/70 font-light leading-relaxed">
-                Empowering Dubai property brokerages with sub-10s WhatsApp lead qualification, automated viewing scheduling, multilingual buyer dialogues, and agent commission acceleration workflows.
+                Empowering Dubai property brokerages with automated conversational WhatsApp qualification, viewing scheduling assistance, multilingual buyer dialogues, and agent workflow acceleration.
               </p>
               <ul className="space-y-2 text-xs font-mono text-white/60 pt-2 border-t border-white/5">
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> 24/7 Sub-10s WhatsApp Lead Intake</li>
+                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Automated Conversational WhatsApp Intake</li>
                 <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Buyer Budget &amp; Area Qualification</li>
                 <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Automated Viewing Coordination</li>
               </ul>
@@ -387,10 +387,10 @@ export default function RealEstatePillarHubView() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
             <div className="p-5 rounded-2xl border border-white/5 bg-black/40 space-y-2">
               <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono uppercase">
-                <Clock className="w-4 h-4" /> Speed-to-Lead
+                <Clock className="w-4 h-4" /> Prompt Lead Engagement
               </div>
               <p className="text-xs text-white/70 font-light leading-relaxed">
-                Sub-10s automated response times prevent lead decay and establish immediate engagement before competing agencies respond.
+                Prompt automated conversational qualification engages inbound buyer inquiries promptly, capturing key preferences before lead decay occurs.
               </p>
             </div>
             <div className="p-5 rounded-2xl border border-white/5 bg-black/40 space-y-2">

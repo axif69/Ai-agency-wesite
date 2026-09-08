@@ -39,18 +39,18 @@ const pillars: Pillar[] = [
     id: "chatbots",
     enTitle: "Arabic AI Chatbots & WhatsApp Automation",
     arTitle: "شات بوت الذكاء الاصطناعي وأتمتة واتساب",
-    enDesc: "Official Meta Cloud API integration and website conversational agents capable of communicating naturally in Modern Standard Arabic and Gulf dialects, qualifying leads, and routing inquiries instantly.",
-    arDesc: "ربط رسمي عبر Meta Cloud API ومساعدات ذكية للمواقع الإلكترونية تتواصل بسلاسة باللغتين العربية والإنجليزية وباللهجة الخليجية، مع تأهيل فوري للعملاء المحتملين وتوجيه الاستفسارات.",
+    enDesc: "Official Meta Cloud API integration and website conversational agents capable of communicating naturally in Modern Standard Arabic and Gulf dialects, qualifying leads, and routing inquiries promptly.",
+    arDesc: "ربط رسمي عبر Meta Cloud API ومساعدات ذكية للمواقع الإلكترونية تتواصل بسلاسة باللغتين العربية والإنجليزية وباللهجة الخليجية، مع تأهيل سريع للعملاء المحتملين وتوجيه الاستفسارات.",
     icon: MessageSquare,
     enFeatures: [
       "Official Meta Cloud API verified infrastructure",
-      "Instant response to Arabic & English customer inquiries",
+      "Prompt response to Arabic & English customer inquiries",
       "Lead qualification & CRM dispatch in real time",
       "Graceful human escalation when nuance is required",
     ],
     arFeatures: [
       "بنية تحتية معتمدة عبر Meta Cloud API",
-      "استجابة فورية للاستفسارات بالعربية والإنجليزية",
+      "استجابة سريعة ومؤتمتة للاستفسارات بالعربية والإنجليزية",
       "تأهيل العملاء وإرسال البيانات لنظام CRM مباشرة",
       "تحويل سلس للموظف البشري عند الحاجة",
     ],
@@ -73,7 +73,7 @@ const pillars: Pillar[] = [
       "Integration with agency management and CRM systems",
     ],
     arFeatures: [
-      "رد فوري خلال ثوانٍ على مهتمي المشاريع قيد الإنشاء والجاهزة",
+      "استجابة سريعة ومؤتمتة لمهتمي المشاريع قيد الإنشاء والجاهزة",
       "تسجيل طلبات صيانة المستأجرين وأتمتة التذاكر",
       "إرسال خطط السداد والكتيبات بلغة العميل المفضلة",
       "ربط متكامل مع أنظمة إدارة العقارات والوساطة",
@@ -91,13 +91,13 @@ const pillars: Pillar[] = [
     arDesc: "أتمتة شاملة تربط قنوات المحادثة ونماذج المواقع بأنظمة مثل HubSpot وZoho وقواعد البيانات المخصصة، مع رسائل متابعة تلقائية باللغة العربية.",
     icon: Workflow,
     enFeatures: [
-      "Zero manual data entry from customer conversations",
+      "Reducing repetitive manual data entry from customer conversations",
       "Bilingual automated email & WhatsApp follow-ups",
       "n8n and Make operational middleware orchestration",
       "UAE PDPL-aligned data retention and security controls",
     ],
     arFeatures: [
-      "إلغاء الإدخال اليدوي لبيانات العملاء من المحادثات",
+      "الحد من الإدخال اليدوي المتكرر لبيانات العملاء من المحادثات",
       "رسائل متابعة تلقائية عبر البريد وواتساب بالعربية والإنجليزية",
       "بناء مسارات أتمتة متطورة عبر n8n وMake",
       "حوكمة البيانات بما يتماشى مع متطلبات الخصوصية في الإمارات",
@@ -188,14 +188,14 @@ const faqs = [
   {
     questionEn: "Can Arabic AI automate portal lead capture for real estate brokerages?",
     questionAr: "هل يمكن للذكاء الاصطناعي العربي أتمتة استقبال عملاء المنصات العقارية؟",
-    answerEn: "Yes. Incoming leads from Bayut, Property Finder, Dubizzle, or Meta ads can be automatically greeted in Arabic on WhatsApp within seconds, qualified for budget and intent, and logged into your CRM without delay.",
-    answerAr: "نعم. يمكن استقبال المهتمين القادمين من بيوت، بروبرتي فايندر، دوبيزل، أو إعلانات ميتا برسالة ترحيبية فورية بالعربية عبر واتساب خلال ثوانٍ، وتأهيل ميزانيتهم وتفضيلاتهم وتوثيق البيانات في نظام CRM.",
+    answerEn: "Yes. Incoming leads from Bayut, Property Finder, Dubizzle, or Meta ads can be automatically greeted in Arabic on WhatsApp, qualified for budget and intent, and logged into your CRM without delay.",
+    answerAr: "نعم. يمكن استقبال المهتمين القادمين من بيوت، بروبرتي فايندر، دوبيزل، أو إعلانات ميتا برسالة ترحيبية مؤتمتة بالعربية عبر واتساب، وتأهيل ميزانيتهم وتفضيلاتهم وتوثيق البيانات في نظام CRM.",
   },
   {
     questionEn: "What happens when a customer asks a complex or sensitive question?",
     questionAr: "ماذا يحدث عند طرح سؤال معقد أو استفسار حساس لا يملكه النظام؟",
-    answerEn: "We engineer strict guardrails and human-in-the-loop escalation rules. When a question falls outside verified documentation or involves complex negotiation, the system politely informs the customer and notifies your team instantly with conversation history.",
-    answerAr: "نعتمد قواعد دقيقة للتحويل البشري الفوري؛ فعندما يتعلق السؤال بأمر تفاوضي حساس أو معلومات خارج المصادر المعتمدة، يخبر النظام العميل بأدب ويقوم بتحويل المحادثة وسجلها مباشرة إلى فريق عملك.",
+    answerEn: "We engineer strict guardrails and human-in-the-loop escalation rules. When a question falls outside verified documentation or involves complex negotiation, the system politely informs the customer and notifies your team promptly with conversation history.",
+    answerAr: "نعتمد قواعد دقيقة للتحويل البشري السلس؛ فعندما يتعلق السؤال بأمر تفاوضي حساس أو معلومات خارج المصادر المعتمدة، يخبر النظام العميل بأدب ويقوم بتحويل المحادثة وسجلها مباشرة إلى فريق عملك.",
   },
 ];
 
