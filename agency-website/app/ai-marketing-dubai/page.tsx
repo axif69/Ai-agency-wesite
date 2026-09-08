@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/AiMarketingDubai';
 
 export const metadata = {
-  title: "AI Marketing Agency Dubai | Lead Generation, Ads & Automation",
-  description: "AI powered marketing agency in Dubai. We build autonomous lead generation, predictive Google & Meta ads management, CRM scoring, and WhatsApp conversion systems across the UAE.",
+  title: "AI Marketing Agency Dubai | Paid Ads, Funnels & Attribution",
+  description: "AI marketing agency in Dubai specializing in paid advertising management, Meta Conversions API, Google offline conversion tracking, and automated WhatsApp intake funnels.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-marketing-dubai"
   },
   openGraph: {
-    title: "AI Marketing Agency Dubai | Lead Generation, Ads & Automation",
-    description: "AI powered marketing agency in Dubai. Enterprise lead generation, predictive advertising management, CRM lead scoring, and WhatsApp sales automation.",
+    title: "AI Marketing Agency Dubai | Paid Ads, Funnels & Attribution",
+    description: "AI marketing agency in Dubai specializing in paid advertising management, Meta Conversions API, Google offline conversion tracking, and automated WhatsApp intake funnels.",
     url: "https://www.asifdigital.agency/ai-marketing-dubai",
     siteName: "Asif Digital",
     type: "website"
@@ -18,15 +18,15 @@ export const metadata = {
 const faqData = [
   {
     q: "How does an AI marketing agency differ from a traditional digital marketing agency in Dubai?",
-    a: "Traditional marketing agencies in Dubai rely on manual ad optimizations, monthly static reporting, and slow creative turnaround times, often creating a 4 to 24-hour delay in lead follow-up. An AI marketing agency integrates predictive bid management, automated multi-variant creative testing, sub-minute WhatsApp lead qualification, and closed-loop CRM revenue attribution to optimize campaigns for closed revenue rather than vanity impressions."
+    a: "Traditional marketing agency setups often focus primarily on platform clicks, impressions, and manual campaign adjustments. An AI marketing agency integrates automated bid reallocation, systematic multi-angle creative testing, automated WhatsApp intake workflows, and closed-loop CRM revenue attribution to connect paid advertising directly with verified business outcomes."
   },
   {
-    q: "Can AI automate our Google Ads and Meta Ads campaigns?",
-    a: "Yes. We configure algorithmic budget reallocation, automated bid adjustments, dynamic creative variations, and offline conversion tracking (CAPI) that feeds qualified CRM stage updates back into Google Ads and Meta Ads Manager algorithms to target higher-intent buyers across the UAE."
+    q: "How do you automate Google Ads and Meta Ads campaigns?",
+    a: "We configure algorithmic budget reallocation, automated bid adjustments, dynamic creative variations, and server-side tracking (Meta Conversions API and Google offline conversion tracking) that feed verified CRM milestone updates back into ad managers to help algorithms target higher-intent buyers."
   },
   {
-    q: "How does WhatsApp automation increase ad conversion rates in the UAE?",
-    a: "In the UAE and GCC, over 80% of consumer and B2B engagement occurs via WhatsApp. By connecting Meta and Google ads directly to official WhatsApp Cloud API conversational funnels, incoming leads receive instant qualification, property or catalog matching, and calendar booking within 30 seconds, dramatically reducing lead decay."
+    q: "How does WhatsApp automation improve paid ad conversion rates in the UAE?",
+    a: "In the UAE and GCC, WhatsApp is a primary channel for commercial dialogue. By routing Meta and Google ad traffic directly into verified WhatsApp Cloud API intake funnels, incoming prospects can immediately review catalogs, answer qualification questions, and schedule consultations without waiting for manual email follow-up."
   },
   {
     q: "Which CRMs and marketing platforms do you integrate?",
@@ -34,7 +34,7 @@ const faqData = [
   },
   {
     q: "What factors determine the pricing of AI marketing services in Dubai?",
-    a: "Pricing depends on your monthly advertising spend volume, the number of target markets (Dubai, Abu Dhabi, Saudi Arabia, or broader GCC), the complexity of your CRM lead scoring integration, and whether custom multilingual Arabic and English conversational agents are required."
+    a: "Pricing depends on your monthly advertising spend volume, the number of target ad channels (Google, Meta, TikTok), the complexity of your CRM integration, and whether custom bilingual Arabic and English conversational workflows are required."
   }
 ];
 
@@ -45,7 +45,7 @@ export default function Page() {
       {
         "@type": "ProfessionalService",
         "@id": "https://www.asifdigital.agency/ai-marketing-dubai#service",
-        "name": "Asif Digital - AI Marketing & Lead Generation Agency Dubai",
+        "name": "Asif Digital - AI Marketing Agency Dubai",
         "url": "https://www.asifdigital.agency/ai-marketing-dubai",
         "telephone": "+971545866094",
         "priceRange": "$$$",
@@ -54,7 +54,7 @@ export default function Page() {
           "addressLocality": "Dubai",
           "addressCountry": "AE"
         },
-        "description": "AI powered marketing agency in Dubai specializing in predictive paid advertising, automated lead scoring, WhatsApp conversion funnels, and revenue attribution.",
+        "description": "AI marketing agency in Dubai specializing in paid advertising management, Meta Conversions API, Google offline conversion tracking, and automated WhatsApp intake funnels.",
         "provider": {
           "@type": "Organization",
           "name": "Asif Digital",

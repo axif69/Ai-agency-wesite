@@ -165,9 +165,9 @@ export default function AiLeadGenDubai() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-white/40 text-[11px] uppercase tracking-widest font-mono">
-            <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Ground-Truth Public OSINT</span>
-            <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Multi-Touch Cold Email &amp; LinkedIn</span>
-            <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> UAE PDPL-Aligned Data Handling</span>
+            <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Business Email Validation &amp; Deliverability Controls</span>
+            <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Optional Human-Led LinkedIn Follow-Up</span>
+            <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> PDPL-Aligned B2B Data Handling</span>
           </div>
         </motion.div>
       </section>
@@ -189,7 +189,7 @@ export default function AiLeadGenDubai() {
             </div>
           </div>
           <p className="text-[16px] md:text-[17px] text-white/80 leading-relaxed font-light pl-0 md:pl-14">
-            An <strong>AI lead generation agency in Dubai</strong> designs, builds, and manages automated B2B acquisition engines that unite Ideal Customer Profile (ICP) intelligence, behavioral and firmographic intent signals, multi-channel outreach sequences (Email, LinkedIn, WhatsApp), and CRM qualification. Rather than purchasing static, decaying lead databases or deploying indiscriminate spam blasts, AI lead generation leverages machine-speed intelligence to research target accounts, verify executive contacts, and initiate relevant, compliance-aware business dialogues that empower human sales teams to close high-value deals.
+            An <strong>AI lead generation agency in Dubai</strong> designs, builds, and manages targeted B2B outbound acquisition engines that unite Ideal Customer Profile (ICP) parameters, firmographic intent triggers, verified business contact data, multi-touch outbound cadences (cold email and optional human-led LinkedIn outreach), and CRM pipeline qualification. Rather than relying on untargeted broker lists or indiscriminate email blasts, an AI lead generation system researches relevant corporate accounts, validates deliverability, and initiates contextual business conversations to route qualified commercial opportunities to your sales team.
           </p>
         </div>
       </section>
@@ -212,7 +212,7 @@ export default function AiLeadGenDubai() {
 
           <div className="lg:col-span-7 space-y-8 text-white/75 font-light text-[16px] md:text-[17px] leading-relaxed">
             <p>
-              In competitive markets across Dubai, DIFC, and Abu Dhabi, the era of scraping random lists from general directories and sending mass template blasts is over. When businesses broadcast identical generic emails, two things happen immediately: response rates plummet below 1%, and corporate email servers blacklist the sender’s primary domain.
+              In competitive markets across Dubai, DIFC, and Abu Dhabi, the era of scraping random lists from general directories and sending mass template blasts is over. When businesses broadcast identical generic emails, two things happen immediately: response rates plummet and corporate email servers may flag or block the sender’s domain.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
@@ -222,7 +222,7 @@ export default function AiLeadGenDubai() {
                   <h3 className="font-semibold text-white text-base">The Scraping Trap</h3>
                 </div>
                 <p className="text-xs text-white/60 leading-relaxed">
-                  Purchased broker lists and untargeted directories feature up to 35% bounced or defunct contacts, damaging sender score permanently.
+                  Purchased broker lists and untargeted directories feature high proportions of bounced or defunct contacts, damaging sender score quickly.
                 </p>
               </div>
 
@@ -277,13 +277,13 @@ export default function AiLeadGenDubai() {
               {
                 step: "02",
                 title: "Account Research & Multi-Source Contact Enrichment",
-                desc: "For each identified account, our research workflows aggregate publicly available business data (corporate filings, press announcements, corporate websites, and professional social profiles). We resolve verified direct business email addresses, direct phone extensions, and verify MX records in real time to guarantee near-zero bounce rates.",
-                tags: ["Public OSINT", "Email Validation & Deliverability Checks", "Dossier Synthesis"]
+                desc: "For each identified account, our research workflows aggregate publicly available business data (corporate filings, press announcements, corporate websites, and professional social profiles). We resolve verified direct business email addresses, direct corporate phone extensions, and verify MX records in real time with syntax and domain validation to safeguard sender reputation and minimize bounce risk.",
+                tags: ["Public OSINT", "Email Deliverability Controls", "Dossier Synthesis"]
               },
               {
                 step: "03",
                 title: "Personalized Multi-Channel Touchpoints",
-                desc: "We engineer dedicated outbound sending infrastructure with domain reputation management and platform-policy-aligned outreach to safeguard your primary domain. AI models synthesize account-specific value propositions that cite real business context. Sequences run across coordinated channels—custom email cadences, LinkedIn relationship touchpoints, and verified WhatsApp business follow-ups.",
+                desc: "We configure dedicated secondary sending infrastructure with SPF, DKIM, DMARC, and gradual warmup routines to safeguard your primary corporate domain. AI-assisted research synthesizes account-specific value propositions citing verified company context, with optional human-led LinkedIn touchpoints and opt-in WhatsApp scheduling bridges where appropriate.",
                 tags: ["Dedicated Infrastructure", "Reputation Management", "Platform Policy Alignment"]
               },
               {
@@ -375,7 +375,7 @@ export default function AiLeadGenDubai() {
               <tr>
                 <td className="py-5 px-6 font-medium text-white">Domain Safety &amp; Deliverability</td>
                 <td className="py-5 px-6 text-white/60">High risk: blasts sent from primary company domains, causing blacklist penalties</td>
-                <td className="py-5 px-6 text-white/90 bg-emerald-500/[0.04]">Zero primary domain risk: isolated secondary domains, SPF/DKIM/DMARC &amp; warmup</td>
+                <td className="py-5 px-6 text-white/90 bg-emerald-500/[0.04]">Isolated secondary sending domains, SPF/DKIM/DMARC configuration, warmup schedules, and volume throttling to safeguard primary domain reputation</td>
               </tr>
             </tbody>
           </table>
@@ -435,19 +435,14 @@ export default function AiLeadGenDubai() {
                 <Building2 className="w-6 h-6" />
               </div>
               <h3 className="text-xl md:text-2xl font-serif font-semibold text-white mb-3">
-                Commercial &amp; Off-Plan Real Estate
+                Commercial Real Estate &amp; Workplace Solutions
               </h3>
               <p className="text-sm text-white/60 leading-relaxed font-light mb-6">
-                Qualify institutional commercial investors, family office buyers, and high-ticket off-plan prospects with rapid response landing pages and WhatsApp lead capture systems.
+                Identify and engage corporate tenants, asset managers, and commercial brokerage decision-makers seeking office expansions, industrial warehousing, or corporate lease negotiations across Dubai and the UAE.
               </p>
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 border-t border-white/5">
-                <div className="flex items-center gap-2 text-[11px] font-mono text-emerald-400">
-                  <span>Specialized Hub:</span>
-                  <span className="text-white/50">Developer &amp; Brokerage Systems</span>
-                </div>
-                <Link href="/real-estate/ai-lead-dashboard" className="text-xs text-white/80 hover:text-white underline inline-flex items-center gap-1 font-medium">
-                  View Real Estate AI Dashboard →
-                </Link>
+              <div className="flex items-center gap-2 text-[11px] font-mono text-emerald-400">
+                <span>Key Targets:</span>
+                <span className="text-white/50">Corporate Real Estate Directors, Facilities Heads, Asset Managers</span>
               </div>
             </div>
 
@@ -486,16 +481,16 @@ export default function AiLeadGenDubai() {
                 In the UAE and broader Gulf region, email functions as the ledger of record, but <strong>WhatsApp is where relationships and rapid decisions materialize</strong>. B2B acquisition engines that omit professional messaging forfeit massive conversion momentum.
               </p>
               <p>
-                We architect strictly consent-aware, opt-in verified, and Meta-policy-aligned WhatsApp engagement layers for business communications. Operating through verified Meta Business API credentials, our conversational intake agents field inbound inquiries, answer preliminary questions, confirm meeting times, and route warm leads directly to your team.
+                We architect strictly consent-aware, opt-in verified, and Meta-policy-aligned WhatsApp engagement layers for business communications. Rather than cold unsolicited messaging, WhatsApp is deployed as an agile scheduling bridge—confirming booked meetings, fielding follow-up inquiries from responsive prospects, and routing warm conversations directly to your sales team.
               </p>
               
               <div className="grid grid-cols-2 gap-4 pt-4">
                 <div className="p-5 bg-white/[0.02] border border-white/5 rounded-2xl">
-                  <span className="text-2xl font-serif font-bold text-white block mb-1">&lt; 3 mins</span>
-                  <span className="text-[11px] font-mono text-white/40 uppercase tracking-wider">Inquiry Response Time</span>
+                  <span className="text-2xl font-serif font-bold text-white block mb-1">Automated</span>
+                  <span className="text-[11px] font-mono text-white/40 uppercase tracking-wider">Inquiry Triage &amp; Routing</span>
                 </div>
                 <div className="p-5 bg-white/[0.02] border border-white/5 rounded-2xl">
-                  <span className="text-2xl font-serif font-bold text-white block mb-1">100%</span>
+                  <span className="text-2xl font-serif font-bold text-white block mb-1">Opt-In Only</span>
                   <span className="text-[11px] font-mono text-white/40 uppercase tracking-wider">Meta Policy Alignment</span>
                 </div>
               </div>
@@ -657,10 +652,10 @@ export default function AiLeadGenDubai() {
           <div className="p-8 border border-white/5 bg-black rounded-2xl">
             <div className="flex items-center gap-3 mb-4">
               <Lock className="w-5 h-5 text-emerald-400" />
-              <h3 className="text-base font-semibold text-white">UAE PDPL-Aligned Data Handling</h3>
+              <h3 className="text-base font-semibold text-white">PDPL-Aligned Data Handling &amp; Opt-Out Practices</h3>
             </div>
             <p className="text-xs text-white/65 leading-relaxed font-light">
-              Architected around UAE Federal Decree-Law No. 45 on Personal Data Protection. We handle public corporate data, respect opt-out preferences instantly, and maintain clean audit trails for client contact interactions.
+              Aligned with UAE Federal Decree-Law No. 45 on Personal Data Protection. We work strictly with publicly available corporate business data, honor opt-out and unsubscribe requests immediately, and maintain clean audit trails for client contact interactions.
             </p>
           </div>
 
@@ -694,10 +689,10 @@ export default function AiLeadGenDubai() {
               EXECUTION TIMELINE
             </span>
             <h2 className="text-3xl md:text-5xl font-serif mb-4">
-              Typical 4-Week Pipeline Deployment.
+              Indicative 4-Week Pipeline Deployment.
             </h2>
             <p className="text-white/50 text-sm font-light">
-              An indicative 4-week execution framework for technical configuration, data calibration, and launch. Timelines may vary based on integration complexity.
+              An indicative 4-week execution framework for technical configuration, data calibration, and launch. Actual timelines depend on domain warmup schedules, CRM scope, and approval cycles.
             </p>
           </div>
 
@@ -780,6 +775,29 @@ export default function AiLeadGenDubai() {
         </div>
       </section>
 
+      {/* ── Intent Bridge: Paid Acquisition & Inbound Ad Funnels ── */}
+      <section className="py-8 px-6 md:px-12 max-w-5xl mx-auto">
+        <div className="p-8 md:p-10 border border-emerald-400/20 bg-emerald-950/10 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div className="max-w-2xl">
+            <span className="text-emerald-400 text-xs font-mono uppercase tracking-widest block mb-2 font-semibold">
+              Paid Acquisition &amp; Inbound Funnels
+            </span>
+            <h3 className="text-xl md:text-2xl font-serif text-white mb-2">
+              Looking for Paid Ad Campaigns or Inbound Lead Gen?
+            </h3>
+            <p className="text-sm text-white/70 font-light leading-relaxed">
+              If you require paid performance advertising (Google Ads, Meta Advantage+, TikTok), automated WhatsApp ad intake funnels, or server-side CAPI tracking, explore our specialized AI marketing agency practice.
+            </p>
+          </div>
+          <Link
+            href="/ai-marketing-dubai"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-emerald-400 text-black text-xs uppercase tracking-wider font-bold hover:bg-emerald-300 transition-colors"
+          >
+            Explore AI Marketing Dubai <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+      </section>
+
       {/* ── Section 10: Strategic Ecosystem & Related Intelligence ── */}
       <section className="py-24 bg-white/[0.015] border-t border-white/5 px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
@@ -805,12 +823,12 @@ export default function AiLeadGenDubai() {
               href="/sovereign-sales-agent" 
               className="p-8 border border-white/5 bg-black rounded-3xl hover:border-white/20 transition-all group"
             >
-              <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block mb-4">Autonomous Sales</span>
+              <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block mb-4">Outbound Technology</span>
               <h3 className="text-xl font-serif text-white mb-3 group-hover:text-emerald-300 transition-colors">
                 Sovereign Sales Agent
               </h3>
               <p className="text-xs text-white/60 leading-relaxed font-light">
-                Enterprise command center for B2B target discovery, AI qualification, draft outreach, and lead inbox workflows.
+                Enterprise governed outbound workflow technology for target account research, verified contact enrichment, and human-in-the-loop lead inbox triage.
               </p>
             </Link>
 
