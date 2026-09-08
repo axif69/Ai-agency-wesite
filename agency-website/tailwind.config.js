@@ -6,8 +6,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        sans: ['var(--font-inter)', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-playfair)', 'Playfair Display', 'serif'],
+        syne: ['var(--font-syne)', 'sans-serif'],
+        space: ['var(--font-space-grotesk)', 'sans-serif'],
       }
     }
   },

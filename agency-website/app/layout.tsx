@@ -1,7 +1,7 @@
 import './globals.css';
 import Layout from '../src/components/Layout';
 import SmoothScroll from '../src/components/SmoothScroll';
-import { Syne, Space_Grotesk } from 'next/font/google';
+import { Syne, Space_Grotesk, Inter, Playfair_Display } from 'next/font/google';
 import type { Metadata } from 'next';
 
 const syne = Syne({
@@ -14,6 +14,21 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-space-grotesk',
   display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+  weight: ['400', '600', '700', '900'],
+  style: ['normal', 'italic'],
 });
 
 export const metadata: Metadata = {
@@ -57,7 +72,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${syne.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${syne.variable} ${spaceGrotesk.variable} ${inter.variable} ${playfair.variable}`}>
       <head>
         <meta name="google-site-verification" content="3GJPTV-4-OEXb4Z_r0EAIVCYBzHYp8YDR2QavSzPGm8" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-DKTWMYPBV7"></script>

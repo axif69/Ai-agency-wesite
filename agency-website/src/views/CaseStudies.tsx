@@ -164,6 +164,8 @@ export default function CaseStudies() {
                     <img 
                       src={study.img} 
                       alt={study.title} 
+                      loading="lazy"
+                      decoding="async"
                       className="w-full max-h-[460px] object-contain rounded-lg"
                     />
                   </div>

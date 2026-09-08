@@ -2,6 +2,7 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -904,8 +905,17 @@ export default function Home() {
                 data-cursor="view"
                 className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] hover:border-white/20 transition-all duration-500 flex flex-col h-full cursor-pointer"
               >
-                <div className="aspect-video overflow-hidden border-b border-white/5">
-                  <img src={study.img} alt={study.title || study.client} className="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
+                <div className="aspect-video overflow-hidden border-b border-white/5 relative">
+                  <Image 
+                    src={study.img || ""} 
+                    alt={study.title || study.client} 
+                    width={800}
+                    height={450}
+                    sizes="(max-width: 768px) 100vw, 500px"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover opacity-85 group-hover:scale-[1.03] group-hover:opacity-100 transition-transform duration-500 ease-out" 
+                  />
                 </div>
                 <div className="p-8 flex flex-col flex-grow">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-4">{study.industry} — {study.client}</span>

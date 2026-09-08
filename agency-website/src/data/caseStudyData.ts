@@ -41,7 +41,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     serviceLink: "/ai-agents-dubai",
     serviceLinkLabel: "Explore Custom AI Concierges",
     desc: "Full-stack luxury real estate AI operating system connecting Meta & Google Ads to an automated WhatsApp concierge and live executive CRM.",
-    img: "/images/dubai_real_estate_ai_dashboard.png"
+    img: "/images/dubai_real_estate_ai_dashboard.webp"
   },
   {
     id: "governed-sales-engine",
@@ -64,6 +64,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     serviceLink: "/workflow-automation-uae",
     serviceLinkLabel: "Explore Workflow Automation",
     desc: "Governed 5-worker multi-agent architecture with mandatory human review, MX validation, and pacing safeguards.",
-    img: "/images/sovereign/dashboard-command.png"
+    img: "/images/sovereign/dashboard-command.webp"
   }
 ];

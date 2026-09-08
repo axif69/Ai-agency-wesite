@@ -1,77 +1,114 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-
-interface Particle {
-  id: number;
-  x: number;
-  y: number;
-  size: number;
-  vx: number;
-  vy: number;
-  opacity: number;
-}
+import React, { useEffect, useRef } from "react";
 
 export default function ParticleBackground() {
-  const [particles, setParticles] = useState<Particle[]>([]);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const initParticles = Array.from({ length: 40 }).map((_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      vx: (Math.random() - 0.5) * 0.1,
-      vy: (Math.random() - 0.5) * 0.1,
-      opacity: Math.random() * 0.5 + 0.1,
-    }));
-    setParticles(initParticles);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-    // Simple animation loop for the floating particles using requestAnimationFrame
-    let animationFrameId: number;
-    let lastTime = performance.now();
+    // Check reduced motion
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
 
-    const animate = (time: number) => {
-      const deltaTime = time - lastTime;
-      lastTime = time;
+    let animId: number | null = null;
+    let isVisible = false;
 
-      setParticles((prevParticles) =>
-        prevParticles.map((p) => {
-          let newX = p.x + p.vx * deltaTime * 0.05;
-          let newY = p.y + p.vy * deltaTime * 0.05;
-
-          // Wrap around edges
-          if (newX > 100) newX = 0;
-          if (newX < 0) newX = 100;
-          if (newY > 100) newY = 0;
-          if (newY < 0) newY = 100;
-
-          return { ...p, x: newX, y: newY };
-        })
-      );
-      animationFrameId = requestAnimationFrame(animate);
+    // Set canvas dimensions to match display size
+    const resize = () => {
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.floor(rect.width * dpr);
+      canvas.height = Math.floor(rect.height * dpr);
+      ctx.scale(dpr, dpr);
     };
 
-    animationFrameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrameId);
+    resize();
+
+    // 25 lightweight floating particles
+    const particleCount = 25;
+    const particles = Array.from({ length: particleCount }).map(() => ({
+      x: Math.random() * (canvas.clientWidth || 300),
+      y: Math.random() * (canvas.clientHeight || 300),
+      radius: Math.random() * 2 + 1,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      alpha: Math.random() * 0.4 + 0.1,
+    }));
+
+    let lastTime = performance.now();
+
+    const draw = (now: number) => {
+      if (!isVisible) return;
+      const dt = Math.min((now - lastTime) / 1000, 0.1);
+      lastTime = now;
+
+      const w = canvas.clientWidth || 300;
+      const h = canvas.clientHeight || 300;
+
+      ctx.clearRect(0, 0, w, h);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx * dt * 30;
+        p.y += p.vy * dt * 30;
+
+        if (p.x < 0) p.x = w;
+        else if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        else if (p.y > h) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(34, 197, 94, ${p.alpha})`;
+        ctx.shadowColor = "rgba(34, 197, 94, 0.4)";
+        ctx.shadowBlur = 6;
+        ctx.fill();
+      }
+
+      animId = requestAnimationFrame(draw);
+    };
+
+    // IntersectionObserver halts animation 100% when offscreen
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          lastTime = performance.now();
+          if (!animId) {
+            animId = requestAnimationFrame(draw);
+          }
+        } else {
+          if (animId) {
+            cancelAnimationFrame(animId);
+            animId = null;
+          }
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(canvas);
+    window.addEventListener("resize", resize, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", resize);
+      if (animId) {
+        cancelAnimationFrame(animId);
+      }
+    };
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-[0]">
-      {particles.map((p) => (
-        <motion.div
-          key={p.id}
-          className="absolute rounded-full bg-[#22c55e]"
-          style={{
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            width: p.size,
-            height: p.size,
-            opacity: p.opacity,
-            boxShadow: "0 0 10px 2px rgba(34, 197, 94, 0.4)",
-          }}
-        />
-      ))}
-    </div>
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full pointer-events-none z-[0]"
+      aria-hidden="true"
+    />
   );
 }
