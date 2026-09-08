@@ -719,7 +719,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Define what the assistant may answer, which templates or policies apply, when a person takes over, and how the outcome returns to the CRM. Review Asif Digital's <a href="/services/whatsapp-automation-gcc" class="text-white hover:underline">WhatsApp automation service</a> for the implementation layer.</p>
 
       <h2>Lead routing rules that prevent leakage</h2>
-      <p>High-velocity sectors like UAE real estate face significant lead decay if portal and campaign enquiries sit unassigned. Integrating automated <a href="/real-estate-crm-dubai" class="text-white font-semibold underline hover:text-emerald-400">portal lead routing and distribution</a> rules into your CRM ensures buyer enquiries from Bayut, Property Finder, and social ads are routed to available agents within seconds rather than hours.</p>
+      <p>High-velocity sectors like UAE real estate face significant lead decay if portal and campaign enquiries sit unassigned. Integrating automated <a href="/real-estate-crm-dubai" class="text-white font-semibold underline hover:text-emerald-400">portal lead routing and distribution</a> rules into your CRM ensures buyer enquiries from Bayut, Property Finder, and social ads are routed to available agents through automated routing workflows rather than delayed manual handoffs.</p>
       <ul>
         <li>Route by customer need before routing by salesperson preference.</li>
         <li>Use capacity and response-time rules so leads do not wait in an unavailable owner's queue.</li>
