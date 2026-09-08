@@ -2,13 +2,13 @@ import PageComponent from '../../src/views/services/HospitalityAiAutomationUAE';
 
 export const metadata = {
   title: "Hospitality AI Automation UAE | Hotel & Resort AI Concierge Systems",
-  description: "Hospitality AI & hotel workflow automation in the UAE. 24/7 multilingual WhatsApp concierge, PMS integration, direct booking conversion workflows, and service dispatch.",
+  description: "Hospitality AI & hotel workflow automation in the UAE. 24/7 multilingual WhatsApp concierge, PMS integration options, direct booking inquiry support, and service dispatch.",
   alternates: {
     canonical: "https://www.asifdigital.agency/hospitality-ai-automation-uae"
   },
   openGraph: {
     title: "Hospitality AI Automation UAE | Hotel & Resort AI Concierge Systems",
-    description: "Enterprise hospitality AI and hotel workflow automation across Dubai, Abu Dhabi, and the UAE. WhatsApp concierge, PMS connectivity, and housekeeping dispatch.",
+    description: "Enterprise hospitality AI and hotel workflow automation across Dubai, Abu Dhabi, and the UAE. WhatsApp concierge, PMS integration options, and housekeeping dispatch.",
     url: "https://www.asifdigital.agency/hospitality-ai-automation-uae",
     type: "website"
   },
@@ -32,7 +32,7 @@ const serviceSchema = {
     { "@type": "Country", name: "United Arab Emirates" }
   ],
   url: "https://www.asifdigital.agency/hospitality-ai-automation-uae",
-  description: "Enterprise hospitality AI workflow automation for UAE luxury hotels, resorts, and serviced apartments: 24/7 WhatsApp concierge, PMS integration, direct booking conversion workflows, and housekeeping dispatch."
+  description: "Enterprise hospitality AI workflow automation for UAE luxury hotels, resorts, and serviced apartments: 24/7 WhatsApp concierge, PMS integration options, direct booking inquiry support, and housekeeping dispatch."
 };
 
 const breadcrumbSchema = {
@@ -69,7 +69,7 @@ const faqSchema = {
       name: "Which hotel Property Management Systems (PMS) can you integrate with?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We engineer API and middleware connectors for major enterprise PMS platforms including Oracle Opera (Opera Cloud & Opera 5), Protel, Cloudbeds, Infor HMS, and WebRezPro. For independent boutique properties or serviced apartment groups using custom databases or specialized CRMs, we build bespoke webhook listeners via n8n and Make middleware."
+        text: "We engineer integration options for hotel Property Management Systems (PMS), subject to API access, property permissions, and the property's existing technology stack (such as Oracle Opera, Protel, Cloudbeds, or specialized booking engines). For independent boutique properties or serviced apartment groups using custom databases, we configure webhook-based data pathways."
       }
     },
     {
@@ -77,7 +77,7 @@ const faqSchema = {
       name: "How does the AI concierge handle multilingual guests in the UAE?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our conversational architecture automatically detects the guest's language from their first message. It naturally converses in over 20 languages—including Modern Standard Arabic, Gulf/Khaleeji phrasing, English, Russian, French, German, and Mandarin—allowing international travelers to interact in their native tongue."
+        text: "Our conversational architecture provides multilingual guest workflows with Arabic and English as standard, with additional languages configured and validated for the property's guest mix. Guests can submit inquiries in their preferred language while staff receive structured notifications in their primary operational language."
       }
     },
     {
@@ -93,7 +93,7 @@ const faqSchema = {
       name: "Can the AI take over our front-desk or concierge staff?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. Hospitality AI is designed to assist and elevate staff, not replace human hospitality. It eliminates 60-70% of repetitive operational questions (Wi-Fi passwords, pool timings, luggage requests, check-out times), allowing your front-desk and concierge professionals to focus on genuine guest hospitality, face-to-face service recovery, and VIP care."
+        text: "No. Hospitality AI is designed to assist and elevate staff, not replace human hospitality. It resolves a significant volume of routine operational questions (such as Wi-Fi instructions, facility schedules, luggage requests, and check-out policies), allowing your front-desk and concierge professionals to focus on genuine guest hospitality, face-to-face service recovery, and VIP care."
       }
     },
     {
@@ -109,7 +109,7 @@ const faqSchema = {
       name: "How long does deployment take for a hotel or resort in Dubai?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A typical hotel implementation takes between 3 to 6 weeks. Phase 1 covers property knowledge base curation and WhatsApp Business API verification (Weeks 1-2); Phase 2 covers PMS middleware connection and department ticket routing (Weeks 3-4); Phase 3 involves staff training, sandbox testing, and staged go-live (Weeks 5-6)."
+        text: "An indicative hotel implementation typically spans 3 to 6 weeks, depending on property scope, system access, and integration complexity. Phase 1 covers property knowledge base curation and WhatsApp Business API verification; Phase 2 covers PMS middleware connection and department ticket routing; Phase 3 involves staff training, sandbox testing, and staged go-live."
       }
     }
   ]

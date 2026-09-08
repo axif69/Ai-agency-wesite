@@ -63,8 +63,8 @@ export default function AiAutomationDubai() {
       a: "An enterprise AI automation agency designs, builds, and maintains software integrations that automate repetitive business operations. Rather than delivering isolated no-code bots or conceptual slide decks, we engineer resilient backend pipelines, custom API middleware, document extraction systems, and human-in-the-loop workflows that connect your CRM, ERP, databases, and communication channels into a unified, auditable operational backbone."
     },
     {
-      q: "How does Asif Digital differ from generic Zapier/Make freelancers?",
-      a: "Freelancer setups typically rely on fragile webhook chains without failure recovery, schema validation, or data governance. Asif Digital engineers enterprise-grade automation: we build with decoupled microservices, idempotent retry queues, comprehensive error alerting, human verification checkpoints for sensitive data, and governance architectures aligned with UAE Federal Decree-Law No. 45 (PDPL)."
+      q: "How does Asif Digital differ from basic no-code setups?",
+      a: "Simple task automation setups typically rely on basic single-step triggers without automated failure recovery, schema validation, or error alerting. Asif Digital engineers multi-system enterprise automation: we build with structured API middleware, automated retry logic, error alerting, human verification checkpoints for sensitive data, and governance practices aligned with UAE PDPL requirements."
     },
     {
       q: "Which systems and software platforms can you integrate with?",
@@ -72,7 +72,7 @@ export default function AiAutomationDubai() {
     },
     {
       q: "How does Asif Digital handle data privacy and UAE regulatory compliance?",
-      a: "We design our data architectures around UAE PDPL-aligned data handling, strict access controls, vendor assessment, cross-border data considerations, and client-specific residency requirements. We offer regional cloud and private deployment options where appropriate to the client's governance and infrastructure requirements, ensuring proprietary corporate data is never used to train public foundational models."
+      a: "We design data architectures around UAE PDPL-aligned data handling, access controls, and client-specific security requirements. Deployment options can include UAE-region cloud tenancy, private infrastructure and role-based access controls depending on client requirements and provider availability. Deployment options can be configured so client data is not used for public model training."
     },
     {
       q: "What is the difference between workflow automation, AI agents, and AI consulting?",
@@ -113,9 +113,9 @@ export default function AiAutomationDubai() {
               "serviceType": [
                 "Enterprise AI Automation",
                 "Business Process Automation",
-                "CRM and ERP System Integration",
-                "Document Intelligence & Data Extraction",
-                "Human-in-the-Loop Workflow Engineering"
+                "CRM and ERP Integration Middleware",
+                "Document Intelligence and Extraction",
+                "Human-in-the-Loop Operational Workflows"
               ]
             },
             {
@@ -182,7 +182,7 @@ export default function AiAutomationDubai() {
               <div className="space-y-2">
                 <h3 className="text-sm font-mono uppercase tracking-wider text-white/90">What We Deliver As An Automation Agency</h3>
                 <p className="text-sm text-white/75 font-light leading-relaxed">
-                  We bridge the divide between brittle no-code tools and enterprise systems engineering. Our solutions automate mission-critical data flows between customer touchpoints, internal business logic, and backend databases—reinforced with automated error-recovery, immutable auditability, and supervised human approval controls.
+                  We engineer reliable business process automation between customer touchpoints, internal business logic, and backend databases—reinforced with automated error-recovery, transparent execution logs, and supervised human approval controls.
                 </p>
               </div>
             </div>
@@ -335,6 +335,9 @@ export default function AiAutomationDubai() {
               <Link href="/ai-automation-abu-dhabi" className="flex items-center justify-between text-white/80 hover:text-cyan-400 transition-colors py-1">
                 <span>Abu Dhabi Industrial &amp; Regulated &rarr;</span>
               </Link>
+              <Link href="/hospitality-ai-automation-uae" className="flex items-center justify-between text-white/80 hover:text-amber-400 transition-colors py-1">
+                <span>UAE Hospitality &amp; Hotel Automation &rarr;</span>
+              </Link>
               <Link href="/arabic-ai-hub" className="flex items-center justify-between text-white/80 hover:text-cyan-400 transition-colors py-1">
                 <span>Arabic AI &amp; Multilingual LLMs &rarr;</span>
               </Link>
@@ -440,64 +443,64 @@ export default function AiAutomationDubai() {
         </div>
       </section>
 
-      {/* ── 4. Comparison Matrix: Fragile Scripts vs Enterprise Engineering ── */}
+      {/* ── 4. Comparison Matrix: Lightweight Automations vs Engineered Enterprise Automation ── */}
       <section className="py-16 px-6 max-w-5xl mx-auto border-t border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
           <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Architectural Standards</span>
-          <h2 className="text-2xl md:text-4xl font-serif">Ad-Hoc Automation vs. Enterprise Engineering</h2>
+          <h2 className="text-2xl md:text-4xl font-serif">Lightweight Workflow Automation vs. Engineered Enterprise Automation</h2>
           <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
-            Why serious Dubai organizations avoid brittle no-code templates in favor of production-grade systems architecture:
+            Understanding the architectural differences between simple single-step automations and production-grade, multi-system workflows:
           </p>
         </div>
 
         <div className="border border-white/10 rounded-2xl overflow-hidden bg-white/[0.01]">
           <div className="grid grid-cols-1 md:grid-cols-3 border-b border-white/10 bg-white/[0.03] text-xs font-mono uppercase tracking-wider p-4">
             <div className="text-white/60">Evaluation Dimension</div>
-            <div className="text-red-400/90 mt-2 md:mt-0">Ad-Hoc / Zapier-Style Scripts</div>
-            <div className="text-emerald-400 mt-2 md:mt-0">Asif Digital Engineered Systems</div>
+            <div className="text-white/60 mt-2 md:mt-0">Lightweight Single-Step Automations</div>
+            <div className="text-emerald-400 mt-2 md:mt-0">Engineered Multi-System Automations</div>
           </div>
 
           <div className="divide-y divide-white/5 text-sm font-light">
             {/* Row 1 */}
             <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-2 md:gap-4 items-center">
               <div className="font-medium text-white/90 text-xs font-mono uppercase">System Architecture</div>
-              <div className="text-white/60 text-xs leading-relaxed">Tightly-coupled single triggers; any field change or API hiccup breaks the entire workflow silently.</div>
-              <div className="text-white/90 text-xs leading-relaxed">Decoupled microservices with stateful message queues, schema validation, and isolated worker threads.</div>
+              <div className="text-white/60 text-xs leading-relaxed">Single-trigger linear connectors; any schema change or unhandled field format halts execution.</div>
+              <div className="text-white/90 text-xs leading-relaxed">Decoupled services with message queueing, schema validation, and structured error handling.</div>
             </div>
 
             {/* Row 2 */}
             <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-2 md:gap-4 items-center bg-white/[0.01]">
               <div className="font-medium text-white/90 text-xs font-mono uppercase">Failure Handling &amp; Fallbacks</div>
-              <div className="text-white/60 text-xs leading-relaxed">No error recovery; failed runs drop customer data or stop execution without human notification.</div>
-              <div className="text-white/90 text-xs leading-relaxed">Deterministic retry queues with exponential backoff, dead-letter storage, and instant Slack/Email alerts.</div>
+              <div className="text-white/60 text-xs leading-relaxed">Executions fail silently or stop without notifications, requiring manual error hunting.</div>
+              <div className="text-white/90 text-xs leading-relaxed">Configurable retry logic with exponential backoff, dead-letter recording, and error alert routing.</div>
             </div>
 
             {/* Row 3 */}
             <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-2 md:gap-4 items-center">
               <div className="font-medium text-white/90 text-xs font-mono uppercase">Data Handling &amp; Privacy</div>
-              <div className="text-white/60 text-xs leading-relaxed">Multi-tenant SaaS clouds passing customer data through unvetted international servers without encryption controls.</div>
-              <div className="text-white/90 text-xs leading-relaxed">UAE PDPL-aligned data handling, least-privilege tokens, and regional private cloud deployment options.</div>
+              <div className="text-white/60 text-xs leading-relaxed">Multi-tenant platforms passing unencrypted business records through generic third-party servers.</div>
+              <div className="text-white/90 text-xs leading-relaxed">UAE PDPL-aligned data governance, least-privilege API scoping, and client-specified private hosting configurations.</div>
             </div>
 
             {/* Row 4 */}
             <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-2 md:gap-4 items-center bg-white/[0.01]">
               <div className="font-medium text-white/90 text-xs font-mono uppercase">Governance &amp; Auditability</div>
-              <div className="text-white/60 text-xs leading-relaxed">Zero activity logs or version control; changes cannot be tracked, audited, or attributed to users.</div>
-              <div className="text-white/90 text-xs leading-relaxed">Comprehensive audit logs, role-based access control (RBAC), and full payload telemetry for every event.</div>
+              <div className="text-white/60 text-xs leading-relaxed">Limited or absent execution history; impossible to trace field-level mutations back to originating events.</div>
+              <div className="text-white/90 text-xs leading-relaxed">Granular execution logs, role-based access control (RBAC), and full payload telemetry for every workflow run.</div>
             </div>
 
             {/* Row 5 */}
             <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-2 md:gap-4 items-center">
               <div className="font-medium text-white/90 text-xs font-mono uppercase">Scalability &amp; Throughput</div>
-              <div className="text-white/60 text-xs leading-relaxed">Severe rate limits, concurrent run caps, and high usage bills that spike under operational volume.</div>
-              <div className="text-white/90 text-xs leading-relaxed">High-throughput asynchronous batch processing capable of handling tens of thousands of records predictably.</div>
+              <div className="text-white/60 text-xs leading-relaxed">Hard rate limits and per-task fee structures that become cost-prohibitive at scale.</div>
+              <div className="text-white/90 text-xs leading-relaxed">Predictable, high-throughput asynchronous execution designed for thousands of monthly business events.</div>
             </div>
 
             {/* Row 6 */}
             <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-2 md:gap-4 items-center bg-white/[0.01]">
-              <div className="font-medium text-white/90 text-xs font-mono uppercase">Long-Term Maintenance &amp; SLAs</div>
-              <div className="text-white/60 text-xs leading-relaxed">Freelancer hands off a black box and disappears; broken when third-party software updates UI or API.</div>
-              <div className="text-white/90 text-xs leading-relaxed">Monitored support agreements, versioned API maintenance, regression testing, and local Dubai engineering access.</div>
+              <div className="font-medium text-white/90 text-xs font-mono uppercase">Ongoing Maintenance</div>
+              <div className="text-white/60 text-xs leading-relaxed">Ad-hoc setups without documentation or support SLAs when APIs or vendor tools change.</div>
+              <div className="text-white/90 text-xs leading-relaxed">Documented schemas, versioned endpoint maintenance, regression checks, and direct UAE engineering support.</div>
             </div>
           </div>
         </div>
@@ -729,13 +732,13 @@ export default function AiAutomationDubai() {
             <div className="p-4 rounded-xl border border-white/5 bg-black/40 space-y-2">
               <h3 className="text-xs font-mono uppercase text-emerald-400">Regional Cloud Options</h3>
               <p className="text-xs text-white/70 leading-relaxed">
-                Regional cloud and private deployment options where appropriate to the client&apos;s governance and infrastructure requirements.
+                Deployment options can include UAE-region cloud tenancy, private infrastructure and role-based access controls depending on client requirements and provider availability.
               </p>
             </div>
             <div className="p-4 rounded-xl border border-white/5 bg-black/40 space-y-2">
               <h3 className="text-xs font-mono uppercase text-emerald-400">Zero Foundational Training</h3>
               <p className="text-xs text-white/70 leading-relaxed">
-                Contractually enforced enterprise API configurations guaranteeing client business payloads are never retained to train public foundational LLMs.
+                Deployment options can be configured so client data is not used for public model training, subject to the selected provider and deployment architecture.
               </p>
             </div>
             <div className="p-4 rounded-xl border border-white/5 bg-black/40 space-y-2">

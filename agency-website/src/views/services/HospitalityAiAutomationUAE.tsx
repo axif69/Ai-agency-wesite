@@ -42,27 +42,27 @@ const workflows: WorkflowModule[] = [
   {
     number: "01",
     title: "24/7 Multilingual WhatsApp Concierge",
-    subtitle: "Instant In-Stay Guest Assistance & Information",
+    subtitle: "In-Stay Guest Assistance & Information",
     description:
       "Automating answers for check-in/out policies, Wi-Fi access, pool and beach club hours, spa reservations, and curated Dubai/UAE city itineraries directly through official WhatsApp Business infrastructure.",
     capabilities: [
-      "Instant response in 20+ languages including English, Arabic, Russian, and Mandarin",
-      "Dynamic digital compendium for property amenities and operating schedules",
-      "Interactive concierge recommendations for regional dining, excursions, and beach clubs",
-      "Voice note understanding for conversational, hands-free guest inquiries",
+      "Multilingual guest workflows with Arabic/English and additional languages configured and validated for the property’s guest mix",
+      "Dynamic hotel amenities and operating schedule directory",
+      "Concierge recommendations for regional dining, excursions, and beach clubs",
+      "Voice note processing for conversational guest inquiries where enabled",
     ],
   },
   {
     number: "02",
-    title: "Direct Booking Conversion Workflows",
-    subtitle: "Direct Booking Capture & Upsell Workflows",
+    title: "Direct Booking Inquiry Support",
+    subtitle: "Direct Booking Inquiry Support & Upsell Routing",
     description:
-      "Intercepting room inquiries and off-peak booking requests with instant room type options, direct booking links, and customized upgrade packages to reduce 15-25% OTA commission bleed.",
+      "Assisting prospective guests with room inquiries, availability questions, and direct booking links to support direct reservation share alongside third-party OTA channels.",
     capabilities: [
-      "Automated room rate, availability, and suite category qualification",
-      "Direct handoff to hotel booking engines with secure 3D-Secure tokenized payment",
-      "Automated pre-arrival room upgrade and airport transfer upsells",
-      "Follow-up sequences for abandoned reservation inquiries",
+      "Automated room rate, availability, and suite category information assistance",
+      "Direct handoff to hotel booking engine with secure payment gateway redirection",
+      "Pre-arrival room upgrade and airport transfer inquiry routing",
+      "Follow-up sequences for abandoned booking inquiries",
     ],
   },
   {
@@ -80,15 +80,15 @@ const workflows: WorkflowModule[] = [
   },
   {
     number: "04",
-    title: "PMS Integration & Guest Profile Middleware",
-    subtitle: "Bi-Directional Property Management System Connectivity",
+    title: "PMS Integration Options & Guest Data Pathways",
+    subtitle: "Property Management System Integration Middleware",
     description:
-      "Middleware pipelines connecting conversational channels to leading hotel Property Management Systems (PMS) for reservation lookups, preference capture, and verified stay records.",
+      "Middleware integration options connecting conversational channels to hotel Property Management Systems (PMS), subject to API access, property permissions, and existing technology stack.",
     capabilities: [
-      "API & webhook connectors for Oracle Opera Cloud, Protel, Cloudbeds, and Infor HMS",
-      "Automated reservation retrieval using guest name and confirmation number",
-      "Guest preference logging (dietary restrictions, high floor, pillow preferences)",
-      "Secure tokenized handling protecting sensitive guest registration folios",
+      "Integration options for PMS platforms (such as Oracle Opera, Protel, Cloudbeds, or specialized engines) subject to API access",
+      "Reservation retrieval and inquiry verification using confirmation details",
+      "Guest preference logging (dietary requests, floor preference, amenity timing)",
+      "Tokenized data handling protecting sensitive guest registration folios",
     ],
   },
   {
@@ -96,9 +96,9 @@ const workflows: WorkflowModule[] = [
     title: "VIP & Loyalty Tier Intelligent Routing",
     subtitle: "Recognition & Executive Notification Protocol",
     description:
-      "Automatically identifying high-value loyalty members, repeat corporate clients, and presidential suite bookers to trigger personalized greetings and instant staff notifications.",
+      "Automatically identifying recognized loyalty members, repeat corporate clients, and suite bookers to trigger personalized greetings and instant staff notifications.",
     capabilities: [
-      "Instant PMS loyalty tier lookup across frequent guest databases",
+      "Instant PMS loyalty tier lookup across frequent guest databases where integrated",
       "Automated internal Slack/Teams push alerts to General Manager & Guest Relations",
       "Priority queuing for VIP concierge inquiries and bespoke dining reservations",
       "Customized welcome itineraries based on historical stay preferences",
@@ -122,11 +122,11 @@ const workflows: WorkflowModule[] = [
 const faqs = [
   {
     q: "Which hotel Property Management Systems (PMS) can you integrate with?",
-    a: "We engineer API and middleware connectors for major enterprise PMS platforms including Oracle Opera (Opera Cloud & Opera 5), Protel, Cloudbeds, Infor HMS, and WebRezPro. For independent boutique properties or serviced apartment groups using custom databases or specialized CRMs, we build bespoke webhook listeners via n8n and Make middleware.",
+    a: "We engineer integration options for hotel Property Management Systems (PMS), subject to API access, property permissions, and the property's existing technology stack (such as Oracle Opera, Protel, Cloudbeds, or specialized booking engines). For independent boutique properties or serviced apartment groups using custom databases, we configure webhook-based data pathways.",
   },
   {
     q: "How does the AI concierge handle multilingual guests in the UAE?",
-    a: "Our conversational architecture automatically detects the guest's language from their first message. It naturally converses in over 20 languages—including Modern Standard Arabic, Gulf/Khaleeji phrasing, English, Russian, French, German, and Mandarin—allowing international travelers to interact in their native tongue.",
+    a: "Our conversational architecture provides multilingual guest workflows with Arabic and English as standard, with additional languages configured and validated for the property's guest mix. Guests can submit inquiries in their preferred language while staff receive structured notifications in their primary operational language.",
   },
   {
     q: "Are payment card details processed through WhatsApp or AI chat?",
@@ -134,7 +134,7 @@ const faqs = [
   },
   {
     q: "Can the AI take over our front-desk or concierge staff?",
-    a: "No. Hospitality AI is designed to assist and elevate staff, not replace human hospitality. It eliminates 60-70% of repetitive operational questions (Wi-Fi passwords, pool timings, luggage requests, check-out times), allowing your front-desk and concierge professionals to focus on genuine guest hospitality, face-to-face service recovery, and VIP care.",
+    a: "No. Hospitality AI is designed to assist and elevate staff, not replace human hospitality. It resolves a significant volume of routine operational questions (such as Wi-Fi instructions, facility schedules, luggage requests, and check-out policies), allowing your front-desk and concierge professionals to focus on genuine guest hospitality, face-to-face service recovery, and VIP care.",
   },
   {
     q: "What happens when a guest submits a complaint or service issue?",
@@ -142,22 +142,22 @@ const faqs = [
   },
   {
     q: "How long does deployment take for a hotel or resort in Dubai?",
-    a: "A typical hotel implementation takes between 3 to 6 weeks. Phase 1 covers property knowledge base curation and WhatsApp Business API verification (Weeks 1-2); Phase 2 covers PMS middleware connection and department ticket routing (Weeks 3-4); Phase 3 involves staff training, sandbox testing, and staged go-live (Weeks 5-6).",
+    a: "An indicative hotel implementation typically spans 3 to 6 weeks, depending on property scope, system access, and integration complexity. Phase 1 covers property knowledge base curation and WhatsApp Business API verification; Phase 2 covers PMS middleware connection and department ticket routing; Phase 3 involves staff training, sandbox testing, and staged go-live.",
   },
 ];
 
 export default function HospitalityAiAutomationUAE() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  // Interactive ROI Calculator State
+  // Interactive Operational Modeling Calculator State
   const [roomCount, setRoomCount] = useState(250);
   const [dailyInquiriesPerRoom, setDailyInquiriesPerRoom] = useState(1.5);
   const [minutesPerInquiry, setMinutesPerInquiry] = useState(4);
 
-  // Calculations
+  // Calculations: Routine Guest Inquiry Volume & Front-Desk Handling Hours Model
   const monthlyInquiries = Math.round(roomCount * dailyInquiriesPerRoom * 30);
-  const hoursSavedPerMonth = Math.round((monthlyInquiries * (minutesPerInquiry / 60)) * 0.65);
-  const estimatedDirectBookingLift = Math.round(roomCount * 450); // Estimated monthly direct revenue gain from OTA recapture
+  const hoursSavedPerMonth = Math.round((monthlyInquiries * (minutesPerInquiry / 60)) * 0.50); // conservative 50% automated resolution model
+  const routineQuestionsResolved = Math.round(monthlyInquiries * 0.50);
 
   return (
     <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-emerald-400/30">
@@ -188,7 +188,7 @@ export default function HospitalityAiAutomationUAE() {
           </h1>
 
           <p className="text-lg sm:text-xl text-white/75 font-light leading-relaxed mb-8 max-w-3xl">
-            We engineer 24/7 multilingual WhatsApp AI concierge desks, PMS middleware synchronization, direct booking recapture, and automated housekeeping dispatch for luxury hotels, resorts, and hospitality groups across Dubai, Abu Dhabi, and the GCC.
+            We engineer 24/7 multilingual WhatsApp AI concierge desks, PMS middleware integration options, direct booking inquiry support, and automated housekeeping dispatch for luxury hotels, resorts, and hospitality groups across Dubai, Abu Dhabi, and the GCC.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -210,8 +210,8 @@ export default function HospitalityAiAutomationUAE() {
 
           <div className="flex flex-wrap items-center gap-6 text-[11px] text-white/50 tracking-wider font-mono mt-10">
             <span>✓ 24/7 WHATSAPP CONCIERGE</span>
-            <span>✓ PMS INTEGRATION (OPERA / PROTEL)</span>
-            <span>✓ MULTILINGUAL (ARABIC / RU / EN)</span>
+            <span>✓ PMS INTEGRATION OPTIONS</span>
+            <span>✓ BILINGUAL ARABIC &amp; ENGLISH</span>
             <span>✓ AUTOMATED SERVICE DISPATCH</span>
           </div>
         </div>
@@ -227,13 +227,13 @@ export default function HospitalityAiAutomationUAE() {
             What is Hospitality AI &amp; Hotel Workflow Automation?
           </h2>
           <p className="text-white/80 font-light text-base md:text-lg leading-relaxed mb-6">
-            In the UAE luxury hospitality market, <strong>hotel workflow automation</strong> connects front-facing guest messaging channels (official WhatsApp Business API, web chat, in-room QR portals) to back-of-house operational systems—including Property Management Systems (PMS), housekeeping management software, maintenance ticketing queues, and direct reservation engines.
+            In the UAE luxury hospitality market, <strong>hotel workflow automation</strong> connects front-facing guest messaging channels (official WhatsApp Business API, web chat, in-room QR portals) to back-of-house operational systems—including Property Management Systems (PMS), housekeeping management software, maintenance ticketing queues, and direct reservation inquiry pathways.
           </p>
           <div className="p-6 rounded-2xl border border-white/10 bg-black/50 text-sm text-white/70 leading-relaxed font-light">
             <span className="text-emerald-400 font-mono text-xs uppercase block mb-1 font-semibold">
               The UAE Luxury Standard
             </span>
-            Dubai and Abu Dhabi guests expect instantaneous, personalized, and multilingual service at all hours. By automating routine inquiries, amenity requests, and dining bookings within seconds, hotels reduce front-desk telephone strain, elevate Guest Satisfaction Scores (GSS), and recapture lucrative direct bookings from high-commission third-party OTAs.
+            Dubai and Abu Dhabi guests expect instantaneous, personalized, and multilingual service at all hours. By automating routine inquiries, amenity requests, and dining bookings within seconds, hotels reduce front-desk telephone strain, elevate Guest Satisfaction Scores (GSS), and support direct booking inquiries alongside third-party OTA channels.
           </div>
         </div>
       </section>
@@ -338,7 +338,7 @@ export default function HospitalityAiAutomationUAE() {
         </div>
       </section>
 
-      {/* ── 6. Interactive Hospitality Efficiency & ROI Calculator ── */}
+      {/* ── 6. Interactive Hospitality Operational Workload Model ── */}
       <section className="py-24 px-6 md:px-12 bg-[#070707] border-b border-white/5">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
@@ -346,10 +346,10 @@ export default function HospitalityAiAutomationUAE() {
               Operational Modeling
             </span>
             <h2 className="text-3xl md:text-5xl font-serif tracking-tight mb-3">
-              Hospitality Staff Time &amp; Direct Revenue Calculator
+              Hospitality Operational Workload &amp; Efficiency Model
             </h2>
             <p className="text-white/60 font-light text-sm max-w-xl mx-auto">
-              Simulate monthly front-desk hours saved and estimated direct booking recapture based on your property inventory.
+              Model monthly routine inquiry volume and front-desk handling hours based on your property inventory.
             </p>
           </div>
 
@@ -412,23 +412,26 @@ export default function HospitalityAiAutomationUAE() {
             <div className="p-8 rounded-2xl border border-emerald-500/20 bg-emerald-950/10 text-center space-y-6">
               <div>
                 <span className="text-xs uppercase font-mono tracking-widest text-emerald-400 font-semibold block mb-1">
-                  Estimated Front-Desk Time Saved
+                  Estimated Monthly Guest Inquiries
                 </span>
-                <div className="text-5xl md:text-6xl font-serif text-white">
-                  {hoursSavedPerMonth.toLocaleString()} <span className="text-lg font-sans text-white/50">hrs / mo</span>
+                <div className="text-4xl md:text-5xl font-serif text-white">
+                  {monthlyInquiries.toLocaleString()} <span className="text-base font-sans text-white/50">inquiries / mo</span>
                 </div>
                 <p className="text-xs text-white/60 font-light mt-1">
-                  Equivalent to ~{Math.round(hoursSavedPerMonth / 160 * 10) / 10} full-time front desk staff hours reallocated to in-person guest hospitality.
+                  ~{routineQuestionsResolved.toLocaleString()} routine queries addressable via automated WhatsApp concierge
                 </p>
               </div>
 
               <div className="pt-4 border-t border-white/10">
                 <span className="text-xs uppercase font-mono tracking-widest text-emerald-400/80 font-semibold block mb-1">
-                  Estimated Direct Booking Value Uplift
+                  Estimated Staff Time Reallocated
                 </span>
                 <div className="text-3xl md:text-4xl font-serif text-white">
-                  +AED {estimatedDirectBookingLift.toLocaleString()} <span className="text-xs font-sans text-white/50">/ mo</span>
+                  ~{hoursSavedPerMonth.toLocaleString()} <span className="text-xs font-sans text-white/50">hrs / mo</span>
                 </div>
+                <p className="text-xs text-white/50 font-light mt-1">
+                  Equivalent to ~{Math.round(hoursSavedPerMonth / 160 * 10) / 10} staff hours redirectable to face-to-face guest hospitality
+                </p>
               </div>
 
               <Link
@@ -439,6 +442,10 @@ export default function HospitalityAiAutomationUAE() {
               </Link>
             </div>
           </div>
+
+          <p className="text-[11px] text-white/40 italic mt-8 text-center border-t border-white/5 pt-4 max-w-2xl mx-auto">
+            *Disclaimer: Figures are illustrative projections based on modeled inquiry frequencies. Actual time reallocation depends on property guest profile, amenity mix, season, and existing staff workflows.
+          </p>
         </div>
       </section>
 

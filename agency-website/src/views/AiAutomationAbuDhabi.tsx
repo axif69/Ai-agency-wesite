@@ -81,7 +81,7 @@ export default function AiAutomationAbuDhabi() {
         "name": "Can workflows be deployed inside private VPCs or on-premises environments in Abu Dhabi?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Where client-specific compliance or internal IT policies require isolated infrastructure, we architect automation layers to run within dedicated client Virtual Private Clouds (such as Azure UAE Central or AWS UAE) or deploy containerized open-weights models with zero external data egress."
+          "text": "Yes. Where client-specific compliance or internal IT policies require isolated infrastructure, we architect automation layers to run within dedicated client Virtual Private Clouds (such as Azure UAE Central or AWS UAE) or deploy containerized open-weights models with zero external data egress, where supported by the selected infrastructure and client deployment model."
         }
       },
       {
@@ -176,10 +176,10 @@ export default function AiAutomationAbuDhabi() {
 
           <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs text-white/40 font-mono">
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-blue-400" /> Workflows for Regulated ADGM Environments
+              <Check className="w-4 h-4 text-blue-400" /> Designed for ADGM &amp; Institutional Governance Requirements
             </span>
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-blue-400" /> Dedicated VPC &amp; Isolated Hosting
+              <Check className="w-4 h-4 text-blue-400" /> Dedicated VPC &amp; Isolated Hosting Options
             </span>
             <span className="flex items-center gap-2">
               <Check className="w-4 h-4 text-blue-400" /> Mandatory Human-in-the-Loop Signoff
@@ -203,7 +203,7 @@ export default function AiAutomationAbuDhabi() {
               In Abu Dhabi’s highly structured regulatory and industrial economy, AI automation is not about autonomous generative experimentation. It is about systems integration: binding legacy enterprise record stores (SAP, Oracle, Microsoft Dynamics 365) to specialized machine intelligence layers that extract, validate, and route operational data with verifiable accuracy.
             </p>
             <p>
-              Our systems prioritize deterministic business logic, strict role-based access control (RBAC), bilingual Arabic and English document extraction, and controlled cloud environments (such as UAE-based Azure or AWS regions or isolated VPCs). Critical business operations always retain explicit human oversight checkpoints prior to final database commitment.
+              Our systems prioritize deterministic business logic, strict role-based access control (RBAC), bilingual Arabic and English document extraction, and controlled cloud environments (such as UAE-based Azure or AWS regions or isolated VPCs where supported by the client deployment model). Workflows are designed for organizations operating under ADGM data-protection and institutional security requirements. Critical business operations always retain explicit human oversight checkpoints prior to final database commitment.
             </p>
           </div>
         </div>
@@ -382,7 +382,7 @@ export default function AiAutomationAbuDhabi() {
                 {
                   metric: "Infrastructure Control",
                   trad: "Shadow AI tool adoption where staff paste proprietary data into public cloud services.",
-                  impl: "Controlled private endpoints, client-managed VPCs, and zero-data-retention agreements."
+                  impl: "Controlled private endpoints, client-managed VPCs, and zero-data-retention agreements where supported by the selected infrastructure and client deployment model. Deployment options can be configured so client data is not used for public model training, subject to the selected provider and deployment architecture."
                 },
                 {
                   metric: "Operational Scalability",
@@ -434,7 +434,7 @@ export default function AiAutomationAbuDhabi() {
             {
               step: "Stage 02",
               title: "Architecture & Security Review",
-              desc: "Formulating technical blueprints, schema definitions, private VPC setup, and human-in-the-loop review criteria.",
+              desc: "Formulating technical blueprints, schema definitions, private VPC setup where supported by the client infrastructure model, and human-in-the-loop review criteria.",
               items: ["VPC / endpoint isolation design", "Data dictionary & schema mapping", "Threshold alert logic", "IT security stakeholder review"]
             },
             {
@@ -504,7 +504,7 @@ export default function AiAutomationAbuDhabi() {
                 <Server className="w-4 h-4 text-blue-400" /> Infrastructure Architecture
               </h4>
               <p className="text-xs text-white/60 font-light leading-relaxed">
-                Reflects whether workflows leverage managed enterprise APIs or require dedicated Virtual Private Cloud (VPC) deployment in UAE data centers.
+                Reflects whether workflows leverage managed enterprise APIs or require dedicated Virtual Private Cloud (VPC) deployment in UAE data centers, where supported by client infrastructure and hosting requirements.
               </p>
             </div>
 
@@ -573,7 +573,26 @@ export default function AiAutomationAbuDhabi() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Link
+            href="/ai-automation-agency-dubai"
+            className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/30 transition-all group flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <Building className="w-5 h-5 text-blue-400" />
+                <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
+              </div>
+              <h3 className="text-lg font-serif text-white mb-2">AI Automation Dubai</h3>
+              <p className="text-xs text-white/60 font-light leading-relaxed">
+                Commercial enterprise automation for Dubai mid-market and private operations across CRM, ERP, and customer workflows.
+              </p>
+            </div>
+            <span className="text-[11px] font-mono text-blue-400 mt-6 inline-flex items-center gap-1">
+              Explore Dubai Automation <ChevronRight className="w-3 h-3" />
+            </span>
+          </Link>
+
           <Link
             href="/ai-consulting-uae"
             className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/30 transition-all group flex flex-col justify-between"
@@ -651,7 +670,7 @@ export default function AiAutomationAbuDhabi() {
             },
             {
               q: "Can workflows be deployed inside private VPCs or on-premises environments in Abu Dhabi?",
-              a: "Yes. Where client-specific compliance or internal IT policies require isolated infrastructure, we architect automation layers to run within dedicated client Virtual Private Clouds (such as Azure UAE Central or AWS UAE) or deploy containerized open-weights models with zero external data egress."
+              a: "Yes. Where client-specific compliance or internal IT policies require isolated infrastructure, we architect automation layers to run within dedicated client Virtual Private Clouds (such as Azure UAE Central or AWS UAE) or deploy containerized open-weights models with zero external data egress, where supported by the selected infrastructure and client deployment model."
             },
             {
               q: "How are human approval checkpoints enforced in automated workflows?",
@@ -722,6 +741,14 @@ export default function AiAutomationAbuDhabi() {
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/70">
             <Link href="/ai-automation-abu-dhabi" className="hover:text-white transition-colors text-white font-medium underline underline-offset-4">
               AI Automation Abu Dhabi
+            </Link>
+            <span className="text-white/20">•</span>
+            <Link href="/ai-automation-agency-dubai" className="hover:text-white transition-colors">
+              AI Automation Dubai
+            </Link>
+            <span className="text-white/20">•</span>
+            <Link href="/hospitality-ai-automation-uae" className="hover:text-white transition-colors text-amber-400">
+              Hospitality AI Automation UAE
             </Link>
             <span className="text-white/20">•</span>
             <Link href="/ai-consulting-uae" className="hover:text-white transition-colors">
