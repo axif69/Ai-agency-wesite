@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="100%" height="100%">
+  
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0044BB" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="darkCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141B2D" />
+      <stop offset="100%" stop-color="#0E1322" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="960" height="420" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
+  <text x="480" y="38" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Conceptual Model of Generative-Search Discovery</text>
+  <text x="480" y="58" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Educational framework: individual platforms use proprietary retrieval, ranking, and synthesis systems</text>
+
+  <!-- Step 1: Conversational Prompt -->
+  <g transform="translate(40, 110)">
+    <rect width="150" height="230" rx="10" fill="url(#darkCard)" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="75" y="30" text-anchor="middle" fill="#38BDF8" font-family="system-ui" font-size="12" font-weight="700">1. User Query</text>
+    
+    <rect x="12" y="50" width="126" height="90" rx="6" fill="#1E293B"/>
+    <text x="20" y="70" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="600">Nuanced Prompt:</text>
+    <text x="20" y="90" fill="#94A3B8" font-family="system-ui" font-size="9">"Compare service</text>
+    <text x="20" y="105" fill="#94A3B8" font-family="system-ui" font-size="9">charges in Palm vs</text>
+    <text x="20" y="120" fill="#94A3B8" font-family="system-ui" font-size="9">Dubai Hills villas..."</text>
+
+    <text x="75" y="165" text-anchor="middle" fill="#64748B" font-family="system-ui" font-size="9">Sub-query decomposition</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 190 225 L 225 225" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="225,221 233,225 225,229" fill="#0066FF"/>
+
+  <!-- Step 2: Retrieval (RAG) -->
+  <g transform="translate(235, 110)">
+    <rect width="160" height="230" rx="10" fill="url(#darkCard)" stroke="#0066FF" stroke-width="1.5"/>
+    <text x="80" y="30" text-anchor="middle" fill="#38BDF8" font-family="system-ui" font-size="12" font-weight="700">2. Index Retrieval</text>
+    
+    <rect x="12" y="50" width="136" height="150" rx="6" fill="#1E293B"/>
+    <text x="20" y="72" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="600">Search Corpus Crawl:</text>
+    <text x="20" y="92" fill="#CBD5E1" font-family="system-ui" font-size="9">• Web Search Index</text>
+    <text x="20" y="110" fill="#CBD5E1" font-family="system-ui" font-size="9">• Grounded Web Pages</text>
+    <text x="20" y="128" fill="#CBD5E1" font-family="system-ui" font-size="9">• High Information Gain</text>
+    <text x="20" y="146" fill="#CBD5E1" font-family="system-ui" font-size="9">• Semantic Proximity</text>
+    <text x="20" y="172" fill="#38BDF8" font-family="system-ui" font-size="8">Candidate passages pulled</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 395 225 L 430 225" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="430,221 438,225 430,229" fill="#0066FF"/>
+
+  <!-- Step 3: Passage Reranking -->
+  <g transform="translate(440, 110)">
+    <rect width="160" height="230" rx="10" fill="url(#darkCard)" stroke="#F59E0B" stroke-width="1.5"/>
+    <text x="80" y="30" text-anchor="middle" fill="#F59E0B" font-family="system-ui" font-size="12" font-weight="700">3. Reranking Filter</text>
+    
+    <rect x="12" y="50" width="136" height="150" rx="6" fill="#1E293B"/>
+    <text x="20" y="72" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="600">Passage Scoring:</text>
+    <text x="20" y="92" fill="#6EE7B7" font-family="system-ui" font-size="9">✓ Factual numbers</text>
+    <text x="20" y="110" fill="#6EE7B7" font-family="system-ui" font-size="9">✓ Structured tables</text>
+    <text x="20" y="128" fill="#6EE7B7" font-family="system-ui" font-size="9">✓ Verified entities</text>
+    <text x="20" y="152" fill="#F87171" font-family="system-ui" font-size="8">⚠️ Fluff is less suitable</text>
+    <text x="20" y="172" fill="#F87171" font-family="system-ui" font-size="8">for passage extraction</text>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <path d="M 600 225 L 635 225" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="635,221 643,225 635,229" fill="#0066FF"/>
+
+  <!-- Step 4: Synthesis & Citation -->
+  <g transform="translate(645, 110)">
+    <rect width="275" height="230" rx="10" fill="url(#darkCard)" stroke="#10B981" stroke-width="1.5"/>
+    <text x="137" y="30" text-anchor="middle" fill="#10B981" font-family="system-ui" font-size="12" font-weight="700">4. Generative Answer &amp; Citation</text>
+    
+    <rect x="15" y="50" width="245" height="150" rx="6" fill="#0D242C" stroke="#10B981" stroke-width="1"/>
+    <text x="25" y="72" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="600">Synthesized Response:</text>
+    <text x="25" y="92" fill="#94A3B8" font-family="system-ui" font-size="9">Direct natural answer synthesizing</text>
+    <text x="25" y="108" fill="#94A3B8" font-family="system-ui" font-size="9">retrieved fee comparisons...</text>
+    
+    <rect x="25" y="125" width="225" height="40" rx="4" fill="#1E293B" stroke="#0066FF" stroke-width="1"/>
+    <text x="35" y="142" fill="#38BDF8" font-family="system-ui" font-size="9" font-weight="600">Attributed Source Citations:</text>
+    <text x="35" y="156" fill="#10B981" font-family="monospace" font-size="8">[1] example-brokerage.ae/service-charges</text>
+
+    <text x="137" y="218" text-anchor="middle" fill="#64748B" font-family="system-ui" font-size="8">Placement is not guaranteed; engine dynamically synthesizes</text>
+  </g>
+</svg>

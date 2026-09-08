@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="100%" height="100%">
+  
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0044BB" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="darkCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141B2D" />
+      <stop offset="100%" stop-color="#0E1322" />
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="420" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
+  <text x="480" y="38" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Downstream CRM Milestone Feedback Loop</text>
+  <text x="480" y="58" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Selected downstream milestones can be used as conversion signals for supported bidding strategies when correctly configured</text>
+
+  <!-- Node 1: Ad Platforms (Top Left) -->
+  <g transform="translate(60, 90)">
+    <rect width="220" height="120" rx="12" fill="url(#darkCard)" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="110" y="30" text-anchor="middle" fill="#38BDF8" font-family="system-ui" font-size="12" font-weight="700">Paid Media Channels</text>
+    <text x="110" y="55" text-anchor="middle" fill="#FFFFFF" font-family="system-ui" font-size="11">Google Ads / Meta Ads</text>
+    <text x="110" y="75" text-anchor="middle" fill="#94A3B8" font-family="system-ui" font-size="9">Smart Bidding / Advantage+</text>
+    <text x="110" y="95" text-anchor="middle" fill="#64748B" font-family="monospace" font-size="8">Captures gclid / wbraid / fbc</text>
+  </g>
+
+  <!-- Flow 1 -> 2 -->
+  <path d="M 280 150 L 370 150" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="370,146 378,150 370,154" fill="#0066FF"/>
+  <text x="325" y="140" text-anchor="middle" fill="#0066FF" font-family="system-ui" font-size="9">Inbound Click</text>
+
+  <!-- Node 2: Web Capture & CRM (Top Right) -->
+  <g transform="translate(380, 90)">
+    <rect width="230" height="120" rx="12" fill="url(#darkCard)" stroke="#0066FF" stroke-width="1.5"/>
+    <text x="115" y="30" text-anchor="middle" fill="#0066FF" font-family="system-ui" font-size="12" font-weight="700">Landing Page &amp; CRM Storage</text>
+    <text x="115" y="55" text-anchor="middle" fill="#FFFFFF" font-family="system-ui" font-size="11">Milestone 1: Lead Submitted</text>
+    <text x="115" y="75" text-anchor="middle" fill="#94A3B8" font-family="system-ui" font-size="9">Stores Click ID + Hashed Contacts</text>
+    <text x="115" y="95" text-anchor="middle" fill="#10B981" font-family="system-ui" font-size="9">Initial Lead Created</text>
+  </g>
+
+  <!-- Flow 2 -> 3 (Down) -->
+  <path d="M 495 210 L 495 260" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="491,260 495,268 499,260" fill="#0066FF"/>
+  <text x="505" y="240" fill="#94A3B8" font-family="system-ui" font-size="9">Sales Progress</text>
+
+  <!-- Node 3: CRM Offline Milestones (Bottom Right) -->
+  <g transform="translate(380, 270)">
+    <rect width="230" height="120" rx="12" fill="url(#darkCard)" stroke="#10B981" stroke-width="1.5"/>
+    <text x="115" y="28" text-anchor="middle" fill="#10B981" font-family="system-ui" font-size="12" font-weight="700">Offline Pipeline Milestones</text>
+    <text x="15" y="52" fill="#6EE7B7" font-family="system-ui" font-size="9">• Milestone 2: Contact Verified / MQL</text>
+    <text x="15" y="72" fill="#6EE7B7" font-family="system-ui" font-size="9">• Milestone 3: Viewing / Meeting Completed</text>
+    <text x="15" y="92" fill="#6EE7B7" font-family="system-ui" font-size="9">• Milestone 4: Reservation / Signed Contract</text>
+    <text x="115" y="108" text-anchor="middle" fill="#94A3B8" font-family="system-ui" font-size="8">Verified offline value recorded</text>
+  </g>
+
+  <!-- Flow 3 -> 4 (Left) -->
+  <path d="M 380 330 L 290 330" stroke="#10B981" stroke-width="2" fill="none"/>
+  <polygon points="290,326 282,330 290,334" fill="#10B981"/>
+  <text x="335" y="320" text-anchor="middle" fill="#10B981" font-family="system-ui" font-size="9">Data Manager / CAPI</text>
+
+  <!-- Node 4: Feedback Loop (Bottom Left) -->
+  <g transform="translate(60, 270)">
+    <rect width="220" height="120" rx="12" fill="#0C1F1C" stroke="#10B981" stroke-width="1.5"/>
+    <text x="110" y="28" text-anchor="middle" fill="#10B981" font-family="system-ui" font-size="12" font-weight="700">Algorithmic Re-weighting</text>
+    <text x="15" y="50" fill="#CBD5E1" font-family="system-ui" font-size="9">• Bidding optimizes for MQL / SQL</text>
+    <text x="15" y="68" fill="#CBD5E1" font-family="system-ui" font-size="9">• Downweights junk form clicks</text>
+    <text x="15" y="86" fill="#CBD5E1" font-family="system-ui" font-size="9">• Value-Based Bidding learns from</text>
+    <text x="15" y="100" fill="#CBD5E1" font-family="system-ui" font-size="9">  verified deal progression</text>
+  </g>
+
+  <!-- Flow 4 -> 1 (Up - Close Loop) -->
+  <path d="M 170 270 L 170 210" stroke="#10B981" stroke-width="2" stroke-dasharray="4,4" fill="none"/>
+  <polygon points="166,210 170,202 174,210" fill="#10B981"/>
+  <text x="178" y="240" fill="#10B981" font-family="system-ui" font-size="9">Trained Bidding Models</text>
+</svg>

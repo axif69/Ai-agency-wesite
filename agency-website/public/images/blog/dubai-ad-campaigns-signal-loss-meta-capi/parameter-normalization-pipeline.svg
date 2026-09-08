@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="100%" height="100%">
+  
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0044BB" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="darkCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141B2D" />
+      <stop offset="100%" stop-color="#0E1322" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="960" height="380" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
+  <text x="480" y="38" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700">First-Party Parameter Normalization &amp; Hashing Pipeline</text>
+  <text x="480" y="60" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Strict separation of raw data intake, sanitization, cryptographic hashing, and payload assembly</text>
+
+  <!-- Stage 1: Raw Customer Input -->
+  <g transform="translate(40, 100)">
+    <rect width="190" height="230" rx="12" fill="url(#darkCard)" stroke="#334155" stroke-width="1.5"/>
+    <text x="95" y="30" text-anchor="middle" fill="#F87171" font-family="system-ui" font-size="12" font-weight="700">1. Raw Form Input</text>
+    
+    <rect x="15" y="50" width="160" height="65" rx="6" fill="#1E293B"/>
+    <text x="25" y="70" fill="#94A3B8" font-family="system-ui" font-size="9">Raw Phone:</text>
+    <text x="25" y="90" fill="#FCA5A5" font-family="monospace" font-size="11">" 050 123-4567 "</text>
+    <text x="25" y="105" fill="#64748B" font-family="system-ui" font-size="8">Local formatting, spaces</text>
+
+    <rect x="15" y="125" width="160" height="65" rx="6" fill="#1E293B"/>
+    <text x="25" y="145" fill="#94A3B8" font-family="system-ui" font-size="9">Raw Email:</text>
+    <text x="25" y="165" fill="#FCA5A5" font-family="monospace" font-size="11">" User@DOMAIN.ae "</text>
+    <text x="25" y="180" fill="#64748B" font-family="system-ui" font-size="8">Mixed case, padding</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 230 215 L 265 215" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="265,211 273,215 265,219" fill="#0066FF"/>
+
+  <!-- Stage 2: Normalization -->
+  <g transform="translate(275, 100)">
+    <rect width="190" height="230" rx="12" fill="url(#darkCard)" stroke="#0066FF" stroke-width="1.5"/>
+    <text x="95" y="30" text-anchor="middle" fill="#38BDF8" font-family="system-ui" font-size="12" font-weight="700">2. Normalization</text>
+    
+    <rect x="15" y="50" width="160" height="65" rx="6" fill="#1E293B" stroke="#0066FF" stroke-width="1"/>
+    <text x="25" y="70" fill="#94A3B8" font-family="system-ui" font-size="9">E.164 Format:</text>
+    <text x="25" y="90" fill="#38BDF8" font-family="monospace" font-size="11">+971501234567</text>
+    <text x="25" y="105" fill="#64748B" font-family="system-ui" font-size="8">Country code, no symbols</text>
+
+    <rect x="15" y="125" width="160" height="65" rx="6" fill="#1E293B" stroke="#0066FF" stroke-width="1"/>
+    <text x="25" y="145" fill="#94A3B8" font-family="system-ui" font-size="9">Canonical Email:</text>
+    <text x="25" y="165" fill="#38BDF8" font-family="monospace" font-size="11">user@domain.ae</text>
+    <text x="25" y="180" fill="#64748B" font-family="system-ui" font-size="8">Trimmed, lowercase</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 465 215 L 500 215" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="500,211 508,215 500,219" fill="#0066FF"/>
+
+  <!-- Stage 3: Cryptographic Hashing -->
+  <g transform="translate(510, 100)">
+    <rect width="190" height="230" rx="12" fill="url(#darkCard)" stroke="#F59E0B" stroke-width="1.5"/>
+    <text x="95" y="30" text-anchor="middle" fill="#F59E0B" font-family="system-ui" font-size="12" font-weight="700">3. SHA-256 Hashing</text>
+    
+    <rect x="15" y="50" width="160" height="65" rx="6" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+    <text x="25" y="70" fill="#94A3B8" font-family="system-ui" font-size="9">Hashed Phone (ph):</text>
+    <text x="25" y="90" fill="#FCD34D" font-family="monospace" font-size="10">8a3f9e...2b1c</text>
+    <text x="25" y="105" fill="#64748B" font-family="system-ui" font-size="8">Irreversible hex digest</text>
+
+    <rect x="15" y="125" width="160" height="65" rx="6" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+    <text x="25" y="145" fill="#94A3B8" font-family="system-ui" font-size="9">Hashed Email (em):</text>
+    <text x="25" y="165" fill="#FCD34D" font-family="monospace" font-size="10">e4d1b8...90cf</text>
+    <text x="25" y="180" fill="#64748B" font-family="system-ui" font-size="8">Irreversible hex digest</text>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <path d="M 700 215 L 735 215" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="735,211 743,215 735,219" fill="#0066FF"/>
+
+  <!-- Stage 4: Payload Assembly -->
+  <g transform="translate(745, 100)">
+    <rect width="175" height="230" rx="12" fill="url(#darkCard)" stroke="#10B981" stroke-width="1.5"/>
+    <text x="87" y="30" text-anchor="middle" fill="#10B981" font-family="system-ui" font-size="12" font-weight="700">4. HTTPS Dispatch</text>
+    
+    <rect x="12" y="50" width="150" height="155" rx="6" fill="#0D242C" stroke="#10B981" stroke-width="1"/>
+    <text x="20" y="70" fill="#FFFFFF" font-family="system-ui" font-size="10" font-weight="600">Payload Contents:</text>
+    <text x="20" y="90" fill="#6EE7B7" font-family="system-ui" font-size="9">• Hashed em &amp; ph</text>
+    <text x="20" y="108" fill="#6EE7B7" font-family="system-ui" font-size="9">• Unhashed client_ip</text>
+    <text x="20" y="126" fill="#6EE7B7" font-family="system-ui" font-size="9">• Unhashed user_agent</text>
+    <text x="20" y="144" fill="#6EE7B7" font-family="system-ui" font-size="9">• Browser fbp &amp; fbc</text>
+    <text x="20" y="162" fill="#6EE7B7" font-family="system-ui" font-size="9">• Matching event_id</text>
+    <text x="20" y="188" fill="#38BDF8" font-family="monospace" font-size="8">Meta CAPI / Data Manager</text>
+  </g>
+</svg>

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="100%" height="100%">
+  
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0044BB" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="darkCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141B2D" />
+      <stop offset="100%" stop-color="#0E1322" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="960" height="420" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
+  <text x="480" y="38" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Inbound Deduplication &amp; Lead Collision Resolution Logic</text>
+  <text x="480" y="60" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Decision flow for multiple submissions within configured deduplication window</text>
+
+  <!-- Step 1: Inbound Lead Arrival -->
+  <g transform="translate(60, 150)">
+    <rect width="160" height="80" rx="10" fill="url(#darkCard)" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="80" y="35" text-anchor="middle" fill="#FFFFFF" font-family="system-ui" font-size="12" font-weight="600">Inbound Portal Lead</text>
+    <text x="80" y="55" text-anchor="middle" fill="#94A3B8" font-family="monospace" font-size="10">Raw Webhook Payload</text>
+  </g>
+
+  <!-- Flow to Key Derivation -->
+  <path d="M 220 190 L 275 190" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="275,186 283,190 275,194" fill="#0066FF"/>
+
+  <!-- Step 2: Idempotency Key -->
+  <g transform="translate(285, 140)">
+    <rect width="180" height="100" rx="10" fill="url(#darkCard)" stroke="#334155" stroke-width="1.5"/>
+    <text x="90" y="30" text-anchor="middle" fill="#38BDF8" font-family="system-ui" font-size="12" font-weight="600">Idempotency Hashing</text>
+    <text x="90" y="52" text-anchor="middle" fill="#CBD5E1" font-family="monospace" font-size="10">SHA-256 (Phone +</text>
+    <text x="90" y="70" text-anchor="middle" fill="#CBD5E1" font-family="monospace" font-size="10">ListingRef / Project)</text>
+    <text x="90" y="88" text-anchor="middle" fill="#64748B" font-family="system-ui" font-size="9">Composite Dedupe Key</text>
+  </g>
+
+  <!-- Flow to Branch -->
+  <path d="M 465 190 L 515 190" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="515,186 523,190 515,194" fill="#0066FF"/>
+
+  <!-- Step 3: Decision Diamond -->
+  <g transform="translate(525, 130)">
+    <polygon points="90,0 180,60 90,120 0,60" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+    <text x="90" y="50" text-anchor="middle" fill="#FFFFFF" font-family="system-ui" font-size="11" font-weight="600">Active Window</text>
+    <text x="90" y="70" text-anchor="middle" fill="#F59E0B" font-family="system-ui" font-size="10">Match Found?</text>
+  </g>
+
+  <!-- Branch YES (Up to Update) -->
+  <path d="M 615 130 L 615 100 L 715 100" stroke="#10B981" stroke-width="2" fill="none"/>
+  <polygon points="715,96 723,100 715,104" fill="#10B981"/>
+  <text x="645" y="88" fill="#10B981" font-family="system-ui" font-size="11" font-weight="700">YES (Duplicate Submission)</text>
+
+  <g transform="translate(725, 60)">
+    <rect width="180" height="85" rx="10" fill="#0D242C" stroke="#10B981" stroke-width="1.5"/>
+    <text x="90" y="28" text-anchor="middle" fill="#FFFFFF" font-family="system-ui" font-size="11" font-weight="600">Append to Existing Deal</text>
+    <text x="90" y="48" text-anchor="middle" fill="#6EE7B7" font-family="system-ui" font-size="10">• Do not spawn duplicate lead</text>
+    <text x="90" y="66" text-anchor="middle" fill="#94A3B8" font-family="system-ui" font-size="9">• Notify assigned broker of new inquiry</text>
+  </g>
+
+  <!-- Branch NO (Down to New Assignment) -->
+  <path d="M 615 250 L 615 290 L 715 290" stroke="#38BDF8" stroke-width="2" fill="none"/>
+  <polygon points="715,286 723,290 715,294" fill="#38BDF8"/>
+  <text x="645" y="280" fill="#38BDF8" font-family="system-ui" font-size="11" font-weight="700">NO (Fresh Inquirer)</text>
+
+  <g transform="translate(725, 245)">
+    <rect width="180" height="85" rx="10" fill="#0C1B24" stroke="#0066FF" stroke-width="1.5"/>
+    <text x="90" y="28" text-anchor="middle" fill="#FFFFFF" font-family="system-ui" font-size="11" font-weight="600">Create New Contact &amp; Deal</text>
+    <text x="90" y="48" text-anchor="middle" fill="#38BDF8" font-family="system-ui" font-size="10">• Trigger Broker Routing Matrix</text>
+    <text x="90" y="66" text-anchor="middle" fill="#94A3B8" font-family="system-ui" font-size="9">• Dispatch WhatsApp intro brochure</text>
+  </g>
+</svg>

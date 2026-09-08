@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="100%" height="100%">
+  
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0044BB" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="darkCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141B2D" />
+      <stop offset="100%" stop-color="#0E1322" />
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="400" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
+  <text x="480" y="38" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Multi-Factor Broker Assignment &amp; Failover Matrix</text>
+  <text x="480" y="58" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Configurable agency workflow policies for territory, language, shift status, and workload balancing</text>
+
+  <!-- Step 1: Inbound Lead -->
+  <g transform="translate(40, 140)">
+    <rect width="160" height="100" rx="10" fill="url(#darkCard)" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="80" y="35" text-anchor="middle" fill="#38BDF8" font-family="system-ui" font-size="12" font-weight="700">Inbound Validated Lead</text>
+    <text x="80" y="58" text-anchor="middle" fill="#FFFFFF" font-family="system-ui" font-size="10">• Community: Palm Jumeirah</text>
+    <text x="80" y="76" text-anchor="middle" fill="#FFFFFF" font-family="system-ui" font-size="10">• Language: Arabic / English</text>
+  </g>
+
+  <!-- Arrow 1 -> Filter 1 -->
+  <path d="M 200 190 L 245 190" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="245,186 253,190 245,194" fill="#0066FF"/>
+
+  <!-- Filter 1: Territory & Language -->
+  <g transform="translate(255, 110)">
+    <rect width="180" height="160" rx="10" fill="url(#darkCard)" stroke="#0066FF" stroke-width="1.5"/>
+    <text x="90" y="30" text-anchor="middle" fill="#38BDF8" font-family="system-ui" font-size="11" font-weight="700">Rule 1: Qualification</text>
+    
+    <rect x="15" y="48" width="150" height="45" rx="6" fill="#1E293B"/>
+    <text x="25" y="68" fill="#CBD5E1" font-family="system-ui" font-size="9">Territory Matching:</text>
+    <text x="25" y="82" fill="#38BDF8" font-family="system-ui" font-size="9" font-weight="600">Palm Specialist Tier</text>
+
+    <rect x="15" y="100" width="150" height="45" rx="6" fill="#1E293B"/>
+    <text x="25" y="120" fill="#CBD5E1" font-family="system-ui" font-size="9">Language Alignment:</text>
+    <text x="25" y="134" fill="#38BDF8" font-family="system-ui" font-size="9" font-weight="600">Bilingual Arabic Capability</text>
+  </g>
+
+  <!-- Arrow Filter 1 -> Filter 2 -->
+  <path d="M 435 190 L 480 190" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="480,186 488,190 480,194" fill="#0066FF"/>
+
+  <!-- Filter 2: Availability & Load -->
+  <g transform="translate(490, 110)">
+    <rect width="180" height="160" rx="10" fill="url(#darkCard)" stroke="#F59E0B" stroke-width="1.5"/>
+    <text x="90" y="30" text-anchor="middle" fill="#F59E0B" font-family="system-ui" font-size="11" font-weight="700">Rule 2: Availability &amp; Cap</text>
+    
+    <rect x="15" y="48" width="150" height="45" rx="6" fill="#1E293B"/>
+    <text x="25" y="68" fill="#CBD5E1" font-family="system-ui" font-size="9">Active Shift Status:</text>
+    <text x="25" y="82" fill="#10B981" font-family="system-ui" font-size="9" font-weight="600">Broker Online / On Duty</text>
+
+    <rect x="15" y="100" width="150" height="45" rx="6" fill="#1E293B"/>
+    <text x="25" y="120" fill="#CBD5E1" font-family="system-ui" font-size="9">Configurable Workload Cap:</text>
+    <text x="25" y="134" fill="#F59E0B" font-family="system-ui" font-size="9" font-weight="600">Active Deals &lt; Max Threshold</text>
+  </g>
+
+  <!-- Arrow Filter 2 -> Output -->
+  <path d="M 670 190 L 715 190" stroke="#0066FF" stroke-width="2" fill="none"/>
+  <polygon points="715,186 723,190 715,194" fill="#0066FF"/>
+
+  <!-- Output & Failover -->
+  <g transform="translate(725, 95)">
+    <rect width="195" height="190" rx="10" fill="url(#darkCard)" stroke="#10B981" stroke-width="1.5"/>
+    <text x="97" y="28" text-anchor="middle" fill="#10B981" font-family="system-ui" font-size="11" font-weight="700">Dispatch &amp; Failover</text>
+    
+    <rect x="12" y="42" width="170" height="60" rx="6" fill="#0D242C" stroke="#10B981" stroke-width="1"/>
+    <text x="20" y="62" fill="#FFFFFF" font-family="system-ui" font-size="9" font-weight="600">Primary Assignment:</text>
+    <text x="20" y="78" fill="#6EE7B7" font-family="system-ui" font-size="8">Lead routed to Broker A via</text>
+    <text x="20" y="90" fill="#6EE7B7" font-family="system-ui" font-size="8">WhatsApp context card</text>
+
+    <rect x="12" y="112" width="170" height="60" rx="6" fill="#1C121A" stroke="#EF4444" stroke-width="1"/>
+    <text x="20" y="132" fill="#FCA5A5" font-family="system-ui" font-size="9" font-weight="600">Configurable Failover Timer:</text>
+    <text x="20" y="148" fill="#F87171" font-family="system-ui" font-size="8">If unacknowledged within agency</text>
+    <text x="20" y="160" fill="#F87171" font-family="system-ui" font-size="8">policy window → Backup Specialist</text>
+  </g>
+</svg>
