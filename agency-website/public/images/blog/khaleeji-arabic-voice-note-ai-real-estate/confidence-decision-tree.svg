@@ -7,14 +7,14 @@
   </defs>
 
   <rect width="960" height="480" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
-  <text x="480" y="42" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700" letter-spacing="0.5">Confidence Scoring &amp; Broker Takeover Decision Tree</text>
-  <text x="480" y="66" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Automated routing logic protecting client relationships and CRM data accuracy</text>
+  <text x="480" y="42" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700" letter-spacing="0.5">Confidence Scoring &amp; Broker Takeover Framework</text>
+  <text x="480" y="66" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Illustrative decision framework balancing automated intake against human broker review</text>
 
   <!-- Input Node -->
   <g transform="translate(360, 95)">
     <rect width="240" height="60" rx="10" fill="url(#treeCard)" stroke="#0066FF" stroke-width="2"/>
-    <text x="120" y="26" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">Normalized Audio Ingested</text>
-    <text x="120" y="44" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="10">ASR Confidence + NLP Completeness</text>
+    <text x="120" y="26" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">Audio Payload Ingested</text>
+    <text x="120" y="44" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="10">Illustrative Multi-Signal Evaluation</text>
   </g>
 
   <!-- Branching Lines -->
@@ -26,53 +26,53 @@
   <g transform="translate(80, 210)">
     <rect width="240" height="225" rx="12" fill="url(#treeCard)" stroke="#10B981" stroke-width="1.5"/>
     <rect x="12" y="12" width="216" height="30" rx="6" fill="#10B981" fill-opacity="0.15"/>
-    <text x="120" y="32" text-anchor="middle" fill="#10B981" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">Tier 1: Confidence ≥ 0.85</text>
+    <text x="120" y="32" text-anchor="middle" fill="#10B981" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Tier 1: Illustrative Score ≥ 0.85</text>
     
-    <text x="20" y="65" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Criteria:</text>
-    <text x="20" y="82" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Clean audio signal (SNR &gt; 18 dB)</text>
-    <text x="20" y="98" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• High token log-probabilities</text>
-    <text x="20" y="114" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Budget, location &amp; unit type clear</text>
+    <text x="20" y="65" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Configurable Criteria:</text>
+    <text x="20" y="82" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• High acoustic signal quality</text>
+    <text x="20" y="98" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Strong token log-probabilities</text>
+    <text x="20" y="114" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Key parameters identified</text>
 
-    <text x="20" y="140" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Action Path:</text>
-    <text x="20" y="157" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Direct CRM lead object creation</text>
-    <text x="20" y="173" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Native Arabic acknowledgment</text>
-    <text x="20" y="189" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Round-robin broker alert with draft</text>
-    <text x="20" y="205" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• 0s broker intervention latency</text>
+    <text x="20" y="140" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Workflow Pattern:</text>
+    <text x="20" y="157" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Automated CRM lead creation</text>
+    <text x="20" y="173" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Standard acknowledgment dispatch</text>
+    <text x="20" y="189" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Configurable broker notification</text>
+    <text x="20" y="205" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Direct follow-up preparation</text>
   </g>
 
   <!-- Tier 2: Partial Confidence -->
   <g transform="translate(360, 210)">
     <rect width="240" height="225" rx="12" fill="url(#treeCard)" stroke="#F59E0B" stroke-width="1.5"/>
     <rect x="12" y="12" width="216" height="30" rx="6" fill="#F59E0B" fill-opacity="0.15"/>
-    <text x="120" y="32" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">Tier 2: Confidence 0.65 - 0.84</text>
+    <text x="120" y="32" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Tier 2: Illustrative 0.65 – 0.84</text>
 
-    <text x="20" y="65" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Criteria:</text>
-    <text x="20" y="82" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Audio partially noisy or fast speech</text>
-    <text x="20" y="98" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Core intent clear, 1 field ambiguous</text>
-    <text x="20" y="114" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• e.g. &quot;Dubai Hills or Downtown?&quot;</text>
+    <text x="20" y="65" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Configurable Criteria:</text>
+    <text x="20" y="82" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Moderate acoustic noise</text>
+    <text x="20" y="98" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Core intent clear; field partial</text>
+    <text x="20" y="114" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• e.g. community ambiguity</text>
 
-    <text x="20" y="140" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Action Path:</text>
-    <text x="20" y="157" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Send 1 polite clarifying question</text>
-    <text x="20" y="173" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Create &quot;Pending Review&quot; lead</text>
-    <text x="20" y="189" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Broker alerted with tentative notes</text>
-    <text x="20" y="205" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Max 1 automated question allowed</text>
+    <text x="20" y="140" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Workflow Pattern:</text>
+    <text x="20" y="157" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Single clarification query</text>
+    <text x="20" y="173" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Pending review record created</text>
+    <text x="20" y="189" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Broker alerted with draft context</text>
+    <text x="20" y="205" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Guardrails prevent repeat loops</text>
   </g>
 
   <!-- Tier 3: Low Confidence / Complex -->
   <g transform="translate(640, 210)">
     <rect width="240" height="225" rx="12" fill="url(#treeCard)" stroke="#EF4444" stroke-width="1.5"/>
     <rect x="12" y="12" width="216" height="30" rx="6" fill="#EF4444" fill-opacity="0.15"/>
-    <text x="120" y="32" text-anchor="middle" fill="#F87171" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">Tier 3: Confidence &lt; 0.65</text>
+    <text x="120" y="32" text-anchor="middle" fill="#F87171" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Tier 3: Illustrative Score &lt; 0.65</text>
 
-    <text x="20" y="65" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Criteria:</text>
-    <text x="20" y="82" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Heavy background noise / wind</text>
-    <text x="20" y="98" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Complex multi-property barter</text>
-    <text x="20" y="114" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Distressed or angry voice tone</text>
+    <text x="20" y="65" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Configurable Criteria:</text>
+    <text x="20" y="82" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Low signal-to-noise ratio</text>
+    <text x="20" y="98" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Complex multi-unit enquiry</text>
+    <text x="20" y="114" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">• Highly dialectal phrasing</text>
 
-    <text x="20" y="140" fill="#F87171" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Action Path:</text>
-    <text x="20" y="157" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• ZERO automated bot response</text>
-    <text x="20" y="173" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Immediate broker takeover alert</text>
-    <text x="20" y="189" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Audio clip pushed to Slack/WhatsApp</text>
-    <text x="20" y="205" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Protects client trust &amp; prestige</text>
+    <text x="20" y="140" fill="#F87171" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Workflow Pattern:</text>
+    <text x="20" y="157" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Automated bot reply withheld</text>
+    <text x="20" y="173" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Immediate human broker alert</text>
+    <text x="20" y="189" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Raw audio + transcript available</text>
+    <text x="20" y="205" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10">• Protects client relationship</text>
   </g>
 </svg>

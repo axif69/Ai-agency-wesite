@@ -8,12 +8,12 @@
 
   <rect width="960" height="480" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
   <text x="480" y="42" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700" letter-spacing="0.5">Unstructured Khaleeji Voice Note to Structured CRM Object</text>
-  <text x="480" y="66" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Natural colloquial speech transformed into clean, validated real estate database records</text>
+  <text x="480" y="66" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Illustrative mapping from colloquial audio transcript to validated schema properties</text>
 
   <!-- Left: Raw Voice Note -->
   <g transform="translate(40, 100)">
     <rect width="410" height="340" rx="12" fill="url(#mapCard)" stroke="#334155" stroke-width="1.5"/>
-    <text x="25" y="32" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Raw Transcribed Voice Note (Khaleeji + EN)</text>
+    <text x="25" y="32" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Illustrative Audio Transcript (Khaleeji + English)</text>
     
     <rect x="20" y="50" width="370" height="110" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
     <text x="35" y="76" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="12" direction="rtl">"مرحبا اخوي، بغيت استفسر عن تاون هاوس في</text>
@@ -21,14 +21,14 @@
     <text x="35" y="116" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="12" direction="rtl">3.5 إلى 4 مليون، ويكون ready أو قريب التسليم،</text>
     <text x="35" y="136" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="12" direction="rtl">كلمنا ضروري لو سمحت."</text>
 
-    <text x="25" y="185" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Acoustic &amp; Semantic Metadata:</text>
+    <text x="25" y="185" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Acoustic &amp; Semantic Context (Illustrative):</text>
     <g transform="translate(20, 200)">
       <rect width="370" height="120" rx="6" fill="#0B101D" stroke="#1E293B" stroke-width="1"/>
-      <text x="15" y="24" fill="#94A3B8" font-family="monospace" font-size="10.5">Duration: 14.8 seconds</text>
-      <text x="15" y="44" fill="#94A3B8" font-family="monospace" font-size="10.5">Acoustic Code-Switch: Arabic (78%) + EN (22%)</text>
-      <text x="15" y="64" fill="#94A3B8" font-family="monospace" font-size="10.5">Dialect ID: Gulf / Emirati Arabic (UAE)</text>
-      <text x="15" y="84" fill="#94A3B8" font-family="monospace" font-size="10.5">Caller ID: +971 50 *** 8921</text>
-      <text x="15" y="104" fill="#10B981" font-family="monospace" font-size="10.5">Signal-to-Noise: 22.4 dB (High Quality)</text>
+      <text x="15" y="24" fill="#94A3B8" font-family="monospace" font-size="10.5">Duration: ~15 seconds</text>
+      <text x="15" y="44" fill="#94A3B8" font-family="monospace" font-size="10.5">Language: Arabic (Gulf) + English code-switching</text>
+      <text x="15" y="64" fill="#94A3B8" font-family="monospace" font-size="10.5">Acoustic Profile: Mobile voice recording</text>
+      <text x="15" y="84" fill="#94A3B8" font-family="monospace" font-size="10.5">Caller Channel: WhatsApp audio payload</text>
+      <text x="15" y="104" fill="#10B981" font-family="monospace" font-size="10.5">Status: Normalized &amp; preprocessed</text>
     </g>
   </g>
 
@@ -42,21 +42,21 @@
   <!-- Right: Structured CRM Payload -->
   <g transform="translate(510, 100)">
     <rect width="410" height="340" rx="12" fill="url(#mapCard)" stroke="#10B981" stroke-width="1.5"/>
-    <text x="25" y="32" fill="#10B981" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Normalized Structured CRM Payload (JSON)</text>
+    <text x="25" y="32" fill="#10B981" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Normalized Structured CRM Object (Illustrative JSON)</text>
 
     <rect x="20" y="50" width="370" height="270" rx="8" fill="#0B101D" stroke="#1E293B" stroke-width="1"/>
     <text x="35" y="74" fill="#94A3B8" font-family="monospace" font-size="10.5">{</text>
     <text x="50" y="92" fill="#38BDF8" font-family="monospace" font-size="10.5">"lead_type"</text><text x="135" y="92" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="150" y="92" fill="#34D399" font-family="monospace" font-size="10.5">"buyer"</text><text x="205" y="92" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
     <text x="50" y="110" fill="#38BDF8" font-family="monospace" font-size="10.5">"property_type"</text><text x="160" y="110" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="175" y="110" fill="#34D399" font-family="monospace" font-size="10.5">"townhouse"</text><text x="260" y="110" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
     <text x="50" y="128" fill="#38BDF8" font-family="monospace" font-size="10.5">"bedrooms"</text><text x="125" y="128" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="140" y="128" fill="#FBBF24" font-family="monospace" font-size="10.5">3</text><text x="155" y="128" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
-    <text x="50" y="146" fill="#38BDF8" font-family="monospace" font-size="10.5">"community"</text><text x="135" y="146" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="150" y="146" fill="#34D399" font-family="monospace" font-size="10.5">"Arabian Ranches"</text><text x="290" y="146" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
+    <text x="50" y="146" fill="#38BDF8" font-family="monospace" font-size="10.5">"community_target"</text><text x="180" y="146" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="195" y="146" fill="#34D399" font-family="monospace" font-size="10.5">"Arabian Ranches"</text><text x="330" y="146" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
     <text x="50" y="164" fill="#38BDF8" font-family="monospace" font-size="10.5">"budget_min_aed"</text><text x="175" y="164" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="190" y="164" fill="#FBBF24" font-family="monospace" font-size="10.5">3500000</text><text x="250" y="164" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
     <text x="50" y="182" fill="#38BDF8" font-family="monospace" font-size="10.5">"budget_max_aed"</text><text x="175" y="182" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="190" y="182" fill="#FBBF24" font-family="monospace" font-size="10.5">4000000</text><text x="250" y="182" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
-    <text x="50" y="200" fill="#38BDF8" font-family="monospace" font-size="10.5">"handover_status"</text><text x="175" y="200" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="190" y="200" fill="#34D399" font-family="monospace" font-size="10.5">"ready_or_near"</text><text x="310" y="200" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
-    <text x="50" y="218" fill="#38BDF8" font-family="monospace" font-size="10.5">"urgency"</text><text x="120" y="218" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="135" y="218" fill="#34D399" font-family="monospace" font-size="10.5">"high"</text><text x="185" y="218" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
-    <text x="50" y="236" fill="#38BDF8" font-family="monospace" font-size="10.5">"detected_dialect"</text><text x="195" y="236" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="210" y="236" fill="#34D399" font-family="monospace" font-size="10.5">"emirati_gulf"</text><text x="330" y="236" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
-    <text x="50" y="254" fill="#38BDF8" font-family="monospace" font-size="10.5">"composite_confidence"</text><text x="220" y="254" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="235" y="254" fill="#FBBF24" font-family="monospace" font-size="10.5">0.94</text><text x="270" y="254" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
-    <text x="50" y="272" fill="#38BDF8" font-family="monospace" font-size="10.5">"dispatch_action"</text><text x="185" y="272" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="200" y="272" fill="#34D399" font-family="monospace" font-size="10.5">"auto_crm_and_broker"</text>
+    <text x="50" y="200" fill="#38BDF8" font-family="monospace" font-size="10.5">"handover_preference"</text><text x="200" y="200" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="215" y="200" fill="#34D399" font-family="monospace" font-size="10.5">"ready_or_near"</text><text x="335" y="200" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
+    <text x="50" y="218" fill="#38BDF8" font-family="monospace" font-size="10.5">"urgency_flag"</text><text x="155" y="218" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="170" y="218" fill="#34D399" font-family="monospace" font-size="10.5">"prompt_followup"</text><text x="300" y="218" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
+    <text x="50" y="236" fill="#38BDF8" font-family="monospace" font-size="10.5">"language_mix"</text><text x="160" y="236" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="175" y="236" fill="#34D399" font-family="monospace" font-size="10.5">"ar_gulf_en_switch"</text><text x="325" y="236" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
+    <text x="50" y="254" fill="#38BDF8" font-family="monospace" font-size="10.5">"score_tier"</text><text x="145" y="254" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="160" y="254" fill="#34D399" font-family="monospace" font-size="10.5">"tier_1_high_confidence"</text><text x="345" y="254" fill="#FFFFFF" font-family="monospace" font-size="10.5">,</text>
+    <text x="50" y="272" fill="#38BDF8" font-family="monospace" font-size="10.5">"routing_target"</text><text x="175" y="272" fill="#FFFFFF" font-family="monospace" font-size="10.5">: </text><text x="190" y="272" fill="#34D399" font-family="monospace" font-size="10.5">"villa_sales_queue"</text>
     <text x="35" y="292" fill="#94A3B8" font-family="monospace" font-size="10.5">}</text>
   </g>
 </svg>

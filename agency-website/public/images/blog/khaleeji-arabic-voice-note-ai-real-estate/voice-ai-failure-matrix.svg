@@ -7,8 +7,8 @@
   </defs>
 
   <rect width="960" height="480" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
-  <text x="480" y="42" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700" letter-spacing="0.5">Where Arabic Voice AI Breaks in UAE Real Estate Workflows</text>
-  <text x="480" y="66" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Comparing standard generic ASR systems vs. engineered dialect-aware architecture</text>
+  <text x="480" y="42" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700" letter-spacing="0.5">Where Arabic Voice AI Encounters Complexity</text>
+  <text x="480" y="66" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Comparing standard generic ASR systems vs. dialect-aware engineered pipelines</text>
 
   <!-- Card 1: Colloquial Vocabulary -->
   <g transform="translate(40, 100)">
@@ -17,12 +17,12 @@
     <text x="32" y="38" text-anchor="middle" fill="#EF4444" font-family="system-ui, sans-serif" font-size="16" font-weight="bold">!</text>
     <text x="60" y="38" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">1. Colloquial Lexicon &amp; Phonetics</text>
     
-    <text x="20" y="70" fill="#F87171" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Generic ASR Failure:</text>
-    <text x="20" y="88" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">Trained on Modern Standard Arabic (MSA / Fusha). Drops Gulf idioms</text>
-    <text x="20" y="104" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">like &quot;أبغي&quot;, &quot;زين&quot;, &quot;مب&quot;, &quot;وايد&quot;, or maps them to archaic literary nouns.</text>
+    <text x="20" y="70" fill="#F87171" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Generic ASR Challenge:</text>
+    <text x="20" y="88" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">Trained primarily on Modern Standard Arabic (MSA). May struggle with</text>
+    <text x="20" y="104" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">Gulf colloquial terms like &quot;أبغي&quot;, &quot;زين&quot;, &quot;مب&quot;, &quot;وايد&quot;.</text>
 
-    <text x="20" y="128" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Engineered Fix:</text>
-    <text x="20" y="144" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">Emirati &amp; Gulf acoustic custom vocabulary with localized language models.</text>
+    <text x="20" y="128" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Engineered Mitigation:</text>
+    <text x="20" y="144" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">Acoustic models tuned with regional Gulf language resources.</text>
   </g>
 
   <!-- Card 2: Code Switching -->
@@ -32,12 +32,12 @@
     <text x="32" y="38" text-anchor="middle" fill="#EF4444" font-family="system-ui, sans-serif" font-size="16" font-weight="bold">!</text>
     <text x="60" y="38" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">2. Arabic-English Code-Switching</text>
 
-    <text x="20" y="70" fill="#F87171" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Generic ASR Failure:</text>
-    <text x="20" y="88" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">Sentences like &quot;أبي 2-bedroom في Dubai Hills يكون ready&quot; trigger</text>
-    <text x="20" y="104" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">language confusion, garbling English terms into nonsensical Arabic characters.</text>
+    <text x="20" y="70" fill="#F87171" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Generic ASR Challenge:</text>
+    <text x="20" y="88" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">Sentences like &quot;أبي 2-bedroom في Dubai Hills يكون ready&quot; can cause</text>
+    <text x="20" y="104" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">decoding confusion across monolingual acoustic vocabularies.</text>
 
-    <text x="20" y="128" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Engineered Fix:</text>
-    <text x="20" y="144" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">Bilingual acoustic decoders that switch mid-utterance without penalty.</text>
+    <text x="20" y="128" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Engineered Mitigation:</text>
+    <text x="20" y="144" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">Bilingual acoustic models configured to decode mixed-language utterances.</text>
   </g>
 
   <!-- Card 3: Ephemeral WhatsApp URLs -->
@@ -45,14 +45,14 @@
     <rect width="425" height="155" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
     <rect x="16" y="16" width="32" height="32" rx="8" fill="#F59E0B" fill-opacity="0.15" stroke="#F59E0B" stroke-width="1"/>
     <text x="32" y="38" text-anchor="middle" fill="#F59E0B" font-family="system-ui, sans-serif" font-size="16" font-weight="bold">⏱</text>
-    <text x="60" y="38" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">3. Ephemeral Media Expiration (5 Mins)</text>
+    <text x="60" y="38" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">3. Short-Lived Ephemeral Media URLs</text>
 
-    <text x="20" y="70" fill="#F87171" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Generic ASR Failure:</text>
-    <text x="20" y="88" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">Standard webhook handlers enqueue the Meta media URL. After 5 minutes,</text>
-    <text x="20" y="104" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">the temporary link expires with HTTP 403 Forbidden, causing dropped leads.</text>
+    <text x="20" y="70" fill="#F87171" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Generic ASR Challenge:</text>
+    <text x="20" y="88" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">Temporary media URLs expire quickly; delayed message queues</text>
+    <text x="20" y="104" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">encounter authorization errors if retrieval is deferred.</text>
 
-    <text x="20" y="128" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Engineered Fix:</text>
-    <text x="20" y="144" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">Immediate streaming download to local encrypted ephemeral cache.</text>
+    <text x="20" y="128" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Engineered Mitigation:</text>
+    <text x="20" y="144" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">Prompt binary retrieval decoupled from downstream processing.</text>
   </g>
 
   <!-- Card 4: Real Estate Entity Ambiguity -->
@@ -60,13 +60,13 @@
     <rect width="425" height="155" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
     <rect x="16" y="16" width="32" height="32" rx="8" fill="#8B5CF6" fill-opacity="0.15" stroke="#8B5CF6" stroke-width="1"/>
     <text x="32" y="38" text-anchor="middle" fill="#8B5CF6" font-family="system-ui, sans-serif" font-size="16" font-weight="bold">#</text>
-    <text x="60" y="38" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">4. Real Estate Metric Ambiguity</text>
+    <text x="60" y="38" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="600">4. Domain Entity Normalization</text>
 
-    <text x="20" y="70" fill="#F87171" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Generic ASR Failure:</text>
-    <text x="20" y="88" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">Fails to convert &quot;مليونين ونص&quot; into 2,500,000 AED; confuses down payment</text>
-    <text x="20" y="104" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">(&quot;دفعة أولى&quot;) with total price, creating corrupted CRM opportunities.</text>
+    <text x="20" y="70" fill="#F87171" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Generic ASR Challenge:</text>
+    <text x="20" y="88" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">Unstructured phrasing (&quot;مليونين ونص&quot;, colloquial terms) requires</text>
+    <text x="20" y="104" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">domain-aware parsing to avoid invalid CRM entries.</text>
 
-    <text x="20" y="128" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Engineered Fix:</text>
-    <text x="20" y="144" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">Strict schema extraction prompt with Dubai property financial ontology.</text>
+    <text x="20" y="128" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Engineered Mitigation:</text>
+    <text x="20" y="144" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">Configurable schema extraction templates with property taxonomy.</text>
   </g>
 </svg>

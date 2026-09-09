@@ -16,7 +16,7 @@
 
   <rect width="960" height="480" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
   <text x="480" y="42" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700" letter-spacing="0.5">Khaleeji Voice-Note Ingestion &amp; NLP Architecture</text>
-  <text x="480" y="66" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">End-to-end processing pipeline from WhatsApp audio byte stream to CRM entity extraction</text>
+  <text x="480" y="66" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Illustrative pipeline pattern from WhatsApp audio stream to dialect ASR and schema extraction</text>
 
   <!-- Stage 1: Media Ingestion -->
   <g transform="translate(30, 105)">
@@ -30,15 +30,15 @@
 
     <rect x="12" y="132" width="141" height="76" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
     <text x="72" y="154" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">Meta API Auth Hop</text>
-    <text x="72" y="172" text-anchor="middle" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="9">GET /v20.0/{media_id}</text>
-    <text x="72" y="187" text-anchor="middle" fill="#EF4444" font-family="system-ui, sans-serif" font-size="9" font-weight="600">5-Min Expiring URL</text>
-    <text x="72" y="200" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Immediate stream fetch</text>
+    <text x="72" y="172" text-anchor="middle" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="9">GET /&lt;version&gt;/{media_id}</text>
+    <text x="72" y="187" text-anchor="middle" fill="#EF4444" font-family="system-ui, sans-serif" font-size="9" font-weight="600">Short-Lived URL</text>
+    <text x="72" y="200" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Prompt binary retrieval</text>
 
     <rect x="12" y="222" width="141" height="84" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
     <text x="72" y="244" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">Binary Buffer</text>
     <text x="72" y="262" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Stream OGG Opus bytes</text>
-    <text x="72" y="276" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Ephemeral in-memory buffer</text>
-    <text x="72" y="292" text-anchor="middle" fill="#10B981" font-family="system-ui, sans-serif" font-size="8.5">TLS 1.3 / AES-256 secure</text>
+    <text x="72" y="276" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Ephemeral audio cache</text>
+    <text x="72" y="292" text-anchor="middle" fill="#10B981" font-family="system-ui, sans-serif" font-size="8.5">Configurable encryption</text>
   </g>
 
   <!-- Arrow 1 -> 2 -->
@@ -50,22 +50,22 @@
     <text x="82" y="30" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="13" font-weight="600">2. Normalization</text>
 
     <rect x="12" y="52" width="141" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
-    <text x="72" y="74" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">FFmpeg Transcoding</text>
-    <text x="72" y="92" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">OGG Opus container to</text>
-    <text x="72" y="106" text-anchor="middle" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600">16kHz Mono WAV (PCM)</text>
-    <text x="72" y="120" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Lossless acoustic frame</text>
+    <text x="72" y="74" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Illustrative Preprocessing</text>
+    <text x="72" y="92" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">e.g. OGG Opus to</text>
+    <text x="72" y="106" text-anchor="middle" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600">16kHz Mono WAV</text>
+    <text x="72" y="120" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Depends on model targets</text>
 
     <rect x="12" y="142" width="141" height="74" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
     <text x="72" y="164" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">Acoustic Conditioning</text>
     <text x="72" y="182" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Dynamic noise gating</text>
     <text x="72" y="196" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Silence removal &amp; trim</text>
-    <text x="72" y="210" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">RMS loudness leveling</text>
+    <text x="72" y="210" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Configurable leveling</text>
 
     <rect x="12" y="230" width="141" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
     <text x="72" y="252" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">Language Detection</text>
-    <text x="72" y="270" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Multi-accent LID classifier</text>
-    <text x="72" y="284" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="9">Identifies Code-Switching</text>
-    <text x="72" y="298" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Arabic (Emirati/Gulf) + EN</text>
+    <text x="72" y="270" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Multi-accent classification</text>
+    <text x="72" y="284" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="9">Code-Switch Detection</text>
+    <text x="72" y="298" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Arabic (Gulf) + English</text>
   </g>
 
   <!-- Arrow 2 -> 3 -->
@@ -78,21 +78,21 @@
 
     <rect x="12" y="52" width="141" height="84" rx="8" fill="#1E293B" stroke="#8B5CF6" stroke-width="1"/>
     <text x="72" y="74" text-anchor="middle" fill="#C4B5FD" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Khaleeji Lexicon</text>
-    <text x="72" y="92" text-anchor="middle" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="9">Gulf colloquial phonetics</text>
+    <text x="72" y="92" text-anchor="middle" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="9">Colloquial vocabulary</text>
     <text x="72" y="106" text-anchor="middle" fill="#A78BFA" font-family="system-ui, sans-serif" font-size="9">أبغى / أبي / زين / مب / وايد</text>
-    <text x="72" y="122" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Trained acoustic priors</text>
+    <text x="72" y="122" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Dialect-aware acoustic priors</text>
 
     <rect x="12" y="148" width="141" height="74" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
     <text x="72" y="170" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">Bilingual Decoder</text>
-    <text x="72" y="188" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Joint Arabic-English vocabulary</text>
-    <text x="72" y="202" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="9">&quot;2BHK&quot; / &quot;Dubai Hills&quot; / &quot;ready&quot;</text>
-    <text x="72" y="216" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Zero phonetic garbling</text>
+    <text x="72" y="188" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Shared Arabic-English tokens</text>
+    <text x="72" y="202" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="9">&quot;2BHK&quot; / &quot;Dubai Hills&quot;</text>
+    <text x="72" y="216" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Avoids phonetic mangling</text>
 
     <rect x="12" y="234" width="141" height="72" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
-    <text x="72" y="254" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Confidence Metric</text>
-    <text x="72" y="270" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Token-level log-probabilities</text>
-    <text x="72" y="284" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="9">Confidence score calculation</text>
-    <text x="72" y="298" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Flag uncertain segments</text>
+    <text x="72" y="254" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Confidence Signals</text>
+    <text x="72" y="270" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Token-level log-probs</text>
+    <text x="72" y="284" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="9">Estimated token certainty</text>
+    <text x="72" y="298" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Flags uncertain terms</text>
   </g>
 
   <!-- Arrow 3 -> 4 -->
@@ -104,22 +104,22 @@
     <text x="82" y="30" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="13" font-weight="600">4. Entity Extraction</text>
 
     <rect x="12" y="52" width="141" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
-    <text x="72" y="74" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">LLM Intent Parser</text>
-    <text x="72" y="92" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Dialect-aware prompt engine</text>
-    <text x="72" y="106" text-anchor="middle" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="9">Strict schema JSON output</text>
-    <text x="72" y="120" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Zero hallucinations allowed</text>
+    <text x="72" y="74" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">LLM Schema Parser</text>
+    <text x="72" y="92" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Dialect prompt template</text>
+    <text x="72" y="106" text-anchor="middle" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="9">Structured JSON output</text>
+    <text x="72" y="120" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Deterministic schema</text>
 
     <rect x="12" y="142" width="141" height="76" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
-    <text x="72" y="164" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">Attribute Mapping</text>
-    <text x="72" y="182" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">&quot;المرابع&quot; -&gt; Arabian Ranches</text>
-    <text x="72" y="196" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">&quot;٣ إلى ٤ مليون&quot; -&gt; AED 3-4M</text>
-    <text x="72" y="210" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Handover: Off-plan vs Ready</text>
+    <text x="72" y="164" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">Attribute Normalization</text>
+    <text x="72" y="182" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Community naming mapping</text>
+    <text x="72" y="196" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Colloquial number conversion</text>
+    <text x="72" y="210" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Timeline / status extraction</text>
 
     <rect x="12" y="230" width="141" height="76" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
     <text x="72" y="252" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">Schema Validation</text>
-    <text x="72" y="270" text-anchor="middle" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="9">Pydantic / Zod verification</text>
-    <text x="72" y="284" text-anchor="middle" fill="#10B981" font-family="system-ui, sans-serif" font-size="8.5">Validates data types &amp; ranges</text>
-    <text x="72" y="298" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8">Ensures CRM compliance</text>
+    <text x="72" y="270" text-anchor="middle" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="9">Data-type validation rules</text>
+    <text x="72" y="284" text-anchor="middle" fill="#10B981" font-family="system-ui, sans-serif" font-size="8.5">Rejects malformed outputs</text>
+    <text x="72" y="298" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8">Maintains CRM hygiene</text>
   </g>
 
   <!-- Arrow 4 -> 5 -->
@@ -128,24 +128,24 @@
   <!-- Stage 5: Action & Dispatch -->
   <g transform="translate(790, 105)">
     <rect width="140" height="325" rx="12" fill="url(#darkCard)" stroke="#334155" stroke-width="1.5"/>
-    <text x="70" y="30" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="13" font-weight="600">5. Action &amp; Sync</text>
+    <text x="70" y="30" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="13" font-weight="600">5. Triage &amp; Routing</text>
 
     <rect x="10" y="52" width="120" height="76" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
-    <text x="70" y="74" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Score &gt;= 0.85</text>
-    <text x="70" y="92" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="9">Direct CRM Sync</text>
-    <text x="70" y="106" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Assigned to broker</text>
-    <text x="70" y="120" text-anchor="middle" fill="#10B981" font-family="system-ui, sans-serif" font-size="8">Auto WhatsApp ACK</text>
+    <text x="70" y="74" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600">High Confidence</text>
+    <text x="70" y="92" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="8.5">e.g. Score ≥ 0.85</text>
+    <text x="70" y="106" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8">Direct CRM Sync</text>
+    <text x="70" y="120" text-anchor="middle" fill="#10B981" font-family="system-ui, sans-serif" font-size="8">Configurable ACK</text>
 
     <rect x="10" y="142" width="120" height="76" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
-    <text x="70" y="164" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Score 0.65 - 0.84</text>
-    <text x="70" y="182" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="9">Clarification Loop</text>
-    <text x="70" y="196" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Quick confirmation prompt</text>
+    <text x="70" y="164" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600">Moderate Score</text>
+    <text x="70" y="182" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="8.5">e.g. 0.65 – 0.84</text>
+    <text x="70" y="196" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8">Clarification Prompt</text>
     <text x="70" y="210" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="8">Broker notified</text>
 
     <rect x="10" y="230" width="120" height="76" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1"/>
-    <text x="70" y="252" text-anchor="middle" fill="#F87171" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Score &lt; 0.65</text>
-    <text x="70" y="270" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="9">Broker Takeover</text>
-    <text x="70" y="284" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8">Draft to Slack &amp; CRM</text>
-    <text x="70" y="298" text-anchor="middle" fill="#EF4444" font-family="system-ui, sans-serif" font-size="8">Zero bot hallucination</text>
+    <text x="70" y="252" text-anchor="middle" fill="#F87171" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600">Low Confidence</text>
+    <text x="70" y="270" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="8.5">e.g. Score &lt; 0.65</text>
+    <text x="70" y="284" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8">Human Takeover</text>
+    <text x="70" y="298" text-anchor="middle" fill="#EF4444" font-family="system-ui, sans-serif" font-size="8">Audio draft to broker</text>
   </g>
 </svg>
