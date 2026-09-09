@@ -55,8 +55,8 @@ export async function POST(req: Request) {
     }
 
     // 1. DISPATCH TO TELEGRAM
-    const tgToken = (process.env.TELEGRAM_BOT_TOKEN || '8992775442:AAG39sOo5oz7kLAZe0_K2lWhRvqA0fgPxlc').trim();
-    const tgChatId = (process.env.TELEGRAM_CHAT_ID || '8869904134').trim();
+    const tgToken = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
+    const tgChatId = (process.env.TELEGRAM_CHAT_ID || '').trim();
 
     const cleanPhoneDigits = cleanContact.replace(/[^0-9]/g, '');
     const waQuickLink = cleanPhoneDigits.length >= 8 ? `https://wa.me/${cleanPhoneDigits}` : '';
