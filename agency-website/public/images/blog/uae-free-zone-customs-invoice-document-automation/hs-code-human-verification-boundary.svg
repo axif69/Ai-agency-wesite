@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="100%">
+  <rect width="960" height="520" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
+  <text x="480" y="38" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700">HS-Code Classification Assistance &amp; Statutory Legal Boundary</text>
+  <text x="480" y="58" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">AI semantic matching assists internal tariff research; customs declarant retains statutory accountability</text>
+
+  <!-- Critical Boundary Caution Banner -->
+  <rect x="140" y="74" width="680" height="26" rx="5" fill="#78350F" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="480" y="91" text-anchor="middle" fill="#FEF3C7" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700">AI assists classification; it does not replace authoritative customs review.</text>
+
+  <!-- Step 1: Product Description -->
+  <g transform="translate(40, 130)">
+    <rect width="240" height="240" rx="10" fill="#1E293B" stroke="#0066FF" stroke-width="1.5"/>
+    <text x="120" y="28" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="13" font-weight="700">1. Product Description Input</text>
+    
+    <rect x="15" y="45" width="210" height="75" rx="6" fill="#0F172A" stroke="#334155"/>
+    <text x="25" y="65" fill="#E2E8F0" font-family="monospace" font-size="10">Raw Commercial Invoice:</text>
+    <text x="25" y="82" fill="#94A3B8" font-family="monospace" font-size="9.5">"High-pressure hydraulic</text>
+    <text x="25" y="98" fill="#94A3B8" font-family="monospace" font-size="9.5">directional control valve,</text>
+    <text x="25" y="112" fill="#94A3B8" font-family="monospace" font-size="9.5">cast iron body, 350 bar"</text>
+
+    <text x="15" y="145" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">• Multi-language translation</text>
+    <text x="15" y="165" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">• Material &amp; technical specs</text>
+    <text x="15" y="185" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">• Brand &amp; part number reference</text>
+    <text x="15" y="205" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">• Country of origin: Germany</text>
+
+    <text x="120" y="230" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Unstructured Inbound Signal</text>
+  </g>
+
+  <!-- Arrow 1 to 2 -->
+  <path d="M 280 250 L 320 250" stroke="#0066FF" stroke-width="2"/>
+
+  <!-- Step 2: AI Assistance & Internal Catalogue -->
+  <g transform="translate(325, 130)">
+    <rect width="280" height="240" rx="10" fill="#1E293B" stroke="#0066FF" stroke-width="1.5"/>
+    <text x="140" y="28" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="13" font-weight="700">2. Candidate Assistance Engine</text>
+
+    <rect x="15" y="45" width="250" height="90" rx="6" fill="#0F172A" stroke="#334155"/>
+    <text x="25" y="65" fill="#FBBF24" font-family="monospace" font-size="10">Candidate Matches Retrieved:</text>
+    <text x="25" y="82" fill="#E2E8F0" font-family="monospace" font-size="9.5">A: 8481.20 (Hydraulic valves)</text>
+    <text x="25" y="97" fill="#94A3B8" font-family="monospace" font-size="9.5">B: 8481.80 (Other appliances)</text>
+    <text x="25" y="112" fill="#94A3B8" font-family="monospace" font-size="9.5">C: 8412.21 (Hydraulic cylinders)</text>
+    <text x="25" y="127" fill="#34D399" font-family="monospace" font-size="9">Matched against internal catalogue</text>
+
+    <text x="15" y="155" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">• WCO Nomenclature Alignment</text>
+    <text x="15" y="175" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">• Past Declared Customs Rulings</text>
+    <text x="15" y="195" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">• Similarity &amp; Ambiguity Flagging</text>
+    <text x="15" y="215" fill="#F87171" font-family="system-ui, sans-serif" font-size="10.5">⚠️ No automatic declaration</text>
+
+    <text x="140" y="232" text-anchor="middle" fill="#FBBF24" font-family="monospace" font-size="9.5">State: Candidate Suggested</text>
+  </g>
+
+  <!-- Arrow 2 to 3 (Thick Red Boundary Line) -->
+  <g transform="translate(610, 110)">
+    <line x1="15" y1="10" x2="15" y2="280" stroke="#EF4444" stroke-width="2.5" stroke-dasharray="6,4"/>
+    <text x="15" y="295" text-anchor="middle" fill="#EF4444" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700">LEGAL BOUNDARY</text>
+  </g>
+
+  <!-- Step 3: Human Verification Gate -->
+  <g transform="translate(645, 130)">
+    <rect width="275" height="240" rx="10" fill="#064E3B" fill-opacity="0.35" stroke="#10B981" stroke-width="1.5"/>
+    <text x="137" y="28" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="13" font-weight="700">3. Human Verification &amp; Filing</text>
+
+    <rect x="15" y="45" width="245" height="90" rx="6" fill="#0F172A" stroke="#10B981"/>
+    <text x="25" y="65" fill="#34D399" font-family="system-ui, sans-serif" font-size="10" font-weight="700">Authorized Broker / Declarant Gate:</text>
+    <text x="25" y="82" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="9.5">• Review Technical Datasheet</text>
+    <text x="25" y="97" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="9.5">• Verify GCC Unified Tariff code</text>
+    <text x="25" y="112" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="9.5">• Confirm Duty / Exemption Basis</text>
+    <text x="25" y="127" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="9">Sign-off by Licensed Declarant</text>
+
+    <text x="15" y="155" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">• Customs Declaration Portal Submit</text>
+    <text x="15" y="175" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">• Mirsal 2 / Customs Platform Sync</text>
+    <text x="15" y="195" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="10.5">• Permanent Declarant Audit Stamp</text>
+    <text x="15" y="215" fill="#34D399" font-family="system-ui, sans-serif" font-size="10.5">✓ Authorized Customs Sign-Off Completed</text>
+
+    <text x="137" y="232" text-anchor="middle" fill="#34D399" font-family="monospace" font-size="9.5">State: Human Verified &amp; Submitted</text>
+  </g>
+
+  <!-- Bottom Regulatory Notice -->
+  <rect x="60" y="390" width="840" height="95" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="415" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Customs Governance &amp; Statutory Principle</text>
+  <text x="480" y="438" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">Under the GCC Common Customs Law and UAE Customs regulations, the importer of record or their authorized customs broker bears exclusive legal responsibility for the accuracy of customs declarations, valuation, origin documentation, and tariff classification.</text>
+  <text x="480" y="460" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Any HS-code suggestion must remain subject to human verification and applicable customs requirements.</text>
+</svg>
