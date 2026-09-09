@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="treeCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141B2D" />
+      <stop offset="100%" stop-color="#0E1322" />
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="500" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
+  <text x="480" y="38" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Build vs. Buy Architectural Decision Tree</text>
+  <text x="480" y="58" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Evaluating off-the-shelf PMS software, custom automation layers, and bespoke platforms</text>
+
+  <!-- Banner -->
+  <rect x="230" y="70" width="500" height="20" rx="4" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="84" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Custom software should be justified by operational requirements, not novelty</text>
+
+  <!-- Root Node -->
+  <g transform="translate(330, 105)">
+    <rect width="300" height="55" rx="10" fill="url(#treeCard)" stroke="#0066FF" stroke-width="2"/>
+    <text x="150" y="24" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold">What is the Primary Operational Gap?</text>
+    <text x="150" y="42" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="9.5">Evaluate current software stack and workflows</text>
+  </g>
+
+  <!-- 3 Branches -->
+  <!-- Branch 1: Standard PMS -->
+  <path d="M 380 160 L 180 205" stroke="#10B981" stroke-width="2" fill="none"/>
+  <g transform="translate(50, 205)">
+    <rect width="260" height="230" rx="12" fill="url(#treeCard)" stroke="#10B981" stroke-width="1.5"/>
+    <rect x="12" y="12" width="236" height="28" rx="6" fill="#10B981" fill-opacity="0.15"/>
+    <text x="130" y="30" text-anchor="middle" fill="#10B981" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">PATH A: CONFIGURE CORE PMS</text>
+
+    <text x="20" y="60" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">When to choose:</text>
+    <text x="20" y="78" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9.5">• Workflows follow standard industry patterns</text>
+    <text x="20" y="94" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9.5">• Team can adapt to platform processes</text>
+    <text x="20" y="110" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9.5">• Built-in reports satisfy reporting needs</text>
+    <text x="20" y="126" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9.5">• Rapid deployment is prioritized</text>
+
+    <rect x="12" y="145" width="236" height="70" rx="6" fill="#0B101D" stroke="#1E293B" stroke-width="1"/>
+    <text x="130" y="165" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">Recommendation</text>
+    <text x="130" y="182" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Avoid custom development. Maximize</text>
+    <text x="130" y="196" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">native PMS configuration &amp; training.</text>
+  </g>
+
+  <!-- Branch 2: Automation Layer -->
+  <path d="M 480 160 L 480 205" stroke="#60A5FA" stroke-width="2" fill="none"/>
+  <g transform="translate(350, 205)">
+    <rect width="260" height="230" rx="12" fill="url(#treeCard)" stroke="#60A5FA" stroke-width="2"/>
+    <rect x="12" y="12" width="236" height="28" rx="6" fill="#60A5FA" fill-opacity="0.15"/>
+    <text x="130" y="30" text-anchor="middle" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">PATH B: ADD AUTOMATION LAYER</text>
+
+    <text x="20" y="60" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">When to choose:</text>
+    <text x="20" y="78" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9.5">• Operations span PMS, CRM, and WhatsApp</text>
+    <text x="20" y="94" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9.5">• Manual re-keying causes delays</text>
+    <text x="20" y="110" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9.5">• Custom approvals sit outside the PMS</text>
+    <text x="20" y="126" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9.5">• Core PMS is loved for accounting/leases</text>
+
+    <rect x="12" y="145" width="236" height="70" rx="6" fill="#0B101D" stroke="#0066FF" stroke-width="1"/>
+    <text x="130" y="165" text-anchor="middle" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">Recommendation</text>
+    <text x="130" y="182" text-anchor="middle" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="8.5">Keep PMS as system of record;</text>
+    <text x="130" y="196" text-anchor="middle" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="8.5">automate external handoffs via API.</text>
+  </g>
+
+  <!-- Branch 3: Custom Software -->
+  <path d="M 580 160 L 780 205" stroke="#F59E0B" stroke-width="2" fill="none"/>
+  <g transform="translate(650, 205)">
+    <rect width="260" height="230" rx="12" fill="url(#treeCard)" stroke="#F59E0B" stroke-width="1.5"/>
+    <rect x="12" y="12" width="236" height="28" rx="6" fill="#F59E0B" fill-opacity="0.15"/>
+    <text x="130" y="30" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">PATH C: BESPOKE SOFTWARE</text>
+
+    <text x="20" y="60" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">When to consider:</text>
+    <text x="20" y="78" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9.5">• Operating model is fundamentally unique</text>
+    <text x="20" y="94" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9.5">• Existing market platforms cannot adapt</text>
+    <text x="20" y="110" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9.5">• Organization has internal dev &amp; QA</text>
+    <text x="20" y="126" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9.5">• High budget for lifecycle maintenance</text>
+
+    <rect x="12" y="145" width="236" height="70" rx="6" fill="#0B101D" stroke="#1E293B" stroke-width="1"/>
+    <text x="130" y="165" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">Cautionary Guidance</text>
+    <text x="130" y="182" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">High ongoing maintenance cost.</text>
+    <text x="130" y="196" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">Only proceed with strong ROI case.</text>
+  </g>
+</svg>

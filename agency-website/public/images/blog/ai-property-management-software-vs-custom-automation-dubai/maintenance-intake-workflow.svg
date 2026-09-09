@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="flowCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141B2D" />
+      <stop offset="100%" stop-color="#0E1322" />
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="480" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
+  <text x="480" y="40" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Maintenance Intake &amp; Vendor Coordination Workflow</text>
+  <text x="480" y="62" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Event-driven maintenance triage with human-in-the-loop review</text>
+
+  <!-- Banner -->
+  <rect x="230" y="74" width="500" height="20" rx="4" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="88" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Illustrative workflow — operational policies remain organization-specific</text>
+
+  <!-- Step 1 -->
+  <g transform="translate(40, 115)">
+    <rect width="165" height="150" rx="10" fill="url(#flowCard)" stroke="#334155" stroke-width="1.5"/>
+    <text x="82" y="26" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">1. INTAKE</text>
+    <rect x="12" y="40" width="141" height="95" rx="6" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="82" y="62" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">Tenant Message</text>
+    <text x="82" y="78" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• WhatsApp text/audio</text>
+    <text x="82" y="94" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• Portal form submission</text>
+    <text x="82" y="110" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• Photo/video payload</text>
+    <text x="82" y="126" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8.5">Event Captured</text>
+  </g>
+
+  <!-- Arrow 1->2 -->
+  <path d="M 210 190 L 225 190" stroke="#38BDF8" stroke-width="2"/>
+
+  <!-- Step 2 -->
+  <g transform="translate(230, 115)">
+    <rect width="165" height="150" rx="10" fill="url(#flowCard)" stroke="#334155" stroke-width="1.5"/>
+    <text x="82" y="26" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">2. VERIFICATION</text>
+    <rect x="12" y="40" width="141" height="95" rx="6" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="82" y="62" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">PMS Unit Lookup</text>
+    <text x="82" y="78" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• Phone &amp; unit match</text>
+    <text x="82" y="94" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• Active lease status</text>
+    <text x="82" y="110" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• Landlord SLA rules</text>
+    <text x="82" y="126" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8.5">Record Confirmed</text>
+  </g>
+
+  <!-- Arrow 2->3 -->
+  <path d="M 400 190 L 415 190" stroke="#38BDF8" stroke-width="2"/>
+
+  <!-- Step 3 -->
+  <g transform="translate(420, 115)">
+    <rect width="165" height="150" rx="10" fill="url(#flowCard)" stroke="#334155" stroke-width="1.5"/>
+    <text x="82" y="26" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">3. CLASSIFICATION</text>
+    <rect x="12" y="40" width="141" height="95" rx="6" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="82" y="62" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">Issue Context</text>
+    <text x="82" y="78" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• Trade: HVAC, Plumb</text>
+    <text x="82" y="94" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• Severity suggestion</text>
+    <text x="82" y="110" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">• Warranty check</text>
+    <text x="82" y="126" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8.5">Tag Suggested</text>
+  </g>
+
+  <!-- Arrow 3->4 -->
+  <path d="M 590 190 L 605 190" stroke="#38BDF8" stroke-width="2"/>
+
+  <!-- Step 4 -->
+  <g transform="translate(610, 115)">
+    <rect width="165" height="150" rx="10" fill="url(#flowCard)" stroke="#10B981" stroke-width="1.5"/>
+    <text x="82" y="26" text-anchor="middle" fill="#10B981" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">4. HUMAN REVIEW</text>
+    <rect x="12" y="40" width="141" height="95" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+    <text x="82" y="62" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600">Operations Signoff</text>
+    <text x="82" y="78" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="9">• Safety check verify</text>
+    <text x="82" y="94" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="9">• Quote review</text>
+    <text x="82" y="110" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="9">• Landlord threshold</text>
+    <text x="82" y="126" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="8.5">Approved for Action</text>
+  </g>
+
+  <!-- Arrow 4->5 -->
+  <path d="M 780 190 L 795 190" stroke="#38BDF8" stroke-width="2"/>
+
+  <!-- Step 5 -->
+  <g transform="translate(800, 115)">
+    <rect width="125" height="150" rx="10" fill="url(#flowCard)" stroke="#334155" stroke-width="1.5"/>
+    <text x="62" y="26" text-anchor="middle" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">5. DISPATCH</text>
+    <rect x="10" y="40" width="105" height="95" rx="6" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="62" y="62" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Vendor &amp; PMS</text>
+    <text x="62" y="78" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">• Ticket in PMS</text>
+    <text x="62" y="94" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">• Work order out</text>
+    <text x="62" y="110" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5">• Tenant notified</text>
+    <text x="62" y="126" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="8">Closed / Synced</text>
+  </g>
+
+  <!-- Bottom Details Box -->
+  <g transform="translate(40, 290)">
+    <rect width="885" height="160" rx="12" fill="#0B101D" stroke="#1E293B" stroke-width="1"/>
+    <text x="25" y="28" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">CRITICAL OPERATIONAL PRINCIPLE: HUMAN-IN-THE-LOOP SAFETY OVERSIGHT</text>
+    
+    <g transform="translate(25, 45)">
+      <text x="0" y="16" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">Automated workflows assist with data capture, unit verification, and classification. However, safety-critical</text>
+      <text x="0" y="34" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">repairs (such as gas leaks, electrical faults, structural damage, or major water bursts) remain subject to</text>
+      <text x="0" y="52" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10.5">human operational review and manual vendor dispatch to maintain safety and compliance standards.</text>
+    </g>
+
+    <g transform="translate(25, 120)">
+      <rect width="180" height="24" rx="4" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="90" y="16" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="9.5">✓ Verification via PMS API</text>
+      
+      <rect x="220" y="0" width="180" height="24" rx="4" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="310" y="16" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="9.5">✓ Idempotent Ticket Creation</text>
+      
+      <rect x="440" y="0" width="220" height="24" rx="4" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <text x="550" y="16" text-anchor="middle" fill="#34D399" font-family="system-ui, sans-serif" font-size="9.5">✓ Audit Trail Logged to Database</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="mCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141B2D" />
+      <stop offset="100%" stop-color="#0E1322" />
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="480" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
+  <text x="480" y="40" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Property Management Architectural Decision Matrix</text>
+  <text x="480" y="62" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Qualitative capability comparison across operating layers</text>
+
+  <!-- Banner -->
+  <rect x="230" y="74" width="500" height="20" rx="4" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="88" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Illustrative qualitative comparison — capabilities vary by vendor and deployment tier</text>
+
+  <!-- Table Structure -->
+  <g transform="translate(40, 110)">
+    <!-- Header -->
+    <rect width="880" height="42" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="26" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">OPERATIONAL REQUIREMENT</text>
+    <text x="320" y="26" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">OFF-THE-SHELF PMS</text>
+    <text x="540" y="26" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">CUSTOM AUTOMATION LAYER</text>
+    <text x="760" y="26" fill="#F87171" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">BESPOKE CUSTOM SOFTWARE</text>
+
+    <!-- Row 1: Leases -->
+    <g transform="translate(0, 50)">
+      <rect width="880" height="52" rx="6" fill="#0B101D" stroke="#1E293B" stroke-width="1"/>
+      <text x="25" y="25" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Lease &amp; Tenancy Records</text>
+      <text x="25" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Unit directory, dates, rent roll</text>
+
+      <text x="320" y="25" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Strong / Native</text>
+      <text x="320" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Serves as system of record</text>
+
+      <text x="540" y="25" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Supporting</text>
+      <text x="540" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Reads/triggers via API</text>
+
+      <text x="760" y="25" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Reinventing Wheel</text>
+      <text x="760" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">High build and schema cost</text>
+    </g>
+
+    <!-- Row 2: Accounting -->
+    <g transform="translate(0, 110)">
+      <rect width="880" height="52" rx="6" fill="#0B101D" stroke="#1E293B" stroke-width="1"/>
+      <text x="25" y="25" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Property Accounting &amp; Ledger</text>
+      <text x="25" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Invoicing, schedules, audit trail</text>
+
+      <text x="320" y="25" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Strong / Audited</text>
+      <text x="320" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Standard financial reports</text>
+
+      <text x="540" y="25" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Integrates</text>
+      <text x="540" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Automates sync &amp; exceptions</text>
+
+      <text x="760" y="25" fill="#EF4444" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">High Risk to Rebuild</text>
+      <text x="760" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Requires audit re-certification</text>
+    </g>
+
+    <!-- Row 3: WhatsApp & Omnichannel -->
+    <g transform="translate(0, 170)">
+      <rect width="880" height="52" rx="6" fill="#0B101D" stroke="#1E293B" stroke-width="1"/>
+      <text x="25" y="25" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Omnichannel Tenant Messaging</text>
+      <text x="25" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">WhatsApp, voice notes, email sync</text>
+
+      <text x="320" y="25" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Variable / Siloed</text>
+      <text x="320" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Often limited to web portals</text>
+
+      <text x="540" y="25" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Strong / Native</text>
+      <text x="540" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Connects official Meta API</text>
+
+      <text x="760" y="25" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Possible</text>
+      <text x="760" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Requires ongoing maintenance</text>
+    </g>
+
+    <!-- Row 4: Custom Approvals -->
+    <g transform="translate(0, 230)">
+      <rect width="880" height="52" rx="6" fill="#0B101D" stroke="#1E293B" stroke-width="1"/>
+      <text x="25" y="25" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Multi-Tier Approvals &amp; Rules</text>
+      <text x="25" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Vendor quotes, landlord signoffs</text>
+
+      <text x="320" y="25" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Rigid</text>
+      <text x="320" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Bound to standard steps</text>
+
+      <text x="540" y="25" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Strong</text>
+      <text x="540" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Custom rules &amp; mobile prompts</text>
+
+      <text x="760" y="25" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Strong</text>
+      <text x="760" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Fully tailored to operator</text>
+    </g>
+
+    <!-- Row 5: Cross-System Orchestration -->
+    <g transform="translate(0, 290)">
+      <rect width="880" height="52" rx="6" fill="#0B101D" stroke="#1E293B" stroke-width="1"/>
+      <text x="25" y="25" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Cross-Platform Sync</text>
+      <text x="25" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">PMS + CRM + Spreadsheet bridges</text>
+
+      <text x="320" y="25" fill="#EF4444" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Limited</text>
+      <text x="320" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Point-to-point or unsupported</text>
+
+      <text x="540" y="25" fill="#34D399" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Strong</text>
+      <text x="540" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Event-driven webhooks &amp; queues</text>
+
+      <text x="760" y="25" fill="#60A5FA" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Isolated</text>
+      <text x="760" y="40" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Creates new custom silo</text>
+    </g>
+  </g>
+</svg>
