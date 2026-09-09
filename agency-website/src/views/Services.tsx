@@ -66,9 +66,9 @@ const categories: ServiceCategory[] = [
     ]
   },
   {
-    name: "WhatsApp & Conversational AI Workflows",
+    name: "AI Automation & Conversational Systems",
     icon: <MessageSquare className="w-5 h-5 text-emerald-400" />,
-    subtitle: "Automate initial customer intake, speed up follow-up times, and connect WhatsApp directly into your team's CRM.",
+    subtitle: "Connect messaging, data, finance and operational workflows across your core business systems.",
     services: [
       {
         title: "WhatsApp Business Automation",
@@ -101,6 +101,14 @@ const categories: ServiceCategory[] = [
         link: "/sovereign-sales-agent",
         icon: <Target className="w-8 h-8" />,
         ctaText: "Explore Sales Workflows"
+      },
+      {
+        title: "Agentic Finance Automation",
+        desc: "Autonomous financial data extraction, trade document processing, and general ledger reconciliation workflows with human oversight gates.",
+        features: ["Invoice Extraction", "GL Reconciliation", "ERP/TMS Sync", "Audit-Ready Logs"],
+        link: "/services/agentic-finance-uae",
+        icon: <Database className="w-8 h-8" />,
+        ctaText: "Explore Agentic Finance"
       }
     ]
   },

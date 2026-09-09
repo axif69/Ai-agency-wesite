@@ -241,7 +241,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <li><Link href="/services/branding-agency-dubai-sharjah" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Brand Strategy</Link></li>
                         <li><Link href="/services/graphic-design-agency-dubai-sharjah" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Graphic Design</Link></li>
                         <li><Link href="/services/ui-ux-design-agency-dubai" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">UI/UX Design</Link></li>
-                        <li><Link href="/services/creative-web-design-dubai" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Creative Web Design</Link></li>
+                        <li><Link href="/services/web-development-dubai-uae" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Creative Web Design</Link></li>
                       </ul>
                     </div>
 
