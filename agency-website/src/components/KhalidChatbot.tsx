@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Bot, User, Loader2, Mic, MicOff, Volume2, VolumeX } from 'lucide-react';
+import { trackEvent } from "../utils/analytics";
 
 const SYSTEM_INSTRUCTION = `
 You are Khalid, Lead AI Architect and Senior Partner at Asif Digital Agency in Dubai.
@@ -61,6 +62,7 @@ export default function KhalidChatbot() {
   const [leadData, setLeadData] = useState<{ name?: string, service?: string, contact?: string }>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
+  const leadDispatchedRef = useRef<Set<string>>(new Set());
   const isRealEstatePage = pathname?.includes("real-estate") || pathname?.includes("property-management") || pathname?.includes("real-estate-digital-solutions");
 
   // Initialize Speech Recognition & Voice Preloading
@@ -192,6 +194,36 @@ export default function KhalidChatbot() {
     
     setMessages(prev => [...prev, { role: 'user', text: userMessageContent }]);
     setIsLoading(true);
+
+    // Auto-detect contact info (Phone or Email)
+    const phoneMatch = userMessageContent.match(/(?:(?:\+|00)\d{1,3}[\s-]?)?(?:\(?\d{2,5}\)?[\s-]?)?\d{3,4}[\s-]?[0-9]{3,5}/);
+    const emailMatch = userMessageContent.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+    const rawContact = emailMatch ? emailMatch[0] : (phoneMatch && phoneMatch[0].replace(/\D/g, '').length >= 7 ? phoneMatch[0].trim() : null);
+
+    if (rawContact && !leadDispatchedRef.current.has(rawContact)) {
+      leadDispatchedRef.current.add(rawContact);
+      setLeadData(prev => ({ ...prev, contact: rawContact }));
+
+      // Track conversion in GA4
+      trackEvent("generate_lead", {
+        method: "khalid_chat",
+        contact: rawContact,
+        page_path: pathname || "/"
+      });
+
+      // Silently dispatch instant notification to Telegram & Email
+      fetch("/api/chat/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contact: rawContact,
+          name: leadData.name,
+          service: isRealEstatePage ? "Dubai Real Estate AI Architecture" : "Strategic AI Solutions",
+          transcript: [...messages, { role: "user", text: userMessageContent }],
+          page: pathname || "/"
+        })
+      }).catch(err => console.error("Lead alert dispatch error:", err));
+    }
 
     try {
       const API_URL = "/api/chat";
