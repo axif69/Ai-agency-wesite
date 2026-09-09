@@ -8,7 +8,7 @@
 
   <rect width="960" height="480" rx="16" fill="#080C16" stroke="#1E293B" stroke-width="2"/>
   <text x="480" y="42" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="18" font-weight="700" letter-spacing="0.5">Confidence Scoring &amp; Broker Takeover Framework</text>
-  <text x="480" y="66" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="12">Illustrative decision framework balancing automated intake against human broker review</text>
+  <text x="480" y="62" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">Illustrative decision framework balancing automated intake against human broker review</text>\n  <rect x="230" y="72" width="500" height="20" rx="4" fill="#1E293B" stroke="#334155" stroke-width="1"/>\n  <text x="480" y="86" text-anchor="middle" fill="#FBBF24" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Illustrative example — configure thresholds to your own operational risk policy</text>
 
   <!-- Input Node -->
   <g transform="translate(360, 95)">
