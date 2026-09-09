@@ -31,12 +31,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   return {
-    title: post.seoTitle || compactSeoTitle(post.title),
+    title: compactSeoTitle(post.title),
     description: post.excerpt || `${post.title}. Read the full article on Asif Digital.`,
     authors: [{ name: post.author, url: 'https://www.asifdigital.agency/about' }],
     openGraph: {
       type: 'article',
-      title: post.seoTitle || post.title,
+      title: post.title,
       description: post.excerpt,
       url: `https://www.asifdigital.agency/blog/${post.slug}`,
       publishedTime: new Date(post.date).toISOString(),
