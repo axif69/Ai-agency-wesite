@@ -1,11 +1,11 @@
 import AdSpendAnalyzer from "../../../src/views/tools/AdSpendAnalyzer";
 export const metadata = { 
-  title: "Free Ad Spend Analyzer | Check CPL, CPA, ROAS & Wasted Ad Budget", 
-  description: "Free ad spend analyzer for Google & Meta Ads in the UAE. Calculate your real CPL, CPA, and ROAS, identify wasted ad budget, and diagnose funnel tracking gaps.", 
+  title: "Free Ad Spend Analyzer | CPL, CPA, ROAS & Waste", 
+  description: "Calculate CPL, CPA, ROAS and estimated wasted ad spend for Google and Meta Ads. Free interactive UAE ad-spend tool with no signup required.", 
   alternates: { canonical: "https://www.asifdigital.agency/tools/ad-spend-efficiency-analyzer" }, 
   openGraph: { 
-    title: "Free Ad Spend Analyzer | Check CPL, CPA, ROAS & Wasted Budget", 
-    description: "Calculate real advertising economics, find wasted budget, and diagnose measurement gaps.", 
+    title: "Free Ad Spend Analyzer | CPL, CPA, ROAS & Waste", 
+    description: "Calculate CPL, CPA, ROAS and estimated wasted ad spend for Google and Meta Ads. Free interactive UAE ad-spend tool with no signup required.", 
     url: "https://www.asifdigital.agency/tools/ad-spend-efficiency-analyzer", 
     type: "website" 
   } 

@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/services/AiPpcAgencyDubai';
 
 export const metadata = {
-  title: "AI PPC Agency Dubai | Performance Marketing & Paid Media Automation",
-  description: "AI-assisted PPC and performance marketing agency in Dubai. Smart bidding guardrails, server-side Meta CAPI, Google PMax optimization, and closed-loop CRM offline conversions.",
+  title: "AI PPC Agency Dubai | Google & Meta Ads",
+  description: "AI-assisted PPC management in Dubai for Google and Meta Ads. Improve campaign tracking, ad efficiency and CRM attribution with CAPI and offline conversions.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-ppc-agency-dubai"
   },
   openGraph: {
-    title: "AI PPC Agency Dubai | Performance Marketing & Paid Media Automation",
-    description: "Scale qualified pipeline revenue across Dubai and the UAE with AI-assisted Google Ads, Meta Advantage+, server-side tracking, and CRM revenue sync.",
+    title: "AI PPC Agency Dubai | Google & Meta Ads",
+    description: "AI-assisted PPC management in Dubai for Google and Meta Ads. Improve campaign tracking, ad efficiency and CRM attribution with CAPI and offline conversions.",
     url: "https://www.asifdigital.agency/ai-ppc-agency-dubai",
     type: "website"
   },

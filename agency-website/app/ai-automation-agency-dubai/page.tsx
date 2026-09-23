@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/AiAutomationDubai';
 
 export const metadata = {
-  title: "AI Automation Agency Dubai | Enterprise Business Process Automation",
-  description: "Enterprise AI automation agency in Dubai. We architect business process automation, CRM/ERP integrations, document intelligence, and human-in-the-loop workflows for UAE companies.",
+  title: "AI Automation Agency Dubai | Business Workflows UAE",
+  description: "AI automation agency in Dubai for WhatsApp, CRM, lead routing and operational workflows. Build connected business processes with human oversight.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-automation-agency-dubai"
   },
   openGraph: {
-    title: "AI Automation Agency Dubai | Enterprise Business Process Automation",
-    description: "Enterprise AI automation agency in Dubai. We architect business process automation, CRM/ERP integrations, document intelligence, and human-in-the-loop workflows for UAE companies.",
+    title: "AI Automation Agency Dubai | Business Workflows UAE",
+    description: "AI automation agency in Dubai for WhatsApp, CRM, lead routing and operational workflows. Build connected business processes with human oversight.",
     url: "https://www.asifdigital.agency/ai-automation-agency-dubai",
     siteName: "Asif Digital",
     locale: "en_AE",
@@ -16,8 +16,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Automation Agency Dubai | Enterprise Business Process Automation",
-    description: "Enterprise AI automation agency in Dubai. We architect business process automation, CRM/ERP integrations, document intelligence, and human-in-the-loop workflows for UAE companies."
+    title: "AI Automation Agency Dubai | Business Workflows UAE",
+    description: "AI automation agency in Dubai for WhatsApp, CRM, lead routing and operational workflows. Build connected business processes with human oversight."
   }
 };
 
