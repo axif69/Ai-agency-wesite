@@ -200,7 +200,7 @@ export default function WebDesign() {
             <span className="micro-label block mb-4 text-green-400">Existing website upgrade</span>
             <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-6">Website Redesign &amp; SEO Migration</h2>
             <p className="text-white/55 leading-relaxed">
-              Clearly addressing businesses redesigning an existing website rather than commissioning a greenfield website. We focus on restructuring user experience, modernizing frontend performance and methodically managing technical transitions.
+              Redesigning an existing website requires more than a visual refresh. We focus on improving user experience, modernizing performance and carefully managing the technical transition from your current site.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
