@@ -23,6 +23,7 @@ const packages = [
   { title: "Landing page", price: "From AED 1,500", desc: "One focused service page for ads, SEO or a launch campaign." },
   { title: "Business website", price: "AED 3,000-8,000+", desc: "Homepage, service pages, contact flow, SEO setup, analytics and responsive design." },
   { title: "Custom web system", price: "Scoped after audit", desc: "Advanced websites with CMS, dashboards, automations, integrations or ecommerce workflows." },
+  { title: "Website Redesign & Migration", price: "Scoped after audit", desc: "Existing-site redesign, UX restructuring, responsive optimization, redirect planning and SEO migration support." },
 ];
 
 const showcase = [
@@ -193,11 +194,45 @@ export default function WebDesign() {
         </div>
       </section>
 
+      <section className="px-6 md:px-12 py-24 border-t border-white/5 bg-[#080808]">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mb-14">
+            <span className="micro-label block mb-4 text-green-400">Existing website upgrade</span>
+            <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-6">Website Redesign &amp; SEO Migration</h2>
+            <p className="text-white/55 leading-relaxed">
+              Clearly addressing businesses redesigning an existing website rather than commissioning a greenfield website. We focus on restructuring user experience, modernizing frontend performance and methodically managing technical transitions.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-8">
+              <div className="text-green-300 mb-6"><FileSearch className="w-6 h-6" /></div>
+              <h3 className="text-2xl font-serif mb-4">URL &amp; Redirect Mapping</h3>
+              <p className="text-white/55 leading-relaxed">Review existing URLs and plan appropriate 301 redirects when URLs need to change.</p>
+            </div>
+            <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-8">
+              <div className="text-green-300 mb-6"><Search className="w-6 h-6" /></div>
+              <h3 className="text-2xl font-serif mb-4">SEO Migration Planning</h3>
+              <p className="text-white/55 leading-relaxed">Carry forward important metadata, content structure and technical SEO signals where appropriate, with Google Search Console monitoring after launch.</p>
+            </div>
+            <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-8">
+              <div className="text-green-300 mb-6"><Gauge className="w-6 h-6" /></div>
+              <h3 className="text-2xl font-serif mb-4">Performance-Focused Redevelopment</h3>
+              <p className="text-white/55 leading-relaxed">Improve mobile usability, frontend efficiency and page performance based on the site&apos;s actual technical requirements.</p>
+            </div>
+            <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-8">
+              <div className="text-green-300 mb-6"><MessageSquare className="w-6 h-6" /></div>
+              <h3 className="text-2xl font-serif mb-4">Conversion-Focused UX</h3>
+              <p className="text-white/55 leading-relaxed">Improve enquiry paths, forms, WhatsApp actions and important conversion journeys.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="px-6 md:px-12 py-24">
         <div className="max-w-7xl mx-auto">
           <span className="micro-label block mb-4 text-green-400">Cost and starting point</span>
           <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-12">How much does web design cost in Dubai?</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {packages.map((item) => (
               <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/[0.025] p-8">
                 <h3 className="text-2xl font-serif mb-3">{item.title}</h3>
