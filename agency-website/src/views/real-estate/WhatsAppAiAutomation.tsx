@@ -37,11 +37,11 @@ const whatsappUrl = "https://wa.me/971545866094";
 const faqs = [
   {
     q: "How to automate WhatsApp lead replies for a Dubai real estate agency?",
-    a: "Automating WhatsApp lead replies for a Dubai real estate agency requires integrating Meta WhatsApp Cloud API with your property portal webhooks (Bayut, Property Finder, Dubizzle) and Meta Ads. Asif Digital configures a 24/7 AI concierge pre-trained on your off-plan property inventory, developer payment plans (Sobha, Emaar, Danube, Binghatti), and preferred broker calendar schedules. Inbound inquiries receive a personalized, qualified reply within 6.2 seconds — complete with PDF brochure downloads, payment plan calculators, and instant broker alerts on WhatsApp.",
+    a: "Automating WhatsApp lead replies for a Dubai real estate agency requires integrating Meta WhatsApp Cloud API with your property portal webhooks (Bayut, Property Finder, Dubizzle) and Meta Ads. Asif Digital configures a 24/7 AI concierge pre-trained on your off-plan property inventory, developer payment plans (Sobha, Emaar, Danube, Binghatti), and preferred broker calendar schedules. Inbound inquiries receive a personalized, qualified reply that responds automatically to incoming lead enquiries — complete with PDF brochure downloads, payment plan calculators, and automated broker alerts on WhatsApp.",
   },
   {
     q: "How does automated off-plan brochure delivery work on WhatsApp in the UAE?",
-    a: "When a potential buyer asks about an off-plan project (e.g. Dubai Hills 2-bedroom), the AI instantly matches their budget and location criteria against your property database. Within 5 seconds, it sends the official developer PDF brochure, floor plans, 1% monthly payment schedule, and video walkthrough links directly inside the WhatsApp conversation, logging the download event into your CRM.",
+    a: "When a potential buyer asks about an off-plan project (e.g. Dubai Hills 2-bedroom), the AI matches their budget and location criteria against your property database. It sends the official developer PDF brochure, floor plans, 1% monthly payment schedule, and video walkthrough links directly inside the WhatsApp conversation, logging the download event into your CRM.",
   },
   {
     q: "How does the AI handle audio voice notes sent by UAE buyers on WhatsApp?",
@@ -49,15 +49,15 @@ const faqs = [
   },
   {
     q: "Can the AI calculate off-plan payment plans for Dubai developers?",
-    a: "Yes. The knowledge engine is pre-loaded with official payment plan structures for major UAE developers including Sobha Realty, Danube Properties, Binghatti Developers, Emaar Properties, Nakheel, and Select Group. When a buyer asks about a specific project, the AI provides the booking deposit percentage, post-handover payment schedule, DLD fee eligibility, and 1% monthly payment calculations instantly on WhatsApp.",
+    a: "Yes. The knowledge engine is pre-loaded with official payment plan structures for major UAE developers including Sobha Realty, Danube Properties, Binghatti Developers, Emaar Properties, Nakheel, and Select Group. When a buyer asks about a specific project, the AI provides the booking deposit percentage, post-handover payment schedule, DLD fee eligibility, and 1% monthly payment calculations on WhatsApp.",
   },
   {
     q: "What happens when a high-net-worth client requests a human broker?",
-    a: "The AI detects escalation signals — requests for callbacks, VIP property viewings, high-budget declarations above a defined threshold, or explicit requests to speak to someone. When triggered, it: (1) sends an instant WhatsApp alert to the assigned area broker with the full conversation transcript, (2) generates a lead brief summarising budget, intent, and language, and (3) provides three AI-suggested reply options for the broker's first message.",
+    a: "The AI detects escalation signals — requests for callbacks, VIP property viewings, high-budget declarations above a defined threshold, or explicit requests to speak to someone. When triggered, it: (1) sends an automated WhatsApp alert to the assigned area broker with the full conversation transcript, (2) generates a lead brief summarising budget, intent, and language, and (3) provides three AI-suggested reply options for the broker's first message.",
   },
   {
     q: "Is Asif Digital's WhatsApp AI compliant with UAE data protection laws (PDPL)?",
-    a: "100% Yes. All lead records, conversation transcripts, and client data are stored in a private Supabase PostgreSQL database owned exclusively by your brokerage. We do not retain your data on shared third-party SaaS servers, ensuring complete compliance with the UAE Personal Data Protection Law (PDPL).",
+    a: "Designed to support UAE PDPL-aligned workflows. All lead records, conversation transcripts, and client data are stored in a dedicated database setup for your brokerage, configured with UAE PDPL considerations in mind.",
   },
   {
     q: "Which CRMs can connect with this WhatsApp AI system?",
@@ -69,7 +69,7 @@ const faqs = [
   },
   {
     q: "What happens to inquiries received at night or on weekends?",
-    a: "Over 68% of property inquiries in Dubai arrive between 8:00 PM and 2:00 AM. Night inquiries receive an immediate sub-10 second WhatsApp reply, complete with property brochures, payment plan details, and a calendar booking link for a morning viewing.",
+    a: "Over 68% of property inquiries in Dubai arrive between 8:00 PM and 2:00 AM. Night inquiries receive an automated WhatsApp reply, complete with property brochures, payment plan details, and a calendar booking link for a morning viewing.",
   },
   {
     q: "How long does implementation take for our real estate brokerage?",
@@ -77,7 +77,7 @@ const faqs = [
   },
   {
     q: "Can the AI handle multiple languages common in Dubai?",
-    a: "Yes. The AI is fluent in English, Khaleeji Arabic, Russian, French, and German. It automatically detects the buyer's language and responds naturally in that exact language.",
+    a: "Supports multilingual lead conversations across configured languages, with human handoff where appropriate. Commonly supported languages in Dubai real estate workflows include English, Khaleeji Arabic, Russian, French, and German.",
   },
   {
     q: "How do we get started?",
@@ -100,7 +100,7 @@ export default function WhatsAppAiAutomationView() {
     serviceType: "Real Estate AI WhatsApp Automation & Conversational Intelligence",
     areaServed: ["Dubai", "Abu Dhabi", "Sharjah", "UAE", "GCC"],
     description:
-      "Enterprise Real Estate AI WhatsApp Automation Dubai. 24/7 multilingual AI concierge, sub-10s response SLA, OpenAI Whisper voice note transcription, Bayut & Property Finder direct webhooks, off-plan payment plan engine, and 100% UAE PDPL compliance.",
+      "Enterprise Real Estate AI WhatsApp Automation Dubai. 24/7 multilingual AI concierge, automated response workflows, OpenAI Whisper voice note transcription, Bayut & Property Finder webhooks, off-plan payment plan engine, and designed to support UAE PDPL-aligned workflows.",
   };
 
   const jsonLdFaq = {
@@ -125,7 +125,7 @@ export default function WhatsAppAiAutomationView() {
       {
         "@type": "HowToStep",
         name: "Connect WhatsApp Business API & Portals",
-        text: "Link Meta WhatsApp Cloud API with Bayut, Property Finder, Dubizzle, and Meta Ads webhooks in < 1 second.",
+        text: "Link Meta WhatsApp Cloud API with Bayut, Property Finder, Dubizzle, and Meta Ads webhooks.",
       },
       {
         "@type": "HowToStep",
@@ -135,7 +135,7 @@ export default function WhatsAppAiAutomationView() {
       {
         "@type": "HowToStep",
         name: "Enable Broker Alerts & CRM Auto-Sync",
-        text: "Sync qualified lead data into PropSpace or Zoho and send instant WhatsApp alerts to area brokers.",
+        text: "Sync qualified lead data into PropSpace or Zoho and send automated WhatsApp alerts to area brokers.",
       },
     ],
   };
@@ -176,7 +176,7 @@ export default function WhatsAppAiAutomationView() {
             </p>
 
             <p className="text-base text-white/65 font-light leading-relaxed mb-8 max-w-2xl">
-              24/7 multilingual AI concierge that greets property buyers in sub-10s, transcribes audio voice notes, calculates 1% monthly off-plan payment plans, delivers PDF brochures, and books qualified viewings directly into broker calendars.
+              24/7 multilingual AI concierge that greets property buyers with automated initial responses, transcribes audio voice notes, calculates 1% monthly off-plan payment plans, delivers PDF brochures, and books qualified viewings directly into broker calendars.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -215,7 +215,7 @@ export default function WhatsAppAiAutomationView() {
                 <div>
                   <h3 className="font-semibold text-sm text-white">Asif Digital RE Concierge AI</h3>
                   <span className="text-[10px] text-emerald-400 flex items-center gap-1.5 font-mono">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> Live SLA: 6.2 Seconds
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> Automated First Response
                   </span>
                 </div>
               </div>
@@ -268,7 +268,7 @@ export default function WhatsAppAiAutomationView() {
               Speed-to-Lead Economics
             </span>
             <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight mb-6">
-              Why Sub-10 Second WhatsApp Response Times Change Real Estate Brokerage Revenue
+              Why Fast Automated WhatsApp Response Times Change Real Estate Brokerage Revenue
             </h2>
             <p className="text-base text-white/70 font-light leading-relaxed">
               In Dubai&apos;s fast-paced property market, lead response speed is the single biggest factor determining whether an agency closes a deal or loses it to a competitor. When a serious buyer inquires about a villa or off-plan launch, they expect an immediate response.
@@ -314,7 +314,7 @@ export default function WhatsAppAiAutomationView() {
               How Our Real Estate WhatsApp AI System Works in 4 Simple Steps
             </h2>
             <p className="text-base text-white/70 font-light leading-relaxed">
-              We built our WhatsApp AI system to be 100% effortless for your sales team. Here is how simple the process is for your brokerage:
+              We built our WhatsApp AI system to be straightforward for your sales team. Here is how the process works for your brokerage:
             </p>
           </div>
 
@@ -323,9 +323,9 @@ export default function WhatsAppAiAutomationView() {
               <div className="w-10 h-10 rounded-full bg-emerald-400/10 text-emerald-400 flex items-center justify-center mb-4 font-mono font-bold">
                 01
               </div>
-              <h3 className="text-base font-semibold text-white mb-2">1. Instant Greeting (&lt; 10s)</h3>
+              <h3 className="text-base font-semibold text-white mb-2">1. Automated Initial Greeting</h3>
               <p className="text-xs text-white/65 font-light leading-relaxed">
-                When a buyer inquires on Bayut, Property Finder, or Meta Ads, the AI greets them on WhatsApp in under 10 seconds in their preferred language.
+                When a buyer inquires on Bayut, Property Finder, or Meta Ads, the AI greets them on WhatsApp automatically in their preferred language.
               </p>
             </div>
 
@@ -387,7 +387,7 @@ export default function WhatsAppAiAutomationView() {
                 <tr>
                   <td className="py-4 px-6 font-semibold text-white">Initial Response Time</td>
                   <td className="py-4 px-6 text-red-400">30 minutes to 4 hours</td>
-                  <td className="py-4 px-6 text-emerald-400 font-bold bg-emerald-950/20">&lt; 10 Seconds (24/7 Instant)</td>
+                  <td className="py-4 px-6 text-emerald-400 font-bold bg-emerald-950/20">Automated 24/7 Lead Intake</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-6 font-semibold text-white">After-Hours Coverage (8PM-2AM)</td>
@@ -457,13 +457,13 @@ export default function WhatsAppAiAutomationView() {
       <section className="py-24 px-6 md:px-12 text-center bg-gradient-to-b from-black to-emerald-950/30">
         <div className="max-w-4xl mx-auto">
           <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-emerald-400 block mb-4">
-            Zero Lead Decay Guarantee
+            Speed-to-Lead Workflow
           </span>
           <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">
             Ready to Automate Your Real Estate WhatsApp Lead Follow-Up?
           </h2>
           <p className="text-lg text-white/70 font-light mb-10 max-w-2xl mx-auto">
-            Book a free 1-on-1 automation audit with Asif Digital. We will show you how to reduce response times to under 10 seconds and convert more inquiries into viewings.
+            Book a free 1-on-1 automation audit with Asif Digital. We will show you how to streamline lead response times and convert more inquiries into viewings.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
