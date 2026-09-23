@@ -11,12 +11,13 @@ export const metadata = {
 export default function Page() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": ["Organization", "MarketingAgency"],
+    "@type": "ProfessionalService",
     "name": "Asif Digital: AI Automation, Web & Graphic Design",
     "alternateName": "Asif Digital Agency",
     "description": "Conversion-focused websites, WhatsApp assistants and AI automation systems for UAE businesses that need more calls, enquiries and bookings",
     "url": "https://www.asifdigital.agency/",
     "telephone": "+971545866094",
+    "priceRange": "$$$",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Muwaileh Commercial - Industrial Area",
@@ -24,14 +25,12 @@ export default function Page() {
       "addressRegion": "Sharjah",
       "addressCountry": "AE"
     },
-    "areaServed": ["Sharjah", "Dubai", "Abu Dhabi", "United Arab Emirates", "GCC"],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "8",
-      "bestRating": "5"
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 25.3218,
+      "longitude": 55.4564
     },
-    "priceRange": "$$"
+    "areaServed": ["Sharjah", "Dubai", "Abu Dhabi", "United Arab Emirates", "GCC"]
   };
 
   return (

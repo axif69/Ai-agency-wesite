@@ -76,66 +76,67 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${syne.variable} ${spaceGrotesk.variable} ${inter.variable} ${playfair.variable}`}>
       <head>
         <meta name="google-site-verification" content="3GJPTV-4-OEXb4Z_r0EAIVCYBzHYp8YDR2QavSzPGm8" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DKTWMYPBV7"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-DKTWMYPBV7', {
-                send_page_view: true
-              });
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-DKTWMYPBV7"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DKTWMYPBV7', {
+              send_page_view: true
+            });
 
-              // Automated GA4 Lead Gen Key Event Tracking
-              if (typeof window !== 'undefined') {
-                document.addEventListener('click', function(e) {
-                  var target = e.target.closest('a');
-                  if (!target) return;
-                  var href = target.getAttribute('href') || '';
-                  
-                  // WhatsApp Lead Conversion
-                  if (href.includes('wa.me') || href.includes('whatsapp.com')) {
-                    gtag('event', 'generate_lead', {
-                      event_category: 'Lead',
-                      event_label: 'WhatsApp Click',
-                      value: 1.0,
-                      currency: 'AED',
-                      link_url: href
-                    });
-                  }
-                  
-                  // Direct Phone Call Conversion
-                  if (href.startsWith('tel:')) {
-                    gtag('event', 'contact', {
-                      event_category: 'Contact',
-                      event_label: 'Phone Call Click',
-                      value: 1.0,
-                      currency: 'AED',
-                      link_url: href
-                    });
-                  }
-                }, true);
-
-                // Contact Form Submission Conversion
-                document.addEventListener('submit', function(e) {
+            // Automated GA4 Lead Gen Key Event Tracking
+            if (typeof window !== 'undefined') {
+              document.addEventListener('click', function(e) {
+                var target = e.target.closest('a');
+                if (!target) return;
+                var href = target.getAttribute('href') || '';
+                
+                // WhatsApp Lead Conversion
+                if (href.includes('wa.me') || href.includes('whatsapp.com')) {
                   gtag('event', 'generate_lead', {
                     event_category: 'Lead',
-                    event_label: 'Contact Form Submission',
+                    event_label: 'WhatsApp Click',
                     value: 1.0,
-                    currency: 'AED'
+                    currency: 'AED',
+                    link_url: href
                   });
-                }, true);
-              }
-            `,
-          }}
-        />
+                }
+                
+                // Direct Phone Call Conversion
+                if (href.startsWith('tel:')) {
+                  gtag('event', 'contact', {
+                    event_category: 'Contact',
+                    event_label: 'Phone Call Click',
+                    value: 1.0,
+                    currency: 'AED',
+                    link_url: href
+                  });
+                }
+              }, true);
+
+              // Contact Form Submission Conversion
+              document.addEventListener('submit', function(e) {
+                gtag('event', 'generate_lead', {
+                  event_category: 'Lead',
+                  event_label: 'Contact Form Submission',
+                  value: 1.0,
+                  currency: 'AED'
+                });
+              }, true);
+            }
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "MarketingAgency",
+              "@type": "ProfessionalService",
               "name": "Asif Digital: AI Automation, Web & Graphic Design",
               "alternateName": "Asif Digital Agency",
               "image": "https://www.asifdigital.agency/icon-512.png",
@@ -154,12 +155,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 "@type": "GeoCoordinates",
                 "latitude": 25.3218,
                 "longitude": 55.4564
-              },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "5.0",
-                "reviewCount": "8",
-                "bestRating": "5"
               },
               "areaServed": [
                 "Sharjah",

@@ -13,11 +13,6 @@ import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, 
 import { CASE_STUDIES } from "../data/caseStudyData";
 import { BLOG_POSTS } from "../data/blogData";
 
-const Scene3D = dynamic(() => import("../components/Scene3D"), { ssr: false });
-const HeroParticles = dynamic(() => import("../components/HeroParticles"), { ssr: false });
-const ParticleBackground = dynamic(() => import("../components/animations/ParticleBackground"), { ssr: false });
-const TextGenerateEffect = dynamic(() => import("../components/animations/TextGenerateEffect").then(mod => mod.TextGenerateEffect), { ssr: false });
-
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -357,9 +352,6 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="relative bg-[#050505]">
-      {/* 3D Interactive Background */}
-      {showDecor && !isCompactViewport ? <Scene3D /> : null}
-      
       {/* ── 1. The "Authority" Hero Section ── */}
       <section ref={heroRef} className="relative min-h-[calc(100svh-var(--header-height,5.75rem))] flex flex-col items-center justify-center overflow-hidden px-6 pt-24 pb-12 sm:pt-28 md:pt-36 md:pb-16">
         <motion.div style={{ y, opacity }} className="relative z-10 text-center flex flex-col items-center w-full">
@@ -377,10 +369,9 @@ export default function Home() {
             Websites and AI Automation, <br /><span className="italic text-white/70 tracking-normal pr-2">Built to Turn Visitors Into Enquiries.</span>
           </motion.h1>
           
-          <TextGenerateEffect 
-            words="Asif Digital Agency builds conversion-focused websites, WhatsApp assistants and follow-up systems for businesses in Dubai, Sharjah and across the UAE."
-            className="text-base md:text-lg lg:text-xl text-white/95 font-normal max-w-3xl mx-auto font-sans leading-relaxed mb-6 drop-shadow-md"
-          />
+          <p className="text-base md:text-lg lg:text-xl text-white/95 font-normal max-w-3xl mx-auto font-sans leading-relaxed mb-6 drop-shadow-md">
+            Asif Digital Agency builds conversion-focused websites, WhatsApp assistants and follow-up systems for businesses in Dubai, Sharjah and across the UAE.
+          </p>
           
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1 }} className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0 justify-center z-10">
             <MagneticButton>
@@ -395,7 +386,6 @@ export default function Home() {
             </MagneticButton>
           </motion.div>
         </motion.div>
-        {showDecor ? <HeroParticles /> : null}
       </section>
 
       {/* ── Trust Signals Bar ── */}
@@ -601,7 +591,6 @@ export default function Home() {
           </div>
 
           <div className="why-now-graphic relative min-h-[460px] md:aspect-square rounded-[2rem] overflow-hidden border border-white/10 bg-[#0a0a0a] p-6 sm:p-8 md:p-10 flex flex-col justify-center opacity-0">
-             {showDecor ? <ParticleBackground /> : null}
              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)] opacity-20 z-[1]" />
              
              <div className="relative z-10 space-y-4 sm:space-y-6 md:space-y-8 my-auto">
