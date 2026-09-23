@@ -1,21 +1,14 @@
 import PageComponent from '../../../src/views/real-estate/PortalLeadIntegrationDubai';
 
 export const metadata = {
-  title: "Bayut & Property Finder WhatsApp Lead Control Panel Dubai | Asif Digital",
-  description: "Bayut Property Finder WhatsApp Lead Control Panel Dubai: Connect Property Finder, Bayut, and Dubizzle webhook APIs directly to WhatsApp and CRM in under 1 second. 100% UAE PDPL compliant data architecture.",
-  keywords: [
-    "Bayut Property Finder WhatsApp Lead Control Panel",
-    "Property Finder API Webhook WhatsApp Integration Dubai",
-    "Bayut Lead Auto Reply WhatsApp Bot UAE",
-    "Dubizzle Real Estate WhatsApp CRM Lead Sync",
-    "PropSpace WhatsApp AI Integration Dubai"
-  ],
+  title: "Bayut & Property Finder Lead Integration Dubai | Asif Digital",
+  description: "Connect Bayut, Property Finder and Dubizzle leads to WhatsApp and CRM workflows for faster routing, qualification and follow-up in Dubai.",
   alternates: {
     canonical: "https://www.asifdigital.agency/real-estate/portal-lead-integration-dubai"
   },
   openGraph: {
-    title: "Bayut & Property Finder WhatsApp Lead Control Panel Dubai | Asif Digital",
-    description: "Connect Property Finder, Bayut, and Dubizzle webhook APIs directly to WhatsApp and CRM in under 1 second.",
+    title: "Bayut & Property Finder Lead Integration Dubai | Asif Digital",
+    description: "Connect Bayut, Property Finder and Dubizzle leads to WhatsApp and CRM workflows for faster routing, qualification and follow-up in Dubai.",
     url: "https://www.asifdigital.agency/real-estate/portal-lead-integration-dubai",
     siteName: "Asif Digital Agency Dubai",
   }

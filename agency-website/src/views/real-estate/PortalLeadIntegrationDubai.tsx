@@ -98,7 +98,7 @@ export default function PortalLeadIntegrationDubaiView() {
   const jsonLdService = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Bayut & Property Finder WhatsApp Lead Control Panel Dubai",
+    name: "Bayut & Property Finder Lead Integration Dubai",
     provider: {
       "@type": "Organization",
       name: "Asif Digital Agency",
@@ -107,7 +107,7 @@ export default function PortalLeadIntegrationDubaiView() {
     serviceType: "Real Estate Portal Integration & WhatsApp Lead Automation",
     areaServed: ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
     description:
-      "Enterprise Bayut & Property Finder WhatsApp Lead Control Panel Dubai. Connect Property Finder, Bayut, and Dubizzle leads directly to WhatsApp in under 1 second. Sub-10s qualification, automated off-plan brochure delivery, voice note transcription, and 100% UAE PDPL compliance.",
+      "Connect Bayut, Property Finder and Dubizzle leads to WhatsApp and CRM workflows for faster routing, qualification and follow-up in Dubai.",
   };
 
   const jsonLdFaq = {
