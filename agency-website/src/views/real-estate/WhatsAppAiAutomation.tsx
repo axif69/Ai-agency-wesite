@@ -57,7 +57,7 @@ const faqs = [
   },
   {
     q: "Is Asif Digital's WhatsApp AI compliant with UAE data protection laws (PDPL)?",
-    a: "Designed to support UAE PDPL-aligned workflows. All lead records, conversation transcripts, and client data are stored in a dedicated database setup for your brokerage, configured with UAE PDPL considerations in mind.",
+    a: "Designed to support UAE PDPL-aligned workflows. Data storage, access controls, consent handling and retention settings are configured according to the client’s technical setup and operating requirements.",
   },
   {
     q: "Which CRMs can connect with this WhatsApp AI system?",
@@ -77,7 +77,7 @@ const faqs = [
   },
   {
     q: "Can the AI handle multiple languages common in Dubai?",
-    a: "Supports multilingual lead conversations across configured languages, with human handoff where appropriate. Commonly supported languages in Dubai real estate workflows include English, Khaleeji Arabic, Russian, French, and German.",
+    a: "Language support can be configured for workflows including English, Arabic, Russian, French and German, with human handoff where appropriate.",
   },
   {
     q: "How do we get started?",
