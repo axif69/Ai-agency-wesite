@@ -196,7 +196,7 @@ export default function About() {
           >
             <div className="absolute inset-0 bg-[#0066FF]/10 rounded-[3rem] blur-[100px] pointer-events-none" />
             <img
-              src="https://lh3.googleusercontent.com/d/1ChELaq_hCpBMzUpw9Z7H1TBYZ9nW_JU0"
+              src="/images/asif-khan.webp"
               alt="Asif Khan — Founder, Asif Digital"
               className="w-full h-auto rounded-[3rem] grayscale hover:grayscale-0 transition-all duration-1000 border border-white/10 relative z-10"
               referrerPolicy="no-referrer"
