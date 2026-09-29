@@ -351,6 +351,7 @@ export default function FreeGrowthAudit() {
                     name="service"
                     className="w-full rounded-xl border border-white/10 bg-black/80 px-4 py-3 text-sm text-white focus:border-green-400/60 focus:outline-none transition-colors"
                   >
+                    <option value="Custom AI Apps & Software">Custom AI Apps & Software Engineering</option>
                     <option value="AI & Workflow Automation">AI & Workflow Automation</option>
                     <option value="CRM & Lead Management">CRM & Lead-Flow Architecture</option>
                     <option value="WhatsApp Follow-Up & Bots">WhatsApp Follow-Up & Qualification</option>

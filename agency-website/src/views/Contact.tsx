@@ -221,7 +221,7 @@ export default function Contact() {
                 </div>
                 
                 <div className="space-y-2">
-                  <label htmlFor="service" className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">Intelligence Pillar</label>
+                  <label htmlFor="service" className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">Intelligence Pillar & Scope</label>
                   <select
                     id="service"
                     required
@@ -230,16 +230,24 @@ export default function Contact() {
                     className="w-full bg-[#050505] border-b border-white/10 px-0 py-4 text-white/80 focus:outline-none focus:border-[#0066FF] transition-colors font-light text-lg"
                   >
                     <option value="" className="bg-[#050505]">Select Inquiry Scope...</option>
-                    <optgroup label="— Sovereign AI Architectures" className="bg-[#050505]">
-                      <option value="sovereign-sales" className="bg-[#050505]">Sovereign Sales Agent (B2B)</option>
+                    <optgroup label="— Custom Software & AI Applications" className="bg-[#050505]">
+                      <option value="custom-ai-apps" className="bg-[#050505]">Custom AI Web Apps & SaaS Platforms</option>
+                      <option value="mobile-apps" className="bg-[#050505]">Cross-Platform Mobile Apps (iOS & Android)</option>
+                      <option value="internal-portals" className="bg-[#050505]">Internal Operations & ERP Portals</option>
+                      <option value="ai-micro-tools" className="bg-[#050505]">AI Micro-Tools & Workflow Engines</option>
+                    </optgroup>
+                    <optgroup label="— Autonomous AI Systems & Agents" className="bg-[#050505]">
+                      <option value="sovereign-sales" className="bg-[#050505]">Sovereign Sales Agent (B2B Lead Swarm)</option>
+                      <option value="ai-automation" className="bg-[#050505]">AI Automation & Workflow Orchestration</option>
+                      <option value="chatbots-whatsapp" className="bg-[#050505]">AI Chatbots & WhatsApp CRM Integration</option>
+                      <option value="real-estate-ai" className="bg-[#050505]">Real Estate AI & Portal Lead Systems</option>
                       <option value="agentic-finance" className="bg-[#050505]">Agentic Finance & Compliance</option>
                       <option value="arabic-nlp" className="bg-[#050505]">Arabic/Khaleeji NLP Hub</option>
-                      <option value="logistics-ai" className="bg-[#050505]">Logistics Resilience AI</option>
                     </optgroup>
-                    <optgroup label="— Strategic Pillars" className="bg-[#050505]">
-                      <option value="web-architecture" className="bg-[#050505]">Enterprise Web Architecture</option>
-                      <option value="aeo-seo" className="bg-[#050505]">AEO & Search Dominance</option>
-                      <option value="branding-identity" className="bg-[#050505]">Branding & Visual Authority</option>
+                    <optgroup label="— Digital Infrastructure & Growth" className="bg-[#050505]">
+                      <option value="web-architecture" className="bg-[#050505]">Enterprise Web Design & Next.js Development</option>
+                      <option value="aeo-seo" className="bg-[#050505]">AEO & Search Engine Dominance (Google + AI)</option>
+                      <option value="strategic-audit" className="bg-[#050505]">Strategic Architecture & Resilience Audit</option>
                     </optgroup>
                   </select>
                 </div>
