@@ -156,6 +156,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       <div className="pb-2.5 mb-2 border-b border-white/5">
                         <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block">Enterprise AI</span>
                       </div>
+                      <Link href="/ai-app-development-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Custom AI App Development</Link>
                       <Link href="/ai-consulting-uae" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Consulting</Link>
                       <Link href="/ai-automation-agency-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Automation Agency</Link>
                       <Link href="/ai-agents-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Custom AI Agents</Link>
@@ -208,6 +209,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <Code className="w-4 h-4 text-emerald-400" role="img" aria-label="Code Icon" /> Web &amp; Systems
                       </h3>
                       <ul className="space-y-4">
+                        <li><Link href="/ai-app-development-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-sm font-semibold block py-0.5 hover:pl-1.5 duration-200">AI App Development Dubai</Link></li>
                         <li><Link href="/services/web-design-dubai" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Web Design Dubai</Link></li>
                         <li><Link href="/web-design-sharjah" className="text-emerald-400 hover:text-emerald-300 transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Web Design Sharjah</Link></li>
                         <li><Link href="/services/web-development-dubai-uae" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Web Development</Link></li>
@@ -333,6 +335,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </button>
                 {openMobileAccordion === "enterprise" && (
                   <div className="pl-3 py-2 space-y-1 border-l border-emerald-500/30 ml-2">
+                    <Link href="/ai-app-development-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-emerald-400 hover:text-emerald-300 transition-colors font-medium">
+                      Custom AI App Development
+                    </Link>
                     <Link href="/ai-consulting-uae" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
                       AI Consulting
                     </Link>
@@ -447,6 +452,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </button>
                 {openMobileAccordion === "pillars" && (
                   <div className="pl-3 py-2 space-y-1 border-l border-emerald-500/30 ml-2">
+                    <Link href="/ai-app-development-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-emerald-400 hover:text-emerald-300 transition-colors font-medium">
+                      AI App Development Dubai
+                    </Link>
                     <Link href="/services/web-design-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
                       Web Design Dubai
                     </Link>
