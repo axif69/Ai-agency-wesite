@@ -18,27 +18,6 @@ const evolution = [
   { year: "2025", title: "Architectural Dominance", desc: "Transitioned to an elite AI Architectural Firm, deploying autonomous sales swarms and resilience shields for UHNW and institutional clients." },
 ];
 
-const teamMembers = [
-  {
-    name: "Khalfan Obaid",
-    role: "Principal AI Architect & Director",
-    desc: "Architecting custom AI workflows and leading digital transformation strategies for businesses across the GCC.",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop&q=85"
-  },
-  {
-    name: "Tariq Mahmood",
-    role: "Lead Web Developer",
-    desc: "Specialist in building high-performance Next.js websites, digital storefronts, and reliable custom integrations.",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=800&fit=crop&q=85"
-  },
-  {
-    name: "Sarah Al-Mansoori",
-    role: "AI Conversation Designer",
-    desc: "Designing multilingual WhatsApp and website assistants that communicate clearly in Arabic and English.",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=800&fit=crop&q=85"
-  }
-];
-
 const capabilities = [
   {
     icon: <Workflow className="w-6 h-6" />,
@@ -106,45 +85,6 @@ export default function About() {
             Asif Digital is a high-ticket Sovereign AI Architectural Firm. We engineer autonomous intelligence layers for the GCC's most ambitious enterprises, transforming legacy friction into unshakeable revenue domains.
           </p>
         </motion.div>
-      </section>
-
-      {/* Team */}
-      <section className="px-6 md:px-12 py-32 max-w-7xl mx-auto border-b border-white/5">
-        <div className="text-center mb-20">
-          <span className="micro-label block mb-4">Who We Are</span>
-          <h2 className="text-4xl md:text-6xl font-serif tracking-tight mb-6">Meet the Architects</h2>
-          <p className="text-white/60 text-lg font-light max-w-3xl mx-auto leading-relaxed">
-            A focused UAE team bringing together AI architecture, web engineering, conversation design, and growth strategy. Each discipline works as part of one delivery system, so clients are not left coordinating disconnected suppliers.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {teamMembers.map((member, i) => (
-            <motion.article
-              key={member.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.12 }}
-              className="group relative overflow-hidden rounded-[2rem] border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-green-500/30 transition-all duration-500 flex flex-col h-full"
-            >
-              <div className="aspect-square w-full overflow-hidden relative">
-                <img
-                  src={member.img}
-                  alt={`${member.name}, ${member.role} at Asif Digital`}
-                  loading="lazy"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-80" />
-              </div>
-              <div className="p-8 flex flex-col flex-grow relative z-10 -mt-10 bg-[#050505]/90 backdrop-blur-sm rounded-t-[1.5rem] border-t border-white/5">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-green-400 mb-2">{member.role}</span>
-                <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-green-400 transition-colors">{member.name}</h3>
-                <p className="text-sm text-white/70 font-normal leading-relaxed">{member.desc}</p>
-              </div>
-            </motion.article>
-          ))}
-        </div>
       </section>
 
       {/* Capabilities */}

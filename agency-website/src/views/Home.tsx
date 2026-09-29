@@ -9,7 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 import MagneticButton from "../components/animations/MagneticButton";
-import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap, Workflow, Languages, Phone, Gauge, BrainCircuit, BarChart3 } from "lucide-react";
+import { Network, Database, Brain, Globe, Shield, Activity, ChevronRight, Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase, Zap, Workflow, Languages, Phone, Gauge, BrainCircuit, BarChart3, Smartphone, CheckCircle2 } from "lucide-react";
 import { CASE_STUDIES } from "../data/caseStudyData";
 import { BLOG_POSTS } from "../data/blogData";
 
@@ -1028,6 +1028,89 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Custom AI Applications & Software Engineering ── */}
+      <section className="py-32 px-6 md:px-12 bg-[#060606] border-y border-white/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,255,127,0.06),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(0,102,255,0.05),transparent_40%)] pointer-events-none" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4">Software Engineering • UAE Wide</span>
+              <h2 className="text-4xl md:text-6xl font-serif tracking-tight leading-[1.05] text-white">
+                Custom AI Applications <br className="hidden sm:block" />
+                <span className="italic text-white/60">& Intelligent Software.</span>
+              </h2>
+            </div>
+            <Link
+              href="/ai-app-development-dubai"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/15 bg-white/5 text-white hover:bg-white hover:text-black font-semibold text-xs uppercase tracking-widest transition-all shrink-0"
+            >
+              Explore AI App Development <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: <Globe className="w-6 h-6 text-blue-400" />,
+                title: "AI SaaS & Web Platforms",
+                desc: "Multi-tenant cloud applications built with Next.js 14, Python FastAPI, and vector databases. Scalable subscription platforms with sub-100ms API response times.",
+                tags: ["Next.js 14", "pgvector", "FastAPI"],
+                link: "/ai-app-development-dubai"
+              },
+              {
+                icon: <Smartphone className="w-6 h-6 text-emerald-400" />,
+                title: "AI Mobile Apps (iOS & Android)",
+                desc: "Intelligent cross-platform mobile apps built with React Native. Offline ML inference, biometric security, and native Khaleeji Arabic conversational interfaces.",
+                tags: ["React Native", "iOS / Android", "Bilingual NLP"],
+                link: "/ai-app-development-dubai"
+              },
+              {
+                icon: <Workflow className="w-6 h-6 text-purple-400" />,
+                title: "Internal Operations Portals",
+                desc: "Custom business tools that automate manual document triage, invoice classification, and CRM pipeline synchronization with human approval gates.",
+                tags: ["Document OCR", "ERP / CRM Sync", "RBAC Security"],
+                link: "/ai-app-development-dubai"
+              },
+              {
+                icon: <BarChart3 className="w-6 h-6 text-amber-400" />,
+                title: "AI Micro-Tools & Engines",
+                desc: "High-converting assessment tools, automated mortgage/ROI calculators, and quotation engines that capture qualified commercial demand.",
+                tags: ["Valuation Engines", "Lead Attribution", "Edge Compute"],
+                link: "/ai-app-development-dubai"
+              }
+            ].map((app, idx) => (
+              <div 
+                key={idx}
+                className="group p-8 rounded-[2rem] border border-white/5 bg-white/[0.015] hover:bg-white/[0.03] hover:border-green-500/30 transition-all duration-500 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    {app.icon}
+                  </div>
+                  <h3 className="text-xl font-serif text-white mb-3 group-hover:text-green-400 transition-colors">{app.title}</h3>
+                  <p className="text-white/60 text-sm font-light leading-relaxed mb-6">{app.desc}</p>
+                </div>
+                <div>
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {app.tags.map((t, ti) => (
+                      <span key={ti} className="px-2.5 py-1 rounded-md bg-white/5 text-[10px] font-mono text-white/70">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <Link 
+                    href={app.link}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-green-400 group-hover:translate-x-1 transition-transform"
+                  >
+                    View Architecture Specs <ChevronRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Blog ── */}
       <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
@@ -1133,44 +1216,80 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Meet the Team Section ── */}
+      {/* ── Founder-Led Engineering Section ── */}
       <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5 relative z-10">
-        <div className="text-center mb-20">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4 gsap-reveal">Who We Are</span>
-          <h2 className="text-4xl md:text-6xl font-serif tracking-tight mb-6 gsap-reveal">Meet the Architects</h2>
-          <p className="text-white/60 text-lg font-light max-w-2xl mx-auto gsap-reveal">
-            A small team of dedicated AI architects, web engineers, and conversation designers based in the UAE.
-          </p>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Founder Image Card */}
+          <div className="lg:col-span-5 relative">
+            <div className="absolute inset-0 bg-green-500/10 rounded-[2.5rem] blur-[80px] pointer-events-none" />
+            <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 bg-white/[0.02] shadow-[0_20px_80px_rgba(0,0,0,0.6)]">
+              <img
+                src="/images/asif-khan.webp"
+                alt="Asif Khan — Founder & Principal AI Systems Architect"
+                className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                loading="lazy"
+              />
+              <div className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl bg-black/85 backdrop-blur-xl border border-white/10">
+                <div className="font-serif text-2xl text-white mb-1">Asif Khan</div>
+                <div className="text-green-400 text-[10px] uppercase tracking-[0.25em] font-mono font-bold">
+                  Founder & Principal Systems Architect
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {TEAM_MEMBERS.map((member, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.15 }}
-              className="group relative overflow-hidden rounded-[2rem] border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] hover:border-green-500/30 transition-all duration-500 flex flex-col h-full"
-            >
-              {/* Profile Image with zoom effect */}
-              <div className="aspect-square w-full overflow-hidden relative">
-                <img 
-                  src={member.img} 
-                  alt={member.name} 
-                  className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-80" />
+          {/* Founder Details & Operational Model */}
+          <div className="lg:col-span-7 space-y-8">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80 block mb-4">Founder-Led Engineering</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif tracking-tight leading-[1.08] text-white mb-6">
+                Direct Architecture. <br />
+                <span className="italic text-white/60">Zero Intermediaries.</span>
+              </h2>
+              <p className="text-white/70 text-base md:text-lg font-light leading-relaxed mb-6">
+                At Asif Digital, you work directly with the systems architect engineering your AI workflows, web applications, and search infrastructure — not junior account managers or outsourced subcontractors.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/5">
+                <h3 className="font-serif text-lg text-white mb-2">Direct Ownership</h3>
+                <p className="text-xs text-white/60 font-light leading-relaxed">
+                  Every pipeline, database model, and custom algorithm is architected directly by the technical lead.
+                </p>
               </div>
-              
-              {/* Member Details */}
-              <div className="p-8 flex flex-col flex-grow relative z-10 -mt-10 bg-[#050505]/90 backdrop-blur-sm rounded-t-[1.5rem] border-t border-white/5">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-green-400 mb-2">{member.role}</span>
-                <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-green-400 transition-colors">{member.name}</h3>
-                <p className="text-sm text-white/70 font-normal leading-relaxed">{member.desc}</p>
+              <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/5">
+                <h3 className="font-serif text-lg text-white mb-2">UAE Sovereignty</h3>
+                <p className="text-xs text-white/60 font-light leading-relaxed">
+                  Local UAE presence with strict PDPL-aligned data handling and private cloud deployment pathways.
+                </p>
               </div>
-            </motion.div>
-          ))}
+              <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/5">
+                <h3 className="font-serif text-lg text-white mb-2">Accountable ROI</h3>
+                <p className="text-xs text-white/60 font-light leading-relaxed">
+                  No bloated agency retainers or vanity metrics. We engineer measurable, revenue-producing systems.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <Link
+                href="https://wa.me/971545866094?text=Hi%20Asif,%20I%20would%20like%20to%20discuss%20an%20AI%20or%20web%20development%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-green-500 text-black font-semibold text-xs uppercase tracking-widest hover:bg-green-400 transition-all shadow-[0_0_30px_rgba(34,197,94,0.25)]"
+              >
+                <MessageSquare className="w-4 h-4" />
+                Speak Directly with Asif
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/20 text-white font-semibold text-xs uppercase tracking-widest hover:bg-white/5 transition-all"
+              >
+                About Our Firm <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
