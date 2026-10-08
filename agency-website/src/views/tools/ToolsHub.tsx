@@ -93,7 +93,7 @@ export default function ToolsHub() {
                 </h2>
 
                 <p className="mt-5 text-sm sm:text-base text-white/65 leading-relaxed font-light">
-                  Zero-touch multimodal AI engineered for UAE corporations, SMEs, and PROs. Drop any UAE Trade License, Employment Visa, Emirates ID, Commercial Ejari, or Corporate Insurance Policy. Proprietary OCR extracts statutory expiries in 3 seconds and deploys proactive WhatsApp &amp; Email alerts before DED, ICP, or MOHRE fines hit.
+                  Never miss a UAE document renewal again. Drop any trade license, visa, Emirates ID, Ejari, or insurance policy. ExpiryWatch extracts the expiry date in 3 seconds and alerts you 30/14/7/1 days before &mdash; so you never pay a DED, ICP, or MOHRE fine.
                 </p>
 
                 {/* 3 Key Metrics Row */}
@@ -166,23 +166,28 @@ export default function ToolsHub() {
                   </div>
 
                   {/* Action Button & Launch Link */}
-                  <div className="pt-4 border-t border-white/5 flex flex-col gap-2.5">
+                  <div className="pt-4 border-t border-white/5 flex flex-col gap-2">
                     <a
                       href="https://expirywatch.asifdigital.agency"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl bg-white text-black font-black text-xs uppercase tracking-[0.16em] hover:bg-emerald-400 hover:text-black transition-all duration-300 shadow-xl group/btn hover:scale-[1.01] active:scale-[0.99]"
                     >
-                      <span>Launch App</span>
-                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                      <span>Start Free Trial &rarr;</span>
                     </a>
-                    <div className="flex items-center justify-between px-1 text-[10px] font-mono text-white/40">
-                      <span>Live SaaS Deployment</span>
-                      <span className="text-emerald-400/80">expirywatch.asifdigital.agency</span>
+                    <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-slate-500 text-center mt-1">
+                      14-day free trial &middot; No credit card
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Trust Signal — Full Width Interior Bottom */}
+            <div className="relative z-10 mt-6 pt-5 border-t border-white/5 text-center">
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.25em] text-slate-500 block">
+                Built for UAE compliance. Designed in Dubai.
+              </span>
             </div>
           </div>
         </div>
