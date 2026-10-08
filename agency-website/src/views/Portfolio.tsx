@@ -14,6 +14,7 @@ const portfolioItems = [
   { id: 4, title: "AutoElite Sharjah — AEO Dominance Protocol", category: "AEO & SEO", location: "Sharjah, UAE", desc: "Answer Engine Optimization (AEO) for Google Gemini and Perplexity. Captured 64% of high-intent search queries for 'Luxury Auto Sharjah' in 8 weeks.", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format,compress&fm=webp&q=75&w=1200", link: "#" },
   { id: 5, title: "Aurum Corporate — Institutional Identity", category: "Branding", location: "Abu Dhabi, UAE", desc: "Complete visual sovereignty for a GCC investment group. 120-page strategic brand guide and bilingual executive suite. Established market authority within 4 months.", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format,compress&fm=webp&q=75&w=1200", link: "#" },
   { id: 6, title: "Meza Health — Sovereign SaaS Redesign", category: "UI/UX", location: "Dubai, UAE", desc: "Architecture of a telemedicine SaaS interface prioritizing patient data residency and Khaleeji UX patterns. NPS improved from 28 to 74.", img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format,compress&fm=webp&q=75&w=1200", link: "#" },
+  { id: 7, title: "ExpiryWatch — UAE Compliance AI & Statutory Copilot", category: "Sovereign AI", location: "Dubai & Sharjah, UAE", desc: "AI-first document compliance and statutory expiry copilot for UAE corporations. Zero-touch multimodal OCR scanning for Trade Licenses, Visas, and Ejari contracts with automated DED/MOHRE fine prevention.", img: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format,compress&fm=webp&q=75&w=1200", link: "https://expirywatch.asifdigital.agency" },
 ];
 
 export default function Portfolio() {
@@ -85,7 +86,7 @@ export default function Portfolio() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm bg-black/40">
-                    <a href={item.link} className="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-500 shadow-2xl">
+                    <a href={item.link} target={item.link.startsWith("http") ? "_blank" : undefined} rel={item.link.startsWith("http") ? "noopener noreferrer" : undefined} className="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-500 shadow-2xl">
                       <ExternalLink className="w-6 h-6" />
                     </a>
                   </div>

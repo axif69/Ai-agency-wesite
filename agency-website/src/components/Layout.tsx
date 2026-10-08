@@ -153,9 +153,23 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.9)] overflow-hidden font-sans normal-case tracking-normal text-left p-6 grid grid-cols-3 gap-6">
                     {/* Column 1: Enterprise AI */}
                     <div className="space-y-1 border-r border-white/10 pr-5">
-                      <div className="pb-2.5 mb-2 border-b border-white/5">
+                      <div className="pb-2.5 mb-2 border-b border-white/5 flex items-center justify-between">
                         <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block">Enterprise AI</span>
+                        <span className="px-1.5 py-0.5 text-[8.5px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                          SAAS LIVE
+                        </span>
                       </div>
+                      <a 
+                        href="https://expirywatch.asifdigital.agency" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold flex items-center justify-between py-2 hover:pl-1.5 duration-200 border-b border-white/5"
+                      >
+                        <span>ExpiryWatch (Compliance Copilot)</span>
+                        <span className="px-1.5 py-0.5 text-[8.5px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                          LIVE
+                        </span>
+                      </a>
                       <Link href="/ai-app-development-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Custom AI App Development</Link>
                       <Link href="/ai-consulting-uae" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Consulting</Link>
                       <Link href="/ai-automation-agency-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Automation Agency</Link>
@@ -504,6 +518,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               >
                 Free Tools
               </Link>
+              <a
+                href="https://expirywatch.asifdigital.agency"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+                className="min-h-[44px] flex items-center justify-between text-[15px] font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
+              >
+                <span>ExpiryWatch (UAE Compliance AI)</span>
+                <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                  LIVE
+                </span>
+              </a>
               <Link
                 href="/blog"
                 onClick={() => setIsMenuOpen(false)}
@@ -581,8 +607,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             {/* Menu Section */}
             <div>
-              <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/95 font-bold mb-10">Navigation</h4>
-              <ul className="space-y-5">
+              <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/95 font-bold mb-8">Navigation</h4>
+              <ul className="space-y-4">
                 {navLinks.map((link) => (
                   <li key={link.path}>
                     <Link href={link.path} className="text-white/95 hover:text-white transition-all duration-300 flex items-center gap-3 group text-sm font-medium">
@@ -592,6 +618,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   </li>
                 ))}
               </ul>
+
+              <div className="mt-10 pt-8 border-t border-white/10">
+                <h5 className="text-[9px] uppercase tracking-[0.25em] text-emerald-400 font-bold mb-4">SaaS Ecosystem</h5>
+                <ul className="space-y-3">
+                  <li>
+                    <a
+                      href="https://expirywatch.asifdigital.agency"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/95 hover:text-white transition-all duration-300 inline-flex items-center gap-2 group text-sm font-medium"
+                    >
+                      <span className="w-0 h-[1px] bg-emerald-400 transition-all duration-500 group-hover:w-4" />
+                      <span className="group-hover:text-emerald-300 transition-colors">ExpiryWatch (UAE Compliance AI)</span>
+                      <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                        LIVE
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             {/* Contact Info */}

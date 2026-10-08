@@ -40,6 +40,71 @@ export default function ToolsHub() {
         </div>
       </section>
 
+      {/* Featured Flagship SaaS Copilot */}
+      <section className="px-6 pb-12 pt-0 md:px-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-emerald-500/30 bg-gradient-to-br from-[#0a1a12] via-[#050907] to-black p-8 md:p-12 shadow-[0_20px_80px_rgba(16,185,129,0.12)] group">
+            {/* Ambient emerald radial glow */}
+            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-emerald-500/15 blur-[100px] pointer-events-none" />
+            
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-10">
+              <div className="max-w-3xl">
+                <div className="flex flex-wrap items-center gap-3 mb-5">
+                  <span className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                    SaaS Product / AI Automation
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[10px] font-mono font-bold tracking-widest rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    LIVE PRODUCTION
+                  </span>
+                  <span className="text-[11px] font-mono text-white/40">
+                    UAE &amp; GCC Statutory Shield
+                  </span>
+                </div>
+
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-[1.1] group-hover:text-emerald-300 transition-colors duration-300">
+                  ExpiryWatch — UAE Compliance AI
+                </h2>
+
+                <p className="mt-3 text-base sm:text-lg text-emerald-400 font-medium">
+                  Automated UAE Document Expiry &amp; Compliance Copilot
+                </p>
+
+                <p className="mt-4 text-sm sm:text-base text-white/65 leading-relaxed font-light">
+                  Zero-touch OCR document scanning &amp; automated MOHRE/DED fine prevention. Drop any UAE Trade License, Employment Visa, Emirates ID, Commercial Ejari, or Corporate Insurance Policy. Within 3 seconds, proprietary multimodal AI extracts key statutory dates and schedules multi-channel alerts to guarantee your company never pays late renewal penalties.
+                </p>
+
+                <div className="mt-6 flex flex-wrap gap-4 text-xs font-semibold text-white/60">
+                  <span className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400" /> 3-Sec Multimodal OCR
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4 text-emerald-400" /> DED &amp; MOHRE Fine Shield
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Sparkles className="h-4 w-4 text-emerald-400" /> 30/14/7/1-Day Multi-Channel Alerts
+                  </span>
+                </div>
+              </div>
+
+              <div className="lg:shrink-0 flex flex-col sm:flex-row lg:flex-col gap-3.5 items-start lg:items-end">
+                <a
+                  href="https://expirywatch.asifdigital.agency"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-5 rounded-2xl bg-emerald-400 text-black font-black text-xs uppercase tracking-[0.18em] hover:bg-emerald-300 transition-all duration-300 shadow-[0_10px_35px_rgba(16,185,129,0.35)] hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Launch App →
+                </a>
+                <span className="text-[11px] font-mono text-white/40 tracking-wider">
+                  expirywatch.asifdigital.agency
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="border-y border-white/5 bg-[#080808] px-6 py-20 md:px-12 md:py-28">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-3">
           {tools.map((tool) => {
