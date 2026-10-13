@@ -772,20 +772,67 @@ export const BLOG_POSTS: BlogPost[] = [
       </div>
     </div>
 
-    <div class="my-8">
-      <div class="text-xs font-mono text-white/60 mb-2 uppercase tracking-wider">Engineering Comparison: Legacy WordPress Stack vs. Next.js App Router</div>
-      <pre class="bg-black/60 p-5 rounded-2xl border border-white/10 overflow-x-auto text-xs font-mono text-white/90"><code>// 1. Traditional WordPress Pipeline (Average latency: 4,800ms)
-User Ad Tap -> Mobile Radio -> Cross-Continent Transit (Europe) 
-  -> Apache/Nginx Web Server -> PHP Runtime Initialization (35+ Plugins) 
-  -> MySQL Database Queries (12-40 SQL queries) -> HTML Assembly 
-  -> Response Transit -> Browser Downloads 80+ Assets -> JS Parse & Main Thread Freeze (3.2s) 
-  -> First Interactive Paint (5.4s)
+    <div class="my-10 not-prose">
+      <div class="text-xs font-semibold uppercase tracking-widest text-[#0066FF] mb-4">Engineering Architecture Comparison</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-rose-500/20">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-sm font-semibold text-white">Legacy WordPress Pipeline</span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-mono bg-rose-500/10 text-rose-400 border border-rose-500/20 font-bold">4,800ms Latency</span>
+          </div>
+          <div class="space-y-3 text-xs text-white/70 font-sans">
+            <div class="flex items-start gap-3 p-2.5 rounded-lg bg-black/40 border border-white/5">
+              <span class="text-rose-400 font-bold">1.</span>
+              <span><strong>Cross-Continent Transit:</strong> Mobile request routes 5,000+ km to Europe origin server.</span>
+            </div>
+            <div class="flex items-start gap-3 p-2.5 rounded-lg bg-black/40 border border-white/5">
+              <span class="text-rose-400 font-bold">2.</span>
+              <span><strong>PHP Runtime Execution:</strong> 35+ plugins spin up on web server per request.</span>
+            </div>
+            <div class="flex items-start gap-3 p-2.5 rounded-lg bg-black/40 border border-white/5">
+              <span class="text-rose-400 font-bold">3.</span>
+              <span><strong>Database Queries:</strong> 12–40 SQL lookups required to assemble page layout.</span>
+            </div>
+            <div class="flex items-start gap-3 p-2.5 rounded-lg bg-black/40 border border-white/5">
+              <span class="text-rose-400 font-bold">4.</span>
+              <span><strong>Client-Side Freeze:</strong> 3MB unminified JS blocks mobile browser main thread.</span>
+            </div>
+            <div class="flex items-start gap-3 p-2.5 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-300">
+              <span class="font-bold">Result:</span>
+              <span><strong>First Interactive Paint: 5.4 seconds</strong> (62% of paid clicks bounce).</span>
+            </div>
+          </div>
+        </div>
 
-// 2. Next.js Edge App Router Pipeline (Average latency: 680ms)
-User Ad Tap -> Mobile Radio -> Nearest GCC Edge POP (Dubai/Abu Dhabi) 
-  -> Instant Cache Hit (Pre-rendered Static HTML via Edge CDN) 
-  -> Sub-Second Streaming Paint (&lt;750ms) -> React Server Component Zero-JS Hydration 
-  -> Fully Interactive &amp; Smooth Navigation (&lt;850ms)</code></pre>
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-emerald-500/20">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-sm font-semibold text-white">Next.js Edge Architecture</span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">680ms Sub-Second</span>
+          </div>
+          <div class="space-y-3 text-xs text-white/70 font-sans">
+            <div class="flex items-start gap-3 p-2.5 rounded-lg bg-black/40 border border-white/5">
+              <span class="text-emerald-400 font-bold">1.</span>
+              <span><strong>GCC Edge Point of Presence:</strong> Request hits local Dubai/Abu Dhabi edge node (&lt;20ms).</span>
+            </div>
+            <div class="flex items-start gap-3 p-2.5 rounded-lg bg-black/40 border border-white/5">
+              <span class="text-emerald-400 font-bold">2.</span>
+              <span><strong>Pre-Rendered HTML Cache Hit:</strong> Instant delivery directly from edge memory (no DB roundtrip).</span>
+            </div>
+            <div class="flex items-start gap-3 p-2.5 rounded-lg bg-black/40 border border-white/5">
+              <span class="text-emerald-400 font-bold">3.</span>
+              <span><strong>React Server Components (RSC):</strong> 0KB client JS for static layout and content.</span>
+            </div>
+            <div class="flex items-start gap-3 p-2.5 rounded-lg bg-black/40 border border-white/5">
+              <span class="text-emerald-400 font-bold">4.</span>
+              <span><strong>Streaming Hydration:</strong> Clean sub-second paint with zero main thread freeze.</span>
+            </div>
+            <div class="flex items-start gap-3 p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">
+              <span class="font-bold">Result:</span>
+              <span><strong>First Interactive Paint: &lt;850ms</strong> (under 18% bounce rate).</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <figure id="mobile-experience" class="my-10 border border-white/10 rounded-2xl p-4 md:p-6 bg-white/[0.02] scroll-mt-28">
@@ -827,13 +874,24 @@ User Ad Tap -> Mobile Radio -> Nearest GCC Edge POP (Dubai/Abu Dhabi)
     <h3 class="text-xl font-semibold text-white mt-6 mb-4">Core Components of the Enterprise WhatsApp Engine:</h3>
 
     <ul class="space-y-4 text-white/80 my-6 list-disc pl-6">
-      <li><strong>Contextual Pre-Filled Intent Triggers:</strong> Generic WhatsApp links that open a blank chat window place the cognitive burden on the buyer. High-converting funnels utilize dynamic URL parameters that pre-populate the user's message based on the exact ad or page they were viewing:
-        <div class="my-3">
-          <code class="text-xs font-mono bg-black/60 p-3 rounded-lg border border-white/10 block text-[#38BDF8]">
-            https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I'm%20reviewing%20the%20Enterprise%20Web%20Performance%20framework%20and%20would%20like%20to%20audit%20our%20website%20speed%20and%20paid%20ad%20conversion%20funnel.
-          </code>
+      <li><strong>Contextual Pre-Filled Intent Triggers:</strong> Generic WhatsApp links that open a blank chat window place the cognitive burden on the buyer. High-converting funnels utilize dynamic URL parameters that pre-populate the user's message based on the exact ad or page they were viewing.
+        <div class="my-5 p-5 rounded-2xl bg-[#0B141A] border border-emerald-500/20 not-prose max-w-xl">
+          <div class="flex items-center justify-between text-xs text-emerald-400 font-medium mb-3">
+            <span class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              WhatsApp Pre-Populated Intent Trigger
+            </span>
+            <span class="text-white/40 font-mono text-[11px]">+971 54 586 6094</span>
+          </div>
+          <div class="p-4 rounded-xl bg-[#005C4B] text-white text-sm leading-relaxed shadow-sm font-sans">
+            "Hi Asif Digital team, I'm reviewing the Enterprise Web Performance framework on your website and would like to audit our paid ad conversion funnel."
+          </div>
+          <div class="mt-3 flex items-center justify-between text-[11px] text-white/40">
+            <span>Dynamic Attribution: UTM Source = Google Search (Dubai Q4)</span>
+            <span class="text-emerald-400 font-semibold">1-Tap Send</span>
+          </div>
         </div>
-        The prospect simply taps once to open WhatsApp, and taps once more to transmit their inquiry.
+        The prospect simply taps once to open WhatsApp, and taps once more to transmit their inquiry—eliminating mobile virtual keyboard typing friction entirely.
       </li>
       <li><strong>Preserving Marketing UTM &amp; Campaign Attribution:</strong> One of the historic hesitations regarding WhatsApp was attribution: <em>"How do we know which Google Ads campaign or Meta ad creative generated the WhatsApp conversation?"</em> Modern headless architecture solves this by capturing URL parameters (<code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>, <code>gclid</code>, <code>fbclid</code>) on landing page arrival, generating an encrypted session token, and attaching it to the pre-filled message or passing it via webhook to the backend CRM.</li>
       <li><strong>Official Meta WhatsApp Cloud API Integration:</strong> Operating through official Meta Cloud API infrastructure (rather than unofficial browser scrapers that violate Meta terms of service and risk permanent number termination) guarantees 99.99% uptime, verified business badge display, and automated CRM webhook synchronization.</li>
@@ -1006,31 +1064,22 @@ User Ad Tap -> Mobile Radio -> Nearest GCC Edge POP (Dubai/Abu Dhabi)
 
     <h2 id="technical-references" class="text-2xl md:text-3xl font-serif text-white mt-12 mb-6 scroll-mt-28">11. Official Documentation &amp; Technical References</h2>
     <ul class="text-xs text-white/60 space-y-2 font-mono">
-      <li>• Google Search Central: <a href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">Core Web Vitals and Page Experience Documentation</a></li>
-      <li>• Next.js Engineering: <a href="https://nextjs.org/docs/app" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">Next.js App Router &amp; React Server Components Specification</a></li>
-      <li>• Meta for Developers: <a href="https://developers.facebook.com/docs/marketing-api/conversions-api" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">Meta Conversions API (CAPI) &amp; Event Deduplication Protocol</a></li>
-      <li>• Meta WhatsApp Cloud API: <a href="https://developers.facebook.com/docs/whatsapp/cloud-api" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">Official WhatsApp Business Platform &amp; Webhook Guides</a></li>
-      <li>• DataReportal: <a href="https://datareportal.com/reports/digital-2026-united-arab-emirates" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">Digital 2026: United Arab Emirates Mobile &amp; Internet Statistics</a></li>
-      <li>• UAE Legislation Portal: <a href="https://uaecabinet.ae/en/details/news/uae-government-issues-federal-decree-law-on-personal-data-protection" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">Federal Decree-Law No. 45 of 2021 on Personal Data Protection (PDPL)</a></li>
+      <li>Google Search Central: <a href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">Core Web Vitals and Page Experience Documentation</a></li>
+      <li>Next.js Engineering: <a href="https://nextjs.org/docs/app" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">Next.js App Router &amp; React Server Components Specification</a></li>
+      <li>Meta for Developers: <a href="https://developers.facebook.com/docs/marketing-api/conversions-api" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">Meta Conversions API (CAPI) &amp; Event Deduplication Protocol</a></li>
+      <li>Meta WhatsApp Cloud API: <a href="https://developers.facebook.com/docs/whatsapp/cloud-api" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">Official WhatsApp Business Platform &amp; Webhook Guides</a></li>
+      <li>DataReportal: <a href="https://datareportal.com/reports/digital-2026-united-arab-emirates" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">Digital 2026: United Arab Emirates Mobile &amp; Internet Statistics</a></li>
+      <li>UAE Legislation Portal: <a href="https://uaecabinet.ae/en/details/news/uae-government-issues-federal-decree-law-on-personal-data-protection" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">Federal Decree-Law No. 45 of 2021 on Personal Data Protection (PDPL)</a></li>
     </ul>
 
-    <div class="mt-14 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-72 h-72 bg-[#0066FF]/10 rounded-full blur-[90px]" />
-      <h3 class="text-2xl font-serif text-white mb-3 relative z-10">Stop Bleeding Paid Ad Spend on Slow Infrastructure</h3>
-      <p class="text-sm md:text-base text-white/70 mb-4 max-w-2xl relative z-10">
+    <div class="mt-12 p-8 rounded-2xl bg-white/[0.02] border border-white/10 not-prose">
+      <h3 class="text-xl font-semibold text-white mb-2">Architect Your High-Speed Digital Acquisition Engine</h3>
+      <p class="text-sm text-white/70 mb-4 leading-relaxed">
         If your organization is spending AED 15,000 to AED 100,000+ per month on paid advertising across Google, Meta, or LinkedIn, every millisecond of web latency directly degrades your bottom-line return on investment.
       </p>
-      <p class="text-sm md:text-base text-white/70 mb-6 max-w-2xl relative z-10">
-        Discover your website's exact performance bottleneck with our free <a href="/tools/ad-spend-efficiency-analyzer" class="text-white hover:underline font-semibold">Ad Spend Efficiency Analyzer</a>, or explore Asif Digital's tailored <a href="/web-design-dubai" class="text-white hover:underline font-semibold">high-performance Next.js web development services in Dubai</a> to re-architect your digital acquisition funnel.
+      <p class="text-sm text-white/70 mb-0 leading-relaxed">
+        To audit your current website speed and calculate wasted media spend, use our interactive <a href="/tools/ad-spend-efficiency-analyzer" class="text-white hover:underline font-semibold">Ad Spend Efficiency Analyzer</a>, or explore Asif Digital's tailored <a href="/web-design-dubai" class="text-white hover:underline font-semibold">high-performance Next.js web development in Dubai</a>.
       </p>
-      <div class="relative z-10 flex flex-wrap gap-4">
-        <a href="/contact" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-black font-semibold text-sm hover:bg-white/90 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-          Schedule an Architecture &amp; CRO Audit
-        </a>
-        <a href="/tools/ad-spend-efficiency-analyzer" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white/10 text-white font-semibold text-sm hover:bg-white/20 transition-all border border-white/15">
-          Run Ad Spend Efficiency Analyzer
-        </a>
-      </div>
     </div>
 `
   },
