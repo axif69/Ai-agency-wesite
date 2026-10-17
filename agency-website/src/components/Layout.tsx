@@ -594,7 +594,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </p>
               <div className="flex gap-4 pt-4">
                 {[
-                  { name: 'LN', label: 'LinkedIn profile', href: 'https://www.linkedin.com' },
+                  { name: 'LN', label: 'LinkedIn company page', href: 'https://www.linkedin.com/company/asif-digital-agency/' },
                   { name: 'TW', label: 'X profile', href: 'https://x.com' },
                   { name: 'IG', label: 'Instagram profile', href: 'https://www.instagram.com' }
                 ].map((social) => (

@@ -144,6 +144,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "url": "https://www.asifdigital.agency",
               "telephone": "+971545866094",
               "priceRange": "$$$",
+              "sameAs": [
+                "https://www.linkedin.com/company/asif-digital-agency/",
+                "https://www.crunchbase.com/organization/asif-digital-agency",
+                "https://www.f6s.com/company/asif-digital-agency"
+              ],
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Muwaileh Commercial - Industrial Area",
