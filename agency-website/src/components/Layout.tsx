@@ -619,7 +619,43 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 ))}
               </ul>
 
-              <div className="mt-10 pt-8 border-t border-white/10">
+              <div className="mt-8 pt-6 border-t border-white/10">
+                <h5 className="text-[9px] uppercase tracking-[0.25em] text-emerald-400 font-bold mb-4">Core UAE Solutions</h5>
+                <ul className="space-y-2.5">
+                  <li>
+                    <Link href="/ai-automation-agency-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
+                      AI Automation Agency Dubai
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/services/web-design-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
+                      Web Design Company Dubai
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/real-estate-digital-solutions-uae" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
+                      Real Estate Digital Solutions UAE
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/ai-chatbots-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
+                      WhatsApp Chatbot Services Dubai
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/ai-seo-agency-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
+                      AI SEO & AEO Agency Dubai
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/ai-property-management-uae" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
+                      AI Property Management UAE
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-white/10">
                 <h5 className="text-[9px] uppercase tracking-[0.25em] text-emerald-400 font-bold mb-4">SaaS Ecosystem</h5>
                 <ul className="space-y-3">
                   <li>

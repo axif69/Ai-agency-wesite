@@ -1357,17 +1357,21 @@ export default function Home() {
       <section className="py-20 border-t border-white/5 bg-black">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 justify-center text-white/80 text-[11px] uppercase tracking-[0.2em] font-bold text-center">
-            <Link href="/services/web-design-dubai" className="hover:text-white transition-colors">Web Design Dubai</Link>
+            <Link href="/ai-automation-agency-dubai" className="hover:text-white transition-colors">AI Automation Agency Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/services/seo-agency-dubai-sharjah-uae" className="hover:text-white transition-colors">SEO Agency Dubai</Link>
+            <Link href="/services/web-design-dubai" className="hover:text-white transition-colors">Web Design Company Dubai</Link>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <Link href="/real-estate-digital-solutions-uae" className="hover:text-white transition-colors">Real Estate Digital Solutions UAE</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/ai-chatbots-dubai" className="hover:text-white transition-colors">WhatsApp AI Chatbot Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/real-estate" className="hover:text-white transition-colors">AI Real Estate Automation Dubai</Link>
+            <Link href="/ai-seo-agency-dubai" className="hover:text-white transition-colors">AI SEO Agency Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/arabic-ai-hub" className="hover:text-white transition-colors">Arabic AI Chatbot UAE</Link>
+            <Link href="/ai-property-management-uae" className="hover:text-white transition-colors">AI Property Management UAE</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
-            <Link href="/services/seo-agency-dubai-sharjah-uae" className="hover:text-white transition-colors">AEO Agency Dubai</Link>
+            <Link href="/real-estate" className="hover:text-white transition-colors">AI Real Estate Automation</Link>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <Link href="/arabic-ai-hub" className="hover:text-white transition-colors">Arabic AI Hub</Link>
           </div>
         </div>
       </section>

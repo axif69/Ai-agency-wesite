@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/services/RealEstateDigitalSolutionsUAE';
 
 export const metadata = {
-  title: "Real Estate Digital Solutions UAE | Brokerage Tech & Portal Infrastructure",
-  description: "Enterprise real estate digital solutions and technology infrastructure in the UAE. Custom brokerage websites, automated portal listing syndication, API feeds, and developer portals.",
+  title: "Real Estate Digital Solutions UAE | Brokerage Tech & Portals | Asif Digital",
+  description: "Next-gen real estate digital solutions in Dubai & UAE. Custom brokerage portals, automated Bayut & Property Finder XML feeds, and CRM sync. Schedule a free demo.",
   alternates: {
     canonical: "https://www.asifdigital.agency/real-estate-digital-solutions-uae"
   },
   openGraph: {
-    title: "Real Estate Digital Solutions UAE | Brokerage Tech & Portal Infrastructure",
-    description: "Enterprise real estate digital solutions and technology infrastructure in the UAE. Custom brokerage websites, automated portal listing syndication, API feeds, and developer portals.",
+    title: "Real Estate Digital Solutions UAE | Brokerage Tech & Portals | Asif Digital",
+    description: "Next-gen real estate digital solutions in Dubai & UAE. Custom brokerage portals, automated Bayut & Property Finder XML feeds, and CRM sync. Schedule a free demo.",
     url: "https://www.asifdigital.agency/real-estate-digital-solutions-uae",
     siteName: "Asif Digital",
     type: "website"

@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/AiChatbotsDubai';
 
 export const metadata = {
-  title: "WhatsApp Chatbot Services Dubai | Meta API & AI Bots",
-  description: "AI WhatsApp chatbot development in Dubai. Official Meta Cloud API, bilingual Arabic & English, 24/7 CRM lead qualification, and live human handover.",
+  title: "WhatsApp Chatbot Services Dubai | Meta AI Bots | Asif Digital",
+  description: "Official Meta Cloud API WhatsApp chatbot development in Dubai. Bilingual Arabic & English AI chatbots, 24/7 CRM lead qualification & live handover. Start now.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-chatbots-dubai"
   },
   openGraph: {
-    title: "WhatsApp Chatbot Services Dubai | Meta API & AI Bots",
-    description: "AI WhatsApp chatbot development in Dubai. Official Meta Cloud API, bilingual Arabic & English, 24/7 CRM lead qualification, and live human handover.",
+    title: "WhatsApp Chatbot Services Dubai | Meta AI Bots | Asif Digital",
+    description: "Official Meta Cloud API WhatsApp chatbot development in Dubai. Bilingual Arabic & English AI chatbots, 24/7 CRM lead qualification & live handover. Start now.",
     url: "https://www.asifdigital.agency/ai-chatbots-dubai",
     siteName: "Asif Digital: AI Automation, Web & Graphic Design",
     type: "website"
