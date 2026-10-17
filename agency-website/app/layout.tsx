@@ -147,7 +147,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "sameAs": [
                 "https://www.linkedin.com/company/asif-digital-agency/",
                 "https://www.crunchbase.com/organization/asif-digital-agency",
-                "https://www.f6s.com/company/asif-digital-agency"
+                "https://www.f6s.com/company/asif-digital-agency",
+                "https://www.trustpilot.com/review/asifdigital.agency"
               ],
               "address": {
                 "@type": "PostalAddress",
