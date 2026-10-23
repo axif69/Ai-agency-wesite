@@ -363,103 +363,103 @@ export default function ExpiryWatchView() {
       </section>
 
       {/* ── 5. Pricing Tiers ── */}
-      <section className="py-20 px-6 md:px-12 max-w-5xl mx-auto">
+      <section className="py-20 px-6 md:px-12 max-w-4xl mx-auto">
         <div className="text-center mb-14">
           <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold block mb-2">
             Transparent Pricing
           </span>
           <h2 className="text-3xl md:text-4xl font-serif font-bold">
-            Start Free, Scale as Your Company Grows
+            Start Free with our 14-Day Trial. Upgrade When You&apos;re Ready.
           </h2>
           <p className="text-sm text-white/60 mt-3 font-sans font-light">
-            No long-term contracts. Pause or cancel anytime.
+            No credit card required. Cancel or upgrade anytime.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Starter */}
           <div className="p-8 rounded-3xl border border-white/10 bg-[#0A0A0A] flex flex-col justify-between">
             <div>
-              <span className="text-xs font-mono uppercase tracking-wider text-white/50 block mb-2">Starter Tier</span>
-              <div className="text-3xl font-bold font-mono text-white mb-2">Free</div>
-              <div className="text-xs text-emerald-400 mb-6">Forever Free • No Credit Card</div>
-              <p className="text-xs text-white/60 mb-6 font-sans font-light">
-                Perfect for startups and independent consultants in the UAE.
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xl font-bold text-white">Starter</span>
+                <span className="px-2.5 py-0.5 rounded text-[11px] font-mono text-white/60 border border-white/10 bg-white/[0.02]">
+                  Standard
+                </span>
+              </div>
+              <div className="flex items-baseline gap-1 mb-2">
+                <span className="text-4xl font-bold font-mono text-white">AED 99</span>
+                <span className="text-xs text-white/50">/ month</span>
+              </div>
+              <p className="text-xs text-white/60 mb-8 font-sans font-light">
+                For solo operators and small teams
               </p>
-              <ul className="space-y-3 text-xs text-white/75 font-sans font-light">
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Up to 10 Monitored Documents</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Automated Email Alerts</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Centralized Cloud Vault</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Basic WhatsApp Notifications</li>
+              <ul className="space-y-3.5 text-xs text-white/75 font-sans font-light">
+                <li className="flex items-center gap-2.5"><Check className="w-4 h-4 text-emerald-400 shrink-0" /> Up to 10 documents tracked</li>
+                <li className="flex items-center gap-2.5"><Check className="w-4 h-4 text-emerald-400 shrink-0" /> Email reminders at 30/14/7/1 days</li>
+                <li className="flex items-center gap-2.5"><Check className="w-4 h-4 text-emerald-400 shrink-0" /> Dashboard with all your documents</li>
+                <li className="flex items-center gap-2.5"><Check className="w-4 h-4 text-emerald-400 shrink-0" /> Mark as renewed / archive</li>
+                <li className="flex items-center gap-2.5"><Check className="w-4 h-4 text-emerald-400 shrink-0" /> Standard email support</li>
               </ul>
             </div>
-            <a
-              href="https://expirywatch.asifdigital.agency"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleCTA("Start Free", "https://expirywatch.asifdigital.agency")}
-              className="mt-8 w-full py-3 rounded-xl border border-white/15 bg-white/[0.03] text-white text-center text-xs font-semibold hover:bg-white/[0.08] transition-all"
-            >
-              Get Started Free
-            </a>
+            <div className="mt-8 pt-6 border-t border-white/5">
+              <a
+                href="https://expirywatch.asifdigital.agency"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => handleCTA("Start with Starter", "https://expirywatch.asifdigital.agency")}
+                className="w-full py-3.5 rounded-xl border border-white/15 bg-white/[0.03] text-white text-center text-xs font-semibold hover:bg-white/[0.08] transition-all flex items-center justify-center gap-2"
+              >
+                Start with Starter
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+              <p className="text-[10px] text-white/40 text-center mt-3 font-sans">
+                New accounts start with a 14-day free trial.
+              </p>
+            </div>
           </div>
 
-          {/* Business (Featured) */}
+          {/* Pro (Most Popular) */}
           <div className="p-8 rounded-3xl border-2 border-emerald-500/40 bg-[#0C120E] flex flex-col justify-between relative shadow-[0_20px_60px_rgba(16,185,129,0.15)]">
-            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-emerald-400 text-black text-[10px] font-mono font-bold uppercase tracking-wider">
-              Most Popular in UAE
+            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-amber-400 text-black text-[10px] font-mono font-bold uppercase tracking-wider">
+              MOST POPULAR
             </div>
             <div>
-              <span className="text-xs font-mono uppercase tracking-wider text-emerald-400 block mb-2">Business</span>
-              <div className="text-3xl font-bold font-mono text-white mb-2">AED 299 <span className="text-xs font-normal text-white/50">/ month</span></div>
-              <div className="text-xs text-emerald-400 mb-6">Billed Monthly or Annually</div>
-              <p className="text-xs text-white/70 mb-6 font-sans font-light">
-                Designed for growing UAE companies, trading houses, and agencies.
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xl font-bold text-white">Pro</span>
+                <span className="px-2.5 py-0.5 rounded text-[11px] font-mono text-amber-300 border border-amber-500/30 bg-amber-500/10">
+                  Growth
+                </span>
+              </div>
+              <div className="flex items-baseline gap-1 mb-2">
+                <span className="text-4xl font-bold font-mono text-white">AED 249</span>
+                <span className="text-xs text-white/50">/ month</span>
+              </div>
+              <p className="text-xs text-white/70 mb-8 font-sans font-light">
+                For growing businesses with many documents
               </p>
-              <ul className="space-y-3 text-xs text-white/85 font-sans font-light">
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Up to 100 Monitored Documents</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Priority WhatsApp &amp; SMS Alerts</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Multi-Manager Access (3 Admins)</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> 4-Tier Escalation Schedule</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Dedicated UAE WhatsApp Support</li>
+              <ul className="space-y-3.5 text-xs text-white/85 font-sans font-light">
+                <li className="flex items-center gap-2.5"><Check className="w-4 h-4 text-emerald-400 shrink-0" /> Unlimited documents tracked</li>
+                <li className="flex items-center gap-2.5"><Check className="w-4 h-4 text-emerald-400 shrink-0" /> Email reminders at 30/14/7/1 days</li>
+                <li className="flex items-center gap-2.5"><Check className="w-4 h-4 text-emerald-400 shrink-0" /> Priority email support + onboarding call</li>
+                <li className="flex items-center gap-2.5"><Check className="w-4 h-4 text-emerald-400 shrink-0" /> Document preview &amp; OCR</li>
+                <li className="flex items-center gap-2.5"><Check className="w-4 h-4 text-emerald-400 shrink-0" /> WhatsApp reminders (coming soon)</li>
               </ul>
             </div>
-            <a
-              href="https://wa.me/971545866094?text=Hi%20Asif%2C%20I%20want%20to%20subscribe%20to%20ExpiryWatch%20Business%20plan"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleCTA("Get Business Plan", "https://wa.me/971545866094")}
-              className="mt-8 w-full py-3 rounded-xl bg-emerald-400 text-black text-center text-xs font-semibold hover:bg-emerald-300 transition-all shadow-[0_0_20px_rgba(52,211,153,0.3)]"
-            >
-              Start Business Plan
-            </a>
-          </div>
-
-          {/* Enterprise */}
-          <div className="p-8 rounded-3xl border border-white/10 bg-[#0A0A0A] flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-wider text-white/50 block mb-2">Enterprise &amp; Groups</span>
-              <div className="text-3xl font-bold font-mono text-white mb-2">Custom</div>
-              <div className="text-xs text-white/50 mb-6">Tailored to Your Fleet &amp; Staff</div>
-              <p className="text-xs text-white/60 mb-6 font-sans font-light">
-                For holding groups, property managers, and facilities with 100+ documents.
+            <div className="mt-8 pt-6 border-t border-white/5">
+              <a
+                href="https://expirywatch.asifdigital.agency"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => handleCTA("Start with Pro", "https://expirywatch.asifdigital.agency")}
+                className="w-full py-3.5 rounded-xl bg-emerald-400 text-black text-center text-xs font-semibold hover:bg-emerald-300 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(52,211,153,0.3)]"
+              >
+                Start with Pro
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+              <p className="text-[10px] text-white/40 text-center mt-3 font-sans">
+                New accounts start with a 14-day free trial.
               </p>
-              <ul className="space-y-3 text-xs text-white/75 font-sans font-light">
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Unlimited Documents &amp; Visas</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Custom API &amp; ERP Integration</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Unlimited Manager Seats</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> On-Premise / Private Vault Options</li>
-              </ul>
             </div>
-            <a
-              href="https://wa.me/971545866094?text=Hi%20Asif%2C%20I%20need%20an%20Enterprise%20quote%20for%20ExpiryWatch"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleCTA("Contact Enterprise", "https://wa.me/971545866094")}
-              className="mt-8 w-full py-3 rounded-xl border border-white/15 bg-white/[0.03] text-white text-center text-xs font-semibold hover:bg-white/[0.08] transition-all"
-            >
-              Contact Solutions Architect
-            </a>
           </div>
         </div>
       </section>
