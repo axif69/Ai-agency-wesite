@@ -159,17 +159,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                           SAAS LIVE
                         </span>
                       </div>
-                      <a 
-                        href="https://expirywatch.asifdigital.agency" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      <Link 
+                        href="/products/expirywatch" 
                         className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold flex items-center justify-between py-2 hover:pl-1.5 duration-200 border-b border-white/5"
                       >
                         <span>ExpiryWatch (Compliance Copilot)</span>
                         <span className="px-1.5 py-0.5 text-[8.5px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                           LIVE
                         </span>
-                      </a>
+                      </Link>
+                      <Link 
+                        href="/products/ticketflow" 
+                        className="text-cyan-400 hover:text-cyan-300 transition-all text-[13.5px] font-semibold flex items-center justify-between py-2 hover:pl-1.5 duration-200 border-b border-white/5"
+                      >
+                        <span>TicketFlow (Tenant Dispatch)</span>
+                        <span className="px-1.5 py-0.5 text-[8.5px] font-mono font-bold tracking-wider rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+                          PROPTECH
+                        </span>
+                      </Link>
                       <Link href="/ai-app-development-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Custom AI App Development</Link>
                       <Link href="/ai-consulting-uae" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Consulting</Link>
                       <Link href="/ai-automation-agency-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Automation Agency</Link>
@@ -659,10 +666,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <h5 className="text-[9px] uppercase tracking-[0.25em] text-emerald-400 font-bold mb-4">SaaS Ecosystem</h5>
                 <ul className="space-y-3">
                   <li>
-                    <a
-                      href="https://expirywatch.asifdigital.agency"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      href="/products/expirywatch"
                       className="text-white/95 hover:text-white transition-all duration-300 inline-flex items-center gap-2 group text-sm font-medium"
                     >
                       <span className="w-0 h-[1px] bg-emerald-400 transition-all duration-500 group-hover:w-4" />
@@ -670,7 +675,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                         LIVE
                       </span>
-                    </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/products/ticketflow"
+                      className="text-white/95 hover:text-white transition-all duration-300 inline-flex items-center gap-2 group text-sm font-medium"
+                    >
+                      <span className="w-0 h-[1px] bg-cyan-400 transition-all duration-500 group-hover:w-4" />
+                      <span className="group-hover:text-cyan-300 transition-colors">TicketFlow (Tenant Maintenance Dispatch)</span>
+                      <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold tracking-wider rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+                        PROPTECH
+                      </span>
+                    </Link>
                   </li>
                 </ul>
               </div>
