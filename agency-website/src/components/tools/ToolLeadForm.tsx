@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, Loader2, Send } from "lucide-react";
+import { CheckCircle2, Loader2, Send, MessageCircle } from "lucide-react";
 import { trackEvent } from "../../utils/analytics";
 import { fieldClass, labelClass } from "./ToolPageFrame";
 
@@ -45,10 +45,31 @@ export default function ToolLeadForm({ tool, summary, heading = "Want a Human Re
     return <div className="rounded-[2rem] border border-green-400/20 bg-green-400/[0.06] p-8 text-center"><CheckCircle2 className="mx-auto h-10 w-10 text-green-400" /><h3 className="mt-4 text-2xl font-serif">Request received.</h3><p className="mt-3 text-sm text-white/60">Asif Digital will review the context and contact you shortly.</p></div>;
   }
 
+  const waMessage = encodeURIComponent(
+    `Hi Asif, I just used the ${tool} on your website and would like a strategic review:\n\n${summary || "Please review our performance & automation potential."}`
+  );
+  const waUrl = `https://wa.me/971545866094?text=${waMessage}`;
+
   return (
     <div className="rounded-[2rem] border border-green-400/20 bg-gradient-to-br from-green-400/[0.08] to-white/[0.02] p-6 md:p-9">
-      <h3 className="text-2xl font-serif md:text-3xl">{heading}</h3>
-      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60">Share your contact details after viewing the result. We will use the report context to make the first conversation practical.</p>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/10">
+        <div>
+          <h3 className="text-2xl font-serif md:text-3xl">{heading}</h3>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/60">
+            Get an instant expert audit of your figures, tracking setup, and automation opportunities.
+          </p>
+        </div>
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackEvent("tool_whatsapp_lead_click", { tool_name: tool })}
+          className="shrink-0 inline-flex items-center justify-center gap-2.5 px-6 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-black text-xs uppercase tracking-wider rounded-2xl shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <MessageCircle className="w-4 h-4 fill-black" />
+          <span>Chat on WhatsApp (+971)</span>
+        </a>
+      </div>
       <form onSubmit={submit} className="mt-7 grid gap-4 md:grid-cols-2">
         <div><label className={labelClass} htmlFor={`${tool}-name`}>Name</label><input id={`${tool}-name`} required className={fieldClass} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} /></div>
         <div><label className={labelClass} htmlFor={`${tool}-email`}>Work email</label><input id={`${tool}-email`} required type="email" className={fieldClass} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} /></div>
