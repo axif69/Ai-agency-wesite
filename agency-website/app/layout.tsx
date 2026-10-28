@@ -89,44 +89,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               send_page_view: true
             });
 
-            // Automated GA4 Lead Gen Key Event Tracking
+            // Automated GA4 Click Event Tracking
             if (typeof window !== 'undefined') {
               document.addEventListener('click', function(e) {
                 var target = e.target.closest('a');
                 if (!target) return;
                 var href = target.getAttribute('href') || '';
                 
-                // WhatsApp Lead Conversion
+                // WhatsApp Engagement Tracking (Click-intent, not confirmed lead)
                 if (href.includes('wa.me') || href.includes('whatsapp.com')) {
-                  gtag('event', 'generate_lead', {
-                    event_category: 'Lead',
-                    event_label: 'WhatsApp Click',
-                    value: 1.0,
-                    currency: 'AED',
+                  gtag('event', 'whatsapp_click', {
+                    event_category: 'Engagement',
+                    event_label: 'WhatsApp Link Click',
                     link_url: href
                   });
                 }
                 
-                // Direct Phone Call Conversion
+                // Direct Phone Call Click
                 if (href.startsWith('tel:')) {
-                  gtag('event', 'contact', {
+                  gtag('event', 'phone_click', {
                     event_category: 'Contact',
                     event_label: 'Phone Call Click',
-                    value: 1.0,
-                    currency: 'AED',
                     link_url: href
                   });
                 }
-              }, true);
-
-              // Contact Form Submission Conversion
-              document.addEventListener('submit', function(e) {
-                gtag('event', 'generate_lead', {
-                  event_category: 'Lead',
-                  event_label: 'Contact Form Submission',
-                  value: 1.0,
-                  currency: 'AED'
-                });
               }, true);
             }
           `}

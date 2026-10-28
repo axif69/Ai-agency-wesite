@@ -25,10 +25,15 @@ export default function TicketFlowView() {
   };
 
   const handleCTA = (label: string, destination: string) => {
-    trackEvent("generate_lead", {
-      service_name: "TicketFlow",
+    // WhatsApp clicks are captured cleanly by the global layout listener ('whatsapp_click')
+    if (destination.includes("wa.me") || destination.includes("whatsapp.com")) {
+      return;
+    }
+    trackEvent("cta_click", {
+      product_name: "TicketFlow",
       cta_location: "product_landing",
       cta_text: label,
+      cta_type: "external_link",
       link_url: destination
     });
   };

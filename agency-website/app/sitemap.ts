@@ -60,13 +60,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/sovereign-sales-agent",
     "/workflow-automation-uae",
     "/hospitality-ai-automation-uae",
-    "/ai-ppc-agency-dubai"
+    "/ai-ppc-agency-dubai",
+    "/products/expirywatch",
+    "/products/ticketflow"
   ];
 
   const staticUrls = routes.map((route) => {
     let priority = 0.8;
     if (route === "/") priority = 1.0;
-    else if (route.includes("/services") || route.includes("/ai-")) priority = 0.9;
+    else if (route.includes("/services") || route.includes("/ai-") || route.includes("/products")) priority = 0.9;
 
     return {
       url: `${baseUrl}${route}`,

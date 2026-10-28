@@ -21,10 +21,15 @@ export default function ExpiryWatchView() {
   const estimatedHoursSaved = Math.round(docCount * 1.8);
 
   const handleCTA = (label: string, destination: string) => {
-    trackEvent("generate_lead", {
-      service_name: "ExpiryWatch",
+    // WhatsApp clicks are captured cleanly by the global layout listener ('whatsapp_click')
+    if (destination.includes("wa.me") || destination.includes("whatsapp.com")) {
+      return;
+    }
+    trackEvent("cta_click", {
+      product_name: "ExpiryWatch",
       cta_location: "product_landing",
       cta_text: label,
+      cta_type: "external_link",
       link_url: destination
     });
   };

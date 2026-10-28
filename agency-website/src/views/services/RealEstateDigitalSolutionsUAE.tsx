@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { 
-  Building, ArrowRight, ShieldAlert, Cpu, 
+import {
+  Building, ArrowRight, ShieldAlert, Cpu,
   MessageSquare, Phone, CheckCircle, Server, Code, Settings,
   Check, Globe, Database, Network, Layout, ExternalLink,
   ChevronDown, Layers, FileText, BarChart3, RefreshCw,
@@ -63,7 +63,7 @@ export default function RealEstateDigitalSolutionsUAE() {
 
   return (
     <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30 font-sans">
-      
+
       {/* ── 1. Compact Breadcrumb ── */}
       <div className="px-6 md:px-12 max-w-7xl mx-auto py-3 text-[13px] tracking-wider text-white/70 font-mono">
         <Link href="/" className="hover:text-emerald-400 transition-colors">HOME</Link>
@@ -80,7 +80,7 @@ export default function RealEstateDigitalSolutionsUAE() {
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
             Enterprise Real Estate Technology
           </span>
-          
+
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif leading-[1.12] tracking-tight mb-6">
             Real Estate Digital Solutions &amp; <br className="hidden md:inline" />
             <span className="italic text-white/60 font-light tracking-normal">Technology Infrastructure in the UAE</span>
@@ -89,23 +89,23 @@ export default function RealEstateDigitalSolutionsUAE() {
           <p className="text-[17px] md:text-[19px] leading-[1.7] text-white/80 max-w-3xl mx-auto mb-8 font-sans font-light">
             We architect and engineer high-performance property search websites, automated XML portal syndication (Bayut &amp; Property Finder), off-plan developer feeds, and custom API middleware for UAE brokerages and real estate developers.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10 font-sans">
-            <a 
-              href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20discuss%20real%20estate%20digital%20solutions%20and%20agency%20technology%20infrastructure." 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20discuss%20real%20estate%20digital%20solutions%20and%20agency%20technology%20infrastructure."
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => handleCTA("WhatsApp Discussion", "Hero CTA", "whatsapp", "https://wa.me/971545866094")}
               className="w-full sm:w-auto bg-white text-black px-9 py-4 rounded-full font-bold uppercase tracking-widest text-[13px] hover:bg-white/85 transition-all flex items-center justify-center gap-3 shadow-2xl h-[52px]"
             >
               WhatsApp Us <MessageSquare className="w-4 h-4 text-black" />
             </a>
-            <Link 
-              href="/contact" 
-              onClick={() => handleCTA("Schedule Infrastructure Consultation", "Hero CTA", "consultation", "/contact")}
+            <Link
+              href="/free-growth-audit"
+              onClick={() => handleCTA("Request Tech Audit", "Hero CTA", "consultation", "/free-growth-audit")}
               className="w-full sm:w-auto border border-white/20 text-white px-9 py-4 rounded-full font-bold uppercase tracking-widest text-[13px] hover:bg-white/5 transition-all flex items-center justify-center gap-3 h-[52px]"
             >
-              Schedule Tech Audit <ArrowRight className="w-4 h-4 text-white" />
+              Request Real Estate Tech Audit <ArrowRight className="w-4 h-4 text-white" />
             </Link>
           </div>
 
@@ -143,7 +143,7 @@ export default function RealEstateDigitalSolutionsUAE() {
             What Constitutes Modern Real Estate Digital Solutions in the UAE?
           </h2>
           <p className="text-[16px] md:text-[17px] text-white/85 leading-[1.8] font-light">
-            In the UAE property market, real estate digital solutions refer to the interconnected technology stack that powers agency operations: sub-second headless property search websites, automated XML listing feeds to UAE property portals (Bayut, Property Finder, Dubizzle), off-plan inventory ingestion pipelines, and secure API middleware connecting customer inquiries to CRM systems. Unlike generic web templates, modern real estate infrastructure eliminates manual data re-entry, maintains synchronized listing availability, and provides agencies with complete ownership of their digital assets and client databases.
+            In the UAE property market, real estate digital solutions refer to the interconnected technology stack that powers agency operations: high-performance headless property search websites optimized for Core Web Vitals, automated XML listing feeds to UAE property portals (Bayut, Property Finder, Dubizzle), off-plan developer inventory ingestion pipelines, and secure API middleware connecting customer inquiries to CRM systems. Unlike high-rent third-party marketplace portals where your listings appear alongside direct competitors, a sovereign brokerage website captures and retains 100% of your buyer attention and exclusive investor data.
           </p>
         </div>
       </section>
@@ -248,7 +248,7 @@ export default function RealEstateDigitalSolutionsUAE() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
+
           {/* Pillar 1 */}
           <div className="p-8 border border-white/10 bg-white/[0.02] rounded-3xl flex flex-col justify-between hover:border-emerald-500/30 transition-all">
             <div>
@@ -257,11 +257,11 @@ export default function RealEstateDigitalSolutionsUAE() {
               </div>
               <h3 className="text-2xl font-serif mb-3">Custom Brokerage Websites</h3>
               <p className="text-sm text-white/70 leading-relaxed font-light mb-6">
-                Headless Next.js web applications engineered for sub-second page loads. Includes dynamic community map search (Downtown Dubai, Palm Jumeirah, Dubai Hills), faceted listing filtering by price AED, bedrooms, and completion date, and mobile-first progressive web app (PWA) responsiveness.
+                Headless Next.js web applications engineered for fast edge rendering and optimal mobile performance. Includes dynamic community map search (Downtown Dubai, Palm Jumeirah, Dubai Hills), faceted listing filtering by price AED, bedrooms, and completion date, and mobile-first progressive web app (PWA) responsiveness.
               </p>
             </div>
             <div className="pt-4 border-t border-white/5 text-xs text-emerald-400 font-mono">
-              ✓ Sub-Second Search • Interactive Map Views
+              ✓ Fast Edge Search • Interactive Map Views
             </div>
           </div>
 
@@ -273,7 +273,7 @@ export default function RealEstateDigitalSolutionsUAE() {
               </div>
               <h3 className="text-2xl font-serif mb-3">Portal XML &amp; API Feeds</h3>
               <p className="text-sm text-white/70 leading-relaxed font-light mb-6">
-                Direct XML syndication engines connecting your internal CMS to Bayut, Property Finder, and Dubizzle. Automatically validates image dimensions, watermark placement, and RERA permit requirements before syndicating, eliminating manual double-entry.
+                Direct XML syndication engines structured according to official Bayut and Property Finder v2 XML schemas. Automatically validates image dimensions, watermark compliance, and mandatory RERA Trakheesi permit requirements before syndicating, eliminating manual double-entry.
               </p>
             </div>
             <div className="pt-4 border-t border-white/5 text-xs text-emerald-400 font-mono">
@@ -321,11 +321,11 @@ export default function RealEstateDigitalSolutionsUAE() {
               </div>
               <h3 className="text-2xl font-serif mb-3">API &amp; Webhook Middleware</h3>
               <p className="text-sm text-white/70 leading-relaxed font-light mb-6">
-                Enterprise webhook listeners and REST API middleware connecting your digital touchpoints to downstream tools. Handles concurrency, message queues, and error recovery to ensure zero lost leads between portals, landing pages, and internal databases.
+                Enterprise webhook listeners and REST API middleware connecting your digital touchpoints to downstream tools. Handles concurrency, message queues, and automated error-recovery alerts to ensure verified lead delivery between portals, landing pages, and internal databases.
               </p>
             </div>
             <div className="pt-4 border-t border-white/5 text-xs text-emerald-400 font-mono">
-              ✓ High-Concurrency Webhooks • Zero Lead Loss
+              ✓ High-Concurrency Webhooks • Automated Error Alerts
             </div>
           </div>
 
@@ -364,6 +364,65 @@ export default function RealEstateDigitalSolutionsUAE() {
         </div>
       </section>
 
+      {/* ── Practical Architecture Demarcation ── */}
+      <section className="py-16 px-6 md:px-12 max-w-6xl mx-auto border-t border-white/5">
+        <div className="text-center mb-12">
+          <span className="text-xs uppercase tracking-widest text-emerald-400 font-mono block mb-2">
+            Technical Clarity for UAE Brokerages
+          </span>
+          <h2 className="text-2xl md:text-4xl font-serif">
+            Demarcating Brokerage Technology, Portal Feeds &amp; Sales CRM
+          </h2>
+          <p className="text-white/60 font-light max-w-3xl mx-auto mt-3 text-sm">
+            Evaluating a real estate technical partner requires a transparent understanding of where your website ends, where property portals operate, and where CRM pipelines take over:
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
+            <span className="text-xs font-mono uppercase text-emerald-400 font-semibold block">1. Owned Website vs. Market Portals</span>
+            <h3 className="text-lg font-serif text-white">Sovereign Asset vs. Paid Channel</h3>
+            <p className="text-xs text-white/70 font-light leading-relaxed">
+              Your brokerage website is an owned asset that compounds organic search equity, showcases exclusive listings without competitor banners, and retains buyer inquiries privately. Property portals (Bayut, Property Finder) are essential third-party channels for marketplace reach where listings compete side-by-side with thousands of competing brokers.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
+            <span className="text-xs font-mono uppercase text-emerald-400 font-semibold block">2. XML Syndication in Practice</span>
+            <h3 className="text-lg font-serif text-white">Automated Schema Validation</h3>
+            <p className="text-xs text-white/70 font-light leading-relaxed">
+              We engineer scheduled XML feeds compliant with Property Finder v2 and Bayut feed specifications. The feed validates required fields (RERA Trakheesi permit number, broker BRN, agency ORN, photo aspect ratios, and rental payment intervals) on automated cron cycles. Active portal corporate subscriptions remain held directly by your brokerage.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
+            <span className="text-xs font-mono uppercase text-emerald-400 font-semibold block">3. Catalog vs. CRM Lead Pipeline</span>
+            <h3 className="text-lg font-serif text-white">Clear System Separation</h3>
+            <p className="text-xs text-white/70 font-light leading-relaxed">
+              The front-end website functions as your public property catalog and inquiry intake gate. Downstream lead assignment, broker round-robin routing, response-time SLA enforcement, and WhatsApp conversational qualification are executed by CRM connectors (HubSpot, Zoho, or our Dubai Real Estate CRM), keeping front-end browsing isolated from sales ops.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
+            <span className="text-xs font-mono uppercase text-emerald-400 font-semibold block">4. Off-Plan Hubs vs. Resale Feeds</span>
+            <h3 className="text-base font-serif text-white">Specialized Project Showcase Engine</h3>
+            <p className="text-xs text-white/70 font-light leading-relaxed">
+              Off-plan developer inventory requires dedicated architecture distinct from secondary listings: milestone progress timelines, master developer payment structures (e.g. 60/40 or 70/30 post-handover), and gated floor plan downloads to capture foreign investor details before distributing PDFs.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
+            <span className="text-xs font-mono uppercase text-emerald-400 font-semibold block">5. Middleware &amp; Account Dependencies</span>
+            <h3 className="text-base font-serif text-white">Direct Client Vendor Control</h3>
+            <p className="text-xs text-white/70 font-light leading-relaxed">
+              All third-party services—including portal enterprise accounts (Bayut Pro, Property Finder Manager), mapping API keys (Mapbox/Google Maps), and hosting accounts (Vercel/AWS)—remain directly contracted under your agency's name. Asif Digital builds the sovereign code and integration pipelines between them.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── 8. Comparison Table: Fragmented Tech Stack vs Integrated Platform ── */}
       <section className="py-20 px-6 md:px-12 max-w-6xl mx-auto">
         <div className="text-center mb-14">
@@ -391,7 +450,7 @@ export default function RealEstateDigitalSolutionsUAE() {
               <tr>
                 <td className="py-5 px-6 font-medium text-white font-mono text-xs">Website Performance</td>
                 <td className="py-5 px-6 text-white/50">Slow WordPress theme with 30+ plugins; 4-7s mobile load time causing high bounce rates.</td>
-                <td className="py-5 px-6 text-white font-normal bg-emerald-500/[0.02]">Headless Next.js edge-rendered architecture; sub-second mobile loads with instant faceted search.</td>
+                <td className="py-5 px-6 text-white font-normal bg-emerald-500/[0.02]">Headless Next.js edge-rendered architecture; fast mobile Core Web Vitals with instant faceted search.</td>
               </tr>
               <tr>
                 <td className="py-5 px-6 font-medium text-white font-mono text-xs">Listing Management</td>
@@ -411,7 +470,7 @@ export default function RealEstateDigitalSolutionsUAE() {
               <tr>
                 <td className="py-5 px-6 font-medium text-white font-mono text-xs">Asset Ownership</td>
                 <td className="py-5 px-6 text-white/50">Locked into recurring monthly third-party SaaS templates with zero code ownership.</td>
-                <td className="py-5 px-6 text-white font-normal bg-emerald-500/[0.02]">100% agency-owned codebase, private database, and custom infrastructure with no vendor lock-in.</td>
+                <td className="py-5 px-6 text-white font-normal bg-emerald-500/[0.02]">Agency-owned custom codebase repository and cloud database deployment with full technical documentation.</td>
               </tr>
             </tbody>
           </table>
@@ -622,17 +681,17 @@ export default function RealEstateDigitalSolutionsUAE() {
             Let us audit your current website, listing feeds, and digital workflows. We will design a unified technology architecture that reduces manual effort and accelerates buyer inquiries.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center font-sans">
-            <Link 
-              href="/contact" 
-              onClick={() => handleCTA("Request Tech Audit", "Final CTA", "consultation", "/contact")}
+            <Link
+              href="/free-growth-audit"
+              onClick={() => handleCTA("Request Tech Audit", "Final CTA", "consultation", "/free-growth-audit")}
               className="w-full sm:w-auto bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2"
             >
-              Request Technology Consultation <ArrowRight className="w-4 h-4" />
+              Request Real Estate Tech Audit <ArrowRight className="w-4 h-4" />
             </Link>
-            <a 
-              href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20discuss%20real%20estate%20digital%20solutions%20and%20agency%20technology%20infrastructure." 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20discuss%20real%20estate%20digital%20solutions%20and%20agency%20technology%20infrastructure."
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => handleCTA("WhatsApp Discussion", "Final CTA", "whatsapp", "https://wa.me/971545866094")}
               className="w-full sm:w-auto border border-white/20 hover:border-white/40 bg-white/[0.02] text-white px-8 py-5 rounded-full font-semibold uppercase tracking-wider text-xs transition-all flex items-center justify-center gap-2"
             >
@@ -651,20 +710,24 @@ export default function RealEstateDigitalSolutionsUAE() {
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/70">
             <Link href="/real-estate" className="hover:text-white transition-colors text-emerald-400 font-medium">Real Estate AI Hub</Link>
             <span className="text-white/20">•</span>
-            <Link href="/real-estate-crm-dubai" className="hover:text-white transition-colors">Dubai Real Estate CRM (Sales Operations)</Link>
+            <Link href="/real-estate-crm-dubai" className="hover:text-white transition-colors">Dubai Real Estate CRM</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/ai-chatbots-dubai" className="hover:text-white transition-colors">WhatsApp Chatbots Dubai</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/products/ticketflow" className="hover:text-white transition-colors">TicketFlow Lead Dispatch</Link>
             <span className="text-white/20">•</span>
             <Link href="/real-estate/portal-lead-integration-dubai" className="hover:text-white transition-colors">Portal Lead Integration</Link>
             <span className="text-white/20">•</span>
             <Link href="/ai-real-estate-agencies-dubai" className="hover:text-white transition-colors">AI for Real Estate Agencies</Link>
             <span className="text-white/20">•</span>
-            <Link href="/blog/real-estate-digital-solutions-uae-guide" className="hover:text-white transition-colors">Operational Guide</Link>
+            <Link href="/free-growth-audit" className="hover:text-white transition-colors">Free Growth Audit</Link>
           </div>
         </div>
       </section>
 
       {/* Sticky Mobile CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0c0c0ced]/90 backdrop-blur-md border-t border-white/10 px-4 py-3 flex gap-4 md:hidden font-sans">
-        <a 
+        <a
           href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20discuss%20real%20estate%20digital%20solutions%20and%20agency%20technology%20infrastructure."
           target="_blank"
           rel="noopener noreferrer"
@@ -673,7 +736,7 @@ export default function RealEstateDigitalSolutionsUAE() {
         >
           <MessageSquare className="w-4 h-4" /> WhatsApp Us
         </a>
-        <a 
+        <a
           href="tel:+971545866094"
           onClick={() => handleCTA("Sticky Phone Mobile", "Sticky Footer", "phone", "tel:+971545866094")}
           className="flex-1 bg-white text-black text-center font-bold uppercase tracking-wider text-[13px] py-3 rounded-xl flex items-center justify-center gap-2 h-11"

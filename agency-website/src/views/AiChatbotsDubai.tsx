@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  Bot, MessageSquare, Sparkles, Clock, CheckCircle2, 
-  ArrowRight, ShieldCheck, Zap, Globe, PhoneCall, 
+import {
+  Bot, MessageSquare, Sparkles, Clock, CheckCircle2,
+  ArrowRight, ShieldCheck, Zap, Globe, PhoneCall,
   HelpCircle, Building2, BarChart3, Users, RefreshCw,
   Cpu, Send, Database, Layers, Check, AlertCircle
 } from "lucide-react";
@@ -19,32 +19,10 @@ export default function AiChatbotsDubai() {
   const afterHoursVisitors = Math.round(monthlyWebsiteVisitors * (afterHoursVisitorPercent / 100));
   const lostLeadsWithoutChatbot = Math.round(afterHoursVisitors * 0.012); // ~1.2% would-be leads lost due to no instant assistance
   const lostMonthlyRevenue = lostLeadsWithoutChatbot * avgLeadContractValue * 0.15; // Assuming 15% close rate
-  
+
   const recoveredLeadsWithAiChatbot = Math.round(afterHoursVisitors * 0.042); // 4.2% conversion with instant conversational response
   const recoveredMonthlyRevenue = Math.round(recoveredLeadsWithAiChatbot * avgLeadContractValue * 0.15);
   const annualRecoveredRevenue = recoveredMonthlyRevenue * 12;
-
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "WhatsApp & AI Chatbot Development Dubai",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Asif Digital: AI Automation, Web & Graphic Design",
-      "telephone": "+971545866094",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Muwaileh Commercial - Industrial Area",
-        "addressLocality": "Sharjah",
-        "addressRegion": "Sharjah",
-        "addressCountry": "AE"
-      },
-      "url": "https://www.asifdigital.agency"
-    },
-    "serviceType": "Conversational AI and WhatsApp Business Automation",
-    "areaServed": ["Dubai", "Sharjah", "Abu Dhabi", "United Arab Emirates", "GCC"],
-    "description": "Custom WhatsApp and AI chatbot development in Dubai. Official Meta WhatsApp Business Platform automation, bilingual Arabic/English conversational NLP, CRM integration, and lead qualification."
-  };
 
   const faqData = [
     {
@@ -81,29 +59,13 @@ export default function AiChatbotsDubai() {
     }
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.a
-      }
-    }))
-  };
-
   return (
     <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-
       {/* ── 1. Hero Section ── */}
       <section className="px-6 md:px-12 py-16 max-w-7xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 25 }} 
-          animate={{ opacity: 1, y: 0 }} 
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="max-w-4xl"
         >
@@ -111,25 +73,31 @@ export default function AiChatbotsDubai() {
             <Bot className="w-4 h-4 text-emerald-400" /> WhatsApp Business Platform &bull; Conversational AI &bull; Dubai &amp; GCC
           </span>
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif leading-[1.1] tracking-tight mb-6">
-            AI Chatbot &amp; WhatsApp <br />
-            <span className="italic text-white/50 font-normal">Automation Development in Dubai.</span>
+            WhatsApp Chatbot Development &amp; <br />
+            <span className="italic text-white/50 font-normal">Conversational AI in Dubai.</span>
           </h1>
           <p className="text-base sm:text-lg text-white/80 font-light leading-relaxed mb-8 max-w-3xl">
             Asif Digital builds custom AI chatbots and official Meta WhatsApp automation systems for UAE businesses, connecting 24/7 client conversations with your CRM, lead qualification, and operations.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <Link 
-              href="/contact" 
+            <Link
+              href="/free-growth-audit"
               className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-all flex items-center gap-2"
             >
-              Request Custom Chatbot Architecture <ArrowRight className="w-4 h-4" />
+              Request WhatsApp &amp; Chatbot Audit <ArrowRight className="w-4 h-4" />
             </Link>
-            <a 
-              href="https://wa.me/971545866094" 
+            <a
+              href="https://wa.me/971545866094"
               className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-colors inline-flex items-center gap-2"
             >
               <PhoneCall className="w-4 h-4 text-green-400" /> WhatsApp +971 54 586 6094
             </a>
+            <Link
+              href="/contact"
+              className="text-white/60 hover:text-white px-4 py-4 font-mono uppercase tracking-widest text-xs transition-colors"
+            >
+              Contact Scope &rarr;
+            </Link>
           </div>
         </motion.div>
       </section>
@@ -434,12 +402,12 @@ export default function AiChatbotsDubai() {
                   <span className="text-white/70">Monthly Inbound Visitors / Inquiries:</span>
                   <span className="text-white font-bold">{monthlyWebsiteVisitors.toLocaleString()}</span>
                 </div>
-                <input 
-                  type="range" 
-                  min="2000" 
-                  max="50000" 
-                  step="1000" 
-                  value={monthlyWebsiteVisitors} 
+                <input
+                  type="range"
+                  min="2000"
+                  max="50000"
+                  step="1000"
+                  value={monthlyWebsiteVisitors}
                   onChange={(e) => setMonthlyWebsiteVisitors(Number(e.target.value))}
                   className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
                 />
@@ -450,12 +418,12 @@ export default function AiChatbotsDubai() {
                   <span className="text-white/70">% Browsing Outside Regular Hours:</span>
                   <span className="text-white font-bold">{afterHoursVisitorPercent}%</span>
                 </div>
-                <input 
-                  type="range" 
-                  min="30" 
-                  max="80" 
-                  step="5" 
-                  value={afterHoursVisitorPercent} 
+                <input
+                  type="range"
+                  min="30"
+                  max="80"
+                  step="5"
+                  value={afterHoursVisitorPercent}
                   onChange={(e) => setAfterHoursVisitorPercent(Number(e.target.value))}
                   className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
                 />
@@ -466,12 +434,12 @@ export default function AiChatbotsDubai() {
                   <span className="text-white/70">Average Deal / Client Value:</span>
                   <span className="text-white font-bold">AED {avgLeadContractValue.toLocaleString()}</span>
                 </div>
-                <input 
-                  type="range" 
-                  min="2000" 
-                  max="100000" 
-                  step="2000" 
-                  value={avgLeadContractValue} 
+                <input
+                  type="range"
+                  min="2000"
+                  max="100000"
+                  step="2000"
+                  value={avgLeadContractValue}
                   onChange={(e) => setAvgLeadContractValue(Number(e.target.value))}
                   className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-400"
                 />
@@ -501,8 +469,8 @@ export default function AiChatbotsDubai() {
               </div>
 
               <div className="pt-4 border-t border-white/10">
-                <Link 
-                  href="/contact" 
+                <Link
+                  href="/contact"
                   className="w-full bg-emerald-400 text-black py-4 rounded-xl font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2 hover:bg-emerald-300 transition-colors"
                 >
                   Deploy Your WhatsApp &amp; AI Chatbot <ArrowRight className="w-4 h-4" />
@@ -559,13 +527,94 @@ export default function AiChatbotsDubai() {
               </div>
               <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
                 <strong className="text-white block mb-1">3. Monthly Messaging Volume Tiers</strong>
-                <span className="text-white/60 font-sans text-xs">Meta Cloud API per-conversation utility and marketing rates based on your monthly dialogue count.</span>
+                <span className="text-white/60 font-sans text-xs">Applicable Meta Cloud API message-category charges (utility, marketing, authentication, or service) billed directly by Meta based on volume, separate from implementation and infrastructure maintenance.</span>
               </div>
               <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
                 <strong className="text-white block mb-1">4. Arabic Dialect &amp; Knowledge Complexity</strong>
                 <span className="text-white/60 font-sans text-xs">Scope of uploaded documentation requiring semantic vector indexing and specialized phrasing fine-tuning.</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* ── Operational Demarcation & Scope Boundaries ── */}
+        <div className="mt-16 pt-12 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-4">
+            <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-wider font-semibold">
+              <ShieldCheck className="w-4 h-4" /> Client Accounts &amp; Direct Subscriptions
+            </div>
+            <h3 className="text-lg font-serif text-white">What Your Organization Holds Directly</h3>
+            <p className="text-xs text-white/70 font-light leading-relaxed">
+              To guarantee complete ownership and compliance with Meta platform policies, your organization maintains direct ownership of foundational accounts:
+            </p>
+            <ul className="space-y-2 text-xs text-white/75 font-mono">
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-400 shrink-0">&bull;</span>
+                <span><strong>Meta Business Manager:</strong> Verified UAE business account holding your WhatsApp Business Account (WABA).</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-400 shrink-0">&bull;</span>
+                <span><strong>Clean Phone Number:</strong> Dedicated SIM or VoIP number not linked to personal WhatsApp.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-400 shrink-0">&bull;</span>
+                <span><strong>Direct Meta Messaging Fees:</strong> Official Meta message-category rates (utility, marketing, service) billed directly to your payment method by Meta according to prevailing platform terms.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-400 shrink-0">&bull;</span>
+                <span><strong>LLM API Credits:</strong> Model usage (OpenAI, Anthropic, or Azure) billed to your cloud account to ensure zero markup.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-4">
+            <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-wider font-semibold">
+              <Cpu className="w-4 h-4" /> Asif Digital Deliverables &amp; Engineering
+            </div>
+            <h3 className="text-lg font-serif text-white">What Asif Digital Architects &amp; Maintains</h3>
+            <p className="text-xs text-white/70 font-light leading-relaxed">
+              We engineer the complete backend middleware, conversation flows, and data integration layer that transforms raw APIs into an operational asset:
+            </p>
+            <ul className="space-y-2 text-xs text-white/75 font-mono">
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-400 shrink-0">&bull;</span>
+                <span><strong>Webhook Middleware &amp; Session Engine:</strong> Cloud webhook listeners handling incoming messages, state memory, and 24-hr session windows.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-400 shrink-0">&bull;</span>
+                <span><strong>RAG Knowledge Indexing:</strong> Vector embeddings generated from your verified service docs, PDFs, and price lists.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-400 shrink-0">&bull;</span>
+                <span><strong>Bi-Directional CRM Sync:</strong> Instant contact creation, pipeline stage updates, and conversation transcripts in HubSpot or Zoho.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-400 shrink-0">&bull;</span>
+                <span><strong>Human Escalation Triggers:</strong> Automated alerts sent to on-duty sales agents via WhatsApp/CRM when high-intent thresholds are met.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* ── Suitable Scenarios vs Custom Scoping ── */}
+        <div className="mt-8 p-6 rounded-2xl border border-white/10 bg-white/[0.02] grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-3">
+            <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold block">
+              Standard Implementation Fit
+            </span>
+            <h4 className="text-base font-serif text-white">Turnkey Conversational Workflows</h4>
+            <p className="text-xs text-white/70 font-light leading-relaxed">
+              Ideal for UAE companies requiring high-velocity qualification without complex custom ERP logic: 24/7 lead intake, budget screening, appointment booking via Calendly/Google Calendar, brochure delivery via PDF, and seamless handover to live sales reps.
+            </p>
+          </div>
+          <div className="space-y-3">
+            <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold block">
+              Custom Scoping Required
+            </span>
+            <h4 className="text-base font-serif text-white">Advanced Transactional &amp; Legacy Logic</h4>
+            <p className="text-xs text-white/70 font-light leading-relaxed">
+              Requires dedicated architectural scoping: in-chat payment gateway checkouts (Stripe / PayTabs), live SAP/Oracle ERP warehouse inventory locking, multi-tier core banking lookups, or polling air-gapped on-premise relational databases.
+            </p>
           </div>
         </div>
       </section>
@@ -611,18 +660,44 @@ export default function AiChatbotsDubai() {
             Capture incoming leads in seconds, eliminate manual qualification overhead, and synchronize inquiries with your CRM 24/7.
           </p>
           <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
-            <Link 
-              href="/contact" 
+            <Link
+              href="/free-growth-audit"
               className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-all flex items-center gap-2 shadow-2xl"
             >
-              Request Chatbot Consultation <ArrowRight className="w-4 h-4" />
+              Request Free Bot &amp; Growth Audit <ArrowRight className="w-4 h-4" />
             </Link>
-            <a 
-              href="https://wa.me/971545866094" 
+            <a
+              href="https://wa.me/971545866094"
               className="border border-white/20 text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-colors inline-flex items-center gap-2"
             >
               <PhoneCall className="w-4 h-4 text-green-400" /> WhatsApp +971 54 586 6094
             </a>
+            <Link
+              href="/contact"
+              className="border border-white/10 text-white/70 hover:text-white px-8 py-5 rounded-full font-mono uppercase tracking-widest text-xs transition-colors"
+            >
+              Custom Architecture RFP &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 12. Related Automation & Conversational Solutions Cluster ── */}
+      <section className="py-12 border-t border-white/5 bg-black/40 text-center">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-[11px] uppercase tracking-widest text-white/40 mb-4 font-mono">
+            Conversational &amp; Automation Architecture Hub
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/70">
+            <Link href="/services/whatsapp-automation-gcc" className="hover:text-white transition-colors text-emerald-400 font-medium">WhatsApp Automation GCC</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/real-estate/whatsapp-ai-automation" className="hover:text-white transition-colors">Real Estate WhatsApp AI</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/ai-automation-agency-dubai" className="hover:text-white transition-colors">Enterprise AI Automation Dubai</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/workflow-automation-uae" className="hover:text-white transition-colors">Workflow Automation UAE</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/real-estate-crm-dubai" className="hover:text-white transition-colors">Dubai Real Estate CRM</Link>
           </div>
         </div>
       </section>

@@ -87,71 +87,6 @@ export default function AiAutomationDubai() {
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30 font-sans">
       
-      {/* ── JSON-LD Structured Data ── */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              "name": "Asif Digital - AI Automation Agency Dubai",
-              "url": "https://www.asifdigital.agency/ai-automation-agency-dubai",
-              "description": "Enterprise AI automation agency in Dubai. We architect business process automation, CRM/ERP integrations, document intelligence, and human-in-the-loop workflows for UAE companies.",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Dubai",
-                "addressRegion": "Dubai",
-                "addressCountry": "AE"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "25.2048",
-                "longitude": "55.2708"
-              },
-              "priceRange": "$$$",
-              "serviceType": [
-                "Enterprise AI Automation",
-                "Business Process Automation",
-                "CRM and ERP Integration Middleware",
-                "Document Intelligence and Extraction",
-                "Human-in-the-Loop Operational Workflows"
-              ]
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://www.asifdigital.agency"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "AI Automation Agency Dubai",
-                  "item": "https://www.asifdigital.agency/ai-automation-agency-dubai"
-                }
-              ]
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": faqs.map(faq => ({
-                "@type": "Question",
-                "name": faq.q,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": faq.a
-                }
-              }))
-            }
-          ])
-        }}
-      />
-
       {/* ── 1. Hero Section with Clear Agency Definition ── */}
       <section className="relative px-6 pt-12 pb-20 md:pt-20 md:pb-28 max-w-6xl mx-auto overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-emerald-500/10 via-cyan-500/10 to-transparent blur-[120px] pointer-events-none -z-10" />
@@ -190,10 +125,10 @@ export default function AiAutomationDubai() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <Link
-              href="/contact"
+              href="/free-growth-audit"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white text-black font-medium hover:bg-white/90 transition shadow-lg shadow-white/10 text-sm"
             >
-              <span>Schedule Architecture Audit</span>
+              <span>Request Operational Audit</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
@@ -205,6 +140,12 @@ export default function AiAutomationDubai() {
               <MessageSquare className="w-4 h-4 text-emerald-400" />
               <span>Direct WhatsApp Desk</span>
             </a>
+            <Link
+              href="/contact"
+              className="text-white/60 hover:text-white px-4 py-3.5 font-mono uppercase tracking-widest text-xs transition-colors"
+            >
+              Custom Scope RFP &rarr;
+            </Link>
           </div>
         </motion.div>
       </section>
@@ -656,6 +597,53 @@ export default function AiAutomationDubai() {
         </div>
       </section>
 
+      {/* ── Operational Reliability & Human Governance Architecture ── */}
+      <section className="py-16 px-6 max-w-5xl mx-auto border-t border-white/10">
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Engineering Rigor</span>
+          <h2 className="text-2xl md:text-4xl font-serif">Failure Recovery, Dead-Letter Queues &amp; Human Gates</h2>
+          <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
+            Enterprise automation differs from consumer scripts in its resilience against API outages, unexpected schemas, and high-concurrency payloads:
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
+            <span className="text-xs font-mono uppercase text-emerald-400 font-semibold block">1. Queue Persistence &amp; Retries</span>
+            <h3 className="text-base font-serif text-white">Exponential Backoff</h3>
+            <p className="text-xs text-white/70 font-light leading-relaxed">
+              Inbound webhooks are instantly acknowledged and queued into persistent Redis or cloud message brokers. If a downstream CRM or ERP endpoint experiences downtime or rate-limiting, events are automatically retried up to 5 times with exponential backoff rather than silently dropping.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
+            <span className="text-xs font-mono uppercase text-emerald-400 font-semibold block">2. Dead-Letter Alerting</span>
+            <h3 className="text-base font-serif text-white">Zero Silent Failures</h3>
+            <p className="text-xs text-white/70 font-light leading-relaxed">
+              When a payload fails repeatedly due to schema changes or invalid tokens, it routes into a dedicated dead-letter queue. Automated webhook alerts trigger instant notifications in your operations Slack or Microsoft Teams channel with exact error stack traces and replay endpoints.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
+            <span className="text-xs font-mono uppercase text-emerald-400 font-semibold block">3. Supervised Human Checkpoints</span>
+            <h3 className="text-base font-serif text-white">Threshold-Based Approval</h3>
+            <p className="text-xs text-white/70 font-light leading-relaxed">
+              Autonomous execution is bounded by strict operational guardrails. Tasks exceeding critical parameters—such as automated invoice processing with OCR confidence below 90%, payment refunds above AED 5,000, or bulk notifications—require explicit staff sign-off before proceeding.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-6 p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
+          <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-wider font-semibold">
+            <Lock className="w-4 h-4" /> Sovereign Client Codebase Ownership
+          </div>
+          <h4 className="text-base font-serif text-white">100% Repository &amp; Cloud Tenancy Handover</h4>
+          <p className="text-xs text-white/70 font-light leading-relaxed">
+            All custom integration pipelines, TypeScript schemas, Docker container definitions, and serverless functions belong exclusively to your organization. Code is committed directly to your enterprise GitHub or GitLab repository and deployed within your private cloud tenancy (AWS, Azure, or GCP UAE regions) with zero ongoing proprietary code licensing fees.
+          </p>
+        </div>
+      </section>
+
       {/* ── 7. Typical 4-to-6 Week Deployment Framework ── */}
       <section className="py-16 px-6 max-w-5xl mx-auto border-t border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
@@ -847,10 +835,10 @@ export default function AiAutomationDubai() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
-              href="/contact"
+              href="/free-growth-audit"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white text-black font-medium hover:bg-white/90 transition shadow-lg shadow-white/10 text-sm"
             >
-              <span>Book Workflow Audit</span>
+              <span>Request Operational Audit</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
@@ -862,6 +850,32 @@ export default function AiAutomationDubai() {
               <MessageSquare className="w-4 h-4 text-emerald-400" />
               <span>WhatsApp Us (+971 54 586 6094)</span>
             </a>
+            <Link
+              href="/contact"
+              className="text-white/60 hover:text-white px-4 py-3.5 font-mono uppercase tracking-widest text-xs transition-colors"
+            >
+              Submit Custom RFP &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 12. Topic Cluster Navigation Footer ── */}
+      <section className="py-12 border-t border-white/5 bg-black/40 text-center">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-[11px] uppercase tracking-widest text-white/40 mb-4 font-mono">
+            Enterprise Automation &amp; AI Integration Cluster
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/70">
+            <Link href="/workflow-automation-uae" className="hover:text-white transition-colors text-emerald-400 font-medium">Workflow Automation UAE</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/ai-chatbots-dubai" className="hover:text-white transition-colors">WhatsApp Chatbots Dubai</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/services/whatsapp-automation-gcc" className="hover:text-white transition-colors">WhatsApp Automation GCC</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/real-estate-crm-dubai" className="hover:text-white transition-colors">Real Estate CRM Dubai</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/free-growth-audit" className="hover:text-white transition-colors">Free Growth Audit</Link>
           </div>
         </div>
       </section>

@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
 import { Menu, X, Code, Megaphone, PenTool, ChevronDown } from "lucide-react";
+import { trackEvent } from "../utils/analytics";
 
 const WhatsAppButton = dynamic(() => import("./WhatsAppButton"), { ssr: false });
 const KhalidChatbot = dynamic(() => import("./KhalidChatbot"), { ssr: false });
@@ -22,36 +23,48 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [footerBrief, setFooterBrief] = useState("");
   const [isBriefSubmitting, setIsBriefSubmitting] = useState(false);
   const [isBriefSuccess, setIsBriefSuccess] = useState(false);
+  const [briefError, setBriefError] = useState("");
 
   const handleBriefSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!footerEmail.trim() || !footerBrief.trim() || isBriefSubmitting) return;
     
     setIsBriefSubmitting(true);
+    setBriefError("");
     
     try {
       const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "").trim();
-      if (accessKey) {
-        const submissionData = new FormData();
-        submissionData.append("access_key", accessKey);
-        submissionData.append("email", footerEmail);
-        submissionData.append("message", footerBrief);
-        submissionData.append("subject", `New Project Brief from Footer`);
-        submissionData.append("from_name", "Asif Digital Brief Intake");
-
-        await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          body: submissionData
-        });
+      if (!accessKey) {
+        throw new Error("Brief delivery service is currently unavailable. Please reach us via WhatsApp (+971 54 586 6094).");
       }
+
+      const submissionData = new FormData();
+      submissionData.append("access_key", accessKey);
+      submissionData.append("email", footerEmail);
+      submissionData.append("message", footerBrief);
+      submissionData.append("subject", `New Project Brief from Footer`);
+      submissionData.append("from_name", "Asif Digital Brief Intake");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submissionData
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.success) throw new Error(result?.message || "Submission failed");
+
+      // Confirmed GA4 conversion tracking: single generate_lead event
+      trackEvent("generate_lead", {
+        form_name: "Footer Project Brief",
+        lead_type: "footer_brief"
+      });
 
       setIsBriefSuccess(true);
       setFooterEmail("");
       setFooterBrief("");
       setTimeout(() => setIsBriefSuccess(false), 6000);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Brief Error:", error);
-      setIsBriefSuccess(true);
+      setBriefError(error?.message || "Failed to submit brief. Please connect via WhatsApp (+971 54 586 6094).");
     } finally {
       setIsBriefSubmitting(false);
     }
@@ -751,6 +764,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-white/50 transition-all duration-500 resize-none placeholder:text-white/90"
                     ></textarea>
                   </div>
+                  {briefError && (
+                    <div className="p-3 rounded-xl border border-red-500/30 bg-red-500/10 text-red-300 text-xs text-center leading-relaxed">
+                      {briefError}
+                    </div>
+                  )}
                   <button 
                     type="submit" 
                     disabled={isBriefSubmitting}

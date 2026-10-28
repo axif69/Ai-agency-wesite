@@ -22,7 +22,8 @@ import {
   BarChart3,
   Network,
   Lock,
-  MessageSquare
+  MessageSquare,
+  MessageCircle
 } from "lucide-react";
 import { trackEvent } from "../utils/analytics";
 
@@ -92,7 +93,7 @@ const auditSteps = [
   {
     step: "02",
     title: "Technical Triage & Review",
-    time: "2–3 Business Days",
+    time: "2 Business Days",
     desc: "Our automation engineers and digital strategists manually review your customer touchpoints, response pathways, and operational bottlenecks."
   },
   {
@@ -154,7 +155,7 @@ const faqs = [
   },
   {
     q: "How long does it take to receive our audit deliverable?",
-    a: "Audits are typically completed and delivered within 2 to 3 business days. Because each audit involves hands-on review by our technical team, we take the time to evaluate your actual workflows carefully."
+    a: "Audits are typically completed and delivered within 2 business days. Because each audit involves hands-on review by our technical team, we take the time to evaluate your actual workflows carefully."
   },
   {
     q: "Do we need to give you admin passwords or internal system access?",
@@ -185,12 +186,17 @@ export default function FreeGrowthAudit() {
     const email = String(data.get("email") || "");
     const phone = String(data.get("phone") || "");
     const website = String(data.get("website") || "Not provided");
-    const service = String(data.get("service") || "Growth & Automation Audit");
-    const leadVolume = String(data.get("leadVolume") || "Not specified");
+    const rawService = String(data.get("service") || "").trim();
+    const service = rawService || "Growth & Automation Audit";
+    const rawLeadVolume = String(data.get("leadVolume") || "").trim();
+    const leadVolume = rawLeadVolume || "Not specified";
     const message = String(data.get("message") || "");
 
     try {
-      const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "3fcd0399-3b92-41b4-b3f4-1d8160e70686").trim();
+      const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "").trim();
+      if (!accessKey) {
+        throw new Error("Form delivery is currently unavailable. Please reach our team on WhatsApp (+971 54 586 6094).");
+      }
       const formData = new FormData();
       formData.append("access_key", accessKey);
       formData.append("name", name);
@@ -213,19 +219,11 @@ export default function FreeGrowthAudit() {
       });
       const result = await response.json().catch(() => null);
       if (!response.ok || !result?.success) throw new Error(result?.message || "Submission failed");
-      
-      // GA4 Tracking: Standard form submit and high-intent conversion event
-      trackEvent("form_submit", {
-        form_name: "Free Growth Audit Intake Form",
-        service_name: service,
-        link_url: "https://www.asifdigital.agency/free-growth-audit"
-      });
-
+      // Confirmed GA4 conversion tracking: single generate_lead event with non-sensitive metadata
       trackEvent("generate_lead", {
         form_name: "Free Growth Audit Intake Form",
         service_name: service,
-        lead_type: "Diagnostic Audit",
-        value: 1
+        lead_type: "diagnostic_audit"
       });
 
       setStatus("success");
@@ -265,7 +263,7 @@ export default function FreeGrowthAudit() {
               </div>
               <div className="flex items-center gap-2.5 p-3 rounded-xl border border-white/5 bg-white/[0.02]">
                 <Clock className="w-4 h-4 text-green-400 shrink-0" />
-                <span className="text-xs text-white/80 font-medium">Typical 2-3 Business Day Review</span>
+                <span className="text-xs text-white/80 font-medium">Delivered in 2 Business Days</span>
               </div>
               <div className="flex items-center gap-2.5 p-3 rounded-xl border border-white/5 bg-white/[0.02]">
                 <FileText className="w-4 h-4 text-green-400 shrink-0" />
@@ -351,6 +349,7 @@ export default function FreeGrowthAudit() {
                     name="service"
                     className="w-full rounded-xl border border-white/10 bg-black/80 px-4 py-3 text-sm text-white focus:border-green-400/60 focus:outline-none transition-colors"
                   >
+                    <option value="">Select a review area (Optional)</option>
                     <option value="Custom AI Apps & Software">Custom AI Apps & Software Engineering</option>
                     <option value="AI & Workflow Automation">AI & Workflow Automation</option>
                     <option value="CRM & Lead Management">CRM & Lead-Flow Architecture</option>
@@ -366,6 +365,7 @@ export default function FreeGrowthAudit() {
                     name="leadVolume"
                     className="w-full rounded-xl border border-white/10 bg-black/80 px-4 py-3 text-sm text-white focus:border-green-400/60 focus:outline-none transition-colors"
                   >
+                    <option value="">Select monthly inquiry volume (Optional)</option>
                     <option value="1–50 inquiries/mo">1–50 inquiries / month</option>
                     <option value="50–200 inquiries/mo">50–200 inquiries / month</option>
                     <option value="200–1000 inquiries/mo">200–1,000 inquiries / month</option>
@@ -375,13 +375,12 @@ export default function FreeGrowthAudit() {
               </div>
 
               <label className="block space-y-1.5">
-                <span className="text-[11px] font-mono text-white/70 uppercase tracking-wider">Current Bottleneck / Challenge *</span>
+                <span className="text-[11px] font-mono text-white/70 uppercase tracking-wider">Primary Operational Bottleneck (Optional)</span>
                 <textarea
                   name="message"
-                  required
-                  rows={3}
+                  rows={2}
                   className="w-full rounded-xl border border-white/10 bg-black/60 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-green-400/60 focus:outline-none transition-colors resize-none"
-                  placeholder="Describe your current manual delays: e.g. leads wait hours for a reply, team manually copies data between sheets, CRM isn't tracking WhatsApp conversions..."
+                  placeholder="e.g. slow response to website leads, manual WhatsApp copy-pasting, CRM not updating... (Optional)"
                 />
               </label>
 
@@ -389,7 +388,7 @@ export default function FreeGrowthAudit() {
                 <div className="p-4 rounded-xl border border-green-500/30 bg-green-500/10 text-green-300 text-xs leading-relaxed flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
                   <span>
-                    <strong>Audit request successfully received.</strong> We will review your submission and aim to provide your diagnostic recommendations within 2-3 business days.
+                    <strong>Audit request successfully received.</strong> We will review your submission and aim to provide your diagnostic recommendations within 2 business days.
                   </span>
                 </div>
               )}
@@ -419,8 +418,31 @@ export default function FreeGrowthAudit() {
                 )}
               </button>
 
-              <p className="text-[11px] text-white/40 text-center">
-                Your submitted details are used only to prepare this review and are handled with care.
+              <div className="relative my-2 flex items-center justify-center">
+                <div className="border-t border-white/10 w-full" />
+                <span className="bg-[#0b0b0b] px-3 text-[10px] font-mono uppercase tracking-widest text-white/40 shrink-0">
+                  Or Prefer a Direct Conversation?
+                </span>
+                <div className="border-t border-white/10 w-full" />
+              </div>
+
+              <a
+                href="https://wa.me/971545866094?text=Hi%20Asif,%20I'm%20interested%20in%20a%20free%20growth%20and%20automation%20audit%20for%20my%20business."
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", {
+                  cta_location: "free_growth_audit_card",
+                  cta_text: "Discuss via WhatsApp",
+                  link_url: "https://wa.me/971545866094"
+                })}
+                className="w-full rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 px-6 py-3.5 font-medium text-xs sm:text-sm inline-flex items-center justify-center gap-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+              >
+                <MessageCircle className="w-4 h-4 fill-emerald-400/30 text-emerald-400" />
+                <span>Chat Directly on WhatsApp (+971 54 586 6094)</span>
+              </a>
+
+              <p className="text-[11px] text-white/40 text-center leading-relaxed">
+                No admin passwords or database logins required. We review your public customer journey and submitted context.
               </p>
             </form>
           </div>

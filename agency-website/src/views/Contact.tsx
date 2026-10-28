@@ -13,6 +13,7 @@ export default function Contact() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const formStartedRef = useRef(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -20,37 +21,43 @@ export default function Contact() {
     if (isLoading) return;
     
     setIsLoading(true);
+    setErrorMessage("");
     
     try {
       const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "").trim();
-      if (accessKey) {
-        const submissionData = new FormData();
-        submissionData.append("access_key", accessKey);
-        submissionData.append("name", formData.name);
-        submissionData.append("email", formData.email);
-        submissionData.append("service", formData.service);
-        submissionData.append("message", formData.message);
-        submissionData.append("subject", `Sovereign Inquiry: ${formData.service} from ${formData.name}`);
-        submissionData.append("from_name", "Asif Digital Sovereign Intake");
-
-        await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          body: submissionData
-        });
+      if (!accessKey) {
+        throw new Error("Form delivery is currently unavailable. Please reach us via WhatsApp (+971 54 586 6094).");
       }
 
-      trackEvent("form_submit", {
+      const submissionData = new FormData();
+      submissionData.append("access_key", accessKey);
+      submissionData.append("name", formData.name);
+      submissionData.append("email", formData.email);
+      submissionData.append("service", formData.service);
+      submissionData.append("message", formData.message);
+      submissionData.append("subject", `Sovereign Inquiry: ${formData.service} from ${formData.name}`);
+      submissionData.append("from_name", "Asif Digital Sovereign Intake");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submissionData
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.success) throw new Error(result?.message || "Submission failed");
+
+      // Confirmed GA4 conversion tracking: single generate_lead event
+      trackEvent("generate_lead", {
         form_name: "Contact Audit Intake Form",
         service_name: formData.service || "Strategic Audit",
-        link_url: "https://www.asifdigital.agency/contact"
+        lead_type: "contact_form"
       });
       setIsSuccess(true);
       setFormData({ name: "", email: "", service: "", message: "" });
       formStartedRef.current = false;
       setTimeout(() => setIsSuccess(false), 6000);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Form Error:", error);
-      setIsSuccess(true);
+      setErrorMessage(error?.message || "Submission could not be completed. Please try again or message our team directly on WhatsApp (+971 54 586 6094).");
     } finally {
       setIsLoading(false);
     }
@@ -266,6 +273,12 @@ export default function Contact() {
                 </div>
               </div>
               
+              {errorMessage && (
+                <div className="p-4 rounded-2xl border border-red-500/30 bg-red-500/10 text-red-300 text-xs leading-relaxed">
+                  {errorMessage}
+                </div>
+              )}
+
               <button 
                 type="submit"
                 disabled={isLoading}

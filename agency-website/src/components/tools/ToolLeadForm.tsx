@@ -13,7 +13,7 @@ export default function ToolLeadForm({ tool, summary, heading = "Want a Human Re
     event.preventDefault();
     setState("loading");
     try {
-      const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "3fcd0399-3b92-41b4-b3f4-1d8160e70686").trim();
+      const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "").trim();
       if (!accessKey) throw new Error("Form delivery is not configured");
 
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -35,7 +35,7 @@ export default function ToolLeadForm({ tool, summary, heading = "Want a Human Re
       const result = await response.json().catch(() => null);
       if (!response.ok || !result?.success) throw new Error(result?.message || "Submission failed");
       setState("success");
-      trackEvent("tool_lead_submit", { tool_name: tool, form_name: `${tool} report review` });
+      trackEvent("generate_lead", { form_name: "Tool Lead Form", tool_name: tool, lead_type: "tool_review" });
     } catch {
       setState("error");
     }

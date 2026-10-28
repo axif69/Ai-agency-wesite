@@ -204,14 +204,7 @@ export default function KhalidChatbot() {
       leadDispatchedRef.current.add(rawContact);
       setLeadData(prev => ({ ...prev, contact: rawContact }));
 
-      // Track conversion in GA4
-      trackEvent("generate_lead", {
-        method: "khalid_chat",
-        contact: rawContact,
-        page_path: pathname || "/"
-      });
-
-      // Silently dispatch instant notification to Telegram & Email
+      // Dispatch instant notification to backend; verify acceptance before tracking
       fetch("/api/chat/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -222,7 +215,25 @@ export default function KhalidChatbot() {
           transcript: [...messages, { role: "user", text: userMessageContent }],
           page: pathname || "/"
         })
-      }).catch(err => console.error("Lead alert dispatch error:", err));
+      })
+      .then(async (res) => {
+        const result = await res.json().catch(() => null);
+        if (res.ok && result?.success) {
+          // Track conversion in GA4 only after confirmed backend delivery; strictly no PII
+          trackEvent("generate_lead", {
+            method: "khalid_chat",
+            lead_type: "chat_inquiry",
+            page_path: pathname || "/"
+          });
+        } else {
+          // Allow subsequent retry if delivery was not confirmed
+          leadDispatchedRef.current.delete(rawContact);
+        }
+      })
+      .catch(() => {
+        // Allow subsequent retry on network failure
+        leadDispatchedRef.current.delete(rawContact);
+      });
     }
 
     try {

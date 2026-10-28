@@ -87,32 +87,35 @@ export async function POST(req: Request) {
     }).catch(err => console.error('Telegram dispatch error:', err));
 
     // 2. DISPATCH TO WEB3FORMS (EMAIL)
-    const web3Key = (process.env.WEB3FORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '3fcd0399-3b92-41b4-b3f4-1d8160e70686').trim();
+    const web3Key = (process.env.WEB3FORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '').trim();
     
-    const formData = new FormData();
-    formData.append('access_key', web3Key);
-    formData.append('name', name || 'Website Visitor (Khalid Chat)');
-    formData.append('email', cleanContact.includes('@') ? cleanContact : 'khalid-lead@asifdigital.agency');
-    formData.append('phone', cleanContact);
-    formData.append('subject', `🔥 New Khalid Lead: ${cleanContact} on ${page || '/'}`);
-    formData.append('from_name', 'Khalid AI Assistant');
-    formData.append('message', [
-      `Source Page: ${page || '/'}`,
-      `Captured At: ${timestampStr}`,
-      `Contact: ${cleanContact}`,
-      `Interest: ${service || 'Strategic AI Solutions'}`,
-      '--- Chat History ---',
-      formattedHistory
-    ].join('\n\n'));
+    let emailPromise: Promise<any> = Promise.resolve();
+    if (web3Key) {
+      const formData = new FormData();
+      formData.append('access_key', web3Key);
+      formData.append('name', name || 'Website Visitor (Khalid Chat)');
+      formData.append('email', cleanContact.includes('@') ? cleanContact : 'khalid-lead@asifdigital.agency');
+      formData.append('phone', cleanContact);
+      formData.append('subject', `🔥 New Khalid Lead: ${cleanContact} on ${page || '/'}`);
+      formData.append('from_name', 'Khalid AI Assistant');
+      formData.append('message', [
+        `Source Page: ${page || '/'}`,
+        `Captured At: ${timestampStr}`,
+        `Contact: ${cleanContact}`,
+        `Interest: ${service || 'Strategic AI Solutions'}`,
+        '--- Chat History ---',
+        formattedHistory
+      ].join('\n\n'));
 
-    const emailPromise = fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Origin': 'https://www.asifdigital.agency',
-        'Referer': 'https://www.asifdigital.agency'
-      },
-      body: formData
-    }).catch(err => console.error('Web3Forms dispatch error:', err));
+      emailPromise = fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Origin': 'https://www.asifdigital.agency',
+          'Referer': 'https://www.asifdigital.agency'
+        },
+        body: formData
+      }).catch(err => console.error('Web3Forms dispatch error:', err));
+    }
 
     // 3. OPTIONAL CUSTOM WEBHOOK
     const webhookUrl = (process.env.LEAD_WEBHOOK_URL || '').trim();
@@ -136,7 +139,7 @@ export async function POST(req: Request) {
     // Run notifications concurrently
     await Promise.allSettled([telegramPromise, emailPromise, webhookPromise]);
 
-    return NextResponse.json({ success: true, contact: cleanContact });
+    return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error('Lead Capture Route Error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

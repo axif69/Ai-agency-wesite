@@ -74,7 +74,7 @@ export default function Page() {
             "name": "How long does it take to receive our audit deliverable?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Audits are typically completed within 2 to 3 business days. Reviews are prepared manually from your submitted context and the public customer journey we can inspect."
+              "text": "Audits are typically completed within 2 business days. Reviews are prepared manually from your submitted context and the public customer journey we can inspect."
             }
           },
           {

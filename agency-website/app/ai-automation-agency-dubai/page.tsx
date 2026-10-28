@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/AiAutomationDubai';
 
 export const metadata = {
-  title: "AI Automation Agency Dubai | Custom Workflows & WhatsApp AI | Asif Digital",
-  description: "Top AI automation agency in Dubai & UAE. Custom WhatsApp bots, CRM auto-routing & workflow automation saving 120+ hrs/mo. Book a free ROI audit.",
+  title: "AI Automation Agency Dubai | Custom Workflows & Enterprise Integrations | Asif Digital",
+  description: "Enterprise AI automation agency in Dubai. Custom CRM integrations, WhatsApp business workflows, and human-in-the-loop automation for UAE firms. Request an audit.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-automation-agency-dubai"
   },
   openGraph: {
-    title: "AI Automation Agency Dubai | Custom Workflows & WhatsApp AI | Asif Digital",
-    description: "Top AI automation agency in Dubai & UAE. Custom WhatsApp bots, CRM auto-routing & workflow automation saving 120+ hrs/mo. Book a free ROI audit.",
+    title: "AI Automation Agency Dubai | Custom Workflows & Enterprise Integrations | Asif Digital",
+    description: "Enterprise AI automation agency in Dubai. Custom CRM integrations, WhatsApp business workflows, and human-in-the-loop automation for UAE firms. Request an audit.",
     url: "https://www.asifdigital.agency/ai-automation-agency-dubai",
     siteName: "Asif Digital",
     locale: "en_AE",
@@ -16,8 +16,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Automation Agency Dubai | Custom Workflows & WhatsApp AI | Asif Digital",
-    description: "Top AI automation agency in Dubai & UAE. Custom WhatsApp bots, CRM auto-routing & workflow automation saving 120+ hrs/mo. Book a free ROI audit."
+    title: "AI Automation Agency Dubai | Custom Workflows & Enterprise Integrations | Asif Digital",
+    description: "Enterprise AI automation agency in Dubai. Custom CRM integrations, WhatsApp business workflows, and human-in-the-loop automation for UAE firms. Request an audit."
   }
 };
 
