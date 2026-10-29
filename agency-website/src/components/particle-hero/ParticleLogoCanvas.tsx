@@ -98,7 +98,7 @@ const ParticleLogoCanvas = forwardRef<
     let centerY = 0;
     let logoScale = 0;
 
-    // Bird.ae ParticleSlider Physics Parameters:
+    // Micro-Particle High-Sensitivity Physics Configuration
     // - mouseForce = 13,000 for explosive shattering and distant escape
     // - damping = 0.92 for low-friction cosmic glide (particles fully detach and float far)
     // - gravityK = 0.009 for gentle, natural celestial return
@@ -166,7 +166,7 @@ const ParticleLogoCanvas = forwardRef<
           group = 0;
         }
 
-        // Bird.ae ptlSize 1: pure micro-point stardust (0.5px radius)
+        // Pure micro-point stardust (0.5px radius)
         const radius = isMobile ? 0.45 : 0.52;
 
         return {
@@ -339,7 +339,7 @@ const ParticleLogoCanvas = forwardRef<
         p.vx += c * gravityK + shimmer;
         p.vy += d * gravityK + shimmer;
 
-        // 2. Bird.ae Inverse-Square Shatter & Distant Flight
+        // 2. Inverse-Square Shatter & Distant Flight
         if (hasPointer) {
           const j = p.x - mx;
           const k = p.y - my;
@@ -439,26 +439,6 @@ const ParticleLogoCanvas = forwardRef<
           />
         </div>
       )}
-
-      {/* Floating telemetry / interaction status pill */}
-      <div className="absolute bottom-3 right-4 z-20 flex items-center gap-2 sm:gap-3 px-3 py-1.5 rounded-full border border-white/10 bg-black/75 backdrop-blur-md text-[11px] font-mono text-white/60 pointer-events-none">
-        <span className="flex items-center gap-1.5">
-          <span
-            className={`w-1.5 h-1.5 rounded-full ${
-              isHovered ? "bg-emerald-400 animate-pulse" : "bg-white/40"
-            }`}
-          />
-          <span className="hidden sm:inline">
-            {isHovered ? "Fully Detached / Flying" : "Bird.ae Engine Active"}
-          </span>
-        </span>
-        <span className="text-white/20">•</span>
-        <span>{activeParticles.toLocaleString()} Particles</span>
-        <span className="text-white/20">•</span>
-        <span className={fps < 45 ? "text-amber-400" : "text-emerald-400"}>
-          {fps} FPS
-        </span>
-      </div>
 
       {reducedMotion && (
         <div className="absolute top-4 right-4 z-20 px-3 py-1 rounded-md bg-white/10 text-white/70 text-xs font-mono">
