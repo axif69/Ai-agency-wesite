@@ -128,7 +128,7 @@ const ALL_SERVICES: ServiceItem[] = [
     categoryLabel: "Real Estate & CRM",
     title: "Real Estate WhatsApp Automation",
     tag: "Off-Plan & Secondary",
-    desc: "Sub-10s buyer qualification, automated project brochure delivery, voice note transcription, and instant broker handover notifications.",
+    desc: "Automated buyer qualification in seconds, automated project brochure delivery, voice note transcription, and instant broker handover notifications.",
     icon: <MessageSquare className="w-6 h-6" role="img" aria-label="Real Estate WhatsApp Icon" />,
     link: "/real-estate/whatsapp-ai-automation",
   },
@@ -663,73 +663,68 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="relative bg-[#050505] text-white selection:bg-green-500 selection:text-black">
-      {/* ── 1. The Authority Hero Section ── */}
+      {/* ── 1. The "Authority" Hero Section ── */}
       <section
         ref={heroRef}
-        className="relative min-h-[calc(100svh-var(--header-height,5.75rem))] flex flex-col items-center justify-center overflow-hidden px-6 pt-24 pb-16 sm:pt-28 md:pt-32 md:pb-20"
+        className="relative min-h-[calc(100svh-var(--header-height,5.75rem))] flex flex-col items-center justify-center overflow-hidden px-6 pt-24 pb-12 sm:pt-28 md:pt-36 md:pb-16"
       >
-        <motion.div style={{ y, opacity }} className="relative z-10 text-center flex flex-col items-center w-full max-w-5xl mx-auto">
-          {/* Status pill badge */}
+        <motion.div style={{ y, opacity }} className="relative z-10 text-center flex flex-col items-center w-full">
+          {/* Status badge */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-5 flex items-center justify-center gap-2.5 px-4 py-1.5 rounded-full border border-green-500/25 bg-green-500/10 backdrop-blur-sm"
+            transition={{ duration: 1, delay: 0.3 }}
+            className="mb-3 flex items-center justify-center gap-3"
           >
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
-            <span className="text-xs font-semibold tracking-wider text-green-300">
-              Websites, WhatsApp Assistants & AI Automation • UAE
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80">
+              Websites, WhatsApp Assistants & AI Automation in the UAE
             </span>
           </motion.div>
 
           {/* Main Hero Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.4 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-serif font-bold leading-[1.12] tracking-tight mb-6 max-w-4xl mx-auto drop-shadow-2xl text-white"
+            transition={{ duration: 1, delay: 0.5 }}
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-[6vw] xl:text-[5.5vw] font-serif font-bold leading-[1.1] tracking-tight mb-4 max-w-6xl mx-auto drop-shadow-2xl"
           >
             Websites and AI Automation, <br />
-            <span className="italic text-white/70 tracking-normal font-normal">Built to Turn Visitors Into Enquiries.</span>
+            <span className="italic text-white/70 tracking-normal pr-2">Built to Turn Visitors Into Enquiries.</span>
           </motion.h1>
 
           {/* Clear Supporting Proposition */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg sm:text-xl md:text-2xl text-white/90 font-normal max-w-3xl mx-auto leading-relaxed mb-10 font-sans"
-          >
-            Asif Digital Agency helps UAE businesses improve websites, automate customer conversations on WhatsApp, and eliminate lead drop-off with fast follow-up systems.
-          </motion.p>
+          <p className="text-base md:text-lg lg:text-xl text-white/95 font-normal max-w-3xl mx-auto font-sans leading-relaxed mb-6 drop-shadow-md">
+            Asif Digital Agency builds conversion-focused websites, WhatsApp assistants and follow-up systems for businesses in Dubai, Sharjah and across the UAE.
+          </p>
 
           {/* Primary & Secondary Action Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 1, delay: 1 }}
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0 justify-center z-10"
           >
             <MagneticButton>
               <Link
                 href="/free-growth-audit"
                 aria-label="Book Free Growth Audit"
-                className="bg-white text-black px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold uppercase tracking-wider text-xs sm:text-sm hover:bg-green-400 hover:text-black transition-all flex items-center justify-center gap-3 shadow-[0_0_35px_rgba(255,255,255,0.25)] cursor-pointer min-h-[48px]"
+                className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer"
               >
                 Book Free Growth Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
               </Link>
             </MagneticButton>
             <MagneticButton>
-              <a
-                href="#services"
-                aria-label="Explore Services"
-                className="bg-white/5 text-white border border-white/15 px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold uppercase tracking-wider text-xs sm:text-sm hover:bg-white/10 hover:border-green-400/50 transition-all flex items-center justify-center gap-3 backdrop-blur-md cursor-pointer min-h-[48px]"
+              <div
+                onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
+                aria-label="See How It Works"
+                className="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all flex items-center justify-center gap-3 backdrop-blur-md cursor-pointer"
               >
-                Explore Services <ChevronRight className="w-4 h-4" role="img" aria-label="Chevron icon" />
-              </a>
+                See How It Works <MessageSquare className="w-4 h-4" role="img" aria-label="Message icon" />
+              </div>
             </MagneticButton>
           </motion.div>
         </motion.div>
@@ -740,7 +735,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-6 sm:gap-8 text-xs sm:text-sm uppercase font-semibold tracking-wide text-white/85">
           <div className="flex items-center gap-2.5">
             <Shield className="w-4 h-4 text-green-400" role="img" aria-label="Shield icon" />
-            <span>No CMS Bloat or Passwords</span>
+            <span>No CMS Bloat • High Performance</span>
           </div>
           <div className="flex items-center gap-2.5">
             <Database className="w-4 h-4 text-green-400" role="img" aria-label="Database icon" />
@@ -1442,13 +1437,13 @@ export default function Home() {
               </p>
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {[
-                  { stat: "3–4 Days", label: "Setup Timeline" },
+                  { stat: "Rapid Prototype", label: "Staged Delivery" },
                   { stat: "24/7", label: "Instant Response" },
                   { stat: "Arabic & English", label: "Bilingual NLP" },
                   { stat: "Zero Lock-In", label: "Client Owned" },
                 ].map((item, i) => (
-                  <div key={i} className="p-4 sm:p-5 border border-white/10 bg-white/[0.02] rounded-2xl">
-                    <div className="text-2xl sm:text-3xl font-serif text-white mb-1 font-bold">{item.stat}</div>
+                  <div key={i} className="p-4 sm:p-5 border border-white/10 bg-white/[0.02] rounded-2xl flex flex-col justify-center">
+                    <div className="text-xl sm:text-2xl font-serif text-white mb-1 font-bold leading-tight">{item.stat}</div>
                     <div className="text-xs uppercase tracking-wider text-white/75 font-semibold">{item.label}</div>
                   </div>
                 ))}
@@ -1552,7 +1547,7 @@ export default function Home() {
               {
                 icon: <Globe className="w-6 h-6 text-blue-400" />,
                 title: "AI SaaS & Web Platforms",
-                desc: "Cloud applications built with Next.js 14, Python FastAPI, and PostgreSQL with sub-100ms API response times.",
+                desc: "Cloud applications built with Next.js 14, Python FastAPI, and PostgreSQL with low-latency architecture.",
                 tags: ["Next.js 14", "FastAPI", "PostgreSQL"],
                 link: "/ai-app-development-dubai"
               },
