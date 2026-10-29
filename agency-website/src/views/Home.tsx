@@ -9,6 +9,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 import MagneticButton from "../components/animations/MagneticButton";
+const ParticleLogoCanvas = dynamic(
+  () => import("../components/particle-hero/ParticleLogoCanvas"),
+  { ssr: false }
+);
 import {
   Network, Database, Brain, Globe, Shield, Activity, ChevronRight,
   Play, Server, ArrowRight, TrendingUp, MessageSquare, Briefcase,
@@ -663,70 +667,117 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="relative bg-[#050505] text-white selection:bg-green-500 selection:text-black">
-      {/* ── 1. The "Authority" Hero Section ── */}
+      {/* ── 1. The "Authority" Hero Section with Interactive AD Particle Monogram ── */}
       <section
         ref={heroRef}
-        className="relative min-h-[calc(100svh-var(--header-height,5.75rem))] flex flex-col items-center justify-center overflow-hidden px-6 pt-24 pb-12 sm:pt-28 md:pt-36 md:pb-16"
+        className="relative min-h-[calc(100svh-var(--header-height,5.75rem))] flex flex-col justify-center overflow-hidden px-6 sm:px-10 lg:px-14 pt-16 pb-12 sm:pt-20 md:pt-24 md:pb-16"
       >
-        <motion.div style={{ y, opacity }} className="relative z-10 text-center flex flex-col items-center w-full">
-          {/* Status badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="mb-3 flex items-center justify-center gap-3"
-          >
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-green-500/80">
-              Websites, WhatsApp Assistants & AI Automation in the UAE
-            </span>
-          </motion.div>
+        <motion.div style={{ y, opacity }} className="relative z-10 flex flex-col w-full">
+          {/* Top Centered Status Badge Capsule */}
+          <div className="w-full flex justify-center mb-3 sm:mb-5 relative z-20">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wide shadow-[0_0_20px_rgba(16,185,129,0.15)]"
+            >
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em]">
+                Websites, WhatsApp Assistants & AI Automation in the UAE
+              </span>
+            </motion.div>
+          </div>
 
-          {/* Main Hero Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-[6vw] xl:text-[5.5vw] font-serif font-bold leading-[1.1] tracking-tight mb-4 max-w-6xl mx-auto drop-shadow-2xl"
-          >
-            Websites and AI Automation, <br />
-            <span className="italic text-white/70 tracking-normal pr-2">Built to Turn Visitors Into Enquiries.</span>
-          </motion.h1>
-
-          {/* Clear Supporting Proposition */}
-          <p className="text-base md:text-lg lg:text-xl text-white/95 font-normal max-w-3xl mx-auto font-sans leading-relaxed mb-6 drop-shadow-md">
-            Asif Digital Agency builds conversion-focused websites, WhatsApp assistants and follow-up systems for businesses in Dubai, Sharjah and across the UAE.
-          </p>
-
-          {/* Primary & Secondary Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0 justify-center z-10"
-          >
-            <MagneticButton>
-              <Link
-                href="/free-growth-audit"
-                aria-label="Book Free Growth Audit"
-                className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer"
+          {/* Broad 2-Column Split Hero Frame (Max-w-1440px) */}
+          <div className="max-w-[1440px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
+            {/* Left Column: Hero Title & Value Proposition (7 cols on lg) */}
+            <div className="lg:col-span-7 flex flex-col items-start text-left pr-0 lg:pr-6">
+              <motion.h1
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.25 }}
+                className="text-5xl sm:text-7xl md:text-8xl lg:text-[5.2vw] xl:text-[4.8vw] font-serif font-bold leading-[1.04] tracking-tight mb-5 drop-shadow-2xl"
               >
-                Book Free Growth Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
-              </Link>
-            </MagneticButton>
-            <MagneticButton>
-              <div
-                onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
-                aria-label="See How It Works"
-                className="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all flex items-center justify-center gap-3 backdrop-blur-md cursor-pointer"
+                Websites and AI Automation, <br />
+                <span className="italic text-white/70 tracking-normal pr-2">Built to Turn Visitors Into Enquiries.</span>
+              </motion.h1>
+
+              {/* Clear Supporting Proposition */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.4 }}
+                className="text-base sm:text-lg md:text-xl text-white/80 font-normal max-w-2xl font-sans leading-relaxed mb-7 drop-shadow-md"
               >
-                See How It Works <MessageSquare className="w-4 h-4" role="img" aria-label="Message icon" />
-              </div>
-            </MagneticButton>
-          </motion.div>
+                Asif Digital Agency builds conversion-focused websites, improves search visibility, and creates WhatsApp and AI automation systems that help UAE businesses manage enquiries and follow up more effectively.
+              </motion.p>
+
+              {/* Primary & Secondary Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.55 }}
+                className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto mb-8"
+              >
+                <MagneticButton>
+                  <Link
+                    href="/free-growth-audit"
+                    aria-label="Book Free Growth Audit"
+                    className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-colors flex items-center justify-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer"
+                  >
+                    Book Free Growth Audit <ArrowRight className="w-4 h-4" role="img" aria-label="Arrow Right icon" />
+                  </Link>
+                </MagneticButton>
+                <MagneticButton>
+                  <div
+                    onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
+                    aria-label="See How It Works"
+                    className="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all flex items-center justify-center gap-3 backdrop-blur-md cursor-pointer"
+                  >
+                    See How It Works <MessageSquare className="w-4 h-4" role="img" aria-label="Message icon" />
+                  </div>
+                </MagneticButton>
+              </motion.div>
+
+              {/* Micro Trust Proof Points */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.7 }}
+                className="grid grid-cols-2 sm:grid-cols-3 gap-y-2 gap-x-4 text-xs font-mono text-white/55 pt-3 border-t border-white/10 w-full max-w-xl"
+              >
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Next.js Architecture</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Sub-second Lead Sync</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Bilingual AR / EN</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Prominent, Interactive Particle Logo Canvas */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.1, delay: 0.3 }}
+              className="lg:col-span-5 relative flex items-center justify-end w-full min-h-[560px] sm:min-h-[660px] lg:min-h-[740px] pl-0 lg:pl-2"
+            >
+              <ParticleLogoCanvas
+                className="w-full h-full"
+                maxParticlesDesktop={20122}
+                maxParticlesMobile={10000}
+              />
+            </motion.div>
+          </div>
         </motion.div>
       </section>
 
