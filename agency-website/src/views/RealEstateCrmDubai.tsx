@@ -11,6 +11,8 @@ import {
 import Link from "next/link";
 import React, { useState } from "react";
 import { trackEvent } from "../utils/analytics";
+import RealEstateEnquiryForm from "../components/RealEstateEnquiryForm";
+import RealEstateRoiCalculator from "../components/RealEstateRoiCalculator";
 
 export default function RealEstateCrmDubai() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);

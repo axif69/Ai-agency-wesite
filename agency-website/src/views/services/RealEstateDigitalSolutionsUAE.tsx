@@ -11,6 +11,7 @@ import {
   Lock, Zap, CheckCircle2
 } from "lucide-react";
 import { trackEvent } from "../../utils/analytics";
+import RealEstateEnquiryForm from "../../components/RealEstateEnquiryForm";
 
 export default function RealEstateDigitalSolutionsUAE() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -100,13 +101,13 @@ export default function RealEstateDigitalSolutionsUAE() {
             >
               WhatsApp Us <MessageSquare className="w-4 h-4 text-black" />
             </a>
-            <Link
-              href="/free-growth-audit"
-              onClick={() => handleCTA("Request Tech Audit", "Hero CTA", "consultation", "/free-growth-audit")}
+            <a
+              href="#tech-audit-enquiry"
+              onClick={() => handleCTA("Request Tech Audit", "Hero CTA", "consultation", "#tech-audit-enquiry")}
               className="w-full sm:w-auto border border-white/20 text-white px-9 py-4 rounded-full font-bold uppercase tracking-widest text-[13px] hover:bg-white/5 transition-all flex items-center justify-center gap-3 h-[52px]"
             >
               Request Real Estate Tech Audit <ArrowRight className="w-4 h-4 text-white" />
-            </Link>
+            </a>
           </div>
 
           <div className="flex flex-wrap justify-center items-center gap-6 text-[12px] text-white/60 tracking-wider font-mono">
@@ -670,35 +671,26 @@ export default function RealEstateDigitalSolutionsUAE() {
         </div>
       </section>
 
-      {/* ── 15. Final CTA Section ── */}
-      <section className="py-24 px-6 md:px-12 border-t border-white/10 text-center relative overflow-hidden bg-black">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <h2 className="text-4xl sm:text-6xl font-serif tracking-tight mb-6">
-            Modernize Your Real Estate <br />
-            <span className="text-white/50 italic font-light">Technology Infrastructure</span>
+      {/* ── 15. Enterprise Technology Consultation & Audit ── */}
+      <section className="py-24 px-6 md:px-12 border-t border-white/10 relative overflow-hidden bg-gradient-to-b from-black via-[#080808] to-black">
+        <div className="max-w-4xl mx-auto text-center mb-10">
+          <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-emerald-400 font-bold block mb-3">
+            Enterprise Architecture Evaluation
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif tracking-tight text-white mb-4">
+            Modernize Your Real Estate Technology Infrastructure
           </h2>
-          <p className="text-[17px] text-white/60 font-light max-w-2xl mx-auto leading-relaxed mb-10">
-            Let us audit your current website, listing feeds, and digital workflows. We will design a unified technology architecture that reduces manual effort and accelerates buyer inquiries.
+          <p className="text-white/70 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
+            We assess and implement CRM workflows and integrations based on your agency's existing software platforms, account permissions, and supported integration protocols (webhook feeds, API endpoints, or database connectors).
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center font-sans">
-            <Link
-              href="/free-growth-audit"
-              onClick={() => handleCTA("Request Tech Audit", "Final CTA", "consultation", "/free-growth-audit")}
-              className="w-full sm:w-auto bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2"
-            >
-              Request Real Estate Tech Audit <ArrowRight className="w-4 h-4" />
-            </Link>
-            <a
-              href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20discuss%20real%20estate%20digital%20solutions%20and%20agency%20technology%20infrastructure."
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleCTA("WhatsApp Discussion", "Final CTA", "whatsapp", "https://wa.me/971545866094")}
-              className="w-full sm:w-auto border border-white/20 hover:border-white/40 bg-white/[0.02] text-white px-8 py-5 rounded-full font-semibold uppercase tracking-wider text-xs transition-all flex items-center justify-center gap-2"
-            >
-              <MessageSquare className="w-4 h-4 text-emerald-400" /> WhatsApp Strategic Desk
-            </a>
-          </div>
         </div>
+
+        <RealEstateEnquiryForm
+          id="tech-audit-enquiry"
+          sourcePage="/real-estate-digital-solutions-uae"
+          heading="Request an Enterprise Real Estate Technology Consultation"
+          subheading="Tell us about your current brokerage setup, portal accounts, and team size. We evaluate your speed-to-lead flow and design an actionable integration architecture tailored to your agency's software licenses."
+        />
       </section>
 
       {/* ── 16. Topic Cluster Footer Navigation ── */}

@@ -12,12 +12,21 @@ export const metadata = {
     url: "https://www.asifdigital.agency/case-studies",
     siteName: "Asif Digital",
     locale: "en_AE",
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: "https://www.asifdigital.agency/images/showcase/corporate-website-mockup.png",
+        width: 1800,
+        height: 1200,
+        alt: "AI & Digital Transformation Case Studies UAE — Asif Digital"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "AI & Digital Transformation Case Studies UAE | Asif Digital",
-    description: "Explore verified AI, automation, and digital engineering case studies from Asif Digital. Detailed technical architectures, delivered controls, and honest operational results across the UAE."
+    description: "Explore verified AI, automation, and digital engineering case studies from Asif Digital. Detailed technical architectures, delivered controls, and honest operational results across the UAE.",
+    images: ["https://www.asifdigital.agency/images/showcase/corporate-website-mockup.png"]
   }
 };
 

@@ -6,7 +6,7 @@ import {
   Code, Megaphone, ArrowRight, Monitor, ShoppingCart, 
   Server, HeadphonesIcon, Search, MousePointerClick, 
   Bot, Palette, Workflow, Languages, Target, 
-  Shield, Database, MessageSquare, Phone
+  Shield, Database, MessageSquare, Phone, Calculator
 } from "lucide-react";
 
 interface ServiceItem {
@@ -156,6 +156,14 @@ const categories: ServiceCategory[] = [
         link: "/real-estate-digital-solutions-uae",
         icon: <Code className="w-8 h-8" />,
         ctaText: "Explore Digital Solutions"
+      },
+      {
+        title: "Real Estate ROI & Lead Decay Calculator",
+        desc: "Interactive financial model calculating deal leakage, response-delay costs, and projected commission recovery from automated lead qualification.",
+        features: ["Response SLA Impact", "Lead Decay Modeling", "Commission Recovery", "Instant Audit PDF"],
+        link: "/real-estate/ai-roi-calculator-dubai",
+        icon: <Calculator className="w-8 h-8" />,
+        ctaText: "Launch ROI Calculator"
       }
     ]
   },

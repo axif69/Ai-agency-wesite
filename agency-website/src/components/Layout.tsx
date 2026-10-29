@@ -129,6 +129,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Image
               src="/images/asif-digital-ad-mark.png"
               alt=""
+              aria-hidden="true"
               width={36}
               height={36}
               priority
@@ -309,6 +310,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <Image
                 src="/images/asif-digital-ad-mark.png"
                 alt=""
+                aria-hidden="true"
                 width={32}
                 height={32}
                 className="w-7 h-7 object-contain"
@@ -603,6 +605,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <Image
                   src="/images/asif-digital-ad-mark.png"
                   alt=""
+                  aria-hidden="true"
                   width={40}
                   height={40}
                   className="w-10 h-10 object-contain shrink-0"
@@ -627,7 +630,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             {/* Menu Section */}
             <div>
-              <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/95 font-bold mb-8">Navigation</h4>
+              <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/95 font-bold mb-8">Navigation</h4>
               <ul className="space-y-4">
                 {navLinks.map((link) => (
                   <li key={link.path}>
@@ -640,7 +643,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </ul>
 
               <div className="mt-8 pt-6 border-t border-white/10">
-                <h5 className="text-[9px] uppercase tracking-[0.25em] text-emerald-400 font-bold mb-4">Core UAE Solutions</h5>
+                <h5 className="text-xs uppercase tracking-[0.15em] text-emerald-400 font-bold mb-4">Core UAE Solutions</h5>
                 <ul className="space-y-2.5">
                   <li>
                     <Link href="/ai-automation-agency-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
@@ -676,7 +679,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </div>
 
               <div className="mt-6 pt-6 border-t border-white/10">
-                <h5 className="text-[9px] uppercase tracking-[0.25em] text-emerald-400 font-bold mb-4">SaaS Ecosystem</h5>
+                <h5 className="text-xs uppercase tracking-[0.15em] text-emerald-400 font-bold mb-4">SaaS Ecosystem</h5>
                 <ul className="space-y-3">
                   <li>
                     <Link
@@ -708,18 +711,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             {/* Contact Info */}
             <div>
-              <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/95 font-bold mb-10">Direct Contact</h4>
+              <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/95 font-bold mb-8">Direct Contact</h4>
               <ul className="space-y-8 text-white/95 font-light">
                 <li className="flex flex-col gap-2">
-                  <span className="text-[9px] uppercase tracking-widest text-white/90 font-black">Strategic Inquiry</span>
+                  <span className="text-xs uppercase tracking-wider text-white/70 font-bold">Strategic Inquiry</span>
                   <a href="https://wa.me/971545866094" className="text-white/95 hover:text-white transition-colors text-lg font-serif italic">+971 54 586 6094</a>
                 </li>
                 <li className="flex flex-col gap-2 overflow-hidden">
-                  <span className="text-[9px] uppercase tracking-widest text-white/90 font-black">Email Correspondence</span>
+                  <span className="text-xs uppercase tracking-wider text-white/70 font-bold">Email Correspondence</span>
                   <a href="mailto:hello@asifdigital.agency" className="text-white/95 hover:text-white transition-colors text-xs sm:text-sm max-w-full break-all">hello@asifdigital.agency</a>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <span className="text-[9px] uppercase tracking-widest text-white/90 font-black">Registered Location</span>
+                  <span className="text-xs uppercase tracking-wider text-white/70 font-bold">Registered Location</span>
                   <span className="text-white/95 text-sm leading-relaxed italic">Muwaileh Commercial - Industrial Area, Sharjah, UAE</span>
                   <Link href="/ai-automation-sharjah" className="text-[11px] font-mono text-emerald-400/90 hover:underline inline-flex items-center gap-1.5 mt-0.5">
                     Sharjah AI Automation Team →
@@ -730,7 +733,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             {/* Quick Contact Form */}
             <div>
-              <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/95 font-bold mb-10">Briefing</h4>
+              <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/95 font-bold mb-8">Briefing</h4>
               {isBriefSuccess ? (
                 <div className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 text-center text-sm font-light text-green-400">
                   Briefing Received. Our team will review and contact you within 12 hours.
@@ -773,7 +776,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     type="submit" 
                     disabled={isBriefSubmitting}
                     aria-label="Submit your project briefing" 
-                    className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-5 rounded-2xl hover:bg-white/90 transition-all duration-500 text-[10px] shadow-2xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-white text-black font-black uppercase tracking-[0.15em] py-4 sm:py-5 rounded-2xl hover:bg-white/90 transition-all duration-500 text-xs shadow-2xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isBriefSubmitting ? "Sending..." : "Submit Brief"}
                   </button>
@@ -783,10 +786,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
 
           <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="text-[10px] text-white/95 uppercase tracking-[0.3em] font-bold">
+            <div className="text-xs text-white/70 uppercase tracking-wider font-medium">
               &copy; 2026 Asif Digital &mdash; Intelligent Systems.
             </div>
-            <div className="flex gap-12 text-[10px] text-white/95 uppercase tracking-[0.3em] font-bold">
+            <div className="flex gap-8 sm:gap-12 text-xs text-white/70 uppercase tracking-wider font-medium">
               <Link href="/privacy-policy" className="hover:text-white transition-colors" aria-label="Read our Privacy Architecture">Privacy Architecture</Link>
               <Link href="/terms-of-service" className="hover:text-white transition-colors" aria-label="Review our Legal Framework">Legal Framework</Link>
             </div>

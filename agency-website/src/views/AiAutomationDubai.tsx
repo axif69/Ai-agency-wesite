@@ -11,7 +11,8 @@ import {
   Clock, Award, Sliders, Briefcase, FileCheck, DollarSign,
   Workflow, GitFork, KeyRound, Terminal, Eye, ShieldAlert,
   Server, FileText, CheckCheck, ArrowUpRight, CheckCircle,
-  ExternalLink, Layers3
+  ExternalLink, Layers3, SlidersHorizontal, AlertTriangle,
+  FolderGit2, Activity, Wrench
 } from "lucide-react";
 import Link from "next/link";
 
@@ -34,21 +35,21 @@ export default function AiAutomationDubai() {
     if (departments <= 2 && weeklyTasks < 300) {
       return {
         name: "Targeted Workflow Automation",
-        desc: "Focused single-department integration (e.g., CRM routing or invoice intake) with standard API connectors and basic approval gates.",
-        complexity: "Standard Complexity"
+        desc: "Focused single-department integration (such as inbound enquiry routing or invoice data extraction) with standard API connectors and basic approval gates.",
+        complexity: "Standard Scope"
       };
     }
     if (departments <= 4 && weeklyTasks < 1000) {
       return {
         name: "Cross-Departmental Pipeline Integration",
-        desc: "Multi-system data orchestration bridging sales, operations, and finance with human-in-the-loop exception queues and audit logging.",
-        complexity: "Medium-High Complexity"
+        desc: "Multi-system data orchestration connecting sales, operations, and finance with human-in-the-loop exception queues and structured audit logging.",
+        complexity: "Mid-Market Scope"
       };
     }
     return {
-      name: "Enterprise Business Process Orchestration",
-      desc: "Multi-entity architecture coordinating complex ERP/CRM states, document intelligence pipelines, custom LLM tool-calling agents, and dedicated private cloud deployment.",
-      complexity: "Enterprise Complexity"
+      name: "Enterprise Process Orchestration",
+      desc: "Multi-entity architecture coordinating CRM and ERP states, document intelligence pipelines, custom tool-calling agents, and dedicated private cloud deployment.",
+      complexity: "Enterprise Scope"
     };
   };
 
@@ -59,35 +60,43 @@ export default function AiAutomationDubai() {
 
   const faqs = [
     {
-      q: "What does an enterprise AI automation agency actually do?",
-      a: "An enterprise AI automation agency designs, builds, and maintains software integrations that automate repetitive business operations. Rather than delivering isolated no-code bots or conceptual slide decks, we engineer resilient backend pipelines, custom API middleware, document extraction systems, and human-in-the-loop workflows that connect your CRM, ERP, databases, and communication channels into a unified, auditable operational backbone."
+      q: "What does an AI automation agency actually build for businesses in Dubai?",
+      a: "An AI automation agency engineers custom software integrations and workflow pipelines that eliminate repetitive manual data entry between business tools. Rather than deploying fragile, one-off consumer scripts, we build resilient backend middleware, schema-validated document extraction engines, CRM/ERP synchronization layers, and human-supervised operational workflows that connect customer touchpoints to your core databases."
     },
     {
-      q: "How does Asif Digital differ from basic no-code setups?",
-      a: "Simple task automation setups typically rely on basic single-step triggers without automated failure recovery, schema validation, or error alerting. Asif Digital engineers multi-system enterprise automation: we build with structured API middleware, automated retry logic, error alerting, human verification checkpoints for sensitive data, and governance practices aligned with UAE PDPL requirements."
+      q: "How does engineered enterprise automation differ from basic Zapier or Make setups?",
+      a: "Basic no-code tools are useful for simple, linear notifications, but they often lack schema enforcement, granular retry queues, and automated dead-letter alerting when third-party APIs change. Asif Digital engineers multi-system pipelines using structured code, asynchronous message queues, data validation, exception logging, and role-based human approval checkpoints for sensitive business operations."
     },
     {
-      q: "Which systems and software platforms can you integrate with?",
-      a: "Common integrations may include HubSpot, Salesforce, Zoho, SAP, Oracle NetSuite, Dynamics and other systems depending on API availability, permissions and the client's environment. We also engineer custom REST, GraphQL, and webhook adapters for proprietary in-house databases and legacy on-premise systems."
+      q: "Which CRMs, ERPs, and software platforms can you connect with?",
+      a: "We integrate with any modern business application that provides accessible REST APIs, GraphQL endpoints, webhooks, or structured data imports. Common integrations include HubSpot, Salesforce, Zoho CRM, Microsoft Dynamics 365, SAP, NetSuite, QuickBooks, Xero, and the Meta WhatsApp Business Cloud API. Connectivity depends on whether your organization's active vendor subscription plan includes API permissions."
     },
     {
-      q: "How does Asif Digital handle data privacy and UAE regulatory compliance?",
-      a: "We design data architectures around UAE PDPL-aligned data handling, access controls, and client-specific security requirements. Deployment options can include UAE-region cloud tenancy, private infrastructure and role-based access controls depending on client requirements and provider availability. Deployment options can be configured so client data is not used for public model training."
+      q: "What is the standard workflow architecture of an automated process?",
+      a: "Every automation follows a strict 5-stage pipeline: (1) Trigger — an event such as an inbound webhook, form submission, email arrival, or uploaded PDF; (2) Validation — schema verification, E.164 phone formatting, and deduplication against existing records; (3) Processing — business logic, AI extraction, or conditional classification; (4) Destination Ingestion — updating records in your CRM, ERP, or messaging platform; and (5) Exception Handling — queuing failed payloads with exponential retries and notifying operations coordinators if human intervention is required."
     },
     {
-      q: "What is the difference between workflow automation, AI agents, and AI consulting?",
-      a: "Workflow automation focuses on deterministic, rules-based data movement between APIs and databases. AI agents introduce bounded reasoning, unstructured information extraction, and tool-calling autonomy within supervised operational boundaries. AI consulting provides the strategic readiness audits, architecture design, and governance frameworks that precede multi-system engineering. As an umbrella agency, Asif Digital delivers across all three disciplines."
+      q: "What is included in an automation engagement with Asif Digital?",
+      a: "Each engagement includes initial workflow discovery and technical scoping, API documentation review, custom middleware engineering, schema validation, human approval checkpoint configuration, end-to-end sandbox testing, production deployment, staff walkthrough documentation, and code repository handover."
     },
     {
-      q: "What does an indicative deployment timeline look like?",
-      a: "A typical engagement follows an indicative 4-to-6 week deployment framework: Week 1 focuses on workflow discovery and technical scoping; Weeks 2-3 on API integration and schema engineering; Weeks 4-5 on human-in-the-loop validation and security review; and Week 6 on monitored production rollout and team handoff. Actual delivery depends on system access, integration complexity, security review and business scope."
+      q: "What technical prerequisites and access does the client need to provide?",
+      a: "Clients need to provide administrative access or API credentials for the target software platforms (CRM, ERP, messaging tools), representative sample data (such as sample invoices or lead forms for schema mapping), and designated operational points of contact to verify business logic rules and approval thresholds."
+    },
+    {
+      q: "How is data privacy handled under UAE regulations?",
+      a: "Pipelines are architected following UAE Federal Decree-Law No. 45 of 2021 on Personal Data Protection (PDPL) principles. We enforce TLS-encrypted data transit, encrypted API secret vaulting, least-privilege token permissions, and direct routing into your private CRM/ERP databases without third-party data monetization. Cloud hosting can be configured in UAE-based data centers (e.g., AWS or Azure UAE regions) when required."
+    },
+    {
+      q: "What ongoing maintenance and support is required after deployment?",
+      a: "Ongoing considerations include monitoring third-party API version deprecations, updating validation schemas when forms or ERP fields change, and reviewing delivery logs. We provide full documentation and repository handover so your in-house team can maintain the code, alongside optional maintenance retainers for continuous monitoring and feature expansion."
     }
   ];
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30 font-sans">
       
-      {/* ── 1. Hero Section with Clear Agency Definition ── */}
+      {/* ── 1. Hero Section with Grounded Agency Definition ── */}
       <section className="relative px-6 pt-12 pb-20 md:pt-20 md:pb-28 max-w-6xl mx-auto overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-emerald-500/10 via-cyan-500/10 to-transparent blur-[120px] pointer-events-none -z-10" />
         
@@ -99,15 +108,15 @@ export default function AiAutomationDubai() {
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-xs font-mono tracking-widest text-emerald-400 uppercase">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Commercial Automation Hub • Dubai, UAE</span>
+            <span>Commercial Systems &amp; Workflow Engineering • Dubai, UAE</span>
           </div>
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif tracking-tight leading-[1.15] text-white">
-            Enterprise AI Automation Agency in Dubai
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif tracking-tight leading-[1.12] text-white">
+            AI Automation Agency in Dubai
           </h1>
 
-          <p className="text-lg md:text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
-            We engineer high-reliability business process automation, CRM and ERP integrations, document intelligence pipelines, and human-in-the-loop operational workflows for established UAE organizations.
+          <p className="text-lg md:text-xl text-white/75 font-light max-w-3xl mx-auto leading-relaxed">
+            We engineer custom business process automations, CRM and ERP integrations, document intelligence pipelines, and human-supervised operational workflows for established UAE organizations.
           </p>
 
           {/* Definition Clarification Card */}
@@ -115,9 +124,9 @@ export default function AiAutomationDubai() {
             <div className="flex items-start gap-4">
               <Layers3 className="w-6 h-6 text-emerald-400 shrink-0 mt-1" />
               <div className="space-y-2">
-                <h3 className="text-sm font-mono uppercase tracking-wider text-white/90">What We Deliver As An Automation Agency</h3>
-                <p className="text-sm text-white/75 font-light leading-relaxed">
-                  We engineer reliable business process automation between customer touchpoints, internal business logic, and backend databases—reinforced with automated error-recovery, transparent execution logs, and supervised human approval controls.
+                <h3 className="text-sm font-mono uppercase tracking-wider text-white/90">What We Build For Growing Businesses</h3>
+                <p className="text-sm text-white/70 font-light leading-relaxed">
+                  We build custom integration layers that connect your customer touchpoints, internal business logic, and backend databases. Every workflow is reinforced with structured schema validation, automated failure recovery, audit logging, and supervisory human approval controls.
                 </p>
               </div>
             </div>
@@ -138,25 +147,25 @@ export default function AiAutomationDubai() {
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/15 bg-white/[0.04] text-white hover:bg-white/10 transition text-sm font-medium"
             >
               <MessageSquare className="w-4 h-4 text-emerald-400" />
-              <span>Direct WhatsApp Desk</span>
+              <span>Discuss Scope on WhatsApp</span>
             </a>
             <Link
               href="/contact"
               className="text-white/60 hover:text-white px-4 py-3.5 font-mono uppercase tracking-widest text-xs transition-colors"
             >
-              Custom Scope RFP &rarr;
+              Submit Custom RFP &rarr;
             </Link>
           </div>
         </motion.div>
       </section>
 
-      {/* ── 2. Specialist Discipline Navigation Router (Hub-and-Spoke) ── */}
+      {/* ── 2. Specialist Discipline Navigation Router ── */}
       <section className="py-16 px-6 max-w-6xl mx-auto border-t border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Umbrella Navigation Router</span>
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Umbrella Navigation</span>
           <h2 className="text-2xl md:text-4xl font-serif">Specialist Automation Disciplines</h2>
           <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
-            Every enterprise has unique operational friction. Explore our dedicated technical discipline hubs depending on your immediate engineering requirements:
+            Every organization faces unique operational friction. Explore our dedicated technical hubs depending on your immediate engineering requirements:
           </p>
         </div>
 
@@ -215,7 +224,7 @@ export default function AiAutomationDubai() {
                 <ArrowUpRight className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
               </h3>
               <p className="text-sm text-white/70 font-light leading-relaxed">
-                Operational readiness audits, executive AI roadmaps, vendor technical evaluations, and UAE PDPL-aligned governance frameworks.
+                Operational readiness audits, executive technology roadmaps, vendor evaluations, and UAE PDPL-aligned governance frameworks.
               </p>
             </div>
             <span className="mt-4 text-xs font-mono text-purple-400/90 group-hover:underline">Explore Advisory &amp; Audits &rarr;</span>
@@ -241,24 +250,24 @@ export default function AiAutomationDubai() {
             <span className="mt-4 text-xs font-mono text-green-400/90 group-hover:underline">Explore WhatsApp Systems &rarr;</span>
           </Link>
 
-          {/* Spoke 5: Lead Generation */}
+          {/* Spoke 5: Real Estate Portals & CRM */}
           <Link
-            href="/ai-lead-generation-agency-dubai"
+            href="/real-estate/portal-lead-integration-dubai"
             className="group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-emerald-500/40 hover:bg-white/[0.04] transition-all flex flex-col justify-between"
           >
             <div className="space-y-3">
               <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-105 transition-transform">
-                <Target className="w-5 h-5" />
+                <Building2 className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-medium text-white group-hover:text-amber-400 transition-colors flex items-center justify-between">
-                <span>AI Lead Generation Dubai</span>
+                <span>Portal Lead Integration Dubai</span>
                 <ArrowUpRight className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
               </h3>
               <p className="text-sm text-white/70 font-light leading-relaxed">
-                B2B outbound pipeline automation, firmographic intent triggers, inbox deliverability infrastructure, and verified prospect workflows.
+                Bayut, Property Finder, and Dubizzle lead ingestion into CRM deal stages, deduplication, and broker routing in Dubai.
               </p>
             </div>
-            <span className="mt-4 text-xs font-mono text-amber-400/90 group-hover:underline">Explore Lead Generation &rarr;</span>
+            <span className="mt-4 text-xs font-mono text-amber-400/90 group-hover:underline">Explore Portal Integration &rarr;</span>
           </Link>
 
           {/* Spoke 6: Regional & Language Specialization */}
@@ -267,20 +276,20 @@ export default function AiAutomationDubai() {
               <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
                 <Globe className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-medium text-white">Regional &amp; Language Hubs</h3>
+              <h3 className="text-lg font-medium text-white">Regional Industry Hubs</h3>
               <p className="text-sm text-white/70 font-light leading-relaxed">
-                Looking for regional jurisdiction or language-specific models? Review our specialized hubs:
+                Review our sector-specific and emirate-level automation architectures:
               </p>
             </div>
             <div className="space-y-2 pt-2 border-t border-white/5 text-xs font-mono">
               <Link href="/ai-automation-abu-dhabi" className="flex items-center justify-between text-white/80 hover:text-cyan-400 transition-colors py-1">
-                <span>Abu Dhabi Industrial &amp; Regulated &rarr;</span>
+                <span>Abu Dhabi Commercial &amp; Regulated &rarr;</span>
               </Link>
               <Link href="/hospitality-ai-automation-uae" className="flex items-center justify-between text-white/80 hover:text-amber-400 transition-colors py-1">
                 <span>UAE Hospitality &amp; Hotel Automation &rarr;</span>
               </Link>
               <Link href="/arabic-ai-hub" className="flex items-center justify-between text-white/80 hover:text-cyan-400 transition-colors py-1">
-                <span>Arabic AI &amp; Multilingual LLMs &rarr;</span>
+                <span>Arabic AI &amp; Multilingual Processing &rarr;</span>
               </Link>
               <Link href="/ai-automation-sharjah" className="flex items-center justify-between text-white/80 hover:text-cyan-400 transition-colors py-1">
                 <span>Sharjah Commercial Automation &rarr;</span>
@@ -290,13 +299,13 @@ export default function AiAutomationDubai() {
         </div>
       </section>
 
-      {/* ── 3. Five Core Automation Pillars ── */}
+      {/* ── 3. Five Core Automation Pillars (Concrete Examples) ── */}
       <section className="py-16 px-6 max-w-6xl mx-auto border-t border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Engineering Capabilities</span>
-          <h2 className="text-2xl md:text-4xl font-serif">5 Core Automation Pillars for Dubai Businesses</h2>
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Practical Applications</span>
+          <h2 className="text-2xl md:text-4xl font-serif">5 Practical Automation Workflows We Build</h2>
           <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
-            We architect end-to-end automation pipelines designed to eliminate friction across your core commercial workflows:
+            We focus on solving real operational bottlenecks with concrete, production-tested pipelines:
           </p>
         </div>
 
@@ -306,14 +315,14 @@ export default function AiAutomationDubai() {
             <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
               <TrendingUp className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-medium text-white">CRM &amp; Revenue Operations</h3>
+            <h3 className="text-lg font-medium text-white">1. Inbound Lead Routing &amp; Qualification</h3>
             <p className="text-sm text-white/70 font-light leading-relaxed">
-              Automate lead capture across web forms, WhatsApp, and advertising platforms. Enrich prospect profiles, route enquiries by industry or territory, and synchronize deal pipeline stages without manual data entry.
+              Capture incoming inquiries from website forms, WhatsApp, paid ad campaigns, or portal webhooks. Normalize international phone formats (+971 for UAE), verify against existing CRM contacts, qualify prospect criteria (budget, timeline, service requirement), and assign to designated account executives via round-robin or territory rules.
             </p>
             <ul className="space-y-2 text-xs text-white/60 font-mono pt-2 border-t border-white/5">
-              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Immediate lead intake &amp; deduplication</li>
-              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Rep assignment &amp; round-robin routing</li>
-              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Automated deal hygiene &amp; activity logging</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> E.164 phone normalization &amp; deduplication</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Automated budget &amp; intent qualification</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-emerald-400" /> Rep assignment &amp; mobile alert dispatch</li>
             </ul>
           </div>
 
@@ -322,14 +331,14 @@ export default function AiAutomationDubai() {
             <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
               <FileText className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-medium text-white">Document Intelligence &amp; Ingestion</h3>
+            <h3 className="text-lg font-medium text-white">2. Intelligent Document Extraction</h3>
             <p className="text-sm text-white/70 font-light leading-relaxed">
-              Extract structured, schema-validated JSON from messy PDFs, trade invoices, customs declarations, contracts, and scanned receipts using vision-capable models and optical character verification.
+              Extract structured, schema-validated JSON from trade invoices, customs declarations, contracts, trade licenses, and scanned receipts. Vision-capable models and optical character recognition parse key-value pairs and validate totals before syncing directly to accounting databases.
             </p>
             <ul className="space-y-2 text-xs text-white/60 font-mono pt-2 border-t border-white/5">
-              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-blue-400" /> Multi-format commercial invoice extraction</li>
-              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-blue-400" /> Tenancy contract &amp; Emirates ID parsing</li>
-              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-blue-400" /> Automated validation against accounting systems</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-blue-400" /> Multi-format supplier invoice extraction</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-blue-400" /> Tenancy contract &amp; trade license parsing</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-blue-400" /> Cross-check with ERP accounting records</li>
             </ul>
           </div>
 
@@ -338,14 +347,14 @@ export default function AiAutomationDubai() {
             <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
               <Database className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-medium text-white">ERP &amp; Operational Middleware</h3>
+            <h3 className="text-lg font-medium text-white">3. CRM &amp; ERP Synchronization</h3>
             <p className="text-sm text-white/70 font-light leading-relaxed">
-              Connect disparate software islands. Build resilient synchronization layers that update inventory counts, generate billing orders, sync purchase requests, and keep accounting databases harmonious.
+              Connect disparate software islands. Build resilient two-way synchronization layers that update inventory counts, create customer deal cards, generate billing orders, and ensure sales pipelines stay synchronized with back-office financial systems.
             </p>
             <ul className="space-y-2 text-xs text-white/60 font-mono pt-2 border-t border-white/5">
-              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-purple-400" /> Real-time 2-way data reconciliation</li>
-              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-purple-400" /> Asynchronous queued retry architecture</li>
-              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-purple-400" /> Idempotent order &amp; invoice processing</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-purple-400" /> Bi-directional deal &amp; customer updates</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-purple-400" /> Asynchronous retry queue architecture</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-purple-400" /> Idempotent order &amp; invoice tracking</li>
             </ul>
           </div>
 
@@ -354,14 +363,14 @@ export default function AiAutomationDubai() {
             <div className="w-10 h-10 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400">
               <MessageSquare className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-medium text-white">Conversational AI &amp; Triaging</h3>
+            <h3 className="text-lg font-medium text-white">4. Customer Onboarding &amp; WhatsApp</h3>
             <p className="text-sm text-white/70 font-light leading-relaxed">
-              Deploy intelligent front-line support on WhatsApp and web chat. Automatically resolve routine service enquiries, qualify customer intent in Arabic and English, and cleanly route complex cases to specialists.
+              Automate post-sale client onboarding sequences. Dispatch approved WhatsApp utility templates to welcome new clients, collect onboarding documents, confirm appointment dates, and trigger initial orientation tasks across internal teams.
             </p>
             <ul className="space-y-2 text-xs text-white/60 font-mono pt-2 border-t border-white/5">
-              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-green-400" /> Official Meta Cloud API compliance</li>
-              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-green-400" /> Dual Arabic &amp; English language processing</li>
-              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-green-400" /> Context-preserving live agent handover</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-green-400" /> Meta WhatsApp Business Platform templates</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-green-400" /> Document collection &amp; intake checklists</li>
+              <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-green-400" /> Automated calendar &amp; meeting reminders</li>
             </ul>
           </div>
 
@@ -370,27 +379,80 @@ export default function AiAutomationDubai() {
             <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
               <Shield className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-medium text-white">Human-in-the-Loop Decision Gates</h3>
+            <h3 className="text-lg font-medium text-white">5. Human-in-the-Loop Operational Gates</h3>
             <p className="text-sm text-white/70 font-light leading-relaxed">
-              We strictly reject uncontrolled, autonomous execution for high-stakes business actions. Our systems incorporate supervisory approval queues where AI prepares drafts, extracts structured insights, and proposes transactions—requiring authorized human sign-off before executing irreversible database mutations or financial events.
+              We reject uncontrolled autonomous execution for consequential commercial actions. Systems incorporate supervisory approval checkpoints where automation parses records, extracts insights, and proposes database actions—requiring human sign-off before executing irreversible financial mutations or sensitive client communications.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-white/60 font-mono pt-2 border-t border-white/5">
-              <div className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-cyan-400" /> Slack / Teams interactive approval prompts</div>
+              <div className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-cyan-400" /> Interactive Slack / Teams approval cards</div>
               <div className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-cyan-400" /> Financial threshold mutation limits</div>
-              <div className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-cyan-400" /> Detailed discrepancy &amp; confidence flagging</div>
-              <div className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-cyan-400" /> Full operational rollback capabilities</div>
+              <div className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-cyan-400" /> Discrepancy &amp; confidence score flags</div>
+              <div className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-cyan-400" /> Clear rollback &amp; audit event logs</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 4. Comparison Matrix: Lightweight Automations vs Engineered Enterprise Automation ── */}
+      {/* ── 4. The 5-Stage Technical Pipeline ── */}
+      <section className="py-16 px-6 max-w-5xl mx-auto border-t border-white/10">
+        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Technical Pipeline</span>
+          <h2 className="text-2xl md:text-4xl font-serif">How an Automated Workflow Executes</h2>
+          <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
+            Every production automation pipeline is engineered across five structured phases:
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div className="p-5 rounded-2xl border border-white/10 bg-black/40 space-y-2">
+            <span className="text-xs font-mono text-emerald-400 font-bold block">01 · Trigger</span>
+            <h3 className="text-sm font-semibold text-white">Inbound Event</h3>
+            <p className="text-xs text-white/65 font-light leading-relaxed">
+              Webhook dispatch, portal lead delivery, web form submission, scheduled cron, or new document upload.
+            </p>
+          </div>
+
+          <div className="p-5 rounded-2xl border border-white/10 bg-black/40 space-y-2">
+            <span className="text-xs font-mono text-emerald-400 font-bold block">02 · Validation</span>
+            <h3 className="text-sm font-semibold text-white">Data Cleansing</h3>
+            <p className="text-xs text-white/65 font-light leading-relaxed">
+              Schema enforcement, E.164 phone formatting, identity deduplication, and sanitization of input fields.
+            </p>
+          </div>
+
+          <div className="p-5 rounded-2xl border border-white/10 bg-black/40 space-y-2">
+            <span className="text-xs font-mono text-emerald-400 font-bold block">03 · Processing</span>
+            <h3 className="text-sm font-semibold text-white">Business Logic</h3>
+            <p className="text-xs text-white/65 font-light leading-relaxed">
+              Conditional routing rules, AI extraction, score calculations, or document OCR validation.
+            </p>
+          </div>
+
+          <div className="p-5 rounded-2xl border border-white/10 bg-black/40 space-y-2">
+            <span className="text-xs font-mono text-emerald-400 font-bold block">04 · Destination</span>
+            <h3 className="text-sm font-semibold text-white">System Ingestion</h3>
+            <p className="text-xs text-white/65 font-light leading-relaxed">
+              Writing deal records into your CRM, updating ERP balances, or dispatching customer messages.
+            </p>
+          </div>
+
+          <div className="p-5 rounded-2xl border border-white/10 bg-black/40 space-y-2">
+            <span className="text-xs font-mono text-emerald-400 font-bold block">05 · Exceptions</span>
+            <h3 className="text-sm font-semibold text-white">Failover &amp; Alerts</h3>
+            <p className="text-xs text-white/65 font-light leading-relaxed">
+              Retry queue with exponential backoff, dead-letter recording, and human escalation alerts for failed calls.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. Comparison Matrix: Lightweight vs Engineered ── */}
       <section className="py-16 px-6 max-w-5xl mx-auto border-t border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
           <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Architectural Standards</span>
-          <h2 className="text-2xl md:text-4xl font-serif">Lightweight Workflow Automation vs. Engineered Enterprise Automation</h2>
+          <h2 className="text-2xl md:text-4xl font-serif">Lightweight Automations vs. Engineered Systems</h2>
           <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
-            Understanding the architectural differences between simple single-step automations and production-grade, multi-system workflows:
+            Understanding the architectural differences between basic single-step triggers and production-grade business pipelines:
           </p>
         </div>
 
@@ -426,38 +488,34 @@ export default function AiAutomationDubai() {
             {/* Row 4 */}
             <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-2 md:gap-4 items-center bg-white/[0.01]">
               <div className="font-medium text-white/90 text-xs font-mono uppercase">Governance &amp; Auditability</div>
-              <div className="text-white/60 text-xs leading-relaxed">Limited or absent execution history; impossible to trace field-level mutations back to originating events.</div>
+              <div className="text-white/60 text-xs leading-relaxed">Limited or absent execution history; difficult to trace field-level mutations back to originating events.</div>
               <div className="text-white/90 text-xs leading-relaxed">Granular execution logs, role-based access control (RBAC), and full payload telemetry for every workflow run.</div>
             </div>
 
             {/* Row 5 */}
             <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-2 md:gap-4 items-center">
-              <div className="font-medium text-white/90 text-xs font-mono uppercase">Scalability &amp; Throughput</div>
-              <div className="text-white/60 text-xs leading-relaxed">Hard rate limits and per-task fee structures that become cost-prohibitive at scale.</div>
-              <div className="text-white/90 text-xs leading-relaxed">Predictable, high-throughput asynchronous execution designed for thousands of monthly business events.</div>
-            </div>
-
-            {/* Row 6 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-2 md:gap-4 items-center bg-white/[0.01]">
               <div className="font-medium text-white/90 text-xs font-mono uppercase">Ongoing Maintenance</div>
               <div className="text-white/60 text-xs leading-relaxed">Ad-hoc setups without documentation or support SLAs when APIs or vendor tools change.</div>
-              <div className="text-white/90 text-xs leading-relaxed">Documented schemas, versioned endpoint maintenance, regression checks, and direct UAE engineering support.</div>
+              <div className="text-white/90 text-xs leading-relaxed">Documented schemas, versioned endpoint maintenance, regression checks, and direct engineering support.</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 5. Integration Ecosystem (Safeguarded) ── */}
+      {/* ── 6. Software Ecosystem & API Dependencies ── */}
       <section className="py-16 px-6 max-w-6xl mx-auto border-t border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Interoperability</span>
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Interoperability &amp; Prerequisites</span>
           <h2 className="text-2xl md:text-4xl font-serif">Enterprise Software Ecosystem</h2>
           <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
             We integrate across your existing commercial software landscape to build seamless operational pipelines.
           </p>
-          <p className="text-xs text-white/50 italic max-w-2xl mx-auto pt-1">
-            Common integrations may include HubSpot, Salesforce, Zoho, SAP, Oracle NetSuite, Dynamics and other systems depending on API availability, permissions and the client&apos;s environment.
-          </p>
+          <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02] text-xs text-white/70 font-light max-w-2xl mx-auto text-left flex items-start gap-3 mt-4">
+            <AlertCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+            <span>
+              <strong>Integration Prerequisites:</strong> All third-party connections (HubSpot, Salesforce, Zoho, SAP, NetSuite, Microsoft Dynamics, and WhatsApp Cloud API) depend on your organization&apos;s active vendor subscription tier, available REST/GraphQL endpoints, and administrative API credentials.
+            </span>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 text-center">
@@ -482,19 +540,19 @@ export default function AiAutomationDubai() {
             <span className="text-sm font-medium text-white">WhatsApp Cloud API</span>
           </div>
           <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
-            <span className="text-xs font-mono text-white/80 block mb-1">Data Warehouses</span>
+            <span className="text-xs font-mono text-white/80 block mb-1">Data Storage</span>
             <span className="text-sm font-medium text-white">PostgreSQL / BigQuery</span>
           </div>
         </div>
       </section>
 
-      {/* ── 6. Interactive Automation Scoping Estimator ── */}
+      {/* ── 7. Interactive Scoping Estimator ── */}
       <section className="py-16 px-6 max-w-4xl mx-auto border-t border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
           <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Operational Scoping Tool</span>
-          <h2 className="text-2xl md:text-4xl font-serif">Automation Impact &amp; Architecture Scoping Model</h2>
+          <h2 className="text-2xl md:text-4xl font-serif">Workflow Complexity &amp; Architecture Model</h2>
           <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
-            Calibrate your organization&apos;s manual repetitive task volume to evaluate addressable engineering scope and recommended architecture tier:
+            Calibrate your organization&apos;s repetitive task volume to evaluate addressable engineering scope and recommended architecture tier:
           </p>
         </div>
 
@@ -533,7 +591,7 @@ export default function AiAutomationDubai() {
                 onChange={(e) => setWeeklyTasks(Number(e.target.value))}
                 className="w-full accent-emerald-400 bg-white/10 rounded-lg h-2 cursor-pointer"
               />
-              <span className="text-[11px] text-white/40 block">Enquiries, document copies, data reconciliations</span>
+              <span className="text-[11px] text-white/40 block">Inquiries, document entry, data reconciliations</span>
             </div>
 
             {/* Slider 3: Minutes Per Task */}
@@ -569,7 +627,7 @@ export default function AiAutomationDubai() {
                 onChange={(e) => setAutomatableShare(Number(e.target.value))}
                 className="w-full accent-emerald-400 bg-white/10 rounded-lg h-2 cursor-pointer"
               />
-              <span className="text-[11px] text-white/40 block">Realistic repetitive task portion suitable for automation</span>
+              <span className="text-[11px] text-white/40 block">Realistic repetitive task share suitable for automation</span>
             </div>
           </div>
 
@@ -592,12 +650,12 @@ export default function AiAutomationDubai() {
           </div>
 
           <p className="text-[11px] text-white/40 italic text-center">
-            Note: This scoping model is an illustrative operational guide, not a commercial commitment. Precise engineering requirements and hours depend on API access, document complexity, and security governance requirements.
+            Note: This scoping model is an illustrative operational guide, not a commercial commitment. Actual engineering requirements depend on API access, document complexity, and security governance requirements.
           </p>
         </div>
       </section>
 
-      {/* ── Operational Reliability & Human Governance Architecture ── */}
+      {/* ── 8. Operational Reliability & Code Ownership ── */}
       <section className="py-16 px-6 max-w-5xl mx-auto border-t border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
           <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Engineering Rigor</span>
@@ -612,15 +670,15 @@ export default function AiAutomationDubai() {
             <span className="text-xs font-mono uppercase text-emerald-400 font-semibold block">1. Queue Persistence &amp; Retries</span>
             <h3 className="text-base font-serif text-white">Exponential Backoff</h3>
             <p className="text-xs text-white/70 font-light leading-relaxed">
-              Inbound webhooks are instantly acknowledged and queued into persistent Redis or cloud message brokers. If a downstream CRM or ERP endpoint experiences downtime or rate-limiting, events are automatically retried up to 5 times with exponential backoff rather than silently dropping.
+              Inbound webhooks are immediately acknowledged and queued into persistent Redis or cloud message brokers. If a downstream CRM or ERP endpoint experiences downtime or rate-limiting, events are automatically retried up to 5 times with exponential backoff rather than silently dropping.
             </p>
           </div>
 
           <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
             <span className="text-xs font-mono uppercase text-emerald-400 font-semibold block">2. Dead-Letter Alerting</span>
-            <h3 className="text-base font-serif text-white">Zero Silent Failures</h3>
+            <h3 className="text-base font-serif text-white">Proactive Alerting</h3>
             <p className="text-xs text-white/70 font-light leading-relaxed">
-              When a payload fails repeatedly due to schema changes or invalid tokens, it routes into a dedicated dead-letter queue. Automated webhook alerts trigger instant notifications in your operations Slack or Microsoft Teams channel with exact error stack traces and replay endpoints.
+              When a payload fails repeatedly due to schema changes or invalid tokens, it routes into a dedicated dead-letter queue. Automated webhook alerts trigger notifications in your operations Slack or Microsoft Teams channel with exact error stack traces and replay endpoints.
             </p>
           </div>
 
@@ -628,27 +686,27 @@ export default function AiAutomationDubai() {
             <span className="text-xs font-mono uppercase text-emerald-400 font-semibold block">3. Supervised Human Checkpoints</span>
             <h3 className="text-base font-serif text-white">Threshold-Based Approval</h3>
             <p className="text-xs text-white/70 font-light leading-relaxed">
-              Autonomous execution is bounded by strict operational guardrails. Tasks exceeding critical parameters—such as automated invoice processing with OCR confidence below 90%, payment refunds above AED 5,000, or bulk notifications—require explicit staff sign-off before proceeding.
+              Automated execution is bounded by strict operational guardrails. Tasks exceeding critical parameters—such as automated invoice processing with OCR confidence below 90%, payment refunds above set limits, or bulk communications—require explicit staff sign-off before proceeding.
             </p>
           </div>
         </div>
 
         <div className="mt-6 p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
           <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-wider font-semibold">
-            <Lock className="w-4 h-4" /> Sovereign Client Codebase Ownership
+            <Lock className="w-4 h-4" /> Client Codebase Ownership
           </div>
-          <h4 className="text-base font-serif text-white">100% Repository &amp; Cloud Tenancy Handover</h4>
+          <h4 className="text-base font-serif text-white">Full Repository &amp; Cloud Tenancy Handover</h4>
           <p className="text-xs text-white/70 font-light leading-relaxed">
-            All custom integration pipelines, TypeScript schemas, Docker container definitions, and serverless functions belong exclusively to your organization. Code is committed directly to your enterprise GitHub or GitLab repository and deployed within your private cloud tenancy (AWS, Azure, or GCP UAE regions) with zero ongoing proprietary code licensing fees.
+            All custom integration pipelines, TypeScript schemas, Docker container definitions, and serverless functions belong to your organization. Code is committed directly to your enterprise GitHub or GitLab repository and deployed within your private cloud tenancy (AWS, Azure, or GCP UAE regions) without proprietary vendor lock-in.
           </p>
         </div>
       </section>
 
-      {/* ── 7. Typical 4-to-6 Week Deployment Framework ── */}
+      {/* ── 9. Engagement Phases & Cost Factors ── */}
       <section className="py-16 px-6 max-w-5xl mx-auto border-t border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
           <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Delivery Methodology</span>
-          <h2 className="text-2xl md:text-4xl font-serif">Typical 4-to-6 Week Deployment Framework</h2>
+          <h2 className="text-2xl md:text-4xl font-serif">Indicative 4-to-6 Week Deployment Stages</h2>
           <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
             We apply a disciplined engineering approach to design, integrate, test, and deploy resilient business automations:
           </p>
@@ -658,7 +716,6 @@ export default function AiAutomationDubai() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {/* Phase 1 */}
           <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3 relative">
             <span className="text-2xl font-serif text-emerald-400">01</span>
             <h3 className="text-base font-medium text-white">Discovery &amp; Scoping</h3>
@@ -668,7 +725,6 @@ export default function AiAutomationDubai() {
             </p>
           </div>
 
-          {/* Phase 2 */}
           <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3 relative">
             <span className="text-2xl font-serif text-emerald-400">02</span>
             <h3 className="text-base font-medium text-white">Schema &amp; Integration</h3>
@@ -678,7 +734,6 @@ export default function AiAutomationDubai() {
             </p>
           </div>
 
-          {/* Phase 3 */}
           <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3 relative">
             <span className="text-2xl font-serif text-emerald-400">03</span>
             <h3 className="text-base font-medium text-white">Human Gates &amp; Review</h3>
@@ -688,7 +743,6 @@ export default function AiAutomationDubai() {
             </p>
           </div>
 
-          {/* Phase 4 */}
           <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3 relative">
             <span className="text-2xl font-serif text-emerald-400">04</span>
             <h3 className="text-base font-medium text-white">Rollout &amp; Monitoring</h3>
@@ -698,9 +752,35 @@ export default function AiAutomationDubai() {
             </p>
           </div>
         </div>
+
+        {/* Cost Drivers Card */}
+        <div className="mt-8 p-6 md:p-8 rounded-2xl border border-white/10 bg-black/40">
+          <h3 className="text-lg font-serif text-white mb-2">Project Scope &amp; Investment Drivers</h3>
+          <p className="text-xs text-white/65 font-light leading-relaxed mb-4">
+            Instead of perpetual recurring per-seat licensing, Asif Digital builds custom engineering infrastructure owned by your organization. Investment scope is evaluated based on:
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs font-light text-white/75">
+            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
+              <strong className="text-white block font-medium mb-1">1. System Endpoints</strong>
+              Number of connected applications (CRM, ERP, payment gateways, messaging APIs).
+            </div>
+            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
+              <strong className="text-white block font-medium mb-1">2. Schema Complexity</strong>
+              Data transformation depth, custom field logic, and bi-directional synchronization needs.
+            </div>
+            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
+              <strong className="text-white block font-medium mb-1">3. Document Models</strong>
+              Number of varied document formats (invoices, trade licenses) requiring OCR/vision extraction.
+            </div>
+            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
+              <strong className="text-white block font-medium mb-1">4. Hosting Infrastructure</strong>
+              Private cloud deployment (AWS/Azure UAE tenancy) vs. managed container environments.
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* ── 8. Regional Cloud & Governance Infrastructure ── */}
+      {/* ── 10. Data Governance & Regional Cloud Deployment ── */}
       <section className="py-16 px-6 max-w-5xl mx-auto border-t border-white/10">
         <div className="p-8 rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent space-y-6 text-left">
           <div className="flex items-center gap-3">
@@ -714,19 +794,19 @@ export default function AiAutomationDubai() {
             <div className="p-4 rounded-xl border border-white/5 bg-black/40 space-y-2">
               <h3 className="text-xs font-mono uppercase text-emerald-400">UAE PDPL Alignment</h3>
               <p className="text-xs text-white/70 leading-relaxed">
-                AI architecture designed around UAE PDPL-aligned data handling, access controls, vendor assessment, cross-border data considerations, and client-specific residency requirements.
+                Data pipelines designed following UAE Federal Decree-Law No. 45 of 2021 on Personal Data Protection principles, role-based access, and client-specific data handling policies.
               </p>
             </div>
             <div className="p-4 rounded-xl border border-white/5 bg-black/40 space-y-2">
               <h3 className="text-xs font-mono uppercase text-emerald-400">Regional Cloud Options</h3>
               <p className="text-xs text-white/70 leading-relaxed">
-                Deployment options can include UAE-region cloud tenancy, private infrastructure and role-based access controls depending on client requirements and provider availability.
+                Deployment options can include UAE-region cloud tenancy, private infrastructure, and role-based access controls depending on client requirements and provider availability.
               </p>
             </div>
             <div className="p-4 rounded-xl border border-white/5 bg-black/40 space-y-2">
-              <h3 className="text-xs font-mono uppercase text-emerald-400">Zero Foundational Training</h3>
+              <h3 className="text-xs font-mono uppercase text-emerald-400">No Public Model Training</h3>
               <p className="text-xs text-white/70 leading-relaxed">
-                Deployment options can be configured so client data is not used for public model training, subject to the selected provider and deployment architecture.
+                Deployment options can be configured so client data is not used for public model training, subject to the selected AI provider and deployment architecture.
               </p>
             </div>
             <div className="p-4 rounded-xl border border-white/5 bg-black/40 space-y-2">
@@ -739,60 +819,7 @@ export default function AiAutomationDubai() {
         </div>
       </section>
 
-      {/* ── 9. Why Work With Asif Digital ── */}
-      <section className="py-16 px-6 max-w-5xl mx-auto border-t border-white/10">
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Partnership Value</span>
-          <h2 className="text-2xl md:text-4xl font-serif">Why Dubai Enterprises Choose Asif Digital</h2>
-          <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
-            We combine high-level operational consulting with hands-on systems engineering:
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-2">
-            <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0" />
-              <h3 className="text-base font-medium text-white">Local UAE Engineering Presence</h3>
-            </div>
-            <p className="text-sm text-white/70 font-light leading-relaxed pl-8">
-              Direct access to our senior engineering team in Dubai. We work alongside your IT and operational leaders to map workflows accurately.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-2">
-            <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0" />
-              <h3 className="text-base font-medium text-white">Engineered For Production Reliability</h3>
-            </div>
-            <p className="text-sm text-white/70 font-light leading-relaxed pl-8">
-              No fragile single-step hacks. Every workflow is designed with queue persistence, schema-level validation, and automated failover alerting.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-2">
-            <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0" />
-              <h3 className="text-base font-medium text-white">Supervised Human Oversight</h3>
-            </div>
-            <p className="text-sm text-white/70 font-light leading-relaxed pl-8">
-              We build architectures that empower your staff rather than replacing critical human judgment. High-risk actions require authorized sign-off.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] space-y-2">
-            <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0" />
-              <h3 className="text-base font-medium text-white">Zero Vendor Lock-In</h3>
-            </div>
-            <p className="text-sm text-white/70 font-light leading-relaxed pl-8">
-              All custom integration logic, API schemas, and deployment pipelines belong 100% to your organization, with full technical handover documentation.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 10. Frequently Asked Questions (Accordion) ── */}
+      {/* ── 11. Frequently Asked Questions ── */}
       <section className="py-16 px-6 max-w-4xl mx-auto border-t border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
           <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Got Questions?</span>
@@ -825,13 +852,13 @@ export default function AiAutomationDubai() {
         </div>
       </section>
 
-      {/* ── 11. Final CTA Section ── */}
+      {/* ── 12. Final CTA Section ── */}
       <section className="py-20 px-6 max-w-4xl mx-auto text-center border-t border-white/10">
         <div className="p-8 md:p-12 rounded-3xl border border-emerald-500/20 bg-gradient-to-b from-emerald-500/10 to-transparent space-y-6">
           <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Begin Your Automation Discovery</span>
           <h2 className="text-2xl md:text-4xl font-serif text-white">Ready to Eliminate Manual Operational Friction?</h2>
           <p className="text-sm md:text-base text-white/70 font-light max-w-2xl mx-auto leading-relaxed">
-            Book a workflow architecture audit with our Dubai engineering team. We will review your current systems, map manual bottlenecks, and provide an actionable integration blueprint.
+            Book an operational workflow audit with our Dubai engineering team. We will review your current systems, map manual bottlenecks, and provide an actionable integration blueprint.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
@@ -848,7 +875,7 @@ export default function AiAutomationDubai() {
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/15 bg-white/[0.04] text-white hover:bg-white/10 transition text-sm font-medium"
             >
               <MessageSquare className="w-4 h-4 text-emerald-400" />
-              <span>WhatsApp Us (+971 54 586 6094)</span>
+              <span>Discuss Scope on WhatsApp</span>
             </a>
             <Link
               href="/contact"
@@ -860,7 +887,7 @@ export default function AiAutomationDubai() {
         </div>
       </section>
 
-      {/* ── 12. Topic Cluster Navigation Footer ── */}
+      {/* ── 13. Topic Cluster Navigation Footer ── */}
       <section className="py-12 border-t border-white/5 bg-black/40 text-center">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-[11px] uppercase tracking-widest text-white/40 mb-4 font-mono">
@@ -872,6 +899,8 @@ export default function AiAutomationDubai() {
             <Link href="/ai-chatbots-dubai" className="hover:text-white transition-colors">WhatsApp Chatbots Dubai</Link>
             <span className="text-white/20">•</span>
             <Link href="/services/whatsapp-automation-gcc" className="hover:text-white transition-colors">WhatsApp Automation GCC</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/real-estate/portal-lead-integration-dubai" className="hover:text-white transition-colors">Portal Lead Integration Dubai</Link>
             <span className="text-white/20">•</span>
             <Link href="/real-estate-crm-dubai" className="hover:text-white transition-colors">Real Estate CRM Dubai</Link>
             <span className="text-white/20">•</span>

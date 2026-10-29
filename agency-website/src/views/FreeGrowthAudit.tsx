@@ -299,22 +299,26 @@ export default function FreeGrowthAudit() {
               <input name="tool" type="hidden" value="Free Growth Audit" />
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <label className="block space-y-1.5">
+                <label htmlFor="audit-name" className="block space-y-1.5">
                   <span className="text-[11px] font-mono text-white/70 uppercase tracking-wider">Your Name *</span>
                   <input
+                    id="audit-name"
                     name="name"
                     required
+                    aria-required="true"
                     className="w-full rounded-xl border border-white/10 bg-black/60 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-green-400/60 focus:outline-none transition-colors"
                     placeholder="e.g. Tariq Al-Mansoor"
                   />
                 </label>
 
-                <label className="block space-y-1.5">
+                <label htmlFor="audit-email" className="block space-y-1.5">
                   <span className="text-[11px] font-mono text-white/70 uppercase tracking-wider">Work Email *</span>
                   <input
+                    id="audit-email"
                     name="email"
                     type="email"
                     required
+                    aria-required="true"
                     className="w-full rounded-xl border border-white/10 bg-black/60 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-green-400/60 focus:outline-none transition-colors"
                     placeholder="tariq@company.ae"
                   />
@@ -322,19 +326,22 @@ export default function FreeGrowthAudit() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <label className="block space-y-1.5">
+                <label htmlFor="audit-phone" className="block space-y-1.5">
                   <span className="text-[11px] font-mono text-white/70 uppercase tracking-wider">WhatsApp / Phone *</span>
                   <input
+                    id="audit-phone"
                     name="phone"
                     required
+                    aria-required="true"
                     className="w-full rounded-xl border border-white/10 bg-black/60 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-green-400/60 focus:outline-none transition-colors"
                     placeholder="+971 50 ..."
                   />
                 </label>
 
-                <label className="block space-y-1.5">
+                <label htmlFor="audit-website" className="block space-y-1.5">
                   <span className="text-[11px] font-mono text-white/70 uppercase tracking-wider">Website URL</span>
                   <input
+                    id="audit-website"
                     name="website"
                     className="w-full rounded-xl border border-white/10 bg-black/60 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-green-400/60 focus:outline-none transition-colors"
                     placeholder="https://company.ae"
@@ -343,9 +350,10 @@ export default function FreeGrowthAudit() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <label className="block space-y-1.5">
+                <label htmlFor="audit-service" className="block space-y-1.5">
                   <span className="text-[11px] font-mono text-white/70 uppercase tracking-wider">Primary Review Area</span>
                   <select
+                    id="audit-service"
                     name="service"
                     className="w-full rounded-xl border border-white/10 bg-black/80 px-4 py-3 text-sm text-white focus:border-green-400/60 focus:outline-none transition-colors"
                   >
@@ -359,9 +367,10 @@ export default function FreeGrowthAudit() {
                   </select>
                 </label>
 
-                <label className="block space-y-1.5">
+                <label htmlFor="audit-lead-volume" className="block space-y-1.5">
                   <span className="text-[11px] font-mono text-white/70 uppercase tracking-wider">Monthly Inquiries</span>
                   <select
+                    id="audit-lead-volume"
                     name="leadVolume"
                     className="w-full rounded-xl border border-white/10 bg-black/80 px-4 py-3 text-sm text-white focus:border-green-400/60 focus:outline-none transition-colors"
                   >
@@ -374,9 +383,10 @@ export default function FreeGrowthAudit() {
                 </label>
               </div>
 
-              <label className="block space-y-1.5">
+              <label htmlFor="audit-message" className="block space-y-1.5">
                 <span className="text-[11px] font-mono text-white/70 uppercase tracking-wider">Primary Operational Bottleneck (Optional)</span>
                 <textarea
+                  id="audit-message"
                   name="message"
                   rows={2}
                   className="w-full rounded-xl border border-white/10 bg-black/60 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-green-400/60 focus:outline-none transition-colors resize-none"

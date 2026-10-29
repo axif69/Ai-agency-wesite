@@ -5,17 +5,17 @@ import Link from "next/link";
 import { ArrowRight, Shield, Cpu, Network, Zap, CheckCircle, Code2, MessageSquare, Search, Workflow } from "lucide-react";
 
 const sovereignPillars = [
-  { icon: <Shield className="w-6 h-6" />, title: "Operational Resilience", desc: "We don't just build software; we engineer unshakeable systems. Our mission is to ensure your business remains dominant regardless of market volatility or technical shifts." },
-  { icon: <Cpu className="w-6 h-6" />, title: "Neural Architecture", desc: "Every deployment is built on custom reasoning chains. We move beyond generic LLMs to create sovereign intelligence that belongs solely to your organization." },
-  { icon: <Network className="w-6 h-6" />, title: "GCC Data Sovereignty", desc: "Systems can be designed for UAE-region hosting, controlled access and documented data flows. Final compliance depends on the use case, providers and qualified legal review." },
-  { icon: <Zap className="w-6 h-6" />, title: "Autonomous Yield", desc: "We engineer systems that operate 24/7. Our goal is to eliminate human latency in high-stakes acquisition, allowing your firm to scale at the speed of computation." },
+  { icon: <Code2 className="w-6 h-6" />, title: "Engineering Velocity & Clean Code", desc: "We build on modern Next.js, React, and TypeScript stacks engineered for fast loading speeds, clean component architecture, optimal Core Web Vitals, and complete client code ownership." },
+  { icon: <Zap className="w-6 h-6" />, title: "Practical Business Automation", desc: "Direct integrations between your website, Meta's official WhatsApp Cloud API, and CRM pipelines. We reduce lead decay by routing incoming customer enquiries directly to your sales team automatically." },
+  { icon: <Network className="w-6 h-6" />, title: "GCC Localization & Payment Gateways", desc: "Tailored for UAE commercial realities: natural Arabic/English RTL switching, local payment integrations (Stripe UAE, Telr, Network International), and regional hosting compliance." },
+  { icon: <Shield className="w-6 h-6" />, title: "Direct Founder Engagement", desc: "You collaborate directly with founder Asif Khan on technical architecture, design, and milestone delivery — with zero account-manager telephone games." },
 ];
 
 const evolution = [
-  { year: "2020", title: "Inception", desc: "Asif Digital founded by Asif Khan with a focus on high-performance digital infrastructure for the UAE market." },
-  { year: "2022", title: "Agentic Pivot", desc: "Shifted focus from standard marketing to AI-driven automation and early-stage agentic reasoning models." },
-  { year: "2024", title: "Sovereign Shift", desc: "Formalized the 'Sovereign AI' framework, prioritizing data residency and locally-hosted intelligence for GCC enterprises." },
-  { year: "2025", title: "Architectural Dominance", desc: "Transitioned to an elite AI Architectural Firm, deploying autonomous sales swarms and resilience shields for UHNW and institutional clients." },
+  { year: "2020", title: "Inception in Sharjah", desc: "Asif Digital founded by Asif Khan in Sharjah, focusing on high-speed web engineering and digital infrastructure for UAE commercial businesses." },
+  { year: "2022", title: "Workflow Automation", desc: "Expanded into backend process automation, CRM synchronization, and custom webhooks for SMEs across Dubai, Sharjah, and Abu Dhabi." },
+  { year: "2024", title: "Meta WhatsApp Cloud API", desc: "Deployed official Meta WhatsApp Cloud API integrations and lead qualification pipelines, helping businesses respond to incoming inquiries in seconds." },
+  { year: "Present", title: "Vertical Growth Systems", desc: "Delivering specialized digital ecosystems for UAE real estate agencies, professional service firms, and high-growth commercial enterprises." },
 ];
 
 const capabilities = [
@@ -77,12 +77,12 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl"
         >
-          <span className="micro-label block mb-4">The Firm</span>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[8vw] font-serif leading-tight tracking-tight mb-8">
-            The <span className="italic text-white/50">Architects</span> of Resilience.
+          <span className="micro-label block mb-4">About Asif Digital</span>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-tight tracking-tight mb-8">
+            Engineering Digital Systems That Turn <span className="italic text-white/50">Visitors Into Clients.</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl leading-relaxed">
-            Asif Digital is a high-ticket Sovereign AI Architectural Firm. We engineer autonomous intelligence layers for the GCC's most ambitious enterprises, transforming legacy friction into unshakeable revenue domains.
+            Asif Digital is an independent UAE digital engineering studio founded by Asif Khan. Based in Muwaileh Commercial, Sharjah, we build high-speed Next.js web applications, official WhatsApp Business automations, and CRM pipelines for growing businesses across Dubai, Sharjah, and Abu Dhabi.
           </p>
         </motion.div>
       </section>
@@ -134,7 +134,7 @@ export default function About() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="absolute inset-0 bg-[#0066FF]/10 rounded-[3rem] blur-[100px] pointer-events-none" />
+            <div className="absolute inset-0 bg-green-500/10 rounded-[3rem] blur-[100px] pointer-events-none" />
             <img
               src="/images/asif-khan.webp"
               alt="Asif Khan — Founder, Asif Digital"
@@ -143,7 +143,7 @@ export default function About() {
             />
             <div className="absolute bottom-10 left-10 z-20 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-2xl px-8 py-6">
               <div className="font-serif text-2xl text-white mb-1">Asif Khan</div>
-              <div className="text-[#0066FF] text-[10px] uppercase tracking-[0.3em] font-bold">Founder & Principal Architect</div>
+              <div className="text-green-400 text-[10px] uppercase tracking-[0.3em] font-bold">Founder & Lead Engineer</div>
             </div>
           </motion.div>
 
@@ -157,19 +157,19 @@ export default function About() {
               <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">Beyond the Agency <span className="italic">Standard.</span></h2>
               <div className="space-y-6 text-white/60 font-light leading-relaxed text-lg">
                 <p>
-                  Asif Digital was founded by Asif Khan with a single mission: to provide UAE enterprises with a level of digital certainty that standard agencies cannot match.
+                  Founded by Asif Khan, Asif Digital began with a clear realization: UAE businesses were spending heavily on websites and marketing retainers that yielded slow pages, disconnected forms, and leads that went cold within hours.
                 </p>
                 <p>
-                  We have moved beyond the "Digital Marketing" label. Today, we function as a specialized architectural firm, designing the neural frameworks that allow companies in Dubai, Riyadh, and Abu Dhabi to operate autonomously.
+                  Instead of operating like an ordinary marketing agency with generic templates, we operate as a dedicated engineering studio. We combine modern web architecture (Next.js, React, TypeScript) with official Meta WhatsApp Cloud API workflows and direct CRM synchronization.
                 </p>
                 <p>
-                  Our commitment to <span className="text-white">Sovereign AI</span> means we prioritize your data residency above all else. In an era of global volatility, we ensure your intelligence remains your most guarded and productive asset.
+                  Every system we build is designed for measurable commercial outcomes: high-performance page loads, automated enquiry qualification, and 100% client code ownership without proprietary lock-in.
                 </p>
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-4">
-              {[{ n: "UAE", l: "Regional Focus" }, { n: "Human-led", l: "AI Governance" }, { n: "Measured", l: "Implementation" }].map((s, i) => (
+              {[{ n: "Sharjah", l: "Physical Base in Muwaileh" }, { n: "100%", l: "Client Code Ownership" }, { n: "Rapid", l: "Lead Routing Target" }].map((s, i) => (
                 <div key={i} className="p-6 border border-white/5 rounded-3xl text-center bg-white/[0.01]">
                   <div className="text-2xl font-serif mb-1">{s.n}</div>
                   <div className="text-white/40 text-[9px] uppercase tracking-widest font-bold">{s.l}</div>
@@ -183,8 +183,8 @@ export default function About() {
       {/* Sovereign Pillars */}
       <section className="px-6 md:px-12 py-32 max-w-7xl mx-auto">
         <div className="mb-20">
-          <span className="micro-label block mb-4">Our Methodology</span>
-          <h2 className="text-4xl md:text-6xl font-serif">The Sovereign Protocol</h2>
+          <span className="micro-label block mb-4">Our Engineering Principles</span>
+          <h2 className="text-4xl md:text-6xl font-serif">How We Engineer Digital Systems</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {sovereignPillars.map((pillar, i) => (
@@ -196,7 +196,7 @@ export default function About() {
               transition={{ delay: i * 0.1 }} 
               className="p-10 border border-white/5 rounded-[2.5rem] bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-500 group"
             >
-              <div className="text-[#0066FF] mb-8 group-hover:scale-110 transition-transform duration-500">{pillar.icon}</div>
+              <div className="text-green-400 mb-8 group-hover:scale-110 transition-transform duration-500">{pillar.icon}</div>
               <h3 className="text-2xl font-serif mb-4">{pillar.title}</h3>
               <p className="text-white/50 font-light text-sm leading-relaxed">{pillar.desc}</p>
             </motion.div>
@@ -243,7 +243,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <span className="micro-label block mb-4">Our Evolution</span>
-            <h2 className="text-4xl md:text-5xl font-serif">The Trajectory of Intelligence</h2>
+            <h2 className="text-4xl md:text-5xl font-serif">How Asif Digital Grew</h2>
           </div>
           <div className="space-y-0">
             {evolution.map((m, i) => (
@@ -256,7 +256,7 @@ export default function About() {
                 className="flex flex-col md:flex-row gap-8 py-12 border-b border-white/5 last:border-0 items-start md:items-center"
               >
                 <div className="flex-shrink-0 w-24">
-                  <span className="text-[#0066FF] text-xl font-serif">{m.year}</span>
+                  <span className="text-green-400 text-xl font-serif">{m.year}</span>
                 </div>
                 <div className="flex-grow">
                   <h3 className="text-2xl font-serif mb-2">{m.title}</h3>
@@ -293,13 +293,23 @@ export default function About() {
       <section className="px-6 md:px-12 py-32 max-w-7xl mx-auto">
         <div className="p-16 rounded-[4rem] bg-white text-black text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-black/5 rounded-full -mr-32 -mt-32" />
-          <h2 className="text-4xl md:text-6xl font-serif mb-8 leading-tight">Secure Your <span className="italic">Domain.</span></h2>
+          <h2 className="text-4xl md:text-6xl font-serif mb-8 leading-tight">Ready to Upgrade Your <span className="italic">Digital Infrastructure?</span></h2>
           <p className="text-black/60 text-xl font-light max-w-2xl mx-auto mb-12">
-            The Agentic Shift is already underway in the UAE. Do not let your operations remain vulnerable to legacy friction. Speak with our Principal Architect today.
+            Whether you need a high-converting web application, automated WhatsApp lead routing, or a custom real estate CRM, we engineer systems that deliver measurable business results.
           </p>
-          <Link href="/contact" className="inline-flex items-center gap-3 bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:scale-105 transition-all shadow-2xl">
-            Book Strategic Audit <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link href="/free-growth-audit" className="inline-flex items-center gap-3 bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-neutral-800 transition-all shadow-2xl">
+              Claim Free Growth Audit <ArrowRight className="w-4 h-4" />
+            </Link>
+            <a
+              href="https://wa.me/971545866094?text=Hi%20Asif%2C%20I%20would%20like%20to%20discuss%20a%20digital%20engineering%20project%20for%20my%20business."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 border border-black/20 text-black px-8 py-5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-black/5 transition-all"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
         </div>
       </section>
     </div>

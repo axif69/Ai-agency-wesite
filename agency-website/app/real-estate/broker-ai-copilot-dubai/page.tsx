@@ -18,6 +18,20 @@ export const metadata = {
     description: "Sub-60s SLA handoff, real estate broker SLA tracker Dubai, and VIP buyer intent scoring dashboard.",
     url: "https://www.asifdigital.agency/real-estate/broker-ai-copilot-dubai",
     siteName: "Asif Digital Agency Dubai",
+    images: [
+      {
+        url: "https://www.asifdigital.agency/images/ai_whatsapp_broker_chat.png",
+        width: 1024,
+        height: 1024,
+        alt: "AI 1-Click Reply Co-Pilot for Property Brokers UAE — Asif Digital"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI 1-Click Reply Co-Pilot for Property Brokers UAE | Asif Digital",
+    description: "Sub-60s SLA handoff, real estate broker SLA tracker Dubai, and VIP buyer intent scoring dashboard.",
+    images: ["https://www.asifdigital.agency/images/ai_whatsapp_broker_chat.png"]
   }
 };
 

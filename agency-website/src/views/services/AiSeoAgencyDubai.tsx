@@ -26,6 +26,11 @@ import {
   Terminal,
   Zap,
   ChevronDown,
+  Building2,
+  Check,
+  AlertCircle,
+  BarChart3,
+  SlidersHorizontal,
 } from "lucide-react";
 
 interface Pillar {
@@ -42,92 +47,100 @@ const pillars: Pillar[] = [
     title: "Answer Engine Optimization (AEO)",
     subtitle: "Direct-Answer Architecture for Google AI Overviews",
     description:
-      "Formatting commercial and technical pages so search engines extract direct, authoritative answers for Google AI Overviews, featured snippets, and voice search queries across the UAE.",
+      "Formatting commercial and service pages so search engines can readily extract direct, authoritative summaries for Google AI Overviews, featured snippets, and voice queries across the UAE.",
     capabilities: [
-      "Direct concise summary answers placed in high-visibility HTML zones",
+      "Direct, concise answer summaries positioned in high-visibility content zones",
       "Semantic comparison matrices and structured decision tables",
       "Search-intent aligned FAQ architecture with verified schema markup",
-      "High-extractability listicles, process roadmaps, and boundary definitions",
+      "Clear process workflows, boundary definitions, and structured bullet lists",
     ],
   },
   {
     number: "02",
     title: "Generative Engine Optimization (GEO)",
-    subtitle: "LLM Citation Readiness for ChatGPT, Perplexity & Gemini",
+    subtitle: "Entity Authority for ChatGPT, Perplexity & Gemini",
     description:
-      "Structuring your organization's entity footprint, topical authority, and brand citations across the web so AI models recognize, cite, and recommend your services in conversational answers.",
+      "Structuring your organization's entity profile, topical authority, and online citations so AI answer engines can identify, understand, and reference your business in conversational search responses.",
     capabilities: [
-      "Entity graph mapping establishing brand-to-service relationships",
-      "Co-citation engineering across authoritative regional directories and publications",
-      "Topical depth modeling covering complete industry domain semantics",
-      "Factual consistency checks across external web mentions and digital PR",
+      "Entity graph mapping establishing verified brand-to-service relationships",
+      "Co-citation development across authoritative regional directories and industry portals",
+      "Comprehensive topical coverage addressing common commercial buyer questions",
+      "Factual consistency checks across external web mentions, trade profiles, and digital PR",
     ],
   },
   {
     number: "03",
     title: "Technical SEO & Semantic Knowledge Graph",
-    subtitle: "Machine-Readable Architecture & Performance Engineering",
+    subtitle: "Machine-Readable Architecture & Core Web Vitals",
     description:
-      "Clean crawl topologies, performance-focused Next.js architecture, and multi-layered JSON-LD schema networks that give search crawlers clear entity definitions regarding your service taxonomy.",
+      "Clean crawl paths, performance-focused Next.js architecture, and multi-layered JSON-LD schema networks that give search crawlers unambiguous entity definitions for your service taxonomy.",
     capabilities: [
-      "Full JSON-LD structured data (ProfessionalService, Breadcrumbs, FAQs, Services)",
+      "Comprehensive JSON-LD structured data (Organization, ProfessionalService, FAQs, Services)",
       "Strict canonical discipline supporting a clean crawl architecture",
-      "Fast Largest Contentful Paint (LCP) and accessible mobile rendering",
-      "Sitemap priority engineering and clean URL routing architecture",
+      "Fast Largest Contentful Paint (LCP) and responsive mobile rendering",
+      "Clean sitemap hierarchies and structured URL routing architecture",
     ],
   },
   {
     number: "04",
-    title: "Search Intent Architecture & Semantic Silos",
-    subtitle: "Clean Intent Demarcation & Internal Link Topology",
+    title: "Search Intent Architecture & Topic Silos",
+    subtitle: "Intent Demarcation & Internal Link Topology",
     description:
-      "Organizing every page into precise intent tiers—informational guides, commercial service hubs, and product features—connected through contextual bridge links with orphan-page prevention and internal-link auditing.",
+      "Organizing every page into clear intent categories—informational guides, commercial service hubs, and conversion pages—connected through contextual internal links, eliminating orphaned pages.",
     capabilities: [
-      "Strict intent mapping preventing informational-commercial keyword dilution",
-      "Contextual topic silos connecting high-ranking guides to conversion hubs",
-      "Keyword cannibalization elimination across singular/plural and geo variants",
-      "Anchor text diversification reflecting natural commercial search patterns",
+      "Clear intent mapping preventing informational vs. commercial keyword dilution",
+      "Contextual topic silos connecting high-traffic research guides to conversion hubs",
+      "Elimination of internal keyword cannibalization across geographic and service terms",
+      "Natural anchor text diversification reflecting genuine commercial search behavior",
     ],
   },
   {
     number: "05",
-    title: "Content Refresh & Decay Prevention Engine",
-    subtitle: "Algorithmic Monitoring & Continuous Authority Updates",
+    title: "Serps Freshness & Continuous Optimization",
+    subtitle: "Query Monitoring & Search Performance Refinement",
     description:
-      "Systematic tracking of query impressions, CTR, and SERP shifts to trigger scheduled content refreshes before competitive decay impacts commercial positions.",
+      "Systematic tracking of Google Search Console impressions, average rankings, and SERP layout shifts to guide data-driven content updates and maintain search visibility over time.",
     capabilities: [
-      "GSC impression and average position velocity tracking by cluster",
-      "Automated triggers for updating technical specs, pricing, and FAQ blocks",
-      "Competitor depth delta analysis identifying newly emerging search intents",
-      "Continuous algorithmic pruning and redirection of obsolete URL paths",
+      "GSC impression and average position monitoring across core query clusters",
+      "Scheduled updates for technical specifications, pricing models, and FAQ blocks",
+      "Competitor gap analysis identifying newly emerging commercial search intents",
+      "Periodic pruning, consolidation, and redirection of outdated or redundant URLs",
     ],
   },
 ];
 
 const faqs = [
   {
-    q: "What is the difference between AI SEO, AEO, and traditional SEO in Dubai?",
-    a: "Traditional SEO focuses primarily on keyword density, backlink quantity, and ranking among the standard 10 blue links on Google. AI SEO and Answer Engine Optimization (AEO) re-engineer content for machine comprehension—structuring data into concise direct answers, comparison matrices, and entity graphs so that search engines feature your brand in Google AI Overviews and conversational AI engines (ChatGPT Search, Perplexity, Gemini).",
+    q: "What is the difference between traditional SEO, AI SEO, and AEO?",
+    a: "Traditional SEO focuses on earning visibility in standard organic search listings (the blue links on Google) through technical health, keyword relevance, and backlinks. AI SEO and Answer Engine Optimization (AEO) build upon traditional SEO by formatting content into concise direct answers, comparison matrices, and machine-readable entity schemas. This enables search engines and conversational AI models (such as Google AI Overviews, ChatGPT Search, and Perplexity) to extract and cite your business when formulating synthesized answers.",
   },
   {
-    q: "Can an AI SEO agency guarantee #1 rankings or guaranteed ChatGPT citations?",
-    a: "No honest agency can guarantee rank #1 or guaranteed LLM citations. Search algorithms and generative AI models update continuously, incorporating dynamic user signals, competition, and index shifts. Asif Digital guarantees architectural rigor: establishing the highest standard of technical speed, schema clarity, intent demarcation, and topical depth that maximize your site's eligibility for top visibility.",
+    q: "Why should a UAE business optimize for both traditional SEO and AEO together?",
+    a: "Search behavior is diversified: some prospective buyers click directly through to comprehensive websites to evaluate case studies, team credentials, and pricing structures, while others rely on AI-synthesized summaries for initial vendor shortlisting. Optimizing for both traditional SEO and AEO ensures your business maintains organic visibility across both standard Google search results and modern AI answer engines.",
   },
   {
-    q: "How does AI search visibility relate to our paid advertising (PPC)?",
-    a: "AI SEO builds compounding, zero-cost organic discovery, establishing lasting topical authority and brand trust. Paid advertising (Google Ads & Meta Ads) provides immediate traffic and rapid message testing. For organizations seeking rapid full-funnel growth, we coordinate organic search signals with predictive PPC campaigns.",
+    q: "Can an AI SEO agency guarantee #1 rankings or inclusion in Google AI Overviews?",
+    a: "No reputable agency can guarantee a #1 ranking, inclusion in Google AI Overviews, or citations inside third-party LLMs like ChatGPT. Search algorithms and generative retrieval models update continuously based on user intent, competitive content, and proprietary parameters. What Asif Digital delivers is architectural rigor: clean technical code, semantic schema clarity, verified topical authority, and direct-answer structuring that maximize your eligibility for high visibility.",
   },
   {
-    q: "How long does it take for AEO and GEO optimizations to show results?",
-    a: "Technical crawl and schema improvements are recognized by search engines within 1 to 3 weeks of re-indexing. Direct answer inclusion in Google AI Overviews and notable ranking improvements typically materialize over 4 to 12 weeks, depending on existing domain authority, crawl frequency, and regional competition in the UAE.",
+    q: "How does Google decide which websites to cite in AI Overviews?",
+    a: "Google's AI Overviews synthesize answers by retrieving information from pages that demonstrate strong E-E-A-T (Experience, Expertise, Authoritativeness, and Trustworthiness). The system favors content that answers the user's specific query directly, is backed by clean schema markup, possesses factual consistency across reputable web sources, and loads quickly on mobile devices.",
   },
   {
-    q: "Do you use automated AI tools to write all content?",
-    a: "No. Pure unedited AI-generated text often produces generic, non-authoritative content that fails Google's Helpful Content standards and lacks genuine local UAE business context. We use AI for computational research, query clustering, and semantic schema modeling, but all customer-facing content is architected with verified technical precision, local UAE operational realities, and human editorial review.",
+    q: "How do conversational engines like ChatGPT and Perplexity find information about UAE businesses?",
+    a: "Conversational search engines utilize live web retrieval systems (such as Bing Search, Google, or proprietary crawlers) to find real-time information. They evaluate brand mentions, third-party directory profiles, commercial registries, customer reviews, and authoritative content on your website. When your brand entity is clearly defined with consistent data across the web, AI engines are more likely to reference your company in response to commercial prompts.",
   },
   {
-    q: "How do you measure and report AI search performance?",
-    a: "We track both traditional search metrics (impressions, clicks, average position, organic conversions) and AI-era visibility indicators (AI Overview appearances, brand entity co-citations, conversational answer mentions, and multi-touch lead attribution in your CRM).",
+    q: "How does AI search visibility relate to our paid advertising campaigns (PPC)?",
+    a: "AI SEO builds long-term, organic search authority and trust that compounds over time without per-click media costs. Paid advertising (such as Google Ads and Meta Ads) provides immediate traffic and rapid message testing. The two strategies complement each other: high-intent paid campaigns capture immediate demand while organic AI search optimization establishes sustainable market authority.",
+  },
+  {
+    q: "Do you use automated AI tools to generate website content?",
+    a: "No. Fully automated, unedited AI content frequently results in generic, unverified text that fails Google's Helpful Content standards and lacks real UAE commercial context. We utilize AI tools for research, keyword clustering, and schema modeling, but all client content is authored with verified technical accuracy, local commercial context, and human editorial oversight.",
+  },
+  {
+    q: "How long does it typically take to see measurable search improvements?",
+    a: "Technical crawl and schema improvements are typically indexed by search engines within 1 to 3 weeks of deployment. Measurable improvements in query impressions, average ranking positions, and organic search inquiries generally develop over 6 to 12 weeks, depending on your domain's existing authority, competitive density in your sector, and search crawl frequency in the UAE.",
   },
 ];
 
@@ -172,25 +185,25 @@ export default function AiSeoAgencyDubai() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 mb-6">
             <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-300">
-              AEO • GEO • AI Search Visibility Dubai
+              SEO · AEO · Generative Search Visibility Dubai
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif tracking-tight leading-[1.05] mb-6">
-            AI SEO, AEO &amp; AI Search Visibility <br />
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif tracking-tight leading-[1.08] mb-6">
+            AI SEO, AEO &amp; Search Visibility <br />
             <span className="italic text-white/50 font-light">Agency in Dubai</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-white/75 font-light leading-relaxed mb-8 max-w-3xl">
-            Search is changing. Buyers no longer just click blue links—they read direct AI answers on Google, ChatGPT, and Perplexity. We structure your website’s content, technical foundation and data markup so search engines and AI assistants can more clearly understand your services and evaluate your business as a relevant source.
+            Search behavior in the UAE has evolved. Buyers still use Google search, but they also evaluate direct AI Overviews and ask conversational questions in ChatGPT and Perplexity. We structure your website&apos;s content architecture, technical schema, and entity profile so search engines and AI assistants can clearly understand, index, and reference your business.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
             <Link
-              href="/contact"
+              href="/free-growth-audit"
               className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-xs inline-flex items-center gap-3 hover:bg-emerald-300 transition-colors shadow-lg shadow-emerald-400/10"
             >
-              Request AI Search Audit <ArrowRight className="w-4 h-4" />
+              Request Free AI Search Audit <ArrowRight className="w-4 h-4" />
             </Link>
             <a
               href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20audit%20our%20AI%20SEO%20and%20AEO%20search%20visibility."
@@ -198,54 +211,54 @@ export default function AiSeoAgencyDubai() {
               rel="noopener noreferrer"
               className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-xs inline-flex items-center gap-2 hover:bg-white/5 transition-colors"
             >
-              <MessageSquare className="w-4 h-4 text-emerald-400" /> Discuss Your SEO Goals on WhatsApp
+              <MessageSquare className="w-4 h-4 text-emerald-400" /> Discuss Your Search Goals on WhatsApp
             </a>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 text-[11px] text-white/50 tracking-wider font-mono mt-10">
+            <span>✓ SEO &amp; AEO UNIFIED STRATEGY</span>
             <span>✓ GOOGLE AI OVERVIEW READINESS</span>
             <span>✓ CHATGPT &amp; PERPLEXITY CITATION READINESS</span>
-            <span>✓ STRUCTURED ENTITY &amp; SCHEMA ARCHITECTURE</span>
-            <span>✓ TRANSPARENT, ZERO-GIMMICK METHODOLOGY</span>
+            <span>✓ TRANSPARENT, EVIDENCE-BASED ENGINEERING</span>
           </div>
         </div>
       </section>
 
-      {/* ── 3. Direct System Definition & AEO Answer Block ── */}
+      {/* ── 3. Direct System Definition: Traditional SEO vs. AI SEO & AEO ── */}
       <section className="py-16 px-6 md:px-12 bg-white/[0.015] border-b border-white/5">
         <div className="max-w-5xl mx-auto">
           <div className="text-[11px] uppercase tracking-widest text-emerald-400 font-mono mb-3 font-semibold">
-            System Definition &amp; AEO Target Block
+            Service Definition &amp; Search Dynamics
           </div>
           <h2 className="text-2xl md:text-4xl font-serif mb-6 text-white">
-            What is AI SEO &amp; Answer Engine Optimization?
+            What is AI SEO &amp; Answer Engine Optimization (AEO)?
           </h2>
           <p className="text-white/80 font-light text-base md:text-lg leading-relaxed mb-4">
-            Traditional SEO has largely focused on earning visibility in search-result listings. AI search adds another layer: systems must also understand your services, expertise and factual relationships well enough to use them when constructing answers.
+            Traditional SEO is designed to earn rankings among the standard organic search listings on Google through keyword matching, technical health, and external links. AI SEO and Answer Engine Optimization (AEO) represent the natural evolution of search: structuring content so search algorithms and AI models can synthesize direct, verified answers to complex commercial queries.
           </p>
           <p className="text-white/80 font-light text-base md:text-lg leading-relaxed mb-6">
-            We structure your website into concise direct answers, verified comparison tables, and machine-readable data markup. This improves the clarity and structure AI search systems can use when evaluating your business for relevant answers and citations.
+            Instead of relying solely on keyword repetition, we engineer concise direct-answer blocks, structured comparison tables, and nested JSON-LD schema networks. This makes it straightforward for search engines (like Google) and conversational AI engines (like ChatGPT and Perplexity) to recognize your business entity and cite your expertise accurately.
           </p>
           <div className="p-6 rounded-2xl border border-white/10 bg-black/50 text-sm text-white/70 leading-relaxed font-light">
             <span className="text-emerald-400 font-mono text-xs uppercase block mb-1 font-semibold">
               The Dubai Market Reality
             </span>
-            In competitive UAE sectors—such as commercial real estate, corporate services, healthcare, and B2B technology—buyers increasingly have access to conversational AI tools when researching vendors, alongside traditional search. Clear service descriptions, direct answers and structured data can make it easier for search and AI systems to interpret a business accurately than vague, unstructured marketing copy.
+            In competitive UAE sectors—such as commercial real estate, corporate services, B2B technology, healthcare, and logistics—business buyers frequently use conversational AI tools to research vendors and compare solutions. Organizations that optimize solely for traditional blue links risk missing prospects who review synthesized AI answers before ever clicking an organic search listing.
           </div>
         </div>
       </section>
 
-      {/* ── 4. Traditional SEO vs. AI SEO Comparison ── */}
+      {/* ── 4. Traditional SEO vs. AI SEO Comparison Table ── */}
       <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto border-b border-white/5">
         <div className="text-center mb-16">
           <span className="text-xs uppercase tracking-widest text-emerald-400 font-mono block mb-2 font-semibold">
-            Architectural Evolution
+            Operational Comparison
           </span>
           <h2 className="text-3xl md:text-5xl font-serif tracking-tight">
-            Traditional SEO Retainers vs. AI Search Architecture
+            Traditional SEO Retainers vs. Unified AI SEO &amp; AEO
           </h2>
           <p className="text-white/60 font-light text-sm md:text-base max-w-2xl mx-auto mt-3">
-            Why conventional agency keyword tactics fail to capture modern AI search demand in the UAE.
+            Why conventional agency keyword tactics fail to capture modern AI-driven search demand in the UAE:
           </p>
         </div>
 
@@ -254,35 +267,35 @@ export default function AiSeoAgencyDubai() {
             <thead>
               <tr className="border-b border-white/10 bg-white/[0.03]">
                 <th className="py-5 px-6 font-semibold text-white/60 font-mono text-xs uppercase">Evaluation Dimension</th>
-                <th className="py-5 px-6 font-semibold text-red-400/80 font-mono text-xs uppercase">Traditional Dubai SEO Agency</th>
-                <th className="py-5 px-6 font-semibold text-emerald-400 font-mono text-xs uppercase">Asif Digital AI SEO System</th>
+                <th className="py-5 px-6 font-semibold text-red-400/80 font-mono text-xs uppercase">Traditional Dubai SEO Retainers</th>
+                <th className="py-5 px-6 font-semibold text-emerald-400 font-mono text-xs uppercase">Asif Digital AI SEO &amp; AEO</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5 font-light text-white/80">
               <tr>
                 <td className="py-5 px-6 font-medium text-white">Target Search Mechanism</td>
-                <td className="py-5 px-6 text-white/50">Standard 10 blue links on Google SERP</td>
-                <td className="py-5 px-6 text-emerald-300 font-normal">Google AI Overviews, Perplexity, ChatGPT Search, Gemini</td>
+                <td className="py-5 px-6 text-white/50">Standard 10 blue links on Google SERP only</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Google Search, Google AI Overviews, Perplexity, and ChatGPT Search</td>
               </tr>
               <tr>
-                <td className="py-5 px-6 font-medium text-white">Optimization Focus</td>
-                <td className="py-5 px-6 text-white/50">Keyword repetition, meta tags, and unfocused directory blasts</td>
-                <td className="py-5 px-6 text-emerald-300 font-normal">Direct concise answer blocks, verified schema markup, and clear company entity data</td>
+                <td className="py-5 px-6 font-medium text-white">Optimization Strategy</td>
+                <td className="py-5 px-6 text-white/50">Keyword repetition, meta descriptions, and generic directory links</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Direct answer summaries, nested schema markup, and verified entity relationships</td>
               </tr>
               <tr>
-                <td className="py-5 px-6 font-medium text-white">Content Strategy</td>
-                <td className="py-5 px-6 text-white/50">Unfocused monthly 800-word blogs disconnected from sales</td>
-                <td className="py-5 px-6 text-emerald-300 font-normal">Commercial intent hubs, comparison tables &amp; structured FAQs</td>
+                <td className="py-5 px-6 font-medium text-white">Content Structure</td>
+                <td className="py-5 px-6 text-white/50">Generic monthly blog posts disconnected from commercial services</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Commercial intent hubs, comparison tables, verified FAQs, and structured service guides</td>
               </tr>
               <tr>
-                <td className="py-5 px-6 font-medium text-white">Technical Architecture</td>
-                <td className="py-5 px-6 text-white/50">Slow CMS templates, basic sitemaps, missing schemas</td>
-                <td className="py-5 px-6 text-emerald-300 font-normal">High-speed Next.js architecture, clean mobile crawl paths, and nested JSON-LD schema networks</td>
+                <td className="py-5 px-6 font-medium text-white">Technical Foundation</td>
+                <td className="py-5 px-6 text-white/50">Bloated CMS plugins, slow mobile loading, missing schema markup</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Fast Next.js architecture, clean mobile Core Web Vitals, and comprehensive JSON-LD schemas</td>
               </tr>
               <tr>
-                <td className="py-5 px-6 font-medium text-white">Reporting &amp; Measurement</td>
-                <td className="py-5 px-6 text-white/50">Vanity keyword rankings that don't generate qualified revenue</td>
-                <td className="py-5 px-6 text-emerald-300 font-normal">AI citation share, GSC impression velocity, and CRM lead match</td>
+                <td className="py-5 px-6 font-medium text-white">Performance Measurement</td>
+                <td className="py-5 px-6 text-white/50">Vanity keyword rankings that produce low conversion value</td>
+                <td className="py-5 px-6 text-emerald-300 font-normal">Google Search Console impression velocity, CTR trends, and qualified inbound inquiries</td>
               </tr>
             </tbody>
           </table>
@@ -299,7 +312,7 @@ export default function AiSeoAgencyDubai() {
             The 5 Pillars of Modern AI Search Visibility
           </h2>
           <p className="text-white/60 font-light text-base leading-relaxed">
-            Our comprehensive framework engineered specifically to secure dominance across both traditional search algorithms and generative AI answer engines.
+            Our comprehensive framework engineered to capture visibility across both traditional search algorithms and generative AI answer engines:
           </p>
         </div>
 
@@ -336,7 +349,64 @@ export default function AiSeoAgencyDubai() {
         </div>
       </section>
 
-      {/* ── 6. Interactive AEO Readiness Assessment ── */}
+      {/* ── 6. Deliverables & Engagement Stages ── */}
+      <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto border-b border-white/5">
+        <div className="max-w-3xl mb-16">
+          <span className="text-xs uppercase tracking-widest text-emerald-400 font-mono block mb-2 font-semibold">
+            Scope &amp; Deliverables
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif tracking-tight mb-4">
+            What is Included in an AI SEO Engagement?
+          </h2>
+          <p className="text-white/60 font-light text-base leading-relaxed">
+            We provide a structured, transparent process with clear technical deliverables rather than vague monthly retainer hours:
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="p-6 rounded-2xl border border-white/10 bg-black/40 space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-emerald-400/10 text-emerald-400 flex items-center justify-center font-mono font-bold text-sm">
+              01
+            </div>
+            <h3 className="text-base font-semibold text-white">Technical &amp; Schema Audit</h3>
+            <p className="text-xs text-white/65 font-light leading-relaxed">
+              We audit site crawlability, mobile Core Web Vitals, existing schema markup errors, and content extraction obstacles that prevent search engines from parsing your data.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-white/10 bg-black/40 space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-emerald-400/10 text-emerald-400 flex items-center justify-center font-mono font-bold text-sm">
+              02
+            </div>
+            <h3 className="text-base font-semibold text-white">Direct-Answer Content</h3>
+            <p className="text-xs text-white/65 font-light leading-relaxed">
+              We restructure commercial and service pages with concise direct answers, comparison matrices, and FAQ blocks tailored to high-intent buyer searches in the UAE.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-white/10 bg-black/40 space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-emerald-400/10 text-emerald-400 flex items-center justify-center font-mono font-bold text-sm">
+              03
+            </div>
+            <h3 className="text-base font-semibold text-white">Entity Graph Engineering</h3>
+            <p className="text-xs text-white/65 font-light leading-relaxed">
+              We implement nested JSON-LD schema networks (Organization, ProfessionalService, FAQs) and build verified brand co-citations across reputable UAE business registries.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-white/10 bg-black/40 space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-emerald-400/10 text-emerald-400 flex items-center justify-center font-mono font-bold text-sm">
+              04
+            </div>
+            <h3 className="text-base font-semibold text-white">Monitoring &amp; Reporting</h3>
+            <p className="text-xs text-white/65 font-light leading-relaxed">
+              We track Google Search Console impression velocity, click-through rates, ranking trends, and qualified inbound inquiries with transparent monthly review sessions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7. Interactive AEO Readiness Assessment ── */}
       <section className="py-24 px-6 md:px-12 bg-[#070707] border-b border-white/5">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
@@ -344,10 +414,10 @@ export default function AiSeoAgencyDubai() {
               Interactive Diagnostic
             </span>
             <h2 className="text-3xl md:text-5xl font-serif tracking-tight mb-3">
-              AEO &amp; AI Search Readiness Calculator
+              AEO &amp; AI Search Readiness Assessment
             </h2>
             <p className="text-white/60 font-light text-sm max-w-xl mx-auto">
-              Evaluate your website's structural readiness to capture AI Overviews and conversational citations in the UAE.
+              Self-evaluate your website&apos;s structural readiness to capture Google AI Overviews and answer engine visibility in the UAE:
             </p>
           </div>
 
@@ -360,7 +430,7 @@ export default function AiSeoAgencyDubai() {
               {[
                 { label: "Valid JSON-LD Schema (Organization, Service, FAQ)", checked: hasSchema, setter: setHasSchema },
                 { label: "Direct Answer Summaries (< 60 words) for Core Topics", checked: hasDirectAnswers, setter: setHasDirectAnswers },
-                { label: "Brand Entity Mentions & Verified Co-Citations", checked: hasEntityGraph, setter: setHasEntityGraph },
+                { label: "Brand Entity Mentions & Verified Regional Citations", checked: hasEntityGraph, setter: setHasEntityGraph },
                 { label: "Performance-Focused Mobile Architecture (< 1.5s LCP)", checked: hasSpeedBelowOneSec, setter: setHasSpeedBelowOneSec },
                 { label: "Semantic Topic Clusters with Orphan-Page Auditing", checked: hasClusterSilos, setter: setHasClusterSilos },
               ].map((item, i) => (
@@ -381,24 +451,27 @@ export default function AiSeoAgencyDubai() {
 
             <div className="p-8 rounded-2xl border border-emerald-500/20 bg-emerald-950/10 text-center space-y-4">
               <span className="text-xs uppercase font-mono tracking-widest text-emerald-400 font-semibold block">
-                Estimated AI Search Readiness Score
+                Estimated Readiness Score
               </span>
               <div className="text-6xl md:text-7xl font-serif text-white">
                 {aeoScore}<span className="text-2xl text-white/40">/100</span>
               </div>
               <p className="text-xs text-white/60 font-light max-w-xs mx-auto leading-relaxed">
                 {aeoScore >= 80
-                  ? "Strong structural foundation for AI-search discovery and machine-readable answers."
+                  ? "Strong structural foundation for AI search discovery and machine-readable direct answers."
                   : aeoScore >= 50
-                  ? "Moderate foundation. Direct-answer content, entity clarity or structured data could be strengthened."
-                  : "Needs structural modernization. Important content and entity signals may be difficult for search and AI systems to interpret consistently."}
+                  ? "Moderate foundation. Direct-answer summaries, entity clarity, or structured schema markup could be strengthened."
+                  : "Needs structural modernization. Essential content and entity signals may be difficult for search crawlers to interpret consistently."}
+              </p>
+              <p className="text-[11px] text-white/40 italic">
+                Illustrative diagnostic guide. Actual rankings and answer engine inclusion depend on search algorithm updates and competitive market signals.
               </p>
               <div className="pt-4 border-t border-white/10">
                 <Link
-                  href="/contact"
+                  href="/free-growth-audit"
                   className="w-full bg-emerald-400 text-black py-3.5 rounded-full font-bold uppercase tracking-wider text-xs inline-flex items-center justify-center gap-2 hover:bg-emerald-300 transition-colors"
                 >
-                  Get Comprehensive Architecture Audit <ArrowRight className="w-3.5 h-3.5" />
+                  Request Technical Architecture Audit <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
@@ -406,55 +479,63 @@ export default function AiSeoAgencyDubai() {
         </div>
       </section>
 
-      {/* ── 7. Operational Boundaries & Zero Guarantees Policy ── */}
+      {/* ── 8. Operational Boundaries & Ethical Policy ── */}
       <section className="py-20 px-6 md:px-12 max-w-5xl mx-auto border-b border-white/5">
         <div className="p-8 md:p-10 rounded-3xl border border-white/10 bg-white/[0.02]">
           <div className="flex items-center gap-3 mb-4">
             <Shield className="w-6 h-6 text-emerald-400" />
             <h3 className="text-xl md:text-2xl font-serif text-white">
-              Ethical Governance: Our Zero Ranking Guarantees Policy
+              Ethical Governance: No Ranking Guarantees Policy
             </h3>
           </div>
           <p className="text-sm md:text-base text-white/70 font-light leading-relaxed mb-4">
-            In compliance with Google Search Essentials and international marketing ethics, Asif Digital does not promise or guarantee specific #1 Google rankings or guaranteed citations inside third-party LLMs like ChatGPT or Perplexity.
+            In compliance with Google Search Essentials and professional engineering standards, Asif Digital does not promise or guarantee specific #1 Google rankings, guaranteed inclusion in Google AI Overviews, or mandatory citations inside third-party LLMs like ChatGPT or Perplexity.
           </p>
           <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
-            Search engines update their ranking parameters thousands of times per year, and AI models continuously revise retrieval and summarization thresholds. What we guarantee is rigorous engineering: establishing superior code speed, semantic clarity, structured schemas, authentic topical authority, and continuous measurement that position your business ahead of competitors.
+            Search engines update their ranking criteria continuously, and AI models dynamically adjust retrieval and summarization parameters. What we deliver is verified technical and architectural quality: high-speed code, structured schemas, authentic topical depth, and transparent reporting that give your business the best possible opportunity to earn lasting visibility.
           </p>
         </div>
       </section>
 
-      {/* ── 8. Dedicated Intent Bridge Cards ── */}
+      {/* ── 9. Intent Bridges & Related Services ── */}
       <section className="py-20 px-6 md:px-12 max-w-6xl mx-auto border-b border-white/5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Bridge to AI Marketing */}
+          {/* Bridge to Paid Search & Marketing */}
           <div className="p-8 rounded-3xl border border-white/10 bg-white/[0.02] flex flex-col justify-between">
             <div>
               <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-2 font-semibold">
-                Paid Acquisition &amp; Revenue Systems
+                Paid Acquisition &amp; Immediate Demand
               </span>
-              <h3 className="text-2xl font-serif text-white mb-3">Looking for Paid Ads &amp; Lead Funnels?</h3>
+              <h3 className="text-2xl font-serif text-white mb-3">Need Immediate Inbound Leads?</h3>
               <p className="text-sm text-white/70 font-light leading-relaxed mb-6">
-                While AI SEO optimizes long-term organic search authority and AI Overviews, our specialized AI Marketing division manages predictive Google &amp; Meta ad spend, CAPI integrations, and instant WhatsApp conversion pipelines.
+                While AI SEO establishes compounding long-term search authority and answer engine readiness, our PPC team manages high-intent Google Search and Meta advertising campaigns for immediate demand capture.
               </p>
             </div>
-            <Link
-              href="/ai-marketing-dubai"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 hover:text-emerald-300 transition-colors"
-            >
-              Explore AI Marketing Agency Dubai <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="flex flex-col gap-2">
+              <Link
+                href="/services/ppc-google-ads-agency-dubai"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 hover:text-emerald-300 transition-colors"
+              >
+                Explore PPC &amp; Google Ads Dubai <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/ai-marketing-dubai"
+                className="inline-flex items-center gap-2 text-xs font-mono text-white/60 hover:text-white transition-colors"
+              >
+                AI Marketing Agency Dubai →
+              </Link>
+            </div>
           </div>
 
-          {/* Bridge to Technical Tools & Research Guide */}
+          {/* Bridge to Traditional Local SEO & Tools */}
           <div className="p-8 rounded-3xl border border-white/10 bg-white/[0.02] flex flex-col justify-between">
             <div>
               <span className="text-xs font-mono uppercase tracking-widest text-white/40 block mb-2 font-semibold">
-                Audit Tools &amp; Research
+                Audit Tools &amp; Local Search
               </span>
-              <h3 className="text-2xl font-serif text-white mb-3">Audit Your Current Search Architecture</h3>
+              <h3 className="text-2xl font-serif text-white mb-3">Audit Your Current Digital Architecture</h3>
               <p className="text-sm text-white/70 font-light leading-relaxed mb-6">
-                Run an instant technical assessment of your website code speed, mobile responsiveness, and meta structures using our proprietary AI Website Grader, or read our in-depth UAE AI Search Visibility Guide.
+                Evaluate your website speed, mobile responsiveness, and metadata using our AI Website Grader, or review our dedicated local search engine optimization services for Dubai and Sharjah.
               </p>
             </div>
             <div className="flex flex-col gap-2">
@@ -465,23 +546,23 @@ export default function AiSeoAgencyDubai() {
                 Launch AI Website Grader <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link
-                href="/blog/ai-search-visibility-uae-measurement-guide"
-                className="inline-flex items-center gap-2 text-xs font-mono text-white/50 hover:text-white transition-colors"
+                href="/services/seo-agency-dubai-sharjah-uae"
+                className="inline-flex items-center gap-2 text-xs font-mono text-white/60 hover:text-white transition-colors"
               >
-                Read UAE AI Visibility Guide →
+                SEO Agency Dubai &amp; Sharjah →
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 9. Frequently Asked Questions ── */}
+      {/* ── 10. Frequently Asked Questions ── */}
       <section className="py-24 px-6 md:px-12 max-w-4xl mx-auto border-b border-white/5">
         <div className="text-center mb-16">
           <HelpCircle className="w-10 h-10 text-emerald-400 mx-auto mb-4" />
           <h2 className="text-3xl md:text-5xl font-serif tracking-tight mb-3">Frequently Asked Questions</h2>
           <p className="text-white/50 text-sm font-light">
-            Answers to key technical questions about AI SEO, AEO, and search authority in Dubai.
+            Answers to key technical and commercial questions about AI SEO, AEO, and search authority in Dubai.
           </p>
         </div>
 
@@ -515,7 +596,7 @@ export default function AiSeoAgencyDubai() {
         </div>
       </section>
 
-      {/* ── 10. Final CTA ── */}
+      {/* ── 11. Final CTA ── */}
       <section className="py-28 px-6 md:px-12 text-center relative overflow-hidden bg-gradient-to-b from-[#050505] to-[#0a120e]">
         <div className="max-w-4xl mx-auto relative z-10">
           <Sparkles className="w-8 h-8 text-emerald-400 mx-auto mb-6" />
@@ -523,14 +604,14 @@ export default function AiSeoAgencyDubai() {
             Future-Proof Your Search Authority
           </h2>
           <p className="text-base md:text-lg text-white/70 max-w-2xl mx-auto font-light leading-relaxed mb-10">
-            Let us audit your current digital architecture, uncover schema deficiencies, and engineer the direct-answer signals needed to win visibility in the AI era.
+            Let us audit your current digital architecture, uncover schema deficiencies, and engineer the direct-answer signals needed for lasting organic visibility in Google and AI answer engines.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href="/contact"
+              href="/free-growth-audit"
               className="bg-emerald-400 text-black px-10 py-5 rounded-full font-bold uppercase tracking-wider text-xs inline-flex items-center gap-3 hover:bg-emerald-300 transition-colors shadow-lg shadow-emerald-400/20"
             >
-              Book Architecture Audit <ArrowRight className="w-4 h-4" />
+              Request Free AI Search Audit <ArrowRight className="w-4 h-4" />
             </Link>
             <a
               href="https://wa.me/971545866094"
@@ -538,13 +619,13 @@ export default function AiSeoAgencyDubai() {
               rel="noopener noreferrer"
               className="border border-white/20 px-9 py-5 rounded-full font-bold uppercase tracking-wider text-xs inline-flex items-center gap-2 hover:bg-white/5 transition-colors text-white/80"
             >
-              Direct Strategist Chat
+              Discuss Scope on WhatsApp
             </a>
           </div>
         </div>
       </section>
 
-      {/* ── 11. Topic Cluster Footer Navigation ── */}
+      {/* ── 12. Topic Cluster Footer Navigation ── */}
       <section className="py-12 border-t border-white/5 bg-black text-center">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-[11px] uppercase tracking-widest text-white/40 mb-4 font-mono">
@@ -552,6 +633,8 @@ export default function AiSeoAgencyDubai() {
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/70">
             <Link href="/ai-seo-agency-dubai" className="hover:text-white transition-colors text-emerald-400 font-medium">AI SEO Agency Dubai</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/services/seo-agency-dubai-sharjah-uae" className="hover:text-white transition-colors">SEO Agency Dubai &amp; Sharjah</Link>
             <span className="text-white/20">•</span>
             <Link href="/ai-marketing-dubai" className="hover:text-white transition-colors">AI Marketing Agency Dubai</Link>
             <span className="text-white/20">•</span>

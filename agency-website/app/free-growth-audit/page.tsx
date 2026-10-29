@@ -10,9 +10,23 @@ export const metadata = {
     title: "Free AI & Growth Audit Dubai | Automation, CRM & Funnel Review",
     description: "Request a free AI and growth audit for your Dubai business. We review workflow bottlenecks, CRM processes, automation opportunities and digital growth gaps with practical next-step recommendations.",
     url: "https://www.asifdigital.agency/free-growth-audit",
+    images: [
+      {
+        url: "https://www.asifdigital.agency/images/showcase/lead-generation-website-mockup.png",
+        width: 1800,
+        height: 1200,
+        alt: "Free AI & Growth Audit Dubai — Asif Digital"
+      }
+    ],
     type: "website",
     locale: "en_AE",
     siteName: "Asif Digital"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free AI & Growth Audit Dubai | Automation, CRM & Funnel Review",
+    description: "Request a free AI and growth audit for your Dubai business. We review workflow bottlenecks, CRM processes, automation opportunities and digital growth gaps with practical next-step recommendations.",
+    images: ["https://www.asifdigital.agency/images/showcase/lead-generation-website-mockup.png"]
   }
 };
 

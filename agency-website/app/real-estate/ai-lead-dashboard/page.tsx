@@ -18,6 +18,20 @@ export const metadata = {
     description: "Unified Real Estate Command Dashboard Dubai: Multi-channel real estate lead attribution UAE (Meta, Google, Portals), Bayut Property Finder WhatsApp lead control panel, and CRM heat scoring.",
     url: "https://www.asifdigital.agency/real-estate/ai-lead-dashboard",
     siteName: "Asif Digital Agency Dubai",
+    images: [
+      {
+        url: "https://www.asifdigital.agency/images/dubai_real_estate_ai_dashboard.png",
+        width: 1024,
+        height: 1024,
+        alt: "Real Estate AI Lead Dashboard Dubai — Asif Digital"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Real Estate AI Lead Dashboard Dubai | Multi-Channel Attribution & Lead Decay Calculator",
+    description: "Unified Real Estate Command Dashboard Dubai: Multi-channel real estate lead attribution UAE (Meta, Google, Portals), Bayut Property Finder WhatsApp lead control panel, and CRM heat scoring.",
+    images: ["https://www.asifdigital.agency/images/dubai_real_estate_ai_dashboard.png"]
   }
 };
 

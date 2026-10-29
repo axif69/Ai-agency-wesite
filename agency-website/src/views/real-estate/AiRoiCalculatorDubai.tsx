@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import RealEstateRoiCalculator from "../../components/RealEstateRoiCalculator";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -200,14 +201,12 @@ export default function AiRoiCalculatorDubaiView() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={calendlyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/real-estate-crm-dubai#crm-enquiry"
                 className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] inline-flex items-center justify-center gap-3 hover:bg-emerald-300 transition-colors shadow-lg"
               >
-                Book Free ROI Audit <ArrowRight className="w-4 h-4" />
-              </a>
+                Request Speed-to-Lead Audit <ArrowRight className="w-4 h-4" />
+              </Link>
               <a
                 href={whatsappUrl}
                 target="_blank"

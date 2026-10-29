@@ -174,14 +174,12 @@ export default function AiLeadDashboardView() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <a
-                href={calendlyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/real-estate-crm-dubai#crm-enquiry"
                 className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] inline-flex items-center justify-center gap-3 hover:bg-emerald-300 transition-colors shadow-lg"
               >
-                Book a Command Demo <ArrowRight className="w-4 h-4" />
-              </a>
+                Request Custom Dashboard Setup <ArrowRight className="w-4 h-4" />
+              </Link>
               <a
                 href="#lead-loss-calculator"
                 className="border border-white/15 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] inline-flex items-center justify-center hover:bg-white/5 transition-colors"
@@ -781,14 +779,12 @@ export default function AiLeadDashboardView() {
               <div className="text-3xl font-serif font-bold text-emerald-400">
                 AED {estimatedRevenueLost.toLocaleString()}
               </div>
-              <a
-                href={calendlyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/real-estate-crm-dubai#crm-enquiry"
                 className="bg-white text-black px-6 py-3.5 rounded-full font-bold uppercase tracking-widest text-[11px] inline-flex items-center justify-center gap-2 hover:bg-emerald-300 transition-colors w-full shadow-lg mt-2"
               >
-                Schedule Demo to Recover Revenue →
-              </a>
+                Request Custom Setup Audit →
+              </Link>
             </div>
           </div>
         </div>
@@ -944,14 +940,12 @@ export default function AiLeadDashboardView() {
             Connect Meta, Google, Bayut, Property Finder, and WhatsApp into a single real-time dashboard.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={calendlyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/real-estate-crm-dubai#crm-enquiry"
               className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] inline-flex items-center justify-center gap-3 hover:bg-emerald-300 transition-colors shadow-lg"
             >
-              Book a Command Demo <ArrowRight className="w-4 h-4" />
-            </a>
+              Request Custom Dashboard Setup <ArrowRight className="w-4 h-4" />
+            </Link>
             <Link
               href="/contact"
               className="border border-white/15 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] inline-flex items-center justify-center hover:bg-white/5 transition-colors"

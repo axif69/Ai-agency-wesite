@@ -18,6 +18,20 @@ export const metadata = {
     description: "Calculate exact deals lost and commission revenue leaked due to response delays and after-hours lead drop-off.",
     url: "https://www.asifdigital.agency/real-estate/ai-roi-calculator-dubai",
     siteName: "Asif Digital Agency Dubai",
+    images: [
+      {
+        url: "https://www.asifdigital.agency/images/dubai_real_estate_ai_dashboard.png",
+        width: 1024,
+        height: 1024,
+        alt: "Real Estate Lead Decay & ROI Loss Calculator Dubai — Asif Digital"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Real Estate Lead Decay & ROI Loss Calculator Dubai | Asif Digital",
+    description: "Calculate exact deals lost and commission revenue leaked due to response delays and after-hours lead drop-off.",
+    images: ["https://www.asifdigital.agency/images/dubai_real_estate_ai_dashboard.png"]
   }
 };
 

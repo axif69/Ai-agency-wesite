@@ -193,14 +193,12 @@ export default function BrokerAiCopilotDubaiView() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={calendlyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/real-estate-crm-dubai#crm-enquiry"
                 className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] inline-flex items-center justify-center gap-3 hover:bg-emerald-300 transition-colors shadow-lg"
               >
-                Book Broker Co-Pilot Demo <ArrowRight className="w-4 h-4" />
-              </a>
+                Request Broker Co-Pilot Audit <ArrowRight className="w-4 h-4" />
+              </Link>
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -508,14 +506,12 @@ export default function BrokerAiCopilotDubaiView() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={calendlyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/real-estate-crm-dubai#crm-enquiry"
               className="bg-white text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-xs inline-flex items-center justify-center gap-3 hover:bg-emerald-300 transition-colors shadow-2xl"
             >
-              Book Broker Co-Pilot Demo <ArrowRight className="w-4 h-4" />
-            </a>
+              Request Broker Co-Pilot Audit <ArrowRight className="w-4 h-4" />
+            </Link>
             <a
               href={whatsappUrl}
               target="_blank"
