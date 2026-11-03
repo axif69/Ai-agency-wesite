@@ -6,7 +6,7 @@ import {
   Code, Megaphone, ArrowRight, Monitor, ShoppingCart, 
   Server, HeadphonesIcon, Search, MousePointerClick, 
   Bot, Palette, Workflow, Languages, Target, 
-  Shield, Database, MessageSquare, Phone, Calculator
+  Shield, Database, MessageSquare, Phone, Calculator, Compass
 } from "lucide-react";
 
 interface ServiceItem {
@@ -109,6 +109,22 @@ const categories: ServiceCategory[] = [
         link: "/services/agentic-finance-uae",
         icon: <Database className="w-8 h-8" />,
         ctaText: "Explore Agentic Finance"
+      },
+      {
+        title: "Business Task Automation Dubai",
+        desc: "Automate manual spreadsheets, delayed ad lead follow-ups, and repetitive invoice data entry with resilient, error-free automated pipelines for UAE businesses.",
+        features: ["Lead Dispatch <15s", "Invoice & Receipt OCR", "Payment Chasers", "Executive WhatsApp Digests"],
+        link: "/business-task-automation-dubai",
+        icon: <Workflow className="w-8 h-8" />,
+        ctaText: "Explore Task Automation"
+      },
+      {
+        title: "Interior Fitout Lead Generation UAE",
+        desc: "Turnkey client acquisition and WhatsApp qualification engine for UAE commercial and residential fitout contractors, joinery, and villa renovations.",
+        features: ["BOQ Pre-Qualification", "<15s Lead Dossier", "Bilingual WhatsApp AI", "Site Survey Calendar Sync"],
+        link: "/services/interior-fitout-lead-generation-uae",
+        icon: <Compass className="w-8 h-8" />,
+        ctaText: "Explore Fitout Lead Gen"
       }
     ]
   },

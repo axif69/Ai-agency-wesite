@@ -509,6 +509,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <Link href="/services/branding-agency-dubai-sharjah" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
                       Branding &amp; Design
                     </Link>
+                    <Link href="/business-task-automation-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-emerald-400 hover:text-emerald-300 transition-colors font-medium">
+                      Business Task Automation Dubai
+                    </Link>
+                    <Link href="/services/interior-fitout-lead-generation-uae" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
+                      Interior Fitout Lead Gen UAE
+                    </Link>
                     <Link href="/services" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[13px] font-mono text-emerald-400 hover:text-emerald-300 transition-colors pt-1">
                       View All Pillars →
                     </Link>
@@ -593,149 +599,117 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </Suspense>
       </main>
 
-      <footer className="py-32 px-6 md:px-12 border-t border-white/5 mt-20 bg-black relative overflow-hidden">
+      <footer className="py-20 sm:py-24 px-6 md:px-12 border-t border-white/5 mt-16 bg-black relative overflow-hidden">
         {/* Subtle Background Glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-14 mb-16">
             {/* Brand Section */}
-            <div className="space-y-8">
+            <div className="space-y-6">
               <Link href="/" aria-label="Asif Digital Home" className="inline-flex items-center gap-3">
                 <Image
                   src="/images/asif-digital-ad-mark.png"
                   alt=""
                   aria-hidden="true"
-                  width={40}
-                  height={40}
-                  className="w-10 h-10 object-contain shrink-0"
+                  width={36}
+                  height={36}
+                  className="w-9 h-9 object-contain shrink-0"
                 />
-                <span className="text-4xl leading-none font-serif font-bold tracking-tight">Asif Digital.</span>
+                <span className="text-3xl sm:text-4xl leading-none font-serif font-bold tracking-tight text-white">Asif Digital.</span>
               </Link>
-              <p className="text-white/95 font-light text-base max-w-xs leading-relaxed">
-                Architecting the future of digital commerce through AI-driven precision and enterprise-grade software engineering.
+              <p className="text-white/80 font-normal text-sm max-w-xs leading-relaxed">
+                Specialized client acquisition and workflow automation systems engineered for UAE enterprises.
               </p>
-              <div className="flex gap-4 pt-4">
+              <div className="flex gap-3 pt-2">
                 {[
                   { name: 'LN', label: 'LinkedIn company page', href: 'https://www.linkedin.com/company/asif-digital-agency/' },
                   { name: 'TW', label: 'X profile', href: 'https://x.com' },
                   { name: 'IG', label: 'Instagram profile', href: 'https://www.instagram.com' }
                 ].map((social) => (
-                  <a key={social.name} href={social.href} target="_blank" rel="noreferrer" aria-label={`Visit our ${social.label}`} className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500 text-[10px] font-bold group">
+                  <a key={social.name} href={social.href} target="_blank" rel="noreferrer" aria-label={`Visit our ${social.label}`} className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all text-xs font-bold group">
                     <span className="group-hover:scale-110 transition-transform">{social.name}</span>
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* Menu Section */}
+            {/* Navigation Section */}
             <div>
-              <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/95 font-bold mb-8">Navigation</h4>
-              <ul className="space-y-4">
+              <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/95 font-bold mb-6 font-mono">Navigation</h4>
+              <ul className="space-y-3.5">
                 {navLinks.map((link) => (
                   <li key={link.path}>
-                    <Link href={link.path} className="text-white/95 hover:text-white transition-all duration-300 flex items-center gap-3 group text-sm font-medium">
-                      <span className="w-0 h-[1px] bg-white transition-all duration-500 group-hover:w-6" />
+                    <Link href={link.path} className="text-white/80 hover:text-white transition-colors text-sm font-medium flex items-center gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
                       {link.name}
                     </Link>
                   </li>
                 ))}
               </ul>
+            </div>
 
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <h5 className="text-xs uppercase tracking-[0.15em] text-emerald-400 font-bold mb-4">Core UAE Solutions</h5>
-                <ul className="space-y-2.5">
+            {/* Core Solutions & Direct Contact */}
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-emerald-400 font-bold mb-5 font-mono">Core Solutions</h4>
+                <ul className="space-y-3">
                   <li>
-                    <Link href="/ai-automation-agency-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
+                    <Link href="/services/interior-fitout-lead-generation-uae" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium block">
+                      Interior Fitout Lead Gen UAE
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/business-task-automation-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium block">
+                      Business Task Automation Dubai
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/real-estate-digital-solutions-uae" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium block">
+                      Real Estate Digital Systems
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/ai-automation-agency-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium block">
                       AI Automation Agency Dubai
                     </Link>
                   </li>
                   <li>
-                    <Link href="/services/web-design-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
-                      Web Design Company Dubai
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/real-estate-digital-solutions-uae" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
-                      Real Estate Digital Solutions UAE
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/ai-chatbots-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
-                      WhatsApp Chatbot Services Dubai
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/ai-seo-agency-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
-                      AI SEO & AEO Agency Dubai
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/ai-property-management-uae" className="text-white/80 hover:text-emerald-300 transition-colors text-xs font-medium block">
-                      AI Property Management UAE
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="mt-6 pt-6 border-t border-white/10">
-                <h5 className="text-xs uppercase tracking-[0.15em] text-emerald-400 font-bold mb-4">SaaS Ecosystem</h5>
-                <ul className="space-y-3">
-                  <li>
-                    <Link
-                      href="/products/expirywatch"
-                      className="text-white/95 hover:text-white transition-all duration-300 inline-flex items-center gap-2 group text-sm font-medium"
-                    >
-                      <span className="w-0 h-[1px] bg-emerald-400 transition-all duration-500 group-hover:w-4" />
-                      <span className="group-hover:text-emerald-300 transition-colors">ExpiryWatch (UAE Compliance AI)</span>
-                      <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                    <Link href="/products/expirywatch" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium inline-flex items-center gap-2">
+                      <span>ExpiryWatch Compliance AI</span>
+                      <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                         LIVE
                       </span>
                     </Link>
                   </li>
+                </ul>
+              </div>
+
+              <div className="pt-6 border-t border-white/10">
+                <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/95 font-bold mb-4 font-mono">Direct Contact</h4>
+                <ul className="space-y-3 text-sm text-white/80">
                   <li>
-                    <Link
-                      href="/products/ticketflow"
-                      className="text-white/95 hover:text-white transition-all duration-300 inline-flex items-center gap-2 group text-sm font-medium"
-                    >
-                      <span className="w-0 h-[1px] bg-cyan-400 transition-all duration-500 group-hover:w-4" />
-                      <span className="group-hover:text-cyan-300 transition-colors">TicketFlow (Tenant Maintenance Dispatch)</span>
-                      <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold tracking-wider rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
-                        PROPTECH
-                      </span>
-                    </Link>
+                    <a href="https://wa.me/971545866094" className="text-white hover:text-emerald-300 transition-colors font-medium">
+                      +971 54 586 6094 (WhatsApp)
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto:hello@asifdigital.agency" className="text-white/80 hover:text-emerald-300 transition-colors break-all">
+                      hello@asifdigital.agency
+                    </a>
+                  </li>
+                  <li className="text-white/60 text-xs leading-relaxed">
+                    Muwaileh Commercial, Sharjah, UAE
                   </li>
                 </ul>
               </div>
             </div>
 
-            {/* Contact Info */}
-            <div>
-              <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/95 font-bold mb-8">Direct Contact</h4>
-              <ul className="space-y-8 text-white/95 font-light">
-                <li className="flex flex-col gap-2">
-                  <span className="text-xs uppercase tracking-wider text-white/70 font-bold">Strategic Inquiry</span>
-                  <a href="https://wa.me/971545866094" className="text-white/95 hover:text-white transition-colors text-lg font-serif italic">+971 54 586 6094</a>
-                </li>
-                <li className="flex flex-col gap-2 overflow-hidden">
-                  <span className="text-xs uppercase tracking-wider text-white/70 font-bold">Email Correspondence</span>
-                  <a href="mailto:hello@asifdigital.agency" className="text-white/95 hover:text-white transition-colors text-xs sm:text-sm max-w-full break-all">hello@asifdigital.agency</a>
-                </li>
-                <li className="flex flex-col gap-2">
-                  <span className="text-xs uppercase tracking-wider text-white/70 font-bold">Registered Location</span>
-                  <span className="text-white/95 text-sm leading-relaxed italic">Muwaileh Commercial - Industrial Area, Sharjah, UAE</span>
-                  <Link href="/ai-automation-sharjah" className="text-[11px] font-mono text-emerald-400/90 hover:underline inline-flex items-center gap-1.5 mt-0.5">
-                    Sharjah AI Automation Team →
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
             {/* Quick Contact Form */}
             <div>
-              <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/95 font-bold mb-8">Briefing</h4>
+              <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/95 font-bold mb-6 font-mono">Quick Project Brief</h4>
               {isBriefSuccess ? (
-                <div className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 text-center text-sm font-light text-green-400">
+                <div className="p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 text-center text-sm font-normal text-emerald-400">
                   Briefing Received. Our team will review and contact you within 12 hours.
                 </div>
               ) : (
@@ -751,20 +725,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       value={footerEmail}
                       onChange={(e) => setFooterEmail(e.target.value)}
                       disabled={isBriefSubmitting}
-                      className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-white/50 transition-all duration-500 placeholder:text-white/90"
+                      className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-white/50 transition-colors placeholder:text-white/70 text-white"
                     />
                   </div>
                   <div className="relative group">
                     <label htmlFor="footer-brief" className="sr-only">Project Brief</label>
                     <textarea 
                       id="footer-brief"
-                      placeholder="Project Brief" 
-                      rows={4}
+                      placeholder="Tell us about your project or enquiry goals..." 
+                      rows={3}
                       required
                       value={footerBrief}
                       onChange={(e) => setFooterBrief(e.target.value)}
                       disabled={isBriefSubmitting}
-                      className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-white/50 transition-all duration-500 resize-none placeholder:text-white/90"
+                      className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-3.5 text-sm focus:outline-none focus:border-white/50 transition-colors resize-none placeholder:text-white/70 text-white"
                     ></textarea>
                   </div>
                   {briefError && (
@@ -776,7 +750,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     type="submit" 
                     disabled={isBriefSubmitting}
                     aria-label="Submit your project briefing" 
-                    className="w-full bg-white text-black font-black uppercase tracking-[0.15em] py-4 sm:py-5 rounded-2xl hover:bg-white/90 transition-all duration-500 text-xs shadow-2xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-white text-black font-bold uppercase tracking-widest py-4 rounded-full hover:bg-white/90 transition-all text-xs shadow-lg hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                   >
                     {isBriefSubmitting ? "Sending..." : "Submit Brief"}
                   </button>
@@ -785,7 +759,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
 
-          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+<div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="text-xs text-white/70 uppercase tracking-wider font-medium">
               &copy; 2026 Asif Digital &mdash; Intelligent Systems.
             </div>

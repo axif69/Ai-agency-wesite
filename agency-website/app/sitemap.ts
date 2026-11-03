@@ -59,6 +59,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/whatsapp-automation-gcc",
     "/sovereign-sales-agent",
     "/workflow-automation-uae",
+    "/business-task-automation-dubai",
+    "/services/interior-fitout-lead-generation-uae",
     "/hospitality-ai-automation-uae",
     "/ai-ppc-agency-dubai",
     "/products/expirywatch",
