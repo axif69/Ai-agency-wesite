@@ -442,7 +442,7 @@ const ParticleLogoCanvas = forwardRef<
     >
       <canvas
         ref={canvasRef}
-        className="w-full h-full block cursor-crosshair touch-none"
+        className="w-full h-full block cursor-crosshair touch-pan-y"
       />
 
       {/* Optical 1:1 overlay comparison */}

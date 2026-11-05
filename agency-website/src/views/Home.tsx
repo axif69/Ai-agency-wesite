@@ -764,17 +764,17 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Right Column: Prominent, Interactive Particle Logo Canvas */}
+            {/* Right Column: Prominent, Interactive Particle Logo Canvas (Desktop Only) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
-              className="lg:col-span-5 relative flex items-center justify-end w-full min-h-[560px] sm:min-h-[660px] lg:min-h-[740px] pl-0 lg:pl-2"
+              className="hidden lg:flex lg:col-span-5 relative items-center justify-end w-full min-h-[560px] sm:min-h-[660px] lg:min-h-[740px] pl-0 lg:pl-2"
             >
               <ParticleLogoCanvas
                 className="w-full h-full"
                 maxParticlesDesktop={20122}
-                maxParticlesMobile={10000}
+                maxParticlesMobile={0}
               />
             </motion.div>
           </div>
