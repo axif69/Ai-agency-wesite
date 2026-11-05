@@ -322,10 +322,10 @@ export default function AiAutomationDubai() {
       {/* ── 3. Five Core Automation Pillars (Concrete Examples) ── */}
       <section className="py-16 px-6 max-w-6xl mx-auto border-t border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Practical Applications</span>
-          <h2 className="text-2xl md:text-4xl font-serif">5 Practical Automation Workflows We Build</h2>
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Illustrative Architecture Blueprints</span>
+          <h2 className="text-2xl md:text-4xl font-serif">Practical Automation Workflows We Engineer</h2>
           <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
-            We focus on solving real operational bottlenecks with concrete, production-tested pipelines:
+            The following illustrative architecture blueprints reflect typical production-grade pipelines engineered for UAE enterprise operations (not completed client case studies):
           </p>
         </div>
 
@@ -487,14 +487,14 @@ export default function AiAutomationDubai() {
             {/* Row 1 */}
             <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-2 md:gap-4 items-center">
               <div className="font-medium text-white/90 text-xs font-mono uppercase">System Architecture</div>
-              <div className="text-white/60 text-xs leading-relaxed">Single-trigger linear connectors; any schema change or unhandled field format halts execution.</div>
+              <div className="text-white/60 text-xs leading-relaxed">Typically linear connectors where unexpected field formats or upstream schema updates can pause execution until manually resolved.</div>
               <div className="text-white/90 text-xs leading-relaxed">Decoupled services with message queueing, schema validation, and structured error handling.</div>
             </div>
 
             {/* Row 2 */}
             <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-2 md:gap-4 items-center bg-white/[0.01]">
               <div className="font-medium text-white/90 text-xs font-mono uppercase">Failure Handling &amp; Fallbacks</div>
-              <div className="text-white/60 text-xs leading-relaxed">Executions fail silently or stop without notifications, requiring manual error hunting.</div>
+              <div className="text-white/60 text-xs leading-relaxed">Basic error handling typically stops on first unhandled response, often requiring manual troubleshooting when vendor endpoints return unanticipated codes.</div>
               <div className="text-white/90 text-xs leading-relaxed">Configurable retry logic with exponential backoff, dead-letter recording, and error alert routing.</div>
             </div>
 

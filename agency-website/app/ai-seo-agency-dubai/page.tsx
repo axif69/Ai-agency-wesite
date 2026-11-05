@@ -1,17 +1,22 @@
 import PageComponent from '../../src/views/services/AiSeoAgencyDubai';
 
 export const metadata = {
-  title: "AI SEO Agency Dubai | AI SEO Services UAE | Asif Digital",
-  description: "Premier AI SEO agency in Dubai. Dominate Google AI Overviews, ChatGPT & Perplexity with entity schema, AEO citation architecture & technical SEO. Free audit.",
+  title: "AI SEO & AEO Agency Dubai | AI Search Optimization",
+  description: "AI SEO and AEO agency in Dubai. Optimize your brand for Google AI Overviews, Perplexity, and ChatGPT with entity schemas, knowledge graphs, and technical SEO.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-seo-agency-dubai"
   },
   openGraph: {
-    title: "AI SEO Agency Dubai | AI SEO Services UAE | Asif Digital",
-    description: "Premier AI SEO agency in Dubai. Dominate Google AI Overviews, ChatGPT & Perplexity with entity schema, AEO citation architecture & technical SEO. Free audit.",
+    title: "AI SEO & AEO Agency Dubai | AI Search Optimization",
+    description: "AI SEO and AEO agency in Dubai. Optimize your brand for Google AI Overviews, Perplexity, and ChatGPT with entity schemas, knowledge graphs, and technical SEO.",
     url: "https://www.asifdigital.agency/ai-seo-agency-dubai",
     type: "website"
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI SEO & AEO Agency Dubai | AI Search Optimization",
+    description: "AI SEO and AEO agency in Dubai. Optimize your brand for Google AI Overviews, Perplexity, and ChatGPT with entity schemas, knowledge graphs, and technical SEO."
+  }
 };
 
 const serviceSchema = {

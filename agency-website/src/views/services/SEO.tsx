@@ -162,7 +162,7 @@ export default function SEO() {
             <span className="italic text-white/50 font-normal">Dominance Dubai.</span>
           </h1>
           <p className="text-lg sm:text-xl text-white/80 font-light leading-relaxed mb-10 max-w-3xl">
-            Outrank competitors on Google Search and dominate AI answers on Perplexity and ChatGPT Search. We engineer semantic entity SEO, sub-second Core Web Vitals, and authoritative bilingual Arabic/English content hubs that generate continuous inbound organic leads.
+            Outrank competitors on Google Search and earn visibility in AI answers on Perplexity and ChatGPT Search. We engineer semantic entity SEO, sub-second Core Web Vitals, and authoritative bilingual Arabic/English content hubs that generate continuous inbound organic leads. For dedicated generative search architecture and answer engine visibility, explore our <Link href="/ai-seo-agency-dubai" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-4 font-medium">AI SEO &amp; AEO services in Dubai</Link>.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <Link 

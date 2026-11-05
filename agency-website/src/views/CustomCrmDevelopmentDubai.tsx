@@ -140,7 +140,7 @@ export default function CustomCrmDevelopmentDubai() {
               <div className="space-y-1.5">
                 <h3 className="text-xs font-mono uppercase tracking-wider text-white/90">Engineered for General B2B Operations</h3>
                 <p className="text-sm text-white/70 font-light leading-relaxed">
-                  Unlike our specialized real estate CRM (which focuses strictly on property portals and off-plan inventory), this service is designed for UAE commercial enterprises—including interior contractors, wholesale traders, clinics, and professional firms—who require tailored customer records, custom quotation stages, and direct ERP/accounting synchronization.
+                  Unlike our specialized real estate CRM (which focuses strictly on property portals and off-plan inventory), this service is designed for UAE commercial enterprises—including interior contractors, wholesale traders, clinics, and professional firms—who require tailored customer records, custom quotation stages, and direct ERP/accounting synchronization. For teams that also require automated data flows between customer records and messaging channels, our CRM architecture connects directly with our <Link href="/ai-automation-agency-dubai" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-4 font-medium">custom AI automation services</Link> in Dubai.
                 </p>
               </div>
             </div>

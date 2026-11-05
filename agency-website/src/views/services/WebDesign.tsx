@@ -15,7 +15,7 @@ const problems = [
 const deliverables = [
   { icon: <Layout className="w-6 h-6" />, title: "Conversion-first page structure", desc: "Clear hero, service sections, trust signals, FAQs, WhatsApp CTA and lead forms arranged around buyer decisions." },
   { icon: <Gauge className="w-6 h-6" />, title: "Fast mobile performance", desc: "Modern lightweight pages built to load quickly and feel smooth on UAE mobile networks." },
-  { icon: <Search className="w-6 h-6" />, title: "SEO-ready foundations", desc: "Metadata, headings, internal links, schema, sitemap and service copy written for local search intent." },
+  { icon: <Search className="w-6 h-6" />, title: "SEO-ready foundations", desc: <>Metadata, headings, internal links, schema, sitemap and service copy written for local search intent. For teams preparing for Google AI Overviews and answer engines, we align your site&apos;s technical structure with our <Link href="/ai-seo-agency-dubai" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-4 font-medium">AI SEO and AEO framework</Link>.</> },
   { icon: <MessageSquare className="w-6 h-6" />, title: "Lead capture and WhatsApp flow", desc: "Forms, buttons and WhatsApp journeys built so visitors can enquire without friction." },
 ];
 

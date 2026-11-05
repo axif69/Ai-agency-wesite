@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/AiAutomationDubai';
 
 export const metadata = {
-  title: "AI Automation Agency Dubai | AI Agency UAE | Asif Digital",
-  description: "Premier AI automation agency in Dubai. Custom CRM integrations, WhatsApp Cloud API workflows, and AI systems for UAE businesses. Request a free audit.",
+  title: "AI Automation Agency Dubai | Workflow & CRM Integration",
+  description: "Engineered AI automation in Dubai. Connect CRM, ERP, and WhatsApp workflows with custom API middleware and human oversight for UAE teams. Request a free audit.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-automation-agency-dubai"
   },
   openGraph: {
-    title: "AI Automation Agency Dubai | AI Agency UAE | Asif Digital",
-    description: "Premier AI automation agency in Dubai. Custom CRM integrations, WhatsApp Cloud API workflows, and AI systems for UAE businesses. Request a free audit.",
+    title: "AI Automation Agency Dubai | Workflow & CRM Integration",
+    description: "Engineered AI automation in Dubai. Connect CRM, ERP, and WhatsApp workflows with custom API middleware and human oversight for UAE teams. Request a free audit.",
     url: "https://www.asifdigital.agency/ai-automation-agency-dubai",
     siteName: "Asif Digital",
     locale: "en_AE",
@@ -16,8 +16,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Automation Agency Dubai | AI Agency UAE | Asif Digital",
-    description: "Premier AI automation agency in Dubai. Custom CRM integrations, WhatsApp Cloud API workflows, and AI systems for UAE businesses. Request a free audit."
+    title: "AI Automation Agency Dubai | Workflow & CRM Integration",
+    description: "Engineered AI automation in Dubai. Connect CRM, ERP, and WhatsApp workflows with custom API middleware and human oversight for UAE teams. Request a free audit."
   }
 };
 

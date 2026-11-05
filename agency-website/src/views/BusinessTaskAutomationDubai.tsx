@@ -352,6 +352,16 @@ export default function BusinessTaskAutomationDubai() {
             </button>
           ))}
         </div>
+
+        {/* Contextual Link to AI Automation Agency */}
+        <div className="mt-8 p-6 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <p className="text-sm text-white/70 font-light">
+            Looking for production-grade pipelines connecting your CRM, ERP, and customer channels? Explore our dedicated <Link href="/ai-automation-agency-dubai" className="text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-4">AI automation and systems integration</Link> services in Dubai.
+          </p>
+          <Link href="/ai-automation-agency-dubai" className="text-xs font-mono uppercase tracking-wider text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 shrink-0">
+            View Automation Services <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
       </section>
 
       {/* 5. Interactive Workflow Details Modal / Slide-over Drawer */}
