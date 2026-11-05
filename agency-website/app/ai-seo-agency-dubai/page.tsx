@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/services/AiSeoAgencyDubai';
 
 export const metadata = {
-  title: "AI SEO Agency Dubai | AEO & AI Search Optimization | Asif Digital",
-  description: "Rank on Google, ChatGPT & Perplexity. Top AI SEO & AEO agency in Dubai. We engineer entity architecture, LLM citations & structured answer visibility. Free audit.",
+  title: "AI SEO Agency Dubai | AI SEO Services UAE | Asif Digital",
+  description: "Premier AI SEO agency in Dubai. Dominate Google AI Overviews, ChatGPT & Perplexity with entity schema, AEO citation architecture & technical SEO. Free audit.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-seo-agency-dubai"
   },
   openGraph: {
-    title: "AI SEO Agency Dubai | AEO & AI Search Optimization | Asif Digital",
-    description: "Rank on Google, ChatGPT & Perplexity. Top AI SEO & AEO agency in Dubai. We engineer entity architecture, LLM citations & structured answer visibility. Free audit.",
+    title: "AI SEO Agency Dubai | AI SEO Services UAE | Asif Digital",
+    description: "Premier AI SEO agency in Dubai. Dominate Google AI Overviews, ChatGPT & Perplexity with entity schema, AEO citation architecture & technical SEO. Free audit.",
     url: "https://www.asifdigital.agency/ai-seo-agency-dubai",
     type: "website"
   },

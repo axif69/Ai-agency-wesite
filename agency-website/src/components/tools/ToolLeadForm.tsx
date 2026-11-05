@@ -42,7 +42,7 @@ export default function ToolLeadForm({ tool, summary, heading = "Want a Human Re
   }
 
   if (state === "success") {
-    return <div className="rounded-[2rem] border border-green-400/20 bg-green-400/[0.06] p-8 text-center"><CheckCircle2 className="mx-auto h-10 w-10 text-green-400" /><h3 className="mt-4 text-2xl font-serif">Request received.</h3><p className="mt-3 text-sm text-white/60">Asif Digital will review the context and contact you shortly.</p></div>;
+    return <div className="rounded-[2rem] border border-green-400/20 bg-green-400/[0.06] p-8 text-center"><CheckCircle2 className="mx-auto h-10 w-10 text-green-400" /><h3 className="mt-4 text-2xl font-serif">Request received.</h3><p className="mt-3 text-sm text-white/80 max-w-md mx-auto leading-relaxed">Our strategists will review your calculated metrics and connect via email or WhatsApp during UAE business hours with actionable tracking and efficiency suggestions.</p></div>;
   }
 
   const waMessage = encodeURIComponent(
@@ -67,7 +67,7 @@ export default function ToolLeadForm({ tool, summary, heading = "Want a Human Re
           className="shrink-0 inline-flex items-center justify-center gap-2.5 px-6 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-black text-xs uppercase tracking-wider rounded-2xl shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
         >
           <MessageCircle className="w-4 h-4 fill-black" />
-          <span>Chat on WhatsApp (+971)</span>
+          <span>Discuss Results on WhatsApp</span>
         </a>
       </div>
       <form onSubmit={submit} className="mt-7 grid gap-4 md:grid-cols-2">
@@ -78,7 +78,7 @@ export default function ToolLeadForm({ tool, summary, heading = "Want a Human Re
         <label className="md:col-span-2 flex items-start gap-3 text-xs leading-relaxed text-white/50"><input type="checkbox" required checked={form.consent} onChange={(e) => setForm({ ...form, consent: e.target.checked })} className="mt-1 accent-green-400" />I agree that Asif Digital may use these details to respond to my request. No passwords or customer data are required.</label>
         {state === "error" && <p className="md:col-span-2 text-sm text-red-300">The form could not be sent. Please use the WhatsApp button or try again.</p>}
         <button disabled={state === "loading"} className="md:col-span-2 inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-green-300 disabled:opacity-60">
-          {state === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}{state === "loading" ? "Sending..." : "Request My Review"}
+          {state === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}{state === "loading" ? "Sending Details..." : "Request Strategic Review"}
         </button>
       </form>
     </div>

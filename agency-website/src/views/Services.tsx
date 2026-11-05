@@ -48,6 +48,14 @@ const categories: ServiceCategory[] = [
         ctaText: "Explore Web Development"
       },
       {
+        title: "Custom B2B CRM Development",
+        desc: "Custom CRM pipelines, multi-source lead normalization, and database integrations tailored for UAE commercial and industrial enterprises.",
+        features: ["PostgreSQL & Next.js", "Deduplication Pipelines", "Multi-Source Intake", "Two-Way ERP Sync"],
+        link: "/custom-crm-development-dubai",
+        icon: <Database className="w-8 h-8" />,
+        ctaText: "Explore Custom CRM"
+      },
+      {
         title: "Headless & Custom Ecommerce",
         desc: "Conversion-optimized online stores for UAE brands with seamless integrations for local payment gateways including Telr, PayFort, and Stripe.",
         features: ["Shopify & Custom Stores", "UAE Payment Gateways", "Cart Optimization", "Product Schema"],

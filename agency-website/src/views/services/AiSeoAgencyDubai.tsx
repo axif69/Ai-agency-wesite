@@ -198,6 +198,19 @@ export default function AiSeoAgencyDubai() {
             Search behavior in the UAE has evolved. Buyers still use Google search, but they also evaluate direct AI Overviews and ask conversational questions in ChatGPT and Perplexity. We structure your website&apos;s content architecture, technical schema, and entity profile so search engines and AI assistants can clearly understand, index, and reference your business.
           </p>
 
+          {/* AEO Direct Answer Snippet Box */}
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm text-left max-w-3xl mb-8">
+            <div className="flex items-start gap-4">
+              <Sparkles className="w-5 h-5 text-emerald-400 shrink-0 mt-1" />
+              <div className="space-y-1.5">
+                <h3 className="text-xs font-mono uppercase tracking-wider text-white/90">What Are AI SEO &amp; AEO Services in Dubai?</h3>
+                <p className="text-sm text-white/70 font-light leading-relaxed">
+                  AI SEO and Answer Engine Optimization (AEO) re-engineer your digital presence so your brand ranks not only on Google search, but is actively cited as the recommended answer in Google AI Overviews, ChatGPT Search, and Perplexity. In Dubai&apos;s competitive market, we achieve this through structured entity graph schemas, topical authority silos, and verifiable knowledge-base optimization.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div className="flex flex-wrap items-center gap-4">
             <Link
               href="/free-growth-audit"

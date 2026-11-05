@@ -161,73 +161,129 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <span className="absolute bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
               </Link>
               
-              {/* Sovereign AI Dropdown - 3-Column Curated Mega Menu */}
+              {/* Sovereign AI Dropdown - 3-Column Streamlined Mega Menu (4 Curated Outcomes per Column) */}
               {link.name === "Sovereign AI" && (
                 <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[960px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
                   <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.9)] overflow-hidden font-sans normal-case tracking-normal text-left p-6 grid grid-cols-3 gap-6">
-                    {/* Column 1: Enterprise AI */}
+                    {/* Column 1: Enterprise Automation */}
                     <div className="space-y-1 border-r border-white/10 pr-5">
                       <div className="pb-2.5 mb-2 border-b border-white/5 flex items-center justify-between">
-                        <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block">Enterprise AI</span>
+                        <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block">Enterprise Automation</span>
                         <span className="px-1.5 py-0.5 text-[8.5px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                          SAAS LIVE
+                          WORKFLOWS
                         </span>
                       </div>
                       <Link 
-                        href="/products/expirywatch" 
-                        className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold flex items-center justify-between py-2 hover:pl-1.5 duration-200 border-b border-white/5"
+                        href="/business-task-automation-dubai" 
+                        className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2.5 hover:pl-1.5 duration-200 border-b border-white/5"
                       >
-                        <span>ExpiryWatch (Compliance Copilot)</span>
-                        <span className="px-1.5 py-0.5 text-[8.5px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                          LIVE
-                        </span>
+                        <div className="font-semibold text-white">Business Task Automation</div>
+                        <div className="text-[11px] text-white/50">Lead sync, invoice OCR &amp; spreadsheet fixes</div>
                       </Link>
                       <Link 
-                        href="/products/ticketflow" 
-                        className="text-cyan-400 hover:text-cyan-300 transition-all text-[13.5px] font-semibold flex items-center justify-between py-2 hover:pl-1.5 duration-200 border-b border-white/5"
+                        href="/ai-chatbots-dubai" 
+                        className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2.5 hover:pl-1.5 duration-200 border-b border-white/5"
                       >
-                        <span>TicketFlow (Tenant Dispatch)</span>
-                        <span className="px-1.5 py-0.5 text-[8.5px] font-mono font-bold tracking-wider rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
-                          PROPTECH
-                        </span>
+                        <div className="font-semibold text-white">WhatsApp AI &amp; Chatbots</div>
+                        <div className="text-[11px] text-white/50">24/7 bilingual inquiry qualification &amp; routing</div>
                       </Link>
-                      <Link href="/ai-app-development-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Custom AI App Development</Link>
-                      <Link href="/ai-consulting-uae" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Consulting</Link>
-                      <Link href="/ai-automation-agency-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Automation Agency</Link>
-                      <Link href="/ai-agents-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Custom AI Agents</Link>
-                      <Link href="/workflow-automation-uae" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Workflow Automation</Link>
-                      <Link href="/arabic-ai-hub" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Arabic AI</Link>
-                      <Link href="/hospitality-ai-automation-uae" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Hospitality AI</Link>
-                      <Link href="/services" className="text-emerald-400 hover:text-emerald-300 transition-all text-[12px] font-mono font-medium block pt-3 hover:translate-x-1 duration-200">View All AI Services →</Link>
+                      <Link 
+                        href="/ai-app-development-dubai" 
+                        className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2.5 hover:pl-1.5 duration-200 border-b border-white/5"
+                      >
+                        <div className="font-semibold text-white">Custom AI App Development</div>
+                        <div className="text-[11px] text-white/50">Next.js portals &amp; custom software tools</div>
+                      </Link>
+                      <Link 
+                        href="/arabic-ai-hub" 
+                        className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2.5 hover:pl-1.5 duration-200 border-b border-white/5"
+                      >
+                        <div className="font-semibold text-white">Arabic AI Solutions Hub</div>
+                        <div className="text-[11px] text-white/50">Bilingual Khaleeji &amp; MSA conversational models</div>
+                      </Link>
+                      <Link href="/services" className="text-emerald-400 hover:text-emerald-300 transition-all text-[12px] font-mono font-medium block pt-3 hover:translate-x-1 duration-200">
+                        View All Automation Services →
+                      </Link>
                     </div>
 
-                    {/* Column 2: Growth & Performance */}
+                    {/* Column 2: Client Acquisition & Growth */}
                     <div className="space-y-1 border-r border-white/10 pr-5">
-                      <div className="pb-2.5 mb-2 border-b border-white/5">
-                        <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block">Growth &amp; Performance</span>
+                      <div className="pb-2.5 mb-2 border-b border-white/5 flex items-center justify-between">
+                        <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block">Client Acquisition</span>
+                        <span className="px-1.5 py-0.5 text-[8.5px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                          PERFORMANCE
+                        </span>
                       </div>
-                      <Link href="/ai-marketing-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Marketing</Link>
-                      <Link href="/ai-lead-generation-agency-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Lead Generation</Link>
-                      <Link href="/ai-seo-agency-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI SEO &amp; AEO</Link>
-                      <Link href="/ai-ppc-agency-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI PPC</Link>
-                      <Link href="/free-growth-audit" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Free Growth Audit</Link>
-                      <Link href="/tools/ad-spend-efficiency-analyzer" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Ad Spend Analyzer</Link>
-                      <Link href="/services" className="text-emerald-400 hover:text-emerald-300 transition-all text-[12px] font-mono font-medium block pt-3 hover:translate-x-1 duration-200">View Growth Services →</Link>
+                      <Link 
+                        href="/services/interior-fitout-lead-generation-uae" 
+                        className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2.5 hover:pl-1.5 duration-200 border-b border-white/5"
+                      >
+                        <div className="font-semibold text-white">Fitout &amp; Renovation Lead Gen</div>
+                        <div className="text-[11px] text-white/50">Direct contractor enquiries with 0% commission</div>
+                      </Link>
+                      <Link 
+                        href="/ai-seo-agency-dubai" 
+                        className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2.5 hover:pl-1.5 duration-200 border-b border-white/5"
+                      >
+                        <div className="font-semibold text-white">AI SEO, AEO &amp; Search Visibility</div>
+                        <div className="text-[11px] text-white/50">Rank in Google AI Overviews &amp; Perplexity</div>
+                      </Link>
+                      <Link 
+                        href="/ai-ppc-agency-dubai" 
+                        className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2.5 hover:pl-1.5 duration-200 border-b border-white/5"
+                      >
+                        <div className="font-semibold text-white">AI PPC &amp; Meta Tracking</div>
+                        <div className="text-[11px] text-white/50">CAPI, offline conversions &amp; ad waste reduction</div>
+                      </Link>
+                      <Link 
+                        href="/free-growth-audit" 
+                        className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2.5 hover:pl-1.5 duration-200 border-b border-white/5"
+                      >
+                        <div className="font-semibold text-emerald-400">Free Growth &amp; AI Audit</div>
+                        <div className="text-[11px] text-white/50">1-page diagnostic action plan in 2 days</div>
+                      </Link>
+                      <Link href="/services" className="text-emerald-400 hover:text-emerald-300 transition-all text-[12px] font-mono font-medium block pt-3 hover:translate-x-1 duration-200">
+                        View Growth Services →
+                      </Link>
                     </div>
 
-                    {/* Column 3: Real Estate AI */}
+                    {/* Column 3: Real Estate Technology */}
                     <div className="space-y-1">
                       <div className="pb-2.5 mb-2 border-b border-white/5 flex items-center justify-between">
-                        <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block">Real Estate AI</span>
+                        <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block">Real Estate Tech</span>
                         <Link href="/real-estate" className="text-[10px] font-mono text-white/50 hover:text-emerald-300">Pillar Hub</Link>
                       </div>
-                      <Link href="/real-estate" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Real Estate AI Hub</Link>
-                      <Link href="/ai-real-estate-agencies-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI for Real Estate Agencies</Link>
-                      <Link href="/real-estate-crm-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Real Estate CRM</Link>
-                      <Link href="/ai-property-management-uae" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Property Management AI</Link>
-                      <Link href="/real-estate/portal-lead-integration-dubai" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">Portal Lead Integration</Link>
-                      <Link href="/real-estate/ai-lead-dashboard" className="text-white/85 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2 hover:pl-1.5 duration-200 border-b border-white/5">AI Lead Dashboard</Link>
-                      <Link href="/real-estate" className="text-emerald-400 hover:text-emerald-300 transition-all text-[12px] font-mono font-medium block pt-3 hover:translate-x-1 duration-200">View Real Estate Solutions →</Link>
+                      <Link 
+                        href="/real-estate" 
+                        className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2.5 hover:pl-1.5 duration-200 border-b border-white/5"
+                      >
+                        <div className="font-semibold text-white">Real Estate AI Hub</div>
+                        <div className="text-[11px] text-white/50">Master overview for brokerages &amp; developers</div>
+                      </Link>
+                      <Link 
+                        href="/real-estate-crm-dubai" 
+                        className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2.5 hover:pl-1.5 duration-200 border-b border-white/5"
+                      >
+                        <div className="font-semibold text-white">Real Estate CRM &amp; Lead Routing</div>
+                        <div className="text-[11px] text-white/50">60-second speed-to-lead &amp; broker SLA</div>
+                      </Link>
+                      <Link 
+                        href="/real-estate/portal-lead-integration-dubai" 
+                        className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2.5 hover:pl-1.5 duration-200 border-b border-white/5"
+                      >
+                        <div className="font-semibold text-white">Portal Lead Integration</div>
+                        <div className="text-[11px] text-white/50">Instant Bayut &amp; Property Finder webhooks</div>
+                      </Link>
+                      <Link 
+                        href="/ai-property-management-uae" 
+                        className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-2.5 hover:pl-1.5 duration-200 border-b border-white/5"
+                      >
+                        <div className="font-semibold text-white">Property Management AI</div>
+                        <div className="text-[11px] text-white/50">Tenant renewals &amp; WhatsApp ticket dispatch</div>
+                      </Link>
+                      <Link href="/real-estate" className="text-emerald-400 hover:text-emerald-300 transition-all text-[12px] font-mono font-medium block pt-3 hover:translate-x-1 duration-200">
+                        View Real Estate Solutions →
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -235,51 +291,103 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
               {/* Mega Menu Dropdown - Strategic Pillars */}
               {link.name === "Strategic Pillars" && (
-                <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[940px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
-                  <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex font-sans normal-case tracking-normal text-left">
+                <div style={{ mixBlendMode: 'normal' }} className="absolute left-1/2 -translate-x-1/2 top-full w-[960px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto z-[100] pt-6">
+                  <div className="bg-[#0c0c0c] border border-white/10 rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.9)] overflow-hidden font-sans normal-case tracking-normal text-left p-6 grid grid-cols-3 gap-6">
                     
                     {/* Web Column */}
-                    <div className="w-[34%] bg-[#111111] p-8 border-r border-white/5">
-                      <h3 className="text-white/95 text-[11px] font-bold uppercase tracking-[0.25em] mb-6 flex items-center gap-2">
-                        <Code className="w-4 h-4 text-emerald-400" role="img" aria-label="Code Icon" /> Web &amp; Systems
-                      </h3>
-                      <ul className="space-y-4">
-                        <li><Link href="/ai-app-development-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-sm font-semibold block py-0.5 hover:pl-1.5 duration-200">AI App Development Dubai</Link></li>
-                        <li><Link href="/services/web-design-dubai" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Web Design Dubai</Link></li>
-                        <li><Link href="/web-design-sharjah" className="text-emerald-400 hover:text-emerald-300 transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Web Design Sharjah</Link></li>
-                        <li><Link href="/services/web-development-dubai-uae" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Web Development</Link></li>
-                        <li><Link href="/services/ecommerce-website-development-dubai" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Ecommerce Websites</Link></li>
-                        <li><Link href="/services/web-hosting-uae" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Web Hosting</Link></li>
-                        <li><Link href="/services/website-maintenance-support-dubai" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Website Support</Link></li>
-                      </ul>
+                    <div className="space-y-1 border-r border-white/10 pr-5">
+                      <div className="pb-2.5 mb-2 border-b border-white/5 flex items-center justify-between">
+                        <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold flex items-center gap-1.5">
+                          <Code className="w-3.5 h-3.5 text-emerald-400" role="img" aria-label="Code Icon" /> Web &amp; Systems
+                        </span>
+                        <span className="px-1.5 py-0.5 text-[8.5px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                          ENGINEERING
+                        </span>
+                      </div>
+                      <Link href="/ai-app-development-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        AI App Development Dubai
+                      </Link>
+                      <Link href="/custom-crm-development-dubai" className="text-white/90 hover:text-emerald-300 transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Custom CRM Development Dubai
+                      </Link>
+                      <Link href="/services/web-design-dubai" className="text-white/85 hover:text-white transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Web Design Dubai
+                      </Link>
+                      <Link href="/web-design-sharjah" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Web Design Sharjah
+                      </Link>
+                      <Link href="/services/web-development-dubai-uae" className="text-white/85 hover:text-white transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Web Development
+                      </Link>
+                      <Link href="/services/ecommerce-website-development-dubai" className="text-white/85 hover:text-white transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Ecommerce Websites
+                      </Link>
+                      <Link href="/services/web-hosting-uae" className="text-white/85 hover:text-white transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Web Hosting UAE
+                      </Link>
+                      <Link href="/services/website-maintenance-support-dubai" className="text-white/85 hover:text-white transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Website Support &amp; SLA
+                      </Link>
+                      <Link href="/services/web-development-dubai-uae" className="text-emerald-400 hover:text-emerald-300 transition-all text-[12px] font-mono font-medium block pt-2.5 hover:translate-x-1 duration-200">
+                        View All Web Engineering →
+                      </Link>
                     </div>
                     
                     {/* Digital Marketing Column */}
-                    <div className="w-[36%] bg-[#0c0c0c] p-8 border-r border-white/5">
-                      <h3 className="text-white/95 text-[11px] font-bold uppercase tracking-[0.25em] mb-6 flex items-center gap-2">
-                        <Megaphone className="w-4 h-4 text-emerald-400" role="img" aria-label="Megaphone Icon" /> AI &amp; Performance Media
-                      </h3>
-                      <ul className="space-y-4">
-                        <li><Link href="/ai-ppc-agency-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-sm font-semibold block py-0.5 hover:pl-1.5 duration-200">AI PPC Agency</Link></li>
-                        <li><Link href="/ai-seo-agency-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-sm font-semibold block py-0.5 hover:pl-1.5 duration-200">AI SEO &amp; AEO Agency</Link></li>
-                        <li><Link href="/services/ppc-google-ads-agency-dubai" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Traditional PPC Ads</Link></li>
-                        <li><Link href="/services/seo-agency-dubai-sharjah-uae" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Traditional SEO</Link></li>
-                        <li><Link href="/services/social-media-management-dubai-uae" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Social Media Management</Link></li>
-                        <li><Link href="/ai-chatbots-dubai" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">AI Chatbots Dubai</Link></li>
-                      </ul>
+                    <div className="space-y-1 border-r border-white/10 pr-5">
+                      <div className="pb-2.5 mb-2 border-b border-white/5 flex items-center justify-between">
+                        <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold flex items-center gap-1.5">
+                          <Megaphone className="w-3.5 h-3.5 text-emerald-400" role="img" aria-label="Megaphone Icon" /> Performance Media
+                        </span>
+                        <span className="px-1.5 py-0.5 text-[8.5px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                          MEDIA
+                        </span>
+                      </div>
+                      <Link href="/ai-ppc-agency-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        AI PPC Agency
+                      </Link>
+                      <Link href="/ai-seo-agency-dubai" className="text-emerald-400 hover:text-emerald-300 transition-all text-[13.5px] font-semibold block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        AI SEO &amp; AEO Agency
+                      </Link>
+                      <Link href="/services/ppc-google-ads-agency-dubai" className="text-white/85 hover:text-white transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Traditional PPC Ads
+                      </Link>
+                      <Link href="/services/seo-agency-dubai-sharjah-uae" className="text-white/85 hover:text-white transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Traditional SEO
+                      </Link>
+                      <Link href="/services/social-media-management-dubai-uae" className="text-white/85 hover:text-white transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Social Media Management
+                      </Link>
+                      <Link href="/services" className="text-emerald-400 hover:text-emerald-300 transition-all text-[12px] font-mono font-medium block pt-3 hover:translate-x-1 duration-200">
+                        View All Media Solutions →
+                      </Link>
                     </div>
 
                     {/* Creative Column */}
-                    <div className="w-[30%] bg-[#111111] p-8">
-                      <h3 className="text-white/95 text-[11px] font-bold uppercase tracking-[0.25em] mb-6 flex items-center gap-2">
-                        <PenTool className="w-4 h-4 text-emerald-400" role="img" aria-label="Pen Tool Icon" /> Creative &amp; Brand
-                      </h3>
-                      <ul className="space-y-4">
-                        <li><Link href="/services/branding-agency-dubai-sharjah" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Brand Strategy</Link></li>
-                        <li><Link href="/services/graphic-design-agency-dubai-sharjah" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Graphic Design</Link></li>
-                        <li><Link href="/services/ui-ux-design-agency-dubai" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">UI/UX Design</Link></li>
-                        <li><Link href="/services/web-development-dubai-uae" className="text-white/85 hover:text-white transition-all text-sm font-medium block py-0.5 hover:pl-1.5 duration-200">Creative Web Design</Link></li>
-                      </ul>
+                    <div className="space-y-1">
+                      <div className="pb-2.5 mb-2 border-b border-white/5 flex items-center justify-between">
+                        <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold flex items-center gap-1.5">
+                          <PenTool className="w-3.5 h-3.5 text-emerald-400" role="img" aria-label="Pen Tool Icon" /> Creative &amp; Brand
+                        </span>
+                        <span className="px-1.5 py-0.5 text-[8.5px] font-mono font-bold tracking-wider rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                          IDENTITY
+                        </span>
+                      </div>
+                      <Link href="/services/branding-agency-dubai-sharjah" className="text-white/90 hover:text-white transition-all text-[13.5px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Brand Strategy
+                      </Link>
+                      <Link href="/services/graphic-design-agency-dubai-sharjah" className="text-white/85 hover:text-white transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Graphic Design
+                      </Link>
+                      <Link href="/services/ui-ux-design-agency-dubai" className="text-white/85 hover:text-white transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        UI/UX Design
+                      </Link>
+                      <Link href="/services/web-development-dubai-uae" className="text-white/85 hover:text-white transition-all text-[13px] font-medium block py-1.5 hover:pl-1.5 duration-200 border-b border-white/5">
+                        Creative Web Design
+                      </Link>
+                      <Link href="/portfolio" className="text-emerald-400 hover:text-emerald-300 transition-all text-[12px] font-mono font-medium block pt-3 hover:translate-x-1 duration-200">
+                        View Creative Portfolio →
+                      </Link>
                     </div>
 
                   </div>
@@ -358,7 +466,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 AI Systems &amp; Solutions
               </div>
 
-              {/* Accordion 1: Enterprise AI */}
+              {/* Accordion 1: Enterprise Automation */}
               <div>
                 <button
                   type="button"
@@ -366,40 +474,31 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   className="w-full min-h-[48px] flex items-center justify-between text-left text-[15px] font-semibold text-white hover:text-emerald-300 transition-colors py-2"
                   aria-expanded={openMobileAccordion === "enterprise"}
                 >
-                  <span>Enterprise AI</span>
+                  <span>Enterprise Automation</span>
                   <ChevronDown className={`w-4 h-4 text-white/50 transition-transform duration-300 ${openMobileAccordion === "enterprise" ? "rotate-180 text-emerald-400" : ""}`} />
                 </button>
                 {openMobileAccordion === "enterprise" && (
                   <div className="pl-3 py-2 space-y-1 border-l border-emerald-500/30 ml-2">
-                    <Link href="/ai-app-development-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-emerald-400 hover:text-emerald-300 transition-colors font-medium">
+                    <Link href="/business-task-automation-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-emerald-400 hover:text-emerald-300 transition-colors font-medium">
+                      Business Task Automation
+                    </Link>
+                    <Link href="/ai-chatbots-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
+                      WhatsApp AI &amp; Chatbots
+                    </Link>
+                    <Link href="/ai-app-development-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
                       Custom AI App Development
                     </Link>
-                    <Link href="/ai-consulting-uae" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      AI Consulting
-                    </Link>
-                    <Link href="/ai-automation-agency-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      AI Automation Agency
-                    </Link>
-                    <Link href="/ai-agents-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      Custom AI Agents
-                    </Link>
-                    <Link href="/workflow-automation-uae" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      Workflow Automation
-                    </Link>
                     <Link href="/arabic-ai-hub" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      Arabic AI
-                    </Link>
-                    <Link href="/hospitality-ai-automation-uae" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      Hospitality AI
+                      Arabic AI Solutions Hub
                     </Link>
                     <Link href="/services" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[13px] font-mono text-emerald-400 hover:text-emerald-300 transition-colors pt-1">
-                      View All AI Services →
+                      View All Automation Services →
                     </Link>
                   </div>
                 )}
               </div>
 
-              {/* Accordion 2: Growth & Performance */}
+              {/* Accordion 2: Client Acquisition & Growth */}
               <div>
                 <button
                   type="button"
@@ -407,28 +506,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   className="w-full min-h-[48px] flex items-center justify-between text-left text-[15px] font-semibold text-white hover:text-emerald-300 transition-colors py-2"
                   aria-expanded={openMobileAccordion === "growth"}
                 >
-                  <span>Growth &amp; Performance</span>
+                  <span>Client Acquisition &amp; Growth</span>
                   <ChevronDown className={`w-4 h-4 text-white/50 transition-transform duration-300 ${openMobileAccordion === "growth" ? "rotate-180 text-emerald-400" : ""}`} />
                 </button>
                 {openMobileAccordion === "growth" && (
                   <div className="pl-3 py-2 space-y-1 border-l border-emerald-500/30 ml-2">
-                    <Link href="/ai-marketing-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      AI Marketing
-                    </Link>
-                    <Link href="/ai-lead-generation-agency-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      AI Lead Generation
+                    <Link href="/services/interior-fitout-lead-generation-uae" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-emerald-400 hover:text-emerald-300 transition-colors font-medium">
+                      Fitout &amp; Renovation Lead Gen
                     </Link>
                     <Link href="/ai-seo-agency-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      AI SEO &amp; AEO
+                      AI SEO, AEO &amp; Search Visibility
                     </Link>
                     <Link href="/ai-ppc-agency-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      AI PPC
+                      AI PPC &amp; Performance Ads
                     </Link>
                     <Link href="/free-growth-audit" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      Free Growth Audit
-                    </Link>
-                    <Link href="/tools/ad-spend-efficiency-analyzer" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      Ad Spend Analyzer
+                      Free Growth &amp; AI Audit
                     </Link>
                     <Link href="/services" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[13px] font-mono text-emerald-400 hover:text-emerald-300 transition-colors pt-1">
                       View Growth Services →
@@ -437,7 +530,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 )}
               </div>
 
-              {/* Accordion 3: Real Estate AI */}
+              {/* Accordion 3: Real Estate Technology */}
               <div>
                 <button
                   type="button"
@@ -445,7 +538,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   className="w-full min-h-[48px] flex items-center justify-between text-left text-[15px] font-semibold text-white hover:text-emerald-300 transition-colors py-2"
                   aria-expanded={openMobileAccordion === "realestate"}
                 >
-                  <span>Real Estate AI</span>
+                  <span>Real Estate Tech</span>
                   <ChevronDown className={`w-4 h-4 text-white/50 transition-transform duration-300 ${openMobileAccordion === "realestate" ? "rotate-180 text-emerald-400" : ""}`} />
                 </button>
                 {openMobileAccordion === "realestate" && (
@@ -453,20 +546,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <Link href="/real-estate" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
                       Real Estate AI Hub
                     </Link>
-                    <Link href="/ai-real-estate-agencies-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      AI for Real Estate Agencies
-                    </Link>
                     <Link href="/real-estate-crm-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      Real Estate CRM
-                    </Link>
-                    <Link href="/ai-property-management-uae" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      Property Management AI
+                      Real Estate CRM &amp; Lead Routing
                     </Link>
                     <Link href="/real-estate/portal-lead-integration-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
                       Portal Lead Integration
                     </Link>
-                    <Link href="/real-estate/ai-lead-dashboard" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
-                      AI Lead Dashboard
+                    <Link href="/ai-property-management-uae" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
+                      Property Management AI
                     </Link>
                     <Link href="/real-estate" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[13px] font-mono text-emerald-400 hover:text-emerald-300 transition-colors pt-1">
                       View Real Estate Solutions →
@@ -490,6 +577,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <div className="pl-3 py-2 space-y-1 border-l border-emerald-500/30 ml-2">
                     <Link href="/ai-app-development-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-emerald-400 hover:text-emerald-300 transition-colors font-medium">
                       AI App Development Dubai
+                    </Link>
+                    <Link href="/custom-crm-development-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
+                      Custom CRM Development Dubai
                     </Link>
                     <Link href="/services/web-design-dubai" onClick={() => setIsMenuOpen(false)} className="min-h-[44px] flex items-center text-[14px] text-white/80 hover:text-emerald-300 transition-colors">
                       Web Design Dubai
@@ -655,6 +745,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-emerald-400 font-bold mb-5 font-mono">Core Solutions</h4>
                 <ul className="space-y-3">
                   <li>
+                    <Link href="/custom-crm-development-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium block">
+                      Custom CRM Development Dubai
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/services/web-development-dubai-uae" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium block">
+                      Custom Web Development UAE
+                    </Link>
+                  </li>
+                  <li>
                     <Link href="/services/interior-fitout-lead-generation-uae" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium block">
                       Interior Fitout Lead Gen UAE
                     </Link>
@@ -710,7 +810,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/95 font-bold mb-6 font-mono">Quick Project Brief</h4>
               {isBriefSuccess ? (
                 <div className="p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 text-center text-sm font-normal text-emerald-400">
-                  Briefing Received. Our team will review and contact you within 12 hours.
+                  Brief Received. Our team reviews submissions during UAE business hours and connects via email or WhatsApp to discuss next steps.
                 </div>
               ) : (
                 <form className="space-y-4" onSubmit={handleBriefSubmit} aria-label="Quick Project Briefing Form">

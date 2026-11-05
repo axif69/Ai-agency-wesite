@@ -132,7 +132,19 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">Registered Agency Office</h3>
-                    <p className="text-base font-serif text-white/80">Muwaileh Commercial - Industrial Area, Sharjah, UAE</p>
+                    <p className="text-base font-serif text-white/80">Muwaileh Commercial, Sharjah, UAE</p>
+                    <p className="text-xs text-white/50 mt-1 font-mono">Serving clients across Dubai, Abu Dhabi &amp; Sharjah</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-6 group">
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">Working Hours</h3>
+                    <p className="text-base font-serif text-white/80">Monday – Saturday: 9:00 AM – 7:00 PM GST</p>
+                    <p className="text-xs text-white/50 mt-1 font-mono">Inquiries reviewed during business hours</p>
                   </div>
                 </div>
               </div>
@@ -186,8 +198,8 @@ export default function Contact() {
                   className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#050505]/98 rounded-[3rem] p-8 text-center"
                 >
                   <CheckCircle2 className="w-16 h-16 text-[#0066FF] mb-6" />
-                  <h3 className="text-3xl font-serif mb-4">Inquiry Recorded</h3>
-                  <p className="text-white/60 font-light leading-relaxed">I have received your operational data. A Strategic Architect will review and respond via your provided channel.</p>
+                  <h3 className="text-3xl font-serif mb-4">Inquiry Received</h3>
+                  <p className="text-white/80 font-normal text-sm max-w-md leading-relaxed">Thank you. Our team will review your inquiry details during UAE business hours and connect with you via email or WhatsApp to discuss your project.</p>
                   <button 
                     onClick={() => setIsSuccess(false)}
                     className="mt-8 text-xs font-bold uppercase tracking-widest text-[#0066FF] hover:text-white"
@@ -280,20 +292,37 @@ export default function Contact() {
               )}
 
               <button 
-                type="submit"
+                type="submit" 
                 disabled={isLoading}
-                className="w-full bg-white text-black font-bold uppercase tracking-widest py-6 rounded-full flex items-center justify-center gap-3 hover:bg-[#0066FF] hover:text-white transition-all duration-500 text-xs disabled:opacity-50 shadow-2xl"
+                className="w-full bg-white text-black font-bold uppercase tracking-widest py-5 rounded-full flex items-center justify-center gap-3 hover:bg-white/90 transition-all text-xs disabled:opacity-50 shadow-2xl cursor-pointer"
               >
                 {isLoading ? (
                   <>
-                    Processing Intelligence... <Loader2 className="w-4 h-4 animate-spin" />
+                    Submitting Inquiry... <Loader2 className="w-4 h-4 animate-spin" />
                   </>
                 ) : (
                   <>
-                    Initiate Audit <Send className="w-4 h-4" />
+                    Submit Inquiry <Send className="w-4 h-4" />
                   </>
                 )}
               </button>
+
+              {/* Clear Follow-Up Expectations */}
+              <div className="pt-6 border-t border-white/5 space-y-2.5 text-xs text-white/60">
+                <div className="font-semibold text-white/80 uppercase font-mono tracking-wider text-[10px]">What to Expect:</div>
+                <div className="flex items-start gap-2.5">
+                  <span className="text-emerald-400 font-bold font-mono">1.</span>
+                  <span>We review your requirements and existing online presence.</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <span className="text-emerald-400 font-bold font-mono">2.</span>
+                  <span>Our team connects via email or WhatsApp during UAE business hours (Mon–Sat, 9AM–7PM GST).</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <span className="text-emerald-400 font-bold font-mono">3.</span>
+                  <span>If there is a mutual fit, we provide a clear, fixed scope and timeline before any commitment.</span>
+                </div>
+              </div>
             </form>
           </motion.div>
         </div>

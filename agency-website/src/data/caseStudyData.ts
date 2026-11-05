@@ -42,7 +42,8 @@ export const CASE_STUDIES: CaseStudy[] = [
     serviceLink: "/real-estate",
     serviceLinkLabel: "Explore Real Estate AI Hub",
     relatedLinks: [
-      { href: "/real-estate-crm-dubai", label: "Dubai Real Estate CRM" }
+      { href: "/real-estate-crm-dubai", label: "Dubai Real Estate CRM" },
+      { href: "/services/web-development-dubai-uae", label: "Custom Web Application Development" }
     ],
     desc: "Full-stack luxury real estate AI operating system connecting Meta & Google Ads to an automated WhatsApp concierge and live executive CRM.",
     img: "/images/dubai_real_estate_ai_dashboard.webp"

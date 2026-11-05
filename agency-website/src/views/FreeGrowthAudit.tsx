@@ -413,7 +413,7 @@ export default function FreeGrowthAudit() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full rounded-xl bg-gradient-to-r from-green-400 to-emerald-500 text-black px-6 py-4 font-semibold text-sm inline-flex items-center justify-center gap-2 hover:opacity-95 transition-opacity disabled:opacity-50"
+                className="w-full rounded-xl bg-gradient-to-r from-green-400 to-emerald-500 text-black px-6 py-4 font-semibold text-sm inline-flex items-center justify-center gap-2 hover:opacity-95 transition-opacity disabled:opacity-50 cursor-pointer"
               >
                 {status === "loading" ? (
                   <>
@@ -427,6 +427,10 @@ export default function FreeGrowthAudit() {
                   </>
                 )}
               </button>
+
+              <div className="pt-2 text-[11px] text-white/50 text-center font-mono leading-relaxed">
+                What to expect: We review your submitted context and reply with actionable diagnostic recommendations via email or WhatsApp. No passwords or sales calls required.
+              </div>
 
               <div className="relative my-2 flex items-center justify-center">
                 <div className="border-t border-white/10 w-full" />

@@ -124,9 +124,9 @@ export default function AiAutomationDubai() {
             <div className="flex items-start gap-4">
               <Layers3 className="w-6 h-6 text-emerald-400 shrink-0 mt-1" />
               <div className="space-y-2">
-                <h3 className="text-sm font-mono uppercase tracking-wider text-white/90">What We Build For Growing Businesses</h3>
+                <h3 className="text-sm font-mono uppercase tracking-wider text-white/90">What An AI Automation Agency in Dubai Does</h3>
                 <p className="text-sm text-white/70 font-light leading-relaxed">
-                  We build custom integration layers that connect your customer touchpoints, internal business logic, and backend databases. Every workflow is reinforced with structured schema validation, automated failure recovery, audit logging, and supervisory human approval controls.
+                  An AI automation agency in Dubai engineers custom middleware, CRM/ERP synchronization, and official Meta WhatsApp Cloud API workflows to eliminate manual operational friction for UAE businesses. Asif Digital connects customer intake directly to core databases using schema-validated API pipelines, automated error recovery, and human-in-the-loop oversight.
                 </p>
               </div>
             </div>

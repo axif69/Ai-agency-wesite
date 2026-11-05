@@ -8,13 +8,60 @@ import { ExternalLink, ArrowRight, Shield, TrendingUp, Zap } from "lucide-react"
 const categories = ["All", "Sovereign AI", "Web Architecture", "AEO & SEO", "Branding", "UI/UX", "Ecommerce"];
 
 const portfolioItems = [
-  { id: 1, title: "Sovereign Sales Swarm — B2B High-Ticket Agent", category: "Sovereign AI", location: "Dubai, UAE", desc: "Autonomous B2B discovery and outreach engine. Delivered 42 high-intent institutional leads in 30 days for a DIFC-based private equity firm. 100% G42 residency compliant.", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format,compress&fm=webp&q=75&w=1200", link: "#" },
-  { id: 2, title: "Zenith Properties — Architectural Web Domain", category: "Web Architecture", location: "Dubai, UAE", desc: "A high-fidelity digital domain for luxury real estate. Features bilingual Khaleeji NLP integration and real-time inventory syncing. Revenue attribution up 240%.", img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format,compress&fm=webp&q=75&w=1200", link: "#" },
-  { id: 3, title: "Gulf Logistics — Operational Resilience Shield", category: "Sovereign AI", location: "Dubai, UAE", desc: "End-to-end logistics automation using locally-hosted reasoning models. Automated 85% of shipment triage and reduced human latency by 2,400 hours monthly.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&q=75&w=1200", link: "#" },
-  { id: 4, title: "AutoElite Sharjah — AEO Dominance Protocol", category: "AEO & SEO", location: "Sharjah, UAE", desc: "Answer Engine Optimization (AEO) for Google Gemini and Perplexity. Captured 64% of high-intent search queries for 'Luxury Auto Sharjah' in 8 weeks.", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format,compress&fm=webp&q=75&w=1200", link: "#" },
-  { id: 5, title: "Aurum Corporate — Institutional Identity", category: "Branding", location: "Abu Dhabi, UAE", desc: "Complete visual sovereignty for a GCC investment group. 120-page strategic brand guide and bilingual executive suite. Established market authority within 4 months.", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format,compress&fm=webp&q=75&w=1200", link: "#" },
-  { id: 6, title: "Meza Health — Sovereign SaaS Redesign", category: "UI/UX", location: "Dubai, UAE", desc: "Architecture of a telemedicine SaaS interface prioritizing patient data residency and Khaleeji UX patterns. NPS improved from 28 to 74.", img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format,compress&fm=webp&q=75&w=1200", link: "#" },
-  { id: 7, title: "ExpiryWatch — UAE Compliance AI & Statutory Copilot", category: "Sovereign AI", location: "Dubai & Sharjah, UAE", desc: "AI-first document compliance and statutory expiry copilot for UAE corporations. Zero-touch multimodal OCR scanning for Trade Licenses, Visas, and Ejari contracts with automated DED/MOHRE fine prevention.", img: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format,compress&fm=webp&q=75&w=1200", link: "https://expirywatch.asifdigital.agency" },
+  { 
+    id: 1, 
+    title: "Luxury Real Estate Concierge & Ad Telemetry Platform", 
+    category: "Web Architecture", 
+    location: "Dubai & London", 
+    desc: "Full-stack real estate operating system connecting Meta & Google Ads to an automated WhatsApp concierge, verified lead qualification, and live executive CRM pipeline.", 
+    img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format,compress&fm=webp&q=75&w=1200", 
+    link: "/case-studies" 
+  },
+  { 
+    id: 2, 
+    title: "Governed B2B Sales Prospecting Architecture", 
+    category: "Sovereign AI", 
+    location: "Dubai, UAE", 
+    desc: "Multi-worker sales research and outbound architecture engineered with mandatory human-in-the-loop approval gates, automated MX domain validation, and randomized pacing.", 
+    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&q=75&w=1200", 
+    link: "/sovereign-sales-agent" 
+  },
+  { 
+    id: 3, 
+    title: "Bayut & Property Finder Lead Routing Architecture", 
+    category: "Web Architecture", 
+    location: "Dubai, UAE", 
+    desc: "Instant portal webhook listener ingesting UAE real estate leads in seconds, enforcing speed-to-lead response SLAs, and executing round-robin agent distribution.", 
+    img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format,compress&fm=webp&q=75&w=1200", 
+    link: "/real-estate-crm-dubai" 
+  },
+  { 
+    id: 4, 
+    title: "ExpiryWatch — UAE Statutory Compliance Copilot", 
+    category: "Sovereign AI", 
+    location: "Dubai & Sharjah, UAE", 
+    desc: "Automated document compliance and fine prevention system for UAE corporations, tracking trade licenses, employee visas, and commercial leases.", 
+    img: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format,compress&fm=webp&q=75&w=1200", 
+    link: "/products/expirywatch" 
+  },
+  { 
+    id: 5, 
+    title: "UAE Interior Fitout & Renovation Lead Engine", 
+    category: "AEO & SEO", 
+    location: "Dubai & Abu Dhabi, UAE", 
+    desc: "Targeted search and showcase advertising architecture engineered for commercial fitout and villa renovation contractors with direct sales WhatsApp routing.", 
+    img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format,compress&fm=webp&q=75&w=1200", 
+    link: "/services/interior-fitout-lead-generation-uae" 
+  },
+  { 
+    id: 6, 
+    title: "Business Task Automation & Lead Pipeline", 
+    category: "Sovereign AI", 
+    location: "Sharjah & Dubai, UAE", 
+    desc: "Automated workflows eliminating manual spreadsheets, slow inquiry follow-ups, and invoice data entry for UAE operating companies.", 
+    img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format,compress&fm=webp&q=75&w=1200", 
+    link: "/business-task-automation-dubai" 
+  }
 ];
 
 export default function Portfolio() {
@@ -86,9 +133,10 @@ export default function Portfolio() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm bg-black/40">
-                    <a href={item.link} target={item.link.startsWith("http") ? "_blank" : undefined} rel={item.link.startsWith("http") ? "noopener noreferrer" : undefined} className="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-500 shadow-2xl">
-                      <ExternalLink className="w-6 h-6" />
-                    </a>
+                    <Link href={item.link} className="px-6 py-3 bg-white text-black text-xs font-bold uppercase tracking-wider rounded-full flex items-center justify-center gap-2 hover:scale-105 transition-transform duration-300 shadow-2xl">
+                      <span>View Architecture</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
                   </div>
                 </div>
                 
@@ -101,7 +149,10 @@ export default function Portfolio() {
                     <span className="w-1 h-1 rounded-full bg-white/20" />
                     <span>{item.location}</span>
                   </div>
-                  <p className="text-white/50 font-light leading-relaxed text-base max-w-xl">{item.desc}</p>
+                  <p className="text-white/70 font-normal leading-relaxed text-sm sm:text-base max-w-xl">{item.desc}</p>
+                  <Link href={item.link} className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-emerald-400 hover:text-emerald-300 mt-4 transition-colors">
+                    Explore Architecture Details →
+                  </Link>
                 </div>
               </motion.div>
             ))}

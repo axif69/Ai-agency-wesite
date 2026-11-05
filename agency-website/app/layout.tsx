@@ -34,7 +34,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.asifdigital.agency'),
-  title: "Asif Digital | AI Automation, Web & Graphic Design Dubai & Sharjah",
+  title: "Asif Digital | AI Automation Agency Dubai & Web Solutions",
   description: "Asif Digital is a premier UAE AI automation, web & graphic design agency helping businesses automate workflows, generate leads, and scale with custom AI agents and sovereign systems.",
   manifest: '/site.webmanifest',
   icons: {

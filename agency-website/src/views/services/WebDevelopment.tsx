@@ -19,26 +19,6 @@ export default function WebDevelopment() {
   const pageLoadSec = serverStack === "legacy" ? (3.8 + (concurrentUsers * 0.003)).toFixed(1) : (0.8 + (concurrentUsers * 0.0002)).toFixed(1);
   const uptimeSLA = serverStack === "legacy" ? "98.2%" : "99.99%";
 
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "MarketingAgency",
-    "name": "Asif Digital: AI Automation, Web & Graphic Design",
-    "alternateName": "Asif Digital Custom Web Development Dubai",
-    "image": "https://www.asifdigital.agency/icon-512.png",
-    "url": "https://www.asifdigital.agency/services/web-development-dubai-uae",
-    "telephone": "+971545866094",
-    "priceRange": "AED 10,000 - AED 85,000",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Muwaileh Commercial - Industrial Area",
-      "addressLocality": "Sharjah",
-      "addressRegion": "Sharjah",
-      "addressCountry": "AE"
-    },
-    "areaServed": ["Dubai", "Sharjah", "Abu Dhabi", "United Arab Emirates", "GCC"],
-    "description": "Enterprise-grade custom web application development in Dubai and Sharjah. Specialist in Next.js, React, TypeScript, high-performance Node.js backends, secure API integrations, and UAE cloud infrastructure."
-  };
-
   const faqData = [
     {
       q: "What programming languages and frameworks does Asif Digital specialize in?",
@@ -139,8 +119,7 @@ export default function WebDevelopment() {
 
   return (
     <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
 
       {/* ── 1. Hero Section ── */}

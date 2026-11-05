@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/real-estate/ai-roi-calculator-dubai",
     "/real-estate-digital-solutions-uae",
     "/real-estate-crm-dubai",
+    "/custom-crm-development-dubai",
     "/web-design-sharjah",
     "/arabic-ai-hub",
     "/blog",
