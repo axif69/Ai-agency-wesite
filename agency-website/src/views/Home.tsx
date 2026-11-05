@@ -676,9 +676,9 @@ export default function Home() {
           {/* Top Centered Status Badge Capsule */}
           <div className="w-full flex justify-center mb-3 sm:mb-5 relative z-20">
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wide shadow-[0_0_20px_rgba(16,185,129,0.15)]"
             >
               <span className="flex h-2 w-2 relative">
@@ -696,9 +696,9 @@ export default function Home() {
             {/* Left Column: Hero Title & Value Proposition (7 cols on lg) */}
             <div className="lg:col-span-7 flex flex-col items-start text-left pr-0 lg:pr-6">
               <motion.h1
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.25 }}
+                transition={{ duration: 0.45, delay: 0.05, ease: "easeOut" }}
                 className="text-5xl sm:text-7xl md:text-8xl lg:text-[5.2vw] xl:text-[4.8vw] font-serif font-bold leading-[1.04] tracking-tight mb-5 drop-shadow-2xl"
               >
                 Websites and AI Automation, <br />
@@ -707,9 +707,9 @@ export default function Home() {
 
               {/* Clear Supporting Proposition */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.4 }}
+                transition={{ duration: 0.45, delay: 0.12, ease: "easeOut" }}
                 className="text-base sm:text-lg md:text-xl text-white/80 font-normal max-w-2xl font-sans leading-relaxed mb-7 drop-shadow-md"
               >
                 Asif Digital Agency builds conversion-focused websites, improves search visibility, and creates WhatsApp and AI automation systems that help UAE businesses manage enquiries and follow up more effectively.
@@ -717,9 +717,9 @@ export default function Home() {
 
               {/* Primary & Secondary Action Buttons */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.55 }}
+                transition={{ duration: 0.45, delay: 0.18, ease: "easeOut" }}
                 className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto mb-8"
               >
                 <MagneticButton>
@@ -746,7 +746,7 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.7 }}
+                transition={{ duration: 0.4, delay: 0.24, ease: "easeOut" }}
                 className="grid grid-cols-2 sm:grid-cols-3 gap-y-2 gap-x-4 text-xs font-mono text-white/55 pt-3 border-t border-white/10 w-full max-w-xl"
               >
                 <div className="flex items-center gap-2">
@@ -766,9 +766,9 @@ export default function Home() {
 
             {/* Right Column: Prominent, Interactive Particle Logo Canvas */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.1, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
               className="lg:col-span-5 relative flex items-center justify-end w-full min-h-[560px] sm:min-h-[660px] lg:min-h-[740px] pl-0 lg:pl-2"
             >
               <ParticleLogoCanvas

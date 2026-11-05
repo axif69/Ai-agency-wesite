@@ -14,6 +14,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMobileAccordion, setOpenMobileAccordion] = useState<string | null>(null);
+  const [dubaiTime, setDubaiTime] = useState<string>("");
+
+  useEffect(() => {
+    setDubaiTime(new Date().toLocaleTimeString("en-US", { timeZone: "Asia/Dubai", hour: "2-digit", minute: "2-digit" }));
+  }, []);
 
   const toggleAccordion = (name: string) => {
     setOpenMobileAccordion((prev) => (prev === name ? null : name));
@@ -117,7 +122,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <span className="italic">Dubai Node: DXB-PRIME</span>
           </div>
           <div className="flex items-center gap-4">
-            <span>{new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit' })} GST</span>
+            <span suppressHydrationWarning>{dubaiTime || '05:00 PM'} GST</span>
             <span className="text-white/20">|</span>
             <Link href="/contact" className="hover:text-white transition-colors">Project Intake</Link>
           </div>

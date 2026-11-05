@@ -52,9 +52,9 @@ const ParticleLogoCanvas = forwardRef<
 ) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [fps, setFps] = useState<number>(60);
-  const [activeParticles, setActiveParticles] = useState<number>(0);
-  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const fpsRef = useRef<number>(60);
+  const activeParticlesRef = useRef<number>(0);
+  const isHoveredRef = useRef<boolean>(false);
   const [reducedMotion, setReducedMotion] = useState<boolean>(false);
 
   const actionsRef = useRef<{
@@ -92,6 +92,17 @@ const ParticleLogoCanvas = forwardRef<
     let animationFrameId: number;
     let isVisible = true;
     let particles: Particle[] = [];
+    let group0: Particle[] = [];
+    let group1: Particle[] = [];
+    let group2: Particle[] = [];
+    let canvasRect = { left: 0, top: 0 };
+
+    const SHIMMER_COUNT = 512;
+    const SHIMMER_TABLE = new Float32Array(SHIMMER_COUNT);
+    for (let s = 0; s < SHIMMER_COUNT; s++) {
+      SHIMMER_TABLE[s] = Math.random() * 0.14 - 0.07;
+    }
+
     let width = 0;
     let height = 0;
     let centerX = 0;
@@ -134,7 +145,7 @@ const ParticleLogoCanvas = forwardRef<
 
     const initParticles = (isFirstInit = false) => {
       const points = getSampledPoints();
-      setActiveParticles(points.length);
+      activeParticlesRef.current = points.length;
 
       const isMobile = window.innerWidth < 768;
 
@@ -180,6 +191,10 @@ const ParticleLogoCanvas = forwardRef<
           group,
         };
       });
+
+      group0 = particles.filter((p) => p.group === 0);
+      group1 = particles.filter((p) => p.group === 1);
+      group2 = particles.filter((p) => p.group === 2);
     };
 
     actionsRef.current = {
@@ -224,6 +239,11 @@ const ParticleLogoCanvas = forwardRef<
     const handleResize = () => {
       const rect = container.getBoundingClientRect();
       width = rect.width;
+      if (canvas) {
+        const cr = canvas.getBoundingClientRect();
+        canvasRect.left = cr.left;
+        canvasRect.top = cr.top;
+      }
       height = rect.height;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -246,14 +266,22 @@ const ParticleLogoCanvas = forwardRef<
     handleResize();
     initParticles(true);
 
+    const updateRect = () => {
+      if (canvas) {
+        const cr = canvas.getBoundingClientRect();
+        canvasRect.left = cr.left;
+        canvasRect.top = cr.top;
+      }
+    };
+    window.addEventListener("scroll", updateRect, { passive: true });
+
     const resizeObserver = new ResizeObserver(() => handleResize());
     resizeObserver.observe(container);
 
     const updatePointer = (clientX: number, clientY: number) => {
-      const rect = canvas.getBoundingClientRect();
-      pointer.x = clientX - rect.left;
-      pointer.y = clientY - rect.top;
-      setIsHovered(true);
+      pointer.x = clientX - canvasRect.left;
+      pointer.y = clientY - canvasRect.top;
+      isHoveredRef.current = true;
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -269,7 +297,7 @@ const ParticleLogoCanvas = forwardRef<
     const handlePointerLeave = () => {
       pointer.x = -9999;
       pointer.y = -9999;
-      setIsHovered(false);
+      isHoveredRef.current = false;
     };
 
     container.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -300,7 +328,7 @@ const ParticleLogoCanvas = forwardRef<
 
       frameCount++;
       if (currentTime - fpsTimer >= 500) {
-        setFps(Math.round((frameCount * 1000) / (currentTime - fpsTimer)));
+        fpsRef.current = Math.round((frameCount * 1000) / (currentTime - fpsTimer));
         frameCount = 0;
         fpsTimer = currentTime;
       }
@@ -320,10 +348,6 @@ const ParticleLogoCanvas = forwardRef<
         return;
       }
 
-      const pass0: Particle[] = [];
-      const pass1: Particle[] = [];
-      const pass2: Particle[] = [];
-
       const mx = pointer.x;
       const my = pointer.y;
       const hasPointer = mx >= 0 && my >= 0;
@@ -334,7 +358,7 @@ const ParticleLogoCanvas = forwardRef<
         // 1. Direct vector celestial gravity + living restless jitter (0 sqrt calls!)
         const c = p.targetX - p.x;
         const d = p.targetY - p.y;
-        const shimmer = (Math.random() * 0.14 - 0.07);
+        const shimmer = SHIMMER_TABLE[(i + frameCount) & 511];
 
         p.vx += c * gravityK + shimmer;
         p.vy += d * gravityK + shimmer;
@@ -360,18 +384,13 @@ const ParticleLogoCanvas = forwardRef<
 
         p.x += p.vx;
         p.y += p.vy;
-
-        // Group into draw pass
-        if (p.group === 0) pass0.push(p);
-        else if (p.group === 1) pass1.push(p);
-        else pass2.push(p);
       }
 
       // ── BATCHED DRAW PASS 0: Pure Crisp White Micro-Stardust (No Outline / Border) ──
       ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
       ctx.beginPath();
-      for (let i = 0; i < pass0.length; i++) {
-        const p = pass0[i];
+      for (let i = 0; i < group0.length; i++) {
+        const p = group0[i];
         ctx.moveTo(p.x + p.radius, p.y);
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       }
@@ -380,8 +399,8 @@ const ParticleLogoCanvas = forwardRef<
       // ── BATCHED DRAW PASS 1: Soft White Stardust Depth ──
       ctx.fillStyle = "rgba(255, 255, 255, 0.55)";
       ctx.beginPath();
-      for (let i = 0; i < pass1.length; i++) {
-        const p = pass1[i];
+      for (let i = 0; i < group1.length; i++) {
+        const p = group1[i];
         ctx.moveTo(p.x + p.radius, p.y);
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       }
@@ -390,8 +409,8 @@ const ParticleLogoCanvas = forwardRef<
       // ── BATCHED DRAW PASS 2: Subtle Emerald Accent Glints (3%) ──
       ctx.fillStyle = "rgba(16, 185, 129, 0.85)";
       ctx.beginPath();
-      for (let i = 0; i < pass2.length; i++) {
-        const p = pass2[i];
+      for (let i = 0; i < group2.length; i++) {
+        const p = group2[i];
         ctx.moveTo(p.x + p.radius, p.y);
         ctx.arc(p.x, p.y, p.radius * 1.1, 0, Math.PI * 2);
       }
@@ -402,6 +421,7 @@ const ParticleLogoCanvas = forwardRef<
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("scroll", updateRect);
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       motionQuery.removeEventListener("change", checkMotion);
