@@ -192,25 +192,90 @@ export default function SovereignSalesAgent() {
     setSubmitError("");
 
     try {
-      const response = await fetch("/api/sovereign-demo", {
+      const accessKey = (process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "").trim();
+      if (!accessKey) {
+        throw new Error(
+          "Demo enquiry dispatch is currently unavailable. Please reach Asif directly via WhatsApp (+971 54 586 6094) or email hello@asifdigital.agency."
+        );
+      }
+
+      // Check honeypot if filled by automated bots
+      const formTarget = e.currentTarget as HTMLFormElement;
+      const botcheck = (formTarget.elements.namedItem("botcheck") as HTMLInputElement)?.checked;
+      if (botcheck) {
+        setSubmitSuccess(true);
+        return;
+      }
+
+      // Client-side sanitization and validation
+      const cleanName = formData.name.trim();
+      const cleanEmail = formData.email.trim();
+      const cleanCompany = formData.company.trim();
+      const cleanRole = formData.role.trim();
+      const cleanChallenge = formData.challenge.trim();
+      const cleanMessage = formData.message.trim();
+
+      if (!cleanName || !cleanEmail || !cleanCompany || !cleanRole || !cleanChallenge) {
+        throw new Error("All marked fields are required.");
+      }
+
+      if (
+        cleanName.length > 100 ||
+        cleanEmail.length > 120 ||
+        cleanCompany.length > 120 ||
+        cleanRole.length > 100 ||
+        cleanChallenge.length > 150 ||
+        cleanMessage.length > 1000
+      ) {
+        throw new Error("Submitted fields exceed permitted lengths.");
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(cleanEmail)) {
+        throw new Error("Please enter a valid business email address.");
+      }
+
+      const timestampStr =
+        new Date().toLocaleString("en-US", {
+          timeZone: "Asia/Dubai",
+          dateStyle: "medium",
+          timeStyle: "short",
+        }) + " GST";
+
+      const submissionData = new FormData();
+      submissionData.append("access_key", accessKey);
+      submissionData.append("name", cleanName);
+      submissionData.append("email", cleanEmail);
+      submissionData.append("subject", `👑 Sovereign Demo Request: ${cleanCompany} (${cleanName})`);
+      submissionData.append("from_name", "Sovereign Early Access Intake");
+      submissionData.append("Company", cleanCompany);
+      submissionData.append("Role", cleanRole);
+      submissionData.append("Primary_Challenge", cleanChallenge);
+      submissionData.append(
+        "message",
+        [
+          `Name: ${cleanName}`,
+          `Company: ${cleanCompany}`,
+          `Role: ${cleanRole}`,
+          `Email: ${cleanEmail}`,
+          `Primary Challenge: ${cleanChallenge}`,
+          `Context: ${cleanMessage || "N/A"}`,
+          `Captured At: ${timestampStr}`,
+          `Source Page: /sovereign-sales-agent`,
+        ].join("\n\n")
+      );
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          role: formData.role,
-          challenge: formData.challenge,
-          message: formData.message,
-          botcheck: "",
-        }),
+        body: submissionData,
       });
 
       const result = await response.json().catch(() => null);
       if (!response.ok || !result?.success) {
-        throw new Error(result?.error || "Submission failed");
+        throw new Error(
+          result?.message ||
+            "We could not submit your request online. Please contact Asif directly via WhatsApp (+971 54 586 6094) or email hello@asifdigital.agency."
+        );
       }
 
       trackEvent("generate_lead", {
@@ -966,6 +1031,7 @@ export default function SovereignSalesAgent() {
               </p>
 
               <form onSubmit={handleFormSubmit} className="mt-8 space-y-4">
+                <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1.5">

@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
             <li><strong>Contact Credentials:</strong> Full name, professional corporate email, phone/WhatsApp number, company name.</li>
             <li><strong>Technical Requirements:</strong> Project brief specifications, tech stack parameters, and integration preferences submitted via our audit intake tools.</li>
             <li><strong>Telemetry & Usage Data:</strong> Anonymized web interaction analytics to improve server responsiveness and UX performance across the UAE.</li>
-            <li><strong>Demonstration Enquiries & Routing:</strong> When you submit a request for a private product walkthrough or technical demonstration (such as Sovereign Sales Agent), your contact information and commercial context may be transmitted securely via HTTPS through internal sales notification gateways, including the Telegram Bot API and Web3Forms, solely for operational enquiry routing and immediate sales response.</li>
+            <li><strong>Demonstration Enquiries & Routing:</strong> When you submit a request for a private product walkthrough or technical demonstration (such as Sovereign Sales Agent), your contact details and commercial context are transmitted securely via HTTPS directly to our form-processing provider, Web3Forms, solely for automated email notification delivery to our team (hello@asifdigital.agency) and immediate commercial follow-up.</li>
           </ul>
         </section>
 
