@@ -34,13 +34,14 @@ export default function PrivacyPolicy() {
         <section className="space-y-4">
           <h2 className="text-xl md:text-2xl font-serif text-white flex items-center gap-3">
             <Lock className="w-5 h-5 text-green-400 shrink-0" />
-            2. Scope of Collected Information
+            2. Scope of Collected Information & Notification Dispatch
           </h2>
           <p>We collect only operational data necessary to scope and deliver digital and AI automation projects:</p>
           <ul className="space-y-2 list-disc list-inside text-white/70 pl-2">
             <li><strong>Contact Credentials:</strong> Full name, professional corporate email, phone/WhatsApp number, company name.</li>
             <li><strong>Technical Requirements:</strong> Project brief specifications, tech stack parameters, and integration preferences submitted via our audit intake tools.</li>
             <li><strong>Telemetry & Usage Data:</strong> Anonymized web interaction analytics to improve server responsiveness and UX performance across the UAE.</li>
+            <li><strong>Demonstration Enquiries & Routing:</strong> When you submit a request for a private product walkthrough or technical demonstration (such as Sovereign Sales Agent), your contact information and commercial context may be transmitted securely via HTTPS through internal sales notification gateways, including the Telegram Bot API and Web3Forms, solely for operational enquiry routing and immediate sales response.</li>
           </ul>
         </section>
 
