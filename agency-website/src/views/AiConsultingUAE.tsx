@@ -827,7 +827,7 @@ export default function AiConsultingUAE() {
             Architect Your Organization’s AI Strategy
           </h2>
           <p className="text-white/60 font-light text-base md:text-lg mb-10 leading-relaxed">
-            Discuss your enterprise systems, data architecture, and workflow requirements with our technical team in Dubai. We evaluate feasibility, infrastructure costs, and ROI before you commit capital.
+            Discuss your enterprise systems, data architecture, and workflow requirements with our technical team in Dubai and our <Link href="/ai-automation-abu-dhabi" className="text-emerald-400 hover:underline">AI automation services for businesses in Abu Dhabi</Link>. We evaluate feasibility, infrastructure costs, and ROI before you commit capital.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
@@ -855,6 +855,10 @@ export default function AiConsultingUAE() {
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/70">
             <Link href="/ai-consulting-uae" className="hover:text-white transition-colors text-white font-medium underline underline-offset-4">
               AI Consulting UAE
+            </Link>
+            <span className="text-white/20">•</span>
+            <Link href="/ai-automation-abu-dhabi" className="hover:text-white transition-colors">
+              AI Automation Abu Dhabi
             </Link>
             <span className="text-white/20">•</span>
             <Link href="/workflow-automation-uae" className="hover:text-white transition-colors">

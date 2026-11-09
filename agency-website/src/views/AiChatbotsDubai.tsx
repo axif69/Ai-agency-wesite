@@ -669,7 +669,7 @@ export default function AiChatbotsDubai() {
             Automate Your Customer Conversations.
           </h2>
           <p className="text-white/70 font-light text-base leading-relaxed">
-            Eliminate enquiry response delay, automate routine qualification, and synchronize WhatsApp communications with your CRM 24/7.
+            Eliminate enquiry response delay, automate routine qualification, and synchronize WhatsApp communications with your CRM 24/7. For technical setup steps and Meta verification requirements, consult our <Link href="/blog/whatsapp-chatbot-dubai-guide-2026" className="text-emerald-400 underline hover:text-emerald-300">2026 WhatsApp Chatbot Dubai Implementation Guide</Link>.
           </p>
           <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
             <Link
@@ -704,6 +704,8 @@ export default function AiChatbotsDubai() {
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/70">
             <Link href="/services/whatsapp-automation-gcc" className="hover:text-white transition-colors text-emerald-400 font-medium">WhatsApp Automation GCC</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/blog/whatsapp-chatbot-dubai-guide-2026" className="hover:text-white transition-colors">WhatsApp Chatbot Dubai Guide</Link>
             <span className="text-white/20">•</span>
             <Link href="/real-estate/whatsapp-ai-automation" className="hover:text-white transition-colors">Real Estate WhatsApp AI</Link>
             <span className="text-white/20">•</span>

@@ -545,7 +545,7 @@ export default function AiMarketingDubai() {
             href="/ai-lead-generation-agency-dubai"
             className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-emerald-400 text-black text-xs uppercase tracking-wider font-bold hover:bg-emerald-300 transition-colors"
           >
-            Explore AI Lead Generation <ArrowRight className="w-3.5 h-3.5" />
+            Explore AI Lead Generation &amp; B2B Sales Automation <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </section>

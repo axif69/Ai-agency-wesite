@@ -103,6 +103,14 @@ const categories: ServiceCategory[] = [
         ctaText: "Explore Automation Agency"
       },
       {
+        title: "Workflow Automation UAE",
+        desc: "Connect legacy databases, ERPs, and cloud applications into reliable event-driven pipelines with human approval checkpoints for UAE enterprises.",
+        features: ["Cross-System API Sync", "Automated Intake Pipelines", "Human Approval Gates", "Audit Logging"],
+        link: "/workflow-automation-uae",
+        icon: <Workflow className="w-8 h-8" />,
+        ctaText: "Explore Workflow Automation"
+      },
+      {
         title: "B2B Sales Outreach Workflow",
         desc: "Structured B2B research and outreach preparation that helps sales teams identify relevant UAE companies and draft tailored outreach with human review.",
         features: ["Company Research", "Decision-Maker Signals", "Human Review Queue", "Outreach Drafting"],

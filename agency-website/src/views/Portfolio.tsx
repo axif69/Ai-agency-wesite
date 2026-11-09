@@ -160,6 +160,28 @@ export default function Portfolio() {
         </motion.div>
       </section>
 
+      {/* Verified Core Delivery Areas */}
+      <section className="px-6 md:px-12 pb-24 max-w-7xl mx-auto border-t border-white/5 pt-16">
+        <div className="max-w-4xl">
+          <span className="text-xs font-mono uppercase tracking-wider text-emerald-400 block mb-3 font-semibold">Core Delivery Areas</span>
+          <h2 className="text-2xl md:text-3xl font-serif text-white mb-6">How Our Deployments Are Structured</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-white/70 text-sm leading-relaxed">
+            <div>
+              <h3 className="text-white font-medium mb-2 text-base">Inbound CRM &amp; Lead Routing</h3>
+              <p>
+                Connecting digital ad campaigns directly to WhatsApp routing, webhook listeners for property portals (Bayut and Property Finder), and speed-to-lead distribution for commercial sales teams.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-white font-medium mb-2 text-base">B2B Workflow Automation</h3>
+              <p>
+                Eliminating manual data transfer across spreadsheets and CRMs, connecting business workflow automations, and setting up compliance tracking for UAE commercial licenses and corporate documents.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Global Results Banner */}
       <section className="px-6 md:px-12 py-32 bg-[#0066FF] text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
