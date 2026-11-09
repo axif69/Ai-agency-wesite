@@ -5659,12 +5659,12 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Asif Khan",
     category: "Innovation",
     content: `
-      <p>The UAE freight forwarding sector operates at the center of global trade. Between container movements at Jebel Ali Port, transshipment at Khalifa Port, and air cargo via DXB and DWC, UAE logistics providers manage heavy shipping volumes daily. Yet commercial freight desks spend hours copying data between WhatsApp chats, emails, PDF packing lists, and transport management systems (TMS).</p>
+      <p>The UAE freight forwarding sector operates at the center of global trade. Across container movements at Jebel Ali Port, transshipment at Khalifa Port, and air cargo via DXB and DWC, UAE logistics providers manage heavy shipping volumes. Yet commercial freight desks spend hours copying data between WhatsApp chats, emails, PDF packing lists, and transport management systems (TMS).</p>
 
       <p>Implementing <strong>AI in logistics</strong> and <strong>logistics automation in the UAE</strong> does not mean replacing freight brokers, dispatchers, or licensed customs brokers. Instead, it reduces operational friction: capturing inquiries faster, extracting parameters cleanly, preparing quotation drafts for human approval, and keeping shippers proactively informed.</p>
 
       <h2>Why Manual Freight Workflows Create Bottlenecks</h2>
-      <p>In freight forwarding, speed-to-quote significantly influences win rates. Shippers rarely message one provider; they reach out across email and WhatsApp. Returning an accurate rate package promptly improves the likelihood of securing the cargo booking.</p>
+      <p>In freight forwarding, speed-to-quote influences win rates. Shippers rarely message one provider; they reach out across email and WhatsApp. Returning an accurate rate package promptly improves the likelihood of securing the cargo booking.</p>
 
       <p>Under manual operations, teams face persistent bottlenecks:</p>
       <ul>
@@ -5675,11 +5675,11 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Automated Freight Inquiry Intake Across Email and WhatsApp</h2>
-      <p>The first tier of <strong>freight forwarding automation</strong> begins at initial customer contact. In the UAE, WhatsApp is a primary commercial channel where traders, manufacturers, and shippers expect immediate rate indications.</p>
+      <p>The first tier of <strong>freight forwarding automation</strong> begins at initial customer contact. In the UAE, WhatsApp is a commonly used business communication channel where many B2B traders, manufacturers, and shippers expect prompt rate indications.</p>
 
       <p>Automated intake bridges conversational channels and back-office systems. By deploying webhook listeners connected to available messaging gateway options (such as the Meta Cloud API) and email pipelines, an intake workflow can continuously monitor inbound requests.</p>
 
-      <p>When an inquiry arrives, natural language processing identifies intent—separating quote requests, bookings, document submissions, and tracking inquiries. Each inquiry is acknowledged immediately, converted into an internal ticket, and routed to the pricing desk.</p>
+      <p>When an inquiry arrives, natural language processing identifies intent—separating quote requests, bookings, document submissions, and tracking inquiries. Each inquiry is acknowledged, converted into an internal ticket, and routed to the pricing desk.</p>
 
       <h2>Extracting and Structuring Complex Shipment Parameters</h2>
       <p>Inbound cargo requests arrive in varied formats. A shipper might email: <em>"Need 2x40HC from Jebel Ali to Rotterdam, ready next Tuesday, general electronics, 18 tonnes."</em> Another may attach a multi-page PDF packing list.</p>
