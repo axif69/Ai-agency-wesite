@@ -5664,7 +5664,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Implementing <strong>AI in logistics</strong> and <strong>logistics automation in the UAE</strong> does not mean replacing freight brokers, dispatchers, or licensed customs brokers. Instead, it reduces operational friction: capturing inquiries faster, extracting parameters cleanly, preparing quotation drafts for human approval, and keeping shippers proactively informed.</p>
 
       <h2>Why Manual Freight Workflows Create Bottlenecks</h2>
-      <p>In freight forwarding, speed-to-quote can significantly influence win rates. Shippers rarely message one provider; they reach out to multiple forwarders across email and WhatsApp. Returning an accurate rate package promptly improves the likelihood of securing the cargo booking.</p>
+      <p>In freight forwarding, speed-to-quote significantly influences win rates. Shippers rarely message one provider; they reach out across email and WhatsApp. Returning an accurate rate package promptly improves the likelihood of securing the cargo booking.</p>
 
       <p>Under manual operations, teams face persistent bottlenecks:</p>
       <ul>
@@ -5704,7 +5704,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Collecting missing parameters upfront ensures that when a pricing broker reviews the file, all necessary quoting variables are already assembled.</p>
 
       <h2>Freight Quotation Automation: Preserving Human Approval and Margin Control</h2>
-      <p>A common misconception in <strong>freight quotation automation</strong> is that AI should independently issue binding rates to shippers. In commercial logistics, autonomous rate commitments carry major financial risks:</p>
+      <p>A misconception in <strong>freight quotation automation</strong> is that AI should independently issue binding rates to shippers. In commercial logistics, autonomous rate commitments carry major financial risks:</p>
       <ul>
         <li>Carrier spot rates and bunker adjustment factors (BAF) fluctuate rapidly.</li>
         <li>Local port handling tariffs, storage rates, and customs inspection fees vary across UAE free zones and mainland jurisdictions.</li>
@@ -5726,14 +5726,14 @@ export const BLOG_POSTS: BlogPost[] = [
         <li><strong>Customs Status:</strong> Confirming customs clearance progression and final delivery scheduling.</li>
       </ul>
 
-      <p>Proactive status updates reduce inbound tickets while freeing staff to manage active freight movements.</p>
+      <p>Proactive status updates reduce inbound tickets, freeing staff to manage active freight.</p>
 
       <h2>Exception Handling: Escalating Disruptions to Human Operators</h2>
       <p>Logistics inevitably involves exceptions: customs holds, inspection delays, transshipment rollovers, or document discrepancies. Systems must be engineered to detect exceptions and handle them responsibly.</p>
 
       <p>Rather than attempting autonomous resolutions for complex operational problems, exception workflows identify anomalies and escalate them to experienced operators. For example, if customs release is not recorded within a specified window after discharge, the system flags the issue, compiles documentation, and alerts the customs clearing agent.</p>
 
-      <p>Automating detection and context assembly enables forwarders to intervene early, preventing costly port demurrage and detention charges.</p>
+      <p>Automating detection and context assembly enables forwarders to intervene early, helping teams respond sooner and manage the risk of additional port demurrage or detention charges.</p>
 
       <h2>A Realistic End-to-End Automated Freight Workflow</h2>
       <p>To illustrate how these components can function together in practice, consider this illustrative workflow scenario representing an inquiry processed by a UAE freight forwarder:</p>
