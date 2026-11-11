@@ -83,8 +83,12 @@ const ParticleLogoCanvas = forwardRef<
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    // Bird.ae-style 2D ImageData pixel-buffer renderer at 1x CSS resolution:
-    // eliminates WebGL context switches, shader stalls, SkPath overhead, and HiDPI buffer bloat
+    // Bird.ae exact technique:
+    // - 1x CSS pixel canvas (no devicePixelRatio scaling)
+    // - Pre-allocated ImageData + Uint32Array (reused every frame, never reallocated)
+    // - Full buf.fill(0) + full putImageData(imageData, 0, 0) every frame — no dirty rect
+    // - setTimeout(callback, 15) + rAF combo for ~60fps frame pacing (not uncapped vsync)
+    // - No translateZ(0) on canvas (bird.ae does NOT use GPU layer promotion)
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
@@ -94,12 +98,9 @@ const ParticleLogoCanvas = forwardRef<
     const colSoft = packRgba32(255, 255, 255, 140, isLittleEndian);
     const colEmerald = packRgba32(16, 185, 129, 217, isLittleEndian);
 
+    // Single pre-allocated ImageData — reused every frame like bird.ae
     let frameImageData: ImageData | null = null;
     let frameBuf32: Uint32Array | null = null;
-    let prevDirtyY0 = 0;
-    let prevDirtyY1 = -1;
-    let prevDirtyX0 = 0;
-    let prevDirtyX1 = -1;
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const checkMotion = () => setReducedMotion(motionQuery.matches);
@@ -107,6 +108,7 @@ const ParticleLogoCanvas = forwardRef<
     motionQuery.addEventListener("change", checkMotion);
 
     let animationFrameId = 0;
+    let timeoutId = 0;
     let isVisible = true;
     let particleCount = 0;
 
@@ -131,7 +133,7 @@ const ParticleLogoCanvas = forwardRef<
     let lastHeight = 0;
     let initialized = false;
 
-    // Micro-Particle High-Sensitivity Physics Configuration
+    // Physics configuration — matching bird.ae sensitivity
     const mouseForce = 13000;
     const maxReach = 170;
     const maxReachSq = maxReach * maxReach;
@@ -148,7 +150,6 @@ const ParticleLogoCanvas = forwardRef<
     let tickCount = 0;
     let fpsFrames = 0;
     let fpsTimer = performance.now();
-    let lastStepTime = performance.now();
 
     const getSampledPoints = (): PointTuple[] => {
       const isMobile = window.innerWidth < 768;
@@ -166,25 +167,16 @@ const ParticleLogoCanvas = forwardRef<
       return sampled;
     };
 
+    // Bird.ae exact draw: full buf.fill(0) + full putImageData(imageData, 0, 0)
+    // No dirty-rect tracking, no partial uploads — simpler and more predictable
     const drawPixelBuffer = (coords: Float32Array) => {
       if (!frameImageData || !frameBuf32 || width <= 0 || height <= 0) return;
       const buf = frameBuf32;
       const w = width;
       const h = height;
 
-      // Clear only the previous frame's active vertical span instead of the full canvas buffer
-      if (prevDirtyY1 >= prevDirtyY0 && prevDirtyY0 < h) {
-        const clearStart = Math.max(0, prevDirtyY0) * w;
-        const clearEnd = Math.min(h, prevDirtyY1 + 1) * w;
-        buf.fill(0, clearStart, clearEnd);
-      } else {
-        buf.fill(0);
-      }
-
-      let curX0 = w;
-      let curY0 = h;
-      let curX1 = -1;
-      let curY1 = -1;
+      // Clear entire buffer — same as bird.ae's fresh createImageData every frame
+      buf.fill(0);
 
       for (let i = 0; i < particleCount; i++) {
         const i2 = i * 2;
@@ -192,32 +184,11 @@ const ParticleLogoCanvas = forwardRef<
         const iy = (coords[i2 + 1] + 0.5) | 0;
         if (ix >= 0 && iy >= 0 && ix < w && iy < h) {
           buf[iy * w + ix] = color32[i];
-          if (ix < curX0) curX0 = ix;
-          if (ix > curX1) curX1 = ix;
-          if (iy < curY0) curY0 = iy;
-          if (iy > curY1) curY1 = iy;
         }
       }
 
-      // Upload only the union of previous and current active bounds to SharedImage
-      const dirtyX0 = prevDirtyX1 >= prevDirtyX0 ? Math.min(prevDirtyX0, curX0) : curX0;
-      const dirtyY0 = prevDirtyY1 >= prevDirtyY0 ? Math.min(prevDirtyY0, curY0) : curY0;
-      const dirtyX1 = prevDirtyX1 >= prevDirtyX0 ? Math.max(prevDirtyX1, curX1) : curX1;
-      const dirtyY1 = prevDirtyY1 >= prevDirtyY0 ? Math.max(prevDirtyY1, curY1) : curY1;
-
-      const uX0 = Math.max(0, dirtyX0);
-      const uY0 = Math.max(0, dirtyY0);
-      const uX1 = Math.min(w - 1, dirtyX1);
-      const uY1 = Math.min(h - 1, dirtyY1);
-
-      if (uX1 >= uX0 && uY1 >= uY0) {
-        ctx.putImageData(frameImageData, 0, 0, uX0, uY0, uX1 - uX0 + 1, uY1 - uY0 + 1);
-      }
-
-      prevDirtyX0 = curX0;
-      prevDirtyY0 = curY0;
-      prevDirtyX1 = curX1;
-      prevDirtyY1 = curY1;
+      // Full upload — no partial rect, matches bird.ae putImageData(b, 0, 0)
+      ctx.putImageData(frameImageData, 0, 0);
     };
 
     const initParticles = (isFirstInit = false) => {
@@ -337,16 +308,13 @@ const ParticleLogoCanvas = forwardRef<
       width = nextWidth;
       height = nextHeight;
 
-      // 1x CSS pixel buffer matching Bird.ae's ParticleSlider (ptlSize = 1)
+      // 1x CSS pixel buffer — matches bird.ae's ptlSize=1 single-pixel particle resolution
       canvas.width = width;
       canvas.height = height;
 
+      // Allocate once and reuse — better than bird.ae's fresh createImageData every frame
       frameImageData = ctx.createImageData(width, height);
       frameBuf32 = new Uint32Array(frameImageData.data.buffer);
-      prevDirtyX0 = 0;
-      prevDirtyY0 = 0;
-      prevDirtyX1 = width - 1;
-      prevDirtyY1 = height - 1;
 
       const isDesktop = width >= 768;
       centerX = isDesktop ? width * 0.58 : width * 0.5;
@@ -395,11 +363,7 @@ const ParticleLogoCanvas = forwardRef<
     const intersectionObserver = new IntersectionObserver(
       (entries) => {
         for (let i = 0; i < entries.length; i++) {
-          const nextVisible = entries[i].isIntersecting;
-          if (nextVisible && !isVisible) {
-            lastStepTime = performance.now();
-          }
-          isVisible = nextVisible;
+          isVisible = entries[i].isIntersecting;
         }
       },
       { threshold: 0.01 }
@@ -407,32 +371,29 @@ const ParticleLogoCanvas = forwardRef<
     intersectionObserver.observe(container);
 
     const handleVisibilityChange = () => {
-      const nextVisible = document.visibilityState === "visible";
-      if (nextVisible && !isVisible) {
-        lastStepTime = performance.now();
-      }
-      isVisible = nextVisible;
+      isVisible = document.visibilityState === "visible";
     };
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    const animate = (currentTime: number) => {
-      animationFrameId = requestAnimationFrame(animate);
+    // Bird.ae exact frame loop: setTimeout(15) + rAF
+    // This caps at ~60fps via the 15ms timeout gate, preventing uncapped vsync thrash
+    // while still syncing each actual draw to the browser's compositing cycle via rAF.
+    // This is the key technique that makes bird.ae smooth on all hardware.
+    const step = () => {
+      if (!isVisible || particleCount === 0) {
+        scheduleNext();
+        return;
+      }
 
-      if (!isVisible || particleCount === 0) return;
-
-      const rawDt = currentTime - lastStepTime;
-      lastStepTime = currentTime;
-      // Render on every native vsync without skipping frames; normalize physics smoothly across 60Hz–240Hz
-      const dtScale =
-        rawDt > 0 ? Math.min(Math.max(rawDt / 16.66667, 0.2), 1.5) : 1;
+      const now = performance.now();
+      fpsFrames++;
+      if (now - fpsTimer >= 500) {
+        fpsRef.current = Math.round((fpsFrames * 1000) / (now - fpsTimer));
+        fpsFrames = 0;
+        fpsTimer = now;
+      }
 
       tickCount++;
-      fpsFrames++;
-      if (currentTime - fpsTimer >= 500) {
-        fpsRef.current = Math.round((fpsFrames * 1000) / (currentTime - fpsTimer));
-        fpsFrames = 0;
-        fpsTimer = currentTime;
-      }
 
       if (!motionQuery.matches) {
         const mx = pointer.x;
@@ -444,9 +405,10 @@ const ParticleLogoCanvas = forwardRef<
           my >= -maxReach &&
           my <= height + maxReach;
 
-        const gStep = gravityK * dtScale;
-        const dampStep = Math.pow(baseDamping, dtScale);
-        const fStep = dtScale;
+        // Fixed dtScale of 1.0 — bird.ae uses fixed physics step, not variable dt
+        // The setTimeout(15) gate ensures consistent ~16ms intervals
+        const gStep = gravityK;
+        const dampStep = baseDamping;
         const shimmerBase = tickCount;
 
         for (let i = 0; i < particleCount; i++) {
@@ -456,8 +418,8 @@ const ParticleLogoCanvas = forwardRef<
 
           const dx = targetXY[i2] - px;
           const dy = targetXY[i2 + 1] - py;
-          const shimmerX = SHIMMER_TABLE[(i + shimmerBase) & 511] * fStep;
-          const shimmerY = SHIMMER_TABLE[(i * 7 + shimmerBase + 137) & 511] * fStep;
+          const shimmerX = SHIMMER_TABLE[(i + shimmerBase) & 511];
+          const shimmerY = SHIMMER_TABLE[(i * 7 + shimmerBase + 137) & 511];
 
           let vx = velXY[i2] + dx * gStep + shimmerX;
           let vy = velXY[i2 + 1] + dy * gStep + shimmerY;
@@ -469,8 +431,7 @@ const ParticleLogoCanvas = forwardRef<
 
             if (distSq < maxReachSq) {
               const dist = Math.sqrt(distSq) || 1;
-              const shatterForce =
-                Math.min(mouseForce / (distSq + softDist), 105) * fStep;
+              const shatterForce = Math.min(mouseForce / (distSq + softDist), 105);
               const invDist = 1 / dist;
               vx += shatterForce * rx * invDist;
               vy += shatterForce * ry * invDist;
@@ -482,18 +443,29 @@ const ParticleLogoCanvas = forwardRef<
 
           velXY[i2] = vx;
           velXY[i2 + 1] = vy;
-          posXY[i2] = px + vx * fStep;
-          posXY[i2 + 1] = py + vy * fStep;
+          posXY[i2] = px + vx;
+          posXY[i2 + 1] = py + vy;
         }
       }
 
       drawPixelBuffer(motionQuery.matches ? targetXY : posXY);
+      scheduleNext();
     };
 
-    animationFrameId = requestAnimationFrame(animate);
+    const scheduleNext = () => {
+      // Bird.ae exact pattern: setTimeout(rAF, 15) — rate-limits to ~60fps
+      // while ensuring each draw is synced to the display's vsync via rAF
+      timeoutId = window.setTimeout(() => {
+        animationFrameId = requestAnimationFrame(step);
+      }, 15);
+    };
+
+    // Start the loop
+    scheduleNext();
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      clearTimeout(timeoutId);
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       motionQuery.removeEventListener("change", checkMotion);
@@ -513,9 +485,9 @@ const ParticleLogoCanvas = forwardRef<
       className={`relative w-full h-full min-h-[560px] sm:min-h-[660px] lg:min-h-[740px] flex items-center justify-center select-none ${className}`}
       aria-label="Interactive micro-particle animation of Asif Digital AD logo"
     >
+      {/* No translateZ(0) — bird.ae does NOT use GPU layer promotion on canvas */}
       <canvas
         ref={canvasRef}
-        style={{ transform: "translateZ(0)" }}
         className="w-full h-full block cursor-crosshair touch-none"
       />
 
