@@ -489,6 +489,14 @@ export default function WebDevelopment() {
               <PhoneCall className="w-4 h-4 text-green-400" /> WhatsApp +971 54 586 6094
             </a>
           </div>
+          <div className="pt-8 border-t border-white/5">
+            <p className="text-xs text-white/50 font-mono">
+              Launching an online retail or direct-to-consumer store? Explore our dedicated{" "}
+              <Link href="/services/ecommerce-website-development-dubai" className="text-emerald-400 hover:underline">
+                E-Commerce Website Development in Dubai &rarr;
+              </Link>
+            </p>
+          </div>
         </div>
       </section>
     </div>

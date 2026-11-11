@@ -369,10 +369,10 @@ export default function AiSeoAgencyDubai() {
             Scope &amp; Deliverables
           </span>
           <h2 className="text-3xl md:text-5xl font-serif tracking-tight mb-4">
-            What is Included in an AI SEO Engagement?
+            AI SEO Services in Dubai: Core Technical &amp; On-Page Scope
           </h2>
           <p className="text-white/60 font-light text-base leading-relaxed">
-            We provide a structured, transparent process with clear technical deliverables rather than vague monthly retainer hours:
+            In addition to preparing your brand for answer engines and AI overviews, our AI SEO services implement concrete technical, schema, and on-page deliverables designed for competitive UAE commercial sectors:
           </p>
         </div>
 
@@ -416,6 +416,15 @@ export default function AiSeoAgencyDubai() {
               We track Google Search Console impression velocity, click-through rates, ranking trends, and qualified inbound inquiries with transparent monthly review sessions.
             </p>
           </div>
+        </div>
+
+        <div className="mt-8 text-center border-t border-white/5 pt-6">
+          <p className="text-xs text-white/60 font-mono">
+            Looking for foundational search marketing or localized multi-emirate campaigns? Explore our dedicated{" "}
+            <Link href="/services/seo-agency-dubai-sharjah-uae" className="text-emerald-400 hover:underline">
+              SEO Agency Dubai &amp; Sharjah Service Hub &rarr;
+            </Link>
+          </p>
         </div>
       </section>
 

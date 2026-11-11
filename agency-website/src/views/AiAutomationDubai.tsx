@@ -141,7 +141,7 @@ export default function AiAutomationDubai() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="https://wa.me/971545866094"
+              href="https://wa.me/971545866094?text=Hello%20Asif%20Digital%20team,%20we%20would%20like%20to%20discuss%20an%20AI%20automation%20project%20for%20our%20operations."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/15 bg-white/[0.04] text-white hover:bg-white/10 transition text-sm font-medium"
@@ -409,6 +409,15 @@ export default function AiAutomationDubai() {
               <div className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-cyan-400" /> Discrepancy &amp; confidence score flags</div>
               <div className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-cyan-400" /> Clear rollback &amp; audit event logs</div>
             </div>
+          </div>
+
+          <div className="mt-8 text-center border-t border-white/5 pt-6">
+            <p className="text-xs text-white/60 font-mono">
+              Review detailed enterprise workflow architectures in our technical breakdown:{" "}
+              <Link href="/blog/dubai-businesses-ai-automation-workflows-2026" className="text-emerald-400 hover:underline">
+                Dubai Business AI Automation Workflows (2026 Guide) &rarr;
+              </Link>
+            </p>
           </div>
         </div>
       </section>
@@ -889,7 +898,7 @@ export default function AiAutomationDubai() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="https://wa.me/971545866094"
+              href="https://wa.me/971545866094?text=Hello%20Asif%20Digital%20team,%20we%20would%20like%20to%20discuss%20an%20AI%20automation%20project%20for%20our%20operations."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/15 bg-white/[0.04] text-white hover:bg-white/10 transition text-sm font-medium"

@@ -222,14 +222,14 @@ export default function RealEstateDigitalSolutionsUAE() {
               Looking specifically for Real Estate CRM &amp; Speed-to-Lead?
             </h2>
             <p className="text-[15px] text-white/75 leading-[1.7] font-light">
-              While our digital solutions engineer your custom websites, portal feeds, and listing architecture, sales pipeline automation, agent round-robin routing, and WhatsApp instant qualification are managed by our specialized Dubai Real Estate CRM setup.
+              While this page covers custom brokerage web engineering and automated portal feeds, dedicated sales pipeline automation, agent round-robin lead routing, and instant WhatsApp qualification are architected within our specialized CRM deployment.
             </p>
           </div>
           <Link
             href="/real-estate-crm-dubai"
             className="shrink-0 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-emerald-400 text-black font-bold uppercase tracking-widest text-xs hover:bg-emerald-300 transition-colors shadow-lg"
           >
-            Explore Real Estate CRM <ArrowRight className="w-4 h-4" />
+            Explore Dedicated Real Estate CRM Dubai Architecture <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>
@@ -372,7 +372,7 @@ export default function RealEstateDigitalSolutionsUAE() {
             Technical Clarity for UAE Brokerages
           </span>
           <h2 className="text-2xl md:text-4xl font-serif">
-            Demarcating Brokerage Technology, Portal Feeds &amp; Sales CRM
+            Demarcating Brokerage Web Infrastructure, Portal Feeds &amp; Downstream CRM
           </h2>
           <p className="text-white/60 font-light max-w-3xl mx-auto mt-3 text-sm">
             Evaluating a real estate technical partner requires a transparent understanding of where your website ends, where property portals operate, and where CRM pipelines take over:

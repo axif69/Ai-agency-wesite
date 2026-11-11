@@ -290,7 +290,7 @@ export default function RealEstateCrmDubai() {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-12">
             <span className="text-[12px] font-mono uppercase tracking-widest text-emerald-400 font-bold block mb-3">End-to-End Pipeline</span>
-            <h2 className="text-3xl md:text-5xl font-serif tracking-tight">The Complete Dubai Agency CRM Architecture</h2>
+            <h2 className="text-3xl md:text-5xl font-serif tracking-tight">The Complete Dubai Real Estate CRM &amp; Lead Management Architecture</h2>
             <p className="mt-4 text-white/70 text-base leading-relaxed">
               From the millisecond an inquiry arrives on a property portal to the final commission settlement at the DLD Trustee office.
             </p>
