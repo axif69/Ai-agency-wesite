@@ -96,6 +96,10 @@ const ParticleLogoCanvas = forwardRef<
 
     let frameImageData: ImageData | null = null;
     let frameBuf32: Uint32Array | null = null;
+    let prevDirtyY0 = 0;
+    let prevDirtyY1 = -1;
+    let prevDirtyX0 = 0;
+    let prevDirtyX1 = -1;
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const checkMotion = () => setReducedMotion(motionQuery.matches);
@@ -168,18 +172,52 @@ const ParticleLogoCanvas = forwardRef<
       const w = width;
       const h = height;
 
-      buf.fill(0);
+      // Clear only the previous frame's active vertical span instead of the full canvas buffer
+      if (prevDirtyY1 >= prevDirtyY0 && prevDirtyY0 < h) {
+        const clearStart = Math.max(0, prevDirtyY0) * w;
+        const clearEnd = Math.min(h, prevDirtyY1 + 1) * w;
+        buf.fill(0, clearStart, clearEnd);
+      } else {
+        buf.fill(0);
+      }
+
+      let curX0 = w;
+      let curY0 = h;
+      let curX1 = -1;
+      let curY1 = -1;
 
       for (let i = 0; i < particleCount; i++) {
         const i2 = i * 2;
-        const ix = coords[i2] | 0;
-        const iy = coords[i2 + 1] | 0;
+        const ix = (coords[i2] + 0.5) | 0;
+        const iy = (coords[i2 + 1] + 0.5) | 0;
         if (ix >= 0 && iy >= 0 && ix < w && iy < h) {
           buf[iy * w + ix] = color32[i];
+          if (ix < curX0) curX0 = ix;
+          if (ix > curX1) curX1 = ix;
+          if (iy < curY0) curY0 = iy;
+          if (iy > curY1) curY1 = iy;
         }
       }
 
-      ctx.putImageData(frameImageData, 0, 0);
+      // Upload only the union of previous and current active bounds to SharedImage
+      const dirtyX0 = prevDirtyX1 >= prevDirtyX0 ? Math.min(prevDirtyX0, curX0) : curX0;
+      const dirtyY0 = prevDirtyY1 >= prevDirtyY0 ? Math.min(prevDirtyY0, curY0) : curY0;
+      const dirtyX1 = prevDirtyX1 >= prevDirtyX0 ? Math.max(prevDirtyX1, curX1) : curX1;
+      const dirtyY1 = prevDirtyY1 >= prevDirtyY0 ? Math.max(prevDirtyY1, curY1) : curY1;
+
+      const uX0 = Math.max(0, dirtyX0);
+      const uY0 = Math.max(0, dirtyY0);
+      const uX1 = Math.min(w - 1, dirtyX1);
+      const uY1 = Math.min(h - 1, dirtyY1);
+
+      if (uX1 >= uX0 && uY1 >= uY0) {
+        ctx.putImageData(frameImageData, 0, 0, uX0, uY0, uX1 - uX0 + 1, uY1 - uY0 + 1);
+      }
+
+      prevDirtyX0 = curX0;
+      prevDirtyY0 = curY0;
+      prevDirtyX1 = curX1;
+      prevDirtyY1 = curY1;
     };
 
     const initParticles = (isFirstInit = false) => {
@@ -305,6 +343,10 @@ const ParticleLogoCanvas = forwardRef<
 
       frameImageData = ctx.createImageData(width, height);
       frameBuf32 = new Uint32Array(frameImageData.data.buffer);
+      prevDirtyX0 = 0;
+      prevDirtyY0 = 0;
+      prevDirtyX1 = width - 1;
+      prevDirtyY1 = height - 1;
 
       const isDesktop = width >= 768;
       centerX = isDesktop ? width * 0.58 : width * 0.5;
@@ -379,11 +421,10 @@ const ParticleLogoCanvas = forwardRef<
       if (!isVisible || particleCount === 0) return;
 
       const rawDt = currentTime - lastStepTime;
-      // Cap active updates to ~60Hz (like Bird.ae's 15ms loop gate) so 120Hz–240Hz displays don't flood input/compositing
-      if (rawDt < 12.5) return;
-
       lastStepTime = currentTime;
-      const dtScale = Math.min(Math.max(rawDt / 16.66667, 0.75), 1.6);
+      // Render on every native vsync without skipping frames; normalize physics smoothly across 60Hz–240Hz
+      const dtScale =
+        rawDt > 0 ? Math.min(Math.max(rawDt / 16.66667, 0.2), 1.5) : 1;
 
       tickCount++;
       fpsFrames++;
@@ -415,10 +456,11 @@ const ParticleLogoCanvas = forwardRef<
 
           const dx = targetXY[i2] - px;
           const dy = targetXY[i2 + 1] - py;
-          const shimmer = SHIMMER_TABLE[(i + shimmerBase) & 511] * fStep;
+          const shimmerX = SHIMMER_TABLE[(i + shimmerBase) & 511] * fStep;
+          const shimmerY = SHIMMER_TABLE[(i * 7 + shimmerBase + 137) & 511] * fStep;
 
-          let vx = velXY[i2] + dx * gStep + shimmer;
-          let vy = velXY[i2 + 1] + dy * gStep + shimmer;
+          let vx = velXY[i2] + dx * gStep + shimmerX;
+          let vy = velXY[i2 + 1] + dy * gStep + shimmerY;
 
           if (hasPointer) {
             const rx = px - mx;
@@ -473,6 +515,7 @@ const ParticleLogoCanvas = forwardRef<
     >
       <canvas
         ref={canvasRef}
+        style={{ transform: "translateZ(0)" }}
         className="w-full h-full block cursor-crosshair touch-none"
       />
 
