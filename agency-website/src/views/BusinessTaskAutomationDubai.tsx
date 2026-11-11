@@ -166,7 +166,9 @@ export default function BusinessTaskAutomationDubai() {
   const payrollValueSaved = Math.round(hoursSavedAnnual * hourlyRate);
 
   const handleCTA = (ctaText: string, ctaLocation: string, type: "whatsapp" | "consultation") => {
-    trackEvent(type === "whatsapp" ? "whatsapp_click" : "consultation_click", {
+    // Anchor wa.me/whatsapp.com clicks are tracked globally in app/layout.tsx
+    if (type === "whatsapp") return;
+    trackEvent("consultation_click", {
       service_name: "Business Task Automation Dubai",
       cta_location: ctaLocation,
       cta_text: ctaText

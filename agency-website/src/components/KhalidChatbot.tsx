@@ -331,13 +331,28 @@ export default function KhalidChatbot() {
       
       const phoneNumber = "971545866094";
       const text = encodeURIComponent(`*New Strategic Lead Summary*\n\n${summary}\n\n*Direct Contact:* ${leadData.contact || 'Provided in chat'}`);
-      window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
+      // Track non-anchor window.open WhatsApp handoff (not captured by global <a> listener in layout.tsx)
+      trackEvent("whatsapp_click", {
+        cta_location: "khalid_chatbot",
+        cta_text: "Forward to WhatsApp",
+        link_url: `https://wa.me/${phoneNumber}`,
+        page_path: window.location.pathname
+      });
+      window.open(whatsappUrl, '_blank');
     } catch (error) {
       console.error("Summary Generation Error:", error);
       const phoneNumber = "971545866094";
       const history = messages.map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`).join('\n');
       const text = encodeURIComponent(`Hi Khalfan, I have a new lead (Summary failed, sending history):\n\n${history}`);
-      window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
+      trackEvent("whatsapp_click", {
+        cta_location: "khalid_chatbot_fallback",
+        cta_text: "Forward to WhatsApp",
+        link_url: `https://wa.me/${phoneNumber}`,
+        page_path: window.location.pathname
+      });
+      window.open(whatsappUrl, '_blank');
     } finally {
       setIsSummarizing(false);
     }

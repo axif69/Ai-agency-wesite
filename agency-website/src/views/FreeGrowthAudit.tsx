@@ -444,11 +444,6 @@ export default function FreeGrowthAudit() {
                 href="https://wa.me/971545866094?text=Hi%20Asif,%20I'm%20interested%20in%20a%20free%20growth%20and%20automation%20audit%20for%20my%20business."
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackEvent("whatsapp_click", {
-                  cta_location: "free_growth_audit_card",
-                  cta_text: "Discuss via WhatsApp",
-                  link_url: "https://wa.me/971545866094"
-                })}
                 className="w-full rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 px-6 py-3.5 font-medium text-xs sm:text-sm inline-flex items-center justify-center gap-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
               >
                 <MessageCircle className="w-4 h-4 fill-emerald-400/30 text-emerald-400" />

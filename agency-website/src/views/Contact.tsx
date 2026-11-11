@@ -90,7 +90,7 @@ export default function Contact() {
               <span className="micro-label block mb-4">Direct Connection</span>
               <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] font-serif leading-none tracking-tight mb-8">Direct Agency Access.</h1>
               <p className="text-xl text-white/60 font-light leading-relaxed">
-                Direct access to our digital engineers and AI strategists. Let's discuss your custom requirements across Dubai, Sharjah and the GCC.
+                Direct access to our digital engineers and AI strategists. Let&apos;s discuss your custom requirements across Dubai, Sharjah and the GCC.
               </p>
             </div>
 
@@ -104,11 +104,6 @@ export default function Contact() {
                     <h3 className="text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">Direct Phone / WhatsApp</h3>
                     <a 
                       href="https://wa.me/971545866094" 
-                      onClick={() => trackEvent("contact_link_click", {
-                        link_type: "phone",
-                        link_value: "+971 54 586 6094",
-                        link_location: "Contact Page Direct Phone"
-                      })}
                       className="text-2xl font-serif text-white/80 hover:text-white transition-colors"
                     >
                       +971 54 586 6094

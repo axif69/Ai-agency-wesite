@@ -297,13 +297,6 @@ export default function RealEstateEnquiryForm({
             href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20discuss%20real%20estate%20CRM%20implementation%20and%20lead%20automation%20for%20our%20brokerage."
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() =>
-              trackEvent("whatsapp_click", {
-                cta_location: "real_estate_enquiry_card",
-                cta_text: "WhatsApp Us Directly",
-                link_url: "https://wa.me/971545866094",
-              })
-            }
             className="inline-flex items-center gap-2 text-xs text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
           >
             <MessageSquare className="w-3.5 h-3.5" />

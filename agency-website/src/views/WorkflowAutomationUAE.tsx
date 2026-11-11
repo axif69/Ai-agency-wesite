@@ -20,7 +20,9 @@ export default function WorkflowAutomationUAE() {
   };
 
   const handleCTA = (ctaText: string, ctaLocation: string, type: "whatsapp" | "consultation") => {
-    trackEvent(type === "whatsapp" ? "whatsapp_click" : "consultation_click", {
+    // Anchor wa.me/whatsapp.com clicks are tracked globally in app/layout.tsx
+    if (type === "whatsapp") return;
+    trackEvent("consultation_click", {
       service_name: "Workflow Automation UAE",
       cta_location: ctaLocation,
       cta_text: ctaText

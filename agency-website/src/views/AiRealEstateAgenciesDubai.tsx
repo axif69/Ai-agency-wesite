@@ -15,9 +15,9 @@ export default function AiRealEstateAgenciesDubai() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   const handleCTA = (ctaText: string, ctaLocation: string, type: "whatsapp" | "phone" | "consultation", destinationUrl: string) => {
-    let eventName = "whatsapp_click";
-    if (type === "phone") eventName = "phone_click";
-    if (type === "consultation") eventName = "consultation_click";
+    // Anchor wa.me/whatsapp.com and tel: clicks are tracked globally in app/layout.tsx
+    if (type === "whatsapp" || type === "phone" || destinationUrl.includes("wa.me") || destinationUrl.includes("whatsapp.com") || destinationUrl.startsWith("tel:")) return;
+    const eventName = "consultation_click";
 
     trackEvent(eventName, {
       service_name: "AI Real Estate Agencies",
@@ -70,7 +70,7 @@ export default function AiRealEstateAgenciesDubai() {
             href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20would%20like%20to%20request%20a%20live%20demo%20of%20the%20AI%20Real%20Estate%20Agency%20system." 
             target="_blank" 
             rel="noopener noreferrer" 
-            onClick={() => handleCTA("Request WhatsApp Demo", "Hero CTA", "consultation", "https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20would%20like%20to%20request%20a%20live%20demo%20of%20the%20AI%20Real%20Estate%20Agency%20system.")}
+            onClick={() => handleCTA("Request WhatsApp Demo", "Hero CTA", "whatsapp", "https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20would%20like%20to%20request%20a%20live%20demo%20of%20the%20AI%20Real%20Estate%20Agency%20system.")}
             className="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-white/90 transition-all flex items-center justify-center gap-2 shadow-2xl h-[52px]"
           >
             Request Live Demo <MessageSquare className="w-4 h-4 text-black" />
@@ -111,7 +111,7 @@ export default function AiRealEstateAgenciesDubai() {
             In the UAE property market, an <strong>AI system for real estate agencies</strong> acts as an automated operational backbone connecting your advertising campaigns and property portal leads directly to your sales floor. 
           </p>
           <p className="text-sm md:text-base leading-relaxed text-white/70 font-sans font-light">
-            When an overseas investor or local buyer registers interest on Property Finder, Bayut, Meta, or your website, the AI system initiates automated conversational qualification after the lead trigger is received. It verifies budget range, financing status (cash vs. mortgage), purchase timeline, and preferred communities (e.g. Palm Jumeirah, Dubai Marina, Dubai Hills). Once verified, the lead receives relevant project brochures, and a fully structured dossier is pushed directly to the specific community broker's phone and CRM.
+            When an overseas investor or local buyer registers interest on Property Finder, Bayut, Meta, or your website, the AI system initiates automated conversational qualification after the lead trigger is received. It verifies budget range, financing status (cash vs. mortgage), purchase timeline, and preferred communities (e.g. Palm Jumeirah, Dubai Marina, Dubai Hills). Once verified, the lead receives relevant project brochures, and a fully structured dossier is pushed directly to the specific community broker&apos;s phone and CRM.
           </p>
         </div>
       </section>

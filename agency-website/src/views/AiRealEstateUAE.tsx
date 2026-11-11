@@ -15,9 +15,9 @@ export default function AiRealEstateUAE() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   const handleCTA = (ctaText: string, ctaLocation: string, type: "whatsapp" | "phone" | "consultation", destinationUrl: string) => {
-    let eventName = "whatsapp_click";
-    if (type === "phone") eventName = "phone_click";
-    if (type === "consultation") eventName = "consultation_click";
+    // Anchor wa.me/whatsapp.com and tel: clicks are tracked globally in app/layout.tsx
+    if (type === "whatsapp" || type === "phone" || destinationUrl.includes("wa.me") || destinationUrl.includes("whatsapp.com") || destinationUrl.startsWith("tel:")) return;
+    const eventName = "consultation_click";
 
     trackEvent(eventName, {
       service_name: "Real Estate AI Hub",
@@ -139,14 +139,14 @@ export default function AiRealEstateUAE() {
               href="https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20see%20how%20AI%20could%20handle%20property%20enquiries%20for%20my%20real-estate%20business." 
               target="_blank" 
               rel="noopener noreferrer" 
-              onClick={() => handleCTA("WhatsApp Free consultation", "Hero CTA", "consultation", "https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20see%20how%20AI%20could%20handle%20property%20enquiries%20for%20my%20real-estate%20business.")}
+              onClick={() => handleCTA("WhatsApp Free consultation", "Hero CTA", "whatsapp", "https://wa.me/971545866094?text=Hi%20Asif%20Digital,%20I%20want%20to%20see%20how%20AI%20could%20handle%20property%20enquiries%20for%20my%20real-estate%20business.")}
               className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/80 transition-all flex items-center gap-3 shadow-2xl h-[52px] font-sans"
             >
               WhatsApp Free consultation <MessageSquare className="w-4 h-4 text-black" />
             </a>
             <a 
               href="tel:+971545866094" 
-              onClick={() => handleCTA("Call Our Strategist", "Hero CTA", "consultation", "tel:+971545866094")}
+              onClick={() => handleCTA("Call Our Strategist", "Hero CTA", "phone", "tel:+971545866094")}
               className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/5 transition-all flex items-center gap-3 h-[52px] font-sans"
             >
               Call Our Strategist <Phone className="w-4 h-4 text-white" />

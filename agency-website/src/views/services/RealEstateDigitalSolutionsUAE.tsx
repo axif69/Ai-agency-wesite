@@ -17,9 +17,9 @@ export default function RealEstateDigitalSolutionsUAE() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   const handleCTA = (ctaText: string, ctaLocation: string, type: "whatsapp" | "phone" | "consultation", destinationUrl: string) => {
-    let eventName = "whatsapp_click";
-    if (type === "phone") eventName = "phone_click";
-    if (type === "consultation") eventName = "consultation_click";
+    // Anchor wa.me/whatsapp.com and tel: clicks are tracked globally in app/layout.tsx
+    if (type === "whatsapp" || type === "phone" || destinationUrl.includes("wa.me") || destinationUrl.includes("whatsapp.com") || destinationUrl.startsWith("tel:")) return;
+    const eventName = "consultation_click";
 
     trackEvent(eventName, {
       service_name: "Real Estate Digital Solutions",
@@ -418,7 +418,7 @@ export default function RealEstateDigitalSolutionsUAE() {
             <span className="text-xs font-mono uppercase text-emerald-400 font-semibold block">5. Middleware &amp; Account Dependencies</span>
             <h3 className="text-base font-serif text-white">Direct Client Vendor Control</h3>
             <p className="text-xs text-white/70 font-light leading-relaxed">
-              All third-party services—including portal enterprise accounts (Bayut Pro, Property Finder Manager), mapping API keys (Mapbox/Google Maps), and hosting accounts (Vercel/AWS)—remain directly contracted under your agency's name. Asif Digital builds the sovereign code and integration pipelines between them.
+              All third-party services—including portal enterprise accounts (Bayut Pro, Property Finder Manager), mapping API keys (Mapbox/Google Maps), and hosting accounts (Vercel/AWS)—remain directly contracted under your agency&apos;s name. Asif Digital builds the sovereign code and integration pipelines between them.
             </p>
           </div>
         </div>
@@ -681,7 +681,7 @@ export default function RealEstateDigitalSolutionsUAE() {
             Modernize Your Real Estate Technology Infrastructure
           </h2>
           <p className="text-white/70 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
-            We assess and implement CRM workflows and integrations based on your agency's existing software platforms, account permissions, and supported integration protocols (webhook feeds, API endpoints, or database connectors).
+            We assess and implement CRM workflows and integrations based on your agency&apos;s existing software platforms, account permissions, and supported integration protocols (webhook feeds, API endpoints, or database connectors).
           </p>
         </div>
 

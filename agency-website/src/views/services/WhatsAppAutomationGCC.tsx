@@ -23,7 +23,9 @@ export default function WhatsAppAutomationGCC() {
   const routineHandlingHours = Math.round((routineInquiries * staffMinutesPerInquiry) / 60);
 
   const handleCTA = (ctaText: string, ctaLocation: string, type: "whatsapp" | "consultation") => {
-    trackEvent(type === "whatsapp" ? "whatsapp_click" : "consultation_click", {
+    // Anchor wa.me/whatsapp.com clicks are tracked globally in app/layout.tsx
+    if (type === "whatsapp") return;
+    trackEvent("consultation_click", {
       service_name: "WhatsApp Automation GCC",
       cta_location: ctaLocation,
       cta_text: ctaText

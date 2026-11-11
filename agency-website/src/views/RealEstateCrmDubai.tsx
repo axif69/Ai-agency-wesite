@@ -18,9 +18,9 @@ export default function RealEstateCrmDubai() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   const handleCTA = (ctaText: string, ctaLocation: string, type: "whatsapp" | "phone" | "consultation", destinationUrl: string) => {
-    let eventName = "whatsapp_click";
-    if (type === "phone") eventName = "phone_click";
-    if (type === "consultation") eventName = "consultation_click";
+    // Anchor wa.me/whatsapp.com and tel: clicks are tracked globally in app/layout.tsx
+    if (type === "whatsapp" || type === "phone" || destinationUrl.includes("wa.me") || destinationUrl.includes("whatsapp.com") || destinationUrl.startsWith("tel:")) return;
+    const eventName = "consultation_click";
 
     trackEvent(eventName, {
       service_name: "Real Estate CRM Dubai",
@@ -410,7 +410,7 @@ export default function RealEstateCrmDubai() {
           <span className="text-[12px] font-mono uppercase tracking-widest text-emerald-400 font-bold block mb-3">Operational Benchmark</span>
           <h2 className="text-3xl md:text-5xl font-serif tracking-tight">Traditional Agency CRM vs. Automated System</h2>
           <p className="mt-4 text-white/70 text-base leading-relaxed">
-            A clear comparison of how automated lead intake and WhatsApp routing protect your agency's paid advertising budget.
+            A clear comparison of how automated lead intake and WhatsApp routing protect your agency&apos;s paid advertising budget.
           </p>
         </div>
 

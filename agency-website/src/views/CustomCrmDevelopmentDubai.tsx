@@ -34,9 +34,9 @@ export default function CustomCrmDevelopmentDubai() {
   };
 
   const handleCTA = (ctaText: string, ctaLocation: string, type: "whatsapp" | "audit" | "contact", destinationUrl: string) => {
-    let eventName = "whatsapp_click";
-    if (type === "audit") eventName = "audit_request_click";
-    if (type === "contact") eventName = "contact_click";
+    // Anchor wa.me/whatsapp.com clicks are tracked globally in app/layout.tsx
+    if (type === "whatsapp") return;
+    const eventName = type === "audit" ? "audit_request_click" : "contact_click";
 
     trackEvent(eventName, {
       service_name: "Custom CRM Development Dubai",

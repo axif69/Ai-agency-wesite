@@ -17,9 +17,9 @@ export default function AiPropertyManagementUAE() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   const handleCTA = (ctaText: string, ctaLocation: string, type: "whatsapp" | "phone" | "consultation", destinationUrl: string) => {
-    let eventName = "whatsapp_click";
-    if (type === "phone") eventName = "phone_click";
-    if (type === "consultation") eventName = "consultation_click";
+    // Anchor wa.me/whatsapp.com and tel: clicks are tracked globally in app/layout.tsx
+    if (type === "whatsapp" || type === "phone" || destinationUrl.includes("wa.me") || destinationUrl.includes("whatsapp.com") || destinationUrl.startsWith("tel:")) return;
+    const eventName = "consultation_click";
 
     trackEvent(eventName, {
       service_name: "AI Property Management",
