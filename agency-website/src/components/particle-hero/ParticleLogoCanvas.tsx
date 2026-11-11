@@ -42,6 +42,7 @@ const VERTEX_SHADER_SRC = `
   }
 `;
 
+// Output premultiplied RGBA so WebGL matches premultipliedAlpha compositor blending cleanly
 const FRAGMENT_SHADER_SRC = `
   precision mediump float;
   varying float v_group;
@@ -51,11 +52,14 @@ const FRAGMENT_SHADER_SRC = `
     if (distSq > 0.25) discard;
     float feather = 1.0 - smoothstep(0.08, 0.25, distSq);
     if (v_group > 1.5) {
-      gl_FragColor = vec4(0.0627, 0.7255, 0.5059, 0.85 * feather);
+      float a = 0.85 * feather;
+      gl_FragColor = vec4(0.0627 * a, 0.7255 * a, 0.5059 * a, a);
     } else if (v_group > 0.5) {
-      gl_FragColor = vec4(1.0, 1.0, 1.0, 0.55 * feather);
+      float a = 0.55 * feather;
+      gl_FragColor = vec4(a, a, a, a);
     } else {
-      gl_FragColor = vec4(1.0, 1.0, 1.0, 0.95 * feather);
+      float a = 0.95 * feather;
+      gl_FragColor = vec4(a, a, a, a);
     }
   }
 `;
@@ -74,6 +78,13 @@ function compileShader(
     return null;
   }
   return shader;
+}
+
+function packRgba32(r: number, g: number, b: number, a: number, littleEndian: boolean): number {
+  if (littleEndian) {
+    return ((a << 24) | (b << 16) | (g << 8) | r) >>> 0;
+  }
+  return ((r << 24) | (g << 16) | (b << 8) | a) >>> 0;
 }
 
 const ParticleLogoCanvas = forwardRef<
@@ -119,12 +130,13 @@ const ParticleLogoCanvas = forwardRef<
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    // Prefer GPU-accelerated WebGL point rendering; fall back cleanly to batched 2D Canvas
+    // Prefer GPU-accelerated WebGL point rendering; fall back to direct ImageData pixel buffer
     const gl = (canvas.getContext("webgl2", {
       alpha: true,
       antialias: false,
       depth: false,
       stencil: false,
+      premultipliedAlpha: true,
       preserveDrawingBuffer: false,
       powerPreference: "high-performance",
     }) ||
@@ -133,6 +145,7 @@ const ParticleLogoCanvas = forwardRef<
         antialias: false,
         depth: false,
         stencil: false,
+        premultipliedAlpha: true,
         preserveDrawingBuffer: false,
         powerPreference: "high-performance",
       })) as WebGLRenderingContext | null;
@@ -141,7 +154,8 @@ const ParticleLogoCanvas = forwardRef<
     if (!gl && !ctx) return;
 
     let program: WebGLProgram | null = null;
-    let posBuffer: WebGLBuffer | null = null;
+    const posBuffers: [WebGLBuffer | null, WebGLBuffer | null] = [null, null];
+    let activePosBuf = 0;
     let groupBuffer: WebGLBuffer | null = null;
     let uResolutionLoc: WebGLUniformLocation | null = null;
     let uBaseSizeLoc: WebGLUniformLocation | null = null;
@@ -176,15 +190,22 @@ const ParticleLogoCanvas = forwardRef<
       uBaseSizeLoc = gl.getUniformLocation(program, "u_baseSize");
       uAccentSizeLoc = gl.getUniformLocation(program, "u_accentSize");
 
-      posBuffer = gl.createBuffer();
+      posBuffers[0] = gl.createBuffer();
+      posBuffers[1] = gl.createBuffer();
       groupBuffer = gl.createBuffer();
-      if (!posBuffer || !groupBuffer || aPosLoc < 0 || aGroupLoc < 0) {
+      if (
+        !posBuffers[0] ||
+        !posBuffers[1] ||
+        !groupBuffer ||
+        aPosLoc < 0 ||
+        aGroupLoc < 0
+      ) {
         return false;
       }
 
       gl.useProgram(program);
       gl.enable(gl.BLEND);
-      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+      gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
       gl.clearColor(0, 0, 0, 0);
       return true;
     };
@@ -192,6 +213,15 @@ const ParticleLogoCanvas = forwardRef<
     if (gl) {
       glReady = initWebGLPipeline();
     }
+
+    // 2D direct pixel framebuffer state (used only when WebGL is unavailable)
+    const isLittleEndian =
+      new Uint8Array(new Uint32Array([0x12345678]).buffer)[0] === 0x78;
+    const colWhite = packRgba32(255, 255, 255, 242, isLittleEndian);
+    const colSoft = packRgba32(255, 255, 255, 140, isLittleEndian);
+    const colEmerald = packRgba32(16, 185, 129, 217, isLittleEndian);
+    let fallbackImageData: ImageData | null = null;
+    let fallbackBuf32: Uint32Array | null = null;
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const checkMotion = () => setReducedMotion(motionQuery.matches);
@@ -208,14 +238,7 @@ const ParticleLogoCanvas = forwardRef<
     let targetXY = new Float32Array(0);
     let velXY = new Float32Array(0);
     let groups = new Float32Array(0);
-
-    // Fallback index buckets when rendering on Canvas2D
-    let group0Indices = new Uint32Array(0);
-    let group1Indices = new Uint32Array(0);
-    let group2Indices = new Uint32Array(0);
-    let group0Count = 0;
-    let group1Count = 0;
-    let group2Count = 0;
+    let color32 = new Uint32Array(0);
 
     const SHIMMER_COUNT = 512;
     const SHIMMER_TABLE = new Float32Array(SHIMMER_COUNT);
@@ -226,6 +249,8 @@ const ParticleLogoCanvas = forwardRef<
     let width = 0;
     let height = 0;
     let dpr = 1;
+    let pixelW = 0;
+    let pixelH = 0;
     let centerX = 0;
     let centerY = 0;
     let logoScale = 0;
@@ -284,12 +309,7 @@ const ParticleLogoCanvas = forwardRef<
         targetXY = new Float32Array(count * 2);
         velXY = new Float32Array(count * 2);
         groups = new Float32Array(count);
-        group0Indices = new Uint32Array(count);
-        group1Indices = new Uint32Array(count);
-        group2Indices = new Uint32Array(count);
-        group0Count = 0;
-        group1Count = 0;
-        group2Count = 0;
+        color32 = new Uint32Array(count);
       }
 
       particleCount = count;
@@ -322,21 +342,23 @@ const ParticleLogoCanvas = forwardRef<
           const rand = ((i * 9301 + 49297) % 233280) / 233280;
           if (rand < 0.03) {
             group = 2;
-            group2Indices[group2Count++] = i;
+            color32[i] = colEmerald;
           } else if (rand < 0.28) {
             group = 1;
-            group1Indices[group1Count++] = i;
+            color32[i] = colSoft;
           } else {
             group = 0;
-            group0Indices[group0Count++] = i;
+            color32[i] = colWhite;
           }
           groups[i] = group;
         }
       }
 
-      if (gl && glReady && posBuffer && groupBuffer) {
-        gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, posXY, gl.DYNAMIC_DRAW);
+      if (gl && glReady && posBuffers[0] && posBuffers[1] && groupBuffer) {
+        gl.bindBuffer(gl.ARRAY_BUFFER, posBuffers[0]);
+        gl.bufferData(gl.ARRAY_BUFFER, posXY, gl.STREAM_DRAW);
+        gl.bindBuffer(gl.ARRAY_BUFFER, posBuffers[1]);
+        gl.bufferData(gl.ARRAY_BUFFER, posXY, gl.STREAM_DRAW);
         gl.enableVertexAttribArray(aPosLoc);
         gl.vertexAttribPointer(aPosLoc, 2, gl.FLOAT, false, 0, 0);
 
@@ -414,19 +436,21 @@ const ParticleLogoCanvas = forwardRef<
       width = nextWidth;
       height = nextHeight;
       dpr = nextDpr;
+      pixelW = Math.max(1, Math.floor(width * dpr));
+      pixelH = Math.max(1, Math.floor(height * dpr));
 
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
+      canvas.width = pixelW;
+      canvas.height = pixelH;
 
       if (ctx) {
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        fallbackImageData = ctx.createImageData(pixelW, pixelH);
+        fallbackBuf32 = new Uint32Array(fallbackImageData.data.buffer);
       } else if (gl && glReady && program) {
-        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.viewport(0, 0, pixelW, pixelH);
         gl.useProgram(program);
         gl.uniform2f(uResolutionLoc, width, height);
-        const pointScale = dpr;
-        gl.uniform1f(uBaseSizeLoc, Math.max(1.5, (particleRadius * 2 + 0.75) * pointScale));
-        gl.uniform1f(uAccentSizeLoc, Math.max(1.75, (particleRadius * 2.2 + 0.85) * pointScale));
+        gl.uniform1f(uBaseSizeLoc, Math.max(1.5, (particleRadius * 2 + 0.75) * dpr));
+        gl.uniform1f(uAccentSizeLoc, Math.max(1.75, (particleRadius * 2.2 + 0.85) * dpr));
       }
 
       const isDesktop = width >= 768;
@@ -444,36 +468,12 @@ const ParticleLogoCanvas = forwardRef<
     const resizeObserver = new ResizeObserver(() => handleResize(false));
     resizeObserver.observe(container);
 
-    const updatePointer = (clientX: number, clientY: number) => {
-      const cr = canvas.getBoundingClientRect();
-      pointer.x = clientX - cr.left;
-      pointer.y = clientY - cr.top;
+    // Unified Pointer Events on <canvas>: zero duplicate callbacks and zero getBoundingClientRect reflows
+    const handlePointer = (e: PointerEvent) => {
+      pointer.x = e.offsetX;
+      pointer.y = e.offsetY;
       pointer.active = true;
       isHoveredRef.current = true;
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      updatePointer(e.clientX, e.clientY);
-    };
-
-    const handlePointerDown = (e: PointerEvent) => {
-      updatePointer(e.clientX, e.clientY);
-    };
-
-    const handlePointerMove = (e: PointerEvent) => {
-      updatePointer(e.clientX, e.clientY);
-    };
-
-    const handleTouchStart = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        updatePointer(e.touches[0].clientX, e.touches[0].clientY);
-      }
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        updatePointer(e.touches[0].clientX, e.touches[0].clientY);
-      }
     };
 
     const handlePointerLeave = () => {
@@ -483,15 +483,10 @@ const ParticleLogoCanvas = forwardRef<
       isHoveredRef.current = false;
     };
 
-    container.addEventListener("mousemove", handleMouseMove, { passive: true });
-    container.addEventListener("pointerdown", handlePointerDown, { passive: true });
-    container.addEventListener("pointermove", handlePointerMove, { passive: true });
-    container.addEventListener("mouseleave", handlePointerLeave);
-    container.addEventListener("pointerleave", handlePointerLeave);
-    container.addEventListener("touchstart", handleTouchStart, { passive: true });
-    container.addEventListener("touchmove", handleTouchMove, { passive: true });
-    container.addEventListener("touchend", handlePointerLeave);
-    container.addEventListener("touchcancel", handlePointerLeave);
+    canvas.addEventListener("pointerdown", handlePointer, { passive: true });
+    canvas.addEventListener("pointermove", handlePointer, { passive: true });
+    canvas.addEventListener("pointerleave", handlePointerLeave, { passive: true });
+    canvas.addEventListener("pointercancel", handlePointerLeave, { passive: true });
 
     const handleContextLost = (e: Event) => {
       e.preventDefault();
@@ -534,51 +529,34 @@ const ParticleLogoCanvas = forwardRef<
     };
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    const drawCanvas2D = () => {
-      if (!ctx) return;
-      ctx.clearRect(0, 0, width, height);
+    // Zero-SkPath CPU framebuffer fallback (single putImageData per frame)
+    const drawCanvas2DFast = (coords: Float32Array) => {
+      if (!ctx || !fallbackImageData || !fallbackBuf32) return;
+      const buf = fallbackBuf32;
+      const pw = pixelW;
+      const ph = pixelH;
+      const scale = dpr;
+      const dot2x2 = scale >= 1.4;
 
-      if (motionQuery.matches) {
-        ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
-        ctx.beginPath();
-        const r = particleRadius;
-        const d = r * 2;
-        for (let i = 0; i < particleCount; i++) {
-          const i2 = i * 2;
-          ctx.rect(targetXY[i2] - r, targetXY[i2 + 1] - r, d, d);
+      buf.fill(0);
+
+      for (let i = 0; i < particleCount; i++) {
+        const i2 = i * 2;
+        const ix = (coords[i2] * scale) | 0;
+        const iy = (coords[i2 + 1] * scale) | 0;
+        if (ix >= 0 && iy >= 0 && ix < pw - 1 && iy < ph - 1) {
+          const col = color32[i];
+          const idx = iy * pw + ix;
+          buf[idx] = col;
+          if (dot2x2) {
+            buf[idx + 1] = col;
+            buf[idx + pw] = col;
+            buf[idx + pw + 1] = col;
+          }
         }
-        ctx.fill();
-        return;
       }
 
-      const r = particleRadius;
-      const d = r * 2;
-
-      ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
-      ctx.beginPath();
-      for (let i = 0; i < group0Count; i++) {
-        const i2 = group0Indices[i] * 2;
-        ctx.rect(posXY[i2] - r, posXY[i2 + 1] - r, d, d);
-      }
-      ctx.fill();
-
-      ctx.fillStyle = "rgba(255, 255, 255, 0.55)";
-      ctx.beginPath();
-      for (let i = 0; i < group1Count; i++) {
-        const i2 = group1Indices[i] * 2;
-        ctx.rect(posXY[i2] - r, posXY[i2 + 1] - r, d, d);
-      }
-      ctx.fill();
-
-      const r2 = r * 1.1;
-      const d2 = r2 * 2;
-      ctx.fillStyle = "rgba(16, 185, 129, 0.85)";
-      ctx.beginPath();
-      for (let i = 0; i < group2Count; i++) {
-        const i2 = group2Indices[i] * 2;
-        ctx.rect(posXY[i2] - r2, posXY[i2 + 1] - r2, d2, d2);
-      }
-      ctx.fill();
+      ctx.putImageData(fallbackImageData, 0, 0);
     };
 
     const animate = (currentTime: number) => {
@@ -588,8 +566,8 @@ const ParticleLogoCanvas = forwardRef<
 
       const rawDt = currentTime - lastFrameTime;
       lastFrameTime = currentTime;
-      // Normalize physics to 60Hz baseline so 120Hz/144Hz monitors match 60Hz feel & never overshoot
-      const dtScale = rawDt > 0 ? Math.min(Math.max(rawDt / 16.66667, 0.25), 2.5) : 1;
+      // Smooth delta normalization across 60Hz–240Hz displays
+      const dtScale = rawDt > 0 ? Math.min(Math.max(rawDt / 16.66667, 0.15), 2.0) : 1;
 
       tickCount++;
       fpsFrames++;
@@ -650,13 +628,17 @@ const ParticleLogoCanvas = forwardRef<
         }
       }
 
-      if (gl && glReady && posBuffer) {
+      const activeCoords = motionQuery.matches ? targetXY : posXY;
+      if (gl && glReady && posBuffers[0] && posBuffers[1]) {
+        const buf = posBuffers[activePosBuf];
+        activePosBuf ^= 1;
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, activeCoords, gl.STREAM_DRAW);
+        gl.vertexAttribPointer(aPosLoc, 2, gl.FLOAT, false, 0, 0);
         gl.clear(gl.COLOR_BUFFER_BIT);
-        gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
-        gl.bufferSubData(gl.ARRAY_BUFFER, 0, motionQuery.matches ? targetXY : posXY);
         gl.drawArrays(gl.POINTS, 0, particleCount);
       } else {
-        drawCanvas2D();
+        drawCanvas2DFast(activeCoords);
       }
     };
 
@@ -670,17 +652,13 @@ const ParticleLogoCanvas = forwardRef<
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       canvas.removeEventListener("webglcontextlost", handleContextLost);
       canvas.removeEventListener("webglcontextrestored", handleContextRestored);
-      container.removeEventListener("mousemove", handleMouseMove);
-      container.removeEventListener("pointerdown", handlePointerDown);
-      container.removeEventListener("pointermove", handlePointerMove);
-      container.removeEventListener("mouseleave", handlePointerLeave);
-      container.removeEventListener("pointerleave", handlePointerLeave);
-      container.removeEventListener("touchstart", handleTouchStart);
-      container.removeEventListener("touchmove", handleTouchMove);
-      container.removeEventListener("touchend", handlePointerLeave);
-      container.removeEventListener("touchcancel", handlePointerLeave);
+      canvas.removeEventListener("pointerdown", handlePointer);
+      canvas.removeEventListener("pointermove", handlePointer);
+      canvas.removeEventListener("pointerleave", handlePointerLeave);
+      canvas.removeEventListener("pointercancel", handlePointerLeave);
       if (gl && program) {
-        gl.deleteBuffer(posBuffer);
+        gl.deleteBuffer(posBuffers[0]);
+        gl.deleteBuffer(posBuffers[1]);
         gl.deleteBuffer(groupBuffer);
         gl.deleteProgram(program);
       }
@@ -695,7 +673,7 @@ const ParticleLogoCanvas = forwardRef<
     >
       <canvas
         ref={canvasRef}
-        className="w-full h-full block cursor-crosshair touch-pan-y"
+        className="w-full h-full block cursor-crosshair touch-none"
       />
 
       {/* Optical 1:1 overlay comparison */}
