@@ -49,8 +49,8 @@ export default function RealEstateDigitalSolutionsUAE() {
       a: "Yes. We engineer XML and REST API listing engines that synchronize your internal property listings directly with major UAE portals including Bayut, Property Finder, and Dubizzle. When an agent updates a price, uploads high-res photography, or marks a property as reserved, changes syndicate automatically, preventing manual duplicate entry across portal dashboards."
     },
     {
-      q: "Does this digital infrastructure replace our sales CRM?",
-      a: "No. Real estate digital solutions represent your customer-facing technology infrastructure—including your brokerage website, developer portals, listing feeds, and API middleware. For sales pipeline management, speed-to-lead automation, WhatsApp qualification, and broker assignment rules, this infrastructure connects directly into our dedicated Real Estate CRM setup or your existing CRM platform."
+      q: "How do headless property websites connect with our brokerage systems?",
+      a: "Real estate digital solutions cover your web and listing infrastructure—including custom Next.js property search websites, developer off-plan hubs, RERA Trakheesi listing validation, and automated XML syndication feeds for Bayut, Property Finder, and Dubizzle. Direct buyer enquiries route outward via secure webhooks into your agency's sales database or software stack."
     },
     {
       q: "How do you handle off-plan developer data and brochure downloads?",
@@ -116,21 +116,6 @@ export default function RealEstateDigitalSolutionsUAE() {
             <span>✓ OFF-PLAN DEVELOPER API HUBS</span>
             <span>✓ FULL CODEBASE &amp; REPOSITORY HANDOVER</span>
           </div>
-        </div>
-      </section>
-
-      {/* ── Top Intent Bridge: De-Confliction with Real Estate CRM ── */}
-      <section className="px-6 md:px-12 pt-6 pb-2 max-w-5xl mx-auto">
-        <div className="p-4 md:p-5 border border-emerald-500/20 bg-emerald-500/[0.03] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-white/70">
-          <div>
-            <strong className="text-white font-medium">Looking for Real Estate CRM &amp; Broker Pipeline Automation?</strong> This page covers web portals, listing XML feeds, and headless search architecture. For broker lead distribution, agent speed-to-lead, and WhatsApp CRM pipelines, visit our dedicated CRM asset.
-          </div>
-          <Link
-            href="/real-estate-crm-dubai"
-            className="shrink-0 font-mono text-[11px] font-semibold text-emerald-400 hover:text-emerald-300 uppercase tracking-wider flex items-center gap-1"
-          >
-            Real Estate CRM Dubai <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
         </div>
       </section>
 
@@ -211,25 +196,25 @@ export default function RealEstateDigitalSolutionsUAE() {
         </div>
       </section>
 
-      {/* ── 5. Clear Intent Separation: Dedicated CRM Bridge Card ── */}
+      {/* ── 5. Companion Solution Bridge: Sales Pipeline Operations ── */}
       <section className="px-6 md:px-12 py-8 max-w-5xl mx-auto">
         <div className="p-8 md:p-10 border border-emerald-500/30 bg-emerald-500/[0.04] rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="max-w-2xl">
             <span className="text-emerald-400 text-[12px] font-bold uppercase tracking-[0.2em] font-mono block mb-2">
-              Architectural Demarcation • Sales Pipeline &amp; Lead Operations
+              Companion Architecture • Sales Pipeline Operations
             </span>
             <h2 className="text-2xl md:text-3xl font-serif mb-3 text-white">
-              Looking specifically for Real Estate CRM &amp; Speed-to-Lead?
+              Need Broker Pipeline &amp; Speed-to-Lead Automation?
             </h2>
             <p className="text-[15px] text-white/75 leading-[1.7] font-light">
-              While this page covers custom brokerage web engineering and automated portal feeds, dedicated sales pipeline automation, agent round-robin lead routing, and instant WhatsApp qualification are architected within our specialized CRM deployment.
+              This page focuses on headless property search websites, XML portal feeds, and developer inventory infrastructure. If your agency specifically needs agent round-robin routing, DLD deal-stage tracking, and WhatsApp follow-up, explore our dedicated brokerage pipeline solution.
             </p>
           </div>
           <Link
             href="/real-estate-crm-dubai"
             className="shrink-0 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-emerald-400 text-black font-bold uppercase tracking-widest text-xs hover:bg-emerald-300 transition-colors shadow-lg"
           >
-            Explore Dedicated Real Estate CRM Dubai Architecture <ArrowRight className="w-4 h-4" />
+            Explore Real Estate CRM Dubai <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>
@@ -346,22 +331,6 @@ export default function RealEstateDigitalSolutionsUAE() {
             </div>
           </div>
 
-        </div>
-      </section>
-
-      {/* ── 7. Second Intent Link: Portal Lead Integration ── */}
-      <section className="px-6 md:px-12 py-6 max-w-5xl mx-auto">
-        <div className="p-6 md:p-8 border border-white/10 bg-white/[0.02] rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div>
-            <div className="text-white font-semibold text-base mb-1">Need dedicated portal lead distribution and broker pipeline management?</div>
-            <p className="text-white/60 text-sm font-light">Explore our automated lead ingestion tunnels and broker routing workflows for Bayut and Property Finder leads.</p>
-          </div>
-          <Link
-            href="/real-estate-crm-dubai"
-            className="shrink-0 text-xs uppercase tracking-wider font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5"
-          >
-            Real Estate CRM Dubai <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
         </div>
       </section>
 
@@ -625,7 +594,7 @@ export default function RealEstateDigitalSolutionsUAE() {
               Read Our In-Depth Real Estate Digital Guide
             </h3>
             <p className="text-sm text-white/70 font-light leading-relaxed">
-              Explore our comprehensive 15-minute operational analysis on evaluating real estate websites, CRM hygiene, listing workflows, and technology investments in the UAE.
+              Explore our operational analysis covering brokerage web platforms, listing syndication workflows, lead routing, and real estate technology investments in the UAE.
             </p>
           </div>
           <Link
@@ -681,7 +650,7 @@ export default function RealEstateDigitalSolutionsUAE() {
             Modernize Your Real Estate Technology Infrastructure
           </h2>
           <p className="text-white/70 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
-            We assess and implement CRM workflows and integrations based on your agency&apos;s existing software platforms, account permissions, and supported integration protocols (webhook feeds, API endpoints, or database connectors).
+            We assess and implement listing feeds, headless property platforms, and webhook API connectors based on your brokerage&apos;s existing portal accounts and supported protocols.
           </p>
         </div>
 

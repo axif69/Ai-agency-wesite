@@ -2,13 +2,13 @@ import PageComponent from '../../src/views/services/RealEstateDigitalSolutionsUA
 
 export const metadata = {
   title: "Real Estate Digital Solutions UAE | Brokerage Tech & Portals | Asif Digital",
-  description: "Next-gen real estate digital solutions in Dubai & UAE. Custom brokerage portals, automated Bayut & Property Finder XML feeds, and CRM sync. Schedule a free demo.",
+  description: "Real estate digital solutions in Dubai & UAE. Headless brokerage websites, automated Bayut & Property Finder XML feeds, off-plan portals & webhook APIs. Schedule a free demo.",
   alternates: {
     canonical: "https://www.asifdigital.agency/real-estate-digital-solutions-uae"
   },
   openGraph: {
     title: "Real Estate Digital Solutions UAE | Brokerage Tech & Portals | Asif Digital",
-    description: "Next-gen real estate digital solutions in Dubai & UAE. Custom brokerage portals, automated Bayut & Property Finder XML feeds, and CRM sync. Schedule a free demo.",
+    description: "Real estate digital solutions in Dubai & UAE. Headless brokerage websites, automated Bayut & Property Finder XML feeds, off-plan portals & webhook APIs. Schedule a free demo.",
     url: "https://www.asifdigital.agency/real-estate-digital-solutions-uae",
     siteName: "Asif Digital",
     type: "website"
@@ -25,8 +25,8 @@ const faqData = [
     a: "Yes. We engineer XML and REST API listing engines that synchronize your internal property listings directly with major UAE portals including Bayut, Property Finder, and Dubizzle. When an agent updates a price, uploads high-res photography, or marks a property as reserved, changes syndicate automatically, preventing manual duplicate entry across portal dashboards."
   },
   {
-    q: "Does this digital infrastructure replace our sales CRM?",
-    a: "No. Real estate digital solutions represent your customer-facing technology infrastructure—including your brokerage website, developer portals, listing feeds, and API middleware. For sales pipeline management, speed-to-lead automation, WhatsApp qualification, and broker assignment rules, this infrastructure connects directly into our dedicated Real Estate CRM setup or your existing CRM platform."
+    q: "How do headless property websites connect with our brokerage systems?",
+    a: "Real estate digital solutions cover your web and listing infrastructure—including custom Next.js property search websites, developer off-plan hubs, RERA Trakheesi listing validation, and automated XML syndication feeds for Bayut, Property Finder, and Dubizzle. Direct buyer enquiries route outward via secure webhooks into your agency's sales database or software stack."
   },
   {
     q: "How do you handle off-plan developer data and brochure downloads?",

@@ -190,12 +190,12 @@ export default function AiSeoAgencyDubai() {
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif tracking-tight leading-[1.08] mb-6">
-            AI SEO, AEO &amp; Search Visibility <br />
+            AI SEO Services &amp; AEO <br />
             <span className="italic text-white/50 font-light">Agency in Dubai</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-white/75 font-light leading-relaxed mb-8 max-w-3xl">
-            Search behavior in the UAE has evolved. Buyers still use Google search, but they also evaluate direct AI Overviews and ask conversational questions in ChatGPT and Perplexity. We structure your website&apos;s content architecture, technical schema, and entity profile so search engines and AI assistants can clearly understand, index, and reference your business.
+            Full-stack AI search optimization, ChatGPT and Perplexity visibility, and technical entity engineering for UAE companies. While buyers still use Google Search, decision-makers increasingly shortlist vendors inside AI Overviews and answer engines—we structure your content architecture, schema, and topic clusters so search engines and LLMs accurately interpret your business.
           </p>
 
           {/* AEO Direct Answer Snippet Box */}
@@ -418,13 +418,26 @@ export default function AiSeoAgencyDubai() {
           </div>
         </div>
 
-        <div className="mt-8 text-center border-t border-white/5 pt-6">
-          <p className="text-xs text-white/60 font-mono">
-            Looking for foundational search marketing or localized multi-emirate campaigns? Explore our dedicated{" "}
-            <Link href="/services/seo-agency-dubai-sharjah-uae" className="text-emerald-400 hover:underline">
-              SEO Agency Dubai &amp; Sharjah Service Hub &rarr;
-            </Link>
-          </p>
+        <div className="mt-10 p-6 md:p-8 rounded-2xl border border-emerald-500/20 bg-white/[0.02] grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <div>
+            <div className="text-[11px] font-mono uppercase tracking-widest text-emerald-400 mb-1">Indicative SEO Pricing Reference</div>
+            <div className="text-xl font-serif text-white mb-1">AED 4,500 – 18,000+ / mo</div>
+            <p className="text-xs text-white/60 font-light">Indicative reference from our traditional SEO retainers (subject to technical scope, bilingual cluster depth, and bespoke AI SEO requirements).</p>
+          </div>
+          <div>
+            <div className="text-[11px] font-mono uppercase tracking-widest text-emerald-400 mb-1">Search Attribution &amp; CRM</div>
+            <div className="text-xl font-serif text-white mb-1">Closed-Loop Tracking</div>
+            <p className="text-xs text-white/60 font-light">Connect organic and AI-referred enquiries into{" "}
+              <Link href="/custom-crm-development-dubai" className="text-emerald-400 hover:underline">custom CRM pipelines</Link> alongside WhatsApp event attribution.
+            </p>
+          </div>
+          <div>
+            <div className="text-[11px] font-mono uppercase tracking-widest text-emerald-400 mb-1">Performance Foundation</div>
+            <div className="text-xl font-serif text-white mb-1">Core Web Vitals</div>
+            <p className="text-xs text-white/60 font-light">Upgrading a slow legacy stack before scaling content? Review{" "}
+              <Link href="/services/web-development-dubai-uae" className="text-emerald-400 hover:underline">custom web development in Dubai</Link>.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -535,10 +548,16 @@ export default function AiSeoAgencyDubai() {
             </div>
             <div className="flex flex-col gap-2">
               <Link
-                href="/services/ppc-google-ads-agency-dubai"
+                href="/ai-ppc-agency-dubai"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 hover:text-emerald-300 transition-colors"
               >
-                Explore PPC &amp; Google Ads Dubai <ArrowRight className="w-4 h-4" />
+                Explore AI PPC Agency Dubai <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/services/ppc-google-ads-agency-dubai"
+                className="inline-flex items-center gap-2 text-xs font-mono text-white/60 hover:text-white transition-colors"
+              >
+                Traditional Google Ads Management Dubai →
               </Link>
               <Link
                 href="/ai-marketing-dubai"
@@ -557,7 +576,7 @@ export default function AiSeoAgencyDubai() {
               </span>
               <h3 className="text-2xl font-serif text-white mb-3">Audit Your Current Digital Architecture</h3>
               <p className="text-sm text-white/70 font-light leading-relaxed mb-6">
-                Evaluate your website speed, mobile responsiveness, and metadata using our AI Website Grader, or review our dedicated local search engine optimization services for Dubai and Sharjah.
+                Evaluate your website speed, mobile responsiveness, and metadata using our AI Website Grader, or review our local Dubai and Sharjah search optimization services.
               </p>
             </div>
             <div className="flex flex-col gap-2">
@@ -571,7 +590,7 @@ export default function AiSeoAgencyDubai() {
                 href="/services/seo-agency-dubai-sharjah-uae"
                 className="inline-flex items-center gap-2 text-xs font-mono text-white/60 hover:text-white transition-colors"
               >
-                SEO Agency Dubai &amp; Sharjah →
+                Local SEO (Dubai &amp; Sharjah) →
               </Link>
             </div>
           </div>

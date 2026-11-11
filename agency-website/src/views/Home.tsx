@@ -1959,6 +1959,10 @@ export default function Home() {
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/services/web-development-dubai-uae" className="hover:text-white transition-colors">Custom Web Development Dubai</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
+            <Link href="/custom-crm-development-dubai" className="hover:text-white transition-colors">Custom CRM Development Dubai</Link>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <Link href="/real-estate-crm-dubai" className="hover:text-white transition-colors">Real Estate CRM Dubai</Link>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/real-estate-digital-solutions-uae" className="hover:text-white transition-colors">Real Estate Digital Solutions UAE</Link>
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <Link href="/ai-chatbots-dubai" className="hover:text-white transition-colors">WhatsApp AI Chatbot Dubai</Link>

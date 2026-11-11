@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/CustomCrmDevelopmentDubai';
 
 export const metadata = {
-  title: "Custom CRM Development Dubai | B2B Sales Pipelines | Asif Digital",
-  description: "Enterprise custom CRM development in Dubai. Tailored B2B sales pipelines, multi-source lead ingestion, PostgreSQL databases, and ERP sync. Request an audit.",
+  title: "Custom CRM Development Dubai | B2B & AI-Powered CRM Systems",
+  description: "Custom CRM development company in Dubai & UAE. B2B CRM software, client portals, AI-powered lead pipelines, WhatsApp Cloud API & ERP sync. Request an audit.",
   alternates: {
     canonical: "https://www.asifdigital.agency/custom-crm-development-dubai"
   },
   openGraph: {
-    title: "Custom CRM Development Dubai | B2B Sales Pipelines | Asif Digital",
-    description: "Enterprise custom CRM development in Dubai. Tailored B2B sales pipelines, multi-source lead ingestion, PostgreSQL databases, and ERP sync. Request an audit.",
+    title: "Custom CRM Development Dubai | B2B & AI-Powered CRM Systems",
+    description: "Custom CRM development company in Dubai & UAE. B2B CRM software, client portals, AI-powered lead pipelines, WhatsApp Cloud API & ERP sync. Request an audit.",
     url: "https://www.asifdigital.agency/custom-crm-development-dubai",
     siteName: "Asif Digital",
     locale: "en_AE",
@@ -16,8 +16,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom CRM Development Dubai | B2B Sales Pipelines | Asif Digital",
-    description: "Enterprise custom CRM development in Dubai. Tailored B2B sales pipelines, multi-source lead ingestion, PostgreSQL databases, and ERP sync. Request an audit."
+    title: "Custom CRM Development Dubai | B2B & AI-Powered CRM Systems",
+    description: "Custom CRM development company in Dubai & UAE. B2B CRM software, client portals, AI-powered lead pipelines, WhatsApp Cloud API & ERP sync. Request an audit."
   }
 };
 
@@ -130,6 +130,14 @@ export default function Page() {
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Indicative project timelines typically range from 4 to 8 weeks depending on technical scope: Phase 1 focuses on data schema modeling and pipeline mapping (Week 1–2); Phase 2 on full-stack UI development and database setup (Weeks 3–5); Phase 3 on API middleware, data migration, and exception handling (Weeks 6–7); and Phase 4 on end-to-end user acceptance testing, team walkthroughs, and production handover (Week 8)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What determines the scope and cost of custom CRM development in Dubai?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Project scoping depends on functional complexity rather than per-user seat fees: number of custom pipeline stages and role-based client portals, volume of legacy spreadsheet cleanup or migration, and required API integrations such as Meta WhatsApp Cloud API, Odoo, Zoho Books, or Xero. After technical discovery, we issue a fixed-milestone proposal with full code handover."
             }
           }
         ]

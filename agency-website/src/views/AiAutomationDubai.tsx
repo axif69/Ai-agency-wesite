@@ -116,7 +116,7 @@ export default function AiAutomationDubai() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/75 font-light max-w-3xl mx-auto leading-relaxed">
-            We engineer custom business process automations, CRM and ERP integrations, document intelligence pipelines, and human-supervised operational workflows for established UAE organizations.
+            Full-stack AI automation services in Dubai. We engineer custom business workflow automation, AI-powered CRM and ERP integrations, WhatsApp Business automation, and human-supervised operational pipelines for UAE organizations.
           </p>
 
           {/* Definition Clarification Card */}
@@ -124,9 +124,9 @@ export default function AiAutomationDubai() {
             <div className="flex items-start gap-4">
               <Layers3 className="w-6 h-6 text-emerald-400 shrink-0 mt-1" />
               <div className="space-y-2">
-                <h3 className="text-sm font-mono uppercase tracking-wider text-white/90">What An AI Automation Agency in Dubai Does</h3>
+                <h3 className="text-sm font-mono uppercase tracking-wider text-white/90">How Asif Digital Automates Business Operations With AI in Dubai</h3>
                 <p className="text-sm text-white/70 font-light leading-relaxed">
-                  An AI automation agency in Dubai engineers custom middleware, CRM/ERP synchronization, and official Meta WhatsApp Cloud API workflows to eliminate manual operational friction for UAE businesses. Asif Digital connects customer intake directly to core databases using schema-validated API pipelines, automated error recovery, and human-in-the-loop oversight.
+                  Based in the UAE, Asif Digital is a Dubai-serving AI automation agency helping companies replace repetitive manual handoffs with reliable software pipelines. We engineer custom API middleware, <Link href="/custom-crm-development-dubai" className="text-emerald-400 hover:underline font-medium">AI-powered CRM pipelines</Link>, ERP synchronization, and official Meta WhatsApp Cloud API workflows with schema validation and human-in-the-loop oversight.
                 </p>
               </div>
             </div>
@@ -376,6 +376,9 @@ export default function AiAutomationDubai() {
               <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-purple-400" /> Asynchronous retry queue architecture</li>
               <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-purple-400" /> Idempotent order &amp; invoice tracking</li>
             </ul>
+            <Link href="/custom-crm-development-dubai" className="inline-flex items-center gap-1.5 text-xs font-mono text-purple-300 hover:text-white pt-1 transition-colors">
+              Explore Custom CRM Development Dubai &rarr;
+            </Link>
           </div>
 
           {/* Pillar 4 */}
@@ -931,7 +934,11 @@ export default function AiAutomationDubai() {
             <span className="text-white/20">•</span>
             <Link href="/real-estate/portal-lead-integration-dubai" className="hover:text-white transition-colors">Portal Lead Integration Dubai</Link>
             <span className="text-white/20">•</span>
+            <Link href="/custom-crm-development-dubai" className="hover:text-white transition-colors">Custom CRM Development Dubai</Link>
+            <span className="text-white/20">•</span>
             <Link href="/real-estate-crm-dubai" className="hover:text-white transition-colors">Real Estate CRM Dubai</Link>
+            <span className="text-white/20">•</span>
+            <Link href="/ai-seo-agency-dubai" className="hover:text-white transition-colors">AI SEO Agency Dubai</Link>
             <span className="text-white/20">•</span>
             <Link href="/free-growth-audit" className="hover:text-white transition-colors">Free Growth Audit</Link>
           </div>

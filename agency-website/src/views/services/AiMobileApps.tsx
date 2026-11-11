@@ -158,7 +158,7 @@ export default function AiMobileApps() {
             {[
               { title: "Web Development", link: "/services/web-development-dubai-uae", desc: "Serve mobile users with a high-performance, responsive web presence." },
               { title: "SaaS Development", link: "/services", desc: "Build dependable cloud-native backends to power your mobile ecosystem." },
-              { title: "AI Automation", link: "/services/ai-automation-agency-dubai-uae", desc: "Integrate intelligent backend agents to automate mobile user workflows." }
+              { title: "AI Automation", link: "/ai-automation-agency-dubai", desc: "Integrate intelligent backend automation and custom CRM workflows with your mobile app." }
             ].map((s, i) => (
               <Link key={i} href={s.link} className="p-8 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all group">
                 <h3 className="text-xl font-serif mb-4 group-hover:text-white transition-colors">{s.title}</h3>

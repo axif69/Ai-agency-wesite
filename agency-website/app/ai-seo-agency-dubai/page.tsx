@@ -1,21 +1,21 @@
 import PageComponent from '../../src/views/services/AiSeoAgencyDubai';
 
 export const metadata = {
-  title: "AI SEO & AEO Agency Dubai | AI Search Optimization",
-  description: "AI SEO and AEO agency in Dubai. Optimize your brand for Google AI Overviews, Perplexity, and ChatGPT with entity schemas, knowledge graphs, and technical SEO.",
+  title: "AI SEO Agency & Services Dubai | AEO & AI Search Optimization",
+  description: "AI SEO services and Answer Engine Optimization (AEO) in Dubai. Structure entity schema, AI Overview clarity, ChatGPT Search visibility & technical SEO. Request a free audit.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-seo-agency-dubai"
   },
   openGraph: {
-    title: "AI SEO & AEO Agency Dubai | AI Search Optimization",
-    description: "AI SEO and AEO agency in Dubai. Optimize your brand for Google AI Overviews, Perplexity, and ChatGPT with entity schemas, knowledge graphs, and technical SEO.",
+    title: "AI SEO Agency & Services Dubai | AEO & AI Search Optimization",
+    description: "AI SEO services and Answer Engine Optimization (AEO) in Dubai. Structure entity schema, AI Overview clarity, ChatGPT Search visibility & technical SEO. Request a free audit.",
     url: "https://www.asifdigital.agency/ai-seo-agency-dubai",
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI SEO & AEO Agency Dubai | AI Search Optimization",
-    description: "AI SEO and AEO agency in Dubai. Optimize your brand for Google AI Overviews, Perplexity, and ChatGPT with entity schemas, knowledge graphs, and technical SEO."
+    title: "AI SEO Agency & Services Dubai | AEO & AI Search Optimization",
+    description: "AI SEO services and Answer Engine Optimization (AEO) in Dubai. Structure entity schema, AI Overview clarity, ChatGPT Search visibility & technical SEO. Request a free audit."
   }
 };
 

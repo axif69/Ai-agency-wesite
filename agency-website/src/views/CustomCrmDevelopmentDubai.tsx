@@ -97,6 +97,10 @@ export default function CustomCrmDevelopmentDubai() {
     {
       q: "What does an indicative delivery timeline look like?",
       a: "Indicative project timelines typically range from 4 to 8 weeks depending on technical scope: Phase 1 focuses on data schema modeling and pipeline mapping (Week 1–2); Phase 2 on full-stack UI development and database setup (Weeks 3–5); Phase 3 on API middleware, data migration, and exception handling (Weeks 6–7); and Phase 4 on end-to-end user acceptance testing, team walkthroughs, and production handover (Week 8)."
+    },
+    {
+      q: "What determines the scope and cost of custom CRM development in Dubai?",
+      a: "Project scoping depends on functional complexity rather than per-user seat fees: number of custom pipeline stages and role-based client portals, volume of legacy spreadsheet cleanup or migration, and required API integrations such as Meta WhatsApp Cloud API, Odoo, Zoho Books, or Xero. After technical discovery, we issue a fixed-milestone proposal with full code handover."
     }
   ];
 
@@ -126,11 +130,11 @@ export default function CustomCrmDevelopmentDubai() {
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif tracking-tight leading-[1.08] mb-6">
             Custom CRM Development <br />
-            <span className="italic text-white/50 font-light">&amp; Pipeline Engineering Dubai</span>
+            <span className="italic text-white/50 font-light">Company in Dubai &amp; UAE</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-white/75 font-light leading-relaxed mb-8 max-w-3xl">
-            Eliminate per-seat software licensing bloat and disconnected customer spreadsheets. We engineer custom B2B CRM systems, multi-source lead pipelines, and database integrations tailored to your organization&apos;s specific sales, operations, and compliance requirements.
+            Eliminate rising per-seat SaaS licensing fees and fragmented spreadsheets. As a custom CRM development agency in Dubai, we build tailored B2B CRM systems, client portals, AI-powered lead qualification, WhatsApp Business workflows, and two-way ERP integrations.
           </p>
 
           {/* Definition Clarification Card */}
@@ -384,6 +388,63 @@ export default function CustomCrmDevelopmentDubai() {
               Delivered applications are handed over to your organization&apos;s private Git repository upon project completion. You retain complete ownership of your business software.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* ── 4B. Balanced Comparison: Custom CRM vs. Off-the-Shelf SaaS ── */}
+      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto border-b border-white/5">
+        <div className="max-w-3xl mb-12">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-2">Architecture Comparison</span>
+          <h2 className="text-3xl sm:text-4xl font-serif mb-4">Custom B2B CRM vs. Off-the-Shelf SaaS Platforms</h2>
+          <p className="text-white/70 font-light text-sm md:text-base leading-relaxed">
+            Both models fit different stages of growth. Standard SaaS CRMs provide fast turnkey onboarding for common sales funnels, while custom-engineered systems fit operational teams with bespoke workflows, system ownership requirements, or deeper ERP integrations:
+          </p>
+        </div>
+
+        <div className="overflow-x-auto border border-white/10 rounded-3xl bg-white/[0.01]">
+          <table className="w-full text-left border-collapse text-sm min-w-[680px]">
+            <thead>
+              <tr className="border-b border-white/10 bg-white/[0.03] text-xs font-mono uppercase">
+                <th className="py-4 px-6 text-white/60">Evaluation Dimension</th>
+                <th className="py-4 px-6 text-white/60">Off-the-Shelf SaaS CRM</th>
+                <th className="py-4 px-6 text-emerald-400">Custom CRM (Asif Digital)</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5 font-light text-white/80">
+              <tr>
+                <td className="py-4 px-6 font-medium text-white">Workflow Flexibility</td>
+                <td className="py-4 px-6 text-white/60">Quick to launch with pre-built pipelines and standard deal fields; complex multi-stage approvals or industry-specific estimation rules can hit plan or customization limits.</td>
+                <td className="py-4 px-6 text-emerald-300">Engineered around your exact operational stages—such as fitout BOQs, role-based client portals, and PostgreSQL relational data schemas built to specification.</td>
+              </tr>
+              <tr>
+                <td className="py-4 px-6 font-medium text-white">Integration Options</td>
+                <td className="py-4 px-6 text-white/60">Offers turnkey app marketplaces and native connectors for popular tools, alongside third-party automation bridges or enterprise API tiers.</td>
+                <td className="py-4 px-6 text-emerald-300">Custom REST API and webhook middleware connecting{" "}
+                  <Link href="/services/whatsapp-automation-gcc" className="underline hover:text-white">Meta WhatsApp Cloud API</Link> and accessible accounting/ERP APIs (e.g., Odoo, Zoho Books, Xero), verified against vendor permissions during scoping.
+                </td>
+              </tr>
+              <tr>
+                <td className="py-4 px-6 font-medium text-white">Hosting Choices</td>
+                <td className="py-4 px-6 text-white/60">Managed by the SaaS vendor on their supported cloud infrastructure and plan-dependent data-residency options.</td>
+                <td className="py-4 px-6 text-emerald-300">Deployable into your organization&apos;s preferred cloud account and chosen region (e.g., AWS, Azure, Supabase, or Vercel) aligned with your internal IT policies.</td>
+              </tr>
+              <tr>
+                <td className="py-4 px-6 font-medium text-white">Licensing Models</td>
+                <td className="py-4 px-6 text-white/60">Predictable low upfront cost via recurring per-user or tiered monthly subscriptions that scale as headcount and feature requirements grow.</td>
+                <td className="py-4 px-6 text-emerald-300">Project-scoped fixed-milestone build investment paired with standard third-party cloud infrastructure and optional support agreements rather than vendor seat tiers.</td>
+              </tr>
+              <tr>
+                <td className="py-4 px-6 font-medium text-white">Ownership</td>
+                <td className="py-4 px-6 text-white/60">Software platform and core IP remain vendor-owned; you access your records through the active subscription and export tools.</td>
+                <td className="py-4 px-6 text-emerald-300">Delivered codebase and database credentials are handed over to your private Git repository and cloud tenancy upon final milestone completion.</td>
+              </tr>
+              <tr>
+                <td className="py-4 px-6 font-medium text-white">Maintenance Responsibilities</td>
+                <td className="py-4 px-6 text-white/60">Security patches, runtime uptime, and core feature releases are handled continuously by the SaaS vendor.</td>
+                <td className="py-4 px-6 text-emerald-300">Managed post-handover by your internal technical team or via an optional Asif Digital engineering maintenance retainer.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 

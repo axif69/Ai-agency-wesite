@@ -748,7 +748,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="space-y-8">
               <div>
                 <h4 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-emerald-400 font-bold mb-5 font-mono">Core Solutions</h4>
-                <ul className="space-y-3">
+                <ul className="space-y-2.5">
                   <li>
                     <Link href="/custom-crm-development-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium block">
                       Custom CRM Development Dubai
@@ -770,13 +770,23 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </Link>
                   </li>
                   <li>
+                    <Link href="/real-estate-crm-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium block">
+                      Real Estate CRM Dubai
+                    </Link>
+                  </li>
+                  <li>
                     <Link href="/real-estate-digital-solutions-uae" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium block">
-                      Real Estate Digital Systems
+                      Real Estate Digital Solutions
                     </Link>
                   </li>
                   <li>
                     <Link href="/ai-automation-agency-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium block">
                       AI Automation Agency Dubai
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/ai-seo-agency-dubai" className="text-white/80 hover:text-emerald-300 transition-colors text-sm font-medium block">
+                      AI SEO Agency Dubai
                     </Link>
                   </li>
                   <li>

@@ -3829,7 +3829,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>The framework follows Google Search Central's official <a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide" target="_blank" rel="noopener noreferrer">guidance for generative AI features</a> and its guidance on <a href="https://developers.google.com/search/docs/fundamentals/using-gen-ai-content" target="_blank" rel="noopener noreferrer">using generative AI content</a>. Google explicitly recommends useful, original material and warns against scaled content that adds little value.</p>
 
       <h2>Next step</h2>
-      <p>AI visibility is an evidence programme, not a one-time schema installation. If you need a crawlable content architecture, repeatable measurement set, and commercially useful editorial plan, review our <a href="/services/seo-agency-dubai-sharjah-uae" class="text-white hover:underline">SEO and AI-search visibility service</a> or <a href="/contact" class="text-white hover:underline">request a search systems review</a>.</p>
+      <p>AI visibility is an evidence programme, not a one-time schema installation. If you need a crawlable content architecture, repeatable measurement set, and commercially useful editorial plan, review our <a href="/ai-seo-agency-dubai" class="text-white hover:underline">AI SEO &amp; AEO visibility service</a>, explore our <a href="/services/seo-agency-dubai-sharjah-uae" class="text-white hover:underline">traditional SEO services</a>, or <a href="/contact" class="text-white hover:underline">request a search systems review</a>.</p>
     `
   },
   {
@@ -3860,7 +3860,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Useful qualification asks only what the team needs for the next step: service, budget range, timeline, location, and problem context. The answers should enter a controlled workflow rather than disappear inside a chat transcript.</p>
 
       <h3>4. CRM and WhatsApp continuity</h3>
-      <p>When the visitor moves from the website to a sales call or WhatsApp conversation, context should move with them. The team needs source, page, campaign, request summary, consent status, and owner. This continuity often creates more value than the visible AI interface.</p>
+      <p>When the visitor moves from the website to a sales call or WhatsApp conversation, context should move with them. The team needs source, page, campaign, request summary, consent status, and owner. Engineering connected intake through <a href="/custom-crm-development-dubai" class="text-white hover:underline font-medium">custom CRM development in Dubai</a> often creates more commercial value than the visible AI interface.</p>
 
       <h3>5. Search-ready content</h3>
       <p>Commercial pages should answer what the service is, who it serves, how implementation works, what evidence is available, and what the next step costs or requires. Supporting articles should answer adjacent questions without competing with the main service page.</p>
@@ -4362,8 +4362,8 @@ export const BLOG_POSTS: BlogPost[] = [
             Explore Real Estate Digital Solutions →
           </a>
           <span class="text-white/20">|</span>
-          <a href="/real-estate-crm-dubai" class="text-white/60 hover:text-white hover:underline text-xs">
-            Looking for Sales CRM &amp; Lead Routing? Visit Dubai Real Estate CRM →
+          <a href="/real-estate-crm-dubai" class="inline-flex items-center gap-2 text-emerald-400 hover:underline">
+            Explore Real Estate CRM Software Dubai →
           </a>
         </div>
       </div>
@@ -4459,6 +4459,9 @@ export const BLOG_POSTS: BlogPost[] = [
         <div class="flex flex-wrap items-center gap-4">
           <a href="/real-estate-digital-solutions-uae" class="inline-flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-white/90 transition-colors">
             View Real Estate Digital Solutions
+          </a>
+          <a href="/real-estate-crm-dubai" class="inline-flex items-center gap-2 border border-emerald-400/40 text-emerald-400 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-emerald-400/10 transition-colors">
+            View Real Estate CRM Software
           </a>
           <a href="/contact" class="text-white/70 hover:text-white text-xs underline">
             Schedule a Technical Architecture Audit

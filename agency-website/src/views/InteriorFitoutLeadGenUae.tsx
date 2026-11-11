@@ -534,6 +534,15 @@ export default function InteriorFitoutLeadGenUae() {
             <span>SEND AN ENQUIRY</span>
           </Link>
         </div>
+        <div className="mt-10 pt-6 border-t border-white/10 text-xs font-mono text-white/60 flex flex-wrap justify-center gap-x-6 gap-y-2">
+          <span>Manage fitout BOQ stages, surveys &amp; client follow-up:</span>
+          <Link href="/custom-crm-development-dubai" className="text-emerald-400 hover:underline">
+            Custom CRM for Fitout Contractors &rarr;
+          </Link>
+          <Link href="/ai-automation-agency-dubai" className="text-white/80 hover:text-emerald-400 hover:underline">
+            AI Automation Agency Dubai &rarr;
+          </Link>
+        </div>
       </section>
 
     </div>

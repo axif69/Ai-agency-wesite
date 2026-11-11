@@ -40,60 +40,6 @@ export default function RealEstateCrmDubai() {
     setActiveFaq(activeFaq === index ? null : index);
   };
 
-  const schemaJson = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": "https://www.asifdigital.agency/real-estate-crm-dubai#webpage",
-        "url": "https://www.asifdigital.agency/real-estate-crm-dubai",
-        "name": "Real Estate CRM Dubai | Lead Routing, WhatsApp & Portal Automation",
-        "isPartOf": { "@id": "https://www.asifdigital.agency/#website" },
-        "breadcrumb": { "@id": "https://www.asifdigital.agency/real-estate-crm-dubai#breadcrumb" }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.asifdigital.agency/real-estate-crm-dubai#breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.asifdigital.agency"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Real Estate AI Hub",
-            "item": "https://www.asifdigital.agency/real-estate"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Real Estate CRM Dubai",
-            "item": "https://www.asifdigital.agency/real-estate-crm-dubai"
-          }
-        ]
-      },
-      {
-        "@type": "Service",
-        "@id": "https://www.asifdigital.agency/real-estate-crm-dubai#service",
-        "name": "Real Estate CRM & Lead Automation for Dubai Agencies",
-        "description": "Custom real estate CRM and lead automation for Dubai agencies. Fast portal lead capture, automated WhatsApp response, agent routing SLAs, and deal pipelines.",
-        "provider": { "@id": "https://www.asifdigital.agency/#organization" }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://www.asifdigital.agency/#organization",
-        "name": "Asif Digital",
-        "url": "https://www.asifdigital.agency/",
-        "logo": "https://www.asifdigital.agency/images/asif-digital-ad-mark.png",
-        "telephone": "+971 54 586 6094",
-        "email": "hello@asifdigital.agency"
-      }
-    ]
-  };
-
   const comparisonData = [
     {
       workflow: "Portal Lead Capture",
@@ -171,12 +117,6 @@ export default function RealEstateCrmDubai() {
   return (
     <div className="bg-[#050505] min-h-screen text-white pt-24 selection:bg-white/30 font-sans">
       
-      {/* Hidden Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }}
-      />
-
       {/* ── 1. Breadcrumb ── */}
       <div className="px-6 md:px-12 max-w-7xl mx-auto py-3 text-[13px] tracking-wider text-white/70 font-mono">
         <Link href="/" className="hover:text-emerald-400 transition-colors">HOME</Link>
@@ -196,14 +136,14 @@ export default function RealEstateCrmDubai() {
         >
           <span className="inline-flex items-center gap-2 py-2 px-5 bg-white/5 border border-white/10 text-emerald-400 text-[13px] font-bold uppercase tracking-[0.3em] rounded-full mb-6 font-mono">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            Dubai Real Estate CRM &amp; Automation
+            Real Estate CRM Software &amp; Implementation
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif leading-[1.12] tracking-tight mb-6">
-            Real Estate CRM &amp; Lead Automation <br className="hidden md:inline" />
-            <span className="italic text-white/60 font-light tracking-normal">for Dubai Agencies</span>
+            Real Estate CRM Software <br className="hidden md:inline" />
+            <span className="italic text-white/60 font-light tracking-normal">&amp; Implementation in Dubai</span>
           </h1>
           <p className="text-[17px] md:text-[19px] leading-[1.7] text-white/80 max-w-3xl mx-auto mb-10 font-sans font-light">
-            Connect Bayut, Property Finder, and campaign leads into an automated intake pipeline. Trigger instant WhatsApp qualification, enforce agent response SLAs, and track agency deal milestones from viewing through to DLD trustee appointments and commission payouts.
+            Purpose-built real estate CRM software and implementation for Dubai &amp; UAE brokerages. Connect Bayut, Property Finder, and campaign leads into an automated intake pipeline with instant WhatsApp qualification, agent response SLAs, and DLD milestone tracking.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
