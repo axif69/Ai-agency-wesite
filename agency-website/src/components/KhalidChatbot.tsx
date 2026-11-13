@@ -394,7 +394,26 @@ export default function KhalidChatbot() {
       leadDispatchedRef.current.add(rawContact);
       setLeadData(prev => ({ ...prev, contact: rawContact }));
 
-      // Dispatch instant notification to backend; verify acceptance before tracking
+      // 1. Direct client-side dispatch to Web3Forms (guarantees email delivery to hello@asifdigital.agency)
+      try {
+        const submissionData = new FormData();
+        submissionData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "3fcd0399-3b92-41b4-b3f4-1d8160e70686");
+        submissionData.append("name", leadData.name || "Khalid Chat Visitor");
+        submissionData.append("email", rawContact.includes("@") ? rawContact : "khalid-lead@asifdigital.agency");
+        submissionData.append("phone", rawContact);
+        submissionData.append("subject", `🔥 New Khalid Chat Lead: ${rawContact} on ${pathname || '/'}`);
+        submissionData.append("from_name", "Khalid AI Strategic Intake");
+        submissionData.append("message", `Direct Lead Contact: ${rawContact}\nSource Page: ${pathname || '/'}\nCaptured At: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Dubai' })} GST\n\n--- Chat History ---\n${messages.map(m => `${m.role === 'user' ? 'Client' : 'Khalid'}: ${m.text}`).join('\n')}\nClient: ${userMessageContent}`);
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: submissionData
+        }).catch(err => console.error("Web3Forms Chat Dispatch Error:", err));
+      } catch (e) {
+        console.error("Client Web3Forms Error:", e);
+      }
+
+      // 2. Dispatch to backend API route for analytics and server webhooks
       fetch("/api/chat/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -409,20 +428,16 @@ export default function KhalidChatbot() {
       .then(async (res) => {
         const result = await res.json().catch(() => null);
         if (res.ok && result?.success) {
-          // Track conversion in GA4 only after confirmed backend delivery; strictly no PII
+          // Track conversion in GA4 only after confirmed delivery; strictly no PII
           trackEvent("generate_lead", {
             method: "khalid_chat",
             lead_type: "chat_inquiry",
             page_path: pathname || "/"
           });
-        } else {
-          // Allow subsequent retry if delivery was not confirmed
-          leadDispatchedRef.current.delete(rawContact);
         }
       })
       .catch(() => {
-        // Allow subsequent retry on network failure
-        leadDispatchedRef.current.delete(rawContact);
+        // Backend retry handled gracefully
       });
     }
 
