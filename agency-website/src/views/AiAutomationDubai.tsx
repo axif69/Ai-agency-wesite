@@ -36,20 +36,26 @@ export default function AiAutomationDubai() {
       return {
         name: "Targeted Workflow Automation",
         desc: "Focused single-department integration (such as inbound enquiry routing or invoice data extraction) with standard API connectors and basic approval gates.",
-        complexity: "Standard Scope"
+        complexity: "Standard Scope",
+        indicativeCost: "AED 2,500 – 4,500",
+        timeline: "1–2 Weeks"
       };
     }
     if (departments <= 4 && weeklyTasks < 1000) {
       return {
         name: "Cross-Departmental Pipeline Integration",
         desc: "Multi-system data orchestration connecting sales, operations, and finance with human-in-the-loop exception queues and structured audit logging.",
-        complexity: "Mid-Market Scope"
+        complexity: "Mid-Market Scope",
+        indicativeCost: "AED 5,000 – 12,000",
+        timeline: "2–4 Weeks"
       };
     }
     return {
       name: "Enterprise Process Orchestration",
       desc: "Multi-entity architecture coordinating CRM and ERP states, document intelligence pipelines, custom tool-calling agents, and dedicated private cloud deployment.",
-      complexity: "Enterprise Scope"
+      complexity: "Enterprise Scope",
+      indicativeCost: "AED 15,000 – 35,000+",
+      timeline: "4–6 Weeks"
     };
   };
 
@@ -157,6 +163,121 @@ export default function AiAutomationDubai() {
             </Link>
           </div>
         </motion.div>
+      </section>
+
+      {/* ── 1.5. Transparent Commercial Tiers & Deliverables Matrix (Dubai Market 2026) ── */}
+      <section className="py-14 px-6 max-w-6xl mx-auto border-t border-white/10">
+        <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Transparent Pricing &amp; Scope</span>
+          <h2 className="text-2xl md:text-4xl font-serif">Dubai AI Automation Investment &amp; Deliverables</h2>
+          <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
+            Transparent fixed-scope tiers designed for UAE commercial enterprises. No ambiguous retainers, no recurring license markups, and full ownership of your code.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Tier 1 */}
+          <div className="p-7 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col justify-between hover:border-white/20 transition-all">
+            <div className="space-y-4">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20 inline-block">
+                Focused Systems
+              </span>
+              <h3 className="text-xl font-serif text-white">Targeted Workflow Automation</h3>
+              <div className="text-2xl md:text-3xl font-serif text-white pt-1">
+                From AED 2,500 <span className="text-xs font-sans text-white/50 block font-light">to AED 4,500 / fixed scope</span>
+              </div>
+              <p className="text-xs text-white/70 font-light leading-relaxed">
+                Ideal for automating a single high-friction operational bottleneck: inbound WhatsApp lead capture, E.164 phone normalization, and direct CRM intake.
+              </p>
+              <ul className="space-y-2 text-xs text-white/80 font-light pt-2">
+                <li className="flex items-center gap-2">• Webhook listener &amp; schema validation</li>
+                <li className="flex items-center gap-2">• Meta WhatsApp Business Cloud API setup</li>
+                <li className="flex items-center gap-2">• Real-time staff notifications &amp; routing</li>
+                <li className="flex items-center gap-2">• Indicative delivery: 1–2 weeks</li>
+              </ul>
+            </div>
+            <div className="pt-6 mt-6 border-t border-white/10">
+              <a
+                href="https://wa.me/971545866094?text=Hi%20Asif%2C%20I'm%20interested%20in%20Targeted%20Workflow%20Automation%20(AED%202%2C500%20-%204%2C500)."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-white/5 hover:bg-white hover:text-black border border-white/10 text-xs font-semibold uppercase tracking-wider transition-all"
+              >
+                <span>Select Tier &amp; Scope</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Tier 2: Popular */}
+          <div className="p-7 rounded-2xl border border-emerald-500/40 bg-gradient-to-b from-emerald-500/[0.06] to-transparent relative flex flex-col justify-between shadow-[0_0_40px_rgba(16,185,129,0.08)]">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20 inline-block">
+                  Most Deployed
+                </span>
+                <span className="text-[10px] font-mono text-emerald-300 uppercase tracking-widest">Mid-Market</span>
+              </div>
+              <h3 className="text-xl font-serif text-white">Cross-Department Pipeline</h3>
+              <div className="text-2xl md:text-3xl font-serif text-white pt-1">
+                From AED 5,000 <span className="text-xs font-sans text-white/50 block font-light">to AED 12,000 / fixed scope</span>
+              </div>
+              <p className="text-xs text-white/70 font-light leading-relaxed">
+                Connects sales, customer service, operations, and finance into an automated loop with automated document extraction and exception queues.
+              </p>
+              <ul className="space-y-2 text-xs text-white/80 font-light pt-2">
+                <li className="flex items-center gap-2">• Multi-system sync (HubSpot, Zoho, Salesforce, SAP)</li>
+                <li className="flex items-center gap-2">• Invoice &amp; contract data extraction (OCR / LLM)</li>
+                <li className="flex items-center gap-2">• Human-in-the-loop exception review queue</li>
+                <li className="flex items-center gap-2">• Automated retry queues with exponential backoff</li>
+                <li className="flex items-center gap-2">• Indicative delivery: 2–4 weeks</li>
+              </ul>
+            </div>
+            <div className="pt-6 mt-6 border-t border-white/10">
+              <a
+                href="https://wa.me/971545866094?text=Hi%20Asif%2C%20I'm%20interested%20in%20the%20Cross-Department%20Pipeline%20Integration%20tier."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-400 text-black hover:bg-emerald-300 text-xs font-semibold uppercase tracking-wider transition-all"
+              >
+                <span>Deploy Operational Stack</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Tier 3 */}
+          <div className="p-7 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col justify-between hover:border-white/20 transition-all">
+            <div className="space-y-4">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-white/70 bg-white/5 px-2.5 py-1 rounded border border-white/10 inline-block">
+                Enterprise Autonomous
+              </span>
+              <h3 className="text-xl font-serif text-white">Full Process Orchestration</h3>
+              <div className="text-2xl md:text-3xl font-serif text-white pt-1">
+                From AED 15,000 <span className="text-xs font-sans text-white/50 block font-light">to AED 35,000+ / bespoke</span>
+              </div>
+              <p className="text-xs text-white/70 font-light leading-relaxed">
+                Complete enterprise automation architecture including autonomous tool-calling agents, custom ERP integrations, and UAE private cloud deployment.
+              </p>
+              <ul className="space-y-2 text-xs text-white/80 font-light pt-2">
+                <li className="flex items-center gap-2">• Autonomous B2B prospecting &amp; qualification agents</li>
+                <li className="flex items-center gap-2">• Dedicated cloud tenancy (AWS UAE / Azure UAE / G42)</li>
+                <li className="flex items-center gap-2">• UAE PDPL statutory compliance &amp; audit logging</li>
+                <li className="flex items-center gap-2">• Full Git repository handover &amp; staff onboarding</li>
+                <li className="flex items-center gap-2">• Indicative delivery: 4–6 weeks</li>
+              </ul>
+            </div>
+            <div className="pt-6 mt-6 border-t border-white/10">
+              <Link
+                href="/contact"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-white/5 hover:bg-white hover:text-black border border-white/10 text-xs font-semibold uppercase tracking-wider transition-all"
+              >
+                <span>Request Enterprise RFP</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ── 2. Specialist Discipline Navigation Router ── */}
@@ -678,6 +799,10 @@ export default function AiAutomationDubai() {
               </div>
               <h4 className="text-base font-medium text-white">{currentScope.name}</h4>
               <p className="text-xs text-white/70 font-light leading-relaxed">{currentScope.desc}</p>
+              <div className="pt-2 flex items-center justify-between text-xs font-mono border-t border-white/5">
+                <span className="text-emerald-400 font-semibold">{currentScope.indicativeCost}</span>
+                <span className="text-white/50">{currentScope.timeline}</span>
+              </div>
             </div>
           </div>
 

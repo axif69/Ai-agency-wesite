@@ -866,10 +866,10 @@ export default function Home() {
               label: "Instant Qualification"
             },
             {
-              title: "AI Workflows & CRM Systems",
-              desc: "Connect web forms, portals, and follow-up flows into your CRM so no prospective client slips through the cracks.",
+              title: "AI Automation Agency in Dubai",
+              desc: "As a specialized AI automation agency in Dubai, we engineer custom CRM pipelines, WhatsApp lead triage, and ERP data flows with human oversight.",
               href: "/ai-automation-agency-dubai",
-              label: "Pipeline Operations"
+              label: "Dubai AI Systems"
             }
           ].map((item, i) => (
             <Link

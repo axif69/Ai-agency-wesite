@@ -963,11 +963,15 @@ export default function SovereignSalesAgent() {
               Private Development Build. Private product walkthroughs and early-access evaluations are available by request. Commercial licensing terms will be announced following the pilot phase.
             </p>
             <p className="mt-4 text-xs text-slate-400">
-              Looking for done-for-you B2B outbound or custom sales systems in Dubai? Explore our{" "}
+              Looking for done-for-you B2B outbound or operational sales systems in Dubai? Explore our services as a leading{" "}
+              <Link href="/ai-automation-agency-dubai" className="text-emerald-400 font-medium underline hover:text-emerald-300">
+                AI automation agency in Dubai
+              </Link>
+              , discover our{" "}
               <Link href="/ai-lead-generation-agency-dubai" className="text-blue-400 underline hover:text-blue-300">
                 AI Lead Generation Agency in Dubai
               </Link>{" "}
-              and{" "}
+              or deploy{" "}
               <Link href="/workflow-automation-uae" className="text-blue-400 underline hover:text-blue-300">
                 Enterprise Workflow Automation across the UAE
               </Link>

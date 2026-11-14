@@ -709,7 +709,7 @@ export default function AiChatbotsDubai() {
             <span className="text-white/20">•</span>
             <Link href="/real-estate/whatsapp-ai-automation" className="hover:text-white transition-colors">Real Estate WhatsApp AI</Link>
             <span className="text-white/20">•</span>
-            <Link href="/ai-automation-agency-dubai" className="hover:text-white transition-colors">Enterprise AI Automation Dubai</Link>
+            <Link href="/ai-automation-agency-dubai" className="hover:text-white transition-colors text-emerald-400 font-medium">AI Automation Agency Dubai</Link>
             <span className="text-white/20">•</span>
             <Link href="/workflow-automation-uae" className="hover:text-white transition-colors">Workflow Automation UAE</Link>
             <span className="text-white/20">•</span>

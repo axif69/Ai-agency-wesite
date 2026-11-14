@@ -1,14 +1,14 @@
 import PageComponent from '../../src/views/AiAutomationDubai';
 
 export const metadata = {
-  title: "AI Automation Agency Dubai | Workflows, CRM & WhatsApp",
-  description: "AI automation services in Dubai. Automate business workflows, WhatsApp lead routing, AI-powered CRM & ERP integrations with human oversight. Book a free audit.",
+  title: "AI Automation Agency Dubai | Workflows, CRM & Pricing (2026)",
+  description: "Leading AI automation agency in Dubai & UAE. Custom workflow engineering, AI CRM pipelines, Meta WhatsApp Cloud API & ERP syncing from AED 2,500. Free audit.",
   alternates: {
     canonical: "https://www.asifdigital.agency/ai-automation-agency-dubai"
   },
   openGraph: {
-    title: "AI Automation Agency Dubai | Workflows, CRM & WhatsApp",
-    description: "AI automation services in Dubai. Automate business workflows, WhatsApp lead routing, AI-powered CRM & ERP integrations with human oversight. Book a free audit.",
+    title: "AI Automation Agency Dubai | Workflows, CRM & Pricing (2026)",
+    description: "Leading AI automation agency in Dubai & UAE. Custom workflow engineering, AI CRM pipelines, Meta WhatsApp Cloud API & ERP syncing from AED 2,500. Free audit.",
     url: "https://www.asifdigital.agency/ai-automation-agency-dubai",
     siteName: "Asif Digital",
     locale: "en_AE",
@@ -16,8 +16,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Automation Agency Dubai | Workflows, CRM & WhatsApp",
-    description: "AI automation services in Dubai. Automate business workflows, WhatsApp lead routing, AI-powered CRM & ERP integrations with human oversight. Book a free audit."
+    title: "AI Automation Agency Dubai | Workflows, CRM & Pricing (2026)",
+    description: "Leading AI automation agency in Dubai & UAE. Custom workflow engineering, AI CRM pipelines, Meta WhatsApp Cloud API & ERP syncing from AED 2,500. Free audit."
   }
 };
 

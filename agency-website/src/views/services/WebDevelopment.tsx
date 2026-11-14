@@ -386,7 +386,7 @@ export default function WebDevelopment() {
               {
                 icon: <Zap className="w-6 h-6 text-emerald-400" />,
                 title: "High-Speed RESTful & GraphQL APIs",
-                desc: <>Clean, documented API layers connecting your web app with mobile applications, external partner networks, and internal business tools, including custom <Link href="/ai-automation-agency-dubai" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-4">AI automation pipelines</Link>.</>
+                desc: <>Clean, documented API layers connecting your web app with mobile applications, external partner networks, and internal business tools, including custom workflows engineered by our <Link href="/ai-automation-agency-dubai" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-4 font-medium">AI automation agency in Dubai</Link>.</>
               },
               {
                 icon: <Server className="w-6 h-6 text-emerald-400" />,
